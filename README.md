@@ -4,7 +4,7 @@ Bootleg Arknights in javascript made for fun.
 
 ## Playable Demo
 
-You can play the game using this [link].
+You can play the game using this [link](https://krussx.github.io/Krussnights/).
 
 ## Disclaimer
 Arknights is owned by Hypergryph, Yostar.  
