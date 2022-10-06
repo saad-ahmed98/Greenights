@@ -9,7 +9,7 @@ levels["0-1"] = {
     background:"loading4",
     waves: [
         { "time": 1, "gap": 5, "enemies": "sarkaz grudgebearer", "line": true,"taunt":false, "count": 1, "start": [1, 8], "checkpoints": [{ "start": [1, 8], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [1, 8], "pause": 0 }, { "start": [1, 8], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [1, 8], "pause": 0 }, { "start": [1, 8], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [1, 8], "pause": 0 }, { "start": [1, 8], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [1, 8], "pause": 0 }, { "start": [1, 8], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [6, 8], "pause": 0 }, { "start": [6, 8], "end": [2, 1], "pause": 0 }] },
-        { "time": 1, "gap": 10, "enemies": "sarkaz bladeweaver", "line": true, "taunt":false,"count": 1, "start": [3, 9], "checkpoints": [{ "start": [3, 9], "end": [3, 9], "pause": 150 }, { "start": [3, 9], "end": [6, 7], "pause": 0 }, { "start": [6, 7], "end": [2, 1], "pause": 0 }] },
+        /*{ "time": 1, "gap": 10, "enemies": "sarkaz bladeweaver", "line": true, "taunt":false,"count": 1, "start": [3, 9], "checkpoints": [{ "start": [3, 9], "end": [3, 9], "pause": 150 }, { "start": [3, 9], "end": [6, 7], "pause": 0 }, { "start": [6, 7], "end": [2, 1], "pause": 0 }] },
         { "time": 1, "gap": 10, "enemies": "sarkaz bladeweaver", "line": false, "taunt":false,"count": 1, "start": [4, 9], "checkpoints": [{ "start": [4, 9], "end": [4, 9], "pause": 150 }, { "start": [4, 9], "end": [6, 7], "pause": 0 }, { "start": [6, 7], "end": [2, 1], "pause": 0 }] },
 
         //sarkaz swordsman
@@ -87,11 +87,11 @@ levels["0-1"] = {
         
         //sarkaz bladeweaver
         { "time": 200, "gap": 6, "enemies": "sarkaz bladeweaver", "line": true,"taunt":false, "count": 2, "start": [2, 12], "checkpoints": [{ "start": [2, 12], "end": [2, 1], "pause": 0 }] },
+        */
 
     ],
-
-    enemies: ["sarkaz sentinel", "sarkaz grudgebearer", "sarkaz greatswordsman","sarkaz bladeweaver","sarkaz crossbowman", "sarkaz swordsman"],
-    //enemies: ["sarkaz swordsman"],
+    //enemies: ["sarkaz sentinel", "sarkaz grudgebearer", "sarkaz greatswordsman","sarkaz bladeweaver","sarkaz crossbowman", "sarkaz swordsman"],
+    enemies: ["sarkaz grudgebearer"],
 
 
     layout: [["bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg"], ["bg", "bg", "bg", "bg", "bg", "g", "g", "g", "g", "bg", "bg", "bg", "bg"],
