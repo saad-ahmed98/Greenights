@@ -1,6 +1,6 @@
 class CharaController {
     constructor(chara, scene, x, y, lvlcontroller) {
-        this.chara = Object.assign({}, chara);
+        this.chara = JSON.parse(JSON.stringify(chara));
         this.mesh;
         this.sprite;
         this.shadow;

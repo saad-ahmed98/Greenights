@@ -1,7 +1,6 @@
 class LVLGUIController {
-    constructor(scene, gameconfig, level) {
+    constructor(scene, gameconfig) {
         this.scene = scene;
-        this.lvl = level;
         this.gameconfig = gameconfig;
 
         //to avoid calling multiple times and overlap guis
@@ -32,7 +31,7 @@ class LVLGUIController {
         //used when deploying a player
         this.wheelclick = false;
         this.wheelchoice = undefined;
-       
+
     }
 
     /*
@@ -178,9 +177,51 @@ class LVLGUIController {
         var msg = new BABYLON.GUI.TextBlock();
         msg.text = "MISSION\nACCOMPLISHED";
         msg.color = "white";
-        msg.fontSize = "40%";
+        msg.fontSize = "35%";
+        msg.left = "-25%";
+
 
         container.addControl(msg)
+         //quit button
+         var containerq = new BABYLON.GUI.Rectangle();
+         containerq.width = "15%";
+         containerq.height = "80%";
+         containerq.left = "10%";
+         containerq.color = "white";
+         containerq.thickness = 3;
+         containerq.background = "black";
+ 
+ 
+         var quit = new BABYLON.GUI.Image("", "images/common/quit.png");
+ 
+         containerq.addControl(quit)
+         
+         containerq.onPointerDownObservable.add(() => {
+             titleLoading=""
+             lvlnumber=""
+            new MainMenu(lvlcont.gameconfig)
+         });
+ 
+         var container2 = new BABYLON.GUI.Rectangle();
+         container2.width = "15%";
+         container2.height = "80%";
+         container2.left = "30%";
+         container2.color = "white";
+         container2.thickness = 3;
+         container2.background = "black";
+ 
+ 
+         var retry = new BABYLON.GUI.Image("", "images/common/retry.png");
+ 
+         container2.addControl(retry)
+         
+         container2.onPointerDownObservable.add(() => {
+            lvlcont.restart()
+         });
+     
+ 
+        container.addControl(containerq);
+        container.addControl(container2);
         this.lvlcontroller.addControl(container);
 
     }
@@ -204,11 +245,54 @@ class LVLGUIController {
 
         var msg = new BABYLON.GUI.TextBlock();
         msg.text = "MISSION\nFAILED";
+        msg.left = "-20%";
         msg.color = "white";
         msg.fontSize = "40%";
 
         container.addControl(msg)
+         //quit button
+         var containerq = new BABYLON.GUI.Rectangle();
+         containerq.width = "15%";
+         containerq.height = "80%";
+         containerq.left = "10%";
+         containerq.color = "white";
+         containerq.thickness = 3;
+         containerq.background = "black";
+ 
+ 
+         var quit = new BABYLON.GUI.Image("", "images/common/quit.png");
+ 
+         containerq.addControl(quit)
+         
+         containerq.onPointerDownObservable.add(() => {
+             titleLoading=""
+             lvlnumber=""
+            new MainMenu(lvlcont.gameconfig)
+         });
+ 
+         var container2 = new BABYLON.GUI.Rectangle();
+         container2.width = "15%";
+         container2.height = "80%";
+         container2.left = "30%";
+         container2.color = "white";
+         container2.thickness = 3;
+         container2.background = "black";
+ 
+ 
+         var retry = new BABYLON.GUI.Image("", "images/common/retry.png");
+ 
+         container2.addControl(retry)
+         
+         container2.onPointerDownObservable.add(() => {
+            lvlcont.restart()
+         });
+     
+ 
+        container.addControl(containerq);
+        container.addControl(container2);
         this.lvlcontroller.addControl(container);
+
+        
 
     }
 
@@ -292,19 +376,57 @@ class LVLGUIController {
         //pauses or unpauses the game on click
         container2.onPointerDownObservable.add(() => {
             if (!(this.showinggui && !this.isPaused)) {
-                if (!this.isPaused) {
+                if (!this.isPaused && pause.text == "❚❚") {
                     pause.text = "▶";
                     this.createPauseScreen(lvlcontroller)
                 }
                 else {
+                    if(pause.text =="▶"){
                     pause.text = "❚❚";
                     this.removePauseScreen(lvlcontroller)
+                    }
                 }
             }
         });
 
         this.statscontroller.addControl(container2);
 
+        //esc button
+        var container3 = new BABYLON.GUI.Rectangle();
+        container3.width = "7%";
+        container3.height = "12%";
+        container3.left = "2%";
+        container3.color = "white";
+        container3.thickness = 3;
+        container3.background = "black";
+
+        container3.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
+        container3.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
+
+        var esc = new BABYLON.GUI.TextBlock();
+        esc.text = "⚙";
+        esc.color = "white";
+        esc.fontSize = "80%";
+
+        container3.addControl(esc)
+
+        //pauses or unpauses the game on click
+        container3.onPointerDownObservable.add(() => {
+            
+            if (!(this.showinggui && !this.isPaused)) {
+                if (!this.isPaused) {
+                    esc.text = "▶";
+                    this.createEscScreen(lvlcontroller)
+                }
+                else {
+                    esc.text = "⚙";
+                    this.removePauseScreen(lvlcontroller)
+                }
+            }
+            
+        });
+
+        this.statscontroller.addControl(container3);
 
 
     }
@@ -321,22 +443,22 @@ class LVLGUIController {
         this.wheelController = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI3", true, this.scene);
 
         var keys = Object.keys(players);
-        keys.sort(function(x, y) {
+        keys.sort(function (x, y) {
 
             if (players[x].cost > players[y].cost) {
-              return -1;
+                return -1;
             }
             if (players[x].cost < players[y].cost) {
                 return 1;
             }
             return 0;
-          });
-          
+        });
+
         for (let i = 0; i < keys.length; i++) {
             var container = new BABYLON.GUI.Rectangle();
-            container.width = "7%"
-            container.height = "12%";
-            container.left = (i * -7) + "%";
+            container.width = "8.3%"
+            container.height = "15%";
+            container.left = (i * -8.3) + "%";
             container.color = "White";
             container.thickness = 1;
             container.background = "transparent";
@@ -404,7 +526,7 @@ class LVLGUIController {
         var container3 = new BABYLON.GUI.Rectangle();
         container3.width = "8%";
         container3.height = "10%";
-        container3.top = "-16%";
+        container3.top = "-20%";
         container3.color = "black";
         container3.background = "black";
 
@@ -432,7 +554,7 @@ class LVLGUIController {
         var sqdlimit = new BABYLON.GUI.Rectangle();
         sqdlimit.width = "12%";
         sqdlimit.height = "5%";
-        sqdlimit.top = "-12%";
+        sqdlimit.top = "-16%";
         sqdlimit.color = "black";
         sqdlimit.background = "black";
 
@@ -483,6 +605,67 @@ class LVLGUIController {
         this.lvlcontroller.addControl(greyfilter);
 
         this.lvlcontroller.addControl(label);
+
+    }
+
+    createEscScreen(lvlcont) {
+        lvlcont.pauseGame()
+        this.isPaused = true;
+        this.lvlcontroller.dispose();
+        this.lvlcontroller = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI", true, this.scene);
+        this.showinggui = true;
+
+        this.timerPauseActivate()
+
+        var greyfilter = new BABYLON.GUI.Image("", "images/common/notavailable.png");
+        greyfilter.width = "100%"
+        greyfilter.height = "100%"
+        
+        
+        this.lvlcontroller.addControl(greyfilter);
+        //quit button
+        var container = new BABYLON.GUI.Rectangle();
+        container.width = "15%";
+        container.height = "25%";
+        container.left = "-10%";
+        container.color = "white";
+        container.thickness = 3;
+        container.background = "black";
+
+
+        var quit = new BABYLON.GUI.Image("", "images/common/quit.png");
+
+        container.addControl(quit)
+        
+        //pauses or unpauses the game on click
+        container.onPointerDownObservable.add(() => {
+            titleLoading=""
+            lvlnumber=""
+           new MainMenu(lvlcont.gameconfig)
+        });
+
+        var container2 = new BABYLON.GUI.Rectangle();
+        container2.width = "15%";
+        container2.height = "25%";
+        container2.left = "10%";
+        container2.color = "white";
+        container2.thickness = 3;
+        container2.background = "black";
+
+
+        var retry = new BABYLON.GUI.Image("", "images/common/retry.png");
+
+        container2.addControl(retry)
+        
+        //pauses or unpauses the game on click
+        container2.onPointerDownObservable.add(() => {
+           lvlcont.restart()
+        });
+    
+
+        this.lvlcontroller.addControl(container);
+        this.lvlcontroller.addControl(container2);
+
 
     }
 

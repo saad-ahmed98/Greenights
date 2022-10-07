@@ -1,7 +1,7 @@
 BABYLON.DefaultLoadingScreen.prototype.displayLoadingUI = function () {
     this._loadingDiv = document.createElement("div");
     this._loadingDiv.style.backgroundImage = 'url("' + backgroundimg + '")';
-   this._loadingDiv.style.backgroundRepeat = 'no-repeat';
+    this._loadingDiv.style.backgroundRepeat = 'no-repeat';
     this._loadingDiv.style.backgroundSize = '100% 100%';
     //this._loadingDiv.style.filter = 'blur(5px)';
 

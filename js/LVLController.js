@@ -3,18 +3,27 @@ class LVLController extends LVLAbstract {
         titleLoading = lvl.name
         lvlnumber = lvl.level
         backgroundimg = "images/background/" + lvl.background + ".png"
-        super(gameconfig, "lvl1");
+        super(gameconfig);
+        this.tiles = [];
+        this.hpbox = [];
+        this.spawns = [];
+        this.activePlayers = [];
+        this.enemies = [];
+        this.gui = new LVLGUIController(this.scene, this.gameconfig);
 
         this.layout = lvl.layout
 
         this.bgm = lvl.bgm
 
+        this.hp = lvl.hp
+
         this.matrix;
         this.maptimer = 0;
-        this.waves = lvl.waves;
+        this.waves = JSON.parse(JSON.stringify(lvl.waves));
 
         this.enemylist = enemylist;
-        this.playerlist = playerlist;
+        this.restartlist = JSON.parse(JSON.stringify(playerlist));
+        this.playerlist = JSON.parse(JSON.stringify(playerlist));
 
         this.appearingenemies = lvl.enemies;
 
@@ -66,8 +75,12 @@ class LVLController extends LVLAbstract {
 
     }
 
+    restart(){
+        new LVLController(this.gameconfig,enemylist,this.restartlist,JSON.parse(JSON.stringify(levels[lvlnumber])))
+    }
+
     createGUIs() {
-        this.gui.createStatsUI(this.enemycount + "/" + this.enemytot, this.gameconfig.stats.hp, this);
+        this.gui.createStatsUI(this.enemycount + "/" + this.enemytot, this.hp, this);
 
         this.gui.createPlayerWheelUI(this.playerlist, this.currentdp, this.squadlimit);
     }
@@ -116,7 +129,7 @@ class LVLController extends LVLAbstract {
             this.dptimer = 0;
             this.gui.updatePlayerWheelUI(this.currentdp, this.squadlimit)
         }
-        if (this.gameconfig.stats.hp <= 0) {
+        if (this.hp <= 0) {
             if (!this.gui.showinggui)
                 this.gui.createGameOverScreen(this)
         }
@@ -129,57 +142,109 @@ class LVLController extends LVLAbstract {
     }
 
     loadAssets() {
-        //this.loadPlayer();
-        this.loadSounds();
+        this.loadSounds()
         this.loadSprites();
 
         //this.loadBuildings();
         //this.loadSkybox("images/LVL1/skybox.jpg");
     }
+    
+    playBGM(volume) {
+        var intro = this.scene.assets.bgmintro
+        var loop = this.scene.assets.bgmloop
+        if (!intro.isPlaying && !loop.isPlaying && !this.gui.showinggui) {
+            intro.setVolume(volume)
+            intro.play()
+            intro._outputAudioNode.context.addEventListener('statechange', function () {
+                if (intro._outputAudioNode.context.state == "running")
+                    intro.play()
 
-    loadSounds() {
-        super.loadSounds()
-        var instance = this;
-        var assetsManager = instance.scene.assetsManager;
+            });
+            intro.onended = function () {
+                loop.setVolume(volume);
+                loop.play()
+            }
+            
+            var keys = Object.keys(this.playerlist)
+            if (keys.length > 0 && !this.depart) {
+                this.depart = true
+                this.playSound(this.playerlist[keys[Math.floor(Math.random() * keys.length)]].name + "-depart", this.vcvolume);
+            }
+        }
 
-        this.loadPlayerSFX();
-        this.loadEnemySFX();
-
-        this.loadPlayerVoicelines();
-
-
-        var binaryTask = assetsManager.addBinaryFileTask(
-            "bgm",
-            "sounds/bgm/" + this.bgm + "_intro.mp3"
-        );
-        binaryTask.onSuccess = function (task) {
-            instance.scene.assets.bgmintro = new BABYLON.Sound(
-                "bgm",
-                task.data,
-                this.scene,
-                null,
-                {
-                    loop: false,
-                }
-            );
-        };
-
-        binaryTask = assetsManager.addBinaryFileTask(
-            "bgm",
-            "sounds/bgm/" + this.bgm + "_loop.mp3"
-        );
-        binaryTask.onSuccess = function (task) {
-            instance.scene.assets.bgmloop = new BABYLON.Sound(
-                "bgm",
-                task.data,
-                this.scene,
-                null,
-                {
-                    loop: true,
-                }
-            );
-        };
     }
+
+
+    playMissionClear() {
+        this.scene.assets.bgmintro.stop()
+        this.scene.assets.bgmloop.stop()
+
+        var sound = this.scene.assets["winvoice"]
+        sound.setVolume(0.3)
+        sound.play()
+
+        var intro = this.scene.assets.winintro
+        var loop = this.scene.assets.winloop
+        intro.setVolume(0.3)
+        intro.play()
+
+        intro.onended = function () {
+            loop.setVolume(0.3);
+            loop.play()
+        }
+    }
+
+    renderScene() {
+        var startingColor = this.scene.clearColor.clone();
+        var t;
+
+        if (this.frame < 550) {
+            this.frame += 5;
+            t = 0.5 + Math.cos(this.frame / 100) / 2;
+            this.light.intensity = 2 * t;
+            BABYLON.Color3.LerpToRef(BABYLON.Color3.BlackReadOnly, startingColor, t, this.scene.clearColor);
+        }
+        else {
+            if (!this.render) {
+                this.createGUIs()
+                this.render = true;
+            }
+            else {
+                this.playBGM(0.2)
+
+                if (this.gameconfig.inputStates.pause) {
+                    if (!this.gui.showinggui && this.gui.canPause) {
+                        this.gui.createPauseScreen(this);
+                    }
+                    else if (this.gui.timerPause)
+                        this.gui.removePauseScreen(this);
+                }
+                if (!this.gui.isPaused)
+                    this.createLvl();
+            }
+        }
+        this.scene.render();
+    }
+
+
+    playMissionFailed() {
+        this.scene.assets.bgmintro.stop()
+        this.scene.assets.bgmloop.stop()
+        var sound = this.scene.assets["losevoice"]
+        sound.setVolume(0.3)
+        sound.play()
+
+        var intro = this.scene.assets.loseintro
+        var loop = this.scene.assets.loseloop
+        intro.setVolume(0.3)
+        intro.play()
+
+        intro.onended = function () {
+            loop.setVolume(0.3);
+            loop.play()
+        }
+    }
+
 
     loadPlayerSFX() {
         var instance = this;
@@ -273,23 +338,261 @@ class LVLController extends LVLAbstract {
         this.createSpriteManagers();
     }
 
+    loadSounds() {
+
+        var instance = this;
+        var assetsManager = instance.scene.assetsManager;
+        this.loadPlayerSFX();
+        this.loadEnemySFX();
+
+        this.loadPlayerVoicelines();
+
+
+        var binaryTask = assetsManager.addBinaryFileTask(
+            "bgm",
+            "sounds/bgm/" + this.bgm + "_intro.mp3"
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets.bgmintro = new BABYLON.Sound(
+                "bgm",
+                task.data,
+                this.scene,
+                null,
+                {
+                    loop: false,
+                }
+            );
+        };
+
+        binaryTask = assetsManager.addBinaryFileTask(
+            "bgm",
+            "sounds/bgm/" + this.bgm + "_loop.mp3"
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets.bgmloop = new BABYLON.Sound(
+                "bgm",
+                task.data,
+                this.scene,
+                null,
+                {
+                    loop: true,
+                }
+            );
+        };
+
+        binaryTask = assetsManager.addBinaryFileTask(
+            "alarmenter",
+            "sounds/ui/alarmenter.wav"
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets.alarmenter = new BABYLON.Sound(
+                "alarmenter",
+                task.data,
+                this.scene,
+                null,
+                {
+                    loop: false,
+                }
+            );
+        };
+
+        binaryTask = assetsManager.addBinaryFileTask(
+            "charadead",
+            "sounds/ui/charadead.wav"
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets.charadead = new BABYLON.Sound(
+                "charadead",
+                task.data,
+                this.scene,
+                null,
+                {
+                    loop: false,
+                }
+            );
+        };
+
+        binaryTask = assetsManager.addBinaryFileTask(
+            "deploy",
+            "sounds/ui/deploy.wav"
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets.deploy = new BABYLON.Sound(
+                "deploy",
+                task.data,
+                this.scene,
+                null,
+                {
+                    loop: false,
+                }
+            );
+        };
+
+        binaryTask = assetsManager.addBinaryFileTask(
+            "losevoice",
+            "sounds/ui/losevoice.wav"
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets.losevoice = new BABYLON.Sound(
+                "losevoice",
+                task.data,
+                this.scene,
+                null,
+                {
+                    loop: false,
+                }
+            );
+        };
+
+        binaryTask = assetsManager.addBinaryFileTask(
+            "lose_loop",
+            "sounds/ui/lose_loop.mp3"
+        );
+
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets.loseloop = new BABYLON.Sound(
+                "lose_loop",
+                task.data,
+                this.scene,
+                null,
+                {
+                    loop: true,
+                }
+            );
+        };
+
+        binaryTask = assetsManager.addBinaryFileTask(
+            "lose_intro",
+            "sounds/ui/lose_intro.mp3"
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets.loseintro = new BABYLON.Sound(
+                "lose_intro",
+                task.data,
+                this.scene,
+                null,
+                {
+                    loop: false,
+                }
+            );
+        };
+
+        binaryTask = assetsManager.addBinaryFileTask(
+            "winvoice",
+            "sounds/ui/winvoice.wav"
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets.winvoice = new BABYLON.Sound(
+                "winvoice",
+                task.data,
+                this.scene,
+                null,
+                {
+                    loop: false,
+                }
+            );
+        };
+
+        binaryTask = assetsManager.addBinaryFileTask(
+            "win_loop",
+            "sounds/ui/win_loop.mp3"
+        );
+
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets.winloop = new BABYLON.Sound(
+                "win_loop",
+                task.data,
+                this.scene,
+                null,
+                {
+                    loop: true,
+                }
+            );
+        };
+
+
+        binaryTask = assetsManager.addBinaryFileTask(
+            "win_intro",
+            "sounds/ui/win_intro.mp3"
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets.winintro = new BABYLON.Sound(
+                "win_intro",
+                task.data,
+                this.scene,
+                null,
+                {
+                    loop: false,
+                }
+            );
+        };
+
+        binaryTask = assetsManager.addBinaryFileTask(
+            "pause",
+            "sounds/ui/pause.wav"
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets.pause = new BABYLON.Sound(
+                "pause",
+                task.data,
+                this.scene,
+                null,
+                {
+                    loop: false,
+                }
+            );
+        };
+
+        binaryTask = assetsManager.addBinaryFileTask(
+            "retreat",
+            "sounds/ui/retreat.wav"
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets.retreat = new BABYLON.Sound(
+                "retreat",
+                task.data,
+                this.scene,
+                null,
+                {
+                    loop: false,
+                }
+            );
+        };
+        binaryTask = assetsManager.addBinaryFileTask(
+            "tooltip",
+            "sounds/ui/tooltip.wav"
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets.tooltip = new BABYLON.Sound(
+                "tooltip",
+                task.data,
+                this.scene,
+                null,
+                {
+                    loop: false,
+                }
+            );
+        };
+
+    }
+
 
     checkEnemies() {
         for (let i = 0; i < this.enemies.length; i++) {
             if (this.enemies[i].finish) {
                 this.playSound("alarmenter", 0.3)
-                this.gameconfig.stats.hp--;
+                this.hp--;
                 this.enemies.splice(i, 1)
                 i--;
                 this.enemycount++;
-                this.gui.updateStatsUI(this.enemycount + "/" + this.enemytot, this.gameconfig.stats.hp);
+                this.gui.updateStatsUI(this.enemycount + "/" + this.enemytot, this.hp);
             }
             else if (this.enemies[i].hp <= 0) {
                 //this.enemies[i].sprite.dispose();
                 this.enemies.splice(i, 1)
                 i--;
                 this.enemycount++;
-                this.gui.updateStatsUI(this.enemycount + "/" + this.enemytot, this.gameconfig.stats.hp);
+                this.gui.updateStatsUI(this.enemycount + "/" + this.enemytot, this.hp);
             }
         }
     }

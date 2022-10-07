@@ -1,4 +1,4 @@
-var enemylist = {};
+let enemylist = {};
 
 
 enemylist['dog'] = {

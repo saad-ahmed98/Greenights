@@ -6,8 +6,6 @@ class GameConfig{
         this.rollingAverage = new BABYLON.RollingAverage(60);
         this.modifySettings();
         this.scenes = [];
-        this.stats;
-        this.statsprev;
     }
 
     createNewEngine(){
@@ -17,13 +15,6 @@ class GameConfig{
         this.engine = new BABYLON.Engine(this.canvas, true);
     }
 
-    newStats(){
-        this.stats = {
-            "hp":3,
-        }
-        this.statsprev = Object.assign( {}, this.stats );
-        
-    }
 
 
     modifySettings() {

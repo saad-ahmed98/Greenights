@@ -10,9 +10,9 @@ function startGame() {
     //divFps= document.getElementById("fps");
 
     gameconfig = new GameConfig(canvas)
-    gameconfig.newStats()
     resize()
-    new LVLController(gameconfig, enemylist, playerlist, levels["0-1"]);
+    new MainMenu(gameconfig)
+    //new LVLController(gameconfig, enemylist, playerlist, levels["TEST-1"]);
 
 }
 

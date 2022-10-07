@@ -1,4 +1,4 @@
-var playerlist = {};
+let playerlist = {};
 
 
 playerlist["plume"] = {
@@ -55,6 +55,7 @@ playerlist["plume"] = {
     },
     skill: {
         name: "swift strike alpha",
+        description:"ATK +25%, ASPD +25",
         duration: 25,
         sp: 45,
         initialsp: 0,
@@ -150,6 +151,7 @@ playerlist["melantha"] = {
     },
     skill: {
         name: "ATK up alpha",
+        description:"ATK +50%",
         duration: 20,
         sp: 40,
         initialsp: 0,
@@ -239,6 +241,7 @@ playerlist["popukar"] = {
     },
     skill: {
         name: "ATK up alpha",
+        description:"ATK +50%",
         duration: 20,
         sp: 40,
         initialsp: 0,
@@ -335,6 +338,7 @@ playerlist["fang"] = {
     },
     skill: {
         name: "charge alpha",
+        description:"Immediately gain 6 deploy points",
         duration: 1,
         sp: 25,
         initialsp: 6,
@@ -419,6 +423,7 @@ playerlist["adnachiel"] = {
 
     skill: {
         name: "attack up alpha",
+        description:"ATK +50%",
         duration: 20,
         sp: 40,
         initialsp: 0,
@@ -506,6 +511,7 @@ playerlist["hibiscus"] = {
 
     skill: {
         name: "healing up",
+        description:"ATK +50%",
         duration: 20,
         sp: 30,
         initialsp: 0,
@@ -596,6 +602,7 @@ playerlist["midnight"] = {
 
     skill: {
         name: "enchanted sword alpha",
+        description:"ATK +35% and damage turns into ARTS",
         duration: 40,
         sp: 70,
         initialsp: 30,
@@ -688,6 +695,7 @@ playerlist["beagle"] = {
 
     skill: {
         name: "DEF up alpha",
+        description:"DEF +50%",
         duration: 30,
         sp: 40,
         initialsp: 0,
@@ -779,6 +787,7 @@ playerlist["durin"] = {
 
     skill: {
         name: "power strike alpha",
+        description:"Increase ATK of next hit to 190%",
         duration: 0,
         sp: 4,
         initialsp: 0,
