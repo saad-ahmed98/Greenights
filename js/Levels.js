@@ -1,6 +1,6 @@
 var levels = {}
-levels["TEST-1"] = {
-    level: "TEST-1",
+levels["AMOGUS"] = {
+    level: "AMOGUS",
     name: "BREAD IN FRENCH",
     initialdp: 10,
     squadlimit: 8,
@@ -104,24 +104,22 @@ levels["TEST-1"] = {
     ],
 }
 
-levels["TEST-2"] = {
-    level: "TEST-2",
+levels["TEST"] = {
+    level: "TEST",
     name: "Something",
-    bgm: "dm_2",
-    initialdp: 10,
+    bgm: "ep7_1",
+    initialdp: 40,
     squadlimit: 9,
     hp: 3,
-    background: "loading_VC_factory",
+    background: "loading_CB_center",
     description: "Dogs",
 
     waves: [{ "time": 5, "gap": 5, "enemies": "dog", "line": true, "taunt": true, "count": 6, "start": [4, 0], "checkpoints": [{ "start": [4, 0], "end": [5, 12], "pause": 0 }] },
     { "time": 5.2, "gap": 5, "enemies": "dog", "line": false, "count": 6, "taunt": false, "start": [4, 0], "checkpoints": [{ "start": [4, 0], "end": [5, 12], "pause": 0 }] },
-    { "time": 0, "gap": 10, "enemies": "sarkaz grudgebearer", "line": true, "taunt": false, "count": 1, "start": [7, 5], "checkpoints": [{ "start": [7, 5], "end": [7, 5], "pause": 150 }, { "start": [7, 5], "end": [7, 0], "pause": 0 }] },
     { "time": 0, "gap": 5, "enemies": "sarkaz sentinel", "line": true, "taunt": false, "count": 1, "start": [1, 10], "checkpoints": [{ "start": [1, 10], "end": [1, 2], "pause": 5 }, { "start": [1, 2], "end": [1, 10], "pause": 5 }, { "start": [1, 10], "end": [1, 2], "pause": 5 }, { "start": [1, 2], "end": [1, 10], "pause": 5 }, { "start": [1, 10], "end": [1, 0], "pause": 0 }] },
     ],
 
-    enemies: ["dog", "sarkaz sentinel", "sarkaz grudgebearer"],
-
+    enemies: ["dog", "sarkaz sentinel"],
 
     layout: [["bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg"], ["blue", "g", "g", "g", "g", "g", "g", "g", "g", "g", "g", "blk", "red"],
     ["bg", "bg", "bg", "bg", "r", "r", "bg", "bg", "r", "r", "bg", "bg", "bg"],

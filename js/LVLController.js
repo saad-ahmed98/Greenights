@@ -255,7 +255,6 @@ class LVLController extends LVLAbstract {
 
             var sfx = Object.keys(this.playerlist[keys[i]].sfx)
             for (let j = 0; j < sfx.length; j++) {
-
                 binaryTask = assetsManager.addBinaryFileTask(
                     instance.playerlist[keys[i]].name + "-" + sfx[j],
                     "sounds/player/sfx/" + instance.playerlist[keys[i]].sfx[sfx[j]].src + ".wav"

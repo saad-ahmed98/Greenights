@@ -1,11 +1,11 @@
 class PlayerController extends CharaController {
-    constructor(chara, scene, x, y,lvlcontroller) {
-        super(chara, scene, x, y,lvlcontroller)
+    constructor(chara, scene, x, y, lvlcontroller) {
+        super(chara, scene, x, y, lvlcontroller)
         this.blocking = 0;
         this.blockingpoints = new Array(this.blockcount).fill(undefined);
         this.spawning = true;
         this.skillBar;
-        this.playerSkill = new PlayerSkill(chara.skill.name, chara.skill.duration, chara.skill.initialsp, chara.skill.sp, chara.skill.chargetype, chara.skill.triggertype, chara.skill.modifiers, chara.skill.apply,chara.skill.skillimage)
+        this.playerSkill = new PlayerSkill(chara.skill.name, chara.skill.duration, chara.skill.initialsp, chara.skill.sp, chara.skill.chargetype, chara.skill.triggertype, chara.skill.modifiers, chara.skill.apply, chara.skill.skillimage)
         this.buffs = new Buffs();
 
         this.skillready;
@@ -14,9 +14,9 @@ class PlayerController extends CharaController {
 
     }
 
-    createSkillAura(auraManager){
+    createSkillAura(auraManager) {
         this.aura = new BABYLON.Sprite("", auraManager);
-        this.aura.playAnimation(0, 3, true, 30*this.gamespeed);
+        this.aura.playAnimation(0, 3, true, 30 * this.gamespeed);
         this.aura.position = new BABYLON.Vector3(-5 + this.x * 30, 20, 6 + this.y * 30);
         this.aura.size = 65;
         this.aura.width = 100;
@@ -27,14 +27,14 @@ class PlayerController extends CharaController {
     }
 
 
-    updateSpeed(gamespeed,pause) {
+    updateSpeed(gamespeed, pause) {
         this.gamespeed = gamespeed;
         this.sprite.delay = 30 * this.gamespeed
-        if(pause)
+        if (pause)
             this.sprite.stopAnimation()
     }
 
-    createPlayer(id, spriteManager, gui, shadowManager,skillManager) {
+    createPlayer(id, spriteManager, gui, shadowManager, skillManager) {
         this.mesh = this.scene.assets.meshchara.clone(id)
 
 
@@ -77,13 +77,13 @@ class PlayerController extends CharaController {
         this.shadow.position.z -= this.y;
         this.shadow.position.x -= this.x;
 
-        
+
         this.skillready.position.z -= this.y;
         this.skillready.position.x -= this.x;
 
         this.skillready.isVisible = false
 
-       
+
         this.addHPBar(gui);
         this.addSkillBar(gui);
 
@@ -98,24 +98,24 @@ class PlayerController extends CharaController {
 
 
     }
-    updateSkillBarCharging(){
+    updateSkillBarCharging() {
 
         this.skillBar.value = Math.round(this.playerSkill.currentsp / this.playerSkill.totalsp * 100)
         this.skillBar.color = "yellow";
-        
+
 
     }
-    updateSkillBarTrigger(){
+    updateSkillBarTrigger() {
         this.skillBar.value = Math.round(this.playerSkill.duration / this.playerSkill.durationtimer * 100)
         this.skillBar.color = "orange";
-        
+
     }
 
-    activateTalents(){
+    activateTalents() {
         var talents = this.chara.talents;
-        for(let i =0;i<talents.length;i++){
-            if(talents[i].apply=="self")
-                this.buffs.buffs[talents[i].name] = {"name":talents[i].name,"modifiers":talents[i].modifiers}
+        for (let i = 0; i < talents.length; i++) {
+            if (talents[i].apply == "self")
+                this.buffs.buffs[talents[i].name] = { "name": talents[i].name, "modifiers": talents[i].modifiers }
         }
     }
 
@@ -131,46 +131,64 @@ class PlayerController extends CharaController {
     attack(enemies, players) {
         var enemy;
         if (this.chara.dmgtype == "heal")
-            enemy = this.getLowestHpPlayerInRange(players, this.chara.range,this.chara.targets+this.buffs.getTargets());
+            enemy = this.getLowestHpPlayerInRange(players, this.chara.range, this.chara.targets + this.buffs.getTargets());
         else {
             if (this.blocking == 0) {
-                enemy = this.getFirstEnemyInRange(enemies, this.chara.range,this.chara.targets+this.buffs.getTargets());
+                enemy = this.getFirstEnemyInRange(enemies, this.chara.range, this.chara.targets + this.buffs.getTargets());
             }
             else {
-                enemy = this.getBlockedEnemyInRange(enemies, this.chara.targets+this.buffs.getTargets())
+                enemy = this.getBlockedEnemyInRange(enemies, this.chara.targets + this.buffs.getTargets())
                 //enemy = this.getFirstEnemyInRange(enemies, 0,this.chara.targets+this.buffs.getTargets())
             }
         }
-        if (enemy.length>0) {
+        if (enemy.length > 0) {
             this.running = false;
             if (enemy[0].mesh.position.z <= this.mesh.position.z)
                 this.sprite.invertU = 1
             else this.sprite.invertU = 0;
 
-            this.sprite.playAnimation(this.chara.atkanim.start, this.chara.atkanim.end, false, this.buffs.getFinalAtkInterval(1)*30 * this.gamespeed);
-            if(this.chara.sfx.atk!=undefined)
-            this.lvlcontroller.playSound(this.chara.name+"-atk",this.chara.sfx.atk.volume)
+            this.sprite.playAnimation(this.chara.atkanim.start, this.chara.atkanim.end, false, this.buffs.getFinalAtkInterval(1) * 30 * this.gamespeed);
+            if (this.playerSkill.active && this.chara.skillsfx) {
+                if (this.chara.sfx.skillatk != undefined)
+                    this.lvlcontroller.playSound(this.chara.name + "-skillatk", this.chara.sfx.skillatk.volume)
+            }
+            else if (this.chara.sfx.atk != undefined)
+                this.lvlcontroller.playSound(this.chara.name + "-atk", this.chara.sfx.atk.volume)
 
             var instance = this
 
             var interval = setInterval(() => {
                 if (instance.sprite.cellIndex >= instance.chara.atkanim.contact && instance.hp > 0) {
-                    if(this.chara.sfx.hit!=undefined)
-                    this.lvlcontroller.playSound(this.chara.name+"-hit",this.chara.sfx.hit.volume)
+                    if (this.playerSkill.active && this.chara.skillsfx) {
+                        if (this.chara.sfx.skillhit != undefined)
+                            this.lvlcontroller.playSound(this.chara.name + "-skillhit", this.chara.sfx.skillhit.volume)
+                    }
+                    else if (this.chara.sfx.hit != undefined)
+                        this.lvlcontroller.playSound(this.chara.name + "-hit", this.chara.sfx.hit.volume)
 
-                    if (instance.chara.dmgtype == "heal"){
-                        for(let i = 0;i<enemy.length;i++)
-                        enemy[i].receiveHealing(instance);
+                    if (instance.chara.dmgtype == "heal") {
+                        for (let i = 0; i < enemy.length; i++)
+                            enemy[i].receiveHealing(instance);
                     }
                     else {
-                        for(let i = 0;i<enemy.length;i++)
-                        enemy[i].receiveDamage(instance)
+                        for (let i = 0; i < enemy.length; i++){
+                            let splash = this.buffs.getSplash()
+                            if(!splash.splash)
+                            enemy[i].receiveDamage(instance)
+                            else {
+                                let splashenemies = this.getSplashEnemiesInRange(enemies,enemy[i],splash.radius)
+                                for (let j = 0; j < splashenemies.length; j++)
+                                    splashenemies[j].receiveDamage(instance)
+                            }
+                        }
                     };
-                    if(instance.playerSkill.chargetype=="attack" && !instance.playerSkill.active){
-                        instance.playerSkill.currentsp = Math.min(instance.playerSkill.currentsp+1,instance.playerSkill.totalsp);
+                    if (instance.playerSkill.chargetype == "attack" && !instance.playerSkill.active) {
+                        instance.playerSkill.currentsp = Math.min(instance.playerSkill.currentsp + 1, instance.playerSkill.totalsp);
                         instance.updateSkillBarCharging();
                     }
                     clearInterval(interval);
+                    if(this.buffs.getDoubleHitChance())
+                        instance.atktimer+=200000
                 }
             }, 1);
             return true;

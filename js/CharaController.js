@@ -162,6 +162,18 @@ class CharaController {
         return res;
     }
 
+    getSplashEnemiesInRange(enemies, center, radius) {
+        var res = [];
+        var squarerange = [[center.mesh.position.x - 30 * radius, center.mesh.position.x + 30 * radius], [center.mesh.position.z - 30 * radius, center.mesh.position.z + 30 * radius]];
+
+        for (let i = 0; i < enemies.length; i++) {
+            if (this.between(enemies[i].mesh.position.x, squarerange[0]) && this.between(enemies[i].mesh.position.z, squarerange[1])) {
+                res.push(enemies[i])
+            }
+        }
+        return res;
+    }
+
 
     receiveDamage(enemy) {
         var dmg = enemy.buffs.getFinalAtk(enemy.chara.atk)

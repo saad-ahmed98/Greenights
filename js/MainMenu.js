@@ -135,7 +135,7 @@ class MainMenu extends LVLAbstract {
     }
 
     createScene() {
-        var camera = new BABYLON.UniversalCamera("UniversalCamera", new BABYLON.Vector3(-30, 80, -100), this.scene);
+        var camera = new BABYLON.UniversalCamera("UniversalCamera", new BABYLON.Vector3(-30, 90, -100), this.scene);
         this.createMainMenu()
         this.createSkybox()
     }
@@ -389,7 +389,7 @@ class MainMenu extends LVLAbstract {
             button.left = (0 + j * 30) + "%";
             button.color = "white";
 
-            button.background = "transparent";
+            button.background = playerlist[keys[i]].rarity;
 
 
 

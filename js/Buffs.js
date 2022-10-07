@@ -16,16 +16,16 @@ class Buffs {
             flatres: 0,
             res: 0,
             dmg: 1,
-            critdmg : 0,
-            critchance :0,
+            critdmg: 0,
+            critchance: 0,
             dponkill: 0,
             block: 0,
-            targets:0,
-            splash:false,
-            splashradius:0,
-            dmgtype:"",
-
-            dmgpen:true,
+            targets: 0,
+            splash: false,
+            splashradius: 0,
+            dmgtype: "",
+            doublehitchance: 0,
+            dmgpen: true,
 
         }
     }
@@ -35,8 +35,8 @@ class Buffs {
         for (let i = 0; i < keys.length; i++) {
             var keysmodifiers = Object.keys(this.buffs[keys[i]].modifiers);
             for (let j = 0; j < keysmodifiers.length; j++) {
-                if(typeof this.modifiers[keysmodifiers[j]] == "boolean")
-                this.modifiers[keysmodifiers[j]] = this.buffs[keys[i]].modifiers[keysmodifiers[j]]
+                if (typeof this.modifiers[keysmodifiers[j]] == "boolean")
+                    this.modifiers[keysmodifiers[j]] = this.buffs[keys[i]].modifiers[keysmodifiers[j]]
                 else this.modifiers[keysmodifiers[j]] += this.buffs[keys[i]].modifiers[keysmodifiers[j]]
             }
 
@@ -52,7 +52,7 @@ class Buffs {
     getFinalAtkInterval(atkinterval) {
         this.initModifiers();
         this.sumBuffs();
-        return 100/((100+this.modifiers.aspd)/(atkinterval+this.modifiers.atkinterval));
+        return 100 / ((100 + this.modifiers.aspd) / (atkinterval + this.modifiers.atkinterval));
     }
 
     getFinalDef(def) {
@@ -61,41 +61,49 @@ class Buffs {
         return Math.round((def * (1 + this.modifiers.def)));
     }
 
-    getDpOnKill(){
+    getDpOnKill() {
         this.initModifiers();
         this.sumBuffs();
         return this.modifiers.dponkill;
     }
 
-    getSplash(){
+    getSplash() {
         this.initModifiers();
         this.sumBuffs();
-        return {"splash":this.modifiers.splash,"radius":this.modifiers.splashradius}
+        return { "splash": this.modifiers.splash, "radius": this.modifiers.splashradius }
     }
 
-    getTargets(){
+    getTargets() {
         this.initModifiers();
         this.sumBuffs();
         return this.modifiers.targets;
     }
 
-    getDmgType(){
+    getDmgType() {
         this.initModifiers();
         this.sumBuffs();
         return this.modifiers.dmgtype;
     }
 
-    getDmgPen(){
+    getDmgPen() {
         this.initModifiers();
         this.sumBuffs();
         return this.modifiers.dmgpen;
     }
 
-    getCritModifier(){
+    getCritModifier() {
         this.initModifiers();
         this.sumBuffs();
-        if(Math.random()<=this.modifiers.critchance && this.modifiers.critchance>0)
-        return this.modifiers.critdmg;
+        if (Math.random() <= this.modifiers.critchance && this.modifiers.critchance > 0)
+            return this.modifiers.critdmg;
         else return 1;
+    }
+
+    getDoubleHitChance() {
+        this.initModifiers();
+        this.sumBuffs();
+        if (Math.random() <= this.modifiers.doublehitchance && this.modifiers.doublehitchance > 0)
+            return true
+        return false;
     }
 }
