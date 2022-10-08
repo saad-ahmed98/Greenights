@@ -177,7 +177,11 @@ class CharaController {
 
     receiveDamage(enemy) {
         var dmg = enemy.buffs.getFinalAtk(enemy.chara.atk)
-        var dmgtype = enemy.chara.dmgtype
+        var dmgtype = enemy.buffs.getDmgType()
+
+        if (dmgtype == "")
+            dmgtype = enemy.chara.dmgtype
+
         var dmgreceived;
         switch (dmgtype) {
             case "physical":

@@ -51,7 +51,7 @@ enemylist['dog'] = {
     sfx: {
         atk: {
             src: "dog-atk",
-            volume:0.1
+            volume:0.05
         }
     }
 
@@ -168,6 +168,7 @@ enemylist['sarkaz grudgebearer'] = {
         name :"standby",
         triggertype:"on_hit",
         skilltype:"sarkazstandby",
+        target:"self",
         modifiers:{
             speed:0.4,
             standby:false,
@@ -251,9 +252,10 @@ enemylist['sarkaz sentinel'] = {
         name :"standby",
         triggertype:"on_hit",
         skilltype:"sarkazalert",
+        target:"all",
         modifiers:{
             atk:0.3,
-            atk:0.3,
+            def:0.3,
         },
         aura:true,
 
@@ -511,6 +513,7 @@ enemylist['sarkaz bladeweaver'] = {
         name :"standby",
         triggertype:"on_hit",
         skilltype:"sarkazstandby",
+        target:"self",
         modifiers:{
             speed:0.4,
             standby:false,
@@ -524,3 +527,546 @@ enemylist['sarkaz bladeweaver'] = {
         }
     }
 }
+
+enemylist["guerrilla fighter"] = {
+    name:"guerrilla fighter",
+    hp: 3300,
+    atk: 300,
+    def: 300,
+    res:20,
+    atkinterval: 2,
+    speed:0.9,
+    blockcount:1,
+    type:"g",
+    range:0,
+    dmgtype:"physical",
+    size:1,
+
+    enemytype:"normal",
+
+    spritesheet:"images/sprites/guerrilla-fighter-sheet.png",
+
+    hasskill:true,
+    
+
+    idle:{
+        start:29,
+        end:43,
+        duration:1,
+
+    },
+
+    move:{
+        start:44,
+        end:67,
+        duration:1.2,
+
+    },
+
+    atkanim:{
+        start:0,
+        end:14,
+        contact:7,
+        duration:1,
+    },
+
+    death:{
+        start:15,
+        end:28,
+        duration:1,
+
+    }
+    ,
+    sfx: {
+        hit: {
+            src: "swordsman-hit",
+            volume:0.1
+        }
+    },
+
+    skill:{
+        name :"inspiredfighter",
+        triggertype:"on_inspire",
+        skilltype:"guerrilainspire",
+        target:"self",
+        modifiers:{
+            speed:0.2,
+        },
+        aura:false,
+    },
+
+}
+
+enemylist["guerrilla fighter leader"] = {
+    name:"guerrilla fighter leader",
+    hp: 4500,
+    atk: 330,
+    def: 350,
+    res:20,
+    atkinterval: 2,
+    speed:0.9,
+    blockcount:1,
+    type:"g",
+    range:0,
+    dmgtype:"physical",
+    size:1,
+
+    enemytype:"normal",
+
+    spritesheet:"images/sprites/guerrilla-fighter-leader-sheet.png",
+
+    hasskill:true,
+    
+
+    idle:{
+        start:29,
+        end:43,
+        duration:1,
+
+    },
+
+    move:{
+        start:44,
+        end:67,
+        duration:1.2,
+
+    },
+
+    atkanim:{
+        start:0,
+        end:14,
+        contact:7,
+        duration:1,
+    },
+
+    death:{
+        start:15,
+        end:28,
+        duration:1,
+
+    }
+    ,
+    sfx: {
+        hit: {
+            src: "swordsman-hit",
+            volume:0.1
+        }
+    },
+
+    skill:{
+        name :"inspiredfighter",
+        triggertype:"on_inspire",
+        skilltype:"guerrilainspire",
+        target:"self",
+        modifiers:{
+            speed:0.3,
+        },
+        aura:false,
+    },
+
+}
+
+enemylist["guerrilla sniper"] = {
+    name:"guerrilla sniper",
+    hp: 3000,
+    atk: 340,
+    def: 300,
+    res:20,
+    atkinterval: 2.5,
+    speed:0.6,
+    blockcount:1,
+    type:"g",
+    range:2,
+    dmgtype:"physical",
+    size:1,
+
+    enemytype:"normal",
+
+    spritesheet:"images/sprites/guerrilla-sniper-sheet.png",
+
+    hasskill:true,
+    
+
+    idle:{
+        start:38,
+        end:52,
+        duration:1,
+
+    },
+
+    move:{
+        start:53,
+        end:67,
+        duration:1,
+
+    },
+
+    atkanim:{
+        start:0,
+        end:22,
+        contact:8,
+        duration:1.2,
+    },
+
+    death:{
+        start:23,
+        end:37,
+        duration:1,
+
+    }
+    ,
+    sfx: {
+        atk: {
+            src: "crossbow-atk",
+            volume:0.1
+        }
+    },
+
+    skill:{
+        name :"inspiredsniper",
+        triggertype:"on_inspire",
+        skilltype:"guerrilainspire",
+        target:"self",
+        modifiers:{
+            targets:1,
+        },
+        aura:false,
+    },
+
+}
+
+enemylist["guerrilla sniper leader"] = {
+    name:"guerrilla sniper leader",
+    hp: 4000,
+    atk: 390,
+    def: 300,
+    res:20,
+    atkinterval: 2.7,
+    speed:0.6,
+    blockcount:1,
+    type:"g",
+    range:2,
+    dmgtype:"physical",
+    size:1,
+
+    enemytype:"normal",
+
+    spritesheet:"images/sprites/guerrilla-sniper-leader-sheet.png",
+
+    hasskill:true,
+    
+
+    idle:{
+        start:38,
+        end:52,
+        duration:1,
+
+    },
+
+    move:{
+        start:53,
+        end:67,
+        duration:1,
+
+    },
+
+    atkanim:{
+        start:0,
+        end:22,
+        contact:8,
+        duration:1.2,
+    },
+
+    death:{
+        start:23,
+        end:37,
+        duration:1,
+
+    }
+    ,
+    sfx: {
+        atk: {
+            src: "crossbow-atk",
+            volume:0.1
+        }
+    },
+
+    skill:{
+        name :"inspiredsniper",
+        triggertype:"on_inspire",
+        skilltype:"guerrilainspire",
+        target:"self",
+        modifiers:{
+            targets:1,
+        },
+        aura:false,
+    },
+
+}
+
+enemylist['guerrilla hound'] = {
+    name:"guerrilla hound",
+    hp: 2900,
+    atk: 350,
+    def: 150,
+    res:20,
+    atkinterval: 1.4,
+    speed:1.6,
+    blockcount:1,
+    type:"g",
+    range:0,
+    dmgtype:"physical",
+    size:1,
+
+    enemytype:"normal",
+
+    spritesheet:"images/sprites/guerrilla-hound-sheet.png",
+
+    hasskill:false,
+
+    idle:{
+        start:29,
+        end:43,
+        duration:1,
+
+    },
+
+    move:{
+        start:44,
+        end:59,
+        duration:1.2,
+
+    },
+
+    atkanim:{
+        start:0,
+        end:14,
+        contact:8,
+        duration:1,
+    },
+
+    death:{
+        start:15,
+        end:28,
+        duration:1,
+
+    },
+    sfx: {
+        atk: {
+            src: "dog-atk",
+            volume:0.05
+        }
+    }
+
+}
+
+enemylist['guerrilla hound pro'] = {
+    name:"guerrilla hound pro",
+    hp: 3080,
+    atk: 420,
+    def: 150,
+    res:20,
+    atkinterval: 1.4,
+    speed:1.6,
+    blockcount:1,
+    type:"g",
+    range:0,
+    dmgtype:"physical",
+    size:1,
+
+    enemytype:"normal",
+
+    spritesheet:"images/sprites/guerrilla-hound-pro-sheet.png",
+
+    hasskill:false,
+
+    idle:{
+        start:30,
+        end:44,
+        duration:1,
+
+    },
+
+    move:{
+        start:45,
+        end:60,
+        duration:1.2,
+
+    },
+
+    atkanim:{
+        start:0,
+        end:14,
+        contact:8,
+        duration:1,
+    },
+
+    death:{
+        start:15,
+        end:29,
+        duration:1,
+
+    },
+    sfx: {
+        atk: {
+            src: "dog-atk",
+            volume:0.05
+        }
+    }
+
+}
+
+enemylist["guerrilla siegebreaker"] = {
+    name:"guerrilla siegebreaker",
+    hp: 3800,
+    atk: 360,
+    def: 550,
+    res:20,
+    atkinterval: 1.9,
+    speed:0.8,
+    blockcount:1,
+    type:"g",
+    range:0,
+    dmgtype:"physical",
+    size:1,
+
+    enemytype:"normal",
+
+    spritesheet:"images/sprites/guerrilla-siegebreaker-sheet.png",
+
+    hasskill:true,
+    
+
+    idle:{
+        start:30,
+        end:44,
+        duration:1,
+
+    },
+
+    move:{
+        start:45,
+        end:59,
+        duration:1,
+
+    },
+
+    atkanim:{
+        start:0,
+        end:14,
+        contact:7,
+        duration:1.2,
+    },
+
+    death:{
+        start:15,
+        end:29,
+        duration:1,
+
+    },
+    start:{
+        start:60,
+        end:81,
+        duration:1,
+    }
+    ,
+    sfx: {
+        start: {
+            src: "trooper-start",
+            volume:0.1
+        },
+        hit: {
+            src: "swordsman-hit",
+            volume:0.1
+        }
+    },
+
+    skill:{
+        name :"inspiredsiegebreaker",
+        triggertype:"on_inspire",
+        skilltype:"guerrilainspire",
+        target:"self",
+        modifiers:{
+            atk:0.5,
+        },
+        aura:false,
+    },
+}
+
+enemylist["guerrilla siegebreaker leader"] = {
+    name:"guerrilla siegebreaker leader",
+    hp: 5000,
+    atk: 430,
+    def: 550,
+    res:20,
+    atkinterval: 1.9,
+    speed:0.8,
+    blockcount:1,
+    type:"g",
+    range:0,
+    dmgtype:"physical",
+    size:1,
+
+    enemytype:"normal",
+
+    spritesheet:"images/sprites/guerrilla-siegebreaker-leader-sheet.png",
+
+    hasskill:true,
+    
+
+    idle:{
+        start:30,
+        end:44,
+        duration:1,
+
+    },
+
+    move:{
+        start:45,
+        end:59,
+        duration:1,
+
+    },
+
+    atkanim:{
+        start:0,
+        end:14,
+        contact:7,
+        duration:1.2,
+    },
+
+    death:{
+        start:15,
+        end:29,
+        duration:1,
+
+    },
+    start:{
+        start:60,
+        end:81,
+        duration:1,
+    }
+    ,
+    sfx: {
+        start: {
+            src: "trooper-start",
+            volume:0.1
+        },
+        hit: {
+            src: "swordsman-hit",
+            volume:0.1
+        }
+    },
+
+    skill:{
+        name :"inspiredsiegebreaker",
+        triggertype:"on_inspire",
+        skilltype:"guerrilainspire",
+        target:"self",
+        modifiers:{
+            atk:0.5,
+        },
+        aura:false,
+    },
+}
+

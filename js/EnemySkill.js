@@ -1,11 +1,12 @@
 class EnemySkill {
-    constructor(name, triggertype, modifiers, aura, skilltype) {
+    constructor(name, triggertype, modifiers, aura, skilltype,targettype) {
         this.name = name;
 
         this.triggertype = triggertype;
         this.skilltype = skilltype;
 
         this.modifiers = modifiers;
+        this.targettype = targettype
 
         this.targets = [];
         this.active = false;

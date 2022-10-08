@@ -114,12 +114,16 @@ levels["TEST"] = {
     background: "loading_CB_center",
     description: "Dogs",
 
-    waves: [{ "time": 5, "gap": 5, "enemies": "dog", "line": true, "taunt": true, "count": 6, "start": [4, 0], "checkpoints": [{ "start": [4, 0], "end": [5, 12], "pause": 0 }] },
-    { "time": 5.2, "gap": 5, "enemies": "dog", "line": false, "count": 6, "taunt": false, "start": [4, 0], "checkpoints": [{ "start": [4, 0], "end": [5, 12], "pause": 0 }] },
-    { "time": 0, "gap": 5, "enemies": "sarkaz sentinel", "line": true, "taunt": false, "count": 1, "start": [1, 10], "checkpoints": [{ "start": [1, 10], "end": [1, 2], "pause": 5 }, { "start": [1, 2], "end": [1, 10], "pause": 5 }, { "start": [1, 10], "end": [1, 2], "pause": 5 }, { "start": [1, 2], "end": [1, 10], "pause": 5 }, { "start": [1, 10], "end": [1, 0], "pause": 0 }] },
-    ],
+    waves: [{ "time": 5, "gap": 5, "enemies": "guerrilla hound pro", "line": true, "taunt": true, "count": 6, "start": [4, 0], "checkpoints": [{ "start": [4, 0], "end": [5, 12], "pause": 0 }] },
+    { "time": 5.2, "gap": 5, "enemies": "guerrilla hound", "line": false, "count": 6, "taunt": false, "start": [4, 0], "checkpoints": [{ "start": [4, 0], "end": [5, 12], "pause": 0 }] },
+    { "time": 0, "gap": 5, "enemies": "guerrilla sniper", "line": true, "taunt": false, "count": 1, "start": [1, 10], "checkpoints": [{ "start": [1, 10], "end": [1, 2], "pause": 5 }, { "start": [1, 2], "end": [1, 10], "pause": 5 }, { "start": [1, 10], "end": [1, 2], "pause": 5 }, { "start": [1, 2], "end": [1, 10], "pause": 5 }, { "start": [1, 10], "end": [1, 0], "pause": 0 }] },
+    { "time": 0, "gap": 5, "enemies": "guerrilla sniper leader", "line": true, "taunt": false, "count": 1, "start": [7, 10], "checkpoints": [{ "start": [7, 10], "end": [7, 2], "pause": 5 }, { "start": [7, 2], "end": [7, 10], "pause": 5 }, { "start": [7, 10], "end": [7, 2], "pause": 5 }, { "start": [7, 2], "end": [7, 10], "pause": 5 }, { "start": [7, 10], "end": [7, 0], "pause": 0 }] },
+    { "time": 20, "gap": 5, "enemies": "guerrilla siegebreaker", "line": true, "taunt": false, "count": 1, "start": [7, 10], "checkpoints": [{ "start": [7, 10], "end": [7, 2], "pause": 5 }, { "start": [7, 2], "end": [7, 10], "pause": 5 }, { "start": [7, 10], "end": [7, 2], "pause": 5 }, { "start": [7, 2], "end": [7, 10], "pause": 5 }, { "start": [7, 10], "end": [7, 0], "pause": 0 }] },
+    { "time": 20, "gap": 5, "enemies": "guerrilla siegebreaker leader", "line": true, "taunt": false, "count": 1, "start": [1, 10], "checkpoints": [{ "start": [1, 10], "end": [1, 2], "pause": 5 }, { "start": [1, 2], "end": [1, 10], "pause": 5 }, { "start": [1, 10], "end": [1, 2], "pause": 5 }, { "start": [1, 2], "end": [1, 10], "pause": 5 }, { "start": [1, 10], "end": [1, 0], "pause": 0 }] },
 
-    enemies: ["dog", "sarkaz sentinel"],
+],
+
+    enemies: ["guerrilla hound pro","guerrilla hound","guerrilla sniper","guerrilla sniper leader","guerrilla siegebreaker","guerrilla siegebreaker leader"],
 
     layout: [["bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg"], ["blue", "g", "g", "g", "g", "g", "g", "g", "g", "g", "g", "blk", "red"],
     ["bg", "bg", "bg", "bg", "r", "r", "bg", "bg", "r", "r", "bg", "bg", "bg"],

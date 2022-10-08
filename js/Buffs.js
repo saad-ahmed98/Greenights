@@ -58,7 +58,7 @@ class Buffs {
     getFinalDef(def) {
         this.initModifiers();
         this.sumBuffs();
-        return Math.round((def * (1 + this.modifiers.def)));
+        return Math.round(((def+this.modifiers.flatdef) * (1 + this.modifiers.def)));
     }
 
     getDpOnKill() {
