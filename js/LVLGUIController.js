@@ -668,7 +668,7 @@ class LVLGUIController {
 
 
     }
-
+    /*
     createTooltip(source, width, height) {
         this.lvlcontroller.dispose();
         this.lvlcontroller = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI", true, this.scene);
@@ -687,6 +687,7 @@ class LVLGUIController {
     removeTool(panel, image) {
         panel.removeControl(image)
     }
+    */
 
     removePauseScreen(lvlcont) {
         this.showinggui = false;

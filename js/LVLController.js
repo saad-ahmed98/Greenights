@@ -84,25 +84,7 @@ class LVLController extends LVLAbstract {
 
         this.gui.createPlayerWheelUI(this.playerlist, this.currentdp, this.squadlimit);
     }
-
-    createSpriteManagers() {
-        var keys = Object.keys(this.enemylist);
-        for (let i = 0; i < keys.length; i++) {
-            if (this.appearingenemies.includes(keys[i]))
-                this.spriteManagers[keys[i]] = new BABYLON.SpriteManager(keys[i] + "Manager", this.enemylist[keys[i]].spritesheet, 60, { width: 888, height: 605 });
-        }
-
-
-        keys = Object.keys(this.playerlist);
-        for (let i = 0; i < keys.length; i++)
-            this.spriteManagers[keys[i]] = new BABYLON.SpriteManager(keys[i] + "Manager", this.playerlist[keys[i]].spritesheet, 30, { width: 888, height: 605 });
-
-        this.spriteManagers["shadow"] = new BABYLON.SpriteManager("ShadowManager", "images/common/shadow.png", 90, { width: 888, height: 605 });
-        this.spriteManagers["skillaura"] = new BABYLON.SpriteManager("AuraManager", "images/common/aura-sheet.png", 90, { width: 886, height: 604 });
-        this.spriteManagers["skillready"] = new BABYLON.SpriteManager("SkillManager", "images/common/skillready.png", 120, { width: 888, height: 605 });
-        this.spriteManagers["alertbuff"] = new BABYLON.SpriteManager("SkillManager", "images/common/alertbuff.png", 30, { width: 888, height: 605 });
-
-    }
+    
 
     createLvl() {
         //this.gameconfig.divFps.innerHTML = this.gameconfig.engine.getFps().toFixed() + " fps";
@@ -335,6 +317,95 @@ class LVLController extends LVLAbstract {
 
     loadSprites() {
         this.createSpriteManagers();
+    }
+
+    createSpriteManagers() {
+        var instance = this;
+        var assetsManager = instance.scene.assetsManager;
+
+       
+        var keys = Object.keys(this.enemylist);
+        for (let i = 0; i < keys.length; i++) {
+            if (this.appearingenemies.includes(keys[i])){
+                let binaryTask = assetsManager.addTextureTask(
+                    keys[i],
+                    instance.enemylist[keys[i]].spritesheet,
+                    true,
+                    false,
+                    BABYLON.Texture.TRILINEAR_SAMPLINGMODE
+                );
+                binaryTask.onSuccess = function (task) {
+                    instance.spriteManagers[task.name] = new BABYLON.SpriteManager(task.name + "Manager",undefined, 60, { width: 888, height: 605 });
+                    instance.spriteManagers[task.name].texture=task.texture
+
+                };
+            }
+        }
+
+
+        keys = Object.keys(this.playerlist);
+        for (let i = 0; i < keys.length; i++){
+                let binaryTask = assetsManager.addTextureTask(
+                    keys[i],
+                    instance.playerlist[keys[i]].spritesheet,
+                    true,
+                    false,
+                    BABYLON.Texture.TRILINEAR_SAMPLINGMODE
+                );
+                binaryTask.onSuccess = function (task) {
+                    instance.spriteManagers[task.name] = new BABYLON.SpriteManager(task.name + "Manager", undefined, 30, { width: 888, height: 605 });
+                    instance.spriteManagers[task.name].texture = task.texture
+                };
+        }
+
+        let binaryTask = assetsManager.addTextureTask(
+            "shadow",
+            "images/common/shadow.png",
+            true,
+            false,
+            BABYLON.Texture.TRILINEAR_SAMPLINGMODE
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.spriteManagers[task.name] = new BABYLON.SpriteManager("ShadowManager", undefined, 90, { width: 888, height: 605 });
+            instance.spriteManagers[task.name].texture = task.texture
+        };
+
+        binaryTask = assetsManager.addTextureTask(
+            "skillaura",
+            "images/common/aura-sheet.png",
+            true,
+            false,
+            BABYLON.Texture.TRILINEAR_SAMPLINGMODE
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.spriteManagers[task.name] = new BABYLON.SpriteManager("AuraManager", undefined, 90, { width: 886, height: 604 });
+            instance.spriteManagers[task.name].texture = task.texture
+        };
+
+        binaryTask = assetsManager.addTextureTask(
+            "skillready",
+            "images/common/skillready.png",
+            true,
+            false,
+            BABYLON.Texture.TRILINEAR_SAMPLINGMODE
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.spriteManagers[task.name] = new BABYLON.SpriteManager("SkillManager", undefined, 120, { width: 888, height: 605 });
+            instance.spriteManagers[task.name].texture = task.texture
+        };
+
+        binaryTask = assetsManager.addTextureTask(
+            "alertbuff",
+            "images/common/alertbuff.png",
+            true,
+            false,
+            BABYLON.Texture.TRILINEAR_SAMPLINGMODE
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.spriteManagers[task.name] = new BABYLON.SpriteManager("SkillManager", undefined, 30, { width: 888, height: 605 });
+            instance.spriteManagers[task.name].texture = task.texture
+        };
+
     }
 
     loadSounds() {
@@ -891,7 +962,6 @@ class LVLController extends LVLAbstract {
         this.createObstacles();
         this.initDragNDrop();
 
-        //this.createSpriteManagers();
 
         this.createGlobalCamera();
 
