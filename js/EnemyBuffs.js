@@ -1,4 +1,4 @@
-class EnemyBuffs extends Buffs{
+class EnemyBuffs extends Buffs {
     constructor() {
         super()
     }
@@ -14,25 +14,31 @@ class EnemyBuffs extends Buffs{
             flatres: 0,
             res: 0,
             dmg: 1,
-            targets:0,
-            splash:false,
-            splashradius:0,
-            dmgtype:"",
+            targets: 0,
+            splash: false,
+            splashradius: 0,
+            dmgtype: "",
             standby: true,
-            speed:0,
-            taunt:1,
+            speed: 0,
+            taunt: 1,
+            inspire: false,
         }
     }
 
-    getStandby(){
-            this.initModifiers();
-            this.sumBuffs();
-            return this.modifiers.standby;
+    getStandby() {
+        this.initModifiers();
+        this.sumBuffs();
+        return this.modifiers.standby;
     }
 
-    getSpeed(){
+    getSpeed() {
         this.initModifiers();
         this.sumBuffs();
         return this.modifiers.speed;
-}
+    }
+    getInspire(){
+        this.initModifiers();
+        this.sumBuffs();
+        return this.modifiers.inspire;
+    }
 }

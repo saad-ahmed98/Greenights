@@ -13,7 +13,7 @@ class EnemyController extends CharaController {
         this.wait = false;
         this.aura;
         if (this.chara.hasskill)
-            this.enemySkill = new EnemySkill(chara.skill.name + id, chara.skill.triggertype, chara.skill.modifiers, chara.skill.aura, chara.skill.skilltype, chara.skill.target)
+            this.enemySkill = new EnemySkill(chara.skill.name + id, chara.skill.triggertype, chara.skill.modifiers, chara.skill.aura, chara.skill.skilltype, chara.skill.target,chara.skill.auratype)
         this.buffs = new EnemyBuffs();
 
         this.spawning = false;
@@ -30,8 +30,8 @@ class EnemyController extends CharaController {
     }
     */
 
-    createBuffAura() {
-        this.aura = new BABYLON.Sprite("", this.lvlcontroller.spriteManagers["alertbuff"]);
+    createBuffAura(bufftype) {
+        this.aura = new BABYLON.Sprite("", this.lvlcontroller.spriteManagers[bufftype+"buff"]);
         //this.aura.playAnimation(0, 3, true, 30 * this.gamespeed);
         this.aura.position = new BABYLON.Vector3(this.mesh.position.x, 20, 6 + this.mesh.position.z);
         this.aura.size = 65;
@@ -183,9 +183,11 @@ class EnemyController extends CharaController {
         }
         if (this.enemySkill != undefined) {
             if (this.enemySkill.triggertype == "on_start") {
-                if (this.enemySkill.target == "self")
-                    this.enemySkill.activateSkill([this])
-                else this.enemySkill.activateSkill(this.lvlcontroller.enemies)
+                if (this.enemySkill.targettype == "all"){
+                    this.enemySkill.activateSkill(this.lvlcontroller.enemies)
+                    this.enemySkill.activateSkill([this],true)
+                }
+                else this.enemySkill.activateSkill([this])
             }
         }
     }
@@ -280,7 +282,6 @@ class EnemyController extends CharaController {
 
 
         var dmgreceived;
-
 
         switch (dmgtype) {
             case "physical":

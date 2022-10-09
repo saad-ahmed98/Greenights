@@ -442,6 +442,18 @@ class LVLController extends LVLAbstract {
             instance.spriteManagers[task.name].texture = task.texture
         };
 
+        binaryTask = assetsManager.addTextureTask(
+            "inspirebuff",
+            "images/common/inspirebuff.png",
+            true,
+            false,
+            BABYLON.Texture.TRILINEAR_SAMPLINGMODE
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.spriteManagers[task.name] = new BABYLON.SpriteManager("SkillManager", undefined, 120, { width: 888, height: 605 });
+            instance.spriteManagers[task.name].texture = task.texture
+        };
+
     }
 
     loadSounds() {
@@ -685,9 +697,19 @@ class LVLController extends LVLAbstract {
 
     checkEnemies() {
         for (let i = 0; i < this.enemies.length; i++) {
+            if (this.enemies[i].enemySkill != undefined) {
+                if (this.enemies[i].enemySkill.skilltype == "alive") {
+                    this.enemies[i].enemySkill.updateSkill(this.enemies)
+                }
+            }
             if (this.enemies[i].finish) {
                 this.playSound("alarmenter", 0.3)
                 this.hp--;
+                if (this.enemies[i].enemySkill != undefined) {
+                    if (this.enemies[i].enemySkill.skilltype == "alive") {
+                        this.enemies[i].enemySkill.deactivateSkill(this.enemies)
+                    }
+                }
                 this.enemies.splice(i, 1)
                 i--;
                 this.enemycount++;
@@ -695,11 +717,35 @@ class LVLController extends LVLAbstract {
             }
             else if (this.enemies[i].hp <= 0) {
                 //this.enemies[i].sprite.dispose();
+                if (this.enemies[i].enemySkill != undefined) {
+                    if (this.enemies[i].enemySkill.skilltype == "alive") {
+                        this.enemies[i].enemySkill.deactivateSkill(this.enemies)
+                    }
+                }
                 this.enemies.splice(i, 1)
                 i--;
                 this.enemycount++;
                 this.gui.updateStatsUI(this.enemycount + "/" + this.enemytot, this.hp);
+
             }
+        }
+        if (this.enemies.length > 0) {
+            let inspired = this.enemies[0].buffs.getInspire()
+            console.log(inspired)
+            for (let i = 0; i < this.enemies.length; i++) {
+                if (this.enemies[i].enemySkill != undefined) {
+                    if (this.enemies[i].enemySkill.triggertype == "on_inspire") {
+                        if (inspired)
+                            this.enemies[i].enemySkill.activateSkill([this.enemies[i]])
+                        else {
+                            if (this.enemies[i].enemySkill.active)
+                                this.enemies[i].enemySkill.deactivateSkill([this.enemies[i]], true)
+                        }
+                    }
+
+                }
+            }
+
         }
     }
 
@@ -727,7 +773,7 @@ class LVLController extends LVLAbstract {
     }
 
     checkHazardSkill(p) {
-        if(p.currentsp==p.displaysp)
+        if (p.currentsp == p.displaysp)
             p.displayRangeTiles()
         if (p.currentsp >= p.totalsp) {
             this.playSound(p.name + "sound", 0.2)
@@ -737,7 +783,7 @@ class LVLController extends LVLAbstract {
         }
         p.currentsp = Math.min(p.currentsp + 1, p.totalsp);
         p.updateSkillBarCharging()
-       
+
 
     }
 
@@ -1138,7 +1184,7 @@ class LVLController extends LVLAbstract {
             if (this.waves[i]["time"] * 30 <= this.maptimer) {
                 this.waves[i]["time"] += this.waves[i]["gap"];
 
-                this.createEnemy(this.waves[i]["enemies"], this.waves[i]["start"], this.waves[i]["checkpoints"], "wave" + i + this.waves[i]["count"]);
+                this.createEnemy(this.waves[i]["enemies"], this.waves[i]["start"], this.waves[i]["checkpoints"], "wave" + this.waves[i]["number"] + this.waves[i]["count"]);
                 this.waves[i]["count"]--;
                 if (this.waves[i]["count"] <= 0) {
                     this.waves.splice(i, 1)

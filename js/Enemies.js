@@ -258,7 +258,7 @@ enemylist['sarkaz sentinel'] = {
             def:0.3,
         },
         aura:true,
-
+        auratype:"alert",
         idle:{
             start:65,
             end:84,
@@ -592,7 +592,8 @@ enemylist["guerrilla fighter"] = {
         modifiers:{
             speed:0.2,
         },
-        aura:false,
+        aura:true,
+        auratype:"inspire"
     },
 
 }
@@ -659,9 +660,10 @@ enemylist["guerrilla fighter leader"] = {
         skilltype:"guerrilainspire",
         target:"self",
         modifiers:{
-            speed:0.3,
+            speed:0.2,
         },
-        aura:false,
+        aura:true,
+        auratype:"inspire"
     },
 
 }
@@ -730,7 +732,8 @@ enemylist["guerrilla sniper"] = {
         modifiers:{
             targets:1,
         },
-        aura:false,
+        aura:true,
+        auratype:"inspire"
     },
 
 }
@@ -799,8 +802,9 @@ enemylist["guerrilla sniper leader"] = {
         modifiers:{
             targets:1,
         },
-        aura:false,
-    },
+        aura:true,
+        auratype:"inspire"
+        },
 
 }
 
@@ -989,8 +993,9 @@ enemylist["guerrilla siegebreaker"] = {
         modifiers:{
             atk:0.5,
         },
-        aura:false,
-    },
+        aura:true,
+        auratype:"inspire"
+        },
 }
 
 enemylist["guerrilla siegebreaker leader"] = {
@@ -1066,7 +1071,8 @@ enemylist["guerrilla siegebreaker leader"] = {
         modifiers:{
             atk:0.5,
         },
-        aura:false,
+        aura:true,
+        auratype:"inspire"
         
     },
 }
@@ -1294,6 +1300,147 @@ enemylist["guerrilla shieldguard leader"] = {
             taunt:1,
         },
         aura:false,
+    },
+}
+
+enemylist["guerrilla herald"] = {
+    name:"guerrilla herald",
+    hp: 1000,
+    atk: 300,
+    def: 120,
+    res:50,
+    atkinterval: 2.7,
+    speed:0.8,
+    blockcount:1,
+    type:"g",
+    range:0,
+    dmgtype:"physical",
+    size:1,
+
+    enemytype:"normal",
+
+    spritesheet:"images/sprites/guerrilla-herald-sheet.png",
+
+    hasskill:true,
+    
+
+    atkanim:{
+        start:0,
+        end:15,
+        contact:8,
+        duration:1,
+    },
+
+    death:{
+        start:16,
+        end:32,
+        duration:1,
+
+    },
+    idle:{
+        start:33,
+        end:47,
+        duration:1,
+
+    },
+    move:{
+        start:48,
+        end:61,
+        duration:1.5,
+
+    },
+    
+    sfx: {
+        hit: {
+            src: "herald-hit",
+            volume:0.1
+        }
+    },
+
+
+    skill:{
+        name :"inspireguerrilla",
+        triggertype:"on_start",
+        skilltype:"alive",
+        target:"all",
+        modifiers:{
+           inspire:true,
+           atk:0.1,
+           flatdef:100,
+        },
+        aura:false,
+        auratype:"inspire"
+        },
+}
+
+enemylist["guerrilla herald leader"] = {
+    name:"guerrilla herald leader",
+    hp: 10000,
+    atk: 360,
+    def: 120,
+    res:50,
+    atkinterval: 2.5,
+    speed:0.8,
+    blockcount:1,
+    type:"g",
+    range:0,
+    dmgtype:"physical",
+    size:1,
+
+    enemytype:"normal",
+
+    spritesheet:"images/sprites/guerrilla-herald-leader-sheet.png",
+
+    hasskill:true,
+    
+
+    atkanim:{
+        start:0,
+        end:15,
+        contact:8,
+        duration:1,
+    },
+
+    death:{
+        start:16,
+        end:32,
+        duration:1,
+
+    },
+    idle:{
+        start:33,
+        end:47,
+        duration:1,
+
+    },
+    move:{
+        start:48,
+        end:61,
+        duration:1.5,
+
+    },
+    
+    sfx: {
+        hit: {
+            src: "herald-hit",
+            volume:0.1
+        }
+    },
+
+
+    skill:{
+        name :"inspireguerrilla",
+        triggertype:"on_start",
+        skilltype:"alive",
+        target:"all",
+        modifiers:{
+           inspire:true,
+           atk:0.1,
+           flatdef:100,
+        },
+        aura:false,
+        auratype:"inspire"
+
     },
 }
 
