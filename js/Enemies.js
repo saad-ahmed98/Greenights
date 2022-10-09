@@ -705,7 +705,7 @@ enemylist["guerrilla sniper"] = {
         start:0,
         end:22,
         contact:8,
-        duration:1.2,
+        duration:0.8,
     },
 
     death:{
@@ -774,7 +774,7 @@ enemylist["guerrilla sniper leader"] = {
         start:0,
         end:22,
         contact:8,
-        duration:1.2,
+        duration:0.8,
     },
 
     death:{
@@ -1065,6 +1065,233 @@ enemylist["guerrilla siegebreaker leader"] = {
         target:"self",
         modifiers:{
             atk:0.5,
+        },
+        aura:false,
+        
+    },
+}
+
+enemylist["sarkaz guerrilla fighter leader"] = {
+    name:"sarkaz guerrilla fighter leader",
+    hp: 12000,
+    atk: 580,
+    def: 400,
+    res:50,
+    atkinterval: 2.5,
+    speed:0.65,
+    blockcount:1,
+    type:"g",
+    range:0,
+    dmgtype:"physical",
+    size:1.1,
+
+    enemytype:"normal",
+
+    spritesheet:"images/sprites/sarkaz-guerrilla-fighter-leader-sheet.png",
+
+    hasskill:true,
+    
+
+    atkanim:{
+        start:0,
+        end:17,
+        contact:8,
+        duration:1,
+    },
+
+    death:{
+        start:18,
+        end:31,
+        duration:1,
+
+    },
+    idle:{
+        start:32,
+        end:59,
+        duration:1,
+
+    },
+    move:{
+        start:60,
+        end:79,
+        duration:1.5,
+
+    },
+    
+    sfx: {
+        hit: {
+            src: "sarkaz-guerrilla-hit",
+            volume:0.1
+        }
+    },
+
+
+    skill:{
+        name :"altarfighter",
+        triggertype:"on_altar",
+        skilltype:"sarkazaltar",
+        target:"self",
+        modifiers:{
+            dmgtype:"arts",
+        },
+        aura:false,
+        atkanim:{
+            start:80,
+            end:103,
+            contact:94,
+            duration:1,
+        },
+    
+        death:{
+            start:104,
+            end:117,
+            duration:1,
+    
+        },
+        idle:{
+            start:118,
+            end:145,
+            duration:1,
+    
+        },
+        move:{
+            start:146,
+            end:165,
+            duration:1.5,
+    
+        },
+    },
+}
+
+enemylist["guerrilla shieldguard"] = {
+    name:"guerrilla shieldguard",
+    hp: 15000,
+    atk: 700,
+    def: 1300,
+    res:60,
+    atkinterval: 3.8,
+    speed:0.5,
+    blockcount:1,
+    type:"g",
+    range:0,
+    dmgtype:"physical",
+    size:1.1,
+
+    enemytype:"normal",
+
+    spritesheet:"images/sprites/guerrilla-shieldguard-sheet.png",
+
+    hasskill:true,
+    
+
+    atkanim:{
+        start:0,
+        end:23,
+        contact:15,
+        duration:1,
+    },
+
+    death:{
+        start:24,
+        end:37,
+        duration:1,
+
+    },
+    idle:{
+        start:38,
+        end:53,
+        duration:1,
+
+    },
+    move:{
+        start:54,
+        end:71,
+        duration:1.5,
+
+    },
+    
+    sfx: {
+        hit: {
+            src: "shieldguard-hit",
+            volume:0.1
+        }
+    },
+
+
+    skill:{
+        name :"tauntguerrilla",
+        triggertype:"on_start",
+        skilltype:"taunt",
+        target:"self",
+        modifiers:{
+            taunt:1,
+        },
+        aura:false,
+    },
+}
+
+enemylist["guerrilla shieldguard leader"] = {
+    name:"guerrilla shieldguard leader",
+    hp: 25000,
+    atk: 800,
+    def: 1500,
+    res:60,
+    atkinterval: 3.8,
+    speed:0.5,
+    blockcount:1,
+    type:"g",
+    range:0,
+    dmgtype:"physical",
+    size:1.1,
+
+    enemytype:"normal",
+
+    spritesheet:"images/sprites/guerrilla-shieldguard-leader-sheet.png",
+
+    hasskill:true,
+    
+
+    atkanim:{
+        start:0,
+        end:24,
+        contact:15,
+        duration:1,
+    },
+
+    death:{
+        start:25,
+        end:38,
+        duration:1,
+
+    },
+    idle:{
+        start:39,
+        end:54,
+        duration:1,
+
+    },
+    move:{
+        start:55,
+        end:72,
+        duration:1.5,
+
+    },
+    
+    sfx: {
+        hit: {
+            src: "shieldguard-hit",
+            volume:0.1
+        }
+    },
+
+
+    skill:{
+        name :"tauntguerrilla",
+        triggertype:"on_start",
+        skilltype:"taunt",
+        target:"self",
+        modifiers:{
+            taunt:1,
         },
         aura:false,
     },

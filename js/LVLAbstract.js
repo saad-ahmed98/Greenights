@@ -19,9 +19,9 @@ class LVLAbstract {
 
     }
 
+
     loadSkybox(url) {
         var instance = this;
-        var assetsManager = instance.scene.assetsManager;
 
         var textureTask = assetsManager.addTextureTask("image task", url);
         textureTask.onSuccess = function (task) {
@@ -55,8 +55,8 @@ class LVLAbstract {
             instance.gameconfig.engine.loadingUIText =
                 '<div id="center"><div id="main" style="width:' + ((totalCount - remainingCount) * 600 / totalCount) + 'px"></div></div>'
         };
-        instance.createScene()
         assetsManager.onFinish = function (tasks) {
+            instance.createScene()
             instance.gameconfig.engine.runRenderLoop(function () {
                 instance.renderScene();
             });

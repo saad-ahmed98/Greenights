@@ -19,7 +19,8 @@ class EnemyBuffs extends Buffs{
             splashradius:0,
             dmgtype:"",
             standby: true,
-            speed:0
+            speed:0,
+            taunt:1,
         }
     }
 

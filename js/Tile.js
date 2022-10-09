@@ -8,6 +8,8 @@ class Tile {
         this.player;
         this.create();
         this.color;
+        this.highlight = new BABYLON.HighlightLayer("", scene);
+
     }
 
 
@@ -59,21 +61,39 @@ class Tile {
         this.mesh.outlineWidth = 0.1;
     }
 
-   displayDeployable() {
-        this.mesh.material.diffuseColor = new BABYLON.Color3(0,1,0.5)
+    displayDeployable() {
+        this.mesh.material.diffuseColor = new BABYLON.Color3(0, 1, 0.5)
     }
 
-    displayRange() {
-        this.mesh.material.diffuseColor = new BABYLON.Color3(1, 0.80, 0.7)
-        this.mesh.outlineColor = new BABYLON.Color3(1, 0.53, 0, 0.9);
-        this.mesh.outlineWidth = 1;
+    displayRange(diffuse = true) {
+        if (diffuse) {
+            this.mesh.material.diffuseColor = new BABYLON.Color3(1, 0.80, 0.7)
+            this.mesh.outlineColor = new BABYLON.Color3(1, 0.53, 0, 0.9);
+            this.mesh.outlineWidth = 1;
+        }
+        else{
+            this.mesh.outlineColor = new BABYLON.Color3(0.95, 0, 0);
+            this.mesh.outlineWidth = 1.5;
+            /*this.highlight.addMesh(this.mesh,new BABYLON.Color3(0.95, 0, 0))
+            this.highlight.outerGlow = false
+            */
+        }
+
 
 
     }
 
-    undisplay() {
+    undisplay(diffuse = true) {
+        if(diffuse)
         this.mesh.material.diffuseColor = this.color
         this.mesh.outlineColor = new BABYLON.Color3(0, 0, 0);
         this.mesh.outlineWidth = 0.1;
+        /*
+        }
+        else{
+            this.highlight.removeMesh(this.mesh)
+        }
+        */
+        
     }
 }

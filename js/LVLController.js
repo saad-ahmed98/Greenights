@@ -9,6 +9,9 @@ class LVLController extends LVLAbstract {
         this.spawns = [];
         this.activePlayers = [];
         this.enemies = [];
+        this.hazards = [];
+        this.presentHazards = lvl.hazards;
+
         this.gui = new LVLGUIController(this.scene, this.gameconfig);
 
         this.layout = lvl.layout
@@ -75,8 +78,8 @@ class LVLController extends LVLAbstract {
 
     }
 
-    restart(){
-        new LVLController(this.gameconfig,enemylist,this.restartlist,JSON.parse(JSON.stringify(levels[lvlnumber])))
+    restart() {
+        new LVLController(this.gameconfig, enemylist, this.restartlist, JSON.parse(JSON.stringify(levels[lvlnumber])))
     }
 
     createGUIs() {
@@ -84,7 +87,7 @@ class LVLController extends LVLAbstract {
 
         this.gui.createPlayerWheelUI(this.playerlist, this.currentdp, this.squadlimit);
     }
-    
+
 
     createLvl() {
         //this.gameconfig.divFps.innerHTML = this.gameconfig.engine.getFps().toFixed() + " fps";
@@ -103,7 +106,7 @@ class LVLController extends LVLAbstract {
                 this.spawnEnemies();
         }
         if (this.spcheck >= 30) {
-            this.checkPlayersSkill();
+            this.checkSkills();
             this.spcheck = 0;
         }
         if (this.dptimer >= 30) {
@@ -124,13 +127,46 @@ class LVLController extends LVLAbstract {
     }
 
     loadAssets() {
-        this.loadSounds()
+        this.loadSounds();
         this.loadSprites();
+        this.loadHazards();
 
         //this.loadBuildings();
         //this.loadSkybox("images/LVL1/skybox.jpg");
     }
-    
+    loadHazards() {
+        var instance = this;
+        var keys = Object.keys(this.presentHazards)
+        for (let i = 0; i < keys.length; i++) {
+            let meshTask = this.scene.assetsManager.addMeshTask(
+                this.presentHazards[keys[i]],
+                "",
+                "models/",
+                this.presentHazards[keys[i]] + ".glb"
+            );
+            meshTask.onSuccess = function (task) {
+                instance.scene.assets[task.name] = task.loadedMeshes[0]
+            };
+            let binaryTask = this.scene.assetsManager.addBinaryFileTask(
+                this.presentHazards[keys[i]] + "sound",
+                "sounds/hazard/" + this.presentHazards[keys[i]] + "-active.wav"
+            );
+            binaryTask.onSuccess = function (task) {
+                instance.scene.assets[task.name] = new BABYLON.Sound(
+                    "bgm",
+                    task.data,
+                    this.scene,
+                    null,
+                    {
+                        loop: false,
+                    }
+                );
+            };
+
+        }
+
+    }
+
     playBGM(volume) {
         var intro = this.scene.assets.bgmintro
         var loop = this.scene.assets.bgmloop
@@ -146,7 +182,7 @@ class LVLController extends LVLAbstract {
                 loop.setVolume(volume);
                 loop.play()
             }
-            
+
             var keys = Object.keys(this.playerlist)
             if (keys.length > 0 && !this.depart) {
                 this.depart = true
@@ -323,10 +359,10 @@ class LVLController extends LVLAbstract {
         var instance = this;
         var assetsManager = instance.scene.assetsManager;
 
-       
+
         var keys = Object.keys(this.enemylist);
         for (let i = 0; i < keys.length; i++) {
-            if (this.appearingenemies.includes(keys[i])){
+            if (this.appearingenemies.includes(keys[i])) {
                 let binaryTask = assetsManager.addTextureTask(
                     keys[i],
                     instance.enemylist[keys[i]].spritesheet,
@@ -335,8 +371,8 @@ class LVLController extends LVLAbstract {
                     BABYLON.Texture.TRILINEAR_SAMPLINGMODE
                 );
                 binaryTask.onSuccess = function (task) {
-                    instance.spriteManagers[task.name] = new BABYLON.SpriteManager(task.name + "Manager",undefined, 60, { width: 888, height: 605 });
-                    instance.spriteManagers[task.name].texture=task.texture
+                    instance.spriteManagers[task.name] = new BABYLON.SpriteManager(task.name + "Manager", undefined, 60, { width: 888, height: 605 });
+                    instance.spriteManagers[task.name].texture = task.texture
 
                 };
             }
@@ -344,18 +380,18 @@ class LVLController extends LVLAbstract {
 
 
         keys = Object.keys(this.playerlist);
-        for (let i = 0; i < keys.length; i++){
-                let binaryTask = assetsManager.addTextureTask(
-                    keys[i],
-                    instance.playerlist[keys[i]].spritesheet,
-                    true,
-                    false,
-                    BABYLON.Texture.TRILINEAR_SAMPLINGMODE
-                );
-                binaryTask.onSuccess = function (task) {
-                    instance.spriteManagers[task.name] = new BABYLON.SpriteManager(task.name + "Manager", undefined, 30, { width: 888, height: 605 });
-                    instance.spriteManagers[task.name].texture = task.texture
-                };
+        for (let i = 0; i < keys.length; i++) {
+            let binaryTask = assetsManager.addTextureTask(
+                keys[i],
+                instance.playerlist[keys[i]].spritesheet,
+                true,
+                false,
+                BABYLON.Texture.TRILINEAR_SAMPLINGMODE
+            );
+            binaryTask.onSuccess = function (task) {
+                instance.spriteManagers[task.name] = new BABYLON.SpriteManager(task.name + "Manager", undefined, 30, { width: 888, height: 605 });
+                instance.spriteManagers[task.name].texture = task.texture
+            };
         }
 
         let binaryTask = assetsManager.addTextureTask(
@@ -690,9 +726,28 @@ class LVLController extends LVLAbstract {
         }
     }
 
-    checkPlayersSkill() {
+    checkHazardSkill(p) {
+        if(p.currentsp==p.displaysp)
+            p.displayRangeTiles()
+        if (p.currentsp >= p.totalsp) {
+            this.playSound(p.name + "sound", 0.2)
+            p.activateSkill(this.activePlayers, this.enemies)
+            p.currentsp = -1;
+            p.undisplayTiles()
+        }
+        p.currentsp = Math.min(p.currentsp + 1, p.totalsp);
+        p.updateSkillBarCharging()
+       
+
+    }
+
+    checkSkills() {
         for (let i = 0; i < this.activePlayers.length; i++) {
             this.checkPlayerSkill(this.activePlayers[i])
+        }
+
+        for (let i = 0; i < this.hazards.length; i++) {
+            this.checkHazardSkill(this.hazards[i])
         }
 
     }
@@ -1007,6 +1062,10 @@ class LVLController extends LVLAbstract {
                 if (array[i][j] == "red") {
                     this.spawns.push(new EnemySpawn("", i, j, this.scene))
                     type = "blk";
+                }
+                if (array[i][j] == "altar") {
+                    this.hazards.push(new Altar(i, j, this))
+                    type = "bg";
                 }
                 var tile = new Tile(type, i, j, this.scene)
                 linetiles.push(tile);

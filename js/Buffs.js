@@ -26,6 +26,7 @@ class Buffs {
             dmgtype: "",
             doublehitchance: 0,
             dmgpen: true,
+            taunt:1,
 
         }
     }
@@ -37,7 +38,9 @@ class Buffs {
             for (let j = 0; j < keysmodifiers.length; j++) {
                 if (typeof this.modifiers[keysmodifiers[j]] == "boolean")
                     this.modifiers[keysmodifiers[j]] = this.buffs[keys[i]].modifiers[keysmodifiers[j]]
-                else this.modifiers[keysmodifiers[j]] += this.buffs[keys[i]].modifiers[keysmodifiers[j]]
+                else {
+                    this.modifiers[keysmodifiers[j]] += this.buffs[keys[i]].modifiers[keysmodifiers[j]]
+                }
             }
 
         }
@@ -89,6 +92,12 @@ class Buffs {
         this.initModifiers();
         this.sumBuffs();
         return this.modifiers.dmgpen;
+    }
+
+    getTauntLevel() {
+        this.initModifiers();
+        this.sumBuffs();
+        return this.modifiers.taunt;
     }
 
     getCritModifier() {

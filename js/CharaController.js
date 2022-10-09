@@ -144,6 +144,16 @@ class CharaController {
     }
 
     getFirstEnemyInRange(enemies, range, targets) {
+        enemies.sort(function (x, y) {
+
+            if (x.buffs.getTauntLevel() > y.buffs.getTauntLevel()) {
+                return -1;
+            }
+            if (x.buffs.getTauntLevel() < y.buffs.getTauntLevel()) {
+                return 1;
+            }
+            return 0;
+        });
         var res = [];
         var targetcount = targets;
         var squarerange = [[this.x * 30 - 15 - 30 * range, this.x * 30 + 15 + 30 * range], [this.y * 30 - 15 - 30 * range, this.y * 30 + 15 + 30 * range]];
@@ -175,12 +185,20 @@ class CharaController {
     }
 
 
-    receiveDamage(enemy) {
-        var dmg = enemy.buffs.getFinalAtk(enemy.chara.atk)
-        var dmgtype = enemy.buffs.getDmgType()
+    receiveDamage(enemy, hazard = false) {
+        var dmg;
+        var dmgtype;
+        if (!hazard) {
+            dmg = enemy.buffs.getFinalAtk(enemy.chara.atk)
+            dmgtype = enemy.buffs.getDmgType()
 
-        if (dmgtype == "")
-            dmgtype = enemy.chara.dmgtype
+            if (dmgtype == "")
+                dmgtype = enemy.chara.dmgtype
+        }
+        else {
+            dmgtype = "true"
+            dmg = enemy.dmg
+        }
 
         var dmgreceived;
         switch (dmgtype) {

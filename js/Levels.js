@@ -102,6 +102,9 @@ levels["AMOGUS"] = {
     ["bg", "bg", "bg", "r", "r", "g", "g", "g", "g", "bg", "bg", "bg", "bg"],
     ["bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg"]
     ],
+
+    hazards : [],
+
 }
 
 levels["TEST"] = {
@@ -112,24 +115,22 @@ levels["TEST"] = {
     squadlimit: 9,
     hp: 3,
     background: "loading_CB_center",
-    description: "Dogs",
+    description: "Testing ground",
 
-    waves: [{ "time": 5, "gap": 5, "enemies": "guerrilla hound pro", "line": true, "taunt": true, "count": 6, "start": [4, 0], "checkpoints": [{ "start": [4, 0], "end": [5, 12], "pause": 0 }] },
-    { "time": 5.2, "gap": 5, "enemies": "guerrilla hound", "line": false, "count": 6, "taunt": false, "start": [4, 0], "checkpoints": [{ "start": [4, 0], "end": [5, 12], "pause": 0 }] },
-    { "time": 0, "gap": 5, "enemies": "guerrilla sniper", "line": true, "taunt": false, "count": 1, "start": [1, 10], "checkpoints": [{ "start": [1, 10], "end": [1, 2], "pause": 5 }, { "start": [1, 2], "end": [1, 10], "pause": 5 }, { "start": [1, 10], "end": [1, 2], "pause": 5 }, { "start": [1, 2], "end": [1, 10], "pause": 5 }, { "start": [1, 10], "end": [1, 0], "pause": 0 }] },
-    { "time": 0, "gap": 5, "enemies": "guerrilla sniper leader", "line": true, "taunt": false, "count": 1, "start": [7, 10], "checkpoints": [{ "start": [7, 10], "end": [7, 2], "pause": 5 }, { "start": [7, 2], "end": [7, 10], "pause": 5 }, { "start": [7, 10], "end": [7, 2], "pause": 5 }, { "start": [7, 2], "end": [7, 10], "pause": 5 }, { "start": [7, 10], "end": [7, 0], "pause": 0 }] },
-    { "time": 20, "gap": 5, "enemies": "guerrilla siegebreaker", "line": true, "taunt": false, "count": 1, "start": [7, 10], "checkpoints": [{ "start": [7, 10], "end": [7, 2], "pause": 5 }, { "start": [7, 2], "end": [7, 10], "pause": 5 }, { "start": [7, 10], "end": [7, 2], "pause": 5 }, { "start": [7, 2], "end": [7, 10], "pause": 5 }, { "start": [7, 10], "end": [7, 0], "pause": 0 }] },
-    { "time": 20, "gap": 5, "enemies": "guerrilla siegebreaker leader", "line": true, "taunt": false, "count": 1, "start": [1, 10], "checkpoints": [{ "start": [1, 10], "end": [1, 2], "pause": 5 }, { "start": [1, 2], "end": [1, 10], "pause": 5 }, { "start": [1, 10], "end": [1, 2], "pause": 5 }, { "start": [1, 2], "end": [1, 10], "pause": 5 }, { "start": [1, 10], "end": [1, 0], "pause": 0 }] },
+    waves: [{ "time": 0, "gap": 5, "enemies": "guerrilla shieldguard leader", "line": false, "count": 1, "taunt": false, "start": [4, 5], "checkpoints": [{ "start": [4, 5], "end": [4, 5], "pause": 300 }]},
+        { "time": 0, "gap": 5, "enemies": "guerrilla hound pro", "line": false, "count": 1, "taunt": false, "start": [3, 6], "checkpoints": [{ "start": [3, 6], "end": [3, 6], "pause": 300 }] },
+        { "time": 0, "gap": 5, "enemies": "guerrilla shieldguard", "line": true, "taunt": false, "count": 1, "start": [7, 10], "checkpoints": [{ "start": [7, 10], "end": [7, 2], "pause": 5 }, { "start": [7, 2], "end": [7, 10], "pause": 5 }, { "start": [7, 10], "end": [7, 2], "pause": 5 }, { "start": [7, 2], "end": [7, 10], "pause": 5 }, { "start": [7, 10], "end": [7, 0], "pause": 0 }] },
 
 ],
 
-    enemies: ["guerrilla hound pro","guerrilla hound","guerrilla sniper","guerrilla sniper leader","guerrilla siegebreaker","guerrilla siegebreaker leader"],
+    enemies: ["guerrilla shieldguard leader","guerrilla shieldguard","guerrilla hound pro"],
+    hazards : ["altar"],
 
     layout: [["bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg"], ["blue", "g", "g", "g", "g", "g", "g", "g", "g", "g", "g", "blk", "red"],
     ["bg", "bg", "bg", "bg", "r", "r", "bg", "bg", "r", "r", "bg", "bg", "bg"],
     ["bg", "bg", "bg", "bg", "bg", "g", "g", "g", "g", "bg", "bg", "bg", "bg"],
-    ["red", "blk", "g", "bg", "g", "g", "r", "r", "g", "g", "bg", "bg", "bg"],
-    ["bg", "bg", "g", "g", "g", "r", "bg", "bg", "r", "g", "g", "g", "blue"],
+    ["red", "blk", "g", "bg", "g", "g", "g", "r", "g", "g", "bg", "bg", "bg"],
+    ["bg", "bg", "g", "g", "g", "r", "altar", "bg", "r", "g", "g", "g", "blue"],
     ["bg", "bg", "r", "r", "r", "bg", "bg", "bg", "bg", "r", "r", "bg", "bg"],
     ["blue", "g", "g", "g", "g", "g", "g", "g", "g", "g", "g", "blk", "red"]
     ],

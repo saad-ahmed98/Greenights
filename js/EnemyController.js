@@ -169,21 +169,25 @@ class EnemyController extends CharaController {
         if (this.chara.start != undefined) {
             this.spawning = true;
             this.sprite.playAnimation(this.chara.start.start, this.chara.start.end, false, this.gamespeed * 30 * this.chara.start.duration);
-        }
 
-        if (this.chara.sfx.start != undefined) {
-            this.lvlcontroller.playSound(this.chara.name + "-start", this.chara.sfx.start.volume)
-        }
-        var instance = this;
-        var interval = setInterval(() => {
-            if (instance.sprite.cellIndex == instance.chara.start.end) {
-                instance.spawning = false;
-                clearInterval(interval);
+            if (this.chara.sfx.start != undefined) {
+                this.lvlcontroller.playSound(this.chara.name + "-start", this.chara.sfx.start.volume)
             }
-        }, 1);
-
-
-
+            var instance = this;
+            var interval = setInterval(() => {
+                if (instance.sprite.cellIndex == instance.chara.start.end) {
+                    instance.spawning = false;
+                    clearInterval(interval);
+                }
+            }, 1);
+        }
+        if (this.enemySkill != undefined) {
+            if (this.enemySkill.triggertype == "on_start") {
+                if (this.enemySkill.target == "self")
+                    this.enemySkill.activateSkill([this])
+                else this.enemySkill.activateSkill(this.lvlcontroller.enemies)
+            }
+        }
     }
 
     createPathfinding(points, matrix) {
@@ -245,29 +249,38 @@ class EnemyController extends CharaController {
         return false;
     }
 
-    receiveDamage(attackingplayer) {
+    receiveDamage(attackingplayer, hazard = false) {
+        var dmg;
+        var dmgtype;
 
-        var dmgmodifier = 1;
-        if (attackingplayer.playerSkill.chargetype == "attack" && attackingplayer.playerSkill.triggertype == "auto" && attackingplayer.playerSkill.currentsp >= attackingplayer.playerSkill.totalsp) {
-            this.lvlcontroller.playSound(attackingplayer.chara.name + "-skill", this.lvlcontroller.vcvolume)
-            dmgmodifier *= attackingplayer.playerSkill.activateDmgUpSkill();
+        if (!hazard) {
+            var dmgmodifier = 1;
+            if (attackingplayer.playerSkill.chargetype == "attack" && attackingplayer.playerSkill.triggertype == "auto" && attackingplayer.playerSkill.currentsp >= attackingplayer.playerSkill.totalsp) {
+                this.lvlcontroller.playSound(attackingplayer.chara.name + "-skill", this.lvlcontroller.vcvolume)
+                dmgmodifier *= attackingplayer.playerSkill.activateDmgUpSkill();
+            }
+
+            dmgmodifier *= attackingplayer.buffs.getCritModifier();
+
+            var dmgpen = 0;
+
+            if (attackingplayer.chara.subclass = "lord" && attackingplayer.buffs.getDmgPen() && attackingplayer.blocking == 0)
+                dmgpen = 0.2;
+
+            dmg = attackingplayer.buffs.getFinalAtk(attackingplayer.chara.atk - (attackingplayer.chara.atk * dmgpen)) * dmgmodifier
+            dmgtype = attackingplayer.buffs.getDmgType()
+            if (dmgtype == "")
+                dmgtype = attackingplayer.chara.dmgtype
         }
 
-        dmgmodifier *= attackingplayer.buffs.getCritModifier();
+        else {
+            dmg = attackingplayer.dmg
+            dmgtype = "true"
+        }
 
-        var dmgpen = 0;
-
-        if (attackingplayer.chara.subclass = "lord" && attackingplayer.buffs.getDmgPen() && attackingplayer.blocking == 0)
-            dmgpen = 0.2;
-
-        var dmg = attackingplayer.buffs.getFinalAtk(attackingplayer.chara.atk - (attackingplayer.chara.atk * dmgpen)) * dmgmodifier
 
         var dmgreceived;
 
-        var dmgtype = attackingplayer.buffs.getDmgType()
-
-        if (dmgtype == "")
-            dmgtype = attackingplayer.chara.dmgtype
 
         switch (dmgtype) {
             case "physical":
@@ -292,8 +305,8 @@ class EnemyController extends CharaController {
         }
 
         if (this.hp <= 0) {
-
-            this.lvlcontroller.currentdp += attackingplayer.buffs.getDpOnKill();
+            if (!hazard)
+                this.lvlcontroller.currentdp += attackingplayer.buffs.getDpOnKill();
             this.lvlcontroller.gui.updatePlayerWheelUI(this.lvlcontroller.currentdp, this.lvlcontroller.squadlimit)
 
             this.mesh.dispose()
@@ -345,8 +358,12 @@ class EnemyController extends CharaController {
             this.chara.idle = this.chara.skill.idle
         if (this.chara.skill.atkanim != undefined)
             this.chara.atkanim = this.chara.skill.atkanim
-        if (this.chara.skill.move != undefined)
+        if (this.chara.skill.move != undefined) {
             this.chara.move = this.chara.skill.move
+            this.running = false;
+        }
+        if (this.chara.skill.death != undefined)
+            this.chara.death = this.chara.skill.death
 
     }
 
