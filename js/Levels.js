@@ -1,97 +1,97 @@
 var levels = {}
-levels["AMOGUS"] = {
-    level: "AMOGUS",
-    name: "BREAD IN FRENCH",
+levels["AMOGUS-1"] = {
+    level: "AMOGUS-1",
+    name: "Bread in french",
     initialdp: 10,
     squadlimit: 8,
     hp: 3,
     bgm: "dm_2",
     background: "loading4",
-    description: "Some dinergate fans are roaming around the base\n claiming to be bigger doggo fans than our operators.\n We can't let that slide.",
+    description: "Some mercenaries have been spotted at our doorstep.\n Take them out swiftly.\n",
     waves: [
-        {"number":0, "time": 1, "gap": 5, "enemies": "sarkaz grudgebearer", "line": true, "taunt": false, "count": 1, "start": [1, 8], "checkpoints": [{ "start": [1, 8], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [1, 8], "pause": 0 }, { "start": [1, 8], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [1, 8], "pause": 0 }, { "start": [1, 8], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [1, 8], "pause": 0 }, { "start": [1, 8], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [1, 8], "pause": 0 }, { "start": [1, 8], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [6, 8], "pause": 0 }, { "start": [6, 8], "end": [2, 1], "pause": 0 }] },
-        { "number":1,"time": 1, "gap": 10, "enemies": "sarkaz bladeweaver", "line": true, "taunt": false, "count": 1, "start": [3, 9], "checkpoints": [{ "start": [3, 9], "end": [3, 9], "pause": 150 }, { "start": [3, 9], "end": [6, 7], "pause": 0 }, { "start": [6, 7], "end": [2, 1], "pause": 0 }] },
-        { "number":2,"time": 1, "gap": 10, "enemies": "sarkaz bladeweaver", "line": false, "taunt": false, "count": 1, "start": [4, 9], "checkpoints": [{ "start": [4, 9], "end": [4, 9], "pause": 150 }, { "start": [4, 9], "end": [6, 7], "pause": 0 }, { "start": [6, 7], "end": [2, 1], "pause": 0 }] },
+        {"number":0, "time": 1, "gap": 5, "enemies": "Sarkaz Grudgebearer", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [1, 8], "checkpoints": [{ "start": [1, 8], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [1, 8], "pause": 0 }, { "start": [1, 8], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [1, 8], "pause": 0 }, { "start": [1, 8], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [1, 8], "pause": 0 }, { "start": [1, 8], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [1, 8], "pause": 0 }, { "start": [1, 8], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [6, 8], "pause": 0 }, { "start": [6, 8], "end": [2, 1], "pause": 0 }] },
+        { "number":1,"time": 1, "gap": 10, "enemies": "Sarkaz Bladeweaver", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [3, 9], "checkpoints": [{ "start": [3, 9], "end": [3, 9], "pause": 150 }, { "start": [3, 9], "end": [6, 7], "pause": 0 }, { "start": [6, 7], "end": [2, 1], "pause": 0 }] },
+        { "number":2,"time": 1, "gap": 10, "enemies": "Sarkaz Bladeweaver", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [4, 9], "checkpoints": [{ "start": [4, 9], "end": [4, 9], "pause": 150 }, { "start": [4, 9], "end": [6, 7], "pause": 0 }, { "start": [6, 7], "end": [2, 1], "pause": 0 }] },
 
-        //sarkaz swordsman
-        { "number":3,"time": 5, "gap": 10, "enemies": "sarkaz swordsman", "line": true, "taunt": true, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 3], "pause": 4 }, { "start": [5, 3], "end": [5, 12], "pause": 0 }] },
-        //sarkaz swordsman
-        { "number":4,"time": 8, "gap": 10, "enemies": "sarkaz swordsman", "line": false, "taunt": false, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 3], "pause": 0 }, { "start": [5, 3], "end": [5, 12], "pause": 0 }] },
-        //sarkaz greatswordsman
-        {"number":5, "time": 13, "gap": 2, "enemies": "sarkaz swordsman", "line": false, "taunt": false, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 2], "pause": 0 }, { "start": [5, 2], "end": [5, 12], "pause": 0 }] },
+        //Sarkaz Swordsman
+        { "number":3,"time": 5, "gap": 10, "enemies": "Sarkaz Swordsman", "line": true, "tooltip": false, "taunt": true, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 3], "pause": 4 }, { "start": [5, 3], "end": [5, 12], "pause": 0 }] },
+        //Sarkaz Swordsman
+        { "number":4,"time": 8, "gap": 10, "enemies": "Sarkaz Swordsman", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 3], "pause": 0 }, { "start": [5, 3], "end": [5, 12], "pause": 0 }] },
+        //Sarkaz Greatswordsman
+        {"number":5, "time": 13, "gap": 2, "enemies": "Sarkaz Swordsman", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 2], "pause": 0 }, { "start": [5, 2], "end": [5, 12], "pause": 0 }] },
 
-        //sarkaz swordsman
-        { "number":6,"time": 33, "gap": 1, "enemies": "sarkaz swordsman", "line": false, "taunt": false, "count": 2, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 3], "pause": 0 }, { "start": [5, 3], "end": [5, 12], "pause": 0 }] },
-        //sarkaz greatswordsman
-        {"number":7, "time": 35, "gap": 10, "enemies": "sarkaz greatswordsman", "line": false, "taunt": false, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 2], "pause": 4 }, { "start": [5, 2], "end": [5, 12], "pause": 0 }] },
+        //Sarkaz Swordsman
+        { "number":6,"time": 33, "gap": 1, "enemies": "Sarkaz Swordsman", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 3], "pause": 0 }, { "start": [5, 3], "end": [5, 12], "pause": 0 }] },
+        //Sarkaz Greatswordsman
+        {"number":7, "time": 35, "gap": 10, "enemies": "Sarkaz Greatswordsman", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 2], "pause": 4 }, { "start": [5, 2], "end": [5, 12], "pause": 0 }] },
 
-        //sarkaz swordsman
-        {"number":8, "time": 45, "gap": 2, "enemies": "sarkaz swordsman", "line": true, "taunt": false, "count": 2, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [1, 7], "pause": 0 }, { "start": [1, 7], "end": [5, 12], "pause": 0 }] },
+        //Sarkaz Swordsman
+        {"number":8, "time": 45, "gap": 2, "enemies": "Sarkaz Swordsman", "line": true, "tooltip": false, "taunt": false, "count": 2, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [1, 7], "pause": 0 }, { "start": [1, 7], "end": [5, 12], "pause": 0 }] },
 
-        //sarkaz bladeweaver
-        { "number":9,"time": 59, "gap": 10, "enemies": "sarkaz bladeweaver", "line": false, "taunt": false, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 3], "pause": 4 }, { "start": [5, 3], "end": [5, 12], "pause": 0 }] },
+        //Sarkaz Bladeweaver
+        { "number":9,"time": 59, "gap": 10, "enemies": "Sarkaz Bladeweaver", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 3], "pause": 4 }, { "start": [5, 3], "end": [5, 12], "pause": 0 }] },
 
-        //sarkaz crossbowman
-        { "number":10,"time": 60, "gap": 6, "enemies": "sarkaz crossbowman", "line": false, "taunt": false, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 12], "pause": 0 }] },
+        //Sarkaz Crossbowman
+        { "number":10,"time": 60, "gap": 6, "enemies": "Sarkaz Crossbowman", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 12], "pause": 0 }] },
 
-        //sarkaz bladeweaver
-        { "number":11,"time": 61, "gap": 10, "enemies": "sarkaz bladeweaver", "line": false, "taunt": false, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 2], "pause": 4 }, { "start": [5, 2], "end": [5, 12], "pause": 0 }] },
+        //Sarkaz Bladeweaver
+        { "number":11,"time": 61, "gap": 10, "enemies": "Sarkaz Bladeweaver", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 2], "pause": 4 }, { "start": [5, 2], "end": [5, 12], "pause": 0 }] },
 
-        //sarkaz swordsman
-        { "number":12,"time": 77, "gap": 2, "enemies": "sarkaz swordsman", "line": false, "taunt": false, "count": 2, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 3], "pause": 0 }, { "start": [5, 3], "end": [5, 12], "pause": 0 }] },
+        //Sarkaz Swordsman
+        { "number":12,"time": 77, "gap": 2, "enemies": "Sarkaz Swordsman", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 3], "pause": 0 }, { "start": [5, 3], "end": [5, 12], "pause": 0 }] },
 
-        //sarkaz greatswordsman
-        {"number":13, "time": 79, "gap": 10, "enemies": "sarkaz greatswordsman", "line": false, "taunt": false, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 2], "pause": 4 }, { "start": [5, 2], "end": [5, 12], "pause": 0 }] },
+        //Sarkaz Greatswordsman
+        {"number":13, "time": 79, "gap": 10, "enemies": "Sarkaz Greatswordsman", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 2], "pause": 4 }, { "start": [5, 2], "end": [5, 12], "pause": 0 }] },
 
-        //sarkaz sentinel
-        {"number":14, "time": 86, "gap": 10, "enemies": "sarkaz sentinel", "line": true, "taunt": false, "count": 1, "start": [2, 12], "checkpoints": [{ "start": [2, 12], "end": [2, 4], "pause": 0 }, { "start": [2, 4], "end": [5, 4], "pause": 0 }, { "start": [5, 4], "end": [5, 12], "pause": 0 }] },
+        //Sarkaz Sentinel
+        {"number":14, "time": 86, "gap": 10, "enemies": "Sarkaz Sentinel", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [2, 12], "checkpoints": [{ "start": [2, 12], "end": [2, 4], "pause": 0 }, { "start": [2, 4], "end": [5, 4], "pause": 0 }, { "start": [5, 4], "end": [5, 12], "pause": 0 }] },
 
-        //sarkaz swordsman
-        { "number":15,"time": 89, "gap": 2, "enemies": "sarkaz swordsman", "line": false, "taunt": false, "count": 2, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 3], "pause": 0 }, { "start": [5, 3], "end": [5, 12], "pause": 0 }] },
+        //Sarkaz Swordsman
+        { "number":15,"time": 89, "gap": 2, "enemies": "Sarkaz Swordsman", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 3], "pause": 0 }, { "start": [5, 3], "end": [5, 12], "pause": 0 }] },
 
-        //sarkaz greatswordsman
-        { "number":16,"time": 91, "gap": 10, "enemies": "sarkaz greatswordsman", "line": false, "taunt": false, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 2], "pause": 4 }, { "start": [5, 2], "end": [5, 12], "pause": 0 }] },
+        //Sarkaz Greatswordsman
+        { "number":16,"time": 91, "gap": 10, "enemies": "Sarkaz Greatswordsman", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 2], "pause": 4 }, { "start": [5, 2], "end": [5, 12], "pause": 0 }] },
 
-        //sarkaz swordsman
-        { "number":17,"time": 115, "gap": 2, "enemies": "sarkaz swordsman", "line": false, "taunt": false, "count": 2, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 3], "pause": 0 }, { "start": [5, 3], "end": [5, 12], "pause": 0 }] },
+        //Sarkaz Swordsman
+        { "number":17,"time": 115, "gap": 2, "enemies": "Sarkaz Swordsman", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 3], "pause": 0 }, { "start": [5, 3], "end": [5, 12], "pause": 0 }] },
 
-        //sarkaz crossbowman
-        { "number":18,"time": 117, "gap": 6, "enemies": "sarkaz crossbowman", "line": false, "taunt": false, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 12], "pause": 0 }] },
+        //Sarkaz Crossbowman
+        { "number":18,"time": 117, "gap": 6, "enemies": "Sarkaz Crossbowman", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 12], "pause": 0 }] },
 
-        //sarkaz swordsman
-        {"number":19, "time": 135, "gap": 2, "enemies": "sarkaz swordsman", "line": false, "taunt": false, "count": 2, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [1, 7], "pause": 0 }, { "start": [1, 7], "end": [5, 12], "pause": 0 }] },
+        //Sarkaz Swordsman
+        {"number":19, "time": 135, "gap": 2, "enemies": "Sarkaz Swordsman", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [1, 7], "pause": 0 }, { "start": [1, 7], "end": [5, 12], "pause": 0 }] },
 
-        //sarkaz swordsman
-        { "number":20,"time": 135, "gap": 2, "enemies": "sarkaz swordsman", "line": true, "taunt": false, "count": 3, "start": [2, 12], "checkpoints": [{ "start": [2, 12], "end": [2, 1], "pause": 0 }] },
+        //Sarkaz Swordsman
+        { "number":20,"time": 135, "gap": 2, "enemies": "Sarkaz Swordsman", "line": true, "tooltip": false, "taunt": false, "count": 3, "start": [2, 12], "checkpoints": [{ "start": [2, 12], "end": [2, 1], "pause": 0 }] },
 
-        //sarkaz crossbowman
-        { "number":21,"time": 152, "gap": 4, "enemies": "sarkaz crossbowman", "line": true, "taunt": true, "count": 2, "start": [2, 12], "checkpoints": [{ "start": [2, 12], "end": [2, 4], "pause": 0 }, { "start": [2, 4], "end": [5, 4], "pause": 0 }, { "start": [5, 4], "end": [5, 12], "pause": 0 }] },
+        //Sarkaz Crossbowman
+        { "number":21,"time": 152, "gap": 4, "enemies": "Sarkaz Crossbowman", "line": true, "tooltip": false, "taunt": true, "count": 2, "start": [2, 12], "checkpoints": [{ "start": [2, 12], "end": [2, 4], "pause": 0 }, { "start": [2, 4], "end": [5, 4], "pause": 0 }, { "start": [5, 4], "end": [5, 12], "pause": 0 }] },
 
-        //sarkaz bladeweaver
-        { "number":22,"time": 165, "gap": 10, "enemies": "sarkaz bladeweaver", "line": false, "taunt": false, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 3], "pause": 4 }, { "start": [5, 3], "end": [5, 12], "pause": 0 }] },
-        //sarkaz greatswordsman
-        { "number":23,"time": 167, "gap": 10, "enemies": "sarkaz greatswordsman", "line": false, "taunt": false, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 2], "pause": 4 }, { "start": [5, 2], "end": [5, 12], "pause": 0 }] },
+        //Sarkaz Bladeweaver
+        { "number":22,"time": 165, "gap": 10, "enemies": "Sarkaz Bladeweaver", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 3], "pause": 4 }, { "start": [5, 3], "end": [5, 12], "pause": 0 }] },
+        //Sarkaz Greatswordsman
+        { "number":23,"time": 167, "gap": 10, "enemies": "Sarkaz Greatswordsman", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 2], "pause": 4 }, { "start": [5, 2], "end": [5, 12], "pause": 0 }] },
 
-        //sarkaz swordsman
-        { "number":24,"time": 193, "gap": 2, "enemies": "sarkaz swordsman", "line": true, "taunt": true, "count": 2, "start": [2, 12], "checkpoints": [{ "start": [2, 12], "end": [2, 1], "pause": 0 }] },
+        //Sarkaz Swordsman
+        { "number":24,"time": 193, "gap": 2, "enemies": "Sarkaz Swordsman", "line": true, "tooltip": false, "taunt": true, "count": 2, "start": [2, 12], "checkpoints": [{ "start": [2, 12], "end": [2, 1], "pause": 0 }] },
 
-        //sarkaz swordsman
-        { "number":25,"time": 197, "gap": 2, "enemies": "sarkaz swordsman", "line": false, "taunt": false, "count": 2, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 3], "pause": 0 }, { "start": [5, 3], "end": [5, 12], "pause": 0 }] },
-        //sarkaz greatswordsman
-        { "number":26,"time": 199, "gap": 10, "enemies": "sarkaz greatswordsman", "line": false, "taunt": false, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 2], "pause": 4 }, { "start": [5, 2], "end": [5, 12], "pause": 0 }] },
+        //Sarkaz Swordsman
+        { "number":25,"time": 197, "gap": 2, "enemies": "Sarkaz Swordsman", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 3], "pause": 0 }, { "start": [5, 3], "end": [5, 12], "pause": 0 }] },
+        //Sarkaz Greatswordsman
+        { "number":26,"time": 199, "gap": 10, "enemies": "Sarkaz Greatswordsman", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 2], "pause": 4 }, { "start": [5, 2], "end": [5, 12], "pause": 0 }] },
 
-        //sarkaz flagbearer
-        {"number":27, "time": 210, "gap": 6, "enemies": "sarkaz sentinel", "line": false, "taunt": false, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 12], "pause": 0 }] },
+        //Sarkaz flagbearer
+        {"number":27, "time": 210, "gap": 6, "enemies": "Sarkaz Sentinel", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 12], "pause": 0 }] },
 
-        //sarkaz grudgebearer
-        {"number":28, "time": 204, "gap": 6, "enemies": "sarkaz bladeweaver", "line": false, "taunt": false, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 12], "pause": 0 }] },
+        //Sarkaz Grudgebearer
+        {"number":28, "time": 204, "gap": 6, "enemies": "Sarkaz Bladeweaver", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 12], "pause": 0 }] },
 
-        //sarkaz bladeweaver
-        { "number":29,"time": 200, "gap": 6, "enemies": "sarkaz bladeweaver", "line": true, "taunt": false, "count": 2, "start": [2, 12], "checkpoints": [{ "start": [2, 12], "end": [2, 1], "pause": 0 }] },
+        //Sarkaz Bladeweaver
+        { "number":29,"time": 200, "gap": 6, "enemies": "Sarkaz Bladeweaver", "line": true, "tooltip": false, "taunt": false, "count": 2, "start": [2, 12], "checkpoints": [{ "start": [2, 12], "end": [2, 1], "pause": 0 }] },
 
 
     ],
-    enemies: ["sarkaz sentinel", "sarkaz grudgebearer", "sarkaz greatswordsman", "sarkaz bladeweaver", "sarkaz crossbowman", "sarkaz swordsman"],
+    enemies: ["Sarkaz Sentinel", "Sarkaz Grudgebearer", "Sarkaz Greatswordsman", "Sarkaz Bladeweaver", "Sarkaz Crossbowman", "Sarkaz Swordsman"],
 
 
     layout: [["bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg"], ["bg", "bg", "bg", "bg", "bg", "g", "g", "g", "g", "bg", "bg", "bg", "bg"],
@@ -107,24 +107,111 @@ levels["AMOGUS"] = {
 
 }
 
+levels["GUERRILLA-1"] = {
+    level: "GUERRILLA-1",
+    name: "Side by Side-1",
+    bgm: "ep7_1",
+    initialdp: 10,
+    squadlimit: 8,
+    hp: 3,
+    background: "loading_CB_center",
+    description: "The spearhead of Reunion's reconnaissance \nforce has appeared at the location where we\n established a concealed facility.\n Be careful, these are no ordinary Reunion grunts\n that we're dealing with.",
+   
+    waves: [{"number":0, "time": 0, "gap": 5, "enemies": "Guerrilla Fighter", "line": false, "tooltip": true, "count": 1, "taunt": false, "start": [4, 11], "checkpoints": [{ "start": [4, 11], "end": [4, 9], "pause": 155 },{ "start": [4, 9], "end": [4, 1], "pause": 0 }]},
+    {"number":1, "time": 0, "gap": 5, "enemies": "Guerrilla Fighter", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [3, 11], "checkpoints": [{ "start": [3, 11], "end": [3, 9], "pause": 156 },{ "start": [3, 9], "end": [4, 1], "pause": 0 }]},
+    {"number":2, "time": 0, "gap": 5, "enemies": "Guerrilla Fighter", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [5, 11], "checkpoints": [{ "start": [5, 11], "end": [5, 9], "pause": 158 },{ "start": [5, 9], "end": [4, 1], "pause": 0 }]},
+    {"number":3, "time": 0, "gap": 5, "enemies": "Guerrilla Fighter", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [6, 11], "checkpoints": [{ "start": [6, 11], "end": [6, 9], "pause": 157 },{ "start": [6, 9], "end": [5, 1], "pause": 0 }]},
+    {"number":4, "time": 0, "gap": 5, "enemies": "Guerrilla Fighter", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [2, 11], "checkpoints": [{ "start": [2, 11], "end": [2, 9], "pause": 161 },{ "start": [2, 9], "end": [3, 1], "pause": 0 }]},
+
+    {"number":5, "time": 2, "gap": 5, "enemies": "Guerrilla Fighter", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [4, 11], "checkpoints": [{ "start": [4, 11], "end": [4, 10], "pause": 162 },{ "start": [4, 9], "end": [4, 1], "pause": 0 }]},
+    {"number":6, "time": 2, "gap": 5, "enemies": "Guerrilla Fighter", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [3, 11], "checkpoints": [{ "start": [3, 11], "end": [3, 10], "pause": 163 },{ "start": [3, 9], "end": [4, 1], "pause": 0 }]},
+    {"number":7, "time": 2, "gap": 5, "enemies": "Guerrilla Fighter", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [5, 11], "checkpoints": [{ "start": [5, 11], "end": [5, 10], "pause": 165 },{ "start": [5, 9], "end": [4, 1], "pause": 0 }]},
+    {"number":8, "time": 2, "gap": 5, "enemies": "Guerrilla Fighter", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [6, 11], "checkpoints": [{ "start": [6, 11], "end": [6, 10], "pause": 164 },{ "start": [6, 9], "end": [5, 1], "pause": 0 }]},
+    {"number":9, "time": 2, "gap": 5, "enemies": "Guerrilla Fighter", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [2, 11], "checkpoints": [{ "start": [2, 11], "end": [2, 10], "pause": 166 },{ "start": [2, 9], "end": [3, 1], "pause": 0 }]},
+
+    {"number":10, "time": 6, "gap": 5, "enemies": "Guerrilla Hound", "line": true, "tooltip": true, "count": 1, "taunt": false, "start": [4, 11], "checkpoints": [{ "start": [4, 11], "end": [4, 1], "pause": 0 }]},
+    {"number":11, "time": 9, "gap": 5, "enemies": "Guerrilla Hound", "line": true, "tooltip": false, "count": 1, "taunt": false, "start": [5, 11], "checkpoints": [{ "start": [5, 11], "end": [5, 8], "pause": 0 },{ "start": [5, 8], "end": [4, 1], "pause": 0 }]},
+    {"number":12, "time": 14, "gap": 5, "enemies": "Guerrilla Hound", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [4, 11], "checkpoints": [{ "start": [4, 11], "end": [4, 1], "pause": 0 }]},
+    {"number":13, "time": 17, "gap": 4, "enemies": "Guerrilla Hound", "line": true, "tooltip": false, "count": 2, "taunt": false, "start": [2, 11], "checkpoints": [{ "start": [2, 11], "end": [3, 1], "pause": 0 }]},
+    {"number":14, "time": 26, "gap": 4, "enemies": "Guerrilla Hound", "line": true, "tooltip": false, "count": 2, "taunt": false, "start": [6, 11], "checkpoints": [{ "start": [6, 11], "end": [5, 1], "pause": 0 }]},
+    
+    {"number":15, "time": 29, "gap": 5, "enemies": "Guerrilla Hound", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [4, 11], "checkpoints": [{ "start": [4, 11], "end": [4, 1], "pause": 0 }]},
+    {"number":16, "time": 29, "gap": 4, "enemies": "Guerrilla Hound", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [2, 11], "checkpoints": [{ "start": [2, 11], "end": [3, 1], "pause": 0 }]},
+    {"number":17, "time": 34, "gap": 4, "enemies": "Guerrilla Hound", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [6, 11], "checkpoints": [{ "start": [6, 11], "end": [5, 1], "pause": 0 }]},
+    {"number":18, "time": 34, "gap": 5, "enemies": "Guerrilla Hound", "line": true, "tooltip": false, "count": 1, "taunt": false, "start": [3, 11], "checkpoints": [{ "start": [3, 11], "end": [3, 8], "pause": 0 },{ "start": [3, 8], "end": [4, 1], "pause": 0 }]},
+    {"number":19, "time": 38, "gap": 5, "enemies": "Guerrilla Hound", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [5, 11], "checkpoints": [{ "start": [5, 11], "end": [5, 8], "pause": 0 },{ "start": [5, 8], "end": [4, 1], "pause": 0 }]},
+    {"number":20, "time": 41, "gap": 6, "enemies": "Guerrilla Fighter", "line": false, "tooltip": false, "count": 2, "taunt": false, "start": [5, 11], "checkpoints": [{ "start": [5, 11], "end": [5, 8], "pause": 0 },{ "start": [5, 8], "end": [4, 1], "pause": 0 }]},
+    {"number":21, "time": 45, "gap": 5, "enemies": "Guerrilla Fighter", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [3, 11], "checkpoints": [{ "start": [3, 11], "end": [3, 8], "pause": 0 },{ "start": [3, 8], "end": [4, 1], "pause": 0 }]},
+    {"number":22, "time": 50, "gap": 6, "enemies": "Guerrilla Fighter", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [5, 11], "checkpoints": [{ "start": [5, 11], "end": [5, 8], "pause": 0 },{ "start": [5, 8], "end": [4, 1], "pause": 0 }]},
+    {"number":23, "time": 53, "gap": 6, "enemies": "Guerrilla Fighter", "line": true, "tooltip": false, "count": 3, "taunt": false, "start": [6, 11], "checkpoints": [{ "start": [6, 11], "end": [6, 8], "pause": 0 },{ "start": [6, 8], "end": [4, 1], "pause": 0 }]},
+    {"number":24, "time": 63, "gap": 6, "enemies": "Guerrilla Hound", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [6, 11], "checkpoints": [{ "start": [6, 11], "end": [6, 8], "pause": 0 },{ "start": [6, 8], "end": [4, 1], "pause": 0 }]},
+    {"number":25, "time": 63, "gap": 7, "enemies": "Guerrilla Hound", "line": false, "tooltip": false, "count": 2, "taunt": false, "start": [4, 11], "checkpoints": [{ "start": [4, 11], "end": [4, 1], "pause": 0 }]},
+    {"number":26, "time": 67, "gap": 5, "enemies": "Guerrilla Fighter", "line": false, "tooltip": false, "count": 3, "taunt": false, "start": [2, 11], "checkpoints": [{ "start": [2, 11], "end": [3, 1], "pause": 0 }]},
+    {"number":27, "time": 68, "gap": 5, "enemies": "Guerrilla Hound", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [3, 11], "checkpoints": [{ "start": [3, 11], "end": [3, 8], "pause": 0 },{ "start": [3, 8], "end": [4, 1], "pause": 0 }]},
+    {"number":28, "time": 72, "gap": 6, "enemies": "Guerrilla Fighter", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [5, 11], "checkpoints": [{ "start": [5, 11], "end": [5, 8], "pause": 0 },{ "start": [5, 8], "end": [4, 1], "pause": 0 }]},
+    {"number":29, "time": 77, "gap": 4, "enemies": "Guerrilla Fighter", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [6, 11], "checkpoints": [{ "start": [6, 11], "end": [5, 1], "pause": 0 }]},
+    {"number":30, "time": 80, "gap": 4, "enemies": "Guerrilla Hound", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [2, 11], "checkpoints": [{ "start": [2, 11], "end": [3, 1], "pause": 0 }]},
+    {"number":31, "time": 83, "gap": 5, "enemies": "Guerrilla Fighter", "line": false, "tooltip": false, "count": 3, "taunt": false, "start": [6, 11], "checkpoints": [{ "start": [6, 11], "end": [5, 1], "pause": 0 }]},
+    {"number":32, "time": 92, "gap": 5, "enemies": "Guerrilla Fighter", "line": false, "tooltip": false, "count": 2, "taunt": false, "start": [2, 11], "checkpoints": [{ "start": [2, 11], "end": [3, 1], "pause": 0 }]},
+    {"number":33, "time": 98, "gap": 4, "enemies": "Guerrilla Hound", "line": false, "tooltip": false, "count": 2, "taunt": false, "start": [4, 11], "checkpoints": [{ "start": [4, 11], "end": [4, 1], "pause": 0 }]},
+    {"number":19, "time": 105, "gap": 5, "enemies": "Guerrilla Hound", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [5, 11], "checkpoints": [{ "start": [5, 11], "end": [5, 8], "pause": 0 },{ "start": [5, 8], "end": [4, 1], "pause": 0 }]},
+    {"number":32, "time": 113, "gap": 6, "enemies": "Guerrilla Hound", "line": false, "tooltip": false, "count": 2, "taunt": false, "start": [2, 11], "checkpoints": [{ "start": [2, 11], "end": [3, 1], "pause": 0 }]},
+    {"number":18, "time": 116, "gap": 4, "enemies": "Guerrilla Hound", "line": false, "tooltip": false, "count": 2, "taunt": false, "start": [3, 11], "checkpoints": [{ "start": [3, 11], "end": [3, 8], "pause": 0 },{ "start": [3, 8], "end": [4, 1], "pause": 0 }]},
+    {"number":19, "time": 122, "gap": 6, "enemies": "Guerrilla Hound", "line": false, "tooltip": false, "count": 2, "taunt": false, "start": [5, 11], "checkpoints": [{ "start": [5, 11], "end": [5, 8], "pause": 0 },{ "start": [5, 8], "end": [4, 1], "pause": 0 }]},
+    {"number":31, "time": 123, "gap": 6, "enemies": "Guerrilla Fighter", "line": false, "tooltip": false, "count": 3, "taunt": false, "start": [6, 11], "checkpoints": [{ "start": [6, 11], "end": [5, 1], "pause": 0 }]},
+    {"number":26, "time": 128, "gap": 5, "enemies": "Guerrilla Fighter", "line": false, "tooltip": false, "count": 3, "taunt": false, "start": [2, 11], "checkpoints": [{ "start": [2, 11], "end": [3, 1], "pause": 0 }]},
+    {"number":18, "time": 131, "gap": 3, "enemies": "Guerrilla Hound", "line": false, "tooltip": false, "count": 2, "taunt": false, "start": [3, 11], "checkpoints": [{ "start": [3, 11], "end": [3, 8], "pause": 0 },{ "start": [3, 8], "end": [4, 1], "pause": 0 }]},
+    {"number":15, "time": 136, "gap": 5, "enemies": "Guerrilla Fighter", "line": false, "tooltip": false, "count": 3, "taunt": false, "start": [4, 11], "checkpoints": [{ "start": [4, 11], "end": [4, 1], "pause": 0 }]},
+    {"number":19, "time": 140, "gap": 6, "enemies": "Guerrilla Hound", "line": false, "tooltip": false, "count": 2, "taunt": false, "start": [5, 11], "checkpoints": [{ "start": [5, 11], "end": [5, 8], "pause": 0 },{ "start": [5, 8], "end": [4, 1], "pause": 0 }]},
+    {"number":31, "time": 144, "gap": 6, "enemies": "Guerrilla Hound", "line": false, "tooltip": false, "count": 3, "taunt": false, "start": [6, 11], "checkpoints": [{ "start": [6, 11], "end": [5, 1], "pause": 0 }]},
+    {"number":31, "time": 146, "gap": 3, "enemies": "Guerrilla Fighter", "line": false, "tooltip": false, "count": 2, "taunt": false, "start": [6, 11], "checkpoints": [{ "start": [6, 11], "end": [5, 1], "pause": 0 }]},
+    {"number":26, "time": 148, "gap": 2, "enemies": "Guerrilla Fighter", "line": false, "tooltip": false, "count": 3, "taunt": false, "start": [2, 11], "checkpoints": [{ "start": [2, 11], "end": [3, 1], "pause": 0 }]},
+    {"number":18, "time": 156, "gap": 5, "enemies": "Guerrilla Fighter", "line": false, "tooltip": false, "count": 2, "taunt": false, "start": [3, 11], "checkpoints": [{ "start": [3, 11], "end": [3, 8], "pause": 0 },{ "start": [3, 8], "end": [4, 1], "pause": 0 }]},
+    {"number":26, "time": 159, "gap": 6, "enemies": "Guerrilla Hound", "line": false, "tooltip": false, "count": 3, "taunt": false, "start": [2, 11], "checkpoints": [{ "start": [2, 11], "end": [3, 1], "pause": 0 }]},
+    {"number":19, "time": 162, "gap": 7, "enemies": "Guerrilla Hound", "line": false, "tooltip": false, "count": 2, "taunt": false, "start": [5, 11], "checkpoints": [{ "start": [5, 11], "end": [5, 8], "pause": 0 },{ "start": [5, 8], "end": [4, 1], "pause": 0 }]},
+    {"number":18, "time": 166, "gap": 5, "enemies": "Guerrilla Hound", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [3, 11], "checkpoints": [{ "start": [3, 11], "end": [3, 8], "pause": 0 },{ "start": [3, 8], "end": [4, 1], "pause": 0 }]},
+    {"number":31, "time": 168, "gap": 3, "enemies": "Guerrilla Hound", "line": false, "tooltip": false, "count": 3, "taunt": false, "start": [6, 11], "checkpoints": [{ "start": [6, 11], "end": [5, 1], "pause": 0 }]},
+    {"number":19, "time": 169, "gap": 5, "enemies": "Guerrilla Hound", "line": false, "tooltip": false, "count": 2, "taunt": false, "start": [5, 11], "checkpoints": [{ "start": [5, 11], "end": [5, 8], "pause": 0 },{ "start": [5, 8], "end": [4, 1], "pause": 0 }]},
+    {"number":15, "time": 172, "gap": 4, "enemies": "Guerrilla Fighter", "line": false, "tooltip": false, "count": 2, "taunt": false, "start": [4, 11], "checkpoints": [{ "start": [4, 11], "end": [4, 1], "pause": 0 }]},
+    {"number":31, "time": 174, "gap": 3, "enemies": "Guerrilla Fighter", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [6, 11], "checkpoints": [{ "start": [6, 11], "end": [5, 1], "pause": 0 }]},
+    {"number":19, "time": 176, "gap": 4, "enemies": "Guerrilla Fighter", "line": false, "tooltip": false, "count": 3, "taunt": false, "start": [5, 11], "checkpoints": [{ "start": [5, 11], "end": [5, 8], "pause": 0 },{ "start": [5, 8], "end": [4, 1], "pause": 0 }]},
+    {"number":26, "time": 177, "gap": 3, "enemies": "Guerrilla Fighter", "line": false, "tooltip": false, "count": 2, "taunt": false, "start": [2, 11], "checkpoints": [{ "start": [2, 11], "end": [3, 1], "pause": 0 }]},
+
+],
+
+    enemies: ["Guerrilla Hound","Guerrilla Fighter"],
+    hazards : [],
+
+
+    layout: [["e", "e", "e", "e", "e", "e", "e", "e", "e", "e", "e", "e", "e"],
+    ["e", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "e"],
+    ["e","bg", "blk", "g", "g","g", "g", "g","g", "blk", "blk", "red","e"],
+    ["e","blue", "blk", "r", "r","r", "bg", "g","g", "blk", "blk", "red","e"],
+    ["e","blue", "blk", "g", "g","g", "g", "g","g", "blk", "blk", "red","e"],
+    ["e","blue", "blk", "r", "r","r", "bg", "g","g", "blk", "blk", "red","e"],
+    ["e","bg", "blk", "g", "g","g", "g", "g","g", "blk", "blk", "red","e"],
+    ["e", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "e"],
+
+    ],
+}
 levels["TEST"] = {
     level: "TEST",
     name: "Something",
-    bgm: "ep7_1",
+    bgm: "ep7_2",
     initialdp: 40,
     squadlimit: 9,
     hp: 3,
-    background: "loading_CB_center",
+    background: "loading_CB_under",
     description: "Testing ground",
 
-    waves: [{"number":0, "time": 0, "gap": 5, "enemies": "guerrilla sniper", "line": false, "count": 1, "taunt": false, "start": [4, 5], "checkpoints": [{ "start": [4, 5], "end": [4, 5], "pause": 300 }]},
-        {"number":1, "time": 0, "gap": 5, "enemies": "guerrilla hound pro", "line": false, "count": 1, "taunt": false, "start": [3, 6], "checkpoints": [{ "start": [3, 6], "end": [3, 6], "pause": 300 }] },
-        {"number":2, "time": 0, "gap": 5, "enemies": "guerrilla fighter leader", "line": true, "taunt": false, "count": 1, "start": [7, 10], "checkpoints": [{ "start": [7, 10], "end": [7, 2], "pause": 5 }, { "start": [7, 2], "end": [7, 10], "pause": 5 }, { "start": [7, 10], "end": [7, 2], "pause": 5 }, { "start": [7, 2], "end": [7, 10], "pause": 5 }, { "start": [7, 10], "end": [7, 0], "pause": 0 }] },
-        {"number":3, "time": 10, "gap": 5, "enemies": "guerrilla herald", "line": true, "taunt": false, "count": 1, "start": [7, 12], "checkpoints": [{ "start": [7, 12], "end": [7, 11], "pause": 19 }, { "start": [7, 11], "end": [7, 0], "pause": 0 }] },
-        { "number":4,"time": 30, "gap": 5, "enemies": "guerrilla herald leader", "line": false, "taunt": false, "count": 1, "start": [7, 12], "checkpoints": [{ "start": [7, 12], "end": [7, 11], "pause": 100 }, { "start": [7, 11], "end": [7, 0], "pause": 0 }] },
+    waves: [{"number":0, "time": 0, "gap": 5, "enemies": "Sarkaz Guerrilla Fighter Leader", "line": false, "tooltip": true, "count": 1, "taunt": false, "start": [4, 5], "checkpoints": [{ "start": [4, 5], "end": [4, 5], "pause": 300 }]},
+        {"number":1, "time": 0, "gap": 5, "enemies": "Guerrilla Shieldguard Leader", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [3, 6], "checkpoints": [{ "start": [3, 6], "end": [3, 6], "pause": 300 }] },
+        {"number":2, "time": 0, "gap": 5, "enemies": "Guerrilla Fighter Leader", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [7, 10], "checkpoints": [{ "start": [7, 10], "end": [7, 2], "pause": 5 }, { "start": [7, 2], "end": [7, 10], "pause": 5 }, { "start": [7, 10], "end": [7, 2], "pause": 5 }, { "start": [7, 2], "end": [7, 10], "pause": 5 }, { "start": [7, 10], "end": [7, 0], "pause": 0 }] },
+        {"number":3, "time": 10, "gap": 5, "enemies": "Guerrilla Herald", "line": true, "tooltip": true, "taunt": false, "count": 1, "start": [7, 12], "checkpoints": [{ "start": [7, 12], "end": [7, 11], "pause": 19 }, { "start": [7, 11], "end": [7, 0], "pause": 0 }] },
+        { "number":4,"time": 30, "gap": 5, "enemies": "Guerrilla Herald Leader", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [7, 12], "checkpoints": [{ "start": [7, 12], "end": [7, 11], "pause": 100 }, { "start": [7, 11], "end": [7, 0], "pause": 0 }] },
 ],
 
-    enemies: ["guerrilla sniper","guerrilla fighter leader","guerrilla hound pro","guerrilla herald","guerrilla herald leader"],
+    enemies: ["Guerrilla Shieldguard Leader","Guerrilla Fighter Leader","Sarkaz Guerrilla Fighter Leader","Guerrilla Herald","Guerrilla Herald Leader"],
     hazards : ["altar"],
 
     layout: [["bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg"], ["blue", "g", "g", "g", "g", "g", "g", "g", "g", "g", "g", "blk", "red"],

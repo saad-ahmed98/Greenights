@@ -25,10 +25,6 @@ class Tile {
                 h = 15;
                 color = new BABYLON.Color3(0.17, 0.17, 0.17);
                 break;
-            case "blkr":
-                h = 15;
-                color = new BABYLON.Color3(0.4, 0.4, 0.4);
-                break;
             case "blk":
                 h = 3;
                 color = new BABYLON.Color3(0.4, 0.4, 0.4);
@@ -49,6 +45,8 @@ class Tile {
         this.color = color;
         this.mesh.freezeWorldMatrix();
         this.mesh.convertToUnIndexedMesh();
+        if(this.type=="e")
+        this.mesh.visibility = 0;
 
     }
 

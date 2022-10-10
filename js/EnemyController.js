@@ -54,7 +54,10 @@ class EnemyController extends CharaController {
                 if (keys[i] == "move") {
                     delay = 30 * this.gamespeed * duration / ((this.chara.speed + this.buffs.getSpeed()) / this.chara.speed)
                 }
-                this.sprite.delay = delay
+                if(keys[i]== "atkanim")
+                    this.sprite.playAnimation(x + 1, this.chara.atkanim.end, false, delay);
+
+                else this.sprite.delay = delay
             }
         }
         if (pause)
@@ -166,6 +169,7 @@ class EnemyController extends CharaController {
         this.checkpoints = this.pattern.shift();
         this.currentpoint = this.checkpoints.path.shift();
         this.addHPBar(gui);
+
         if (this.chara.start != undefined) {
             this.spawning = true;
             this.sprite.playAnimation(this.chara.start.start, this.chara.start.end, false, this.gamespeed * 30 * this.chara.start.duration);

@@ -1,8 +1,8 @@
 let enemylist = {};
 
 
-enemylist['dog'] = {
-    name:"dog",
+enemylist['Hound'] = {
+    name:"Hound",
     hp: 1700,
     atk: 260,
     def: 0,
@@ -57,8 +57,8 @@ enemylist['dog'] = {
 
 }
 
-enemylist['crossbowman'] = {
-    name:"crossbowman",
+enemylist['Crossbowman'] = {
+    name:"Crossbowman",
     hp: 1900,
     atk: 310,
     def: 150,
@@ -114,8 +114,8 @@ enemylist['crossbowman'] = {
 }
 
 
-enemylist['sarkaz grudgebearer'] = {
-    name:"sarkaz grudgebearer",
+enemylist['Sarkaz Grudgebearer'] = {
+    name:"Sarkaz Grudgebearer",
     hp: 15000,
     atk: 700,
     def: 250,
@@ -196,8 +196,8 @@ enemylist['sarkaz grudgebearer'] = {
     }
 }
 
-enemylist['sarkaz sentinel'] = {
-    name:"sarkaz sentinel",
+enemylist['Sarkaz Sentinel'] = {
+    name:"Sarkaz Sentinel",
     hp: 4000,
     atk: 0,
     def: 100,
@@ -287,8 +287,8 @@ enemylist['sarkaz sentinel'] = {
     }
 }
 
-enemylist['sarkaz swordsman'] = {
-    name:"sarkaz swordsman",
+enemylist['Sarkaz Swordsman'] = {
+    name:"Sarkaz Swordsman",
     hp: 4000,
     atk: 370,
     def: 100,
@@ -345,8 +345,8 @@ enemylist['sarkaz swordsman'] = {
 
 }
 
-enemylist['sarkaz greatswordsman'] = {
-    name:"sarkaz greatswordsman",
+enemylist['Sarkaz Greatswordsman'] = {
+    name:"Sarkaz Greatswordsman",
     hp: 7500,
     atk: 600,
     def: 230,
@@ -401,8 +401,8 @@ enemylist['sarkaz greatswordsman'] = {
 
 }
 
-enemylist['sarkaz crossbowman'] = {
-    name:"sarkaz crossbowman",
+enemylist['Sarkaz Crossbowman'] = {
+    name:"Sarkaz Crossbowman",
     hp: 6000,
     atk: 450,
     def: 200,
@@ -458,8 +458,8 @@ enemylist['sarkaz crossbowman'] = {
 
 }
 
-enemylist['sarkaz bladeweaver'] = {
-    name:"sarkaz bladeweaver",
+enemylist['Sarkaz Bladeweaver'] = {
+    name:"Sarkaz Bladeweaver",
     hp: 6500,
     atk: 400,
     def: 200,
@@ -528,8 +528,8 @@ enemylist['sarkaz bladeweaver'] = {
     }
 }
 
-enemylist["guerrilla fighter"] = {
-    name:"guerrilla fighter",
+enemylist["Guerrilla Fighter"] = {
+    name:"Guerrilla Fighter",
     hp: 3300,
     atk: 300,
     def: 300,
@@ -541,10 +541,12 @@ enemylist["guerrilla fighter"] = {
     range:0,
     dmgtype:"physical",
     size:1,
+    tooltip:"Moves faster when Inspired\n by a Herald or by Patriot.",
 
     enemytype:"normal",
 
     spritesheet:"images/sprites/guerrilla-fighter-sheet.png",
+    
 
     hasskill:true,
     
@@ -598,8 +600,8 @@ enemylist["guerrilla fighter"] = {
 
 }
 
-enemylist["guerrilla fighter leader"] = {
-    name:"guerrilla fighter leader",
+enemylist["Guerrilla Fighter Leader"] = {
+    name:"Guerrilla Fighter Leader",
     hp: 4500,
     atk: 330,
     def: 350,
@@ -611,6 +613,8 @@ enemylist["guerrilla fighter leader"] = {
     range:0,
     dmgtype:"physical",
     size:1,
+    tooltip:"Moves faster when Inspired by a Herald or by Patriot.",
+
 
     enemytype:"normal",
 
@@ -668,8 +672,8 @@ enemylist["guerrilla fighter leader"] = {
 
 }
 
-enemylist["guerrilla sniper"] = {
-    name:"guerrilla sniper",
+enemylist["Guerrilla Sniper"] = {
+    name:"Guerrilla Sniper",
     hp: 3000,
     atk: 340,
     def: 300,
@@ -681,6 +685,7 @@ enemylist["guerrilla sniper"] = {
     range:2,
     dmgtype:"physical",
     size:1,
+    tooltip:"Attacks two targets at once\n when Inspired by a Herald or by Patriot.",
 
     enemytype:"normal",
 
@@ -738,8 +743,8 @@ enemylist["guerrilla sniper"] = {
 
 }
 
-enemylist["guerrilla sniper leader"] = {
-    name:"guerrilla sniper leader",
+enemylist["Guerrilla Sniper Leader"] = {
+    name:"Guerrilla Sniper Leader",
     hp: 4000,
     atk: 390,
     def: 300,
@@ -751,6 +756,7 @@ enemylist["guerrilla sniper leader"] = {
     range:2,
     dmgtype:"physical",
     size:1,
+    tooltip:"Attacks two targets at once\n when Inspired by a Herald or by Patriot.",
 
     enemytype:"normal",
 
@@ -808,8 +814,8 @@ enemylist["guerrilla sniper leader"] = {
 
 }
 
-enemylist['guerrilla hound'] = {
-    name:"guerrilla hound",
+enemylist['Guerrilla Hound'] = {
+    name:"Guerrilla Hound",
     hp: 2900,
     atk: 350,
     def: 150,
@@ -821,6 +827,8 @@ enemylist['guerrilla hound'] = {
     range:0,
     dmgtype:"physical",
     size:1,
+
+    tooltip:"A basic guerrilla-ops war hound\n having decent defenses while\n still being able to move quickly.",
 
     enemytype:"normal",
 
@@ -864,8 +872,8 @@ enemylist['guerrilla hound'] = {
 
 }
 
-enemylist['guerrilla hound pro'] = {
-    name:"guerrilla hound pro",
+enemylist['Guerrilla Hound Pro'] = {
+    name:"Guerrilla Hound Pro",
     hp: 3080,
     atk: 420,
     def: 150,
@@ -877,6 +885,7 @@ enemylist['guerrilla hound pro'] = {
     range:0,
     dmgtype:"physical",
     size:1,
+    tooltip:"An elite guerrilla-ops war hound\n more aggressive than\n standard guerrilla hounds.",
 
     enemytype:"normal",
 
@@ -920,8 +929,8 @@ enemylist['guerrilla hound pro'] = {
 
 }
 
-enemylist["guerrilla siegebreaker"] = {
-    name:"guerrilla siegebreaker",
+enemylist["Guerrilla Siegebreaker"] = {
+    name:"Guerrilla Siegebreaker",
     hp: 3800,
     atk: 360,
     def: 550,
@@ -933,6 +942,7 @@ enemylist["guerrilla siegebreaker"] = {
     range:0,
     dmgtype:"physical",
     size:1,
+    tooltip:"Gains significantly increased ATK \nwhen Inspired by a Herald or by Patriot.",
 
     enemytype:"normal",
 
@@ -998,8 +1008,8 @@ enemylist["guerrilla siegebreaker"] = {
         },
 }
 
-enemylist["guerrilla siegebreaker leader"] = {
-    name:"guerrilla siegebreaker leader",
+enemylist["Guerrilla Siegebreaker Leader"] = {
+    name:"Guerrilla Siegebreaker Leader",
     hp: 5000,
     atk: 430,
     def: 550,
@@ -1011,6 +1021,7 @@ enemylist["guerrilla siegebreaker leader"] = {
     range:0,
     dmgtype:"physical",
     size:1,
+    tooltip:"Gains significantly increased ATK \nwhen Inspired by a Herald or by Patriot.",
 
     enemytype:"normal",
 
@@ -1077,8 +1088,8 @@ enemylist["guerrilla siegebreaker leader"] = {
     },
 }
 
-enemylist["sarkaz guerrilla fighter leader"] = {
-    name:"sarkaz guerrilla fighter leader",
+enemylist["Sarkaz Guerrilla Fighter Leader"] = {
+    name:"Sarkaz Guerrilla Fighter Leader",
     hp: 12000,
     atk: 580,
     def: 400,
@@ -1090,6 +1101,7 @@ enemylist["sarkaz guerrilla fighter leader"] = {
     range:0,
     dmgtype:"physical",
     size:1.1,
+    tooltip:"Does not take damage when \ncoming in contact with \na Pulse Wave and attacks\n instead deal Arts damage.",
 
     enemytype:"normal",
 
@@ -1169,8 +1181,8 @@ enemylist["sarkaz guerrilla fighter leader"] = {
     },
 }
 
-enemylist["guerrilla shieldguard"] = {
-    name:"guerrilla shieldguard",
+enemylist["Guerrilla Shieldguard"] = {
+    name:"Guerrilla Shieldguard",
     hp: 15000,
     atk: 700,
     def: 1300,
@@ -1182,6 +1194,7 @@ enemylist["guerrilla shieldguard"] = {
     range:0,
     dmgtype:"physical",
     size:1.1,
+    tooltip:"Covers the advance of \nenemy troops by making themselves\n more likely to be attacked.",
 
     enemytype:"normal",
 
@@ -1236,8 +1249,8 @@ enemylist["guerrilla shieldguard"] = {
     },
 }
 
-enemylist["guerrilla shieldguard leader"] = {
-    name:"guerrilla shieldguard leader",
+enemylist["Guerrilla Shieldguard Leader"] = {
+    name:"Guerrilla Shieldguard Leader",
     hp: 25000,
     atk: 800,
     def: 1500,
@@ -1249,6 +1262,7 @@ enemylist["guerrilla shieldguard leader"] = {
     range:0,
     dmgtype:"physical",
     size:1.1,
+    tooltip:"Covers the advance of \nenemies by making themselves\n more likely to be attacked.",
 
     enemytype:"normal",
 
@@ -1303,8 +1317,8 @@ enemylist["guerrilla shieldguard leader"] = {
     },
 }
 
-enemylist["guerrilla herald"] = {
-    name:"guerrilla herald",
+enemylist["Guerrilla Herald"] = {
+    name:"Guerrilla Herald",
     hp: 1000,
     atk: 300,
     def: 120,
@@ -1316,6 +1330,7 @@ enemylist["guerrilla herald"] = {
     range:0,
     dmgtype:"physical",
     size:1,
+    tooltip:"When on the battlefield,\n Inspires all enemies,\n increasing their ATK and DEF.",
 
     enemytype:"normal",
 
@@ -1373,8 +1388,8 @@ enemylist["guerrilla herald"] = {
         },
 }
 
-enemylist["guerrilla herald leader"] = {
-    name:"guerrilla herald leader",
+enemylist["Guerrilla Herald Leader"] = {
+    name:"Guerrilla Herald Leader",
     hp: 10000,
     atk: 360,
     def: 120,
@@ -1386,6 +1401,7 @@ enemylist["guerrilla herald leader"] = {
     range:0,
     dmgtype:"physical",
     size:1,
+    tooltip:"When on the battlefield,\n Inspires all enemies,\n increasing their ATK and DEF.",
 
     enemytype:"normal",
 

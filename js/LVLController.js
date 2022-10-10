@@ -127,6 +127,7 @@ class LVLController extends LVLAbstract {
     }
 
     loadAssets() {
+        this.loadIcons();
         this.loadSounds();
         this.loadSprites();
         this.loadHazards();
@@ -134,6 +135,112 @@ class LVLController extends LVLAbstract {
         //this.loadBuildings();
         //this.loadSkybox("images/LVL1/skybox.jpg");
     }
+    loadIcons() {
+        this.loadPlayerIcons();
+        this.loadEnemyIcons();
+        this.loadStaticImages();
+    }
+    loadPlayerIcons() {
+        var instance = this;
+        var assetsManager = instance.scene.assetsManager;
+        var binaryTask;
+        var keys = Object.keys(this.playerlist)
+        for (let i = 0; i < keys.length; i++) {
+
+            binaryTask = assetsManager.addImageTask(
+                instance.playerlist[keys[i]].name + "-opicon",
+                instance.playerlist[keys[i]].opicon
+            );
+            binaryTask.onSuccess = function (task) {
+                instance.scene.assets[task.name] = task.image
+            };
+
+            binaryTask = assetsManager.addImageTask(
+                instance.playerlist[keys[i]].name + "-classicon",
+                instance.playerlist[keys[i]].classicon
+            );
+            binaryTask.onSuccess = function (task) {
+                instance.scene.assets[task.name] = task.image
+            };
+        }
+    }
+
+    loadEnemyIcons() {
+        var instance = this;
+        var assetsManager = instance.scene.assetsManager;
+        var binaryTask;
+        for (let i = 0; i < this.appearingenemies.length; i++) {
+
+            binaryTask = assetsManager.addImageTask(
+                instance.appearingenemies[i] + "-enemyicon",
+                "images/enemyicons/" + instance.appearingenemies[i] + ".png",
+            );
+            binaryTask.onSuccess = function (task) {
+                instance.scene.assets[task.name] = task.image
+            };
+        }
+
+    }
+    loadStaticImages() {
+        var instance = this;
+        var assetsManager = instance.scene.assetsManager;
+        var binaryTask;
+
+        binaryTask = assetsManager.addImageTask(
+            "retrybutton",
+            "images/common/retry.png",
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets[task.name] = task.image
+        };
+        binaryTask = assetsManager.addImageTask(
+            "battlestats",
+            "images/common/battlestats.png",
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets[task.name] = task.image
+        };
+        binaryTask = assetsManager.addImageTask(
+            "quitbutton",
+            "images/common/quit.png",
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets[task.name] = task.image
+        };
+
+        binaryTask = assetsManager.addImageTask(
+            "rdfilter",
+            "images/common/rd.png",
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets[task.name] = task.image
+        };
+        binaryTask = assetsManager.addImageTask(
+            "greyfilter",
+            "images/common/notavailable.png",
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets[task.name] = task.image
+        };
+
+        binaryTask = assetsManager.addImageTask(
+            "dpicon",
+            "images/common/dp.png",
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets[task.name] = task.image
+        };
+
+        binaryTask = assetsManager.addImageTask(
+            "retreatbutton",
+            "images/common/retreat.png",
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets[task.name] = task.image
+        };
+
+    }
+
     loadHazards() {
         var instance = this;
         var keys = Object.keys(this.presentHazards)
@@ -731,7 +838,6 @@ class LVLController extends LVLAbstract {
         }
         if (this.enemies.length > 0) {
             let inspired = this.enemies[0].buffs.getInspire()
-            console.log(inspired)
             for (let i = 0; i < this.enemies.length; i++) {
                 if (this.enemies[i].enemySkill != undefined) {
                     if (this.enemies[i].enemySkill.triggertype == "on_inspire") {
@@ -745,7 +851,6 @@ class LVLController extends LVLAbstract {
 
                 }
             }
-
         }
     }
 
@@ -882,8 +987,8 @@ class LVLController extends LVLAbstract {
         var pointerDown = function (mesh) {
             if (!dragging) {
                 currentMesh = mesh;
-
-                instance.prevspeed = instance.gamespeed
+                if (instance.gamespeed != 8)
+                    instance.prevspeed = instance.gamespeed
                 instance.gamespeed = 8
                 instance.updateSpeed()
 
@@ -951,8 +1056,8 @@ class LVLController extends LVLAbstract {
                                         instance.playSound(instance.tiles[x][y].player.chara.name + "-select", instance.vcvolume)
                                         instance.displayRangeTiles(x, y, instance.tiles[x][y].player.chara.range)
                                         instance.createFocusCamera(x * 30, y * 30);
-
-                                        instance.prevspeed = instance.gamespeed
+                                        if (instance.gamespeed != 8)
+                                            instance.prevspeed = instance.gamespeed
                                         instance.gamespeed = 8
                                         instance.updateSpeed()
 
@@ -1182,6 +1287,12 @@ class LVLController extends LVLAbstract {
                 this.drawLine(this.waves[i]["checkpoints"])
             }
             if (this.waves[i]["time"] * 30 <= this.maptimer) {
+                if (this.waves[i]["tooltip"]) {
+                    this.playSound("tooltip", 0.5);
+                    this.gui.createTooltip(this.enemylist[this.waves[i]["enemies"]])
+                    this.waves[i]["tooltip"] = false;
+                }
+
                 this.waves[i]["time"] += this.waves[i]["gap"];
 
                 this.createEnemy(this.waves[i]["enemies"], this.waves[i]["start"], this.waves[i]["checkpoints"], "wave" + this.waves[i]["number"] + this.waves[i]["count"]);

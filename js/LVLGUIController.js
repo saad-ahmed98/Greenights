@@ -19,6 +19,7 @@ class LVLGUIController {
         this.statscontroller = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI2", true, scene);
         this.wheelController = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI3", true, scene);
         this.contextMenuController;
+        this.tooltipcontroller = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI4", true, scene);
 
         //stats that need to be stocked to be updated afterwards
         this.mapstats;
@@ -85,8 +86,6 @@ class LVLGUIController {
             //instance.contextMenuController.dispose();
 
         });
-
-
 
     }
 
@@ -182,44 +181,46 @@ class LVLGUIController {
 
 
         container.addControl(msg)
-         //quit button
-         var containerq = new BABYLON.GUI.Rectangle();
-         containerq.width = "15%";
-         containerq.height = "80%";
-         containerq.left = "10%";
-         containerq.color = "white";
-         containerq.thickness = 3;
-         containerq.background = "black";
- 
- 
-         var quit = new BABYLON.GUI.Image("", "images/common/quit.png");
- 
-         containerq.addControl(quit)
-         
-         containerq.onPointerDownObservable.add(() => {
-             titleLoading=""
-             lvlnumber=""
+        //quit button
+        var containerq = new BABYLON.GUI.Rectangle();
+        containerq.width = "15%";
+        containerq.height = "80%";
+        containerq.left = "10%";
+        containerq.color = "white";
+        containerq.thickness = 3;
+        containerq.background = "black";
+
+
+        var quit = new BABYLON.GUI.Image("",);
+        quit.domImage = this.scene.assets["quitbutton"]
+
+        containerq.addControl(quit)
+
+        containerq.onPointerDownObservable.add(() => {
+            titleLoading = ""
+            lvlnumber = ""
             new MainMenu(lvlcont.gameconfig)
-         });
- 
-         var container2 = new BABYLON.GUI.Rectangle();
-         container2.width = "15%";
-         container2.height = "80%";
-         container2.left = "30%";
-         container2.color = "white";
-         container2.thickness = 3;
-         container2.background = "black";
- 
- 
-         var retry = new BABYLON.GUI.Image("", "images/common/retry.png");
- 
-         container2.addControl(retry)
-         
-         container2.onPointerDownObservable.add(() => {
+        });
+
+        var container2 = new BABYLON.GUI.Rectangle();
+        container2.width = "15%";
+        container2.height = "80%";
+        container2.left = "30%";
+        container2.color = "white";
+        container2.thickness = 3;
+        container2.background = "black";
+
+
+        var retry = new BABYLON.GUI.Image("",);
+        retry.domImage = this.scene.assets["retrybutton"]
+
+        container2.addControl(retry)
+
+        container2.onPointerDownObservable.add(() => {
             lvlcont.restart()
-         });
-     
- 
+        });
+
+
         container.addControl(containerq);
         container.addControl(container2);
         this.lvlcontroller.addControl(container);
@@ -250,49 +251,51 @@ class LVLGUIController {
         msg.fontSize = "40%";
 
         container.addControl(msg)
-         //quit button
-         var containerq = new BABYLON.GUI.Rectangle();
-         containerq.width = "15%";
-         containerq.height = "80%";
-         containerq.left = "10%";
-         containerq.color = "white";
-         containerq.thickness = 3;
-         containerq.background = "black";
- 
- 
-         var quit = new BABYLON.GUI.Image("", "images/common/quit.png");
- 
-         containerq.addControl(quit)
-         
-         containerq.onPointerDownObservable.add(() => {
-             titleLoading=""
-             lvlnumber=""
+        //quit button
+        var containerq = new BABYLON.GUI.Rectangle();
+        containerq.width = "15%";
+        containerq.height = "80%";
+        containerq.left = "10%";
+        containerq.color = "white";
+        containerq.thickness = 3;
+        containerq.background = "black";
+
+
+        var quit = new BABYLON.GUI.Image("",);
+        quit.domImage = this.scene.assets["quitbutton"]
+
+        containerq.addControl(quit)
+
+        containerq.onPointerDownObservable.add(() => {
+            titleLoading = ""
+            lvlnumber = ""
             new MainMenu(lvlcont.gameconfig)
-         });
- 
-         var container2 = new BABYLON.GUI.Rectangle();
-         container2.width = "15%";
-         container2.height = "80%";
-         container2.left = "30%";
-         container2.color = "white";
-         container2.thickness = 3;
-         container2.background = "black";
- 
- 
-         var retry = new BABYLON.GUI.Image("", "images/common/retry.png");
- 
-         container2.addControl(retry)
-         
-         container2.onPointerDownObservable.add(() => {
+        });
+
+        var container2 = new BABYLON.GUI.Rectangle();
+        container2.width = "15%";
+        container2.height = "80%";
+        container2.left = "30%";
+        container2.color = "white";
+        container2.thickness = 3;
+        container2.background = "black";
+
+
+        var retry = new BABYLON.GUI.Image("",);
+        retry.domImage = this.scene.assets["retrybutton"]
+
+        container2.addControl(retry)
+
+        container2.onPointerDownObservable.add(() => {
             lvlcont.restart()
-         });
-     
- 
+        });
+
+
         container.addControl(containerq);
         container.addControl(container2);
         this.lvlcontroller.addControl(container);
 
-        
+
 
     }
 
@@ -301,7 +304,8 @@ class LVLGUIController {
     createStatsUI(enemies, hp, lvlcontroller) {
 
         //battle stats background image
-        var image = new BABYLON.GUI.Image("lvlclear", "images/common/battlestats.png");
+        var image = new BABYLON.GUI.Image("",);
+        image.domImage = this.scene.assets["battlestats"]
         image.width = "30%";
         image.height = "7%";
         image.top = "-46%"
@@ -381,9 +385,9 @@ class LVLGUIController {
                     this.createPauseScreen(lvlcontroller)
                 }
                 else {
-                    if(pause.text =="▶"){
-                    pause.text = "❚❚";
-                    this.removePauseScreen(lvlcontroller)
+                    if (pause.text == "▶") {
+                        pause.text = "❚❚";
+                        this.removePauseScreen(lvlcontroller)
                     }
                 }
             }
@@ -412,7 +416,7 @@ class LVLGUIController {
 
         //pauses or unpauses the game on click
         container3.onPointerDownObservable.add(() => {
-            
+
             if (!(this.showinggui && !this.isPaused)) {
                 if (!this.isPaused) {
                     esc.text = "▶";
@@ -423,7 +427,7 @@ class LVLGUIController {
                     this.removePauseScreen(lvlcontroller)
                 }
             }
-            
+
         });
 
         this.statscontroller.addControl(container3);
@@ -462,8 +466,9 @@ class LVLGUIController {
             container.color = "White";
             container.thickness = 1;
             container.background = "transparent";
-            var image = new BABYLON.GUI.Image("", players[keys[i]].opicon);
 
+            var image = new BABYLON.GUI.Image("",);
+            image.domImage = this.scene.assets[keys[i] + "-opicon"]
             var container2 = new BABYLON.GUI.Rectangle();
             container2.width = "90%";
             container2.height = "30%";
@@ -471,7 +476,8 @@ class LVLGUIController {
             container2.top = "-35%";
             container2.background = "black";
 
-            var classicon = new BABYLON.GUI.Image("", players[keys[i]].classicon);
+            var classicon = new BABYLON.GUI.Image("",);
+            classicon.domImage = this.scene.assets[keys[i] + "-classicon"]
             classicon.width = "40%";
             classicon.left = "-25%";
 
@@ -488,14 +494,17 @@ class LVLGUIController {
             container.addControl(container2);
 
             if (players[keys[i]].cost > dp || squadlimit == 0) {
-                var greyfilter = new BABYLON.GUI.Image("", "images/common/notavailable.png");
+                var greyfilter = new BABYLON.GUI.Image("",);
+                greyfilter.domImage = this.scene.assets["greyfilter"]
                 this.greyfilters[keys[i]] = { "filter": greyfilter, "cost": players[keys[i]].cost }
                 container.addControl(greyfilter);
 
             }
 
             if (players[keys[i]].rdcounter > 0) {
-                var redfilter = new BABYLON.GUI.Image("", "images/common/rd.png");
+                var redfilter = new BABYLON.GUI.Image("",);
+                redfilter.domImage = this.scene.assets["rdfilter"]
+                //var redfilter = new BABYLON.GUI.Image("", "images/common/rd.png");
                 var timer = new BABYLON.GUI.TextBlock();
                 timer.text = players[keys[i]].rdcounter;
                 timer.color = "white";
@@ -530,7 +539,9 @@ class LVLGUIController {
         container3.color = "black";
         container3.background = "black";
 
-        var dpicon = new BABYLON.GUI.Image("", "images/common/dp.png");
+        var dpicon = new BABYLON.GUI.Image("",);
+        dpicon.domImage = this.scene.assets["dpicon"]
+        //var dpicon = new BABYLON.GUI.Image("", "images/common/dp.png");
         dpicon.width = "30%";
         dpicon.height = "50%";
         dpicon.left = "-25%";
@@ -594,7 +605,8 @@ class LVLGUIController {
 
         this.timerPauseActivate()
 
-        var greyfilter = new BABYLON.GUI.Image("", "images/common/notavailable.png");
+        var greyfilter = new BABYLON.GUI.Image("",);
+        greyfilter.domImage = this.scene.assets["greyfilter"]
         greyfilter.width = "100%"
         greyfilter.height = "100%"
 
@@ -617,11 +629,12 @@ class LVLGUIController {
 
         this.timerPauseActivate()
 
-        var greyfilter = new BABYLON.GUI.Image("", "images/common/notavailable.png");
+        var greyfilter = new BABYLON.GUI.Image("",);
+        greyfilter.domImage = this.scene.assets["greyfilter"]
         greyfilter.width = "100%"
         greyfilter.height = "100%"
-        
-        
+
+
         this.lvlcontroller.addControl(greyfilter);
         //quit button
         var container = new BABYLON.GUI.Rectangle();
@@ -633,15 +646,16 @@ class LVLGUIController {
         container.background = "black";
 
 
-        var quit = new BABYLON.GUI.Image("", "images/common/quit.png");
+        var quit = new BABYLON.GUI.Image("",);
+        quit.domImage = this.scene.assets["quitbutton"]
 
         container.addControl(quit)
-        
+
         //pauses or unpauses the game on click
         container.onPointerDownObservable.add(() => {
-            titleLoading=""
-            lvlnumber=""
-           new MainMenu(lvlcont.gameconfig)
+            titleLoading = ""
+            lvlnumber = ""
+            new MainMenu(lvlcont.gameconfig)
         });
 
         var container2 = new BABYLON.GUI.Rectangle();
@@ -653,41 +667,71 @@ class LVLGUIController {
         container2.background = "black";
 
 
-        var retry = new BABYLON.GUI.Image("", "images/common/retry.png");
+        var retry = new BABYLON.GUI.Image("",);
+        retry.domImage = this.scene.assets["retrybutton"]
+
 
         container2.addControl(retry)
-        
+
         //pauses or unpauses the game on click
         container2.onPointerDownObservable.add(() => {
-           lvlcont.restart()
+            lvlcont.restart()
         });
-    
+
 
         this.lvlcontroller.addControl(container);
         this.lvlcontroller.addControl(container2);
 
 
     }
-    /*
-    createTooltip(source, width, height) {
-        this.lvlcontroller.dispose();
-        this.lvlcontroller = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI", true, this.scene);
-        var image = new BABYLON.GUI.Image("tooltip", source);
-        var panel = new BABYLON.GUI.StackPanel("panel");
-        panel.top = "-350px;"
 
-        this.lvlcontroller.addControl(panel);
-        image.width = width;
-        image.height = height;
+    createTooltip(enemy) {
+        this.tooltipcontroller.dispose();
+        this.tooltipcontroller = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI", true, this.scene);
+        var image = new BABYLON.GUI.Image("tooltip",);
+        image.domImage = this.scene.assets[enemy.name + "-enemyicon"]
+        image.width = "40%"
+        image.left = "-30%"
 
-        panel.addControl(image);
-        setTimeout(this.removeTool, 8000, panel, image)
+
+        var container = new BABYLON.GUI.Rectangle();
+        container.width = "25%";
+        container.height = "18%";
+        container.left = "-2%";
+        container.top = "13%";
+        container.color = "white";
+        container.thickness = 1;
+        container.background = "black";
+
+        container.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_RIGHT;
+        container.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
+
+        var textbox = new BABYLON.GUI.Rectangle();
+        textbox.width = "60%";
+        textbox.left = "20%";
+        textbox.color = "white";
+        textbox.thickness = 1;
+        textbox.background = "black";
+        
+        var text = new BABYLON.GUI.TextBlock();
+        text.text = enemy.name+"\n\n"+enemy.tooltip;
+        text.color = "white";
+        text.fontSize = "10%";
+        
+        textbox.addControl(text)
+        container.addControl(image)
+        container.addControl(textbox)
+
+        this.tooltipcontroller.addControl(container);
+
+        setTimeout(this.removeTool, 8000, this.tooltipcontroller, container)
+        
     }
 
     removeTool(panel, image) {
         panel.removeControl(image)
     }
-    */
+
 
     removePauseScreen(lvlcont) {
         this.showinggui = false;

@@ -46,9 +46,11 @@ class Altar {
         let hitplayers = this.getEnemiesInRange(players, 2)
         for (let i = 0; i < hitenemies.length; i++) {
             if (hitenemies[i].enemySkill != undefined) {
-                if (hitenemies[i].enemySkill.triggertype == "on_altar" && !hitenemies[i].enemySkill.active) {
+                if (hitenemies[i].enemySkill.triggertype == "on_altar" ) {
+                    if(!hitenemies[i].enemySkill.active){
                     hitenemies[i].enemySkill.activateSkill([hitenemies[i]])
                     hitenemies[i].activateSkillAnims()
+                    }
                 }
                 else hitenemies[i].receiveDamage(this, true)
             }

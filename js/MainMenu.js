@@ -208,7 +208,7 @@ class MainMenu extends LVLAbstract {
             var msg = new BABYLON.GUI.TextBlock();
             msg.text = levels[keys[i]].level;
             msg.color = "white";
-            msg.fontSize = "80%";
+            msg.fontSize = "70%";
 
             button.addControl(msg)
             button.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
