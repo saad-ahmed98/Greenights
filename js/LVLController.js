@@ -11,6 +11,7 @@ class LVLController extends LVLAbstract {
         this.enemies = [];
         this.hazards = [];
         this.presentHazards = lvl.hazards;
+        this.tooltips = lvl.tooltips;
 
         this.gui = new LVLGUIController(this.scene, this.gameconfig);
 
@@ -169,11 +170,11 @@ class LVLController extends LVLAbstract {
         var instance = this;
         var assetsManager = instance.scene.assetsManager;
         var binaryTask;
-        for (let i = 0; i < this.appearingenemies.length; i++) {
+        for (let i = 0; i < this.tooltips.length; i++) {
 
             binaryTask = assetsManager.addImageTask(
-                instance.appearingenemies[i] + "-enemyicon",
-                "images/enemyicons/" + instance.appearingenemies[i] + ".png",
+                instance.tooltips[i] + "-enemyicon",
+                "images/enemyicons/" + instance.tooltips[i] + ".png",
             );
             binaryTask.onSuccess = function (task) {
                 instance.scene.assets[task.name] = task.image

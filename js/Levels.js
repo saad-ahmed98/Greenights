@@ -7,7 +7,7 @@ levels["AMOGUS-1"] = {
     hp: 3,
     bgm: "dm_2",
     background: "loading4",
-    description: "Some mercenaries have been spotted at our doorstep.\n Take them out swiftly.\n",
+    description: "OooooOHOO OOO\n\n YOU WANT TO GAMING SO BADLY\n",
     waves: [
         {"number":0, "time": 1, "gap": 5, "enemies": "Sarkaz Grudgebearer", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [1, 8], "checkpoints": [{ "start": [1, 8], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [1, 8], "pause": 0 }, { "start": [1, 8], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [1, 8], "pause": 0 }, { "start": [1, 8], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [1, 8], "pause": 0 }, { "start": [1, 8], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [1, 8], "pause": 0 }, { "start": [1, 8], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [6, 8], "pause": 0 }, { "start": [6, 8], "end": [2, 1], "pause": 0 }] },
         { "number":1,"time": 1, "gap": 10, "enemies": "Sarkaz Bladeweaver", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [3, 9], "checkpoints": [{ "start": [3, 9], "end": [3, 9], "pause": 150 }, { "start": [3, 9], "end": [6, 7], "pause": 0 }, { "start": [6, 7], "end": [2, 1], "pause": 0 }] },
@@ -92,6 +92,8 @@ levels["AMOGUS-1"] = {
 
     ],
     enemies: ["Sarkaz Sentinel", "Sarkaz Grudgebearer", "Sarkaz Greatswordsman", "Sarkaz Bladeweaver", "Sarkaz Crossbowman", "Sarkaz Swordsman"],
+    tooltips: [],
+
 
 
     layout: [["bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg"], ["bg", "bg", "bg", "bg", "bg", "g", "g", "g", "g", "bg", "bg", "bg", "bg"],
@@ -100,7 +102,7 @@ levels["AMOGUS-1"] = {
     ["bg", "bg", "bg", "r", "g", "r", "bg", "r", "bg", "g", "bg", "bg", "bg"],
     ["bg", "red", "blk", "blk", "blk", "blk", "r", "bg", "blk", "blk", "blk", "blk", "blue"],
     ["bg", "bg", "bg", "r", "r", "g", "g", "g", "g", "bg", "bg", "bg", "bg"],
-    ["bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg"]
+    ["e", "e", "e", "e", "e", "e", "e", "e", "e", "e", "e", "e", "e"]
     ],
 
     hazards : [],
@@ -129,7 +131,7 @@ levels["GUERRILLA-1"] = {
     {"number":8, "time": 2, "gap": 5, "enemies": "Guerrilla Fighter", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [6, 11], "checkpoints": [{ "start": [6, 11], "end": [6, 10], "pause": 164 },{ "start": [6, 9], "end": [5, 1], "pause": 0 }]},
     {"number":9, "time": 2, "gap": 5, "enemies": "Guerrilla Fighter", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [2, 11], "checkpoints": [{ "start": [2, 11], "end": [2, 10], "pause": 166 },{ "start": [2, 9], "end": [3, 1], "pause": 0 }]},
 
-    {"number":10, "time": 6, "gap": 5, "enemies": "Guerrilla Hound", "line": true, "tooltip": true, "count": 1, "taunt": false, "start": [4, 11], "checkpoints": [{ "start": [4, 11], "end": [4, 1], "pause": 0 }]},
+    {"number":10, "time": 6, "gap": 5, "enemies": "Guerrilla Hound", "line": true, "tooltip": true, "count": 1, "taunt": true, "start": [4, 11], "checkpoints": [{ "start": [4, 11], "end": [4, 1], "pause": 0 }]},
     {"number":11, "time": 9, "gap": 5, "enemies": "Guerrilla Hound", "line": true, "tooltip": false, "count": 1, "taunt": false, "start": [5, 11], "checkpoints": [{ "start": [5, 11], "end": [5, 8], "pause": 0 },{ "start": [5, 8], "end": [4, 1], "pause": 0 }]},
     {"number":12, "time": 14, "gap": 5, "enemies": "Guerrilla Hound", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [4, 11], "checkpoints": [{ "start": [4, 11], "end": [4, 1], "pause": 0 }]},
     {"number":13, "time": 17, "gap": 4, "enemies": "Guerrilla Hound", "line": true, "tooltip": false, "count": 2, "taunt": false, "start": [2, 11], "checkpoints": [{ "start": [2, 11], "end": [3, 1], "pause": 0 }]},
@@ -180,6 +182,8 @@ levels["GUERRILLA-1"] = {
 ],
 
     enemies: ["Guerrilla Hound","Guerrilla Fighter"],
+    tooltips: ["Guerrilla Hound","Guerrilla Fighter"],
+
     hazards : [],
 
 
@@ -212,6 +216,7 @@ levels["TEST"] = {
 ],
 
     enemies: ["Guerrilla Shieldguard Leader","Guerrilla Fighter Leader","Sarkaz Guerrilla Fighter Leader","Guerrilla Herald","Guerrilla Herald Leader"],
+    tooltips: ["Sarkaz Guerrilla Fighter Leader","Guerrilla Herald"],
     hazards : ["altar"],
 
     layout: [["bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg"], ["blue", "g", "g", "g", "g", "g", "g", "g", "g", "g", "g", "blk", "red"],
