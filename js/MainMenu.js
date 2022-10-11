@@ -406,7 +406,7 @@ class MainMenu extends LVLAbstract {
             button.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
 
             myScrollViewer.addControl(button);
-            
+
 
             button.onPointerUpObservable.add(function () {
                 instance.playSound("click", 0.3)
@@ -488,7 +488,7 @@ class MainMenu extends LVLAbstract {
                 for (let i = 0; i < selected.length; i++) {
                     players[selected[i]] = JSON.parse(JSON.stringify(playerlist[selected[i]]));
                 }
-                new LVLController(instance.gameconfig, enemylist, players,JSON.parse(JSON.stringify(levels[lvlname])));
+                new LVLController(instance.gameconfig, enemylist, players, JSON.parse(JSON.stringify(levels[lvlname])));
             }
         });
 

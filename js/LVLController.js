@@ -18,7 +18,7 @@ class LVLController extends LVLAbstract {
         this.layout = lvl.layout
 
         this.bgm = lvl.bgm
-
+        this.maxhp = lvl.hp
         this.hp = lvl.hp
 
         this.matrix;
@@ -235,6 +235,14 @@ class LVLController extends LVLAbstract {
         binaryTask = assetsManager.addImageTask(
             "retreatbutton",
             "images/common/retreat.png",
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets[task.name] = task.image
+        };
+
+        binaryTask = assetsManager.addImageTask(
+            "losshp",
+            "images/common/loss.png",
         );
         binaryTask.onSuccess = function (task) {
             instance.scene.assets[task.name] = task.image
@@ -821,7 +829,7 @@ class LVLController extends LVLAbstract {
                 this.enemies.splice(i, 1)
                 i--;
                 this.enemycount++;
-                this.gui.updateStatsUI(this.enemycount + "/" + this.enemytot, this.hp);
+                this.gui.updateStatsUI(this.enemycount + "/" + this.enemytot, this.hp,this.maxhp);
             }
             else if (this.enemies[i].hp <= 0) {
                 //this.enemies[i].sprite.dispose();
@@ -833,7 +841,7 @@ class LVLController extends LVLAbstract {
                 this.enemies.splice(i, 1)
                 i--;
                 this.enemycount++;
-                this.gui.updateStatsUI(this.enemycount + "/" + this.enemytot, this.hp);
+                this.gui.updateStatsUI(this.enemycount + "/" + this.enemytot, this.hp,this.maxhp);
 
             }
         }

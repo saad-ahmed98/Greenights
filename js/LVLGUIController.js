@@ -22,7 +22,7 @@ class LVLGUIController {
         this.tooltipcontroller = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI4", true, scene);
 
         //stats that need to be stocked to be updated afterwards
-        this.mapstats;
+        this.mapstats = {};
         this.dpstat;
         this.squadstat;
         this.rdcounters = {};
@@ -172,7 +172,7 @@ class LVLGUIController {
         container.width = "100%";
         container.height = "30%";
         container.color = "black";
-        container.background = "black";
+        container.background = "rgba(0, 0, 0, 0.3)";
 
 
         var msg = new BABYLON.GUI.TextBlock();
@@ -190,7 +190,7 @@ class LVLGUIController {
         containerq.left = "10%";
         containerq.color = "white";
         containerq.thickness = 3;
-        containerq.background = "black";
+        containerq.background = "rgba(0, 0, 0, 0.3)";
 
 
         var quit = new BABYLON.GUI.Image("",);
@@ -210,7 +210,7 @@ class LVLGUIController {
         container2.left = "30%";
         container2.color = "white";
         container2.thickness = 3;
-        container2.background = "black";
+        container2.background = "rgba(0, 0, 0, 0.3)";
 
 
         var retry = new BABYLON.GUI.Image("",);
@@ -243,7 +243,7 @@ class LVLGUIController {
         container.width = "100%";
         container.height = "30%";
         container.color = "black";
-        container.background = "black";
+        container.background = "rgba(0, 0, 0, 0.3)";
 
 
         var msg = new BABYLON.GUI.TextBlock();
@@ -260,7 +260,7 @@ class LVLGUIController {
         containerq.left = "10%";
         containerq.color = "white";
         containerq.thickness = 3;
-        containerq.background = "black";
+        containerq.background = "rgba(0, 0, 0, 0.3)";
 
 
         var quit = new BABYLON.GUI.Image("",);
@@ -280,7 +280,7 @@ class LVLGUIController {
         container2.left = "30%";
         container2.color = "white";
         container2.thickness = 3;
-        container2.background = "black";
+        container2.background = "rgba(0, 0, 0, 0.3)";
 
 
         var retry = new BABYLON.GUI.Image("",);
@@ -312,14 +312,47 @@ class LVLGUIController {
         image.height = "7%";
         image.top = "-46%"
         this.statscontroller.addControl(image);
-
         //battle stats content
         var label = new BABYLON.GUI.TextBlock();
-        label.text = ".    " + enemies + "               " + hp;
+        label.text = enemies
         label.top = "-46%";
-        label.fontSize = "5%";
+        label.left = "-4%";
+        label.fontSize = "4%";
         label.color = "white";
-        this.mapstats = label;
+
+        this.mapstats["enemies"] = label;
+        this.statscontroller.addControl(label);
+
+        label = new BABYLON.GUI.TextBlock();
+        label.text = hp
+        label.top = "-46%";
+        label.left = "10%";
+        label.fontSize = "4%";
+        label.color = "white";
+
+        this.mapstats["hp"] = label;
+        this.statscontroller.addControl(label);
+
+        image = new BABYLON.GUI.Image("",);
+        image.domImage = this.scene.assets["losshp"]
+        image.width = "6%";
+        image.height = "2.2%";
+        image.top = "-47%"
+        image.left = "15%"
+        image.isVisible = false;
+        this.mapstats["lossimg"] = image
+
+        this.statscontroller.addControl(image);
+
+        label = new BABYLON.GUI.TextBlock();
+        label.text = 0
+        label.top = "-47.2%";
+        label.left = "15.5%";
+        label.fontSize = "2.3%";
+        label.color = "white";
+        label.isVisible = false;
+        this.mapstats["losshp"] = label
+
         this.statscontroller.addControl(label);
 
         //game speed button
@@ -329,7 +362,7 @@ class LVLGUIController {
         container.left = "-10%";
         container.color = "white";
         container.thickness = 3;
-        container.background = "black";
+        container.background = "rgba(0, 0, 0, 0.3)";
 
         container.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_RIGHT;
         container.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
@@ -367,7 +400,7 @@ class LVLGUIController {
         container2.left = "-2%";
         container2.color = "white";
         container2.thickness = 3;
-        container2.background = "black";
+        container2.background = "rgba(0, 0, 0, 0.3)";
 
         container2.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_RIGHT;
         container2.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
@@ -404,7 +437,7 @@ class LVLGUIController {
         container3.left = "2%";
         container3.color = "white";
         container3.thickness = 3;
-        container3.background = "black";
+        container3.background = "rgba(0, 0, 0, 0.3)";
 
         container3.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
         container3.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
@@ -438,8 +471,15 @@ class LVLGUIController {
     }
 
     //updates number of enemies killed and hp of the current level
-    updateStatsUI(enemies, hp) {
-        this.mapstats.text = ".    " + enemies + "               " + hp;
+    updateStatsUI(enemies, hp,maxhp) {
+        this.mapstats.enemies.text = enemies
+        this.mapstats.hp.text = hp;
+        if(hp<maxhp){
+            this.mapstats.lossimg.isVisible = true
+            this.mapstats.losshp.isVisible = true
+            this.mapstats.losshp.text = maxhp-hp
+        }
+        
     }
 
     //creates the bottom GUI that allows to select players to deploy
@@ -474,9 +514,9 @@ class LVLGUIController {
             var container2 = new BABYLON.GUI.Rectangle();
             container2.width = "90%";
             container2.height = "30%";
-            container2.color = "black";
+            container2.color = "transparent";
             container2.top = "-35%";
-            container2.background = "black";
+            container2.background = "rgba(0, 0, 0, 0.8)";
 
             var classicon = new BABYLON.GUI.Image("",);
             classicon.domImage = this.scene.assets[keys[i] + "-classicon"]
@@ -535,11 +575,11 @@ class LVLGUIController {
         }
 
         var container3 = new BABYLON.GUI.Rectangle();
-        container3.width = "8%";
+        container3.width = "9%";
         container3.height = "10%";
-        container3.top = "-20%";
-        container3.color = "black";
-        container3.background = "black";
+        container3.top = "-18%";
+        container3.color = "transparent";
+        container3.background = "rgba(0, 0, 0, 0.5)";
 
         var dpicon = new BABYLON.GUI.Image("",);
         dpicon.domImage = this.scene.assets["dpicon"]
@@ -567,9 +607,9 @@ class LVLGUIController {
         var sqdlimit = new BABYLON.GUI.Rectangle();
         sqdlimit.width = "12%";
         sqdlimit.height = "5%";
-        sqdlimit.top = "-16%";
-        sqdlimit.color = "black";
-        sqdlimit.background = "black";
+        sqdlimit.top = "-15.1%";
+        sqdlimit.color = "transparent";
+        sqdlimit.background = "rgba(0, 0, 0, 0.5)";
 
         var limitlbl = new BABYLON.GUI.TextBlock();
         limitlbl.text = "UNIT LIMIT : " + squadlimit;
@@ -645,7 +685,7 @@ class LVLGUIController {
         container.left = "-10%";
         container.color = "white";
         container.thickness = 3;
-        container.background = "black";
+        container.background = "rgba(0, 0, 0, 0.3)";
 
 
         var quit = new BABYLON.GUI.Image("",);
@@ -666,7 +706,7 @@ class LVLGUIController {
         container2.left = "10%";
         container2.color = "white";
         container2.thickness = 3;
-        container2.background = "black";
+        container2.background = "rgba(0, 0, 0, 0.3)";
 
 
         var retry = new BABYLON.GUI.Image("",);
@@ -703,7 +743,8 @@ class LVLGUIController {
         container.top = "13%";
         container.color = "white";
         container.thickness = 1;
-        container.background = "black";
+        container.background = "rgba(0, 0, 0, 0.3)";
+
 
         container.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_RIGHT;
         container.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
@@ -713,7 +754,7 @@ class LVLGUIController {
         textbox.left = "20%";
         textbox.color = "white";
         textbox.thickness = 1;
-        textbox.background = "black";
+        textbox.background = "transparent";
 
         var text = new BABYLON.GUI.TextBlock();
         text.text = enemy.name + "\n\n" + enemy.tooltip;
