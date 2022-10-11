@@ -57,7 +57,7 @@ playerlist["Plume"] = {
         end: 90
     },
     skill: {
-        name: "swift strike alpha",
+        name: "Swift Strike α",
         description: "ATK +25%, ASPD +25",
         duration: 25,
         sp: 45,
@@ -155,7 +155,7 @@ playerlist["Melantha"] = {
         end: 84
     },
     skill: {
-        name: "ATK up alpha",
+        name: "ATK up α",
         description: "ATK +50%",
         duration: 20,
         sp: 40,
@@ -247,7 +247,7 @@ playerlist["Popukar"] = {
         end: 72
     },
     skill: {
-        name: "ATK up alpha",
+        name: "ATK up α",
         description: "ATK +50%",
         duration: 20,
         sp: 40,
@@ -346,7 +346,7 @@ playerlist["Fang"] = {
         end: 74
     },
     skill: {
-        name: "charge alpha",
+        name: "Charge α",
         description: "Immediately gain 6 deploy points",
         duration: 1,
         sp: 25,
@@ -433,7 +433,7 @@ playerlist["Adnachiel"] = {
     },
 
     skill: {
-        name: "attack up alpha",
+        name: "ATK up α",
         description: "ATK +50%",
         duration: 20,
         sp: 40,
@@ -523,7 +523,7 @@ playerlist["Hibiscus"] = {
     },
 
     skill: {
-        name: "healing up",
+        name: "Healing up",
         description: "ATK +50%",
         duration: 20,
         sp: 30,
@@ -618,8 +618,8 @@ playerlist["Midnight"] = {
     },
 
     skill: {
-        name: "enchanted sword alpha",
-        description: "ATK +35% and damage turns into ARTS",
+        name: "Enchanted sword α",
+        description: "ATK +35%\ndamage turns into ARTS",
         duration: 40,
         sp: 70,
         initialsp: 30,
@@ -713,7 +713,7 @@ playerlist["Beagle"] = {
     },
 
     skill: {
-        name: "DEF up alpha",
+        name: "DEF up α",
         description: "DEF +50%",
         duration: 30,
         sp: 40,
@@ -809,8 +809,8 @@ playerlist["Durin"] = {
     },
 
     skill: {
-        name: "power strike alpha",
-        description: "Increase ATK of next hit to 190%",
+        name: "Power strike α",
+        description: "Increase ATK \nof next hit to 190%",
         duration: 0,
         sp: 4,
         initialsp: 0,
@@ -896,7 +896,7 @@ playerlist["Gitano"] = {
 
     skill: {
         name: "Destiny",
-        description: "ATK +100%; Attacks all targets within range simultaneously.\nGitano stops attacking for 10 seconds after using this skill",
+        description: "ATK +100%\nAttacks all targets \nwithin range simultaneously.",
         duration: 25,
         sp: 95,
         initialsp: 50,
@@ -1008,7 +1008,7 @@ playerlist["Mousse"] = {
 
     skill: {
         name: "Fury",
-        description: "ATK +75%; DEF +75%",
+        description: "ATK +75%, DEF +75%",
         duration: 40,
         sp: 80,
         initialsp: 45,

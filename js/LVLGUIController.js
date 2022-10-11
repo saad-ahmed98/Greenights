@@ -87,6 +87,8 @@ class LVLGUIController {
 
         });
 
+        this.createPlayerTooltip(player)
+
     }
 
     /* 
@@ -712,12 +714,12 @@ class LVLGUIController {
         textbox.color = "white";
         textbox.thickness = 1;
         textbox.background = "black";
-        
+
         var text = new BABYLON.GUI.TextBlock();
-        text.text = enemy.name+"\n\n"+enemy.tooltip;
+        text.text = enemy.name + "\n\n" + enemy.tooltip;
         text.color = "white";
         text.fontSize = "10%";
-        
+
         textbox.addControl(text)
         container.addControl(image)
         container.addControl(textbox)
@@ -725,11 +727,109 @@ class LVLGUIController {
         this.tooltipcontroller.addControl(container);
 
         setTimeout(this.removeTool, 8000, this.tooltipcontroller, container)
-        
+
     }
 
     removeTool(panel, image) {
         panel.removeControl(image)
+    }
+
+    createPlayerTooltip(player) {
+
+        var image = new BABYLON.GUI.Image("tooltip",);
+        image.domImage = this.scene.assets[player.chara.name + "-opicon"]
+        image.width = "40%"
+        image.left = "-30%"
+        //player.playerSkill.skillimage
+
+
+        var container = new BABYLON.GUI.Rectangle();
+        container.width = "30%";
+        container.height = "23%";
+        container.left = "-60%";
+        container.top = "25%";
+        container.color = "white";
+        container.thickness = 1;
+        container.background = "rgba(0, 0, 0, 0.3)";
+        container.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_RIGHT;
+        container.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
+
+
+
+        var textbox = new BABYLON.GUI.Rectangle();
+        textbox.width = "60%";
+        textbox.left = "20%";
+        textbox.color = "white";
+        textbox.thickness = 0;
+        textbox.background = "transparent";
+
+
+        var text = new BABYLON.GUI.TextBlock();
+        var dmgtype = player.chara.dmgtype
+        if (player.buffs.getDmgType() != "")
+            dmgtype = player.buffs.getDmgType()
+        text.text = player.chara.name + "\n\nHP\t\t" + player.hp + "/" + player.chara.hp + "\nATK\t\t" + player.buffs.getFinalAtk(player.chara.atk) + "\nDEF\t\t" + (player.buffs.getFinalDef(player.chara.def) + "\nRES\t\t" + player.chara.res + "\nBLOCK\t\t" +
+            player.chara.blockcount + "\nDMG\t\t" + dmgtype.toUpperCase());
+        text.color = "white";
+        text.fontSize = "10%";
+        text.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT
+        text.left = "5%";
+
+        textbox.addControl(text)
+        container.addControl(image)
+        container.addControl(textbox)
+
+        this.contextMenuController.addControl(container);
+        image = new BABYLON.GUI.Image("tooltip", player.playerSkill.skillimage);
+        image.width = "33%"
+        image.height = "80%"
+        image.top = "-5%"
+        image.left = "-30%"
+
+
+        var textSP = new BABYLON.GUI.TextBlock();
+        textSP.text = player.chara.skill.sp + " 🗲\t\t\t\t" + player.chara.skill.duration + " ◷"
+        textSP.fontSize = "10%";
+        textSP.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT
+
+        textSP.left = "7%";
+        textSP.top = "43%";
+
+        container = new BABYLON.GUI.Rectangle();
+        container.width = "30%";
+        container.height = "23%";
+        container.left = "-60%";
+        container.top = "47.9%";
+        container.color = "white";
+        container.thickness = 1;
+        container.background = "rgba(0, 0, 0, 0.3)";
+        container.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_RIGHT;
+        container.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
+
+        textbox = new BABYLON.GUI.Rectangle();
+        textbox.width = "60%";
+        textbox.left = "20%";
+        textbox.color = "white";
+        textbox.thickness = 0;
+        textbox.background = "transparent";
+
+        text = new BABYLON.GUI.TextBlock();
+        text.text = player.chara.skill.name + "\n\n" + player.chara.skill.chargetype + "\t\t|\t\t" + player.chara.skill.triggertype + "\n\n" + player.chara.skill.description
+        text.fontSize = "10%";
+        text.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT
+        text.textVerticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP
+
+        text.left = "5%";
+        text.top = "6%";
+
+        textbox.addControl(text)
+        container.addControl(textSP)
+        container.addControl(image)
+        container.addControl(textbox)
+
+        this.contextMenuController.addControl(container);
+
+
     }
 
 
