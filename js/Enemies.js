@@ -17,7 +17,7 @@ enemylist['Hound'] = {
 
     enemytype:"normal",
 
-    spritesheet:"images/sprites/dog-sheet-min.png",
+    spritesheet:"images/sprites/dog-sheet.webp",
 
     hasskill:false,
 
@@ -74,7 +74,7 @@ enemylist['Crossbowman'] = {
     targets:1,
     size:1,
 
-    spritesheet:"images/sprites/crossbowman-sheet-min.png",
+    spritesheet:"images/sprites/crossbowman-sheet.webp",
 
     hasskill:false,
 

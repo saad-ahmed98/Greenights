@@ -833,7 +833,7 @@ playerlist["Plume"] = {
 
     opicon: "images/opicons/plume.png",
 
-    spritesheet: "images/sprites/plume-sheet-min.webp",
+    spritesheet: "images/sprites/plume-sheet.webp",
     skillsfx: false,
 
     idle: {
@@ -1123,7 +1123,7 @@ playerlist["Fang"] = {
 
     opicon: "images/opicons/fang.png",
 
-    spritesheet: "images/sprites/fang-sheet-min.webp",
+    spritesheet: "images/sprites/fang-sheet.webp",
     skillsfx: false,
 
     idle: {
@@ -1210,7 +1210,7 @@ playerlist["Adnachiel"] = {
 
     opicon: "images/opicons/adnachiel.png",
 
-    spritesheet: "images/sprites/adnachiel-sheet-min.webp",
+    spritesheet: "images/sprites/adnachiel-sheet.webp",
     skillsfx: false,
 
     idle: {
@@ -1299,7 +1299,7 @@ playerlist["Hibiscus"] = {
 
     opicon: "images/opicons/hibiscus.png",
 
-    spritesheet: "images/sprites/hibiscus-sheet-min.webp",
+    spritesheet: "images/sprites/hibiscus-sheet.webp",
     skillsfx: false,
 
     idle: {
@@ -1393,7 +1393,7 @@ playerlist["Midnight"] = {
 
     opicon: "images/opicons/midnight.png",
 
-    spritesheet: "images/sprites/midnight-sheet-min.webp",
+    spritesheet: "images/sprites/midnight-sheet.webp",
     skillsfx: false,
 
 
@@ -1489,7 +1489,7 @@ playerlist["Beagle"] = {
 
     opicon: "images/opicons/beagle.png",
 
-    spritesheet: "images/sprites/beagle-sheet-min.webp",
+    spritesheet: "images/sprites/beagle-sheet.webp",
     skillsfx: false,
 
     idle: {
@@ -1585,7 +1585,7 @@ playerlist["Durin"] = {
 
     opicon: "images/opicons/durin.png",
 
-    spritesheet: "images/sprites/durin-sheet-min.webp",
+    spritesheet: "images/sprites/durin-sheet.webp",
 
     skillsfx: false,
 
