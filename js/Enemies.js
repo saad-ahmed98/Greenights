@@ -1602,7 +1602,7 @@ enemylist["Patriot2"] = {
         modifiers:{
            inspire:true,
            atk:0.2,
-           flatdef:100,
+           flatdef:200,
         },
         aura:false,
         auratype:"inspire"

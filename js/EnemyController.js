@@ -449,7 +449,7 @@ class EnemyController extends CharaController {
             this.atktimer += 1 / this.gamespeed;
             var currenttile = tiles[Math.round(this.mesh.position.x / 30)][Math.round(this.mesh.position.z / 30)];
             if (currenttile.player != undefined) {
-                if (currenttile.player.chara.blockcount - currenttile.player.blocking >= this.chara.blockcount && !this.blocked) {
+                if (currenttile.player.buffs.getFinalBlock(currenttile.player.chara.blockcount) - currenttile.player.blocking >= this.chara.blockcount && !this.blocked) {
                     this.blockingplayer = currenttile.player;
                     currenttile.player.blockedenemies.push(this)
 

@@ -28,8 +28,10 @@ class PlayerController extends CharaController {
     }
 
     checkBlocking() {
-        if (this.blockedenemies.length > this.chara.blockcount)
-            console.log("sussy")
+        if (this.blockedenemies.length > this.buffs.getFinalBlock(this.chara.blockcount)){
+            this.blockedenemies[this.blockedenemies.length-1].unblock()
+            this.blockedenemies.splice(this.blockedenemies.length-1,1)
+        }
     }
 
     removeBlocked(id) {

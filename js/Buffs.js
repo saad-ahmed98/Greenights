@@ -142,4 +142,10 @@ class Buffs {
         var currentratio  = hp/maxhp
         return {"hp":Math.round(newmaxhp*currentratio),"maxhp":newmaxhp}
     }
+
+    getFinalBlock(block){
+        this.initModifiers();
+        this.sumBuffs();
+        return block+this.modifiers.block
+    }
 }

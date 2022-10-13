@@ -809,7 +809,7 @@ class LVLGUIController {
         if (player.buffs.getDmgType() != "")
             dmgtype = player.buffs.getDmgType()
         text.text = player.chara.name + "\n\nHP\t\t" + player.hp + "/" + player.maxhp + "\nATK\t\t" + player.buffs.getFinalAtk(player.chara.atk) + "\nDEF\t\t" + (player.buffs.getFinalDef(player.chara.def) + "\nRES\t\t" + player.chara.res + "\nBLOCK\t\t" +
-            player.chara.blockcount + "\nDMG\t\t" + dmgtype.toUpperCase());
+            player.buffs.getFinalBlock(player.chara.blockcount) + "\nDMG\t\t" + dmgtype.toUpperCase());
         text.color = "white";
         text.fontSize = "10%";
         text.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT

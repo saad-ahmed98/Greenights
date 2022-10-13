@@ -67,7 +67,7 @@ playerlist["Perfumer"] = {
         chargetype: "second",
         triggertype: "manual",
         modifiers: {
-            aspd:-50,
+            aspd:-20,
             atk: 2.5,
         },
         apply: "self",
@@ -679,7 +679,7 @@ playerlist["Courier"] = {
         triggertype: "manual",
         modifiers: {
             instantdp: 11,
-            def:0.9
+            def:0.9,
         },
         apply: "self",
         skillimage: "images/opicons/courierskill.png"
