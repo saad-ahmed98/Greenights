@@ -112,8 +112,7 @@ class LVLGUIController {
         slider.isEnabled = false;
 
         slider.color = color;
-        slider.background = "transparent";
-
+        slider.background = "rgba(0, 0, 0, 0.3)";
 
         this.statscontroller.addControl(slider)
         slider.linkWithMesh(mesh);
