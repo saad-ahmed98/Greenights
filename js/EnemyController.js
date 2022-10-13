@@ -52,7 +52,7 @@ class EnemyController extends CharaController {
                 var duration = this.chara[keys[i]].duration
                 var delay = 30 * this.gamespeed * duration
                 if (keys[i] == "move") {
-                    delay = 30 * this.gamespeed * duration / ((this.chara.speed + this.buffs.getSpeed()) / this.chara.speed)
+                    delay = 30 * this.gamespeed * duration / ((this.buffs.getFinalSpeed(this.chara.speed)) / this.chara.speed)
                 }
                 if(keys[i]== "atkanim")
                     this.sprite.playAnimation(x + 1, this.chara.atkanim.end, false, delay);
@@ -73,7 +73,7 @@ class EnemyController extends CharaController {
                 duration = 0.5
                 */
 
-            this.sprite.playAnimation(this.chara.move.start, this.chara.move.end, true, 30 * this.gamespeed * duration / ((this.chara.speed + this.buffs.getSpeed()) / this.chara.speed));
+            this.sprite.playAnimation(this.chara.move.start, this.chara.move.end, true, 30 * this.gamespeed * duration / ((this.buffs.getFinalSpeed(this.chara.speed)) / this.chara.speed));
             this.running = true;
         }
 
@@ -85,14 +85,11 @@ class EnemyController extends CharaController {
             var dir = 1;
             if (this.mesh.position.x > this.currentpoint[1] * 30)
                 dir = -1;
-            this.mesh.position.x += (1 * (this.chara.speed + this.buffs.getSpeed()) * dir) / this.gamespeed;
-            this.sprite.position.x += (1 * (this.chara.speed + this.buffs.getSpeed()) * dir) / this.gamespeed;
-            this.shadow.position.x += (1 * (this.chara.speed + this.buffs.getSpeed()) * dir) / this.gamespeed;
+            this.mesh.position.x += (1 * (this.buffs.getFinalSpeed(this.chara.speed)) * dir) / this.gamespeed;
+            this.sprite.position.x += (1 * (this.buffs.getFinalSpeed(this.chara.speed)) * dir) / this.gamespeed;
+            this.shadow.position.x += (1 * (this.buffs.getFinalSpeed(this.chara.speed)) * dir) / this.gamespeed;
             if (this.aura != undefined)
-                this.aura.position.x += (1 * (this.chara.speed + this.buffs.getSpeed()) * dir) / this.gamespeed;
-
-
-
+                this.aura.position.x += (1 * (this.buffs.getFinalSpeed(this.chara.speed)) * dir) / this.gamespeed;
 
         }
 
@@ -122,12 +119,12 @@ class EnemyController extends CharaController {
                     dir = -1;
                 }
                 else this.sprite.invertU = 0;
-                this.mesh.position.z += (1 * (this.chara.speed + this.buffs.getSpeed()) * dir) / this.gamespeed;
-                this.sprite.position.z += (1 * (this.chara.speed + this.buffs.getSpeed()) * dir) / this.gamespeed;
-                this.shadow.position.z += (1 * (this.chara.speed + this.buffs.getSpeed()) * dir) / this.gamespeed;
+                this.mesh.position.z += (1 * (this.buffs.getFinalSpeed(this.chara.speed)) * dir) / this.gamespeed;
+                this.sprite.position.z += (1 * (this.buffs.getFinalSpeed(this.chara.speed)) * dir) / this.gamespeed;
+                this.shadow.position.z += (1 * (this.buffs.getFinalSpeed(this.chara.speed)) * dir) / this.gamespeed;
 
                 if (this.aura != undefined)
-                    this.aura.position.z += (1 * (this.chara.speed + this.buffs.getSpeed()) * dir) / this.gamespeed;
+                    this.aura.position.z += (1 * (this.buffs.getFinalSpeed(this.chara.speed)) * dir) / this.gamespeed;
 
             }
 
@@ -137,7 +134,7 @@ class EnemyController extends CharaController {
 
     updateHpBar() {
         super.updateHpBar()
-        if (this.hp == this.chara.hp)
+        if (this.hp == this.maxhp)
             this.healthBar.isVisible = false;
         else this.healthBar.isVisible = true;
         this.healthBar.linkOffsetX = 0 + (this.sprite.position.z - this.mesh.position.z) * 2
@@ -259,11 +256,26 @@ class EnemyController extends CharaController {
         var dmg;
         var dmgtype;
 
+
         if (!hazard) {
+            let ef = attackingplayer.buffs.applyeffects
+            var keys = Object.keys(ef)
+            for(let i = 0;i<keys.length;i++){
+                if(ef[keys[i]].apply=="hit"){
+                    this.buffs.effects[keys[i]] = ef[keys[i]].duration
+                    this.buffs.buffs[keys[i]] = {"name":keys[i],"modifiers":ef[keys[i]].modifiers}
+                }
+            }
             var dmgmodifier = 1;
             if (attackingplayer.playerSkill.chargetype == "attack" && attackingplayer.playerSkill.triggertype == "auto" && attackingplayer.playerSkill.currentsp >= attackingplayer.playerSkill.totalsp) {
+                if(Math.random() < 0.20)
                 this.lvlcontroller.playSound(attackingplayer.chara.name + "-skill", this.lvlcontroller.vcvolume)
+                if (attackingplayer.chara.skillsfx) {
+                    if (attackingplayer.chara.sfx.skillhit != undefined)
+                        this.lvlcontroller.playSound(attackingplayer.chara.name + "-skillhit", attackingplayer.chara.sfx.skillhit.volume)
+                }
                 dmgmodifier *= attackingplayer.playerSkill.activateDmgUpSkill();
+                attackingplayer.playerSkill.applyHitEffects(this.buffs)
             }
 
             dmgmodifier *= attackingplayer.buffs.getCritModifier();
@@ -284,7 +296,6 @@ class EnemyController extends CharaController {
             dmgtype = "true"
         }
 
-
         var dmgreceived;
 
         switch (dmgtype) {
@@ -292,7 +303,7 @@ class EnemyController extends CharaController {
                 dmgreceived = Math.max(dmg * 0.05, dmg - this.buffs.getFinalDef(this.chara.def))
                 break;
             case "arts":
-                dmgreceived = Math.max(dmg * 0.10, dmg * ((100 - this.chara.res) / 100))
+                dmgreceived = Math.max(dmg * 0.10, dmg * ((100 - this.buffs.getFinalRes(this.chara.res)) / 100))
                 break;
             case "true":
                 dmgreceived = dmg;
@@ -336,6 +347,7 @@ class EnemyController extends CharaController {
             if (this.blockingplayer != undefined) {
 
                 this.blockingplayer.blocking = Math.max(this.blockingplayer.blocking - this.chara.blockcount, 0);
+                this.blockingplayer.removeBlocked(this.id)
 
 
             }
@@ -378,6 +390,11 @@ class EnemyController extends CharaController {
         //this.healthBar.visibility=0;
     }
 
+    unblock(){
+        this.blocked = false;
+        this.blockingplayer = undefined
+    }
+
     move(tiles, players) {
         if (!this.spawning) {
             this.atktimer += 1 / this.gamespeed;
@@ -385,6 +402,7 @@ class EnemyController extends CharaController {
             if (currenttile.player != undefined) {
                 if (currenttile.player.chara.blockcount - currenttile.player.blocking >= this.chara.blockcount && !this.blocked) {
                     this.blockingplayer = currenttile.player;
+                    currenttile.player.blockedenemies.push(this)
 
                     this.blockingplayer.blocking += this.chara.blockcount;
                     this.blocked = true;
@@ -392,8 +410,7 @@ class EnemyController extends CharaController {
 
             }
             else {
-                this.blocked = false;
-                this.blockingplayer = undefined;
+               this.unblock()
             }
             if (!this.skillproc) {
                 var enter = false;

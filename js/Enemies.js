@@ -135,7 +135,7 @@ enemylist['Sarkaz Grudgebearer'] = {
     size:1.1,
 
 
-    spritesheet:"images/sprites/sarkaz-grudgebearer-sheet.png",
+    spritesheet:"images/sprites/sarkaz-grudgebearer-sheet.webp",
 
     idle:{
         start:39,
@@ -217,7 +217,7 @@ enemylist['Sarkaz Sentinel'] = {
     size:1,
 
 
-    spritesheet:"images/sprites/sarkaz-sentinel-sheet.png",
+    spritesheet:"images/sprites/sarkaz-sentinel-sheet.webp",
 
     idle:{
         start:15,
@@ -303,7 +303,7 @@ enemylist['Sarkaz Swordsman'] = {
 
     enemytype:"normal",
 
-    spritesheet:"images/sprites/sarkaz-swordsman-sheet.png",
+    spritesheet:"images/sprites/sarkaz-swordsman-sheet.webp",
 
     hasskill:false,
     
@@ -361,7 +361,7 @@ enemylist['Sarkaz Greatswordsman'] = {
 
     enemytype:"normal",
 
-    spritesheet:"images/sprites/sarkaz-greatswordsman-sheet.png",
+    spritesheet:"images/sprites/sarkaz-greatswordsman-sheet.webp",
 
     hasskill:false,
 
@@ -418,7 +418,7 @@ enemylist['Sarkaz Crossbowman'] = {
 
     enemytype:"normal",
 
-    spritesheet:"images/sprites/sarkaz-crossbowman-sheet.png",
+    spritesheet:"images/sprites/sarkaz-crossbowman-sheet.webp",
 
     hasskill:false,
 
@@ -479,7 +479,7 @@ enemylist['Sarkaz Bladeweaver'] = {
     hasskill:true,
 
 
-    spritesheet:"images/sprites/sarkaz-bladeweaver-sheet.png",
+    spritesheet:"images/sprites/sarkaz-bladeweaver-sheet.webp",
 
     idle:{
         start:52,
@@ -545,7 +545,7 @@ enemylist["Guerrilla Fighter"] = {
 
     enemytype:"normal",
 
-    spritesheet:"images/sprites/guerrilla-fighter-sheet.png",
+    spritesheet:"images/sprites/guerrilla-fighter-sheet.webp",
     
 
     hasskill:true,
@@ -613,12 +613,12 @@ enemylist["Guerrilla Fighter Leader"] = {
     range:0,
     dmgtype:"physical",
     size:1,
-    tooltip:"Moves faster when Inspired by a Herald or by Patriot.",
+    tooltip:"Moves faster when Inspired\n by a Herald or by Patriot.",
 
 
     enemytype:"normal",
 
-    spritesheet:"images/sprites/guerrilla-fighter-leader-sheet.png",
+    spritesheet:"images/sprites/guerrilla-fighter-leader-sheet.webp",
 
     hasskill:true,
     
@@ -682,14 +682,14 @@ enemylist["Guerrilla Sniper"] = {
     speed:0.6,
     blockcount:1,
     type:"g",
-    range:2,
+    range:1.3,
     dmgtype:"physical",
     size:1,
     tooltip:"Attacks two targets at once\n when Inspired by a Herald or by Patriot.",
 
     enemytype:"normal",
 
-    spritesheet:"images/sprites/guerrilla-sniper-sheet.png",
+    spritesheet:"images/sprites/guerrilla-sniper-sheet.webp",
 
     hasskill:true,
     
@@ -753,14 +753,14 @@ enemylist["Guerrilla Sniper Leader"] = {
     speed:0.6,
     blockcount:1,
     type:"g",
-    range:2,
+    range:1.3,
     dmgtype:"physical",
     size:1,
     tooltip:"Attacks two targets at once\n when Inspired by a Herald or by Patriot.",
 
     enemytype:"normal",
 
-    spritesheet:"images/sprites/guerrilla-sniper-leader-sheet.png",
+    spritesheet:"images/sprites/guerrilla-sniper-leader-sheet.webp",
 
     hasskill:true,
     
@@ -832,7 +832,7 @@ enemylist['Guerrilla Hound'] = {
 
     enemytype:"normal",
 
-    spritesheet:"images/sprites/guerrilla-hound-sheet.png",
+    spritesheet:"images/sprites/guerrilla-hound-sheet.webp",
 
     hasskill:false,
 
@@ -889,7 +889,7 @@ enemylist['Guerrilla Hound Pro'] = {
 
     enemytype:"normal",
 
-    spritesheet:"images/sprites/guerrilla-hound-pro-sheet.png",
+    spritesheet:"images/sprites/guerrilla-hound-pro-sheet.webp",
 
     hasskill:false,
 
@@ -946,7 +946,7 @@ enemylist["Guerrilla Siegebreaker"] = {
 
     enemytype:"normal",
 
-    spritesheet:"images/sprites/guerrilla-siegebreaker-sheet.png",
+    spritesheet:"images/sprites/guerrilla-siegebreaker-sheet.webp",
 
     hasskill:true,
     
@@ -1025,7 +1025,7 @@ enemylist["Guerrilla Siegebreaker Leader"] = {
 
     enemytype:"normal",
 
-    spritesheet:"images/sprites/guerrilla-siegebreaker-leader-sheet.png",
+    spritesheet:"images/sprites/guerrilla-siegebreaker-leader-sheet.webp",
 
     hasskill:true,
     
@@ -1100,12 +1100,12 @@ enemylist["Sarkaz Guerrilla Fighter Leader"] = {
     type:"g",
     range:0,
     dmgtype:"physical",
-    size:1.1,
+    size:1.2,
     tooltip:"Does not take damage when \ncoming in contact with \na Pulse Wave and attacks\n instead deal Arts damage.",
 
     enemytype:"normal",
 
-    spritesheet:"images/sprites/sarkaz-guerrilla-fighter-leader-sheet.png",
+    spritesheet:"images/sprites/sarkaz-guerrilla-fighter-leader-sheet.webp",
 
     hasskill:true,
     
@@ -1193,12 +1193,12 @@ enemylist["Guerrilla Shieldguard"] = {
     type:"g",
     range:0,
     dmgtype:"physical",
-    size:1.1,
+    size:1.2,
     tooltip:"Covers the advance of \nenemy troops by making themselves\n more likely to be attacked.",
 
     enemytype:"normal",
 
-    spritesheet:"images/sprites/guerrilla-shieldguard-sheet.png",
+    spritesheet:"images/sprites/guerrilla-shieldguard-sheet.webp",
 
     hasskill:true,
     
@@ -1261,12 +1261,12 @@ enemylist["Guerrilla Shieldguard Leader"] = {
     type:"g",
     range:0,
     dmgtype:"physical",
-    size:1.1,
+    size:1.2,
     tooltip:"Covers the advance of \nenemies by making themselves\n more likely to be attacked.",
 
     enemytype:"normal",
 
-    spritesheet:"images/sprites/guerrilla-shieldguard-leader-sheet.png",
+    spritesheet:"images/sprites/guerrilla-shieldguard-leader-sheet.webp",
 
     hasskill:true,
     
@@ -1319,7 +1319,7 @@ enemylist["Guerrilla Shieldguard Leader"] = {
 
 enemylist["Guerrilla Herald"] = {
     name:"Guerrilla Herald",
-    hp: 1000,
+    hp: 7000,
     atk: 300,
     def: 120,
     res:50,
@@ -1334,7 +1334,7 @@ enemylist["Guerrilla Herald"] = {
 
     enemytype:"normal",
 
-    spritesheet:"images/sprites/guerrilla-herald-sheet.png",
+    spritesheet:"images/sprites/guerrilla-herald-sheet.webp",
 
     hasskill:true,
     
@@ -1405,7 +1405,7 @@ enemylist["Guerrilla Herald Leader"] = {
 
     enemytype:"normal",
 
-    spritesheet:"images/sprites/guerrilla-herald-leader-sheet.png",
+    spritesheet:"images/sprites/guerrilla-herald-leader-sheet.webp",
 
     hasskill:true,
     

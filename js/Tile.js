@@ -8,7 +8,6 @@ class Tile {
         this.player;
         this.create();
         this.color;
-        this.highlight = new BABYLON.HighlightLayer("", scene);
 
     }
 
@@ -72,9 +71,7 @@ class Tile {
         else{
             this.mesh.outlineColor = new BABYLON.Color3(0.95, 0, 0);
             this.mesh.outlineWidth = 1.5;
-            /*this.highlight.addMesh(this.mesh,new BABYLON.Color3(0.95, 0, 0))
-            this.highlight.outerGlow = false
-            */
+
         }
 
 
@@ -86,12 +83,6 @@ class Tile {
         this.mesh.material.diffuseColor = this.color
         this.mesh.outlineColor = new BABYLON.Color3(0, 0, 0);
         this.mesh.outlineWidth = 0.1;
-        /*
-        }
-        else{
-            this.highlight.removeMesh(this.mesh)
-        }
-        */
         
     }
 }

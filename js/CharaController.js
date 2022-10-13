@@ -6,6 +6,7 @@ class CharaController {
         this.shadow;
 
         this.hp = chara.hp;
+        this.maxhp = chara.hp;
         this.animationGroups
         this.healthBar;
         this.isattacking = false;
@@ -26,13 +27,13 @@ class CharaController {
 
 
     updateHpBar() {
-        this.healthBar.value = Math.round(this.hp / this.chara.hp * 100)
+        this.healthBar.value = Math.round(this.hp / this.maxhp * 100)
 
     }
 
     receiveHealing(healer) {
         var dmg = healer.buffs.getFinalAtk(healer.chara.atk)
-        this.hp = Math.min(this.chara.hp, this.hp + dmg)
+        this.hp = Math.min(this.maxhp, this.hp + dmg)
         this.updateHpBar();
     }
 
@@ -206,7 +207,7 @@ class CharaController {
                 dmgreceived = Math.max(dmg * 0.05, dmg - this.buffs.getFinalDef(this.chara.def))
                 break;
             case "arts":
-                dmgreceived = Math.max(dmg * 0.10, dmg * ((100 - this.chara.res) / 100))
+                dmgreceived = Math.max(dmg * 0.10, dmg * ((100 - this.buffs.getFinalRes(this.chara.res)) / 100))
                 break;
             case "true":
                 dmgreceived = dmg;

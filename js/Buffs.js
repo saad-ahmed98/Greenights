@@ -2,6 +2,12 @@ class Buffs {
     constructor() {
         this.modifiers = {};
         this.buffs = {};
+
+        //temporary effects received by third parties
+        this.effects = {};
+
+        //effects to apply depending on condition
+        this.applyeffects = {};
     }
 
     initModifiers() {
@@ -27,6 +33,7 @@ class Buffs {
             doublehitchance: 0,
             dmgpen: true,
             taunt:1,
+            maxhp:1
 
         }
     }
@@ -39,7 +46,11 @@ class Buffs {
                 if (typeof this.modifiers[keysmodifiers[j]] == "boolean")
                     this.modifiers[keysmodifiers[j]] = this.buffs[keys[i]].modifiers[keysmodifiers[j]]
                 else {
-                    this.modifiers[keysmodifiers[j]] += this.buffs[keys[i]].modifiers[keysmodifiers[j]]
+                    if(keysmodifiers[j]=="speedpercent"){
+                        this.modifiers[keysmodifiers[j]] =Math.max(0.1,this.modifiers[keysmodifiers[j]]+this.buffs[keys[i]].modifiers[keysmodifiers[j]])
+                    }
+                    else
+                        this.modifiers[keysmodifiers[j]] += this.buffs[keys[i]].modifiers[keysmodifiers[j]]
                 }
             }
 
@@ -49,7 +60,7 @@ class Buffs {
     getFinalAtk(atk) {
         this.initModifiers();
         this.sumBuffs();
-        return Math.round((atk * (1 + this.modifiers.atk)));
+        return Math.max(0,Math.round((atk * (1 + this.modifiers.atk))));
     }
 
     getFinalAtkInterval(atkinterval) {
@@ -61,7 +72,13 @@ class Buffs {
     getFinalDef(def) {
         this.initModifiers();
         this.sumBuffs();
-        return Math.round(((def+this.modifiers.flatdef) * (1 + this.modifiers.def)));
+        return Math.max(0,Math.round(((def+this.modifiers.flatdef) * (1 + this.modifiers.def))));
+    }
+
+    getFinalRes(res) {
+        this.initModifiers();
+        this.sumBuffs();
+        return Math.max(0,Math.round(((res+this.modifiers.flatres) * (1 + this.modifiers.res))));
     }
 
     getDpOnKill() {
@@ -114,5 +131,15 @@ class Buffs {
         if (Math.random() <= this.modifiers.doublehitchance && this.modifiers.doublehitchance > 0)
             return true
         return false;
+    }
+
+    getCurrentHpRatio(hp,maxhp,charahp){
+        this.initModifiers();
+        this.sumBuffs();
+        var newmaxhp = Math.round(charahp*this.modifiers.maxhp)
+        if(newmaxhp==maxhp)
+            return {"hp":hp,"maxhp":maxhp}
+        var currentratio  = hp/maxhp
+        return {"hp":Math.round(newmaxhp*currentratio),"maxhp":newmaxhp}
     }
 }

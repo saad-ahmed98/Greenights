@@ -2,11 +2,12 @@ class PlayerController extends CharaController {
     constructor(chara, scene, x, y, lvlcontroller) {
         super(chara, scene, x, y, lvlcontroller)
         this.blocking = 0;
-        this.blockingpoints = new Array(this.blockcount).fill(undefined);
         this.spawning = true;
         this.skillBar;
-        this.playerSkill = new PlayerSkill(chara.skill.name, chara.skill.duration, chara.skill.initialsp, chara.skill.sp, chara.skill.chargetype, chara.skill.triggertype, chara.skill.modifiers, chara.skill.apply, chara.skill.skillimage)
+        this.playerSkill = new PlayerSkill(chara.skill.name, chara.skill.duration, chara.skill.initialsp, chara.skill.sp, chara.skill.chargetype, chara.skill.triggertype, chara.skill.modifiers, chara.skill.apply, chara.skill.skillimage, chara.skill.applyeffects)
         this.buffs = new Buffs();
+
+        this.blockedenemies = []
 
         this.skillready;
 
@@ -26,6 +27,19 @@ class PlayerController extends CharaController {
 
     }
 
+    checkBlocking() {
+        if (this.blockedenemies.length > this.chara.blockcount)
+            console.log("sussy")
+    }
+
+    removeBlocked(id) {
+        for (let i = 0; i < this.blockedenemies.length; i++) {
+            if (this.blockedenemies[i].id = id) {
+                this.blockedenemies.splice(i, 1)
+                return
+            }
+        }
+    }
 
     updateSpeed(gamespeed, pause) {
         this.gamespeed = gamespeed;
@@ -42,6 +56,12 @@ class PlayerController extends CharaController {
 
         if (pause)
             this.sprite.stopAnimation()
+    }
+
+    updateHP() {
+        var res = this.buffs.getCurrentHpRatio(this.hp, this.maxhp, this.chara.hp)
+        this.hp = res.hp
+        this.maxhp = res.maxhp
     }
 
     createPlayer(id, spriteManager, gui, shadowManager, skillManager) {
@@ -126,6 +146,8 @@ class PlayerController extends CharaController {
         for (let i = 0; i < talents.length; i++) {
             if (talents[i].apply == "self")
                 this.buffs.buffs[talents[i].name] = { "name": talents[i].name, "modifiers": talents[i].modifiers }
+            if (talents[i].applyeffects != undefined)
+                this.buffs.applyeffects[talents[i].name] = talents[i].applyeffects
         }
     }
 
@@ -181,12 +203,12 @@ class PlayerController extends CharaController {
                             enemy[i].receiveHealing(instance);
                     }
                     else {
-                        for (let i = 0; i < enemy.length; i++){
+                        for (let i = 0; i < enemy.length; i++) {
                             let splash = this.buffs.getSplash()
-                            if(!splash.splash)
-                            enemy[i].receiveDamage(instance)
+                            if (!splash.splash)
+                                enemy[i].receiveDamage(instance)
                             else {
-                                let splashenemies = this.getSplashEnemiesInRange(enemies,enemy[i],splash.radius)
+                                let splashenemies = this.getSplashEnemiesInRange(enemies, enemy[i], splash.radius)
                                 for (let j = 0; j < splashenemies.length; j++)
                                     splashenemies[j].receiveDamage(instance)
                             }
@@ -197,8 +219,8 @@ class PlayerController extends CharaController {
                         instance.updateSkillBarCharging();
                     }
                     clearInterval(interval);
-                    if(this.buffs.getDoubleHitChance())
-                        instance.atktimer+=200000
+                    if (this.buffs.getDoubleHitChance())
+                        instance.atktimer += 200000
                 }
             }, 1);
             return true;

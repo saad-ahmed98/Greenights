@@ -69,7 +69,7 @@ class LVLGUIController {
                     player.skillready.isVisible = false;
                     player.lvlcontroller.playSound(player.chara.name + "-skillact", player.chara.sfx.skillact.volume)
                     player.lvlcontroller.playSound(player.chara.name + "-skill", player.lvlcontroller.vcvolume)
-                    player.playerSkill.activateDurationSkill([player])
+                    player.playerSkill.activateDurationSkill([player],lvlcontroller)
                     player.createSkillAura(lvlcontroller.spriteManagers["skillaura"])
                 }
                 lvlcontroller.unzoom()
@@ -172,7 +172,7 @@ class LVLGUIController {
         container.width = "100%";
         container.height = "30%";
         container.color = "black";
-        container.background = "rgba(0, 0, 0, 0.3)";
+        container.background = "black";
 
 
         var msg = new BABYLON.GUI.TextBlock();
@@ -190,7 +190,7 @@ class LVLGUIController {
         containerq.left = "10%";
         containerq.color = "white";
         containerq.thickness = 3;
-        containerq.background = "rgba(0, 0, 0, 0.3)";
+        containerq.background = "black";
 
 
         var quit = new BABYLON.GUI.Image("",);
@@ -210,7 +210,7 @@ class LVLGUIController {
         container2.left = "30%";
         container2.color = "white";
         container2.thickness = 3;
-        container2.background = "rgba(0, 0, 0, 0.3)";
+        container2.background = "black";
 
 
         var retry = new BABYLON.GUI.Image("",);
@@ -243,7 +243,7 @@ class LVLGUIController {
         container.width = "100%";
         container.height = "30%";
         container.color = "black";
-        container.background = "rgba(0, 0, 0, 0.3)";
+        container.background = "black";
 
 
         var msg = new BABYLON.GUI.TextBlock();
@@ -260,7 +260,7 @@ class LVLGUIController {
         containerq.left = "10%";
         containerq.color = "white";
         containerq.thickness = 3;
-        containerq.background = "rgba(0, 0, 0, 0.3)";
+        containerq.background = "black";
 
 
         var quit = new BABYLON.GUI.Image("",);
@@ -280,7 +280,7 @@ class LVLGUIController {
         container2.left = "30%";
         container2.color = "white";
         container2.thickness = 3;
-        container2.background = "rgba(0, 0, 0, 0.3)";
+        container2.background = "black";
 
 
         var retry = new BABYLON.GUI.Image("",);
@@ -809,7 +809,7 @@ class LVLGUIController {
         var dmgtype = player.chara.dmgtype
         if (player.buffs.getDmgType() != "")
             dmgtype = player.buffs.getDmgType()
-        text.text = player.chara.name + "\n\nHP\t\t" + player.hp + "/" + player.chara.hp + "\nATK\t\t" + player.buffs.getFinalAtk(player.chara.atk) + "\nDEF\t\t" + (player.buffs.getFinalDef(player.chara.def) + "\nRES\t\t" + player.chara.res + "\nBLOCK\t\t" +
+        text.text = player.chara.name + "\n\nHP\t\t" + player.hp + "/" + player.maxhp + "\nATK\t\t" + player.buffs.getFinalAtk(player.chara.atk) + "\nDEF\t\t" + (player.buffs.getFinalDef(player.chara.def) + "\nRES\t\t" + player.chara.res + "\nBLOCK\t\t" +
             player.chara.blockcount + "\nDMG\t\t" + dmgtype.toUpperCase());
         text.color = "white";
         text.fontSize = "10%";
