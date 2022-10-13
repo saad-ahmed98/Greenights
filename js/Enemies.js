@@ -1119,19 +1119,19 @@ enemylist["Sarkaz Guerrilla Fighter Leader"] = {
 
     death:{
         start:18,
-        end:31,
+        end:32,
         duration:1,
 
     },
     idle:{
-        start:32,
-        end:59,
+        start:33,
+        end:60,
         duration:1,
 
     },
     move:{
-        start:60,
-        end:79,
+        start:61,
+        end:80,
         duration:1.5,
 
     },
@@ -1152,31 +1152,13 @@ enemylist["Sarkaz Guerrilla Fighter Leader"] = {
         modifiers:{
             dmgtype:"arts",
         },
-        aura:false,
+        aura:true,
+        auratype:"inspire",
         atkanim:{
-            start:80,
-            end:103,
-            contact:94,
+            start:81,
+            end:105,
+            contact:95,
             duration:1,
-        },
-    
-        death:{
-            start:104,
-            end:117,
-            duration:1,
-    
-        },
-        idle:{
-            start:118,
-            end:145,
-            duration:1,
-    
-        },
-        move:{
-            start:146,
-            end:165,
-            duration:1.5,
-    
         },
     },
 }
@@ -1459,4 +1441,175 @@ enemylist["Guerrilla Herald Leader"] = {
 
     },
 }
+
+enemylist["Patriot"] = {
+    name:"Patriot",
+    hp: 40000,
+    atk: 2400,
+    def: 1500,
+    res:90,
+    atkinterval: 4,
+    speed:0.3,
+    blockcount:1,
+    type:"g",
+    range:0,
+    dmgtype:"physical",
+    size:1,
+    tooltip:"Has extremely high DEF & RES.\n Inspires all enemies,\n increasing their ATK and DEF.",
+    revive:true,
+    revivetimer:30,
+    revivemax:30,
+
+    enemytype:"normal",
+
+    spritesheet:"images/sprites/patriot-sheet.webp",
+
+    hasskill:true,
+    
+
+    atkanim:{
+        start:0,
+        end:22,
+        contact:12,
+        duration:1,
+    },
+
+    
+    idle:{
+        start:23,
+        end:47,
+        duration:1,
+
+    },
+    move:{
+        start:48,
+        end:76,
+        duration:1.5,
+
+    },
+    revival1:{
+        start:77,
+        end:94,
+        duration:1,
+    },
+    revival2:{
+        start:95,
+        end:114,
+        duration:1,
+    },
+    
+    sfx: {
+        revival: {
+            src: "patriot-revival",
+            volume:0.1
+        },
+        atk: {
+            src: "patriot1-atk",
+            volume:0.1
+        },
+        hit:{
+            src: "patriot1-hit",
+            volume:0.1
+        }
+    },
+    skill:{
+        name :"inspireguerrilla",
+        triggertype:"on_start",
+        skilltype:"alive",
+        target:"all",
+        modifiers:{
+           inspire:true,
+           atk:0.2,
+           flatdef:200,
+        },
+        aura:false,
+        auratype:"inspire"
+    },
+}
+
+enemylist["Patriot2"] = {
+    name:"Patriot2",
+    hp: 40000,
+    atk: 1600,
+    def: 500,
+    res:45,
+    atkinterval: 3.6,
+    speed:0.4,
+    blockcount:1,
+    type:"g",
+    range:0.85,
+    dmgtype:"physical",
+    size:1,
+    tooltip:"Has extremely high DEF and RES.\n Inspires all enemies,\n increasing their ATK and DEF.",
+
+    enemytype:"normal",
+
+    spritesheet:"images/sprites/patriot2-sheet.webp",
+
+    hasskill:true,
+    
+
+    atkanim:{
+        start:0,
+        end:20,
+        contact:10,
+        duration:1,
+    },
+    death:{
+        start:21,
+        end:98,
+        duration:1,
+    },
+    
+    idle:{
+        start:99,
+        end:116,
+        duration:1,
+
+    },
+    move:{
+        start:117,
+        end:146,
+        duration:1.5,
+
+    },
+    start:{
+        start:147,
+        end:200,
+        duration:2,
+    },
+    
+    
+    sfx: {
+        start: {
+            src: "patriot2-start",
+            volume:0.3
+        },
+        atk: {
+            src: "patriot2-atk",
+            volume:0.1
+        },
+        hit:{
+            src: "patriot2-hit",
+            volume:0.1
+        }
+    },
+    skill:{
+        name :"inspireguerrilla",
+        triggertype:"on_start",
+        skilltype:"alive",
+        target:"all",
+        modifiers:{
+           inspire:true,
+           atk:0.2,
+           flatdef:200,
+        },
+        aura:false,
+        auratype:"inspire"
+    },
+}
+
+
+
+
 

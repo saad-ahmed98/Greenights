@@ -13,7 +13,7 @@ class EnemyController extends CharaController {
         this.wait = false;
         this.aura;
         if (this.chara.hasskill)
-            this.enemySkill = new EnemySkill(chara.skill.name + id, chara.skill.triggertype, chara.skill.modifiers, chara.skill.aura, chara.skill.skilltype, chara.skill.target,chara.skill.auratype)
+            this.enemySkill = new EnemySkill(chara.skill.name + id, chara.skill.triggertype, chara.skill.modifiers, chara.skill.aura, chara.skill.skilltype, chara.skill.target, chara.skill.auratype)
         this.buffs = new EnemyBuffs();
 
         this.spawning = false;
@@ -31,7 +31,7 @@ class EnemyController extends CharaController {
     */
 
     createBuffAura(bufftype) {
-        this.aura = new BABYLON.Sprite("", this.lvlcontroller.spriteManagers[bufftype+"buff"]);
+        this.aura = new BABYLON.Sprite("", this.lvlcontroller.spriteManagers[bufftype + "buff"]);
         //this.aura.playAnimation(0, 3, true, 30 * this.gamespeed);
         this.aura.position = new BABYLON.Vector3(this.mesh.position.x, 20, 6 + this.mesh.position.z);
         this.aura.size = 65;
@@ -46,18 +46,20 @@ class EnemyController extends CharaController {
         this.gamespeed = gamespeed;
         var x = this.sprite.cellIndex;
 
-        var keys = ["move", "atkanim", "death", "idle"]
+        var keys = ["move", "atkanim", "death", "idle","start"]
         for (let i = 0; i < keys.length; i++) {
-            if (x <= this.chara[keys[i]].end && x >= this.chara[keys[i]].start) {
-                var duration = this.chara[keys[i]].duration
-                var delay = 30 * this.gamespeed * duration
-                if (keys[i] == "move") {
-                    delay = 30 * this.gamespeed * duration / ((this.buffs.getFinalSpeed(this.chara.speed)) / this.chara.speed)
-                }
-                if(keys[i]== "atkanim")
-                    this.sprite.playAnimation(x + 1, this.chara.atkanim.end, false, delay);
+            if (this.chara[keys[i] != undefined]) {
+                if (x <= this.chara[keys[i]].end && x >= this.chara[keys[i]].start) {
+                    var duration = this.chara[keys[i]].duration
+                    var delay = 30 * this.gamespeed * duration
+                    if (keys[i] == "move") {
+                        delay = 30 * this.gamespeed * duration / ((this.buffs.getFinalSpeed(this.chara.speed)) / this.chara.speed)
+                    }
+                    if (keys[i] == "atkanim")
+                        this.sprite.playAnimation(x + 1, this.chara.atkanim.end, false, delay);
 
-                else this.sprite.delay = delay
+                    else this.sprite.delay = delay
+                }
             }
         }
         if (pause)
@@ -160,13 +162,20 @@ class EnemyController extends CharaController {
         this.mesh.position.x = 0 + this.x * 30;
         this.mesh.position.y = 0;
 
-
+        this.startingTalents()
 
         this.pattern = this.createPathfinding(points, matrix);
         this.checkpoints = this.pattern.shift();
         this.currentpoint = this.checkpoints.path.shift();
         this.addHPBar(gui);
 
+        //TODO HARD CODED BAD
+        if (this.chara.name == "Patriot") {
+            this.buffs.buffs["patriottaunt"] = { "name": "patriottaunt", "modifiers": { "taunt": 2 } }
+        }
+    }
+
+    startingTalents() {
         if (this.chara.start != undefined) {
             this.spawning = true;
             this.sprite.playAnimation(this.chara.start.start, this.chara.start.end, false, this.gamespeed * 30 * this.chara.start.duration);
@@ -184,9 +193,9 @@ class EnemyController extends CharaController {
         }
         if (this.enemySkill != undefined) {
             if (this.enemySkill.triggertype == "on_start") {
-                if (this.enemySkill.targettype == "all"){
+                if (this.enemySkill.targettype == "all") {
                     this.enemySkill.activateSkill(this.lvlcontroller.enemies)
-                    this.enemySkill.activateSkill([this],true)
+                    this.enemySkill.activateSkill([this], true)
                 }
                 else this.enemySkill.activateSkill([this])
             }
@@ -260,16 +269,16 @@ class EnemyController extends CharaController {
         if (!hazard) {
             let ef = attackingplayer.buffs.applyeffects
             var keys = Object.keys(ef)
-            for(let i = 0;i<keys.length;i++){
-                if(ef[keys[i]].apply=="hit"){
+            for (let i = 0; i < keys.length; i++) {
+                if (ef[keys[i]].apply == "hit") {
                     this.buffs.effects[keys[i]] = ef[keys[i]].duration
-                    this.buffs.buffs[keys[i]] = {"name":keys[i],"modifiers":ef[keys[i]].modifiers}
+                    this.buffs.buffs[keys[i]] = { "name": keys[i], "modifiers": ef[keys[i]].modifiers }
                 }
             }
             var dmgmodifier = 1;
             if (attackingplayer.playerSkill.chargetype == "attack" && attackingplayer.playerSkill.triggertype == "auto" && attackingplayer.playerSkill.currentsp >= attackingplayer.playerSkill.totalsp) {
-                if(Math.random() < 0.20)
-                this.lvlcontroller.playSound(attackingplayer.chara.name + "-skill", this.lvlcontroller.vcvolume)
+                if (Math.random() < 0.20)
+                    this.lvlcontroller.playSound(attackingplayer.chara.name + "-skill", this.lvlcontroller.vcvolume)
                 if (attackingplayer.chara.skillsfx) {
                     if (attackingplayer.chara.sfx.skillhit != undefined)
                         this.lvlcontroller.playSound(attackingplayer.chara.name + "-skillhit", attackingplayer.chara.sfx.skillhit.volume)
@@ -324,26 +333,41 @@ class EnemyController extends CharaController {
             if (!hazard)
                 this.lvlcontroller.currentdp += attackingplayer.buffs.getDpOnKill();
             this.lvlcontroller.gui.updatePlayerWheelUI(this.lvlcontroller.currentdp, this.lvlcontroller.squadlimit)
+        if (this.aura != undefined)
+            this.aura.dispose()
+            if (this.chara.revive != true) {
+                this.mesh.dispose()
+                this.shadow.dispose()
+               
 
-            this.mesh.dispose()
-            this.shadow.dispose()
-            if (this.aura != undefined)
-                this.aura.dispose()
 
-
-            this.healthBar.dispose()
-            this.sprite.stopAnimation();
-            this.sprite.playAnimation(this.chara.death.start, this.chara.death.end, false, 30 * this.gamespeed * (this.chara.death.duration));
-            var instance = this
-            var timer = this.chara.death.end - this.chara.death.start + 2
-            var interval = setInterval(() => {
-                if (instance.sprite.cellIndex == instance.chara.death.end || timer <= 0) {
-                    instance.sprite.dispose()
-                    clearInterval(interval);
-                }
-                timer--;
-            }, 1);
-            this.hp = -999
+                this.healthBar.dispose()
+                this.sprite.stopAnimation();
+                this.sprite.playAnimation(this.chara.death.start, this.chara.death.end, false, 30 * this.gamespeed * (this.chara.death.duration));
+                var instance = this
+                var timer = this.chara.death.end - this.chara.death.start + 2
+                var interval = setInterval(() => {
+                    if (instance.sprite.cellIndex == instance.chara.death.end || timer <= 0) {
+                        instance.sprite.dispose()
+                        clearInterval(interval);
+                    }
+                    timer--;
+                }, 1);
+                this.hp = -999
+            }
+            else {
+                this.sprite.playAnimation(this.chara.revival1.start, this.chara.revival1.end, false, 30 * this.gamespeed * (this.chara.revival1.duration));
+                this.lvlcontroller.playSound(this.chara.name + "-revival", this.chara.sfx.revival.volume)
+                var instance = this
+                var timer = this.chara.revival1.end - this.chara.revival1.start + 2
+                var interval = setInterval(() => {
+                    if (instance.sprite.cellIndex == instance.chara.revival1.end || timer <= 0) {
+                        instance.sprite.playAnimation(this.chara.revival2.start, this.chara.revival2.end, true, 30 * this.gamespeed * (this.chara.revival2.duration));
+                        clearInterval(interval);
+                    }
+                    timer--;
+                }, 1);
+            }
             if (this.blockingplayer != undefined) {
 
                 this.blockingplayer.blocking = Math.max(this.blockingplayer.blocking - this.chara.blockcount, 0);
@@ -390,9 +414,34 @@ class EnemyController extends CharaController {
         //this.healthBar.visibility=0;
     }
 
-    unblock(){
+    unblock() {
         this.blocked = false;
         this.blockingplayer = undefined
+    }
+
+    finishRevival() {
+        var enemy = new EnemyController(this.lvlcontroller.enemylist[this.chara.name + "2"], this.scene, this.x, this.y, this.lvlcontroller, this.id);
+        //enemy.createRevivedEnemy()
+        enemy.pattern = this.pattern;
+        enemy.checkpoints = this.checkpoints;
+        enemy.currentpoint = this.currentpoint;
+        enemy.mesh = this.mesh;
+        enemy.shadow = this.shadow;
+        enemy.aura = this.aura;
+        enemy.healthBar = this.healthBar;
+
+        var player0 = new BABYLON.Sprite(this.id, this.lvlcontroller.spriteManagers[this.chara.name + "2"]);
+        player0.position = this.sprite.position;
+        player0.size = 65 * this.chara.size;
+        player0.width = 90 * this.chara.size;
+        enemy.sprite = player0;
+        enemy.sprite.invertU = this.sprite.invertU
+        enemy.startingTalents()
+        this.sprite.dispose()
+        enemy.updateHpBar();
+
+        this.lvlcontroller.enemies.push(enemy)
+
     }
 
     move(tiles, players) {
@@ -410,7 +459,7 @@ class EnemyController extends CharaController {
 
             }
             else {
-               this.unblock()
+                this.unblock()
             }
             if (!this.skillproc) {
                 var enter = false;

@@ -10,6 +10,8 @@ class LVLController extends LVLAbstract {
         this.activePlayers = [];
         this.enemies = [];
         this.hazards = [];
+
+        this.enemiesreviving = []
         this.presentHazards = lvl.hazards;
         this.tooltips = lvl.tooltips;
 
@@ -840,10 +842,14 @@ class LVLController extends LVLAbstract {
                         this.enemies[i].enemySkill.deactivateSkill(this.enemies)
                     }
                 }
-                this.enemies.splice(i, 1)
-                i--;
+                if(this.enemies[i].chara.revive==true)
+                    this.enemiesreviving.push(this.enemies[i])
+                else{
                 this.enemycount++;
                 this.gui.updateStatsUI(this.enemycount + "/" + this.enemytot, this.hp, this.maxhp);
+                }
+                this.enemies.splice(i, 1)
+                i--;
 
             }
         }
@@ -929,6 +935,15 @@ class LVLController extends LVLAbstract {
         checkTimeEffects() {
             for (let i = 0; i < this.enemies.length; i++) {
                 this.checkEffect(this.enemies[i])
+            }
+            for(let i = 0;i<this.enemiesreviving.length;i++){
+                this.enemiesreviving[i].chara.revivetimer--;
+                this.enemiesreviving[i].healthBar.value = Math.round( (this.enemiesreviving[i].chara.revivemax-this.enemiesreviving[i].chara.revivetimer) / this.enemiesreviving[i].chara.revivemax * 100)
+                if(this.enemiesreviving[i].chara.revivetimer<=0){
+                    this.enemiesreviving[i].finishRevival()
+                    this.enemiesreviving.splice(i,1)
+                    i--;
+                }
             }
         }
 

@@ -226,7 +226,7 @@ levels["GUERRILLA-2"] = {
             {"number":15, "time": 54, "gap": 3, "enemies": "Guerrilla Fighter Leader", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [0, 5], "checkpoints": [{ "start": [0, 5], "end": [7, 5], "pause": 0 }]},
            
             //patriot
-            {"number":99, "time": 70, "gap": 3, "enemies": "Guerrilla Shieldguard Leader", "line": true, "tooltip": true, "count": 1, "taunt": true, "start": [0, 6], "checkpoints": [{ "start": [0, 6], "end": [1, 6], "pause": 30 },{ "start": [1, 6], "end": [4, 10], "pause": 10 },{ "start": [4, 10], "end": [6, 7], "pause": 20 },{ "start": [6, 7], "end": [1, 7], "pause": 0 },{ "start": [1, 7], "end": [3, 2], "pause": 0 },
+            {"number":99, "time": 70, "gap": 3, "enemies": "Patriot", "line": true, "tooltip": true, "count": 1, "taunt": true, "start": [0, 6], "checkpoints": [{ "start": [0, 6], "end": [1, 6], "pause": 30 },{ "start": [1, 6], "end": [4, 10], "pause": 10 },{ "start": [4, 10], "end": [6, 7], "pause": 20 },{ "start": [6, 7], "end": [1, 7], "pause": 0 },{ "start": [1, 7], "end": [3, 2], "pause": 0 },
             { "start": [3, 2], "end": [6, 5], "pause": 20 },{ "start": [6, 5], "end": [2, 5], "pause": 0 },{ "start": [2, 5], "end": [2, 7], "pause": 0 },{ "start": [2, 7], "end": [7, 7], "pause": 0 }]},
             
             {"number":16, "time": 75, "gap": 3, "enemies": "Guerrilla Shieldguard Leader", "line": true, "tooltip": true, "count": 1, "taunt": false, "start": [0, 5], "checkpoints": [{ "start": [0, 5], "end": [1, 5], "pause": 5 },{ "start": [1, 5], "end": [3, 3], "pause": 150 },{ "start": [3, 3], "end": [7, 5], "pause": 0 }]},
@@ -270,8 +270,8 @@ levels["GUERRILLA-2"] = {
             {"number":53, "time": 216, "gap": 6, "enemies": "Guerrilla Sniper Leader", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [0, 5], "checkpoints": [{ "start": [0, 5], "end": [3, 5], "pause": 10 },{ "start": [3, 5], "end": [7, 5], "pause": 0 }]},
         ],
 
-    enemies: ["Guerrilla Hound","Guerrilla Fighter", "Guerrilla Fighter Leader","Guerrilla Herald Leader","Guerrilla Sniper Leader","Guerrilla Shieldguard Leader","Sarkaz Guerrilla Fighter Leader"],
-    tooltips: ["Guerrilla Herald Leader","Guerrilla Fighter", "Guerrilla Fighter Leader","Guerrilla Sniper Leader","Guerrilla Shieldguard Leader","Sarkaz Guerrilla Fighter Leader"],
+    enemies: ["Guerrilla Hound","Guerrilla Fighter", "Guerrilla Fighter Leader","Guerrilla Herald Leader","Guerrilla Sniper Leader","Guerrilla Shieldguard Leader","Sarkaz Guerrilla Fighter Leader","Patriot","Patriot2"],
+    tooltips: ["Guerrilla Herald Leader","Guerrilla Fighter", "Guerrilla Fighter Leader","Guerrilla Sniper Leader","Guerrilla Shieldguard Leader","Sarkaz Guerrilla Fighter Leader","Patriot"],
 
     hazards : ["altar"],
 
@@ -303,15 +303,16 @@ levels["TEST"] = {
     background: "loading_CB_under",
     description: "Testing ground",
 
-    waves: [{"number":0, "time": 0, "gap": 5, "enemies": "Sarkaz Guerrilla Fighter Leader", "line": false, "tooltip": true, "count": 1, "taunt": false, "start": [4, 5], "checkpoints": [{ "start": [4, 5], "end": [4, 5], "pause": 300 }]},
-        {"number":1, "time": 0, "gap": 5, "enemies": "Guerrilla Shieldguard Leader", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [3, 6], "checkpoints": [{ "start": [3, 6], "end": [3, 6], "pause": 300 }] },
-        {"number":2, "time": 0, "gap": 5, "enemies": "Guerrilla Fighter Leader", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [7, 10], "checkpoints": [{ "start": [7, 10], "end": [7, 2], "pause": 5 }, { "start": [7, 2], "end": [7, 10], "pause": 5 }, { "start": [7, 10], "end": [7, 2], "pause": 5 }, { "start": [7, 2], "end": [7, 10], "pause": 5 }, { "start": [7, 10], "end": [7, 0], "pause": 0 }] },
-        {"number":3, "time": 10, "gap": 5, "enemies": "Guerrilla Herald", "line": true, "tooltip": true, "taunt": false, "count": 1, "start": [7, 12], "checkpoints": [{ "start": [7, 12], "end": [7, 11], "pause": 19 }, { "start": [7, 11], "end": [7, 0], "pause": 0 }] },
-        { "number":4,"time": 30, "gap": 5, "enemies": "Guerrilla Herald Leader", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [7, 12], "checkpoints": [{ "start": [7, 12], "end": [7, 11], "pause": 100 }, { "start": [7, 11], "end": [7, 0], "pause": 0 }] },
-],
+    waves: [/*{"number":0, "time": 0, "gap": 5, "enemies": "Sarkaz Guerrilla Fighter Leader", "line": false, "tooltip": true, "count": 1, "taunt": false, "start": [4, 5], "checkpoints": [{ "start": [4, 5], "end": [4, 5], "pause": 300 }]},
+        */{ "number":4,"time": 30, "gap": 5, "enemies": "Guerrilla Siegebreaker Leader", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [7, 12], "checkpoints": [{ "start": [7, 12], "end": [7, 11], "pause": 200 }, { "start": [7, 11], "end": [7, 0], "pause": 0 }] },
+       
+        {"number":3, "time": 10, "gap": 5, "enemies": "Guerrilla Fighter", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [7, 12], "checkpoints": [{ "start": [7, 12], "end": [7, 11], "pause": 19 }, { "start": [7, 11], "end": [7, 0], "pause": 0 }] },
+        {"number":2, "time": 0, "gap": 5, "enemies": "Patriot", "line": false, "tooltip": true, "taunt": false, "count": 1, "start": [7, 10], "checkpoints": [{ "start": [7, 10], "end": [7, 2], "pause": 5 }, { "start": [7, 2], "end": [7, 10], "pause": 5 }, { "start": [7, 10], "end": [7, 2], "pause": 5 }, { "start": [7, 2], "end": [7, 10], "pause": 300 }, { "start": [7, 10], "end": [7, 0], "pause": 0 }] },
 
-    enemies: ["Guerrilla Shieldguard Leader","Guerrilla Fighter Leader","Sarkaz Guerrilla Fighter Leader","Guerrilla Herald","Guerrilla Herald Leader"],
-    tooltips: ["Sarkaz Guerrilla Fighter Leader","Guerrilla Herald"],
+    ],
+
+    enemies: ["Patriot","Guerrilla Fighter","Guerrilla Siegebreaker Leader","Patriot2"],
+    tooltips: ["Patriot"],
     hazards : ["altar"],
 
     layout: [["bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg"], ["blue", "g", "g", "g", "g", "g", "g", "g", "g", "g", "g", "blk", "red"],
