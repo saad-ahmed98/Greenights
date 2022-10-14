@@ -1,5 +1,124 @@
 let playerlist = {};
 
+playerlist["Franka"] = {
+    //hasmodule
+    name: "Franka",
+    hp: 3988,
+    atk: 1136,
+    def: 260,
+    res: 0,
+    atkinterval: 1.5,
+    blockcount: 1,
+    rarity: "rgb(255, 221, 26)",
+
+    rdtimer: 60,
+    rdcounter: 0,
+
+    type: "g",
+    class: "guard",
+    subclass: "dreadnought",
+
+
+    cost: 16,
+    basecost: 16,
+
+    range: 1,
+    targets: 1,
+
+
+    dmgtype: "physical",
+
+    classicon: "images/classicons/dreadnought.png",
+
+    opicon: "images/opicons/franka.webp",
+
+    spritesheet: "images/sprites/franka-sheet.webp",
+
+    skillsfx: true,
+    skillanim: true,
+
+    atkanim: {
+        start: 0,
+        end: 14,
+        contact: 9,
+        duration: 1,
+    },
+
+    death: {
+        start: 15,
+        end: 28,
+    },
+
+    idle: {
+        start: 29,
+        end: 58
+    },
+
+    drop: {
+        start: 59,
+        end: 70
+    },
+
+    skillatkanim: {
+        start: 71,
+        end: 88,
+        contact: 79,
+
+    },
+
+    skill: {
+        name: "Vorpal edge",
+        description: "DEF reduces to 0, \nATK +100%\nDamage turns into TRUE",
+        duration: 30,
+        sp: 20,
+        initialsp: 10,
+        chargetype: "second",
+        triggertype: "manual",
+        modifiers: {
+            def:-1,
+            atk: 1,
+            dmgtype: "true",
+        },
+        apply: "self",
+        skillimage: "images/opicons/frankaskill.webp"
+
+    },
+    talents: [
+        {
+            //TODO CHANGE LOL
+            name: "Thermite blade",
+            modifiers: {
+                aspd: 25,
+            },
+            apply: "self",
+        },
+    ],
+    sfx: {
+        atk: {
+            src: "melantha-atk",
+            volume: 0.1
+        },
+        hit: {
+            src: "melantha-hit",
+            volume: 0.1
+        },
+        skillact: {
+            src: "skill-atk",
+            volume: 0.3
+        },
+
+        skillatk: {
+            src: "plume-atk",
+            volume: 0.1
+        },
+        skillhit: {
+            src: "franka-skill-hit",
+            volume: 0.1
+        },
+
+    }
+}
+
 playerlist["Perfumer"] = {
     //hasmodule
     name: "Perfumer",

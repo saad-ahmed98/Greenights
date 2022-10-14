@@ -69,7 +69,7 @@ class Altar {
 
         for (let i = 0; i < enemies.length; i++) {
             var counter = Math.abs(Math.abs(Math.round(enemies[i].mesh.position.x / 30) - this.x) - range);
-            if (this.between(enemies[i].mesh.position.x, squarerange[0]) && this.between(enemies[i].mesh.position.z, squarerange[1])) {
+            if (this.between(enemies[i].mesh.position.x, squarerange[0]) && this.between(enemies[i].mesh.position.z, squarerange[1]) && !enemies[i].spawning && !enemies[i].invincible) {
                 if (Math.abs(Math.round(enemies[i].mesh.position.z / 30) - this.y) <= counter) {
                     res.push(enemies[i])
                 }

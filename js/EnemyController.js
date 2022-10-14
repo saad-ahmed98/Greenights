@@ -17,6 +17,8 @@ class EnemyController extends CharaController {
         this.buffs = new EnemyBuffs();
 
         this.spawning = false;
+        this.invincible = false;
+        this.invincibleaura;
 
         //standby
 
@@ -29,16 +31,34 @@ class EnemyController extends CharaController {
         this.sprite.stopAnimation();
     }
     */
+    startInvincibility() {
+        this.invincible = true;
+        this.invincibleaura = new BABYLON.Sprite("", this.lvlcontroller.spriteManagers["invincibleaura"]);
+        this.invincibleaura.position = new BABYLON.Vector3(-15 +this.mesh.position.x, 20, 6 + this.mesh.position.z);
+        this.invincibleaura.size = 70*this.chara.size;
+        this.invincibleaura.width = 100*this.chara.size;
 
+        
+        this.invincibleaura.playAnimation(0, 3, true, 30 * this.gamespeed);
+
+    }
+    updateInvincibility() {
+        this.chara.invincible--;
+        if (this.chara.invincible <= 0){
+            this.invincible = false;
+            this.invincibleaura.dispose()
+        }
+    }
     createBuffAura(bufftype) {
         this.aura = new BABYLON.Sprite("", this.lvlcontroller.spriteManagers[bufftype + "buff"]);
         //this.aura.playAnimation(0, 3, true, 30 * this.gamespeed);
-        this.aura.position = new BABYLON.Vector3(this.mesh.position.x, 20, 6 + this.mesh.position.z);
-        this.aura.size = 65;
-        this.aura.width = 90;
+        this.aura.position = new BABYLON.Vector3(-5+this.mesh.position.x, 22, 2 + this.mesh.position.z);
+        this.aura.size = 65*this.chara.size;
+        this.aura.width = 90*this.chara.size;
 
         this.aura.position.z -= (8 - (this.mesh.position.z / 30));
         this.aura.position.x -= (13 - (this.mesh.position.x / 30));
+        
 
     }
 
@@ -95,6 +115,8 @@ class EnemyController extends CharaController {
             this.shadow.position.x += (1 * (this.buffs.getFinalSpeed(this.chara.speed)) * dir) / this.gamespeed;
             if (this.aura != undefined)
                 this.aura.position.x += (1 * (this.buffs.getFinalSpeed(this.chara.speed)) * dir) / this.gamespeed;
+            if (this.invincibleaura != undefined)
+                this.invincibleaura.position.x += (1 * (this.buffs.getFinalSpeed(this.chara.speed)) * dir) / this.gamespeed;
 
         }
 
@@ -115,6 +137,11 @@ class EnemyController extends CharaController {
                     this.aura.position.x -= Math.round(this.mesh.position.x / 30) / 40;
                     this.aura.position.z -= Math.round(this.mesh.position.z / 30) / 40;
                 }
+                if (this.invincibleaura != undefined) {
+                    this.invincibleaura.position.x -= Math.round(this.mesh.position.x / 30) / 40;
+                    this.invincibleaura.position.z -= Math.round(this.mesh.position.z / 30) / 40;
+                }
+
 
             }
             else {
@@ -130,6 +157,9 @@ class EnemyController extends CharaController {
 
                 if (this.aura != undefined)
                     this.aura.position.z += (1 * (this.buffs.getFinalSpeed(this.chara.speed)) * dir) / this.gamespeed;
+                if (this.invincibleaura != undefined)
+                    this.invincibleaura.position.z += (1 * (this.buffs.getFinalSpeed(this.chara.speed)) * dir) / this.gamespeed;
+
 
             }
 
@@ -201,8 +231,11 @@ class EnemyController extends CharaController {
                     }
                 }
                 if (instance.sprite.cellIndex == instance.chara.start.end) {
-
                     instance.spawning = false;
+                    if (instance.chara.invincible != undefined) {
+                        instance.startInvincibility()
+                        instance.invincible = true;
+                    }
                     clearInterval(interval);
                 }
             }, 1);
@@ -443,7 +476,7 @@ class EnemyController extends CharaController {
         enemy.currentpoint = this.currentpoint;
         enemy.mesh = this.mesh;
         enemy.shadow = this.shadow;
-        enemy.aura = this.aura;
+        //enemy.aura = this.aura;
         enemy.healthBar = this.healthBar;
 
         var player0 = new BABYLON.Sprite(this.id, this.lvlcontroller.spriteManagers[this.chara.name + "2"]);
@@ -518,6 +551,8 @@ class EnemyController extends CharaController {
                         this.healthBar.dispose();
                         if (this.aura != undefined)
                             this.aura.dispose()
+                        if (this.invincibleaura != undefined)
+                            this.invincibleaura.dispose()
                     }
                 }
             }

@@ -539,6 +539,18 @@ class LVLController extends LVLAbstract {
         };
 
         binaryTask = assetsManager.addTextureTask(
+            "invincibleaura",
+            "images/common/invincible-sheet.png",
+            true,
+            false,
+            BABYLON.Texture.TRILINEAR_SAMPLINGMODE
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.spriteManagers[task.name] = new BABYLON.SpriteManager("InvincibleManager", undefined, 10, { width: 886, height: 604 });
+            instance.spriteManagers[task.name].texture = task.texture
+        };
+
+        binaryTask = assetsManager.addTextureTask(
             "skillready",
             "images/common/skillready.png",
             true,
@@ -934,7 +946,10 @@ class LVLController extends LVLAbstract {
 
         checkTimeEffects() {
             for (let i = 0; i < this.enemies.length; i++) {
+                //debuffs
                 this.checkEffect(this.enemies[i])
+                if(this.enemies[i].invincible)
+                    this.enemies[i].updateInvincibility()
             }
             for(let i = 0;i<this.enemiesreviving.length;i++){
                 this.enemiesreviving[i].chara.revivetimer--;

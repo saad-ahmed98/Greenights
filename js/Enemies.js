@@ -1180,7 +1180,7 @@ enemylist["Guerrilla Shieldguard"] = {
     hp: 15000,
     atk: 700,
     def: 1300,
-    res:60,
+    res:40,
     atkinterval: 3.8,
     speed:0.5,
     blockcount:1,
@@ -1246,10 +1246,10 @@ enemylist["Guerrilla Shieldguard"] = {
 
 enemylist["Guerrilla Shieldguard Leader"] = {
     name:"Guerrilla Shieldguard Leader",
-    hp: 20000,
+    hp: 25000,
     atk: 800,
-    def: 1400,
-    res:50,
+    def: 1500,
+    res:40,
     atkinterval: 3.8,
     speed:0.5,
     blockcount:1,
@@ -1407,7 +1407,6 @@ enemylist["Guerrilla Herald Leader"] = {
 
     hasskill:true,
     
-
     atkanim:{
         start:0,
         end:15,
@@ -1460,9 +1459,9 @@ enemylist["Guerrilla Herald Leader"] = {
 
 enemylist["Patriot"] = {
     name:"Patriot",
-    hp: 20000,
+    hp: 45000,
     atk: 2400,
-    def: 1500,
+    def: 1700,
     res:90,
     atkinterval: 4,
     speed:0.3,
@@ -1546,7 +1545,7 @@ enemylist["Patriot"] = {
 
 enemylist["Patriot2"] = {
     name:"Patriot2",
-    hp: 20000,
+    hp: 45000,
     atk: 1600,
     def: 500,
     res:45,
@@ -1565,7 +1564,7 @@ enemylist["Patriot2"] = {
     spritesheet:"images/sprites/patriot2-sheet.webp",
 
     hasskill:true,
-    
+    invincible:15,
 
     atkanim:{
         start:0,

@@ -48,11 +48,17 @@ class PlayerController extends CharaController {
         if (this.sprite.cellIndex >= this.chara.atkanim.start && this.sprite.cellIndex <= this.chara.atkanim.end) {
             this.sprite.playAnimation(this.sprite.cellIndex, this.chara.atkanim.end, false, 30 * this.gamespeed * this.chara.atkinterval);
         }
+        
         if (this.sprite.cellIndex >= this.chara.drop.start && this.sprite.cellIndex <= this.chara.drop.end) {
             this.sprite.playAnimation(this.sprite.cellIndex, this.chara.drop.end, false, 30 * this.gamespeed);
         }
         if (this.sprite.cellIndex >= this.chara.death.start && this.sprite.cellIndex <= this.chara.death.end) {
             this.sprite.playAnimation(this.sprite.cellIndex, this.chara.death.end, false, 30 * this.gamespeed);
+        }
+        if(this.chara.skillanim == true){
+            if (this.sprite.cellIndex >= this.chara.skillatkanim.start && this.sprite.cellIndex <= this.chara.skillatkanim.end) {
+                this.sprite.playAnimation(this.sprite.cellIndex, this.chara.skillatkanim.end, false, 30 * this.gamespeed * this.chara.atkinterval);
+            } 
         }
         else this.sprite.delay = 30 * this.gamespeed
 
@@ -181,7 +187,13 @@ class PlayerController extends CharaController {
                 this.sprite.invertU = 1
             else this.sprite.invertU = 0;
 
-            this.sprite.playAnimation(this.chara.atkanim.start, this.chara.atkanim.end, false, this.buffs.getFinalAtkInterval(1) * 30 * this.gamespeed);
+            var contactframe = this.chara.atkanim.contact
+            if(this.playerSkill.active && this.chara.skillatkanim!=undefined){
+                contactframe = this.chara.skillatkanim.contact
+                this.sprite.playAnimation(this.chara.skillatkanim.start, this.chara.skillatkanim.end, false, this.buffs.getFinalAtkInterval(1) * 30 * this.gamespeed);
+            }
+            else this.sprite.playAnimation(this.chara.atkanim.start, this.chara.atkanim.end, false, this.buffs.getFinalAtkInterval(1) * 30 * this.gamespeed);
+            
             if (this.playerSkill.active && this.chara.skillsfx) {
                 if (this.chara.sfx.skillatk != undefined)
                     this.lvlcontroller.playSound(this.chara.name + "-skillatk", this.chara.sfx.skillatk.volume)
@@ -192,7 +204,7 @@ class PlayerController extends CharaController {
             var instance = this
 
             var interval = setInterval(() => {
-                if (instance.sprite.cellIndex >= instance.chara.atkanim.contact && instance.hp > 0) {
+                if (instance.sprite.cellIndex >= contactframe && instance.hp > 0) {
                     if (this.playerSkill.active && this.chara.skillsfx) {
                         if (this.chara.sfx.skillhit != undefined)
                             this.lvlcontroller.playSound(this.chara.name + "-skillhit", this.chara.sfx.skillhit.volume)
