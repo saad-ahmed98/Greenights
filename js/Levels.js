@@ -290,7 +290,7 @@ levels["GUERRILLA-2"] = {
 
         ],
 
-    enemies: ["Guerrilla Hound Pro", "Guerrilla Herald Leader","Guerrilla Sniper Leader","Guerrilla Shieldguard Leader","Sarkaz Guerrilla Fighter Leader","Guerrilla Siegebreaker Leader","Patriot","Patriot2"],
+    enemies: ["Guerrilla Hound Pro", "Guerrilla Herald Leader","Guerrilla Fighter Leader","Guerrilla Sniper Leader","Guerrilla Shieldguard Leader","Sarkaz Guerrilla Fighter Leader","Guerrilla Siegebreaker Leader","Patriot","Patriot2"],
     tooltips: ["Guerrilla Herald Leader","Guerrilla Hound Pro", "Guerrilla Fighter Leader","Guerrilla Sniper Leader","Guerrilla Shieldguard Leader","Sarkaz Guerrilla Fighter Leader","Guerrilla Siegebreaker Leader","Patriot"],
 
     hazards : ["altar"],
