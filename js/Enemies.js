@@ -1545,11 +1545,11 @@ enemylist["Patriot"] = {
 
 enemylist["Patriot2"] = {
     name:"Patriot2",
-    hp: 35000,
-    atk: 1400,
+    hp: 45000,
+    atk: 1600,
     def: 500,
     res:45,
-    atkinterval: 3.6,
+    atkinterval: 4,
     speed:0.4,
     blockcount:1,
     type:"g",
