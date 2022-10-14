@@ -288,7 +288,7 @@ levels["GUERRILLA-2"] = {
             {"number":41, "time": 272, "gap": 6, "enemies": "Guerrilla Siegebreaker Leader", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [1, 7], "checkpoints": [{ "start": [1, 7], "end": [1, 7], "pause": 6 },{ "start": [1, 7], "end": [7, 7], "pause": 0 }]},
         ],
 
-    enemies: ["Guerrilla Hound Pro", "Guerrilla Herald Leader","Guerrilla Sniper Leader","Guerrilla Shieldguard Leader","Sarkaz Guerrilla Fighter Leader","Guerrilla Siegebreaker Leader","Patriot","Patriot2"],
+    enemies: ["Guerrilla Hound Pro", "Guerrilla Herald Leader","Guerrilla Fighter Leader","Guerrilla Sniper Leader","Guerrilla Shieldguard Leader","Sarkaz Guerrilla Fighter Leader","Guerrilla Siegebreaker Leader","Patriot","Patriot2"],
     tooltips: ["Guerrilla Herald Leader","Guerrilla Hound Pro", "Guerrilla Fighter Leader","Guerrilla Sniper Leader","Guerrilla Shieldguard Leader","Sarkaz Guerrilla Fighter Leader","Guerrilla Siegebreaker Leader","Patriot"],
 
     hazards : ["altar"],
