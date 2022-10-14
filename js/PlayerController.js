@@ -46,13 +46,13 @@ class PlayerController extends CharaController {
     updateSpeed(gamespeed, pause) {
         this.gamespeed = gamespeed;
         if (this.sprite.cellIndex >= this.chara.atkanim.start && this.sprite.cellIndex <= this.chara.atkanim.end) {
-            this.sprite.playAnimation(this.sprite.cellIndex + 1, this.chara.atkanim.end, false, 30 * this.gamespeed * this.chara.atkinterval);
+            this.sprite.playAnimation(this.sprite.cellIndex, this.chara.atkanim.end, false, 30 * this.gamespeed * this.chara.atkinterval);
         }
         if (this.sprite.cellIndex >= this.chara.drop.start && this.sprite.cellIndex <= this.chara.drop.end) {
-            this.sprite.playAnimation(this.sprite.cellIndex + 1, this.chara.drop.end, false, 30 * this.gamespeed);
+            this.sprite.playAnimation(this.sprite.cellIndex, this.chara.drop.end, false, 30 * this.gamespeed);
         }
         if (this.sprite.cellIndex >= this.chara.death.start && this.sprite.cellIndex <= this.chara.death.end) {
-            this.sprite.playAnimation(this.sprite.cellIndex + 1, this.chara.death.end, false, 30 * this.gamespeed);
+            this.sprite.playAnimation(this.sprite.cellIndex, this.chara.death.end, false, 30 * this.gamespeed);
         }
         else this.sprite.delay = 30 * this.gamespeed
 

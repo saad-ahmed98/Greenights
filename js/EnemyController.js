@@ -46,17 +46,20 @@ class EnemyController extends CharaController {
         this.gamespeed = gamespeed;
         var x = this.sprite.cellIndex;
 
-        var keys = ["move", "atkanim", "death", "idle","start"]
+        var keys = ["move", "atkanim", "death", "idle", "start"]
         for (let i = 0; i < keys.length; i++) {
-            if (this.chara[keys[i] != undefined]) {
+            if (this.chara[keys[i]] != undefined) {
                 if (x <= this.chara[keys[i]].end && x >= this.chara[keys[i]].start) {
                     var duration = this.chara[keys[i]].duration
                     var delay = 30 * this.gamespeed * duration
                     if (keys[i] == "move") {
                         delay = 30 * this.gamespeed * duration / ((this.buffs.getFinalSpeed(this.chara.speed)) / this.chara.speed)
+                        //this.running = false
                     }
                     if (keys[i] == "atkanim")
-                        this.sprite.playAnimation(x + 1, this.chara.atkanim.end, false, delay);
+                        this.sprite.playAnimation(x, this.chara.atkanim.end, false, delay);
+                    if (keys[i] == "start")
+                        this.sprite.playAnimation(x, this.chara.start.end, false, delay);
 
                     else this.sprite.delay = delay
                 }
@@ -185,7 +188,20 @@ class EnemyController extends CharaController {
             }
             var instance = this;
             var interval = setInterval(() => {
+                if (instance.chara.sfx.start2 != undefined) {
+                    if (instance.sprite.cellIndex == instance.chara.sfx.start2.sprite && !instance.chara.sfx.start2.playing) {
+                        instance.chara.sfx.start2.playing = true;
+                        instance.lvlcontroller.playSound(instance.chara.name + "-start2", this.chara.sfx.start2.volume)
+                    }
+                }
+                if (instance.chara.sfx.start3 != undefined) {
+                    if (instance.sprite.cellIndex == instance.chara.sfx.start3.sprite && !instance.chara.sfx.start3.playing) {
+                        instance.chara.sfx.start3.playing = true;
+                        instance.lvlcontroller.playSound(instance.chara.name + "-start3", this.chara.sfx.start3.volume)
+                    }
+                }
                 if (instance.sprite.cellIndex == instance.chara.start.end) {
+
                     instance.spawning = false;
                     clearInterval(interval);
                 }
@@ -333,12 +349,12 @@ class EnemyController extends CharaController {
             if (!hazard)
                 this.lvlcontroller.currentdp += attackingplayer.buffs.getDpOnKill();
             this.lvlcontroller.gui.updatePlayerWheelUI(this.lvlcontroller.currentdp, this.lvlcontroller.squadlimit)
-        if (this.aura != undefined)
-            this.aura.dispose()
+            if (this.aura != undefined)
+                this.aura.dispose()
             if (this.chara.revive != true) {
                 this.mesh.dispose()
                 this.shadow.dispose()
-               
+
 
 
                 this.healthBar.dispose()

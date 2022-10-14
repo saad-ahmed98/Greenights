@@ -300,6 +300,8 @@ enemylist['Sarkaz Swordsman'] = {
     range:0,
     dmgtype:"physical",
     size:1,
+    targets:1,
+
 
     enemytype:"normal",
 
@@ -358,6 +360,7 @@ enemylist['Sarkaz Greatswordsman'] = {
     range:0,
     dmgtype:"physical",
     size:1.05,
+    targets:1,
 
     enemytype:"normal",
 
@@ -542,6 +545,7 @@ enemylist["Guerrilla Fighter"] = {
     dmgtype:"physical",
     size:1,
     tooltip:"Moves faster when Inspired\n by a Herald or by Patriot.",
+    targets:1,
 
     enemytype:"normal",
 
@@ -614,6 +618,7 @@ enemylist["Guerrilla Fighter Leader"] = {
     dmgtype:"physical",
     size:1,
     tooltip:"Moves faster when Inspired\n by a Herald or by Patriot.",
+    targets:1,
 
 
     enemytype:"normal",
@@ -685,7 +690,8 @@ enemylist["Guerrilla Sniper"] = {
     range:1.3,
     dmgtype:"physical",
     size:1,
-    tooltip:"Attacks two targets at once\n when Inspired by a Herald or by Patriot.",
+    tooltip:"Attacks two targets at once when\nInspired by a Herald or by Patriot.",
+    targets:1,
 
     enemytype:"normal",
 
@@ -756,7 +762,8 @@ enemylist["Guerrilla Sniper Leader"] = {
     range:1.3,
     dmgtype:"physical",
     size:1,
-    tooltip:"Attacks two targets at once\n when Inspired by a Herald or by Patriot.",
+    tooltip:"Attacks two targets at once when\nInspired by a Herald or by Patriot.",
+    targets:1,
 
     enemytype:"normal",
 
@@ -827,6 +834,7 @@ enemylist['Guerrilla Hound'] = {
     range:0,
     dmgtype:"physical",
     size:1,
+    targets:1,
 
     tooltip:"A basic guerrilla-ops war hound\n having decent defenses while\n still being able to move quickly.",
 
@@ -886,6 +894,7 @@ enemylist['Guerrilla Hound Pro'] = {
     dmgtype:"physical",
     size:1,
     tooltip:"An elite guerrilla-ops war hound\n more aggressive than\n standard guerrilla hounds.",
+    targets:1,
 
     enemytype:"normal",
 
@@ -942,7 +951,8 @@ enemylist["Guerrilla Siegebreaker"] = {
     range:0,
     dmgtype:"physical",
     size:1,
-    tooltip:"Gains significantly increased ATK \nwhen Inspired by a Herald or by Patriot.",
+    tooltip:"Gains significantly increased ATK when\nInspired by a Herald or by Patriot.",
+    targets:1,
 
     enemytype:"normal",
 
@@ -1021,7 +1031,8 @@ enemylist["Guerrilla Siegebreaker Leader"] = {
     range:0,
     dmgtype:"physical",
     size:1,
-    tooltip:"Gains significantly increased ATK \nwhen Inspired by a Herald or by Patriot.",
+    tooltip:"Gains significantly increased ATK when\nInspired by a Herald or by Patriot.",
+    targets:1,
 
     enemytype:"normal",
 
@@ -1102,6 +1113,7 @@ enemylist["Sarkaz Guerrilla Fighter Leader"] = {
     dmgtype:"physical",
     size:1.2,
     tooltip:"Does not take damage when \ncoming in contact with \na Pulse Wave and attacks\n instead deal Arts damage.",
+    targets:1,
 
     enemytype:"normal",
 
@@ -1177,6 +1189,7 @@ enemylist["Guerrilla Shieldguard"] = {
     dmgtype:"physical",
     size:1.2,
     tooltip:"Covers the advance of \nenemy troops by making themselves\n more likely to be attacked.",
+    targets:1,
 
     enemytype:"normal",
 
@@ -1244,7 +1257,8 @@ enemylist["Guerrilla Shieldguard Leader"] = {
     range:0,
     dmgtype:"physical",
     size:1.2,
-    tooltip:"Covers the advance of \nenemies by making themselves\n more likely to be attacked.",
+    tooltip:"Covers the advance of \nenemies by making themselves\nmore likely to be attacked.",
+    targets:1,
 
     enemytype:"normal",
 
@@ -1313,6 +1327,7 @@ enemylist["Guerrilla Herald"] = {
     dmgtype:"physical",
     size:1,
     tooltip:"When on the battlefield,\n Inspires all enemies,\n increasing their ATK and DEF.",
+    targets:1,
 
     enemytype:"normal",
 
@@ -1384,6 +1399,7 @@ enemylist["Guerrilla Herald Leader"] = {
     dmgtype:"physical",
     size:1,
     tooltip:"When on the battlefield,\n Inspires all enemies,\n increasing their ATK and DEF.",
+    targets:1,
 
     enemytype:"normal",
 
@@ -1444,7 +1460,7 @@ enemylist["Guerrilla Herald Leader"] = {
 
 enemylist["Patriot"] = {
     name:"Patriot",
-    hp: 40000,
+    hp: 20000,
     atk: 2400,
     def: 1500,
     res:90,
@@ -1459,6 +1475,7 @@ enemylist["Patriot"] = {
     revive:true,
     revivetimer:30,
     revivemax:30,
+    targets:1,
 
     enemytype:"normal",
 
@@ -1529,7 +1546,7 @@ enemylist["Patriot"] = {
 
 enemylist["Patriot2"] = {
     name:"Patriot2",
-    hp: 40000,
+    hp: 20000,
     atk: 1600,
     def: 500,
     res:45,
@@ -1541,6 +1558,7 @@ enemylist["Patriot2"] = {
     dmgtype:"physical",
     size:1,
     tooltip:"Has extremely high DEF and RES.\n Inspires all enemies,\n increasing their ATK and DEF.",
+    targets:1,
 
     enemytype:"normal",
 
@@ -1582,8 +1600,20 @@ enemylist["Patriot2"] = {
     
     sfx: {
         start: {
-            src: "patriot2-start",
+            src: "patriot2-start1",
             volume:0.3
+        },
+        start2: {
+            src: "patriot2-start2",
+            volume:0.3,
+            sprite: 160,
+            playing:false
+        },
+        start3: {
+            src: "patriot2-start3",
+            volume:0.3,
+            sprite: 188,
+            playing:false
         },
         atk: {
             src: "patriot2-atk",

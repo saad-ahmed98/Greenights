@@ -205,11 +205,11 @@ levels["GUERRILLA-2"] = {
     bgm: "patriot_2",
     initialdp: 10,
     squadlimit: 9,
-    hp: 3,
+    hp:99,
     background: "loading_CB_under",
     description: "They do not fear death, neither should you.\n\n<Originium Altar>\nPeriodically emits pulse waves\ndamaging both allied and enemy units.",
    
-    waves: [{"number":1, "time": 0, "gap": 5, "enemies": "Guerrilla Herald Leader", "line": false, "tooltip": true, "count": 1, "taunt": false, "start": [4, 9], "checkpoints": [{ "start": [4, 9], "end": [4, 9], "pause": 50 },{ "start": [4, 9], "end": [7, 7], "pause": 0 }]},
+    waves: [{"number":1, "time": 0, "gap": 5, "enemies": "Guerrilla Herald Leader", "line": false, "tooltip": true, "count": 1, "taunt": false, "start": [4, 9], "checkpoints": [{ "start": [4, 9], "end": [4, 9], "pause": 60 },{ "start": [4, 9], "end": [7, 7], "pause": 0 }]},
             {"number":2, "time": 13, "gap": 5, "enemies": "Guerrilla Hound", "line": true, "tooltip": false, "count": 1, "taunt": true, "start": [0, 7], "checkpoints": [{ "start": [0, 7], "end": [1, 7], "pause": 5 },{ "start": [1, 7], "end": [7, 7], "pause": 0 }]},
             {"number":3, "time": 16, "gap": 4, "enemies": "Guerrilla Hound", "line": true, "tooltip": false, "count": 2, "taunt": false, "start": [0, 5], "checkpoints": [{ "start": [0, 5], "end": [1, 5], "pause": 5 },{ "start": [1, 5], "end": [7, 5], "pause": 0 }]},
             {"number":4, "time": 19, "gap": 5, "enemies": "Guerrilla Hound", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [0, 7], "checkpoints": [{ "start": [0, 7], "end": [7, 7], "pause": 0 }]},
@@ -229,8 +229,8 @@ levels["GUERRILLA-2"] = {
             {"number":99, "time": 70, "gap": 3, "enemies": "Patriot", "line": true, "tooltip": true, "count": 1, "taunt": true, "start": [0, 6], "checkpoints": [{ "start": [0, 6], "end": [1, 6], "pause": 30 },{ "start": [1, 6], "end": [2, 9], "pause": 0 },{ "start": [2, 9], "end": [4, 10], "pause": 10 },{ "start": [4, 10], "end": [6, 7], "pause": 20 },{ "start": [6, 7], "end": [1, 7], "pause": 0 },{ "start": [1, 7], "end": [3, 2], "pause": 0 },
             { "start": [3, 2], "end": [6, 5], "pause": 20 },{ "start": [6, 5], "end": [2, 5], "pause": 0 },{ "start": [2, 5], "end": [2, 7], "pause": 0 },{ "start": [2, 7], "end": [7, 7], "pause": 0 }]},
             
-            {"number":16, "time": 75, "gap": 3, "enemies": "Guerrilla Shieldguard Leader", "line": true, "tooltip": true, "count": 1, "taunt": false, "start": [0, 5], "checkpoints": [{ "start": [0, 5], "end": [1, 5], "pause": 5 },{ "start": [1, 5], "end": [3, 3], "pause": 200 },{ "start": [3, 3], "end": [7, 5], "pause": 0 }]},
-            {"number":17, "time": 75, "gap": 3, "enemies": "Guerrilla Shieldguard Leader", "line": true, "tooltip": false, "count": 1, "taunt": false, "start": [0, 7], "checkpoints": [{ "start": [0, 7], "end": [1, 7], "pause": 5 },{ "start": [1, 7], "end": [2, 9], "pause": 0 },{ "start": [2, 9], "end": [4, 9], "pause": 200 },{ "start": [4, 9], "end": [7, 7], "pause": 0 }]},
+            {"number":16, "time": 75, "gap": 3, "enemies": "Guerrilla Shieldguard Leader", "line": true, "tooltip": true, "count": 1, "taunt": false, "start": [0, 5], "checkpoints": [{ "start": [0, 5], "end": [1, 5], "pause": 5 },{ "start": [1, 5], "end": [3, 3], "pause": 180 },{ "start": [3, 3], "end": [6, 5], "pause": 0 },{ "start": [6, 5], "end": [2, 6], "pause": 0 },{ "start": [2, 6], "end": [7, 7], "pause": 0 }]},
+            {"number":17, "time": 75, "gap": 3, "enemies": "Guerrilla Shieldguard Leader", "line": true, "tooltip": false, "count": 1, "taunt": false, "start": [0, 7], "checkpoints": [{ "start": [0, 7], "end": [1, 7], "pause": 5 },{ "start": [1, 7], "end": [2, 9], "pause": 0 },{ "start": [2, 9], "end": [4, 9], "pause": 180 },{ "start": [4, 9], "end": [6, 7], "pause": 0 },{ "start": [6, 7], "end": [2, 6], "pause": 0 },{ "start": [2, 6], "end": [7, 5], "pause": 0 }]},
             
             {"number":18, "time": 80, "gap": 6, "enemies": "Guerrilla Fighter Leader", "line": false, "tooltip": false, "count": 2, "taunt": false, "start": [0, 7], "checkpoints": [{ "start": [0, 7], "end": [7, 7], "pause": 0 }]},
             {"number":19, "time": 90, "gap": 6, "enemies": "Guerrilla Sniper Leader", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [0, 7], "checkpoints": [{ "start": [0, 7], "end": [3, 7], "pause": 10 },{ "start": [3, 7], "end": [7, 7], "pause": 0 }]},
@@ -266,10 +266,32 @@ levels["GUERRILLA-2"] = {
             {"number":50, "time": 213, "gap": 6, "enemies": "Guerrilla Fighter Leader", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [0, 7], "checkpoints": [{ "start": [0, 7], "end": [7, 7], "pause": 0 }]},
             {"number":52, "time": 216, "gap": 6, "enemies": "Guerrilla Sniper Leader", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [0, 7], "checkpoints": [{ "start": [0, 7], "end": [3, 7], "pause": 10 },{ "start": [3, 7], "end": [7, 7], "pause": 0 }]},
             {"number":53, "time": 216, "gap": 6, "enemies": "Guerrilla Sniper Leader", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [0, 5], "checkpoints": [{ "start": [0, 5], "end": [3, 5], "pause": 10 },{ "start": [3, 5], "end": [7, 5], "pause": 0 }]},
+            {"number":54, "time": 221, "gap": 3, "enemies": "Guerrilla Siegebreaker Leader", "line": true, "tooltip": true, "count": 1, "taunt": false, "start": [4, 2], "checkpoints": [{ "start": [4, 2], "end": [4, 2], "pause": 20 },{ "start": [4, 2], "end": [6, 5], "pause": 0 },{ "start": [6, 5], "end": [2, 6], "pause": 0 },{ "start": [2, 6], "end": [7, 7], "pause": 0 }]},
+            {"number":55, "time": 221, "gap": 3, "enemies": "Guerrilla Siegebreaker Leader", "line": true, "tooltip": false, "count": 1, "taunt": false, "start": [4, 10], "checkpoints": [{ "start": [4, 10], "end": [4, 10], "pause": 20 },{ "start": [4, 10], "end": [6, 7], "pause": 0 },{ "start": [6, 7], "end": [2, 6], "pause": 0 },{ "start": [2, 6], "end": [7, 5], "pause": 0 }]},
+            
+            {"number":41, "time": 222, "gap": 6, "enemies": "Guerrilla Hound", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [0, 7], "checkpoints": [{ "start": [0, 7], "end": [7, 7], "pause": 0 }]},
+            {"number":54, "time": 223, "gap": 3, "enemies": "Guerrilla Siegebreaker Leader", "line": true, "tooltip": false, "count": 1, "taunt": false, "start": [3, 2], "checkpoints": [{ "start": [3, 2], "end": [3, 2], "pause": 21 },{ "start": [3, 2], "end": [2, 5], "pause": 0 },{ "start": [2, 5], "end": [7, 5], "pause": 0 }]},
+            {"number":55, "time": 223, "gap": 3, "enemies": "Guerrilla Siegebreaker Leader", "line": true, "tooltip": false, "count": 1, "taunt": false, "start": [3, 10], "checkpoints": [{ "start": [3, 10], "end": [3, 10], "pause": 21 },{ "start": [4, 10], "end":[2, 7], "pause": 0 },{ "start": [2, 7], "end": [7, 7], "pause": 0 }]},
+            {"number":41, "time": 224, "gap": 4, "enemies": "Guerrilla Hound", "line": false, "tooltip": false, "count": 2, "taunt": false, "start": [0, 5], "checkpoints": [{ "start": [0, 5], "end": [7, 5], "pause": 0 }]},
+            {"number":41, "time": 226, "gap": 6, "enemies": "Guerrilla Hound", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [0, 7], "checkpoints": [{ "start": [0, 7], "end": [7, 7], "pause": 0 }]},
+            {"number":37, "time": 229, "gap": 6, "enemies": "Guerrilla Siegebreaker Leader", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [6, 9], "checkpoints": [{ "start": [6, 9], "end": [6, 9], "pause": 10 },{ "start": [6, 9], "end": [7, 5], "pause": 0 }]},
+            {"number":37, "time": 231, "gap": 6, "enemies": "Guerrilla Siegebreaker Leader", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [6, 3], "checkpoints": [{ "start": [6, 3], "end": [6, 3], "pause": 10 },{ "start": [6, 3], "end": [7, 7], "pause": 0 }]},
+            {"number":26, "time": 235, "gap": 6, "enemies": "Sarkaz Guerrilla Fighter Leader", "line": false, "tooltip": false, "count":1, "taunt": false, "start": [1, 2], "checkpoints": [{ "start": [1, 2], "end": [1, 3], "pause": 5 },{ "start": [1, 3], "end": [7, 5], "pause": 0 }]},
+
+            {"number":37, "time": 239, "gap": 6, "enemies": "Guerrilla Sniper Leader", "line": true, "tooltip": false, "count": 1, "taunt": false, "start": [1, 10], "checkpoints": [{ "start": [1, 10], "end": [2, 10], "pause": 5 },{ "start": [2, 10], "end": [6, 6], "pause": 10 },{ "start": [6, 6], "end": [7, 5], "pause": 0 }]},
+            {"number":41, "time": 239, "gap": 6, "enemies": "Guerrilla Hound", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [0, 7], "checkpoints": [{ "start": [0, 7], "end": [7, 7], "pause": 0 }]},
+            {"number":41, "time": 246, "gap": 6, "enemies": "Guerrilla Hound", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [0, 5], "checkpoints": [{ "start": [0, 5], "end": [7, 5], "pause": 0 }]},
+            {"number":41, "time": 249, "gap": 6, "enemies": "Guerrilla Hound", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [0, 7], "checkpoints": [{ "start": [0, 7], "end": [7, 7], "pause": 0 }]},
+            {"number":41, "time": 250, "gap": 6, "enemies": "Guerrilla Hound", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [0, 5], "checkpoints": [{ "start": [0, 5], "end": [7, 5], "pause": 0 }]},
+            
+            {"number":41, "time": 270, "gap": 6, "enemies": "Guerrilla Siegebreaker Leader", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [1, 5], "checkpoints": [{ "start": [1, 5], "end": [7, 5], "pause": 0 }]},
+            {"number":41, "time": 272, "gap": 6, "enemies": "Guerrilla Siegebreaker Leader", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [1, 7], "checkpoints": [{ "start": [1, 7], "end": [7, 7], "pause": 0 }]},
+
+
         ],
 
-    enemies: ["Guerrilla Hound","Guerrilla Fighter", "Guerrilla Fighter Leader","Guerrilla Herald Leader","Guerrilla Sniper Leader","Guerrilla Shieldguard Leader","Sarkaz Guerrilla Fighter Leader","Patriot","Patriot2"],
-    tooltips: ["Guerrilla Herald Leader","Guerrilla Fighter", "Guerrilla Fighter Leader","Guerrilla Sniper Leader","Guerrilla Shieldguard Leader","Sarkaz Guerrilla Fighter Leader","Patriot"],
+    enemies: ["Guerrilla Hound","Guerrilla Fighter", "Guerrilla Fighter Leader","Guerrilla Herald Leader","Guerrilla Sniper Leader","Guerrilla Shieldguard Leader","Sarkaz Guerrilla Fighter Leader","Guerrilla Siegebreaker Leader","Patriot","Patriot2"],
+    tooltips: ["Guerrilla Herald Leader","Guerrilla Fighter", "Guerrilla Fighter Leader","Guerrilla Sniper Leader","Guerrilla Shieldguard Leader","Sarkaz Guerrilla Fighter Leader","Guerrilla Siegebreaker Leader","Patriot"],
 
     hazards : ["altar"],
 

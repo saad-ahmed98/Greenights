@@ -84,7 +84,7 @@ class LVLController extends LVLAbstract {
     restart() {
         new LVLController(this.gameconfig, enemylist, this.restartlist, JSON.parse(JSON.stringify(levels[lvlnumber])))
     }
-
+    
     createGUIs() {
         this.gui.createStatsUI(this.enemycount + "/" + this.enemytot, this.hp, this);
 
