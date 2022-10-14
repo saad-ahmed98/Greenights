@@ -1636,6 +1636,15 @@ enemylist["Patriot2"] = {
         aura:false,
         auratype:"inspire"
     },
+
+    spattack:{
+        name:"javelin",
+        target:"r",
+        range:99,
+        dmgmodifier:1.35,
+        initialsp:5,
+        sp:20,
+    }
 }
 
 
