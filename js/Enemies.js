@@ -1246,10 +1246,10 @@ enemylist["Guerrilla Shieldguard"] = {
 
 enemylist["Guerrilla Shieldguard Leader"] = {
     name:"Guerrilla Shieldguard Leader",
-    hp: 25000,
+    hp: 20000,
     atk: 800,
-    def: 1500,
-    res:60,
+    def: 1400,
+    res:50,
     atkinterval: 3.8,
     speed:0.5,
     blockcount:1,
