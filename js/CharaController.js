@@ -216,7 +216,10 @@ class CharaController {
         this.hp -= dmgreceived
         this.updateHpBar();
         if (this.hp <= 0) {
+            if(!this.dead){
             this.lvlcontroller.playSound("charadead", 0.3)
+            this.dead = true;
+            }
             //this.animationGroups[1].play()
             this.mesh.dispose()
             this.healthBar.dispose()

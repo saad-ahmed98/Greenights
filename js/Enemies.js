@@ -1112,7 +1112,7 @@ enemylist["Sarkaz Guerrilla Fighter Leader"] = {
     range:0,
     dmgtype:"physical",
     size:1.2,
-    tooltip:"Does not take damage when \ncoming in contact with \na Pulse Wave and attacks\n instead deal Arts damage.",
+    tooltip:"Does not take damage when \ncoming in contact with \na pulse wave and attacks\n instead deal Arts damage.",
     targets:1,
 
     enemytype:"normal",
@@ -1545,8 +1545,8 @@ enemylist["Patriot"] = {
 
 enemylist["Patriot2"] = {
     name:"Patriot2",
-    hp: 45000,
-    atk: 1600,
+    hp: 35000,
+    atk: 1400,
     def: 500,
     res:45,
     atkinterval: 3.6,
@@ -1570,7 +1570,7 @@ enemylist["Patriot2"] = {
         start:0,
         end:20,
         contact:10,
-        duration:1,
+        duration:1.5,
     },
     death:{
         start:21,

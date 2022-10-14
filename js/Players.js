@@ -119,6 +119,109 @@ playerlist["Franka"] = {
     }
 }
 
+playerlist["Matterhorn"] = {
+    //hasmodule
+    name: "Matterhorn",
+    hp: 4250,
+    atk: 375,
+    def: 720,
+    res: 5,
+    atkinterval: 1.2,
+    blockcount: 3,
+    rarity: "rgb(216, 132, 255)",
+
+    rdtimer: 60,
+    rdcounter: 0,
+
+    type: "g",
+    class: "defender",
+    subclass: "protector",
+
+
+    cost: 19,
+    basecost: 19,
+
+    range: 0,
+    targets: 1,
+
+
+    dmgtype: "physical",
+
+    classicon: "images/classicons/protector.png",
+
+    opicon: "images/opicons/matterhorn.webp",
+
+    spritesheet: "images/sprites/matterhorn-sheet.webp",
+
+    skillsfx: false,
+
+    atkanim: {
+        start: 0,
+        end: 19,
+        contact: 8,
+        duration: 1,
+    },
+
+    death: {
+        start: 20,
+        end: 34,
+    },
+
+    idle: {
+        start: 35,
+        end: 64
+    },
+
+    drop: {
+        start: 65,
+        end: 79
+    },
+
+    skill: {
+        name: "Cold Resistance",
+        description: "Max HP +50%,\nDEF +30%, RES +100%",
+        duration: 30,
+        sp: 32,
+        initialsp: 10,
+        chargetype: "second",
+        triggertype: "manual",
+        modifiers: {
+            maxhp:0.5,
+            def: 0.3,
+            res:1,
+        },
+        apply: "self",
+        skillimage: "images/opicons/matterhornskill.webp"
+
+    },
+    talents: [
+        {
+            //with module
+            name: "Snowfield Guard",
+            modifiers: {
+                block: 1,
+                flatres: 20,
+            },
+            apply: "self",
+        },
+    ],
+    sfx: {
+        atk: {
+            src: "melantha-atk",
+            volume: 0.1
+        },
+        hit: {
+            src: "melantha-hit",
+            volume: 0.1
+        },
+        skillact: {
+            src: "skill-def",
+            volume: 0.3
+        }
+    }
+}
+
+
 playerlist["Perfumer"] = {
     //hasmodule
     name: "Perfumer",
@@ -693,14 +796,14 @@ playerlist["Haze"] = {
 
     skill: {
         name: "Crimson eyes",
-        description: "Max HP -75%\nATK +60%, ASPD +60",
+        description: "Max HP -25%\nATK +60%, ASPD +60",
         duration: 25,
         sp: 25,
         initialsp: 0,
         chargetype: "second",
         triggertype: "manual",
         modifiers: {
-            maxhp:-0.75,
+            maxhp:-0.25,
             atk: 0.60,
             aspd: 60,
         },

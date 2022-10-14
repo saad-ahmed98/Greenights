@@ -12,6 +12,7 @@ class PlayerController extends CharaController {
         this.skillready;
 
         this.aura;
+        this.dead = false;
 
     }
 
