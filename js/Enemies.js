@@ -951,7 +951,7 @@ enemylist["Guerrilla Siegebreaker"] = {
     range:0,
     dmgtype:"physical",
     size:1,
-    tooltip:"Gains significantly increased ATK when\nInspired by a Herald or by Patriot.",
+    tooltip:"Has significantly increased\n ATK when Inspired\n by a Herald or by Patriot.",
     targets:1,
 
     enemytype:"normal",
@@ -1031,7 +1031,7 @@ enemylist["Guerrilla Siegebreaker Leader"] = {
     range:0,
     dmgtype:"physical",
     size:1,
-    tooltip:"Gains significantly increased ATK when\nInspired by a Herald or by Patriot.",
+    tooltip:"Has significantly increased\n ATK when Inspired\n by a Herald or by Patriot.",
     targets:1,
 
     enemytype:"normal",
@@ -1549,7 +1549,7 @@ enemylist["Patriot2"] = {
     atk: 1600,
     def: 500,
     res:45,
-    atkinterval: 4,
+    atkinterval: 4.5,
     speed:0.4,
     blockcount:1,
     type:"g",
@@ -1570,7 +1570,7 @@ enemylist["Patriot2"] = {
         start:0,
         end:20,
         contact:10,
-        duration:1.5,
+        duration:2,
     },
     death:{
         start:21,
