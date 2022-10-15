@@ -1460,7 +1460,7 @@ enemylist["Guerrilla Herald Leader"] = {
 enemylist["Patriot"] = {
     name:"Patriot",
     hp: 45000,
-    atk: 2400,
+    atk: 4000,
     def: 1700,
     res:90,
     atkinterval: 4,
