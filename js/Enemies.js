@@ -1570,7 +1570,7 @@ enemylist["Patriot2"] = {
         start:0,
         end:20,
         contact:10,
-        duration:2,
+        duration:1.6,
     },
     death:{
         start:21,
