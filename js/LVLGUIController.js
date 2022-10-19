@@ -162,6 +162,8 @@ class LVLGUIController {
         setTimeout(() => {
             lvlcont.pauseGame()
         }, 300)
+
+        //play level clear sound
         lvlcont.playMissionClear()
         this.lvlcontroller.dispose();
         this.lvlcontroller = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI", true, this.scene);
@@ -182,6 +184,7 @@ class LVLGUIController {
 
 
         container.addControl(msg)
+
         //quit button
         var containerq = new BABYLON.GUI.Rectangle();
         containerq.width = "15%";
@@ -196,13 +199,14 @@ class LVLGUIController {
         quit.domImage = this.scene.assets["quitbutton"]
 
         containerq.addControl(quit)
-
+        //on click, back to main menu
         containerq.onPointerDownObservable.add(() => {
             titleLoading = ""
             lvlnumber = ""
             new MainMenu(lvlcont.gameconfig)
         });
 
+        //retry button
         var container2 = new BABYLON.GUI.Rectangle();
         container2.width = "15%";
         container2.height = "80%";
@@ -216,7 +220,7 @@ class LVLGUIController {
         retry.domImage = this.scene.assets["retrybutton"]
 
         container2.addControl(retry)
-
+        //on click, restart
         container2.onPointerDownObservable.add(() => {
             lvlcont.restart()
         });
@@ -266,13 +270,13 @@ class LVLGUIController {
         quit.domImage = this.scene.assets["quitbutton"]
 
         containerq.addControl(quit)
-
+        //on click, quit
         containerq.onPointerDownObservable.add(() => {
             titleLoading = ""
             lvlnumber = ""
             new MainMenu(lvlcont.gameconfig)
         });
-
+        //retry button
         var container2 = new BABYLON.GUI.Rectangle();
         container2.width = "15%";
         container2.height = "80%";
@@ -286,7 +290,7 @@ class LVLGUIController {
         retry.domImage = this.scene.assets["retrybutton"]
 
         container2.addControl(retry)
-
+        //on click, restart
         container2.onPointerDownObservable.add(() => {
             lvlcont.restart()
         });
@@ -473,6 +477,7 @@ class LVLGUIController {
     updateStatsUI(enemies, hp,maxhp) {
         this.mapstats.enemies.text = enemies
         this.mapstats.hp.text = hp;
+        //show red counter with hp lost if hp lost
         if(hp<maxhp){
             this.mapstats.lossimg.isVisible = true
             this.mapstats.losshp.isVisible = true
@@ -499,6 +504,7 @@ class LVLGUIController {
             return 0;
         });
 
+        //player selection wheel
         for (let i = 0; i < keys.length; i++) {
             var container = new BABYLON.GUI.Rectangle();
             container.width = "8.3%"
@@ -534,6 +540,7 @@ class LVLGUIController {
             container.addControl(image);
             container.addControl(container2);
 
+            //if not enough dp or squad limit, show grey filter
             if (players[keys[i]].cost > dp || squadlimit == 0) {
                 var greyfilter = new BABYLON.GUI.Image("",);
                 greyfilter.domImage = this.scene.assets["greyfilter"]
@@ -542,6 +549,7 @@ class LVLGUIController {
 
             }
 
+            //if player on redeploy cooldown, show red filter
             if (players[keys[i]].rdcounter > 0) {
                 var redfilter = new BABYLON.GUI.Image("",);
                 redfilter.domImage = this.scene.assets["rdfilter"]
@@ -564,6 +572,7 @@ class LVLGUIController {
 
             this.wheelController.addControl(container);
             var instance = this;
+            //on click of a player, activate trigger on lvl controller for deploy
             container.onPointerDownObservable.add(() => {
                 if (players[keys[i]].rdcounter <= 0) {
                     instance.wheelclick = true;
@@ -573,6 +582,7 @@ class LVLGUIController {
 
         }
 
+        //show current dp
         var container3 = new BABYLON.GUI.Rectangle();
         container3.width = "9%";
         container3.height = "10%";
@@ -603,6 +613,7 @@ class LVLGUIController {
 
         this.wheelController.addControl(container3);
 
+        // show current squad limit
         var sqdlimit = new BABYLON.GUI.Rectangle();
         sqdlimit.width = "12%";
         sqdlimit.height = "5%";
@@ -627,6 +638,7 @@ class LVLGUIController {
 
     }
 
+    //updates dp and squad limit counter
     updatePlayerWheelUI(dp, squadlimit) {
         this.dpstat.text = dp;
         this.squadstat.text = "UNIT LIMIT : " + squadlimit
@@ -637,13 +649,16 @@ class LVLGUIController {
         }
     }
 
+    //screen after clicking on pause button or esc
     createPauseScreen(lvlcont) {
+        //pause game logic
         lvlcont.pauseGame()
         this.isPaused = true;
         this.lvlcontroller.dispose();
         this.lvlcontroller = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI", true, this.scene);
         this.showinggui = true;
 
+        //avoids pausing and unpausing in quick succession
         this.timerPauseActivate()
 
         var greyfilter = new BABYLON.GUI.Image("",);
@@ -661,13 +676,16 @@ class LVLGUIController {
 
     }
 
+    //creates escape screen, counts as pause so game paused
     createEscScreen(lvlcont) {
+        //pause game logic
         lvlcont.pauseGame()
         this.isPaused = true;
         this.lvlcontroller.dispose();
         this.lvlcontroller = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI", true, this.scene);
         this.showinggui = true;
 
+        //avoids pausing and unpausing in quick succession
         this.timerPauseActivate()
 
         var greyfilter = new BABYLON.GUI.Image("",);
@@ -692,13 +710,14 @@ class LVLGUIController {
 
         container.addControl(quit)
 
-        //pauses or unpauses the game on click
+        //escapes to main menu on click
         container.onPointerDownObservable.add(() => {
             titleLoading = ""
             lvlnumber = ""
             new MainMenu(lvlcont.gameconfig)
         });
 
+        //retry button
         var container2 = new BABYLON.GUI.Rectangle();
         container2.width = "15%";
         container2.height = "25%";
@@ -714,11 +733,10 @@ class LVLGUIController {
 
         container2.addControl(retry)
 
-        //pauses or unpauses the game on click
+        //restarts level on click
         container2.onPointerDownObservable.add(() => {
             lvlcont.restart()
         });
-
 
         this.lvlcontroller.addControl(container);
         this.lvlcontroller.addControl(container2);
@@ -726,9 +744,11 @@ class LVLGUIController {
 
     }
 
+    //create tooltip on top right with enemy descriptions
     createTooltip(enemy) {
         this.tooltipcontroller.dispose();
         this.tooltipcontroller = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI", true, this.scene);
+
         var image = new BABYLON.GUI.Image("tooltip",);
         image.domImage = this.scene.assets[enemy.name + "-enemyicon"]
         image.width = "40%"
@@ -766,21 +786,23 @@ class LVLGUIController {
 
         this.tooltipcontroller.addControl(container);
 
+        //removes tooltip after 8 seconds
         setTimeout(this.removeTool, 8000, this.tooltipcontroller, container)
 
     }
 
+    //removes tooltip
     removeTool(panel, image) {
         panel.removeControl(image)
     }
 
+    //creates description when clicking on a deployed player
     createPlayerTooltip(player) {
 
         var image = new BABYLON.GUI.Image("tooltip",);
         image.domImage = this.scene.assets[player.chara.name + "-opicon"]
         image.width = "40%"
         image.left = "-30%"
-        //player.playerSkill.skillimage
 
 
         var container = new BABYLON.GUI.Rectangle();
@@ -803,7 +825,7 @@ class LVLGUIController {
         textbox.thickness = 0;
         textbox.background = "transparent";
 
-
+        //stats description
         var text = new BABYLON.GUI.TextBlock();
         var dmgtype = player.chara.dmgtype
         if (player.buffs.getDmgType() != "")
@@ -852,7 +874,8 @@ class LVLGUIController {
         textbox.color = "white";
         textbox.thickness = 0;
         textbox.background = "transparent";
-
+        
+        //skill description
         text = new BABYLON.GUI.TextBlock();
         text.text = player.chara.skill.name + "\n\n" + player.chara.skill.chargetype + "\t\t|\t\t" + player.chara.skill.triggertype + "\n\n" + player.chara.skill.description
         text.fontSize = "10%";
@@ -872,7 +895,7 @@ class LVLGUIController {
 
     }
 
-
+    //removes pause screen
     removePauseScreen(lvlcont) {
         this.showinggui = false;
         this.timerPause = false;
@@ -880,6 +903,7 @@ class LVLGUIController {
         this.canPause = false;
         this.canPauseActivate()
         this.isPaused = false;
+        //resume game logic
         lvlcont.resumeGame()
     }
 }

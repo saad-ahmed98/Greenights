@@ -258,7 +258,7 @@ enemylist['Sarkaz Sentinel'] = {
             def:0.3,
         },
         aura:true,
-        auratype:"alert",
+        auratype:2,
         idle:{
             start:65,
             end:84,
@@ -599,7 +599,7 @@ enemylist["Guerrilla Fighter"] = {
             speed:0.2,
         },
         aura:true,
-        auratype:"inspire"
+        auratype:3
     },
 
 }
@@ -623,7 +623,7 @@ enemylist["Guerrilla Fighter Leader"] = {
 
     enemytype:"normal",
 
-    spritesheet:"images/sprites/guerrilla-fighter-leader-sheet.webp",
+    spritesheet:"images/sprites/guerrilla-grunts-leader-sheet.webp",
 
     hasskill:true,
     
@@ -672,7 +672,7 @@ enemylist["Guerrilla Fighter Leader"] = {
             speed:0.2,
         },
         aura:true,
-        auratype:"inspire"
+        auratype:3
     },
 
 }
@@ -744,7 +744,7 @@ enemylist["Guerrilla Sniper"] = {
             targets:1,
         },
         aura:true,
-        auratype:"inspire"
+        auratype:3
     },
 
 }
@@ -767,35 +767,35 @@ enemylist["Guerrilla Sniper Leader"] = {
 
     enemytype:"normal",
 
-    spritesheet:"images/sprites/guerrilla-sniper-leader-sheet.webp",
+    spritesheet:"images/sprites/guerrilla-grunts-leader-sheet.webp",
 
     hasskill:true,
     
 
     idle:{
-        start:38,
-        end:52,
+        start:(38+68),
+        end:(52+68),
         duration:1,
 
     },
 
     move:{
-        start:53,
-        end:67,
+        start:(53+68),
+        end:(67+68),
         duration:1,
 
     },
 
     atkanim:{
-        start:0,
-        end:22,
-        contact:8,
+        start:(0+68),
+        end:(22+68),
+        contact:(8+68),
         duration:0.8,
     },
 
     death:{
-        start:23,
-        end:37,
+        start:(23+68),
+        end:(37+68),
         duration:1,
 
     }
@@ -816,7 +816,7 @@ enemylist["Guerrilla Sniper Leader"] = {
             targets:1,
         },
         aura:true,
-        auratype:"inspire"
+        auratype:3
         },
 
 }
@@ -898,34 +898,34 @@ enemylist['Guerrilla Hound Pro'] = {
 
     enemytype:"normal",
 
-    spritesheet:"images/sprites/guerrilla-hound-pro-sheet.webp",
+    spritesheet:"images/sprites/guerrilla-grunts-leader-sheet.webp",
 
     hasskill:false,
 
     idle:{
-        start:30,
-        end:44,
+        start:(30+68+68+82),
+        end:(44+68+68+82),
         duration:1,
 
     },
 
     move:{
-        start:45,
-        end:60,
+        start:(45+68+68+82),
+        end:(60+68+68+82),
         duration:1.2,
 
     },
 
     atkanim:{
-        start:0,
-        end:14,
-        contact:8,
+        start:(0+68+68+82),
+        end:(14+68+68+82),
+        contact:(8+68+68+82),
         duration:1,
     },
 
     death:{
-        start:15,
-        end:29,
+        start:(15+68+68+82),
+        end:(29+68+68+82),
         duration:1,
 
     },
@@ -1014,7 +1014,7 @@ enemylist["Guerrilla Siegebreaker"] = {
             atk:0.5,
         },
         aura:true,
-        auratype:"inspire"
+        auratype:3
         },
 }
 
@@ -1036,41 +1036,41 @@ enemylist["Guerrilla Siegebreaker Leader"] = {
 
     enemytype:"normal",
 
-    spritesheet:"images/sprites/guerrilla-siegebreaker-leader-sheet.webp",
+    spritesheet:"images/sprites/guerrilla-grunts-leader-sheet.webp",
 
     hasskill:true,
     
 
     idle:{
-        start:30,
-        end:44,
+        start:(30+68+68),
+        end:(44+68+68),
         duration:1,
 
     },
 
     move:{
-        start:45,
-        end:59,
+        start:(45+68+68),
+        end:(59+68+68),
         duration:1,
 
     },
 
     atkanim:{
-        start:0,
-        end:14,
-        contact:7,
+        start:(0+68+68),
+        end:(14+68+68),
+        contact:(7+68+68),
         duration:1.2,
     },
 
     death:{
-        start:15,
-        end:29,
+        start:(15+68+68),
+        end:(29+68+68),
         duration:1,
 
     },
     start:{
-        start:60,
-        end:81,
+        start:(60+68+68),
+        end:(81+68+68),
         duration:1,
     }
     ,
@@ -1094,7 +1094,7 @@ enemylist["Guerrilla Siegebreaker Leader"] = {
             atk:0.5,
         },
         aura:true,
-        auratype:"inspire"
+        auratype:3
         
     },
 }
@@ -1165,7 +1165,7 @@ enemylist["Sarkaz Guerrilla Fighter Leader"] = {
             dmgtype:"arts",
         },
         aura:true,
-        auratype:"inspire",
+        auratype:3,
         atkanim:{
             start:81,
             end:105,
@@ -1381,7 +1381,7 @@ enemylist["Guerrilla Herald"] = {
            flatdef:100,
         },
         aura:false,
-        auratype:"inspire"
+        auratype:3
         },
 }
 
@@ -1452,7 +1452,7 @@ enemylist["Guerrilla Herald Leader"] = {
            flatdef:100,
         },
         aura:false,
-        auratype:"inspire"
+        auratype:3
 
     },
 }
@@ -1539,7 +1539,7 @@ enemylist["Patriot"] = {
            flatdef:200,
         },
         aura:false,
-        auratype:"inspire"
+        auratype:3
     },
 }
 
@@ -1634,7 +1634,7 @@ enemylist["Patriot2"] = {
            flatdef:200,
         },
         aura:false,
-        auratype:"inspire"
+        auratype:3
     },
 
     spattack:{

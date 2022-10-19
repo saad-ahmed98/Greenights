@@ -1,11 +1,16 @@
 class EnemyController extends CharaController {
     constructor(chara, scene, x, y, lvlcontroller, id) {
         super(chara, scene, x, y, lvlcontroller)
+
+        //pattern to follow before reaching its goal
         this.pattern;
+        //checkpoints to reach a point
         this.checkpoints;
+        //point to reach
         this.currentpoint;
-        this.finish = false;
         this.id = id;
+
+        this.finish = false;
         this.blocked = false;
         this.blockingplayer;
         this.attacking = false;
@@ -14,54 +19,50 @@ class EnemyController extends CharaController {
         this.aura;
         if (this.chara.hasskill)
             this.enemySkill = new EnemySkill(chara.skill.name + id, chara.skill.triggertype, chara.skill.modifiers, chara.skill.aura, chara.skill.skilltype, chara.skill.target, chara.skill.auratype)
+
         this.buffs = new EnemyBuffs();
 
         this.spawning = false;
         this.invincible = false;
         this.invincibleaura;
 
-        //standby
+    }
 
-    }
-    /*
-    pause() {
-        this.running = false;
-        this.attacking = false;
-        //this.blocked = false;
-        this.sprite.stopAnimation();
-    }
-    */
+    //create invincibility aura if enemy can be invincible
     startInvincibility() {
         this.invincible = true;
-        this.invincibleaura = new BABYLON.Sprite("", this.lvlcontroller.spriteManagers["invincibleaura"]);
-        this.invincibleaura.position = new BABYLON.Vector3(-15 +this.mesh.position.x, 20, 6 + this.mesh.position.z);
-        this.invincibleaura.size = 70*this.chara.size;
-        this.invincibleaura.width = 100*this.chara.size;
-
-        
-        this.invincibleaura.playAnimation(0, 3, true, 30 * this.gamespeed);
+        this.invincibleaura = new BABYLON.Sprite("", this.lvlcontroller.spriteManagers["skillaura"]);
+        this.invincibleaura.position = new BABYLON.Vector3(-15 + this.mesh.position.x, 20, 6 + this.mesh.position.z);
+        this.invincibleaura.size = 70 * this.chara.size;
+        this.invincibleaura.width = 100 * this.chara.size;
+        this.invincibleaura.playAnimation(4, 7, true, 30 * this.gamespeed);
 
     }
+
+    //update invincibility timer, if timer is zero then remove it, and remove the aura
     updateInvincibility() {
-        this.chara.invincible--;
-        if (this.chara.invincible <= 0){
+        this.chara.invincible-=(1/30)/this.gamespeed;
+        if (this.chara.invincible <= 0) {
             this.invincible = false;
             this.invincibleaura.dispose()
         }
     }
+
+    //create buff icon depending on buff type
     createBuffAura(bufftype) {
-        this.aura = new BABYLON.Sprite("", this.lvlcontroller.spriteManagers[bufftype + "buff"]);
-        //this.aura.playAnimation(0, 3, true, 30 * this.gamespeed);
-        this.aura.position = new BABYLON.Vector3(-5+this.mesh.position.x, 22, 2 + this.mesh.position.z);
-        this.aura.size = 65*this.chara.size;
-        this.aura.width = 90*this.chara.size;
+        this.aura = new BABYLON.Sprite("", this.lvlcontroller.spriteManagers["icons"]);
+        this.aura.position = new BABYLON.Vector3(-5 + this.mesh.position.x, 22, 2 + this.mesh.position.z);
+        this.aura.cellIndex = bufftype
+        this.aura.size = 65 * this.chara.size;
+        this.aura.width = 90 * this.chara.size;
 
         this.aura.position.z -= (8 - (this.mesh.position.z / 30));
         this.aura.position.x -= (13 - (this.mesh.position.x / 30));
-        
+
 
     }
 
+    //update speed if game speed changes
     updateSpeed(gamespeed, pause) {
         this.gamespeed = gamespeed;
         var x = this.sprite.cellIndex;
@@ -85,23 +86,21 @@ class EnemyController extends CharaController {
                 }
             }
         }
+        //if the game is paused, then don't let the animations play
         if (pause)
             this.sprite.stopAnimation()
     }
 
+    //move the enemy across the map
     patrol() {
 
         if (!this.running) {
             var duration = this.chara.move.duration
-            /*
-            if (this.chara.enemytype == "standby" && !this.buffs.getStandby())
-                duration = 0.5
-                */
-
             this.sprite.playAnimation(this.chara.move.start, this.chara.move.end, true, 30 * this.gamespeed * duration / ((this.buffs.getFinalSpeed(this.chara.speed)) / this.chara.speed));
             this.running = true;
         }
 
+        //move on x axis first to the current point x
         var xfound = false;
 
         if (this.mesh.position.x <= this.currentpoint[1] * 30 + 1 && this.mesh.position.x >= this.currentpoint[1] * 30 - 1)
@@ -119,12 +118,14 @@ class EnemyController extends CharaController {
                 this.invincibleaura.position.x += (1 * (this.buffs.getFinalSpeed(this.chara.speed)) * dir) / this.gamespeed;
 
         }
-
+        //if x found then move on the y axis to the current pooint z
         if (xfound) {
             if (this.mesh.position.z <= this.currentpoint[0] * 30 + 1 && this.mesh.position.z >= this.currentpoint[0] * 30 - 1) {
+                //if reached, then get the next point of the checkpoint path
                 if (this.checkpoints.path.length > 0)
                     this.currentpoint = this.checkpoints.path.shift();
                 else {
+                    //if there isn't any left, wait
                     this.wait = true;
                 }
                 this.sprite.position.x -= Math.round(this.mesh.position.x / 30) / 40;
@@ -167,6 +168,7 @@ class EnemyController extends CharaController {
 
     }
 
+    //update hp bar, if hp max then hide the hp bar
     updateHpBar() {
         super.updateHpBar()
         if (this.hp == this.maxhp)
@@ -176,16 +178,22 @@ class EnemyController extends CharaController {
 
     }
 
-    createEnemy(matrix, points, spriteManager, gui, shadowmanager) {
+    //create enemy
+    //matrix is the matrix of the map that defines which tiles can be passed through or not for the pathfinding of the enemy,
+    //points are the checkpoints the enemy has to pass through,
+    //spritemanager contains the sprites of the enemy,
+    //gui is the gui of the level,
+    //iconsmanager contains the icon sprites
+    createEnemy(matrix, points, spriteManager, gui, iconsmanager) {
         this.mesh = this.scene.assets.meshchara.clone(this.id)
 
-        this.shadow = new BABYLON.Sprite(this.id + "shadow", shadowmanager);
+        this.shadow = new BABYLON.Sprite(this.id + "shadow", iconsmanager);
         this.shadow.size = 65 * this.chara.size;
         this.shadow.width = 90 * this.chara.size;
 
         this.shadow.position = new BABYLON.Vector3(-15 + this.x * 30, 20, 6 + this.y * 30 - (30 * this.chara.size - 30));
 
-        var player0 = new BABYLON.Sprite(this.id, spriteManager);
+        var player0 = new BABYLON.Sprite(this.id, spriteManager[this.chara.spritesheet]);
         player0.position = new BABYLON.Vector3(-15 + this.x * 30, 20, 6 + this.y * 30 - (30 * this.chara.size - 30));
         player0.size = 65 * this.chara.size;
         player0.width = 90 * this.chara.size;
@@ -195,11 +203,15 @@ class EnemyController extends CharaController {
         this.mesh.position.x = 0 + this.x * 30;
         this.mesh.position.y = 0;
 
+        //activate starting talents
         this.startingTalents()
 
+        //create pathfinding route
         this.pattern = this.createPathfinding(points, matrix);
         this.checkpoints = this.pattern.shift();
         this.currentpoint = this.checkpoints.path.shift();
+
+        //create hp bar
         this.addHPBar(gui);
 
         //TODO HARD CODED BAD
@@ -208,7 +220,10 @@ class EnemyController extends CharaController {
         }
     }
 
+    //skills and talents activating as soon as the enemy spawns
     startingTalents() {
+
+        //if enemy has starting animation
         if (this.chara.start != undefined) {
             this.spawning = true;
             this.sprite.playAnimation(this.chara.start.start, this.chara.start.end, false, this.gamespeed * 30 * this.chara.start.duration);
@@ -217,6 +232,8 @@ class EnemyController extends CharaController {
                 this.lvlcontroller.playSound(this.chara.name + "-start", this.chara.sfx.start.volume)
             }
             var instance = this;
+            //do chain of animations if has multiple
+            //TODO clean up
             var interval = setInterval(() => {
                 if (instance.chara.sfx.start2 != undefined) {
                     if (instance.sprite.cellIndex == instance.chara.sfx.start2.sprite && !instance.chara.sfx.start2.playing) {
@@ -240,6 +257,7 @@ class EnemyController extends CharaController {
                 }
             }, 1);
         }
+        //if has skill that activates on spawn, activate
         if (this.enemySkill != undefined) {
             if (this.enemySkill.triggertype == "on_start") {
                 if (this.enemySkill.targettype == "all") {
@@ -251,6 +269,7 @@ class EnemyController extends CharaController {
         }
     }
 
+    //creates pathfinding
     createPathfinding(points, matrix) {
         var checks = [];
         for (let i = 0; i < points.length; i++) {
@@ -263,6 +282,7 @@ class EnemyController extends CharaController {
         return checks;
     }
 
+    //attack a player if available
     attack(players) {
         var player = [];
         if (!this.blocked && this.chara.range != 0) {
@@ -272,7 +292,9 @@ class EnemyController extends CharaController {
             if (this.blocked)
                 player = this.getFirstPlayerInRange(players, 0, this.chara.targets + this.buffs.getTargets())
         }
+        //if player found
         if (player.length > 0) {
+            //turn towards the player to hit
             if (player[0].mesh.position.z <= this.mesh.position.z)
                 this.sprite.invertU = 1
             else this.sprite.invertU = 0;
@@ -298,6 +320,7 @@ class EnemyController extends CharaController {
                 }
             }, 1);
 
+            //stay idle while waiting to be able to attack again
             var interval2 = setInterval(() => {
                 if (instance.sprite.cellIndex == instance.chara.atkanim.end && instance.hp > 0) {
                     this.sprite.playAnimation(this.chara.idle.start, this.chara.idle.end, true, 30 * this.gamespeed * this.chara.idle.duration);
@@ -310,10 +333,10 @@ class EnemyController extends CharaController {
         return false;
     }
 
+    //receive damage, attackingplayer can be a hazard
     receiveDamage(attackingplayer, hazard = false) {
         var dmg;
         var dmgtype;
-
 
         if (!hazard) {
             let ef = attackingplayer.buffs.applyeffects
@@ -325,6 +348,8 @@ class EnemyController extends CharaController {
                 }
             }
             var dmgmodifier = 1;
+
+            //if attackingplayer can activate a on trigger dmg up skill, activate it 
             if (attackingplayer.playerSkill.chargetype == "attack" && attackingplayer.playerSkill.triggertype == "auto" && attackingplayer.playerSkill.currentsp >= attackingplayer.playerSkill.totalsp) {
                 if (Math.random() < 0.20)
                     this.lvlcontroller.playSound(attackingplayer.chara.name + "-skill", this.lvlcontroller.vcvolume)
@@ -340,6 +365,7 @@ class EnemyController extends CharaController {
 
             var dmgpen = 0;
 
+            //if attackingplayer is of lord subclass that is blocking, and has the trait dmg pen active, decrease the damage
             if (attackingplayer.chara.subclass = "lord" && attackingplayer.buffs.getDmgPen() && attackingplayer.blocking == 0)
                 dmgpen = 0.2;
 
@@ -349,6 +375,7 @@ class EnemyController extends CharaController {
                 dmgtype = attackingplayer.chara.dmgtype
         }
 
+        //if hazard, then dmg is true
         else {
             dmg = attackingplayer.dmg
             dmgtype = "true"
@@ -368,7 +395,11 @@ class EnemyController extends CharaController {
                 break;
         }
         this.hp -= dmgreceived
+
+        //update hp bar after receiving damage
         this.updateHpBar();
+
+        //if enemy has a on hit skill, activate it
         if (this.chara.hasskill && !this.enemySkill.active) {
             if (this.enemySkill.triggertype == "on_hit") {
                 this.activateSkillAnims()
@@ -378,17 +409,21 @@ class EnemyController extends CharaController {
             }
         }
 
+        //if dead
         if (this.hp <= 0) {
-            if (!hazard)
+            //add dp to the lvl dp counter if possible
+            if (!hazard) {
                 this.lvlcontroller.currentdp += attackingplayer.buffs.getDpOnKill();
-            this.lvlcontroller.gui.updatePlayerWheelUI(this.lvlcontroller.currentdp, this.lvlcontroller.squadlimit)
+                this.lvlcontroller.gui.updatePlayerWheelUI(this.lvlcontroller.currentdp, this.lvlcontroller.squadlimit)
+            }
+
+            //remove the elements on the scene
             if (this.aura != undefined)
                 this.aura.dispose()
+            
             if (this.chara.revive != true) {
-                this.mesh.dispose()
+                this.mesh.dispose(true, true)
                 this.shadow.dispose()
-
-
 
                 this.healthBar.dispose()
                 this.sprite.stopAnimation();
@@ -404,19 +439,24 @@ class EnemyController extends CharaController {
                 }, 1);
                 this.hp = -999
             }
+            //if enemy can revive, activate revival
             else {
                 this.sprite.playAnimation(this.chara.revival1.start, this.chara.revival1.end, false, 30 * this.gamespeed * (this.chara.revival1.duration));
                 this.lvlcontroller.playSound(this.chara.name + "-revival", this.chara.sfx.revival.volume)
                 var instance = this
+                //execute first revival animation
                 var timer = this.chara.revival1.end - this.chara.revival1.start + 2
                 var interval = setInterval(() => {
                     if (instance.sprite.cellIndex == instance.chara.revival1.end || timer <= 0) {
+                        //execute revival loop after first revival animation is over
                         instance.sprite.playAnimation(this.chara.revival2.start, this.chara.revival2.end, true, 30 * this.gamespeed * (this.chara.revival2.duration));
                         clearInterval(interval);
                     }
                     timer--;
                 }, 1);
             }
+
+            //if was blocked, remove itself from block count of blocking player
             if (this.blockingplayer != undefined) {
 
                 this.blockingplayer.blocking = Math.max(this.blockingplayer.blocking - this.chara.blockcount, 0);
@@ -427,7 +467,9 @@ class EnemyController extends CharaController {
         }
     }
 
+    //if enemy has skill animations
     activateSkillAnims() {
+        //activate skill activation animation, enemy can't act or move during the animation
         if (this.chara.skill.begin != undefined) {
             this.skillproc = true;
             this.sprite.playAnimation(this.chara.skill.begin.start, this.chara.skill.begin.end, false, 30 * this.gamespeed * (this.chara.skill.begin.duration));
@@ -444,6 +486,8 @@ class EnemyController extends CharaController {
                 timer--;
             }, 1);
         }
+
+        //if on skill activation, animations change, then modify them
         if (this.chara.skill.idle != undefined)
             this.chara.idle = this.chara.skill.idle
         if (this.chara.skill.atkanim != undefined)
@@ -457,18 +501,21 @@ class EnemyController extends CharaController {
 
     }
 
-
+    //create hp bar
     addHPBar(gui) {
         this.healthBar = gui.addHPBar(this.mesh, "red", 10, "3%");
-        //this.healthBar.visibility=0;
+        this.healthBar.isVisible = false;
     }
 
+    //unblock from the player
     unblock() {
         this.blocked = false;
         this.blockingplayer = undefined
     }
 
+    //if enemy could revive, finish the revival stance
     finishRevival() {
+        //create new enemy, corresponding to the next form
         var enemy = new EnemyController(this.lvlcontroller.enemylist[this.chara.name + "2"], this.scene, this.x, this.y, this.lvlcontroller, this.id);
         //enemy.createRevivedEnemy()
         enemy.pattern = this.pattern;
@@ -493,29 +540,36 @@ class EnemyController extends CharaController {
 
     }
 
+    //move logic, do actions depending on state
     move(tiles, players) {
+        //if the enemy is spawning (doing start animation), don't move
         if (!this.spawning) {
             this.atktimer += 1 / this.gamespeed;
             var currenttile = tiles[Math.round(this.mesh.position.x / 30)][Math.round(this.mesh.position.z / 30)];
+            //verify if blocking player can still block the enemy
             if (currenttile.player != undefined) {
                 if (currenttile.player.buffs.getFinalBlock(currenttile.player.chara.blockcount) - currenttile.player.blocking >= this.chara.blockcount && !this.blocked) {
                     this.blockingplayer = currenttile.player;
                     currenttile.player.blockedenemies.push(this)
-
                     this.blockingplayer.blocking += this.chara.blockcount;
                     this.blocked = true;
                 }
 
             }
+            //if not possible (example: skill increasing block count is over, unblock)
             else {
                 this.unblock()
             }
             if (!this.skillproc) {
+                //conditions to see if enemy can attack
+                //if enemy has no atk, can't attack
                 var enter = false;
                 if (this.chara.atk > 0)
                     var enter = true;
+                //if enemy is standby, can't attack
                 if (this.chara.enemytype == "standby" && this.buffs.getStandby())
                     enter = false;
+                //if no not attack condition met, attack if atk timer is over
                 if (enter) {
                     if (this.atktimer >= this.chara.atkinterval * 20) {
                         this.atktimer = 0;
@@ -523,18 +577,21 @@ class EnemyController extends CharaController {
                     }
                 }
 
-
+                //if not attacking, waiting or being blocked, then move
                 if (!this.blocked && !this.attacking && !this.wait)
                     this.patrol();
-
                 else {
+                    //if wait, then idle
                     if (this.running) {
                         this.sprite.playAnimation(this.chara.idle.start, this.chara.idle.end, true, 30 * this.gamespeed * (this.chara.idle.duration));
                         this.running = false;
                     }
                 }
             }
+
             this.updateHpBar()
+
+            //if waiting, increase wait timer and when the timer reaches the specified amount, get the new checkpoint to reach
             if (this.wait) {
                 this.waittimer += 1 / this.gamespeed;
                 if (this.waittimer >= this.checkpoints.pause * 30) {
@@ -544,8 +601,9 @@ class EnemyController extends CharaController {
                         this.wait = false;
                     }
                     else {
+                        //if final checkpoint reached, remove the enemy
                         this.finish = true;
-                        this.mesh.dispose();
+                        this.mesh.dispose(true, true);
                         this.sprite.dispose();
                         this.shadow.dispose();
                         this.healthBar.dispose();
@@ -558,17 +616,6 @@ class EnemyController extends CharaController {
             }
 
         }
-    }
-
-
-    attackSound(scene) {
-        var sound
-        if (this.attackdmg == 2)
-            sound = scene.assets.enemy2attack
-        else sound = scene.assets.enemyattack
-        sound.setVolume(0.4)
-        if (!sound.isPlaying)
-            sound.play()
     }
 
 }

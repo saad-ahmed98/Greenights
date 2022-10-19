@@ -73,7 +73,7 @@ class PlayerController extends CharaController {
         this.maxhp = res.maxhp
     }
 
-    createPlayer(id, spriteManager, gui, shadowManager, skillManager) {
+    createPlayer(id, spriteManager, gui, iconsManager) {
         this.mesh = this.scene.assets.meshchara.clone(id)
 
 
@@ -82,11 +82,14 @@ class PlayerController extends CharaController {
         this.mesh.position.y = 10;
         this.mesh.visibility = 0;
 
-        this.shadow = new BABYLON.Sprite(id + "shadow", shadowManager);
+        this.shadow = new BABYLON.Sprite(id + "shadow", iconsManager);
+        this.shadow.cellIndex=0;
         this.shadow.size = 65;
         this.shadow.width = 90;
 
-        this.skillready = new BABYLON.Sprite(id + "skillready", skillManager);
+        this.skillready = new BABYLON.Sprite(id + "skillready", iconsManager);
+        this.skillready.cellIndex=1
+
         this.skillready.size = 65;
         this.skillready.width = 90;
 

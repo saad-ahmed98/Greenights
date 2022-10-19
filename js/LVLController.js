@@ -56,7 +56,6 @@ class LVLController extends LVLAbstract {
         this.prevspeed;
 
         this.activate = false;
-        this.spcheck = 0;
 
         this.configureAssetManager();
         this.loadAssets();
@@ -104,15 +103,12 @@ class LVLController extends LVLAbstract {
             this.movePlayers();
             this.maptimer += 1 / this.gamespeed;
             this.dptimer += 1 / this.gamespeed;
-            this.spcheck += 1 / this.gamespeed;
             if (!this.isSpawning)
                 this.spawnEnemies();
         }
-        if (this.spcheck >= 30) {
             this.checkSkills();
             this.checkTimeEffects();
-            this.spcheck = 0;
-        }
+
         if (this.dptimer >= 30) {
             this.currentdp = Math.min(this.currentdp + 1, this.dplimit);
             this.dptimer = 0;
@@ -478,25 +474,29 @@ class LVLController extends LVLAbstract {
     createSpriteManagers() {
         var instance = this;
         var assetsManager = instance.scene.assetsManager;
-
-
         var keys = Object.keys(this.enemylist);
-        for (let i = 0; i < keys.length; i++) {
-            if (this.appearingenemies.includes(keys[i])) {
-                let binaryTask = assetsManager.addTextureTask(
-                    keys[i],
-                    instance.enemylist[keys[i]].spritesheet,
-                    true,
-                    false,
-                    BABYLON.Texture.TRILINEAR_SAMPLINGMODE
-                );
-                binaryTask.onSuccess = function (task) {
-                    instance.spriteManagers[task.name] = new BABYLON.SpriteManager(task.name + "Manager", undefined, 60, { width: 888, height: 605 });
-                    instance.spriteManagers[task.name].texture = task.texture
 
-                };
-            }
+        //create set to avoid loading spritesheets shared between enemies multiple times
+        var spritesheets = new Set()
+        for (let i = 0; i < keys.length; i++) {
+            if (this.appearingenemies.includes(keys[i]))
+                spritesheets.add(this.enemylist[keys[i]].spritesheet)
         }
+
+        for (const item of spritesheets) {
+            let binaryTask = assetsManager.addTextureTask(
+                item,
+                item,
+                true,
+                false,
+                BABYLON.Texture.TRILINEAR_SAMPLINGMODE
+            );
+            binaryTask.onSuccess = function (task) {
+                instance.spriteManagers[task.name] = new BABYLON.SpriteManager(task.name + "Manager", undefined, 20, { width: 888, height: 605 });
+                instance.spriteManagers[task.name].texture = task.texture
+            };
+          }
+
 
 
         keys = Object.keys(this.playerlist);
@@ -509,80 +509,32 @@ class LVLController extends LVLAbstract {
                 BABYLON.Texture.TRILINEAR_SAMPLINGMODE
             );
             binaryTask.onSuccess = function (task) {
-                instance.spriteManagers[task.name] = new BABYLON.SpriteManager(task.name + "Manager", undefined, 30, { width: 888, height: 605 });
+                instance.spriteManagers[task.name] = new BABYLON.SpriteManager(task.name + "Manager", undefined, 2, { width: 888, height: 605 });
                 instance.spriteManagers[task.name].texture = task.texture
             };
         }
 
         let binaryTask = assetsManager.addTextureTask(
-            "shadow",
-            "images/common/shadow.png",
+            "icons",
+            "images/common/icons-sheet.webp",
             true,
             false,
             BABYLON.Texture.TRILINEAR_SAMPLINGMODE
         );
         binaryTask.onSuccess = function (task) {
-            instance.spriteManagers[task.name] = new BABYLON.SpriteManager("ShadowManager", undefined, 90, { width: 888, height: 605 });
+            instance.spriteManagers[task.name] = new BABYLON.SpriteManager("IconsManager", undefined, 100, { width: 888, height: 605 });
             instance.spriteManagers[task.name].texture = task.texture
         };
 
         binaryTask = assetsManager.addTextureTask(
             "skillaura",
-            "images/common/aura-sheet.png",
+            "images/common/aura-sheet.webp",
             true,
             false,
             BABYLON.Texture.TRILINEAR_SAMPLINGMODE
         );
         binaryTask.onSuccess = function (task) {
-            instance.spriteManagers[task.name] = new BABYLON.SpriteManager("AuraManager", undefined, 90, { width: 886, height: 604 });
-            instance.spriteManagers[task.name].texture = task.texture
-        };
-
-        binaryTask = assetsManager.addTextureTask(
-            "invincibleaura",
-            "images/common/invincible-sheet.png",
-            true,
-            false,
-            BABYLON.Texture.TRILINEAR_SAMPLINGMODE
-        );
-        binaryTask.onSuccess = function (task) {
-            instance.spriteManagers[task.name] = new BABYLON.SpriteManager("InvincibleManager", undefined, 10, { width: 886, height: 604 });
-            instance.spriteManagers[task.name].texture = task.texture
-        };
-
-        binaryTask = assetsManager.addTextureTask(
-            "skillready",
-            "images/common/skillready.png",
-            true,
-            false,
-            BABYLON.Texture.TRILINEAR_SAMPLINGMODE
-        );
-        binaryTask.onSuccess = function (task) {
-            instance.spriteManagers[task.name] = new BABYLON.SpriteManager("SkillManager", undefined, 120, { width: 888, height: 605 });
-            instance.spriteManagers[task.name].texture = task.texture
-        };
-
-        binaryTask = assetsManager.addTextureTask(
-            "alertbuff",
-            "images/common/alertbuff.png",
-            true,
-            false,
-            BABYLON.Texture.TRILINEAR_SAMPLINGMODE
-        );
-        binaryTask.onSuccess = function (task) {
-            instance.spriteManagers[task.name] = new BABYLON.SpriteManager("SkillManager", undefined, 30, { width: 888, height: 605 });
-            instance.spriteManagers[task.name].texture = task.texture
-        };
-
-        binaryTask = assetsManager.addTextureTask(
-            "inspirebuff",
-            "images/common/inspirebuff.png",
-            true,
-            false,
-            BABYLON.Texture.TRILINEAR_SAMPLINGMODE
-        );
-        binaryTask.onSuccess = function (task) {
-            instance.spriteManagers[task.name] = new BABYLON.SpriteManager("SkillManager", undefined, 120, { width: 888, height: 605 });
+            instance.spriteManagers[task.name] = new BABYLON.SpriteManager("AuraManager", undefined, 15, { width: 886, height: 604 });
             instance.spriteManagers[task.name].texture = task.texture
         };
 
@@ -885,7 +837,7 @@ class LVLController extends LVLAbstract {
 
     checkPlayerSkill(p) {
         if (!p.playerSkill.active && p.playerSkill.chargetype == "second") {
-            p.playerSkill.currentsp = Math.min(p.playerSkill.currentsp + 1, p.playerSkill.totalsp);
+            p.playerSkill.currentsp = Math.min(p.playerSkill.currentsp + (1/30)/this.gamespeed, p.playerSkill.totalsp);
             p.updateSkillBarCharging()
             if (p.playerSkill.currentsp >= p.playerSkill.totalsp && p.playerSkill.triggertype == "manual")
                 p.skillready.isVisible = true;
@@ -898,7 +850,7 @@ class LVLController extends LVLAbstract {
         }
         else if (p.playerSkill.active) {
             p.updateSkillBarTrigger()
-            p.playerSkill.duration--;
+            p.playerSkill.duration-=(1/30)/this.gamespeed;
             if (p.playerSkill.duration <= 0) {
                 p.playerSkill.deactivateDurationSkill();
                 p.aura.dispose();
@@ -910,7 +862,7 @@ class LVLController extends LVLAbstract {
         var ef = p.buffs.effects
         var keys = Object.keys(ef)
         for (let i = 0; i < keys.length; i++) {
-            ef[keys[i]]-= 1
+            ef[keys[i]]-= (1/30)/this.gamespeed
             if (ef[keys[i]] <= 0) {
                 delete ef[keys[i]]
                 delete p.buffs.buffs[keys[i]]
@@ -920,15 +872,15 @@ class LVLController extends LVLAbstract {
     }
 
         checkHazardSkill(p) {
-            if (p.currentsp == p.displaysp)
+            if (Math.round(p.currentsp) == p.displaysp)
                 p.displayRangeTiles()
             if (p.currentsp >= p.totalsp) {
                 this.playSound(p.name + "sound", 0.2)
                 p.activateSkill(this.activePlayers, this.enemies)
-                p.currentsp = -1;
+                p.currentsp = 0;
                 p.undisplayTiles()
             }
-            p.currentsp = Math.min(p.currentsp + 1, p.totalsp);
+            p.currentsp = Math.min(p.currentsp + (1/30)/this.gamespeed, p.totalsp);
             p.updateSkillBarCharging()
 
 
@@ -952,8 +904,8 @@ class LVLController extends LVLAbstract {
                     this.enemies[i].updateInvincibility()
             }
             for(let i = 0;i<this.enemiesreviving.length;i++){
-                this.enemiesreviving[i].chara.revivetimer--;
-                this.enemiesreviving[i].healthBar.value = Math.round( (this.enemiesreviving[i].chara.revivemax-this.enemiesreviving[i].chara.revivetimer) / this.enemiesreviving[i].chara.revivemax * 100)
+                this.enemiesreviving[i].chara.revivetimer-=(1/30)/this.gamespeed;
+                this.enemiesreviving[i].healthBar.value = (this.enemiesreviving[i].chara.revivemax-this.enemiesreviving[i].chara.revivetimer) / this.enemiesreviving[i].chara.revivemax * 100
                 if(this.enemiesreviving[i].chara.revivetimer<=0){
                     this.enemiesreviving[i].finishRevival()
                     this.enemiesreviving.splice(i,1)
@@ -983,7 +935,7 @@ class LVLController extends LVLAbstract {
         retreatPlayer(player) {
             this.playSound("retreat", 0.3)
 
-            player.mesh.dispose()
+            player.mesh.dispose(true,true)
             player.sprite.dispose()
             player.healthBar.dispose()
             player.skillBar.dispose()
@@ -1312,7 +1264,7 @@ class LVLController extends LVLAbstract {
 
         createEnemy(e, start, checkpoints, id) {
             var enemy = new EnemyController(this.enemylist[e], this.scene, start[0], start[1], this, id);
-            enemy.createEnemy(this.matrix, checkpoints, this.spriteManagers[e], this.gui, this.spriteManagers["shadow"]);
+            enemy.createEnemy(this.matrix, checkpoints, this.spriteManagers, this.gui, this.spriteManagers["icons"]);
             enemy.gamespeed = this.gamespeed;
             this.enemies.push(enemy);
         }
@@ -1323,7 +1275,7 @@ class LVLController extends LVLAbstract {
             this.playerlist[p].rdcounter = this.playerlist[p].rdtimer * 30;
             var player = new PlayerController(this.playerlist[p], this.scene, x, y, this);
             this.tiles[x][y].player = player;
-            player.createPlayer(player, this.spriteManagers[p], this.gui, this.spriteManagers["shadow"], this.spriteManagers["skillready"]);
+            player.createPlayer(player, this.spriteManagers[p], this.gui, this.spriteManagers["icons"]);
             player.gamespeed = this.gamespeed;
             this.activePlayers.push(player);
 

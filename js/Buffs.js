@@ -43,12 +43,15 @@ class Buffs {
         for (let i = 0; i < keys.length; i++) {
             var keysmodifiers = Object.keys(this.buffs[keys[i]].modifiers);
             for (let j = 0; j < keysmodifiers.length; j++) {
+                //if boolean then we change the value
                 if (typeof this.modifiers[keysmodifiers[j]] == "boolean")
                     this.modifiers[keysmodifiers[j]] = this.buffs[keys[i]].modifiers[keysmodifiers[j]]
                 else {
+                    //if movspeed change, then have at least a min of 0.1
                     if(keysmodifiers[j]=="speedpercent"){
                         this.modifiers[keysmodifiers[j]] =Math.max(0.1,this.modifiers[keysmodifiers[j]]+this.buffs[keys[i]].modifiers[keysmodifiers[j]])
                     }
+                    //add the values to the currently known value
                     else
                         this.modifiers[keysmodifiers[j]] += this.buffs[keys[i]].modifiers[keysmodifiers[j]]
                 }

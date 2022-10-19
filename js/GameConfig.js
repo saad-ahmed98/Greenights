@@ -8,11 +8,15 @@ class GameConfig{
         this.scenes = [];
     }
 
+    //creates engine
     createNewEngine(){
         if(this.scenes.length>0)
         this.scenes[0].dispose()
         this.engine.dispose()
         this.engine = new BABYLON.Engine(this.canvas, true);
+        this.engine.enableOfflineSupport = false;
+        this.engine.doNotHandleContextLost = true;
+
     }
 
 

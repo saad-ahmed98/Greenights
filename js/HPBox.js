@@ -3,6 +3,7 @@ class HPBox extends Tile {
         super(type, x, z, scene);
     }
 
+    //creates blue box
     create() {
         this.mesh = new BABYLON.MeshBuilder.CreateBox("", { height: 30, depth: 30, width: 30 }, this.scene);
         this.mesh.position.z = 0 + this.z * 30;

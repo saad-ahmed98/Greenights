@@ -15,9 +15,12 @@ class Altar {
         this.currentsp = 0;
         this.totalsp = 7;
         this.dmg = 500
+
+        //sp at which the atk effect starts triggering
         this.displaysp = 6
 
     }
+    //creates altar on the designated tile
     createHazard() {
         this.mesh = this.scene.assets.altar.clone("")
         this.mesh.position.x = -10 + this.x * 30
@@ -38,25 +41,34 @@ class Altar {
         //this.skillBar.linkOffsetX+=10
     }
 
+    //update skill bar sp
     updateSkillBarCharging() {
         this.skillBar.value = Math.round(this.currentsp / this.totalsp * 100)
     }
+
+    //activate skill
+    //altar hits all enemies and players
     activateSkill(players, enemies) {
+        //get all targets
         let hitenemies = this.getEnemiesInRange(enemies, 2)
         let hitplayers = this.getEnemiesInRange(players, 2)
         for (let i = 0; i < hitenemies.length; i++) {
             if (hitenemies[i].enemySkill != undefined) {
+
+                //if enemy has skill activating from being hit by altar, then activate it
                 if (hitenemies[i].enemySkill.triggertype == "on_altar" ) {
                     if(!hitenemies[i].enemySkill.active){
                     hitenemies[i].enemySkill.activateSkill([hitenemies[i]])
                     hitenemies[i].activateSkillAnims()
                     }
                 }
+                //if not, hit the enemy
                 else hitenemies[i].receiveDamage(this, true)
             }
             else
                 hitenemies[i].receiveDamage(this, true)
         }
+        //hit all the players
         for (let i = 0; i < hitplayers.length; i++) {
             hitplayers[i].receiveDamage(this, true)
         }
@@ -77,10 +89,12 @@ class Altar {
         }
         return res;
     }
+
     between(x, range) {
         return x >= range[0] && x <= range[1];
     }
 
+    //display the range of the attack
     displayRangeTiles() {
         var x = this.x
         var y = this.y
@@ -95,7 +109,7 @@ class Altar {
         }
     }
 
-
+    //undisplay the range of the attack
     undisplayTiles() {
         var x = this.x
         var y = this.y

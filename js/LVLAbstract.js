@@ -35,12 +35,14 @@ class LVLAbstract {
         throw new Error('You must implement this function');
     }
 
+    //play music
     playSound(soundname, volume) {
         var sound = this.scene.assets[soundname]
         sound.setVolume(volume)
         sound.play()
     }
 
+    //loading all the assets in the loading screen
     configureAssetManager() {
         // useful for storing references to assets as properties. i.ethis.scene.assets.cannonsound, etc.
         this.scene.assets = {};
@@ -55,8 +57,11 @@ class LVLAbstract {
             instance.gameconfig.engine.loadingUIText =
                 '<div id="center"><div id="main" style="width:' + ((totalCount - remainingCount) * 600 / totalCount) + 'px"></div></div>'
         };
+
+        //when loading is over
         assetsManager.onFinish = function (tasks) {
             instance.createScene()
+            delete instance.scene.assetsManager          
             instance.gameconfig.engine.runRenderLoop(function () {
                 instance.renderScene();
             });
@@ -65,7 +70,7 @@ class LVLAbstract {
         this.scene.assetsManager = assetsManager;
     }
 
-
+    //create level light
     createLights() {
         // i.e sun light with all light rays parallels, the vector is the direction.
         let light0 = new BABYLON.HemisphericLight("dir0", new BABYLON.Vector3(1, 0, -10), this.scene);

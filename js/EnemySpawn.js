@@ -3,6 +3,7 @@ class EnemySpawn extends Tile {
         super(type, x, z, scene);
     }
 
+    //create red box
     create() {
         this.mesh = new BABYLON.MeshBuilder.CreateBox("", { height: 30, depth: 30, width: 30 }, this.scene);
         this.mesh.position.z = 0 + this.z * 30;
@@ -14,7 +15,6 @@ class EnemySpawn extends Tile {
         this.mesh.enableEdgesRendering();	
         this.mesh.edgesWidth = 50.0;
         this.mesh.edgesColor = new BABYLON.Color4(1, 0, 0, 1);
-        //this.mesh.material.wireframe = true;
         this.mesh.freezeWorldMatrix();
         this.mesh.convertToUnIndexedMesh();
 

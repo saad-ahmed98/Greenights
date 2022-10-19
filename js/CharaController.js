@@ -1,42 +1,63 @@
 class CharaController {
     constructor(chara, scene, x, y, lvlcontroller) {
+        //stats of the character
         this.chara = JSON.parse(JSON.stringify(chara));
+
+        //elements showing up on the screen
         this.mesh;
         this.sprite;
         this.shadow;
-
-        this.hp = chara.hp;
-        this.maxhp = chara.hp;
-        this.animationGroups
         this.healthBar;
-        this.isattacking = false;
+
+        //current hp
+        this.hp = chara.hp;
+
+        //max hp
+        this.maxhp = chara.hp;
+
         this.scene = scene;
+
+        //initial x and y
         this.x = x;
         this.y = y;
+
+        //timer of atk
         this.atktimer = 10000;
-        this.running = false;
+
+        //sprite number when the game is paused
         this.pauseSpriteIndex = 0;
+
+        //status booleans
+        this.isattacking = false;
+        this.running = false;
         this.resuming = false;
         this.skillproc = false;
 
+        //current game speed : 1 is x2, 2 is x1, 8 is slow motion
         this.gamespeed = 1;
 
+        //level controller
         this.lvlcontroller = lvlcontroller
 
     }
 
-
+    //update health bar value
     updateHpBar() {
         this.healthBar.value = Math.round(this.hp / this.maxhp * 100)
 
     }
 
+    //if healed, then receive healing
     receiveHealing(healer) {
         var dmg = healer.buffs.getFinalAtk(healer.chara.atk)
         this.hp = Math.min(this.maxhp, this.hp + dmg)
         this.updateHpBar();
     }
 
+    //used by enemy, get first player in range
+    // players is the list of all the active players
+    //range is the range of the enemy
+    //targets is the number of targets that can be hit
     getFirstPlayerInRange(players, range, targets) {
         var res = []
         var targetcount = targets;
@@ -51,12 +72,17 @@ class CharaController {
             }
         }
 
+        // if range is 0 but the number of targets is higher than 1...
+        // then the enemy is ranged,
+        // blocked and can still attack more players on top of who's blocking
         if (range == 0 && targets > 1) {
+            // get the chara real range
             range = this.chara.range
             var squarerange = [[this.mesh.position.x - 15 - 30 * range, this.mesh.position.x + 15 + 30 * range], [this.mesh.position.z - 15 - 30 * range, this.mesh.position.z + 15 + 30 * range]];
             for (let i = players.length - 1; i >= 0; i--) {
                 if (this.between(players[i].x * 30, squarerange[0]) && this.between(players[i].y * 30, squarerange[1])) {
                     var found = false;
+                    //check if player is not already a target
                     for (let j = 0; j < res.length; j++) {
                         if (res[j].chara.name == players[i].chara.name)
                             found = true;
@@ -74,13 +100,14 @@ class CharaController {
 
     }
 
+    //if player is blocked, then hit the blocked enemies in priority
     getBlockedEnemyInRange(enemies, targets) {
         var res = [];
         var targetcount = targets;
         var squarerange = [[this.x * 30 - 15, this.x * 30 + 15], [this.y * 30 - 15, this.y * 30 + 15]];
 
         for (let i = 0; i < enemies.length; i++) {
-            if (enemies[i].blockingplayer == this) {
+            if (enemies[i].blockingplayer == this && !enemies[i].spawning && !enemies[i].invincible) {
                 res.push(enemies[i])
                 targetcount--;
                 if (targetcount <= 0)
@@ -88,6 +115,7 @@ class CharaController {
             }
         }
 
+        //if player can hit more targets, get player range and find enemies that can be hit outside of blocked
         var range = this.chara.range
         if (range > 0 && targets > 1) {
             var squarerange = [[this.x * 30 - 15 - 30 * range, this.x * 30 + 15 + 30 * range], [this.y * 30 - 15 - 30 * range, this.y * 30 + 15 + 30 * range]];
@@ -96,6 +124,7 @@ class CharaController {
                 if (this.between(enemies[i].mesh.position.x, squarerange[0]) && this.between(enemies[i].mesh.position.z, squarerange[1]) && !enemies[i].spawning && !enemies[i].invincible) {
                     if (Math.abs(Math.round(enemies[i].mesh.position.z / 30) - this.y) <= counter) {
                         var found = false;
+                        //check if enemy is not already a target
                         for (let j = 0; j < res.length; j++) {
                             if (res[j].id == enemies[i].id)
                                 found = true;
@@ -113,6 +142,7 @@ class CharaController {
         return res;
     }
 
+    //get player for healing, heal the player with the least amount of hp in priority
     getLowestHpPlayerInRange(players, range, targets) {
         var squarerange = [[this.x * 30 - 15 - 30 * range, this.x * 30 + 15 + 30 * range], [this.y * 30 - 15 - 30 * range, this.y * 30 + 15 + 30 * range]];
         var targetcount = targets;
@@ -144,7 +174,12 @@ class CharaController {
         return res;
     }
 
+    // get first enemy in range
+    // enemies is the list of the enemies on the map
+    // range is the range of the player
+    // targets is the number of targets
     getFirstEnemyInRange(enemies, range, targets) {
+        //sort enemies by taunt level
         enemies.sort(function (x, y) {
 
             if (x.buffs.getTauntLevel() > y.buffs.getTauntLevel()) {
@@ -173,6 +208,7 @@ class CharaController {
         return res;
     }
 
+    //get enemies hit by splash in a radius from the center (first enemy hit)
     getSplashEnemiesInRange(enemies, center, radius) {
         var res = [];
         var squarerange = [[center.mesh.position.x - 30 * radius, center.mesh.position.x + 30 * radius], [center.mesh.position.z - 30 * radius, center.mesh.position.z + 30 * radius]];
@@ -185,10 +221,11 @@ class CharaController {
         return res;
     }
 
-
+    //receive damage used by player
     receiveDamage(enemy, hazard = false) {
         var dmg;
         var dmgtype;
+
         if (!hazard) {
             dmg = enemy.buffs.getFinalAtk(enemy.chara.atk)
             dmgtype = enemy.buffs.getDmgType()
@@ -197,11 +234,13 @@ class CharaController {
                 dmgtype = enemy.chara.dmgtype
         }
         else {
+            //if hit by hazard, then always true damage
             dmgtype = "true"
             dmg = enemy.dmg
         }
 
         var dmgreceived;
+
         switch (dmgtype) {
             case "physical":
                 dmgreceived = Math.max(dmg * 0.05, dmg - this.buffs.getFinalDef(this.chara.def))
@@ -214,14 +253,20 @@ class CharaController {
                 break;
         }
         this.hp -= dmgreceived
+
+        //update hp bar after receiving damage
         this.updateHpBar();
+
+        //if dead
         if (this.hp <= 0) {
-            if(!this.dead){
-            this.lvlcontroller.playSound("charadead", 0.3)
-            this.dead = true;
+            if (!this.dead) {
+                //boolean to avoid playing the sound multiple times from different enemies hitting a dying player at once
+                this.lvlcontroller.playSound("charadead", 0.3)
+                this.dead = true;
             }
-            //this.animationGroups[1].play()
-            this.mesh.dispose()
+
+            //dispose of all the scene elements
+            this.mesh.dispose(true, true)
             this.healthBar.dispose()
             this.skillBar.dispose()
             this.shadow.dispose()
@@ -230,11 +275,13 @@ class CharaController {
             if (this.aura != undefined)
                 this.aura.dispose()
 
+            //play death animation
             this.sprite.playAnimation(this.chara.death.start, this.chara.death.end, false, 30 * this.gamespeed);
 
             var instance = this
             var interval = setInterval(() => {
                 if (instance.sprite.cellIndex == instance.chara.death.end) {
+                    //after death animation is over, remove the sprite
                     instance.sprite.dispose()
                     clearInterval(interval);
                 }
@@ -243,17 +290,24 @@ class CharaController {
         }
     }
 
+    //if game paused, freeze the sprite and remember the pause sprite
     pause() {
         this.pauseSpriteIndex = this.sprite.cellIndex;
         this.sprite.stopAnimation();
     }
 
+    //resume animations after finishing pause
     resume() {
+        var keys = ["atkanim", "death", "start","drop"]
+
         this.running = false;
-        if (this.pauseSpriteIndex >= this.chara.atkanim.start && this.pauseSpriteIndex <= this.chara.atkanim.end) {
-            this.sprite.playAnimation(this.pauseSpriteIndex + 1, this.chara.atkanim.end, false, 30 * this.gamespeed * this.chara.atkinterval);
+        for (let i = 0; i < keys.length; i++) {
+            if (this.chara[keys[i]] != undefined) {
+                if (this.pauseSpriteIndex >= this.chara[keys[i]].start && this.pauseSpriteIndex <= this.chara[keys[i]].end)
+                    this.sprite.playAnimation(this.pauseSpriteIndex, this.chara[keys[i]].end, false, 30 * this.gamespeed * this.chara.atkinterval);
+            }
         }
-        else if (this.pauseSpriteIndex >= this.chara.idle.start && this.pauseSpriteIndex <= this.chara.idle.end) {
+        if (this.pauseSpriteIndex >= this.chara.idle.start && this.pauseSpriteIndex <= this.chara.idle.end) {
             this.sprite.playAnimation(this.chara.idle.start, this.chara.idle.end, true, 30 * this.gamespeed * this.chara.idle.duration);
         }
 
@@ -308,11 +362,4 @@ class CharaController {
         return this.mesh.position.y - this.height / 2
     }
 
-    colorMesh() {
-        var colorMaterial = new BABYLON.StandardMaterial("", this.scene);
-        this.mesh.material = colorMaterial
-        this.mesh.renderOutline = true;
-        this.mesh.outlineColor = new BABYLON.Color3(0, 0, 0);
-        this.mesh.outlineWidth = 0.1;
-    }
 }
