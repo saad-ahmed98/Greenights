@@ -492,7 +492,7 @@ class LVLController extends LVLAbstract {
                 BABYLON.Texture.TRILINEAR_SAMPLINGMODE
             );
             binaryTask.onSuccess = function (task) {
-                instance.spriteManagers[task.name] = new BABYLON.SpriteManager(task.name + "Manager", undefined, 20, { width: 888, height: 605 });
+                instance.spriteManagers[task.name] = new BABYLON.SpriteManager(task.name + "Manager", undefined, 20, { width: 444, height: 302.5 });
                 instance.spriteManagers[task.name].texture = task.texture
             };
           }
@@ -509,7 +509,7 @@ class LVLController extends LVLAbstract {
                 BABYLON.Texture.TRILINEAR_SAMPLINGMODE
             );
             binaryTask.onSuccess = function (task) {
-                instance.spriteManagers[task.name] = new BABYLON.SpriteManager(task.name + "Manager", undefined, 2, { width: 888, height: 605 });
+                instance.spriteManagers[task.name] = new BABYLON.SpriteManager(task.name + "Manager", undefined, 2, { width: 444, height: 302.5 });
                 instance.spriteManagers[task.name].texture = task.texture
             };
         }

@@ -325,12 +325,12 @@ levels["TEST"] = {
         */{ "number":4,"time": 30, "gap": 5, "enemies": "Guerrilla Siegebreaker Leader", "line": false, "tooltip": true, "taunt": false, "count": 1, "start": [7, 12], "checkpoints": [{ "start": [7, 12], "end": [7, 11], "pause": 200 }, { "start": [7, 11], "end": [7, 0], "pause": 0 }] },
        
         {"number":3, "time": 10, "gap": 5, "enemies": "Guerrilla Fighter Leader", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [7, 12], "checkpoints": [{ "start": [7, 12], "end": [7, 11], "pause": 19 }, { "start": [7, 11], "end": [7, 0], "pause": 0 }] },
-        {"number":2, "time": 0, "gap": 5, "enemies": "Guerrilla Sniper Leader", "line": false, "tooltip": true, "taunt": false, "count": 1, "start": [7, 10], "checkpoints": [{ "start": [7, 10], "end": [7, 2], "pause": 30 }, { "start": [7, 2], "end": [7, 10], "pause": 5 }, { "start": [7, 10], "end": [7, 2], "pause": 5 }, { "start": [7, 2], "end": [7, 10], "pause": 300 }, { "start": [7, 10], "end": [7, 0], "pause": 0 }] },
+        {"number":2, "time": 0, "gap": 5, "enemies": "Patriot", "line": false, "tooltip": true, "taunt": false, "count": 1, "start": [7, 10], "checkpoints": [{ "start": [7, 10], "end": [7, 2], "pause": 30 }, { "start": [7, 2], "end": [7, 10], "pause": 5 }, { "start": [7, 10], "end": [7, 2], "pause": 5 }, { "start": [7, 2], "end": [7, 10], "pause": 300 }, { "start": [7, 10], "end": [7, 0], "pause": 0 }] },
 
     ],
 
-    enemies: ["Guerrilla Sniper Leader","Guerrilla Fighter Leader","Guerrilla Siegebreaker Leader"],
-    tooltips: ["Guerrilla Sniper Leader","Guerrilla Siegebreaker Leader"],
+    enemies: ["Patriot","Patriot2","Guerrilla Fighter Leader","Guerrilla Siegebreaker Leader"],
+    tooltips: ["Patriot","Guerrilla Siegebreaker Leader"],
     hazards : ["altar"],
 
     layout: [["bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg"], ["blue", "g", "g", "g", "g", "g", "g", "g", "g", "g", "g", "blk", "red"],

@@ -526,7 +526,7 @@ class EnemyController extends CharaController {
         //enemy.aura = this.aura;
         enemy.healthBar = this.healthBar;
 
-        var player0 = new BABYLON.Sprite(this.id, this.lvlcontroller.spriteManagers[this.chara.name + "2"]);
+        var player0 = new BABYLON.Sprite(this.id, this.lvlcontroller.spriteManagers[this.lvlcontroller.enemylist[this.chara.name + "2"].spritesheet]);
         player0.position = this.sprite.position;
         player0.size = 65 * this.chara.size;
         player0.width = 90 * this.chara.size;
