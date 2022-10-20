@@ -171,6 +171,7 @@ class MainMenu extends LVLAbstract {
         button.height = "15%";
         button.color = "white";
         button.top = "15%";
+        button.hoverCursor = "pointer";
 
         var msg = new BABYLON.GUI.TextBlock();
         msg.text = "PLAY";
@@ -202,6 +203,7 @@ class MainMenu extends LVLAbstract {
             button.top = (25 + i * 12) + "%";
             button.color = "transparent";
             button.background = "transparent";
+            button.hoverCursor = "pointer";
 
             button.left = "10%";
 
@@ -230,6 +232,7 @@ class MainMenu extends LVLAbstract {
         quit.background = "transparent"
         quit.cornerRadius = 10;
         quit.left = "5%"
+        quit.hoverCursor = "pointer";
 
         var msg = new BABYLON.GUI.TextBlock();
         msg.text = "BACK";
@@ -316,6 +319,8 @@ class MainMenu extends LVLAbstract {
         button.color = "transparent";
         button.top = "40%";
         button.left = "5%"
+        button.hoverCursor = "pointer";
+
 
         var msg = new BABYLON.GUI.TextBlock();
         msg.text = "START";
@@ -388,6 +393,8 @@ class MainMenu extends LVLAbstract {
             button.top = (10 + z * 17) + "%";
             button.left = (0 + j * 30) + "%";
             button.color = "white";
+            button.hoverCursor = "pointer";
+
 
             button.background = playerlist[keys[i]].rarity;
 
@@ -440,6 +447,7 @@ class MainMenu extends LVLAbstract {
         quit.background = "transparent"
         quit.cornerRadius = 10;
         quit.left = "5%"
+        quit.hoverCursor = "pointer";
 
         var msg = new BABYLON.GUI.TextBlock();
         msg.text = "BACK";
@@ -469,6 +477,8 @@ class MainMenu extends LVLAbstract {
         start.color = "transparent";
         start.top = "40%";
         start.left = "5%"
+        start.hoverCursor = "pointer";
+
 
         var msg = new BABYLON.GUI.TextBlock();
         msg.text = "START";

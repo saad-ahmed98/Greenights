@@ -102,6 +102,7 @@ class CharaController {
 
     //if player is blocked, then hit the blocked enemies in priority
     getBlockedEnemyInRange(enemies, targets) {
+        var instance = this;
         var res = [];
         var targetcount = targets;
         var squarerange = [[this.x * 30 - 15, this.x * 30 + 15], [this.y * 30 - 15, this.y * 30 + 15]];
@@ -115,14 +116,44 @@ class CharaController {
             }
         }
 
+        //sort by distance between the player
+        enemies.sort(function (x, y) {
+            if (x.getDistanceFromPlayer(instance) < y.getDistanceFromPlayer(instance)) {
+                return -1;
+            }
+            if (x.getDistanceFromPlayer(instance) > y.getDistanceFromPlayer(instance)) {
+                return 1;
+            }
+            return 0;
+        });
+
+        //sort by taunt
+        enemies.sort(function (x, y) {
+
+            if (x.buffs.getTauntLevel() > y.buffs.getTauntLevel()) {
+                return -1;
+            }
+            if (x.buffs.getTauntLevel() < y.buffs.getTauntLevel()) {
+                return 1;
+            }
+            return 0;
+        });
+
         //if player can hit more targets, get player range and find enemies that can be hit outside of blocked
-        var range = this.chara.range
+
+        var rangeexpand = 0
+        var range = this.buffs.getFinalRange(this.chara.range)
+        if (range / 0.5 % 2 != 0) {
+            range = this.buffs.getFinalRange(this.chara.range) - 0.5
+            rangeexpand + 1
+        }
+
         if (range > 0 && targets > 1) {
             var squarerange = [[this.x * 30 - 15 - 30 * range, this.x * 30 + 15 + 30 * range], [this.y * 30 - 15 - 30 * range, this.y * 30 + 15 + 30 * range]];
             for (let i = enemies.length - 1; i >= 0; i--) {
                 var counter = Math.abs(Math.abs(Math.round(enemies[i].mesh.position.x / 30) - this.x) - range);
                 if (this.between(enemies[i].mesh.position.x, squarerange[0]) && this.between(enemies[i].mesh.position.z, squarerange[1]) && !enemies[i].spawning && !enemies[i].invincible) {
-                    if (Math.abs(Math.round(enemies[i].mesh.position.z / 30) - this.y) <= counter) {
+                    if (Math.abs(Math.round(enemies[i].mesh.position.z / 30) - this.y) <= counter + rangeexpand) {
                         var found = false;
                         //check if enemy is not already a target
                         for (let j = 0; j < res.length; j++) {
@@ -143,14 +174,20 @@ class CharaController {
     }
 
     //get player for healing, heal the player with the least amount of hp in priority
-    getLowestHpPlayerInRange(players, range, targets) {
+    getLowestHpPlayerInRange(players, ranget, targets) {
+        var rangeexpand = 0
+        var range = ranget
+        if (range / 0.5 % 2 != 0) {
+            range = ranget - 0.5
+            rangeexpand + 1
+        }
         var squarerange = [[this.x * 30 - 15 - 30 * range, this.x * 30 + 15 + 30 * range], [this.y * 30 - 15 - 30 * range, this.y * 30 + 15 + 30 * range]];
         var targetcount = targets;
         var res = [];
         for (let i = 0; i < players.length; i++) {
             var counter = Math.abs(Math.abs(Math.round(players[i].mesh.position.x / 30) - this.x) - range);
             if (this.between(players[i].x * 30, squarerange[0]) && this.between(players[i].y * 30, squarerange[1]) && players[i].hp < players[i].chara.hp) {
-                if (Math.abs(Math.round(players[i].mesh.position.z / 30) - this.y) <= counter) {
+                if (Math.abs(Math.round(players[i].mesh.position.z / 30) - this.y) <= counter + rangeexpand) {
                     if (res.length < targetcount)
                         res.push(players[i])
                     else {
@@ -178,10 +215,22 @@ class CharaController {
     // enemies is the list of the enemies on the map
     // range is the range of the player
     // targets is the number of targets
-    getFirstEnemyInRange(enemies, range, targets) {
+    getFirstEnemyInRange(enemies, ranget, targets) {
+        var instance = this;
+        
+        //sort by distance between the player
+        enemies.sort(function (x, y) {
+            if (x.getDistanceFromPlayer(instance) < y.getDistanceFromPlayer(instance)) {
+                return -1;
+            }
+            if (x.getDistanceFromPlayer(instance) > y.getDistanceFromPlayer(instance)) {
+                return 1;
+            }
+            return 0;
+        });
+
         //sort enemies by taunt level
         enemies.sort(function (x, y) {
-
             if (x.buffs.getTauntLevel() > y.buffs.getTauntLevel()) {
                 return -1;
             }
@@ -190,14 +239,23 @@ class CharaController {
             }
             return 0;
         });
+
+
         var res = [];
         var targetcount = targets;
+        var rangeexpand = 0
+            var range = ranget
+            if(range/0.5%2!=0){
+                range = ranget-0.5
+                rangeexpand+1
+            }
+
         var squarerange = [[this.x * 30 - 15 - 30 * range, this.x * 30 + 15 + 30 * range], [this.y * 30 - 15 - 30 * range, this.y * 30 + 15 + 30 * range]];
 
         for (let i = 0; i < enemies.length; i++) {
             var counter = Math.abs(Math.abs(Math.round(enemies[i].mesh.position.x / 30) - this.x) - range);
             if (this.between(enemies[i].mesh.position.x, squarerange[0]) && this.between(enemies[i].mesh.position.z, squarerange[1]) && !enemies[i].spawning && !enemies[i].invincible) {
-                if (Math.abs(Math.round(enemies[i].mesh.position.z / 30) - this.y) <= counter) {
+                if (Math.abs(Math.round(enemies[i].mesh.position.z / 30) - this.y) <= counter+rangeexpand) {
                     res.push(enemies[i])
                     targetcount--;
                     if (targetcount <= 0)
@@ -298,7 +356,7 @@ class CharaController {
 
     //resume animations after finishing pause
     resume() {
-        var keys = ["atkanim", "death", "start","drop"]
+        var keys = ["atkanim", "death", "start", "drop"]
 
         this.running = false;
         for (let i = 0; i < keys.length; i++) {

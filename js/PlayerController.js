@@ -175,10 +175,10 @@ class PlayerController extends CharaController {
     attack(enemies, players) {
         var enemy;
         if (this.chara.dmgtype == "heal")
-            enemy = this.getLowestHpPlayerInRange(players, this.chara.range, this.chara.targets + this.buffs.getTargets());
+            enemy = this.getLowestHpPlayerInRange(players, this.buffs.getFinalRange(this.chara.range), this.chara.targets + this.buffs.getTargets());
         else {
             if (this.blocking == 0) {
-                enemy = this.getFirstEnemyInRange(enemies, this.chara.range, this.chara.targets + this.buffs.getTargets());
+                enemy = this.getFirstEnemyInRange(enemies, this.buffs.getFinalRange(this.chara.range), this.chara.targets + this.buffs.getTargets());
             }
             else {
                 enemy = this.getBlockedEnemyInRange(enemies, this.chara.targets + this.buffs.getTargets())

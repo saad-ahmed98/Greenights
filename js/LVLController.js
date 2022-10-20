@@ -87,7 +87,7 @@ class LVLController extends LVLAbstract {
     createGUIs() {
         this.gui.createStatsUI(this.enemycount + "/" + this.enemytot, this.hp, this);
 
-        this.gui.createPlayerWheelUI(this.playerlist, this.currentdp, this.squadlimit);
+        this.gui.createPlayerWheelUI(this.playerlist, this);
     }
 
 
@@ -926,7 +926,7 @@ class LVLController extends LVLAbstract {
                     this.activePlayers.splice(i, 1)
                     i--;
                     this.squadlimit++;
-                    this.gui.createPlayerWheelUI(this.playerlist, this.currentdp, this.squadlimit)
+                    this.gui.createPlayerWheelUI(this.playerlist, this)
                 }
 
             }
@@ -1066,8 +1066,9 @@ class LVLController extends LVLAbstract {
                                     if (instance.tiles[x][y].player != undefined) {
                                         if (!instance.zoom) {
                                             instance.zoom = true;
-                                            instance.playSound(instance.tiles[x][y].player.chara.name + "-select", instance.vcvolume)
-                                            instance.displayRangeTiles(x, y, instance.tiles[x][y].player.chara.range)
+                                            var pl = instance.tiles[x][y].player
+                                            instance.playSound(pl.chara.name + "-select", instance.vcvolume)
+                                            instance.displayRangeTiles(x, y, pl.buffs.getFinalRange(pl.chara.range))
                                             instance.createFocusCamera(x * 30, y * 30);
                                             if (instance.gamespeed != 8)
                                                 instance.prevspeed = instance.gamespeed
@@ -1075,7 +1076,7 @@ class LVLController extends LVLAbstract {
                                             instance.updateSpeed()
 
                                             currentTile = instance.tiles[x][y];
-                                            instance.gui.createContextMenu(instance.tiles[x][y].player, instance);
+                                            instance.gui.createContextMenu(pl, instance);
                                         }
                                     }
                                 }
@@ -1103,7 +1104,7 @@ class LVLController extends LVLAbstract {
                                         delete instance.playerlist[instance.gui.wheelchoice.name]
                                         instance.currentdp -= instance.gui.wheelchoice.cost
                                         instance.squadlimit--;
-                                        instance.gui.createPlayerWheelUI(instance.playerlist, instance.currentdp, instance.squadlimit)
+                                        instance.gui.createPlayerWheelUI(instance.playerlist, instance)
                                     }
                                 }
                                 instance.undisplayTiles()
@@ -1139,12 +1140,18 @@ class LVLController extends LVLAbstract {
             }
         }
 
-        displayRangeTiles(x, y, range) {
+        displayRangeTiles(x, y, ranget) {
+            var rangeexpand = 0
+            var range = ranget
+            if(range/0.5%2!=0){
+                range = ranget-0.5
+                rangeexpand+1
+            }
             var squarerange = [[Math.max(x - range, 0), Math.min(x + range, this.tiles.length - 1)], [Math.max(y - range, 0), Math.min(y + range, this.tiles[0].length - 1)]];
             for (let i = squarerange[0][0]; i <= squarerange[0][1]; i++) {
                 var counter = Math.abs(Math.abs(i - x) - range);
                 for (let j = squarerange[1][0]; j <= squarerange[1][1]; j++) {
-                    if (Math.abs(j - y) <= counter)
+                    if (Math.abs(j - y) <= counter+rangeexpand)
                         this.tiles[i][j].displayRange()
                 }
             }

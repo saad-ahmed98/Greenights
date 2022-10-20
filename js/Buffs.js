@@ -151,4 +151,10 @@ class Buffs {
         this.sumBuffs();
         return block+this.modifiers.block
     }
+
+    getFinalRange(range){
+        this.initModifiers();
+        this.sumBuffs();
+        return range+this.modifiers.range
+    }
 }

@@ -488,7 +488,7 @@ class LVLGUIController {
 
     //creates the bottom GUI that allows to select players to deploy
     //also creates the deploy points counter and squad limit counters
-    createPlayerWheelUI(players, dp, squadlimit) {
+    createPlayerWheelUI(players, lvlcont) {
         this.wheelController.dispose();
         this.wheelController = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI3", true, this.scene);
 
@@ -541,7 +541,7 @@ class LVLGUIController {
             container.addControl(container2);
 
             //if not enough dp or squad limit, show grey filter
-            if (players[keys[i]].cost > dp || squadlimit == 0) {
+            if (players[keys[i]].cost > lvlcont.currentdp || lvlcont.squadlimit == 0) {
                 var greyfilter = new BABYLON.GUI.Image("",);
                 greyfilter.domImage = this.scene.assets["greyfilter"]
                 this.greyfilters[keys[i]] = { "filter": greyfilter, "cost": players[keys[i]].cost }
@@ -574,7 +574,8 @@ class LVLGUIController {
             var instance = this;
             //on click of a player, activate trigger on lvl controller for deploy
             container.onPointerDownObservable.add(() => {
-                if (players[keys[i]].rdcounter <= 0) {
+
+                if (players[keys[i]].rdcounter <= 0 && players[keys[i]].cost <= lvlcont.currentdp) {
                     instance.wheelclick = true;
                     instance.wheelchoice = players[keys[i]]
                 }
@@ -599,7 +600,7 @@ class LVLGUIController {
 
 
         var currentdp = new BABYLON.GUI.TextBlock();
-        currentdp.text = dp;
+        currentdp.text = lvlcont.currentdp;
         currentdp.color = "white";
         currentdp.left = "20%";
         currentdp.fontSize = "60%";
@@ -622,7 +623,7 @@ class LVLGUIController {
         sqdlimit.background = "rgba(0, 0, 0, 0.5)";
 
         var limitlbl = new BABYLON.GUI.TextBlock();
-        limitlbl.text = "UNIT LIMIT : " + squadlimit;
+        limitlbl.text = "UNIT LIMIT : " + lvlcont.squadlimit;
         limitlbl.color = "white";
         limitlbl.fontSize = "60%";
         limitlbl.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_RIGHT;

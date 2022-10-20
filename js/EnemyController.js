@@ -541,6 +541,12 @@ class EnemyController extends CharaController {
 
     }
 
+    //distance from player, player prioritizes closer enemies
+    getDistanceFromPlayer(player){
+        //√ |x2 – x1|² + |y2 – y1|²
+        return Math.sqrt(Math.abs((this.mesh.position.x/30)-player.x)+Math.abs((this.mesh.position.z/30)-player.y))
+    }
+
     //move logic, do actions depending on state
     move(tiles, players) {
         //if the enemy is spawning (doing start animation), don't move
