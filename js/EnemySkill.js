@@ -12,6 +12,7 @@ class EnemySkill {
         this.active = false;
         this.aura = aura;
         this.auratype = auratype;
+        this.durationtimer = 0
 
     }
 
@@ -47,16 +48,43 @@ class EnemySkill {
         }
     }
 
-    //deactivate skill
-    deactivateSkill(targets,removeaura=false) {
-        this.active = false;
-        for (let i = 0; i < targets.length; i++) {
-            delete targets[i].buffs.buffs[this.name]
-            if(removeaura){
-                targets[i].aura.dispose() 
-                targets[i].aura=undefined
-            }
+    //update skill buffs
+    updateDurationSkill(target) {
+        this.durationtimer += (1 / 30) / target.gamespeed
+        if (target.buffs.buffs[this.name] != undefined) {
+            if (this.durationtimer >= target.buffs.buffs[this.name].modifiers.duration)
+                this.deactivateSkill([target], true)
         }
     }
 
+    updateBloodboilSkill(target) {
+
+        this.durationtimer += (1 / 30) / target.gamespeed
+        if (target.buffs.buffs[this.name] == undefined) {
+            target.buffs.buffs[this.name] = { "name": this.name, "modifiers": JSON.parse(JSON.stringify(this.modifiers)) }
+        }
+        else if (this.durationtimer < this.modifiers.stack) {
+            var keys = Object.keys(this.modifiers)
+            for (let i = 0; i < keys.length; i++)
+                target.buffs.buffs[this.name].modifiers[keys[i]] += this.modifiers[keys[i]]
+        }
+        this.durationtimer++;
+        if (this.durationtimer >= this.modifiers.stack && target.aura == undefined)
+            target.createBuffAura(this.auratype)
+        
+    }
+
+
+
+    //deactivate skill
+    deactivateSkill(targets, removeaura = false) {
+        this.active = false;
+        for (let i = 0; i < targets.length; i++) {
+            delete targets[i].buffs.buffs[this.name]
+            if (removeaura) {
+                targets[i].aura.dispose()
+                targets[i].aura = undefined
+            }
+        }
+    }
 }

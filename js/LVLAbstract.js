@@ -38,8 +38,10 @@ class LVLAbstract {
     //play music
     playSound(soundname, volume) {
         var sound = this.scene.assets[soundname]
+        if(sound!=undefined){
         sound.setVolume(volume)
         sound.play()
+        }
     }
 
     //loading all the assets in the loading screen
@@ -72,8 +74,8 @@ class LVLAbstract {
 
     //create level light
     createLights() {
-        // i.e sun light with all light rays parallels, the vector is the direction.
-        let light0 = new BABYLON.HemisphericLight("dir0", new BABYLON.Vector3(1, 0, -10), this.scene);
+        // i.e light coming from where the moon is located
+        let light0 = new BABYLON.HemisphericLight("dir0", new BABYLON.Vector3(-10, 1, 8), this.scene);
         light0.intensity = 0;
         this.light = light0
     }

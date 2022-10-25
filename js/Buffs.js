@@ -8,6 +8,9 @@ class Buffs {
 
         //effects to apply depending on condition
         this.applyeffects = {};
+
+        //icons in case of debuffs
+        this.effectSprite = {};
     }
 
     initModifiers() {
@@ -33,7 +36,9 @@ class Buffs {
             doublehitchance: 0,
             dmgpen: true,
             taunt:1,
-            maxhp:1
+            maxhp:1,
+            flatmultiatk:1,
+            flatmultidef:1,
 
         }
     }
@@ -48,8 +53,9 @@ class Buffs {
                     this.modifiers[keysmodifiers[j]] = this.buffs[keys[i]].modifiers[keysmodifiers[j]]
                 else {
                     //if movspeed change, then have at least a min of 0.1
-                    if(keysmodifiers[j]=="speedpercent"){
-                        this.modifiers[keysmodifiers[j]] =Math.max(0.1,this.modifiers[keysmodifiers[j]]+this.buffs[keys[i]].modifiers[keysmodifiers[j]])
+                    if(keysmodifiers[j]=="flatmultiatk" || keysmodifiers[j]=="flatmultidef" || keysmodifiers[j]=="speedpercent"){
+
+                        this.modifiers[keysmodifiers[j]] *=this.buffs[keys[i]].modifiers[keysmodifiers[j]]
                     }
                     //add the values to the currently known value
                     else
@@ -63,7 +69,7 @@ class Buffs {
     getFinalAtk(atk) {
         this.initModifiers();
         this.sumBuffs();
-        return Math.max(0,Math.round((atk * (1 + this.modifiers.atk))));
+        return Math.max(0,Math.round(((atk *this.modifiers.flatmultiatk)* (1 + this.modifiers.atk))));
     }
 
     getFinalAtkInterval(atkinterval) {
@@ -75,7 +81,7 @@ class Buffs {
     getFinalDef(def) {
         this.initModifiers();
         this.sumBuffs();
-        return Math.max(0,Math.round(((def+this.modifiers.flatdef) * (1 + this.modifiers.def))));
+        return Math.max(0,Math.round(((def+this.modifiers.flatdef) *(1+this.modifiers.flatmultidef)* (1 + this.modifiers.def))));
     }
 
     getFinalRes(res) {

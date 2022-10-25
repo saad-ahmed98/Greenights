@@ -217,7 +217,7 @@ class CharaController {
     // targets is the number of targets
     getFirstEnemyInRange(enemies, ranget, targets) {
         var instance = this;
-        
+
         //sort by distance between the player
         enemies.sort(function (x, y) {
             if (x.getDistanceFromPlayer(instance) < y.getDistanceFromPlayer(instance)) {
@@ -244,18 +244,18 @@ class CharaController {
         var res = [];
         var targetcount = targets;
         var rangeexpand = 0
-            var range = ranget
-            if(range/0.5%2!=0){
-                range = ranget-0.5
-                rangeexpand+1
-            }
+        var range = ranget
+        if (range / 0.5 % 2 != 0) {
+            range = ranget - 0.5
+            rangeexpand + 1
+        }
 
         var squarerange = [[this.x * 30 - 15 - 30 * range, this.x * 30 + 15 + 30 * range], [this.y * 30 - 15 - 30 * range, this.y * 30 + 15 + 30 * range]];
 
         for (let i = 0; i < enemies.length; i++) {
             var counter = Math.abs(Math.abs(Math.round(enemies[i].mesh.position.x / 30) - this.x) - range);
             if (this.between(enemies[i].mesh.position.x, squarerange[0]) && this.between(enemies[i].mesh.position.z, squarerange[1]) && !enemies[i].spawning && !enemies[i].invincible) {
-                if (Math.abs(Math.round(enemies[i].mesh.position.z / 30) - this.y) <= counter+rangeexpand) {
+                if (Math.abs(Math.round(enemies[i].mesh.position.z / 30) - this.y) <= counter + rangeexpand) {
                     res.push(enemies[i])
                     targetcount--;
                     if (targetcount <= 0)
@@ -286,6 +286,7 @@ class CharaController {
 
         if (!hazard) {
             dmg = enemy.buffs.getFinalAtk(enemy.chara.atk)
+            console.log(dmg)
             dmgtype = enemy.buffs.getDmgType()
 
             if (dmgtype == "")
@@ -321,30 +322,33 @@ class CharaController {
                 //boolean to avoid playing the sound multiple times from different enemies hitting a dying player at once
                 this.lvlcontroller.playSound("charadead", 0.3)
                 this.dead = true;
+
+                //dispose of all the scene elements
+                this.mesh.dispose(true, true)
+                this.healthBar.dispose()
+                this.skillBar.dispose()
+                this.shadow.dispose()
+                this.skillready.dispose()
+
+                if (this.aura != undefined)
+                    this.aura.dispose()
+                var keys = Object.keys(this.buffs.effectSprite)
+                for (let i = 0; i < keys.length; i++)
+                    this.buffs.effectSprite[keys[i]].dispose()
+
+                //play death animation
+                this.sprite.playAnimation(this.chara.death.start, this.chara.death.end, false, 30 * this.gamespeed);
+
+                var instance = this
+                var interval = setInterval(() => {
+                    if (instance.sprite.cellIndex == instance.chara.death.end) {
+                        //after death animation is over, remove the sprite
+                        instance.sprite.dispose()
+                        clearInterval(interval);
+                    }
+                }, 1);
+                this.hp = -999
             }
-
-            //dispose of all the scene elements
-            this.mesh.dispose(true, true)
-            this.healthBar.dispose()
-            this.skillBar.dispose()
-            this.shadow.dispose()
-            this.skillready.dispose()
-
-            if (this.aura != undefined)
-                this.aura.dispose()
-
-            //play death animation
-            this.sprite.playAnimation(this.chara.death.start, this.chara.death.end, false, 30 * this.gamespeed);
-
-            var instance = this
-            var interval = setInterval(() => {
-                if (instance.sprite.cellIndex == instance.chara.death.end) {
-                    //after death animation is over, remove the sprite
-                    instance.sprite.dispose()
-                    clearInterval(interval);
-                }
-            }, 1);
-            this.hp = -999
         }
     }
 
@@ -356,14 +360,17 @@ class CharaController {
 
     //resume animations after finishing pause
     resume() {
-        var keys = ["atkanim", "death", "start", "drop"]
+        var keys = ["atkanim", "death", "start", "drop", "spatk"]
 
         this.running = false;
         for (let i = 0; i < keys.length; i++) {
             if (this.chara[keys[i]] != undefined) {
                 if (this.pauseSpriteIndex >= this.chara[keys[i]].start && this.pauseSpriteIndex <= this.chara[keys[i]].end)
-                    this.sprite.playAnimation(this.pauseSpriteIndex, this.chara[keys[i]].end, false, 30 * this.gamespeed * this.chara.atkinterval);
+                    this.sprite.playAnimation(this.pauseSpriteIndex, this.chara[keys[i]].end, false, 30 * this.gamespeed * this.chara[keys[i]].duration);
             }
+        }
+        if (this.pauseSpriteIndex >= this.chara.atkanim.start && this.pauseSpriteIndex <= this.chara.atkanim.end) {
+            this.sprite.playAnimation(this.chara.atkanim.start, this.chara.atkanim.end, true, 30 * this.gamespeed * this.chara.atkinterval * this.chara.atkanim.duration);
         }
         if (this.pauseSpriteIndex >= this.chara.idle.start && this.pauseSpriteIndex <= this.chara.idle.end) {
             this.sprite.playAnimation(this.chara.idle.start, this.chara.idle.end, true, 30 * this.gamespeed * this.chara.idle.duration);

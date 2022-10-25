@@ -28,10 +28,21 @@ class PlayerController extends CharaController {
 
     }
 
+    createDebuffAura(name, cellindex) {
+        var icon = new BABYLON.Sprite("", this.lvlcontroller.spriteManagers["icons"]);
+        icon.cellIndex = cellindex
+        icon.position = new BABYLON.Vector3(-10.5 + this.x * 30, 21, 5 + this.y * 30);
+        icon.size = 65;
+        icon.width = 90;
+        icon.position.z -= this.y;
+        icon.position.x -= this.x;
+        this.buffs.effectSprite[name] = icon
+    }
+
     checkBlocking() {
-        if (this.blockedenemies.length > this.buffs.getFinalBlock(this.chara.blockcount)){
-            this.blockedenemies[this.blockedenemies.length-1].unblock()
-            this.blockedenemies.splice(this.blockedenemies.length-1,1)
+        if (this.blockedenemies.length > this.buffs.getFinalBlock(this.chara.blockcount)) {
+            this.blockedenemies[this.blockedenemies.length - 1].unblock()
+            this.blockedenemies.splice(this.blockedenemies.length - 1, 1)
         }
     }
 
@@ -47,19 +58,19 @@ class PlayerController extends CharaController {
     updateSpeed(gamespeed, pause) {
         this.gamespeed = gamespeed;
         if (this.sprite.cellIndex >= this.chara.atkanim.start && this.sprite.cellIndex <= this.chara.atkanim.end) {
-            this.sprite.playAnimation(this.sprite.cellIndex, this.chara.atkanim.end, false, 30 * this.gamespeed * this.chara.atkinterval);
+            this.sprite.playAnimation(this.sprite.cellIndex, this.chara.atkanim.end, false, 30 * this.gamespeed * this.buffs.getFinalAtkInterval(1));
         }
-        
+
         if (this.sprite.cellIndex >= this.chara.drop.start && this.sprite.cellIndex <= this.chara.drop.end) {
             this.sprite.playAnimation(this.sprite.cellIndex, this.chara.drop.end, false, 30 * this.gamespeed);
         }
         if (this.sprite.cellIndex >= this.chara.death.start && this.sprite.cellIndex <= this.chara.death.end) {
             this.sprite.playAnimation(this.sprite.cellIndex, this.chara.death.end, false, 30 * this.gamespeed);
         }
-        if(this.chara.skillanim == true){
+        if (this.chara.skillanim == true) {
             if (this.sprite.cellIndex >= this.chara.skillatkanim.start && this.sprite.cellIndex <= this.chara.skillatkanim.end) {
-                this.sprite.playAnimation(this.sprite.cellIndex, this.chara.skillatkanim.end, false, 30 * this.gamespeed * this.chara.atkinterval);
-            } 
+                this.sprite.playAnimation(this.sprite.cellIndex, this.chara.skillatkanim.end, false, 30 * this.gamespeed * this.buffs.getFinalAtkInterval(1));
+            }
         }
         else this.sprite.delay = 30 * this.gamespeed
 
@@ -83,12 +94,12 @@ class PlayerController extends CharaController {
         this.mesh.visibility = 0;
 
         this.shadow = new BABYLON.Sprite(id + "shadow", iconsManager);
-        this.shadow.cellIndex=0;
+        this.shadow.cellIndex = 0;
         this.shadow.size = 65;
         this.shadow.width = 90;
 
         this.skillready = new BABYLON.Sprite(id + "skillready", iconsManager);
-        this.skillready.cellIndex=1
+        this.skillready.cellIndex = 1
 
         this.skillready.size = 65;
         this.skillready.width = 90;
@@ -192,12 +203,12 @@ class PlayerController extends CharaController {
             else this.sprite.invertU = 0;
 
             var contactframe = this.chara.atkanim.contact
-            if(this.playerSkill.active && this.chara.skillatkanim!=undefined){
+            if (this.playerSkill.active && this.chara.skillatkanim != undefined) {
                 contactframe = this.chara.skillatkanim.contact
                 this.sprite.playAnimation(this.chara.skillatkanim.start, this.chara.skillatkanim.end, false, this.buffs.getFinalAtkInterval(1) * 30 * this.gamespeed);
             }
             else this.sprite.playAnimation(this.chara.atkanim.start, this.chara.atkanim.end, false, this.buffs.getFinalAtkInterval(1) * 30 * this.gamespeed);
-            
+
             if (this.playerSkill.active && this.chara.skillsfx) {
                 if (this.chara.sfx.skillatk != undefined)
                     this.lvlcontroller.playSound(this.chara.name + "-skillatk", this.chara.sfx.skillatk.volume)

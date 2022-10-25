@@ -25,6 +25,10 @@ class EnemyController extends CharaController {
         this.spawning = false;
         this.invincible = false;
         this.invincibleaura;
+        this.spattacktimer;
+        this.skillBar;
+        if (this.chara.hasspatk)
+            this.spattacktimer = this.chara.spattack.initialsp
 
     }
 
@@ -41,7 +45,7 @@ class EnemyController extends CharaController {
 
     //update invincibility timer, if timer is zero then remove it, and remove the aura
     updateInvincibility() {
-        this.chara.invincible-=(1/30)/this.gamespeed;
+        this.chara.invincible -= (1 / 30) / this.gamespeed;
         if (this.chara.invincible <= 0) {
             this.invincible = false;
             this.invincibleaura.dispose()
@@ -53,8 +57,8 @@ class EnemyController extends CharaController {
         this.aura = new BABYLON.Sprite("", this.lvlcontroller.spriteManagers["icons"]);
         this.aura.position = new BABYLON.Vector3(-5 + this.mesh.position.x, 22, 2 + this.mesh.position.z);
         this.aura.cellIndex = bufftype
-        this.aura.size = 65 * this.chara.size;
-        this.aura.width = 90 * this.chara.size;
+        this.aura.size = 65;
+        this.aura.width = 90;
 
         this.aura.position.z -= (8 - (this.mesh.position.z / 30));
         this.aura.position.x -= (13 - (this.mesh.position.x / 30));
@@ -67,7 +71,7 @@ class EnemyController extends CharaController {
         this.gamespeed = gamespeed;
         var x = this.sprite.cellIndex;
 
-        var keys = ["move", "atkanim", "death", "idle", "start"]
+        var keys = ["move", "atkanim", "death", "idle", "start", "spatk"]
         for (let i = 0; i < keys.length; i++) {
             if (this.chara[keys[i]] != undefined) {
                 if (x <= this.chara[keys[i]].end && x >= this.chara[keys[i]].start) {
@@ -77,10 +81,14 @@ class EnemyController extends CharaController {
                         delay = 30 * this.gamespeed * duration / ((this.buffs.getFinalSpeed(this.chara.speed)) / this.chara.speed)
                         //this.running = false
                     }
-                    if (keys[i] == "atkanim")
+                    if (keys[i] == "atkanim") {
+                        delay = 30 * this.gamespeed * this.buffs.getFinalAtkInterval(duration)
                         this.sprite.playAnimation(x, this.chara.atkanim.end, false, delay);
+                    }
                     if (keys[i] == "start")
                         this.sprite.playAnimation(x, this.chara.start.end, false, delay);
+                    if (keys[i] == "spatk")
+                        this.sprite.playAnimation(x, this.chara.spatk.end, false, delay);
 
                     else this.sprite.delay = delay
                 }
@@ -175,6 +183,11 @@ class EnemyController extends CharaController {
             this.healthBar.isVisible = false;
         else this.healthBar.isVisible = true;
         this.healthBar.linkOffsetX = 0 + (this.sprite.position.z - this.mesh.position.z) * 2
+
+        if (this.spattacktimer != undefined) {
+            this.skillBar.value = this.spattacktimer / this.chara.spattack.sp * 100;
+            this.skillBar.linkOffsetX = 0 + (this.sprite.position.z - this.mesh.position.z) * 2
+        }
 
     }
 
@@ -302,7 +315,7 @@ class EnemyController extends CharaController {
                 this.sprite.playAnimation(this.chara.idle.start, this.chara.idle.end, true, 30 * this.gamespeed * this.chara.idle.duration);
                 this.running = false;
             }
-            this.sprite.playAnimation(this.chara.atkanim.start, this.chara.atkanim.end, false, 30 * this.gamespeed * this.chara.atkanim.duration);
+            this.sprite.playAnimation(this.chara.atkanim.start, this.chara.atkanim.end, false, 30 * this.gamespeed * this.buffs.getFinalAtkInterval(this.chara.atkanim.duration));
             if (this.chara.sfx.atk != undefined) {
                 //dog rawr spam prevention
                 if (Math.random() < 0.20 || this.chara.sfx.atk.src != "dog-atk")
@@ -420,12 +433,14 @@ class EnemyController extends CharaController {
             //remove the elements on the scene
             if (this.aura != undefined)
                 this.aura.dispose()
-            
+
             if (this.chara.revive != true) {
                 this.mesh.dispose(true, true)
                 this.shadow.dispose()
 
                 this.healthBar.dispose()
+                if (this.skillBar != undefined)
+                    this.skillBar.dispose();
                 this.sprite.stopAnimation();
                 this.sprite.playAnimation(this.chara.death.start, this.chara.death.end, false, 30 * this.gamespeed * (this.chara.death.duration));
                 var instance = this
@@ -441,19 +456,21 @@ class EnemyController extends CharaController {
             }
             //if enemy can revive, activate revival
             else {
-                this.sprite.playAnimation(this.chara.revival1.start, this.chara.revival1.end, false, 30 * this.gamespeed * (this.chara.revival1.duration));
-                this.lvlcontroller.playSound(this.chara.name + "-revival", this.chara.sfx.revival.volume)
-                var instance = this
-                //execute first revival animation
-                var timer = this.chara.revival1.end - this.chara.revival1.start + 2
-                var interval = setInterval(() => {
-                    if (instance.sprite.cellIndex == instance.chara.revival1.end || timer <= 0) {
-                        //execute revival loop after first revival animation is over
-                        instance.sprite.playAnimation(this.chara.revival2.start, this.chara.revival2.end, true, 30 * this.gamespeed * (this.chara.revival2.duration));
-                        clearInterval(interval);
-                    }
-                    timer--;
-                }, 1);
+                if (this.chara.revival1 != undefined) {
+                    this.sprite.playAnimation(this.chara.revival1.start, this.chara.revival1.end, false, 30 * this.gamespeed * (this.chara.revival1.duration));
+                    this.lvlcontroller.playSound(this.chara.name + "-revival", this.chara.sfx.revival.volume)
+                    var instance = this
+                    //execute first revival animation
+                    var timer = this.chara.revival1.end - this.chara.revival1.start + 2
+                    var interval = setInterval(() => {
+                        if (instance.sprite.cellIndex == instance.chara.revival1.end || timer <= 0) {
+                            //execute revival loop after first revival animation is over
+                            instance.sprite.playAnimation(this.chara.revival2.start, this.chara.revival2.end, true, 30 * this.gamespeed * (this.chara.revival2.duration));
+                            clearInterval(interval);
+                        }
+                        timer--;
+                    }, 1);
+                }
             }
 
             //if was blocked, remove itself from block count of blocking player
@@ -464,6 +481,53 @@ class EnemyController extends CharaController {
 
 
             }
+        }
+    }
+
+    //activate special skills if any
+    activateSpSkill(playerz) {
+        var targets = []
+        for (let i = 0; i < playerz.length; i++)
+            targets.push(playerz[i])
+        //sort by highest atk
+        targets.sort(function (x, y) {
+            if (x.buffs.getFinalAtk(x.chara.atk) < y.buffs.getFinalAtk(y.chara.atk)) {
+                return -1;
+            }
+            if (x.buffs.getFinalAtk(x.chara.atk) > y.buffs.getFinalAtk(y.chara.atk)) {
+                return 1;
+            }
+            return 0;
+        });
+        var players = this.getFirstPlayerInRange(targets, this.chara.spattack.range, this.chara.targets + this.buffs.getTargets())
+        for (let i = 0; i < players.length; i++) {
+            if (players[i].buffs.effects[this.chara.spattack.name] != undefined) {
+                players.splice(i, 1)
+                i--
+            }
+        }
+        if (players.length > 0) {
+            //turn towards the player to hit
+            if (player[0].mesh.position.z <= this.mesh.position.z)
+                this.sprite.invertU = 1
+            else this.sprite.invertU = 0;
+            this.running = false;
+            this.attacking = true;
+            this.sprite.playAnimation(this.chara.spatk.start, this.chara.spatk.end, false, 30 * this.gamespeed * (this.chara.spatk.duration));
+            var instance = this;
+            var interval = setInterval(() => {
+                if (instance.sprite.cellIndex == instance.chara.spatk.end) {
+                    instance.sprite.playAnimation(instance.chara.idle.start, instance.chara.idle.end, true, 30 * this.gamespeed * instance.chara.idle.duration);
+                    instance.attacking = false;
+                    instance.spattacktimer = 0;
+                    clearInterval(interval);
+                }
+            }, 1);
+            players[0].buffs.buffs[this.chara.spattack.name] = { "name": this.name, "modifiers": this.chara.spattack.applyeffects.modifiers }
+            players[0].buffs.effects[this.chara.spattack.name] = this.chara.spattack.applyeffects.duration
+            if (players[0].buffs.effectSprite[this.chara.spattack.name] == undefined)
+                players[0].createDebuffAura(this.chara.spattack.name, this.chara.spattack.applyeffects.effecticon)
+
         }
     }
 
@@ -505,6 +569,10 @@ class EnemyController extends CharaController {
     addHPBar(gui) {
         this.healthBar = gui.addHPBar(this.mesh, "red", 10, "3%");
         this.healthBar.isVisible = false;
+        if (this.spattacktimer != undefined) {
+            this.skillBar = gui.addHPBar(this.mesh, "yellow", 15, "3%");
+            this.skillBar.value = this.spattacktimer / this.chara.spattack.sp * 100;
+        }
     }
 
     //unblock from the player
@@ -526,6 +594,8 @@ class EnemyController extends CharaController {
         //enemy.aura = this.aura;
         enemy.healthBar = this.healthBar;
         enemy.waittimer = this.waittimer;
+        if (this.skillBar != undefined)
+            enemy.skillBar = this.skillBar
 
         var player0 = new BABYLON.Sprite(this.id, this.lvlcontroller.spriteManagers[this.lvlcontroller.enemylist[this.chara.name + "2"].spritesheet]);
         player0.position = this.sprite.position;
@@ -542,9 +612,9 @@ class EnemyController extends CharaController {
     }
 
     //distance from player, player prioritizes closer enemies
-    getDistanceFromPlayer(player){
+    getDistanceFromPlayer(player) {
         //√ |x2 – x1|² + |y2 – y1|²
-        return Math.sqrt(Math.abs((this.mesh.position.x/30)-player.x)+Math.abs((this.mesh.position.z/30)-player.y))
+        return Math.sqrt(Math.abs((this.mesh.position.x / 30) - player.x) + Math.abs((this.mesh.position.z / 30) - player.y))
     }
 
     //move logic, do actions depending on state
@@ -552,6 +622,9 @@ class EnemyController extends CharaController {
         //if the enemy is spawning (doing start animation), don't move
         if (!this.spawning) {
             this.atktimer += 1 / this.gamespeed;
+            if (this.spattacktimer != undefined)
+                this.spattacktimer = Math.min(this.chara.spattack.sp, this.spattacktimer + (1 / 30) / this.gamespeed);
+
             var currenttile = tiles[Math.round(this.mesh.position.x / 30)][Math.round(this.mesh.position.z / 30)];
             //verify if blocking player can still block the enemy
             if (currenttile.player != undefined) {
@@ -569,7 +642,12 @@ class EnemyController extends CharaController {
             }
             if (!this.skillproc) {
                 //conditions to see if enemy can attack
+                if (this.spattacktimer != undefined) {
+                    if (this.spattacktimer == this.chara.spattack.sp && !this.attacking)
+                        this.activateSpSkill(players)
+                }
                 //if enemy has no atk, can't attack
+
                 var enter = false;
                 if (this.chara.atk > 0)
                     var enter = true;
@@ -578,7 +656,7 @@ class EnemyController extends CharaController {
                     enter = false;
                 //if no not attack condition met, attack if atk timer is over
                 if (enter) {
-                    if (this.atktimer >= this.chara.atkinterval * 20) {
+                    if (this.atktimer >= this.buffs.getFinalAtkInterval(this.chara.atkinterval) * 20 && !this.attacking) {
                         this.atktimer = 0;
                         this.attacking = this.attack(players);
                     }
@@ -614,6 +692,8 @@ class EnemyController extends CharaController {
                         this.sprite.dispose();
                         this.shadow.dispose();
                         this.healthBar.dispose();
+                        if (this.skillBar != undefined)
+                            this.skillBar.dispose();
                         if (this.aura != undefined)
                             this.aura.dispose()
                         if (this.invincibleaura != undefined)

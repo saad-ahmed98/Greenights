@@ -1,4 +1,4 @@
-class Altar {
+class FireAltar {
     constructor(x, y, lvlcontroller) {
         this.mesh;
         this.name = "altar"
@@ -46,6 +46,11 @@ class Altar {
         this.skillBar.value = Math.round(this.currentsp / this.totalsp * 100)
     }
 
+    //brings sp back to 0 or to random value
+    resetSP() {
+        this.currentsp = 0
+    }
+
     //activate skill
     //altar hits all enemies and players
     activateSkill(players, enemies) {
@@ -56,10 +61,10 @@ class Altar {
             if (hitenemies[i].enemySkill != undefined) {
 
                 //if enemy has skill activating from being hit by altar, then activate it
-                if (hitenemies[i].enemySkill.triggertype == "on_altar" ) {
-                    if(!hitenemies[i].enemySkill.active){
-                    hitenemies[i].enemySkill.activateSkill([hitenemies[i]])
-                    hitenemies[i].activateSkillAnims()
+                if (hitenemies[i].enemySkill.triggertype == "on_altar") {
+                    if (!hitenemies[i].enemySkill.active) {
+                        hitenemies[i].enemySkill.activateSkill([hitenemies[i]])
+                        hitenemies[i].activateSkillAnims()
                     }
                 }
                 //if not, hit the enemy
@@ -104,7 +109,7 @@ class Altar {
             var counter = Math.abs(Math.abs(i - x) - range);
             for (let j = squarerange[1][0]; j <= squarerange[1][1]; j++) {
                 if (Math.abs(j - y) <= counter)
-                    this.lvlcontroller.tiles[i][j].displayRange(false)
+                    this.lvlcontroller.tiles[i][j].displayRange(false, new BABYLON.Color3(0.95, 0, 0))
             }
         }
     }

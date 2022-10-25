@@ -8,7 +8,6 @@ class Tile {
         this.player;
         this.create();
         this.color;
-
     }
 
 
@@ -20,13 +19,11 @@ class Tile {
                 h = 10;
                 color = new BABYLON.Color3(0.81, 0.8, 0.8)
                 break;
+            case "icealtar":
+            case "altar":
             case "bg":
                 h = 15;
                 color = new BABYLON.Color3(0.17, 0.17, 0.17);
-                break;
-            case "blk":
-                h = 3;
-                color = new BABYLON.Color3(0.4, 0.4, 0.4);
                 break;
             default:
                 h = 3;
@@ -44,13 +41,44 @@ class Tile {
         this.color = color;
         this.mesh.freezeWorldMatrix();
         this.mesh.convertToUnIndexedMesh();
-        if(this.type=="e")
-        this.mesh.visibility = 0;
+        if (this.type == "e")
+            this.mesh.visibility = 0;
 
     }
 
     colorMesh() {
         var colorMaterial = new BABYLON.StandardMaterial("", this.scene);
+        switch(this.type){
+            case "g":
+            case "blk":
+            case "blue":
+            case "red":
+            case "magma":
+            case "r":
+                colorMaterial.diffuseTexture = this.scene.assets[this.type]
+                break;
+            case "altar":
+                /*
+                let box1 =new BABYLON.MeshBuilder.CreateBox("box2", { height: 15, depth: 24, width: 24 }, this.scene)
+                let box2 = new BABYLON.MeshBuilder.CreateBox("box3", { height: 15, depth: 30, width: 30 }, this.scene)
+
+                let hole1 = new BABYLON.CSG.FromMesh(box1);
+                let holePlate = new BABYLON.CSG.FromMesh(box2);
+                let newHolePlate = holePlate.subtract(hole1);
+                let newMeshHolePlate = newHolePlate.toMesh("", null, this.scene);
+                newMeshHolePlate.position.z =this.mesh.position.z;
+                newMeshHolePlate.position.x = this.mesh.position.x;
+                newMeshHolePlate.position.y = 28 / 2 - 1.5
+                var holeMat = new BABYLON.StandardMaterial("", this.scene);
+                newMeshHolePlate.material = holeMat
+                box1.dispose()
+                box2.dispose()
+                newMeshHolePlate.material.diffuseColor =  new BABYLON.Color3(0.1, 0.1, 0.1);
+                */
+
+
+        }
+      
         this.mesh.material = colorMaterial
         //this.mesh.material.freeze();
         this.mesh.renderOutline = true;
@@ -62,27 +90,27 @@ class Tile {
         this.mesh.material.diffuseColor = new BABYLON.Color3(0, 1, 0.5)
     }
 
-    displayRange(diffuse = true) {
+    displayRange(diffuse = true,color) {
         if (diffuse) {
-            this.mesh.material.diffuseColor = new BABYLON.Color3(1, 0.80, 0.7)
+            this.mesh.material.diffuseColor = new BABYLON.Color3(1, 0.80, 0.9)
             this.mesh.outlineColor = new BABYLON.Color3(1, 0.53, 0, 0.9);
             this.mesh.outlineWidth = 1;
         }
-        else{
-            this.mesh.outlineColor = new BABYLON.Color3(0.95, 0, 0);
+        else {
+            this.mesh.outlineColor = color
             this.mesh.outlineWidth = 1.5;
 
         }
-
-
-
     }
 
     undisplay(diffuse = true) {
-        if(diffuse)
-        this.mesh.material.diffuseColor = this.color
+        if (diffuse)
+            this.mesh.material.diffuseColor = this.color
         this.mesh.outlineColor = new BABYLON.Color3(0, 0, 0);
         this.mesh.outlineWidth = 0.1;
-        
+
+    }
+    canBeDeployed(type){
+        return (this.type == type || (type == "g" && this.type == "magma"))
     }
 }

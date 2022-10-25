@@ -16,7 +16,7 @@ playerlist["Franka"] = {
 
     type: "g",
     class: "guard",
-    subclass: "dreadnought",
+    subclass: "Dreadnought",
 
 
     cost: 16,
@@ -67,8 +67,8 @@ playerlist["Franka"] = {
     },
 
     skill: {
-        name: "Vorpal edge",
-        description: "DEF reduces to 0, \nATK +100%\nDamage turns into TRUE",
+        name: "Vorpal Edge",
+        description: "DEF reduces to 0,\nATK +100%\nDamage turns into TRUE",
         duration: 30,
         sp: 20,
         initialsp: 10,
@@ -86,7 +86,8 @@ playerlist["Franka"] = {
     talents: [
         {
             //TODO CHANGE LOL
-            name: "Thermite blade",
+            name: "Thermite Blade",
+            description: "ASPD +25",
             modifiers: {
                 aspd: 25,
             },
@@ -135,7 +136,7 @@ playerlist["Matterhorn"] = {
 
     type: "g",
     class: "defender",
-    subclass: "protector",
+    subclass: "Protector",
 
 
     cost: 19,
@@ -198,6 +199,7 @@ playerlist["Matterhorn"] = {
         {
             //with module
             name: "Snowfield Guard",
+            description: "Block +1; RES +20",
             modifiers: {
                 block: 1,
                 flatres: 20,
@@ -238,7 +240,7 @@ playerlist["Perfumer"] = {
 
     type: "r",
     class: "medic",
-    subclass: "multitarget",
+    subclass: "Multi-target healer",
 
 
     cost: 14,
@@ -300,6 +302,8 @@ playerlist["Perfumer"] = {
         {
             //TODO hpregen
             name: "Aegean's Kiss",
+            description: "ATK +5%; Max HP +5%; Targets +1",
+
             modifiers: {
                 targets: 1,
                 atk: 0.05,
@@ -336,7 +340,7 @@ playerlist["Matoimaru"] = {
 
     type: "g",
     class: "guard",
-    subclass: "dreadnought",
+    subclass: "Dreadnought",
 
 
     cost: 15,
@@ -396,7 +400,9 @@ playerlist["Matoimaru"] = {
     },
     talents: [
         {
-            name: "Demonic physique",
+            name: "Demonic Physique",
+            description: "DEF -20%; Max HP +35%",
+
             modifiers: {
                 def: -0.20,
                 maxhp: 0.35,
@@ -436,7 +442,7 @@ playerlist["Gitano"] = {
 
     type: "r",
     class: "caster",
-    subclass: "core",
+    subclass: "Splash caster",
 
 
     cost: 30,
@@ -497,6 +503,7 @@ playerlist["Gitano"] = {
     talents: [
         {
             name: "Divination",
+            description: "ASPD +10; ATK +10%",
             modifiers: {
                 aspd: 10,
                 atk: 0.10,
@@ -505,7 +512,8 @@ playerlist["Gitano"] = {
             apply: "self",
         },
         {
-            name: "trait",
+            name: "Trait",
+            description: "Attacks hit all enemies in a radius \nfrom the primary target.",
             modifiers: {
                 splash: true,
                 splashradius: 1.1,
@@ -548,7 +556,7 @@ playerlist["Mousse"] = {
 
     type: "g",
     class: "guard",
-    subclass: "arts fighter",
+    subclass: "Arts fighter",
 
 
     cost: 18,
@@ -603,7 +611,7 @@ playerlist["Mousse"] = {
         applyeffects: {
             apply: "hit",
             modifiers: {
-                atk: -0.40,
+                flatmultiatk: 0.40,
             },
             duration: 5
         },
@@ -614,6 +622,7 @@ playerlist["Mousse"] = {
     talents: [
         {
             name: "Combo",
+            description: "Has a 23% chance of doing a double hit.",
             modifiers: {
                 doublehitchance: 0.23,
 
@@ -648,7 +657,7 @@ playerlist["Meteor"] = {
 
     type: "r",
     class: "sniper",
-    subclass: "marksman",
+    subclass: "Marksman",
 
 
     cost: 10,
@@ -691,7 +700,7 @@ playerlist["Meteor"] = {
     },
 
     skill: {
-        name: "Armor breaker",
+        name: "Armor Breaker",
         description: "Damage 190% for next hit\nTarget DEF -35% for 5sec",
         duration: 0,
         sp: 4,
@@ -704,7 +713,7 @@ playerlist["Meteor"] = {
         applyeffects: {
             apply: "hit",
             modifiers: {
-                def: -0.35,
+                flatmultidef: 0.35,
             },
             duration: 5
         },
@@ -714,7 +723,8 @@ playerlist["Meteor"] = {
     },
     talents: [
         {
-            name: "Targeting - primary",
+            name: "Targeting - Primary",
+            description: "Has a 20% chance of increasing \nthe next atk damage to 160%",
             modifiers: {
                 critchance: 0.20,
                 critdmg: 1.6,
@@ -753,7 +763,7 @@ playerlist["Haze"] = {
 
     type: "r",
     class: "caster",
-    subclass: "core",
+    subclass: "Core caster",
 
 
     cost: 17,
@@ -813,6 +823,7 @@ playerlist["Haze"] = {
     talents: [
     {
         name: "Black mist",
+        description: "Each attack lowers \nthe RES\nby 23% for 1sec",
         modifiers: {
         },
         applyeffects: {
@@ -853,7 +864,7 @@ playerlist["Courier"] = {
 
     type: "g",
     class: "vanguard",
-    subclass: "pioneer",
+    subclass: "Pioneer",
 
     cost: 10,
     basecost: 10,
@@ -907,7 +918,8 @@ playerlist["Courier"] = {
         skillimage: "images/opicons/courierskill.png"
     },
     talents: [{
-        name: "Karlan patrol",
+        name: "Karlan Patrol",
+        description: "DEF +9%",
         modifiers: {
             def:0.09
         },
@@ -945,7 +957,7 @@ playerlist["Scavenger"] = {
 
     type: "g",
     class: "vanguard",
-    subclass: "pioneer",
+    subclass: "Pioneer",
 
     cost: 10,
     basecost: 10,
@@ -999,7 +1011,8 @@ playerlist["Scavenger"] = {
         skillimage: "images/opicons/scavengerskill.png"
     },
     talents: [{
-        name: "Lone wolf",
+        name: "Lone Wolf",
+        description: "ATK +8%; DEF +9%",
         modifiers: {
             atk:0.08,
             def:0.09
@@ -1041,7 +1054,7 @@ playerlist["Plume"] = {
 
     type: "g",
     class: "vanguard",
-    subclass: "charger",
+    subclass: "Charger",
 
     cost: 8,
     basecost: 8,
@@ -1095,13 +1108,15 @@ playerlist["Plume"] = {
         skillimage: "images/opicons/plumeskill.png"
     },
     talents: [{
-        name: "atk up",
+        name: "ATK Up",
+        description: "ATK +8%",
         modifiers: {
             atk: 0.08,
         },
         apply: "self",
     }, {
-        name: "trait",
+        name: "Trait",
+        description: "Gains 1DP each kill.",
         modifiers: {
             dponkill: 1,
         },
@@ -1140,7 +1155,7 @@ playerlist["Melantha"] = {
 
     type: "g",
     class: "guard",
-    subclass: "dreadnought",
+    subclass: "Dreadnought",
 
     cost: 13,
     basecost: 13,
@@ -1179,7 +1194,7 @@ playerlist["Melantha"] = {
         end: 84
     },
     skill: {
-        name: "ATK up α",
+        name: "ATK Up α",
         description: "ATK +50%",
         duration: 20,
         sp: 40,
@@ -1193,7 +1208,8 @@ playerlist["Melantha"] = {
         skillimage: "images/opicons/adnachielskill.png"
     },
     talents: [{
-        name: "atk up",
+        name: "ATK Up",
+        description: "ATK +8%",
         modifiers: {
             atk: 0.08,
         },
@@ -1232,7 +1248,7 @@ playerlist["Popukar"] = {
 
     type: "g",
     class: "guard",
-    subclass: "centurion",
+    subclass: "Centurion",
 
     cost: 17,
     basecost: 17,
@@ -1271,7 +1287,7 @@ playerlist["Popukar"] = {
         end: 72
     },
     skill: {
-        name: "ATK up α",
+        name: "ATK Up α",
         description: "ATK +50%",
         duration: 20,
         sp: 40,
@@ -1285,20 +1301,14 @@ playerlist["Popukar"] = {
         skillimage: "images/opicons/adnachielskill.png"
     },
     talents: [{
-        name: "HP up",
+        name: "HP Up",
+        description: "ATK +8%; Max HP +8%",
         modifiers: {
             atk: 0.08,
             maxhp: 0.08,
         },
         apply: "self",
-    }, {
-        name: "trait",
-        modifiers: {
-            dponkill: 1,
-        },
-        apply: "self",
-    }]
-    ,
+    }],
     sfx: {
         atk: {
             src: "popukar-atk",
@@ -1331,7 +1341,7 @@ playerlist["Fang"] = {
 
     type: "g",
     class: "vanguard",
-    subclass: "pioneer",
+    subclass: "Pioneer",
 
     cost: 8,
     basecost: 8,
@@ -1416,7 +1426,7 @@ playerlist["Adnachiel"] = {
 
     type: "r",
     class: "sniper",
-    subclass: "marksman",
+    subclass: "Marksman",
 
 
     cost: 9,
@@ -1458,7 +1468,7 @@ playerlist["Adnachiel"] = {
     },
 
     skill: {
-        name: "ATK up α",
+        name: "ATK Up α",
         description: "ATK +50%",
         duration: 20,
         sp: 40,
@@ -1473,7 +1483,8 @@ playerlist["Adnachiel"] = {
 
     },
     talents: [{
-        name: "shortcoming breakthrough",
+        name: "Shortcoming Breakthrough",
+        description: "ASPD +8",
         modifiers: {
             aspd: 8,
         },
@@ -1505,7 +1516,7 @@ playerlist["Hibiscus"] = {
 
     type: "r",
     class: "medic",
-    subclass: "doctor",
+    subclass: "Doctor",
     rarity: "rgb(58, 132, 255)",
 
 
@@ -1548,7 +1559,7 @@ playerlist["Hibiscus"] = {
     },
 
     skill: {
-        name: "Healing up",
+        name: "Healing Up",
         description: "ATK +50%",
         duration: 20,
         sp: 30,
@@ -1564,7 +1575,8 @@ playerlist["Hibiscus"] = {
 
     },
     talents: [{
-        name: "neurology",
+        name: "Neurology",
+        description: "ATK +8%",
         modifiers: {
             atk: 0.08,
         },
@@ -1601,7 +1613,7 @@ playerlist["Midnight"] = {
 
     type: "g",
     class: "guard",
-    subclass: "lord",
+    subclass: "Lord",
 
     cost: 14,
     basecost: 14,
@@ -1643,7 +1655,7 @@ playerlist["Midnight"] = {
     },
 
     skill: {
-        name: "Enchanted sword α",
+        name: "Enchanted Sword α",
         description: "ATK +35%\ndamage turns into ARTS",
         duration: 40,
         sp: 70,
@@ -1659,7 +1671,8 @@ playerlist["Midnight"] = {
 
     },
     talents: [{
-        name: "targeting - primary",
+        name: "Targeting - Primary",
+        description: "Has a 20% chance of increasing \nthe next atk damage to 160%",
         modifiers: {
             critchance: 0.20,
             critdmg: 1.6,
@@ -1697,7 +1710,7 @@ playerlist["Beagle"] = {
 
     type: "g",
     class: "defender",
-    subclass: "protector",
+    subclass: "Protector",
 
     cost: 16,
     basecost: 16,
@@ -1738,7 +1751,7 @@ playerlist["Beagle"] = {
     },
 
     skill: {
-        name: "DEF up α",
+        name: "DEF Up α",
         description: "DEF +50%",
         duration: 30,
         sp: 40,
@@ -1753,7 +1766,8 @@ playerlist["Beagle"] = {
 
     },
     talents: [{
-        name: "DEF up",
+        name: "DEF Up",
+        description: "DEF +10%",
         modifiers: {
             def: 0.1,
         },
@@ -1792,7 +1806,7 @@ playerlist["Durin"] = {
 
     type: "r",
     class: "caster",
-    subclass: "core",
+    subclass: "Core Caster",
 
 
     cost: 16,
@@ -1834,7 +1848,7 @@ playerlist["Durin"] = {
     },
 
     skill: {
-        name: "Power strike α",
+        name: "Power Strike α",
         description: "Increase ATK \nof next hit to 190%",
         duration: 0,
         sp: 4,
@@ -1849,7 +1863,9 @@ playerlist["Durin"] = {
 
     },
     talents: [{
-        name: "armor break",
+        name: "Armor Break",
+        description: "ATK +6%\nPrioritizes enemies with the\n highest DEF",
+
         modifiers: {
             atk: 0.06,
         },
@@ -1879,7 +1895,7 @@ playerlist["Orchid"] = {
 
     type: "r",
     class: "supporter",
-    subclass: "decel",
+    subclass: "Decel bender",
 
 
     cost: 10,
@@ -1937,19 +1953,21 @@ playerlist["Orchid"] = {
     },
     talents: [{
         name: "Casting Speed Up",
+        description: "ASPD +9",
         modifiers: {
             aspd: 9,
         },
         apply: "self",
     },
     {
-        name: "Sluggish",
+        name: "Trait",
+        description: "Each attack lowers the movement speed\nby 80% for 1sec",
         modifiers: {
         },
         applyeffects: {
             apply: "hit",
             modifiers: {
-                speedpercent: -0.80,
+                speedpercent: 0.20,
             },
             duration: 1
         },

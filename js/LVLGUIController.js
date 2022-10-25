@@ -312,7 +312,7 @@ class LVLGUIController {
         var image = new BABYLON.GUI.Image("",);
         image.domImage = this.scene.assets["battlestats"]
         image.width = "30%";
-        image.height = "7%";
+        image.height = "6%";
         image.top = "-46%"
         this.statscontroller.addControl(image);
         //battle stats content
@@ -803,7 +803,9 @@ class LVLGUIController {
         var image = new BABYLON.GUI.Image("tooltip",);
         image.domImage = this.scene.assets[player.chara.name + "-opicon"]
         image.width = "40%"
-        image.left = "-30%"
+        image.height = "90%"
+
+        image.left = "-28%"
 
 
         var container = new BABYLON.GUI.Rectangle();
@@ -892,8 +894,6 @@ class LVLGUIController {
         container.addControl(textbox)
 
         this.contextMenuController.addControl(container);
-
-
     }
 
     //removes pause screen

@@ -10,6 +10,7 @@ class LVLController extends LVLAbstract {
         this.activePlayers = [];
         this.enemies = [];
         this.hazards = [];
+        this.place = lvl.place;
 
         this.enemiesreviving = []
         this.presentHazards = lvl.hazards;
@@ -77,13 +78,12 @@ class LVLController extends LVLAbstract {
         this.vcvolume = 0.3
 
         this.zoom = false;
-
     }
 
     restart() {
         new LVLController(this.gameconfig, enemylist, this.restartlist, JSON.parse(JSON.stringify(levels[lvlnumber])))
     }
-    
+
     createGUIs() {
         this.gui.createStatsUI(this.enemycount + "/" + this.enemytot, this.hp, this);
 
@@ -106,8 +106,8 @@ class LVLController extends LVLAbstract {
             if (!this.isSpawning)
                 this.spawnEnemies();
         }
-            this.checkSkills();
-            this.checkTimeEffects();
+        this.checkSkills();
+        this.checkTimeEffects();
 
         if (this.dptimer >= 30) {
             this.currentdp = Math.min(this.currentdp + 1, this.dplimit);
@@ -181,7 +181,68 @@ class LVLController extends LVLAbstract {
         }
 
     }
+    loadTextures() {
+        var instance = this;
+        var assetsManager = instance.scene.assetsManager;
+        var binaryTask;
+
+        binaryTask = assetsManager.addTextureTask(
+            "g",
+            "images/textures/"+instance.place+"/g.jpg",
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets[task.name] = task.texture
+        };
+
+        binaryTask = assetsManager.addTextureTask(
+            "blk",
+            "images/textures/"+instance.place+"/blk.jpg",
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets[task.name] = task.texture
+        };
+
+        binaryTask = assetsManager.addTextureTask(
+            "blue",
+            "images/textures/"+instance.place+"/blue.jpg",
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets[task.name] = task.texture
+        };
+
+        binaryTask = assetsManager.addTextureTask(
+            "red",
+            "images/textures/"+instance.place+"/red.jpg",
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets[task.name] = task.texture
+        };
+        binaryTask = assetsManager.addTextureTask(
+            "r",
+            "images/textures/"+instance.place+"/r.jpg",
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets[task.name] = task.texture
+        };
+
+        binaryTask = assetsManager.addTextureTask(
+            "magma",
+            "images/textures/magma.jpg",
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets[task.name] = task.texture
+        };
+
+        binaryTask = assetsManager.addTextureTask(
+            "skybox",
+            "images/common/skybox.jpg",
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets[task.name] = task.texture
+        };
+    }
     loadStaticImages() {
+        this.loadTextures()
         var instance = this;
         var assetsManager = instance.scene.assetsManager;
         var binaryTask;
@@ -329,16 +390,18 @@ class LVLController extends LVLAbstract {
     }
 
     renderScene() {
+
         var startingColor = this.scene.clearColor.clone();
         var t;
 
         if (this.frame < 550) {
             this.frame += 5;
             t = 0.5 + Math.cos(this.frame / 100) / 2;
-            this.light.intensity = 2 * t;
+            this.light.intensity = 3 * t;
             BABYLON.Color3.LerpToRef(BABYLON.Color3.BlackReadOnly, startingColor, t, this.scene.clearColor);
         }
         else {
+
             if (!this.render) {
                 this.createGUIs()
                 this.render = true;
@@ -356,6 +419,7 @@ class LVLController extends LVLAbstract {
                 if (!this.gui.isPaused)
                     this.createLvl();
             }
+
         }
         this.scene.render();
     }
@@ -495,7 +559,7 @@ class LVLController extends LVLAbstract {
                 instance.spriteManagers[task.name] = new BABYLON.SpriteManager(task.name + "Manager", undefined, 20, { width: 444, height: 302.5 });
                 instance.spriteManagers[task.name].texture = task.texture
             };
-          }
+        }
 
 
 
@@ -516,13 +580,13 @@ class LVLController extends LVLAbstract {
 
         let binaryTask = assetsManager.addTextureTask(
             "icons",
-            "images/common/icons-sheet.webp",
+            "images/common/icons-sheet.png",
             true,
             false,
             BABYLON.Texture.TRILINEAR_SAMPLINGMODE
         );
         binaryTask.onSuccess = function (task) {
-            instance.spriteManagers[task.name] = new BABYLON.SpriteManager("IconsManager", undefined, 100, { width: 888, height: 605 });
+            instance.spriteManagers[task.name] = new BABYLON.SpriteManager("IconsManager", undefined, 100, { width: 444, height: 302.5 });
             instance.spriteManagers[task.name].texture = task.texture
         };
 
@@ -785,6 +849,9 @@ class LVLController extends LVLAbstract {
                 if (this.enemies[i].enemySkill.skilltype == "alive") {
                     this.enemies[i].enemySkill.updateSkill(this.enemies)
                 }
+                if (this.enemies[i].enemySkill.skilltype == "duration") {
+                    this.enemies[i].enemySkill.updateDurationSkill(this.enemies[i])
+                }
             }
             if (this.enemies[i].finish) {
                 this.playSound("alarmenter", 0.3)
@@ -801,16 +868,17 @@ class LVLController extends LVLAbstract {
             }
             else if (this.enemies[i].hp <= 0) {
                 //this.enemies[i].sprite.dispose();
+                this.updateOnAnyDeathSkills()
                 if (this.enemies[i].enemySkill != undefined) {
                     if (this.enemies[i].enemySkill.skilltype == "alive") {
                         this.enemies[i].enemySkill.deactivateSkill(this.enemies)
                     }
                 }
-                if(this.enemies[i].chara.revive==true)
+                if (this.enemies[i].chara.revive == true)
                     this.enemiesreviving.push(this.enemies[i])
-                else{
-                this.enemycount++;
-                this.gui.updateStatsUI(this.enemycount + "/" + this.enemytot, this.hp, this.maxhp);
+                else {
+                    this.enemycount++;
+                    this.gui.updateStatsUI(this.enemycount + "/" + this.enemytot, this.hp, this.maxhp);
                 }
                 this.enemies.splice(i, 1)
                 i--;
@@ -835,9 +903,21 @@ class LVLController extends LVLAbstract {
         }
     }
 
+    //activates enemy skills with on_anydeath triggertype
+    updateOnAnyDeathSkills() {
+        for (let i = 0; i < this.enemies.length; i++) {
+            if (this.enemies[i].enemySkill != undefined) {
+                if (this.enemies[i].enemySkill.triggertype == "on_anydeath")
+                    this.enemies[i].enemySkill.updateBloodboilSkill(this.enemies[i])
+
+            }
+        }
+    }
+
+
     checkPlayerSkill(p) {
         if (!p.playerSkill.active && p.playerSkill.chargetype == "second") {
-            p.playerSkill.currentsp = Math.min(p.playerSkill.currentsp + (1/30)/this.gamespeed, p.playerSkill.totalsp);
+            p.playerSkill.currentsp = Math.min(p.playerSkill.currentsp + (1 / 30) / this.gamespeed, p.playerSkill.totalsp);
             p.updateSkillBarCharging()
             if (p.playerSkill.currentsp >= p.playerSkill.totalsp && p.playerSkill.triggertype == "manual")
                 p.skillready.isVisible = true;
@@ -850,7 +930,7 @@ class LVLController extends LVLAbstract {
         }
         else if (p.playerSkill.active) {
             p.updateSkillBarTrigger()
-            p.playerSkill.duration-=(1/30)/this.gamespeed;
+            p.playerSkill.duration -= (1 / 30) / this.gamespeed;
             if (p.playerSkill.duration <= 0) {
                 p.playerSkill.deactivateDurationSkill();
                 p.aura.dispose();
@@ -862,524 +942,559 @@ class LVLController extends LVLAbstract {
         var ef = p.buffs.effects
         var keys = Object.keys(ef)
         for (let i = 0; i < keys.length; i++) {
-            ef[keys[i]]-= (1/30)/this.gamespeed
+            ef[keys[i]] -= (1 / 30) / this.gamespeed
             if (ef[keys[i]] <= 0) {
+                if (p.buffs.effectSprite[keys[i]] != undefined)
+                    p.buffs.effectSprite[keys[i]].dispose()
                 delete ef[keys[i]]
                 delete p.buffs.buffs[keys[i]]
+                delete p.buffs.effectSprite[keys[i]]
             }
 
         }
     }
 
-        checkHazardSkill(p) {
-            if (Math.round(p.currentsp) == p.displaysp)
-                p.displayRangeTiles()
-            if (p.currentsp >= p.totalsp) {
-                this.playSound(p.name + "sound", 0.2)
-                p.activateSkill(this.activePlayers, this.enemies)
-                p.currentsp = 0;
-                p.undisplayTiles()
-            }
-            p.currentsp = Math.min(p.currentsp + (1/30)/this.gamespeed, p.totalsp);
-            p.updateSkillBarCharging()
+    checkHazardSkill(p) {
+        if (Math.round(p.currentsp) == p.displaysp)
+            p.displayRangeTiles()
+        if (p.currentsp >= p.totalsp) {
+            this.playSound(p.name + "sound", 0.2)
+            p.activateSkill(this.activePlayers, this.enemies)
+            p.resetSP()
+            p.undisplayTiles()
+        }
+        p.currentsp = Math.min(p.currentsp + (1 / 30) / this.gamespeed, p.totalsp);
+        p.updateSkillBarCharging()
 
+
+    }
+
+    checkSkills() {
+        for (let i = 0; i < this.activePlayers.length; i++) {
+            this.checkPlayerSkill(this.activePlayers[i])
+        }
+        for (let i = 0; i < this.hazards.length; i++) {
+            this.checkHazardSkill(this.hazards[i])
+        }
+
+    }
+
+    checkTimeEffects() {
+        for (let i = 0; i < this.activePlayers.length; i++)
+            // player debuffs
+            this.checkEffect(this.activePlayers[i])
+
+        for (let i = 0; i < this.enemies.length; i++) {
+            //enemy debuffs
+            this.checkEffect(this.enemies[i])
+            if (this.enemies[i].invincible)
+                this.enemies[i].updateInvincibility()
+        }
+        for (let i = 0; i < this.enemiesreviving.length; i++) {
+            this.enemiesreviving[i].chara.revivetimer -= (1 / 30) / this.gamespeed;
+            this.enemiesreviving[i].healthBar.value = (this.enemiesreviving[i].chara.revivemax - this.enemiesreviving[i].chara.revivetimer) / this.enemiesreviving[i].chara.revivemax * 100
+            if (this.enemiesreviving[i].chara.revivetimer <= 0) {
+                this.enemiesreviving[i].finishRevival()
+                this.enemiesreviving.splice(i, 1)
+                i--;
+            }
+        }
+    }
+
+    checkPlayers() {
+        for (let i = 0; i < this.activePlayers.length; i++) {
+            this.activePlayers[i].updateHP()
+            this.activePlayers[i].checkBlocking()
+            if (this.activePlayers[i].hp <= 0) {
+                this.tiles[this.activePlayers[i].x][this.activePlayers[i].y].player = undefined;
+                this.activePlayers[i].chara.cost = Math.min(this.activePlayers[i].chara.cost + Math.round(this.activePlayers[i].chara.cost * 0.5), this.activePlayers[i].chara.basecost * 2),
+
+                    this.playerlist[this.activePlayers[i].chara.name] = this.activePlayers[i].chara
+                this.activePlayers.splice(i, 1)
+                i--;
+                this.squadlimit++;
+                this.gui.createPlayerWheelUI(this.playerlist, this)
+            }
+
+        }
+    }
+
+    retreatPlayer(player) {
+        this.playSound("retreat", 0.3)
+
+        player.mesh.dispose(true, true)
+        player.sprite.dispose()
+        player.healthBar.dispose()
+        player.skillBar.dispose()
+        player.shadow.dispose()
+        player.skillready.dispose()
+
+        if (player.aura != undefined)
+            player.aura.dispose();
+        
+        var keys = Object.keys(player.buffs.effectSprite)
+        for(let i=0;i<keys.length;i++)
+            player.buffs.effectSprite[keys[i]].dispose()
+
+        player.hp = -999;
+        this.currentdp += Math.round(player.chara.cost / 2)
+        player.dead = true;
+
+    }
+
+    pauseGame() {
+        for (let i = 0; i < this.enemies.length; i++)
+            this.enemies[i].pause();
+        for (let i = 0; i < this.activePlayers.length; i++)
+            this.activePlayers[i].pause();
+        this.pause = true;
+    }
+
+    resumeGame() {
+        this.pause = false;
+        for (let i = 0; i < this.enemies.length; i++)
+            this.enemies[i].resume();
+        for (let i = 0; i < this.activePlayers.length; i++)
+            this.activePlayers[i].resume();
+    }
+
+    unzoom() {
+        this.zoom = false;
+        this.createGlobalCamera();
+        this.undisplayTiles();
+
+        this.gamespeed = this.prevspeed
+        this.updateSpeed()
+
+        this.gui.contextMenuController.dispose();
+    }
+
+
+    initDragNDrop() {
+        var ground = BABYLON.MeshBuilder.CreateGround("ground", { width: 1000, height: 1000 }, this.scene, false);
+        ground.visibility = 0;
+        var startingPoint;
+        var currentMesh = null;
+        var dragging = false;
+        var sprite = null;
+        var currentTile = null;
+
+        var instance = this;
+        var getGroundPosition = function () {
+            var pickinfo = instance.scene.pick(instance.scene.pointerX, instance.scene.pointerY, function (mesh) { return mesh == ground; });
+            if (pickinfo.hit) {
+                return pickinfo.pickedPoint;
+            }
+
+            return null;
+        }
+
+        var pointerDown = function (mesh) {
+            if (!dragging) {
+                currentMesh = mesh;
+                if (instance.gamespeed != 8)
+                    instance.prevspeed = instance.gamespeed
+                instance.gamespeed = 8
+                instance.updateSpeed()
+
+                startingPoint = getGroundPosition();
+            }
+            else { } //do stuff
 
         }
 
-        checkSkills() {
-            for (let i = 0; i < this.activePlayers.length; i++) {
-                this.checkPlayerSkill(this.activePlayers[i])
-            }
-            for (let i = 0; i < this.hazards.length; i++) {
-                this.checkHazardSkill(this.hazards[i])
-            }
-
-        }
-
-        checkTimeEffects() {
-            for (let i = 0; i < this.enemies.length; i++) {
-                //debuffs
-                this.checkEffect(this.enemies[i])
-                if(this.enemies[i].invincible)
-                    this.enemies[i].updateInvincibility()
-            }
-            for(let i = 0;i<this.enemiesreviving.length;i++){
-                this.enemiesreviving[i].chara.revivetimer-=(1/30)/this.gamespeed;
-                this.enemiesreviving[i].healthBar.value = (this.enemiesreviving[i].chara.revivemax-this.enemiesreviving[i].chara.revivetimer) / this.enemiesreviving[i].chara.revivemax * 100
-                if(this.enemiesreviving[i].chara.revivetimer<=0){
-                    this.enemiesreviving[i].finishRevival()
-                    this.enemiesreviving.splice(i,1)
-                    i--;
-                }
+        var pointerUp = function () {
+            if (startingPoint) {
+                startingPoint = null;
+                return;
             }
         }
 
-        checkPlayers() {
-            for (let i = 0; i < this.activePlayers.length; i++) {
-                this.activePlayers[i].updateHP()
-                this.activePlayers[i].checkBlocking()
-                if (this.activePlayers[i].hp <= 0) {
-                    this.tiles[this.activePlayers[i].x][this.activePlayers[i].y].player = undefined;
-                    this.activePlayers[i].chara.cost = Math.min(this.activePlayers[i].chara.cost + Math.round(this.activePlayers[i].chara.cost * 0.5), this.activePlayers[i].chara.basecost * 2),
-
-                        this.playerlist[this.activePlayers[i].chara.name] = this.activePlayers[i].chara
-                    this.activePlayers.splice(i, 1)
-                    i--;
-                    this.squadlimit++;
-                    this.gui.createPlayerWheelUI(this.playerlist, this)
-                }
-
+        var pointerMove = function () {
+            if (!startingPoint) {
+                return;
             }
-        }
+            var current = getGroundPosition();
+            if (!current) {
+                return;
+            }
 
-        retreatPlayer(player) {
-            this.playSound("retreat", 0.3)
+            var diff = current.subtract(startingPoint);
+            currentMesh.position.addInPlace(diff);
+            //currentPlayer.sprite.position.addInPlace(diff);
 
-            player.mesh.dispose(true,true)
-            player.sprite.dispose()
-            player.healthBar.dispose()
-            player.skillBar.dispose()
-            player.shadow.dispose()
-            player.skillready.dispose()
-
-            if (player.aura != undefined)
-                player.aura.dispose();
-
-            player.hp = -999;
-            this.currentdp += Math.round(player.chara.cost / 2)
+            startingPoint = current;
 
         }
 
-        pauseGame() {
-            for (let i = 0; i < this.enemies.length; i++)
-                this.enemies[i].pause();
-            for (let i = 0; i < this.activePlayers.length; i++)
-                this.activePlayers[i].pause();
-            this.pause = true;
-        }
-
-        resumeGame() {
-            this.pause = false;
-            for (let i = 0; i < this.enemies.length; i++)
-                this.enemies[i].resume();
-            for (let i = 0; i < this.activePlayers.length; i++)
-                this.activePlayers[i].resume();
-        }
-
-        unzoom() {
-            this.zoom = false;
-            this.createGlobalCamera();
-            this.undisplayTiles();
-
-            this.gamespeed = this.prevspeed
-            this.updateSpeed()
-
-            this.gui.contextMenuController.dispose();
-        }
-
-
-        initDragNDrop() {
-            var ground = BABYLON.MeshBuilder.CreateGround("ground", { width: 1000, height: 1000 }, this.scene, false);
-            ground.visibility = 0;
-            var startingPoint;
-            var currentMesh = null;
-            var dragging = false;
-            var sprite = null;
-            var currentTile = null;
-
-            var instance = this;
-            var getGroundPosition = function () {
-                var pickinfo = instance.scene.pick(instance.scene.pointerX, instance.scene.pointerY, function (mesh) { return mesh == ground; });
-                if (pickinfo.hit) {
-                    return pickinfo.pickedPoint;
-                }
-
-                return null;
-            }
-
-            var pointerDown = function (mesh) {
-                if (!dragging) {
-                    currentMesh = mesh;
-                    if (instance.gamespeed != 8)
-                        instance.prevspeed = instance.gamespeed
-                    instance.gamespeed = 8
-                    instance.updateSpeed()
-
-                    startingPoint = getGroundPosition();
-                }
-                else { } //do stuff
-
-            }
-
-            var pointerUp = function () {
-                if (startingPoint) {
-                    startingPoint = null;
-                    return;
-                }
-            }
-
-            var pointerMove = function () {
-                if (!startingPoint) {
-                    return;
-                }
-                var current = getGroundPosition();
-                if (!current) {
-                    return;
-                }
-
-                var diff = current.subtract(startingPoint);
-                currentMesh.position.addInPlace(diff);
-                //currentPlayer.sprite.position.addInPlace(diff);
-
-                startingPoint = current;
-
-            }
-
-            this.scene.onPointerObservable.add((pointerInfo) => {
-                if (!(this.gui.showinggui && !this.gui.isPaused)) {
-                    switch (pointerInfo.type) {
-                        case BABYLON.PointerEventTypes.POINTERDOWN:
-                            if (instance.gui.wheelclick == true) {
-                                if (instance.zoom) {
-                                    instance.zoom = false;
-                                    currentTile = null;
-                                    instance.createGlobalCamera();
-                                    instance.undisplayTiles();
-                                    setTimeout(() => {
-                                        instance.gui.contextMenuController.dispose();
-                                    }, 5)
-                                }
-
-                                sprite = new BABYLON.Sprite("", instance.spriteManagers[instance.gui.wheelchoice.name]);
-                                sprite.cellIndex = instance.gui.wheelchoice.idle.start
-                                sprite.position = new BABYLON.Vector3(pointerInfo.pickInfo.pickedPoint.x, 20, pointerInfo.pickInfo.pickedPoint.z);
-                                sprite.size = 65;
-                                sprite.width = 90;
-
-                                pointerDown(sprite);
-                                instance.displayAvailableTiles(instance.playerlist[instance.gui.wheelchoice.name].type)
+        this.scene.onPointerObservable.add((pointerInfo) => {
+            if (!(this.gui.showinggui && !this.gui.isPaused)) {
+                switch (pointerInfo.type) {
+                    case BABYLON.PointerEventTypes.POINTERDOWN:
+                        if (instance.gui.wheelclick == true) {
+                            if (instance.zoom) {
+                                instance.zoom = false;
+                                currentTile = null;
+                                instance.createGlobalCamera();
+                                instance.undisplayTiles();
+                                setTimeout(() => {
+                                    instance.gui.contextMenuController.dispose();
+                                }, 5)
                             }
-                            else {
-                                var x = Math.round(pointerInfo.pickInfo.pickedPoint.x / 30);
-                                var y = Math.round(pointerInfo.pickInfo.pickedPoint.z / 30);
-                                if (x < instance.tiles.length && x >= 0 && y < instance.tiles[0].length && y >= 0) {
-                                    if (instance.tiles[x][y].player != undefined) {
-                                        if (!instance.zoom) {
-                                            instance.zoom = true;
-                                            var pl = instance.tiles[x][y].player
-                                            instance.playSound(pl.chara.name + "-select", instance.vcvolume)
-                                            instance.displayRangeTiles(x, y, pl.buffs.getFinalRange(pl.chara.range))
-                                            instance.createFocusCamera(x * 30, y * 30);
-                                            if (instance.gamespeed != 8)
-                                                instance.prevspeed = instance.gamespeed
-                                            instance.gamespeed = 8
-                                            instance.updateSpeed()
 
-                                            currentTile = instance.tiles[x][y];
-                                            instance.gui.createContextMenu(pl, instance);
-                                        }
-                                    }
-                                }
-                                if (instance.zoom && (currentTile.x != x || currentTile.z != y)) {
-                                    currentTile = null;
+                            sprite = new BABYLON.Sprite("", instance.spriteManagers[instance.gui.wheelchoice.name]);
+                            sprite.cellIndex = instance.gui.wheelchoice.idle.start
+                            sprite.position = new BABYLON.Vector3(pointerInfo.pickInfo.pickedPoint.x, 20, pointerInfo.pickInfo.pickedPoint.z);
+                            sprite.size = 65;
+                            sprite.width = 90;
 
-                                    instance.unzoom()
-                                }
-
-                            }
-                            break;
-                        case BABYLON.PointerEventTypes.POINTERUP:
-                            if (instance.gui.wheelclick == true && currentMesh != null) {
-                                pointerUp();
-                                dragging = false;
-
-                                instance.gamespeed = instance.prevspeed
-                                instance.updateSpeed()
-
-                                var tilex = Math.round(currentMesh.position.x / 30)
-                                var tiley = Math.round(currentMesh.position.z / 30)
-                                if (tilex >= 0 && tilex < instance.tiles.length && tiley >= 0 && tiley < instance.tiles[0].length && instance.currentdp >= instance.gui.wheelchoice.cost && instance.squadlimit > 0) {
-                                    if (instance.tiles[tilex][tiley].player == undefined && instance.tiles[tilex][tiley].type == instance.gui.wheelchoice.type) {
-                                        instance.createPlayer(instance.gui.wheelchoice.name, tilex, tiley);
-                                        delete instance.playerlist[instance.gui.wheelchoice.name]
-                                        instance.currentdp -= instance.gui.wheelchoice.cost
-                                        instance.squadlimit--;
-                                        instance.gui.createPlayerWheelUI(instance.playerlist, instance)
-                                    }
-                                }
-                                instance.undisplayTiles()
-                                instance.gui.wheelclick = false;
-                                currentMesh.dispose();
-                                currentMesh = null
-                            }
-                            else if (sprite != null) {
-                                sprite.dispose();
-                                sprite = null
-                                //instance.undisplayTiles()
-
-                            }
-                            break;
-                        case BABYLON.PointerEventTypes.POINTERMOVE:
-                            if (instance.gui.wheelclick == true) {
-                                dragging = true;
-                                pointerMove();
-                            }
-                            break;
-                    }
-                }
-            });
-
-        }
-
-        displayAvailableTiles(type) {
-            for (let i = 0; i < this.tiles.length; i++) {
-                for (let j = 0; j < this.tiles[i].length; j++) {
-                    if (this.tiles[i][j].type == type)
-                        this.tiles[i][j].displayDeployable()
-                }
-            }
-        }
-
-        displayRangeTiles(x, y, ranget) {
-            var rangeexpand = 0
-            var range = ranget
-            if(range/0.5%2!=0){
-                range = ranget-0.5
-                rangeexpand+1
-            }
-            var squarerange = [[Math.max(x - range, 0), Math.min(x + range, this.tiles.length - 1)], [Math.max(y - range, 0), Math.min(y + range, this.tiles[0].length - 1)]];
-            for (let i = squarerange[0][0]; i <= squarerange[0][1]; i++) {
-                var counter = Math.abs(Math.abs(i - x) - range);
-                for (let j = squarerange[1][0]; j <= squarerange[1][1]; j++) {
-                    if (Math.abs(j - y) <= counter+rangeexpand)
-                        this.tiles[i][j].displayRange()
-                }
-            }
-        }
-
-
-        undisplayTiles() {
-            for (let i = 0; i < this.tiles.length; i++) {
-                for (let j = 0; j < this.tiles[i].length; j++) {
-                    this.tiles[i][j].undisplay()
-                }
-            }
-        }
-
-        createGlobalCamera() {
-            var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 10, new BABYLON.Vector3(250, 290, 180), this.scene); //updown,
-            camera.alpha = -0.0034155996227517244
-            camera.beta = 0.45497477002057213
-
-            this.scene.activeCamera = camera;
-        }
-
-        createFocusCamera(x, z) {
-            var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 10, new BABYLON.Vector3(x + 125, 250, z), this.scene);
-            camera.alpha = -0.0034155996227517244
-            camera.beta = 0.45497477002057213
-
-            this.scene.activeCamera = camera;
-        }
-
-        createScene() {
-
-
-            this.createObstacles();
-            this.initDragNDrop();
-
-
-            this.createGlobalCamera();
-
-
-            for (let i = 0; i < this.waves.length; i++) {
-                this.enemytot += this.waves[i].count;
-            }
-
-            //camera.attachControl(this.canvas, true);
-
-
-            //camera.setPosition(new BABYLON.Vector3(20, 200, 400));
-            this.createLights();
-            if (this.gameconfig.inputStates.pause) {
-                if (!this.gui.showinggui)
-                    this.gui.createPauseScreen(this)
-            }
-
-            return this.scene;
-        }
-
-        updateSpeed() {
-            for (let i = 0; i < this.enemies.length; i++)
-                this.enemies[i].updateSpeed(this.gamespeed, this.pause);
-            for (let i = 0; i < this.activePlayers.length; i++)
-                this.activePlayers[i].updateSpeed(this.gamespeed, this.pause);
-        }
-
-
-        createObstacles() {
-            let array = this.layout
-            this.matrix = [];
-            for (let i = 0; i < array.length; i++) {
-                var line = [];
-                var linetiles = [];
-                for (let j = 0; j < array[i].length; j++) {
-                    var type = array[i][j];
-                    line.push(this.getWalkable(array[i][j]));
-                    if (array[i][j] == "blue") {
-                        this.hpbox.push(new HPBox("", i, j, this.scene))
-                        type = "blk";
-                    }
-                    if (array[i][j] == "red") {
-                        this.spawns.push(new EnemySpawn("", i, j, this.scene))
-                        type = "blk";
-                    }
-                    if (array[i][j] == "altar") {
-                        this.hazards.push(new Altar(i, j, this))
-                        type = "bg";
-                    }
-                    var tile = new Tile(type, i, j, this.scene)
-                    linetiles.push(tile);
-                }
-                this.tiles.push(linetiles);
-                this.matrix.push(line);
-            }
-
-        }
-
-        moveEnemies() {
-            for (let i = 0; i < this.enemies.length; i++)
-                this.enemies[i].move(this.tiles, this.activePlayers);
-        }
-
-        movePlayers() {
-            for (let i = 0; i < this.activePlayers.length; i++)
-                this.activePlayers[i].move(this.enemies, this.activePlayers);
-        }
-
-        getWalkable(tiletype) {
-            switch (tiletype) {
-                case "bg":
-                case "blkr":
-                case "altar":
-                case "r":
-                    return 1;
-                default:
-                    return 0;
-            }
-        }
-
-        createEnemy(e, start, checkpoints, id) {
-            var enemy = new EnemyController(this.enemylist[e], this.scene, start[0], start[1], this, id);
-            enemy.createEnemy(this.matrix, checkpoints, this.spriteManagers, this.gui, this.spriteManagers["icons"]);
-            enemy.gamespeed = this.gamespeed;
-            this.enemies.push(enemy);
-        }
-
-        createPlayer(p, x, y) {
-            this.playSound("deploy", 2)
-            this.playSound(p + "-deploy", this.vcvolume)
-            this.playerlist[p].rdcounter = this.playerlist[p].rdtimer * 30;
-            var player = new PlayerController(this.playerlist[p], this.scene, x, y, this);
-            this.tiles[x][y].player = player;
-            player.createPlayer(player, this.spriteManagers[p], this.gui, this.spriteManagers["icons"]);
-            player.gamespeed = this.gamespeed;
-            this.activePlayers.push(player);
-
-        }
-
-        spawnEnemies() {
-            this.isSpawning = true;
-            for (let i = 0; i < this.waves.length; i++) {
-                if ((this.waves[i]["time"] - 2) * 30 <= this.maptimer && this.waves[i]["line"]) {
-                    if (this.waves[i]["taunt"]) {
-                        var keys = Object.keys(this.playerlist)
-                        if (keys.length > 0) {
-                            this.playSound(this.playerlist[keys[Math.floor(Math.random() * keys.length)]].name + "-taunt", this.vcvolume);
+                            pointerDown(sprite);
+                            instance.displayAvailableTiles(instance.playerlist[instance.gui.wheelchoice.name].type)
                         }
                         else {
-                            var keys = Object.keys(this.activePlayers)
-                            if (keys.length > 0) {
-                                this.playSound(this.activePlayers[keys[Math.floor(Math.random() * keys.length)]].chara.name + "-taunt", this.vcvolume);
+                            var x = Math.round(pointerInfo.pickInfo.pickedPoint.x / 30);
+                            var y = Math.round(pointerInfo.pickInfo.pickedPoint.z / 30);
+                            if (x < instance.tiles.length && x >= 0 && y < instance.tiles[0].length && y >= 0) {
+                                if (instance.tiles[x][y].player != undefined) {
+                                    if (!instance.zoom) {
+                                        instance.zoom = true;
+                                        var pl = instance.tiles[x][y].player
+                                        instance.playSound(pl.chara.name + "-select", instance.vcvolume)
+                                        instance.displayRangeTiles(x, y, pl.buffs.getFinalRange(pl.chara.range))
+                                        instance.createFocusCamera(x * 30, y * 30);
+                                        if (instance.gamespeed != 8)
+                                            instance.prevspeed = instance.gamespeed
+                                        instance.gamespeed = 8
+                                        instance.updateSpeed()
+
+                                        currentTile = instance.tiles[x][y];
+                                        instance.gui.createContextMenu(pl, instance);
+                                    }
+                                }
                             }
+                            if (instance.zoom && (currentTile.x != x || currentTile.z != y)) {
+                                currentTile = null;
+
+                                instance.unzoom()
+                            }
+
+                        }
+                        break;
+                    case BABYLON.PointerEventTypes.POINTERUP:
+                        if (instance.gui.wheelclick == true && currentMesh != null) {
+                            pointerUp();
+                            dragging = false;
+
+                            instance.gamespeed = instance.prevspeed
+                            instance.updateSpeed()
+
+                            var tilex = Math.round(currentMesh.position.x / 30)
+                            var tiley = Math.round(currentMesh.position.z / 30)
+                            if (tilex >= 0 && tilex < instance.tiles.length && tiley >= 0 && tiley < instance.tiles[0].length && instance.currentdp >= instance.gui.wheelchoice.cost && instance.squadlimit > 0) {
+                                if (instance.tiles[tilex][tiley].player == undefined && instance.tiles[tilex][tiley].canBeDeployed(instance.gui.wheelchoice.type)) {
+                                    instance.createPlayer(instance.gui.wheelchoice.name, tilex, tiley);
+                                    delete instance.playerlist[instance.gui.wheelchoice.name]
+                                    instance.currentdp -= instance.gui.wheelchoice.cost
+                                    instance.squadlimit--;
+                                    instance.gui.createPlayerWheelUI(instance.playerlist, instance)
+                                }
+                            }
+                            instance.undisplayTiles()
+                            instance.gui.wheelclick = false;
+                            currentMesh.dispose();
+                            currentMesh = null
+                        }
+                        else if (sprite != null) {
+                            sprite.dispose();
+                            sprite = null
+                            //instance.undisplayTiles()
+
+                        }
+                        break;
+                    case BABYLON.PointerEventTypes.POINTERMOVE:
+                        if (instance.gui.wheelclick == true) {
+                            dragging = true;
+                            pointerMove();
+                        }
+                        break;
+                }
+            }
+        });
+
+    }
+
+    displayAvailableTiles(type) {
+        for (let i = 0; i < this.tiles.length; i++) {
+            for (let j = 0; j < this.tiles[i].length; j++) {
+                if (this.tiles[i][j].canBeDeployed(type))
+                    this.tiles[i][j].displayDeployable()
+            }
+        }
+    }
+
+    displayRangeTiles(x, y, ranget) {
+        var rangeexpand = 0
+        var range = ranget
+        if (range / 0.5 % 2 != 0) {
+            range = ranget - 0.5
+            rangeexpand + 1
+        }
+        var squarerange = [[Math.max(x - range, 0), Math.min(x + range, this.tiles.length - 1)], [Math.max(y - range, 0), Math.min(y + range, this.tiles[0].length - 1)]];
+        for (let i = squarerange[0][0]; i <= squarerange[0][1]; i++) {
+            var counter = Math.abs(Math.abs(i - x) - range);
+            for (let j = squarerange[1][0]; j <= squarerange[1][1]; j++) {
+                if (Math.abs(j - y) <= counter + rangeexpand)
+                    this.tiles[i][j].displayRange()
+            }
+        }
+    }
+
+
+    undisplayTiles() {
+        for (let i = 0; i < this.tiles.length; i++) {
+            for (let j = 0; j < this.tiles[i].length; j++) {
+                this.tiles[i][j].undisplay()
+            }
+        }
+    }
+
+    createGlobalCamera() {
+        var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 10, new BABYLON.Vector3(250, 290, 180), this.scene); //updown,
+        camera.alpha = -0.0034155996227517244
+        camera.beta = 0.45497477002057213
+
+        this.scene.activeCamera = camera;
+    }
+
+    createFocusCamera(x, z) {
+        var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 10, new BABYLON.Vector3(x + 125, 250, z), this.scene);
+        camera.alpha = -0.0034155996227517244
+        camera.beta = 0.45497477002057213
+
+        this.scene.activeCamera = camera;
+    }
+
+    createScene() {
+
+
+        this.createObstacles();
+        this.initDragNDrop();
+
+
+        this.createGlobalCamera();
+
+
+        for (let i = 0; i < this.waves.length; i++) {
+            this.enemytot += this.waves[i].count;
+        }
+
+        //camera.attachControl(this.canvas, true);
+
+
+        //camera.setPosition(new BABYLON.Vector3(20, 200, 400));
+        this.createLights();
+        if (this.gameconfig.inputStates.pause) {
+            if (!this.gui.showinggui)
+                this.gui.createPauseScreen(this)
+        }
+
+        this.createSkybox()
+
+        return this.scene;
+    }
+
+    createSkybox() {
+        // Skybox
+        let skybox = new BABYLON.MeshBuilder.CreateBox("skybox", { height: 1, depth: 1920 / 2, width: 1080 / 2 }, this.scene);
+        skybox.position.x = 5
+        skybox.position.z += 180
+        skybox.position.y -= 150
+
+
+
+        var skyboxMaterial = new BABYLON.StandardMaterial("skyBoxx", this.scene);
+
+
+        skyboxMaterial.diffuseTexture = this.scene.assets.skybox
+        skybox.material = skyboxMaterial;
+        skybox.rotation.z = -Math.PI / 5;
+
+    }
+
+
+    updateSpeed() {
+        for (let i = 0; i < this.enemies.length; i++)
+            this.enemies[i].updateSpeed(this.gamespeed, this.pause);
+        for (let i = 0; i < this.activePlayers.length; i++)
+            this.activePlayers[i].updateSpeed(this.gamespeed, this.pause);
+    }
+
+
+    createObstacles() {
+        let array = this.layout
+        this.matrix = [];
+        for (let i = 0; i < array.length; i++) {
+            var line = [];
+            var linetiles = [];
+            for (let j = 0; j < array[i].length; j++) {
+                var type = array[i][j];
+                line.push(this.getWalkable(array[i][j]));
+                var tile = new Tile(type, i, j, this.scene)
+                linetiles.push(tile);
+                if (array[i][j] == "blue")
+                    this.hpbox.push(new HPBox("", i, j, this.scene))
+
+                if (array[i][j] == "red")
+                    this.spawns.push(new EnemySpawn("", i, j, this.scene))
+
+                if (array[i][j] == "altar")
+                    this.hazards.push(new FireAltar(i, j, this))
+                if (array[i][j] == "icealtar")
+                    this.hazards.push(new IceAltar(i, j, this))
+                if (array[i][j] == "magma")
+                    this.hazards.push(new MagmaTile(tile, this))
+
+            }
+            this.tiles.push(linetiles);
+            this.matrix.push(line);
+        }
+
+    }
+
+    moveEnemies() {
+        for (let i = 0; i < this.enemies.length; i++)
+            this.enemies[i].move(this.tiles, this.activePlayers);
+    }
+
+    movePlayers() {
+        for (let i = 0; i < this.activePlayers.length; i++)
+            this.activePlayers[i].move(this.enemies, this.activePlayers);
+    }
+
+    getWalkable(tiletype) {
+        switch (tiletype) {
+            case "bg":
+            case "blkr":
+            case "icealtar":
+            case "altar":
+            case "r":
+                return 1;
+            default:
+                return 0;
+        }
+    }
+
+    createEnemy(e, start, checkpoints, id) {
+        var enemy = new EnemyController(this.enemylist[e], this.scene, start[0], start[1], this, id);
+        enemy.createEnemy(this.matrix, checkpoints, this.spriteManagers, this.gui, this.spriteManagers["icons"]);
+        enemy.gamespeed = this.gamespeed;
+        this.enemies.push(enemy);
+    }
+
+    createPlayer(p, x, y) {
+        this.playSound("deploy", 2)
+        this.playSound(p + "-deploy", this.vcvolume)
+        this.playerlist[p].rdcounter = this.playerlist[p].rdtimer * 30;
+        var player = new PlayerController(this.playerlist[p], this.scene, x, y, this);
+        this.tiles[x][y].player = player;
+        player.createPlayer(player, this.spriteManagers[p], this.gui, this.spriteManagers["icons"]);
+        player.gamespeed = this.gamespeed;
+        this.activePlayers.push(player);
+
+    }
+
+    spawnEnemies() {
+        this.isSpawning = true;
+        for (let i = 0; i < this.waves.length; i++) {
+            if ((this.waves[i]["time"] - 2) * 30 <= this.maptimer && this.waves[i]["line"]) {
+                if (this.waves[i]["taunt"]) {
+                    var keys = Object.keys(this.playerlist)
+                    if (keys.length > 0) {
+                        this.playSound(this.playerlist[keys[Math.floor(Math.random() * keys.length)]].name + "-taunt", this.vcvolume);
+                    }
+                    else {
+                        var keys = Object.keys(this.activePlayers)
+                        if (keys.length > 0) {
+                            this.playSound(this.activePlayers[keys[Math.floor(Math.random() * keys.length)]].chara.name + "-taunt", this.vcvolume);
                         }
                     }
-                    this.waves[i]["line"] = false;
-                    this.drawLine(this.waves[i]["checkpoints"])
                 }
-                if (this.waves[i]["time"] * 30 <= this.maptimer) {
-                    if (this.waves[i]["tooltip"]) {
-                        this.playSound("tooltip", 0.5);
-                        this.gui.createTooltip(this.enemylist[this.waves[i]["enemies"]])
-                        this.waves[i]["tooltip"] = false;
-                    }
+                this.waves[i]["line"] = false;
+                this.drawLine(this.waves[i]["checkpoints"])
+            }
+            if (this.waves[i]["time"] * 30 <= this.maptimer) {
+                if (this.waves[i]["tooltip"]) {
+                    this.playSound("tooltip", 0.5);
+                    this.gui.createTooltip(this.enemylist[this.waves[i]["enemies"]])
+                    this.waves[i]["tooltip"] = false;
+                }
 
-                    this.waves[i]["time"] += this.waves[i]["gap"];
+                this.waves[i]["time"] += this.waves[i]["gap"];
 
-                    this.createEnemy(this.waves[i]["enemies"], this.waves[i]["start"], this.waves[i]["checkpoints"], "wave" + this.waves[i]["number"] + this.waves[i]["count"]);
-                    this.waves[i]["count"]--;
-                    if (this.waves[i]["count"] <= 0) {
-                        this.waves.splice(i, 1)
-                        i--
-                    }
+                this.createEnemy(this.waves[i]["enemies"], this.waves[i]["start"], this.waves[i]["checkpoints"], "wave" + this.waves[i]["number"] + this.waves[i]["count"]);
+                this.waves[i]["count"]--;
+                if (this.waves[i]["count"] <= 0) {
+                    this.waves.splice(i, 1)
+                    i--
                 }
             }
-            this.isSpawning = false;
+        }
+        this.isSpawning = false;
+    }
+
+    drawLine(checkpoints) {
+
+        var res = this.createPathfinding(checkpoints, this.matrix)
+
+        var myPoints = [new BABYLON.Vector3(res[0][1] * 31, 20, res[0][0] * 30)]
+        var i = 1;
+        var options = {
+            points: myPoints,
+            updatable: true
         }
 
-        drawLine(checkpoints) {
+        let lines = BABYLON.MeshBuilder.CreateLines("lines", options);
+        lines.color = new BABYLON.Color3(1, 0, 0);
 
-            var res = this.createPathfinding(checkpoints, this.matrix)
-
-            var myPoints = [new BABYLON.Vector3(res[0][1] * 31, 20, res[0][0] * 30)]
-            var i = 1;
-            var options = {
-                points: myPoints,
-                updatable: true
+        var interval = setInterval(() => {
+            lines.dispose();
+            if (i < res.length) {
+                options.points.push(new BABYLON.Vector3(res[i][1] * 31, 20, res[i][0] * 30))
+                if (options.points.length > 10) {
+                    options.points.shift()
+                }
+                lines = BABYLON.MeshBuilder.CreateLines("lines", options);
+                lines.color = new BABYLON.Color3(1, 0, 0);
+                i++
             }
-
-            let lines = BABYLON.MeshBuilder.CreateLines("lines", options);
-            lines.color = new BABYLON.Color3(1, 0, 0);
-
-            var interval = setInterval(() => {
-                lines.dispose();
-                if (i < res.length) {
-                    options.points.push(new BABYLON.Vector3(res[i][1] * 31, 20, res[i][0] * 30))
-                    if (options.points.length > 10) {
-                        options.points.shift()
-                    }
+            else {
+                if (options.points.length > 1) {
+                    options.points.shift()
                     lines = BABYLON.MeshBuilder.CreateLines("lines", options);
                     lines.color = new BABYLON.Color3(1, 0, 0);
-                    i++
                 }
-                else {
-                    if (options.points.length > 1) {
-                        options.points.shift()
-                        lines = BABYLON.MeshBuilder.CreateLines("lines", options);
-                        lines.color = new BABYLON.Color3(1, 0, 0);
-                    }
 
-                    else clearInterval(interval)
-                }
-            }, 60)
-
-
-
-        }
-
-        createPathfinding(points, matrix) {
-            var checks = [];
-            for (let i = 0; i < points.length; i++) {
-                var grid = new PF.Grid(matrix);
-                var finder = new PF.AStarFinder();
-
-                var path = finder.findPath(points[i].start[1], points[i].start[0], points[i].end[1], points[i].end[0], grid);
-                if (i > 0)
-                    path.shift()
-                checks = checks.concat(path);
+                else clearInterval(interval)
             }
-            return checks;
-        }
+        }, 60)
+
 
 
     }
+
+    createPathfinding(points, matrix) {
+        var checks = [];
+        for (let i = 0; i < points.length; i++) {
+            var grid = new PF.Grid(matrix);
+            var finder = new PF.AStarFinder();
+
+            var path = finder.findPath(points[i].start[1], points[i].start[0], points[i].end[1], points[i].end[0], grid);
+            if (i > 0)
+                path.shift()
+            checks = checks.concat(path);
+        }
+        return checks;
+    }
+
+
+}

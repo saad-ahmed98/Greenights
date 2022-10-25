@@ -22,7 +22,9 @@ class EnemyBuffs extends Buffs {
             speed: 0,
             taunt: 1,
             inspire: false,
-            speedpercent:1
+            speedpercent:1,
+            flatmultiatk:1,
+            flatmultidef:1,
         }
     }
 
@@ -35,7 +37,7 @@ class EnemyBuffs extends Buffs {
     getFinalSpeed(speed){
         this.initModifiers();
         this.sumBuffs();
-        return (speed + this.modifiers.speed)*this.modifiers.speedpercent
+        return (speed + this.modifiers.speed)*(this.modifiers.speedpercent)
     }
     getInspire(){
         this.initModifiers();

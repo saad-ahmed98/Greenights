@@ -258,7 +258,7 @@ enemylist['Sarkaz Sentinel'] = {
             def:0.3,
         },
         aura:true,
-        auratype:2,
+        auratype:5,
         idle:{
             start:65,
             end:84,
@@ -599,7 +599,7 @@ enemylist["Guerrilla Fighter"] = {
             speed:0.2,
         },
         aura:true,
-        auratype:3
+        auratype:2
     },
 
 }
@@ -672,7 +672,7 @@ enemylist["Guerrilla Fighter Leader"] = {
             speed:0.2,
         },
         aura:true,
-        auratype:3
+        auratype:2
     },
 
 }
@@ -744,7 +744,7 @@ enemylist["Guerrilla Sniper"] = {
             targets:1,
         },
         aura:true,
-        auratype:3
+        auratype:2
     },
 
 }
@@ -816,9 +816,8 @@ enemylist["Guerrilla Sniper Leader"] = {
             targets:1,
         },
         aura:true,
-        auratype:3
+        auratype:2
         },
-
 }
 
 enemylist['Guerrilla Hound'] = {
@@ -1014,7 +1013,7 @@ enemylist["Guerrilla Siegebreaker"] = {
             atk:0.5,
         },
         aura:true,
-        auratype:3
+        auratype:2
         },
 }
 
@@ -1094,7 +1093,7 @@ enemylist["Guerrilla Siegebreaker Leader"] = {
             atk:0.5,
         },
         aura:true,
-        auratype:3
+        auratype:2
         
     },
 }
@@ -1165,7 +1164,7 @@ enemylist["Sarkaz Guerrilla Fighter Leader"] = {
             dmgtype:"arts",
         },
         aura:true,
-        auratype:3,
+        auratype:2,
         atkanim:{
             start:81,
             end:105,
@@ -1381,7 +1380,7 @@ enemylist["Guerrilla Herald"] = {
            flatdef:100,
         },
         aura:false,
-        auratype:3
+        auratype:2
         },
 }
 
@@ -1452,7 +1451,7 @@ enemylist["Guerrilla Herald Leader"] = {
            flatdef:100,
         },
         aura:false,
-        auratype:3
+        auratype:2
 
     },
 }
@@ -1539,7 +1538,7 @@ enemylist["Patriot"] = {
            flatdef:200,
         },
         aura:false,
-        auratype:3
+        auratype:2
     },
 }
 
@@ -1634,7 +1633,7 @@ enemylist["Patriot2"] = {
            flatdef:200,
         },
         aura:false,
-        auratype:3
+        auratype:2
     },
 
     spattack:{
@@ -1647,7 +1646,428 @@ enemylist["Patriot2"] = {
     }
 }
 
+enemylist["Roar Knightclub Elite"] = {
+    name:"Roar Knightclub Elite",
+    hp: 3800,
+    atk: 420,
+    def: 100,
+    res:0,
+    atkinterval: 2.4,
+    speed:0.7,
+    blockcount:1,
+    type:"g",
+    range:2,
+    dmgtype:"physical",
+    size:1,
+    tooltip:"Has significantly increased DEF\nand RES for a period of time.",
+    targets:1,
+
+    enemytype:"normal",
+
+    spritesheet:"images/sprites/roar-knightclub-elite-sheet.webp",
+
+    hasskill:true,
+    
+    atkanim:{
+        start:0,
+        end:19,
+        contact:9,
+        duration:0.8,
+    },   
+
+    death:{
+        start:20,
+        end:36,
+        duration:1,
+
+    },
+    idle:{
+        start:37,
+        end:56,
+        duration:1,
+
+    },
+
+    move:{
+        start:57,
+        end:71,
+        duration:1.5,
+
+    },
+    sfx: {
+        atk: {
+            src: "crossbow-atk",
+            volume:0.1
+        }
+    },
+
+    skill:{
+        name :"knightshield",
+        triggertype:"on_start",
+        skilltype:"duration",
+        target:"self",
+        modifiers:{
+            flatdef:3000,
+            flatres:95,
+            duration:30
+        },
+        aura:true,
+        auratype:7
+        },
+
+}
+
+enemylist["Bloodboil Knightclub Elite"] = {
+    name:"Bloodboil Knightclub Elite",
+    hp: 13000,
+    atk: 800,
+    def: 800,
+    res:0,
+    atkinterval: 2.3,
+    speed:0.5,
+    blockcount:1,
+    type:"g",
+    range:0,
+    dmgtype:"physical",
+    size:1.2,
+    tooltip:"Each time an enemy is defeated,\ngains ATK and ASPD,\nstacking up to 10 times.",
+    targets:1,
+
+    enemytype:"normal",
+
+    spritesheet:"images/sprites/bloodboil-knightclub-elite-sheet.webp",
+
+    hasskill:true,
+    
+    atkanim:{
+        start:0,
+        end:28,
+        contact:14,
+        duration:0.8,
+    },   
+
+    death:{
+        start:29,
+        end:43,
+        duration:1,
+
+    },
+    idle:{
+        start:44,
+        end:73,
+        duration:1,
+
+    },
+
+    move:{
+        start:74,
+        end:93,
+        duration:1.3,
+
+    },
+    sfx: {
+        atk: {
+            src: "bloodboil-atk",
+            volume:0.1
+        },
+        hit: {
+            src: "bloodboil-hit",
+            volume:0.1
+        }
+    },
+
+    skill:{
+        name :"bloodboil",
+        triggertype:"on_anydeath",
+        skilltype:"bloodboil",
+        target:"self",
+        modifiers:{
+            atk:0.1,
+            aspd:5,
+            stack:10
+        },
+        aura:false,
+        auratype:8
+        },
+}
+
+enemylist["Elite Knight Shielder"] = {
+    name:"Elite Knight Shielder",
+    hp: 12000,
+    atk: 700,
+    def: 1300,
+    res:0,
+    atkinterval: 3,
+    speed:0.5,
+    blockcount:1,
+    type:"g",
+    range:0,
+    dmgtype:"physical",
+    size:1.3,
+    tooltip:"A Kazimierz knight with\ndefensive equipment, relying\non a slow-and-steady approach.",
+    targets:1,
+
+    enemytype:"normal",
+
+    spritesheet:"images/sprites/elite-knight-shielder-sheet.webp",
+
+    hasskill:false,
+    
+    atkanim:{
+        start:0,
+        end:28,
+        contact:10,
+        duration:0.8,
+    },   
+
+    death:{
+        start:29,
+        end:45,
+        duration:1,
+
+    },
+    idle:{
+        start:46,
+        end:85,
+        duration:1,
+
+    },
+
+    move:{
+        start:86,
+        end:104,
+        duration:1.3,
+
+    },
+    sfx: {
+        hit: {
+            src: "knightshield-hit",
+            volume:0.1
+        }
+    },
+
+}
+
+enemylist["Vicious Training Gloompincer"] = {
+    name:"Vicious Training Gloompincer",
+    hp: 3000,
+    atk: 450,
+    def: 700,
+    res:50,
+    atkinterval: 2.5,
+    speed:0.8,
+    blockcount:1,
+    type:"g",
+    range:0,
+    dmgtype:"physical",
+    size:1,
+    tooltip:"An Infected creature commonly\nfound in the rivers of Kazimierz.",
+    targets:1,
+
+    enemytype:"normal",
+
+    spritesheet:"images/sprites/vicious-training-gloompincer-sheet.webp",
+
+    hasskill:false,
+    
+    atkanim:{
+        start:0,
+        end:17,
+        contact:7,
+        duration:1.3,
+    },   
+
+    death:{
+        start:17,
+        end:31,
+        duration:1,
+
+    },
+    idle:{
+        start:32,
+        end:51,
+        duration:1,
+
+    },
+
+    move:{
+        start:52,
+        end:66,
+        duration:1.5,
+
+    },
+    sfx: {
+        hit: {
+            src: "swordsman-hit",
+            volume:0.1
+        }
+    },
+
+}
 
 
+enemylist["Tytus Topola"] = {
+    name:"Tytus Topola",
+    hp: 25000,
+    atk: 750,
+    def: 700,
+    res:50,
+    atkinterval: 3,
+    speed:0.55,
+    blockcount:1,
+    type:"g",
+    range:1.3,
+    dmgtype:"arts",
+    size:1.1,
+    tooltip:"Decreases the ATK of the unit\n with the highest ATK;\nRevives.",
+    revive:true,
+    revivetimer:0,
+    revivemax:0,
+    targets:1,
 
+    enemytype:"normal",
 
+    spritesheet:"images/sprites/tytus-topola-sheet.webp",
+
+    hasskill:false,
+    hasspatk:true,
+    
+    atkanim:{
+        start:0,
+        end:28,
+        contact:14,
+        duration:0.7,
+    },
+    
+
+    idle:{
+        start:49,
+        end:73,
+        duration:1,
+
+    },
+    move:{
+        start:74,
+        end:93,
+        duration:1.2,
+
+    },
+    spatk:{
+        start:94,
+        end:115,
+        duration:1,
+
+    },
+
+    sfx: {
+        atk: {
+            src: "lancer-atk",
+            volume:0.1
+        },
+        hit:{
+            src: "lancer-hit",
+            volume:0.1
+        }
+    },
+    spattack:{
+        name:"bladehelmdebuff",
+        target:"highestatk",
+        range:99,
+        initialsp:0,
+        sp:10,
+        applyeffects: {
+            modifiers: {
+                flatmultiatk: 0.50,
+            },
+            duration: 25,
+            effecticon:3
+        },
+    }
+}
+
+enemylist["Tytus Topola2"] = {
+    name:"Tytus Topola2",
+    hp: 25000,
+    atk: 750,
+    def: 700,
+    res:50,
+    atkinterval: 3,
+    speed:0.55,
+    blockcount:1,
+    type:"g",
+    range:1.3,
+    dmgtype:"arts",
+    size:1,
+    tooltip:"Decreases the ATK of the unit\n with the highest ATK;\nRevives.",
+    
+    targets:1,
+
+    enemytype:"normal",
+
+    spritesheet:"images/sprites/tytus-topola-sheet.webp",
+
+    hasskill:false,
+    hasspatk:true,
+    
+
+    atkanim:{
+        start:0,
+        end:28,
+        contact:14,
+        duration:0.8,
+    },
+    death:{
+        start:29,
+        end:48,
+        duration:1,
+    },
+
+    idle:{
+        start:49,
+        end:73,
+        duration:1,
+
+    },
+    move:{
+        start:74,
+        end:93,
+        duration:1.2,
+
+    },
+    spatk:{
+        start:94,
+        end:115,
+        duration:1,
+
+    },
+    start:{
+        start:116,
+        end:202,
+        duration:1.1,
+    },
+    sfx: {
+        atk: {
+            src: "lancer-atk",
+            volume:0.1
+        },
+        hit:{
+            src: "lancer-hit",
+            volume:0.1
+        }
+    },
+
+    spattack:{
+        name:"bladehelmdebuff",
+        target:"highestatk",
+        range:99,
+        initialsp:0,
+        sp:10,
+        applyeffects: {
+            modifiers: {
+                flatmultiatk: 0.50,
+            },
+            duration: 25,
+            effecticon:3
+        },
+    }
+}
