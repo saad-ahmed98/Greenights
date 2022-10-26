@@ -367,18 +367,20 @@ class MainMenu extends LVLAbstract {
         myScrollViewer.color = "transparent"
 
         for (let i = 0; i < keys.length; i++) {
-            if (i % 5 == 0 && i > 0) {
+            if (i % 7 == 0 && i > 0) {
                 j++
                 z = 0
             }
             var image = new BABYLON.GUI.Image("", playerlist[keys[i]].opicon);
             image.width = "26%"
             image.left = "-35%"
+
+            
             let button = BABYLON.GUI.Button.CreateSimpleButton("but", "");
-            button.width = "25%";
-            button.height = "15%";
-            button.top = (10 + z * 17) + "%";
-            button.left = (0 + j * 30) + "%";
+            button.width = "20.5%";
+            button.height = "12%";
+            button.top = (10 + z * 13) + "%";
+            button.left = (0 + j * 21.5) + "%";
             button.color = "white";
             button.hoverCursor = "pointer";
 

@@ -121,7 +121,7 @@ levels["GUERRILLA-1"] = {
     hp: 3,
     background: "loading_CB_center",
     description: "The spearhead of Reunion's reconnaissance \nforce has appeared at the location where we\n established a concealed facility.\n Be careful, these are no ordinary Reunion grunts\n that we're dealing with.",
-    place:"Kazimierz",
+    place:"Plain",
 
 
     waves: [{"number":0, "time": 0, "gap": 5, "enemies": "Guerrilla Fighter", "line": false, "tooltip": true, "count": 1, "taunt": false, "start": [4, 11], "checkpoints": [{ "start": [4, 11], "end": [4, 9], "pause": 155 },{ "start": [4, 9], "end": [4, 1], "pause": 0 }]},
@@ -213,7 +213,7 @@ levels["GUERRILLA-EX"] = {
     hp:3,
     background: "loading_CB_under",
     description: "The Aegis of the Infected is attacking us with all their might.\nUse everything you have to push them back!\n\n<Originium Altar> Periodically emits pulse waves\ndamaging both allied and enemy units.",
-    place:"Kazimierz",
+    place:"Plain",
 
     waves: [            
         {"number":1, "time": 2, "gap": 5, "enemies": "Guerrilla Herald Leader", "line": false, "tooltip": true, "count": 1, "taunt": false, "start": [1, 10], "checkpoints": [{ "start": [1, 10], "end": [2, 10], "pause": 5 },{ "start": [2, 10], "end": [4, 9], "pause": 50 },{ "start": [4, 9], "end": [7, 7], "pause": 0 }]},
@@ -316,28 +316,28 @@ levels["GUERRILLA-EX"] = {
 
     ],
 }
-/*
+
 levels["KNIGHT-EX"] = {
     level: "KNIGHT-EX",
     name: "Dangerous Battlefield",
     bgm: "mn_2",
     initialdp: 20,
     squadlimit: 8,
-    hp: 99,
-    background: "loading_Kazimierz_Arena",
-    description: "The more hazards are added to the battlefield, the more excited the audience gets.\n"+
-    "However, the same excitement cannot be felt from those fighting in the arena.\n\n"+
+    hp: 3,
+    background: "loading_Kazimierz_Final",
+    description: "The most dangerous competitions are usually the first ones to run out of tickets.\n"+
+    "As such, it is advised to make arenas as hazardous as possible for maximum profit.\n\n"+
     "<Heated Path> Deals massive damage to any enemy or ally on it at intervals.\n"+
     "<Originium Ice Crystal> Periodically emits a frigid wave\n lowering the attack speed of affected allies.\n"+
     "<Originium Altar> Periodically emits pulse waves,\n damaging both allied and enemy units.",
-    place:"Kazimierz",
+    place:"CB",
 
     waves: [
         { "number":0,"time": 0, "gap": 5, "enemies": "Bloodboil Knightclub Elite", "line": false, "tooltip": true, "taunt": false, "count": 1, "start": [3, 11], "checkpoints": [{ "start": [3, 11], "end": [3, 10], "pause": 90 },{ "start": [3, 10], "end": [1, 11], "pause": 0 }] },
         { "number":1,"time": 0, "gap": 5, "enemies": "Bloodboil Knightclub Elite", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [4, 11], "checkpoints": [{ "start": [4, 11], "end": [4, 10], "pause": 90 },{ "start": [4, 10], "end": [6, 11], "pause": 0 }] },
         
         //tytus
-        { "number":2,"time": 5, "gap": 5, "enemies": "Tytus Topola", "line": true, "tooltip": true, "taunt": false, "count": 1, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [3, 1], "pause": 200 },{ "start": [3, 1], "end": [1, 11], "pause": 0 }] },
+        { "number":2,"time": 5, "gap": 5, "enemies": "Tytus Topola", "line": true, "tooltip": true, "taunt": false, "count": 1, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [3, 1], "pause": 200 },{ "start": [3, 1], "end": [2, 2], "pause": 0 },{ "start": [2, 2], "end": [1, 11], "pause": 0 }] },
 
         { "number":3,"time": 13, "gap": 5, "enemies": "Vicious Training Gloompincer", "line": true, "tooltip": true, "taunt": true, "count": 1, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [6, 11], "pause": 0 }] },
         { "number":4,"time": 23, "gap": 8, "enemies": "Vicious Training Gloompincer", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [6, 11], "pause": 0 }] },
@@ -359,12 +359,8 @@ levels["KNIGHT-EX"] = {
         { "number":5,"time": 135, "gap": 3, "enemies": "Vicious Training Gloompincer", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [6, 11], "pause": 0 }] },
         { "number":1,"time": 140, "gap": 30, "enemies": "Elite Knight Shielder", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 11], "pause": 0 }] },
         { "number":5,"time": 160, "gap": 3, "enemies": "Vicious Training Gloompincer", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [6, 11], "pause": 0 }] },
-        { "number":5,"time": 180, "gap": 3, "enemies": "Vicious Training Gloompincer", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [6, 11], "pause": 0 }] },
-        { "number":6,"time": 195, "gap": 10, "enemies": "Roar Knightclub Elite", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [3, 11], "checkpoints": [{ "start": [3, 11], "end": [1, 11], "pause": 0 }] },
-        { "number":7,"time": 195, "gap": 10, "enemies": "Roar Knightclub Elite", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [4, 11], "checkpoints": [{ "start": [4, 11], "end": [6, 11], "pause": 0 }] },
-        { "number":6,"time": 210, "gap": 20, "enemies": "Elite Knight Shielder", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 11], "checkpoints": [{ "start": [3, 11], "end": [1, 11], "pause": 0 }] },
-        { "number":7,"time": 210, "gap": 20, "enemies": "Elite Knight Shielder", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [4, 11], "checkpoints": [{ "start": [4, 11], "end": [6, 11], "pause": 0 }] },
-        
+        { "number":5,"time": 180, "gap": 3, "enemies": "Elite Knight Shielder", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [6, 11], "pause": 0 }] },
+        { "number":5,"time": 190, "gap": 3, "enemies": "Vicious Training Gloompincer", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [6, 11], "pause": 0 }] },
     ],
 
     enemies: ["Bloodboil Knightclub Elite","Elite Knight Shielder","Roar Knightclub Elite","Vicious Training Gloompincer","Tytus Topola","Tytus Topola2"],
@@ -374,15 +370,15 @@ levels["KNIGHT-EX"] = {
     layout: [
     [ "bg","bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg",],
     ["bg","red", "blk", "blk", "magma", "blk", "magma",  "magma", "blk", "magma", "blk", "blue","bg"],
-    [ "bg","blk", "magma", "blk", "r", "altar", "r",  "r", "icealtar", "r", "bg", "bg","bg"],
+    [ "bg","blk", "g", "blk", "r", "altar", "r",  "r", "icealtar", "r", "bg", "bg","bg"],
     [ "bg","blk", "r", "blk", "g", "g", "g",  "g", "g", "blk", "blk", "red","bg"],
     [ "bg","blk", "r", "blk", "g", "g", "g",  "g", "g", "blk", "blk", "red","bg"],
-    ["bg", "blk", "magma", "blk", "r", "altar",  "r", "r", "icealtar", "r", "bg", "bg","bg"],
+    ["bg", "blk", "g", "blk", "r", "altar",  "r", "r", "icealtar", "r", "bg", "bg","bg"],
     ["bg", "red", "blk", "blk", "magma", "blk",  "magma", "magma", "blk", "magma", "blk", "blue","bg"],
-    ["e", "e", "e", "e", "e", "e", "e", "e", "e", "e", "e", "e", "e"]
+    [ "bg","bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg",],
     ],
 }
-*/
+
 
 levels["TEST"] = {
     level: "TEST",
@@ -393,7 +389,7 @@ levels["TEST"] = {
     hp: 3,
     background: "loading_CB_under",
     description: "Sussy",
-    place:"Kazimierz",
+    place:"Plain",
 
     waves: [/*{"number":0, "time": 0, "gap": 5, "enemies": "Sarkaz Guerrilla Fighter Leader", "line": false, "tooltip": true, "count": 1, "taunt": false, "start": [4, 5], "checkpoints": [{ "start": [4, 5], "end": [4, 5], "pause": 300 }]},
         */{ "number":4,"time": 30, "gap": 5, "enemies": "Guerrilla Siegebreaker Leader", "line": false, "tooltip": true, "taunt": false, "count": 1, "start": [7, 12], "checkpoints": [{ "start": [7, 12], "end": [7, 11], "pause": 200 }, { "start": [7, 11], "end": [7, 0], "pause": 0 }] },

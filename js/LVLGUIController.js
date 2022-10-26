@@ -69,7 +69,9 @@ class LVLGUIController {
                     player.skillready.isVisible = false;
                     player.lvlcontroller.playSound(player.chara.name + "-skillact", player.chara.sfx.skillact.volume)
                     player.lvlcontroller.playSound(player.chara.name + "-skill", player.lvlcontroller.vcvolume)
-                    player.playerSkill.activateDurationSkill([player],lvlcontroller)
+                    player.playerSkill.activateDurationSkill([player], lvlcontroller)
+                    if (player.chara.skillidle != undefined)
+                        player.sprite.playAnimation(player.chara.skillidle.start, player.chara.skillidle.end, true, this.gamespeed * 30);
                     player.createSkillAura(lvlcontroller.spriteManagers["skillaura"])
                 }
                 lvlcontroller.unzoom()
@@ -474,16 +476,16 @@ class LVLGUIController {
     }
 
     //updates number of enemies killed and hp of the current level
-    updateStatsUI(enemies, hp,maxhp) {
+    updateStatsUI(enemies, hp, maxhp) {
         this.mapstats.enemies.text = enemies
         this.mapstats.hp.text = hp;
         //show red counter with hp lost if hp lost
-        if(hp<maxhp){
+        if (hp < maxhp) {
             this.mapstats.lossimg.isVisible = true
             this.mapstats.losshp.isVisible = true
-            this.mapstats.losshp.text = maxhp-hp
+            this.mapstats.losshp.text = maxhp - hp
         }
-        
+
     }
 
     //creates the bottom GUI that allows to select players to deploy
@@ -833,7 +835,7 @@ class LVLGUIController {
         var dmgtype = player.chara.dmgtype
         if (player.buffs.getDmgType() != "")
             dmgtype = player.buffs.getDmgType()
-        text.text = player.chara.name + "\n\nHP\t\t" + player.hp + "/" + player.maxhp + "\nATK\t\t" + player.buffs.getFinalAtk(player.chara.atk) + "\nDEF\t\t" + player.buffs.getFinalDef(player.chara.def) + "\nRES\t\t" + player.buffs.getFinalRes(player.chara.res) + "\nBLOCK\t\t" +
+        text.text = player.chara.name + "\n\nHP\t\t" + Math.round(player.hp) + "/" + player.maxhp + "\nATK\t\t" + player.buffs.getFinalAtk(player.chara.atk) + "\nDEF\t\t" + player.buffs.getFinalDef(player.chara.def) + "\nRES\t\t" + player.buffs.getFinalRes(player.chara.res) + "\nBLOCK\t\t" +
             player.buffs.getFinalBlock(player.chara.blockcount) + "\nDMG\t\t" + dmgtype.toUpperCase();
         text.color = "white";
         text.fontSize = "10%";
@@ -877,7 +879,7 @@ class LVLGUIController {
         textbox.color = "white";
         textbox.thickness = 0;
         textbox.background = "transparent";
-        
+
         //skill description
         text = new BABYLON.GUI.TextBlock();
         text.text = player.chara.skill.name + "\n\n" + player.chara.skill.chargetype + "\t\t|\t\t" + player.chara.skill.triggertype + "\n\n" + player.chara.skill.description

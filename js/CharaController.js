@@ -143,22 +143,36 @@ class CharaController {
 
         var rangeexpand = 0
         var range = this.buffs.getFinalRange(this.chara.range)
+        var line = false
         if (range / 0.5 % 2 != 0) {
-            range = this.buffs.getFinalRange(this.chara.range) - 0.5
-            rangeexpand + 1
+            if ((range - 0.3) % Math.round(range) == 0) {
+                range = this.buffs.getFinalRange(this.chara.range) - 0.3
+                line = true;
+            }
+            else {
+                range = this.buffs.getFinalRange(this.chara.range) - 0.5
+                rangeexpand += 1
+            }
         }
+
 
         if (range > 0 && targets > 1) {
             var squarerange = [[this.x * 30 - 15 - 30 * range, this.x * 30 + 15 + 30 * range], [this.y * 30 - 15 - 30 * range, this.y * 30 + 15 + 30 * range]];
             for (let i = enemies.length - 1; i >= 0; i--) {
                 var counter = Math.abs(Math.abs(Math.round(enemies[i].mesh.position.x / 30) - this.x) - range);
                 if (this.between(enemies[i].mesh.position.x, squarerange[0]) && this.between(enemies[i].mesh.position.z, squarerange[1]) && !enemies[i].spawning && !enemies[i].invincible) {
-                    if (Math.abs(Math.round(enemies[i].mesh.position.z / 30) - this.y) <= counter + rangeexpand) {
+                    var x = Math.round(enemies[i].mesh.position.x / 30)
+                    var z = Math.round(enemies[i].mesh.position.z / 30)
+                    if (Math.abs(z - this.y) <= counter + rangeexpand) {
                         var found = false;
+
                         //check if enemy is not already a target
                         for (let j = 0; j < res.length; j++) {
                             if (res[j].id == enemies[i].id)
                                 found = true;
+                        }
+                        if (line && !(x - this.x == 0 || z - this.y == 0)) {
+                            found = false
                         }
                         if (!found) {
                             res.push(enemies[i])
@@ -173,13 +187,13 @@ class CharaController {
         return res;
     }
 
-    //get player for healing, heal the player with the least amount of hp in priority
+    //get player for healing, heal the player with the least amount of hp % in priority
     getLowestHpPlayerInRange(players, ranget, targets) {
         var rangeexpand = 0
         var range = ranget
         if (range / 0.5 % 2 != 0) {
             range = ranget - 0.5
-            rangeexpand + 1
+            rangeexpand += 1
         }
         var squarerange = [[this.x * 30 - 15 - 30 * range, this.x * 30 + 15 + 30 * range], [this.y * 30 - 15 - 30 * range, this.y * 30 + 15 + 30 * range]];
         var targetcount = targets;
@@ -193,11 +207,11 @@ class CharaController {
                     else {
                         let count = 99
                         for (let j = 0; j < res.length; j++) {
-                            if (players[i].hp < res[j].hp) {
+                            if ((players[i].hp / players[i].maxhp) < res[j].hp / res[j].maxhp) {
                                 if (count == 99) {
                                     count = j;
                                 }
-                                else if (res[count].hp > res[j].hp)
+                                else if (res[count].hp / res[count].maxhp > res[j].hp / res[j].maxhp)
                                     count = j
                             }
                         }
@@ -245,9 +259,16 @@ class CharaController {
         var targetcount = targets;
         var rangeexpand = 0
         var range = ranget
+        var line = false
         if (range / 0.5 % 2 != 0) {
-            range = ranget - 0.5
-            rangeexpand + 1
+            if ((range - 0.3) % Math.round(range) == 0) {
+                range = ranget - 0.3
+                line = true;
+            }
+            else {
+                range = ranget - 0.5
+                rangeexpand += 1
+            }
         }
 
         var squarerange = [[this.x * 30 - 15 - 30 * range, this.x * 30 + 15 + 30 * range], [this.y * 30 - 15 - 30 * range, this.y * 30 + 15 + 30 * range]];
@@ -255,9 +276,19 @@ class CharaController {
         for (let i = 0; i < enemies.length; i++) {
             var counter = Math.abs(Math.abs(Math.round(enemies[i].mesh.position.x / 30) - this.x) - range);
             if (this.between(enemies[i].mesh.position.x, squarerange[0]) && this.between(enemies[i].mesh.position.z, squarerange[1]) && !enemies[i].spawning && !enemies[i].invincible) {
-                if (Math.abs(Math.round(enemies[i].mesh.position.z / 30) - this.y) <= counter + rangeexpand) {
-                    res.push(enemies[i])
-                    targetcount--;
+                var x = Math.round(enemies[i].mesh.position.x / 30)
+                var z = Math.round(enemies[i].mesh.position.z / 30)
+                if (Math.abs(z - this.y) <= counter + rangeexpand) {
+                    if (line) {
+                        if (x - this.x == 0 || z - this.y == 0) {
+                            res.push(enemies[i])
+                            targetcount--;
+                        }
+                    }
+                    else {
+                        res.push(enemies[i])
+                        targetcount--;
+                    }
                     if (targetcount <= 0)
                         return res;
                 }
@@ -286,7 +317,6 @@ class CharaController {
 
         if (!hazard) {
             dmg = enemy.buffs.getFinalAtk(enemy.chara.atk)
-            console.log(dmg)
             dmgtype = enemy.buffs.getDmgType()
 
             if (dmgtype == "")
@@ -375,7 +405,11 @@ class CharaController {
         if (this.pauseSpriteIndex >= this.chara.idle.start && this.pauseSpriteIndex <= this.chara.idle.end) {
             this.sprite.playAnimation(this.chara.idle.start, this.chara.idle.end, true, 30 * this.gamespeed * this.chara.idle.duration);
         }
-
+        if (this.chara.skillidle != undefined) {
+            if (this.pauseSpriteIndex >= this.chara.skillidle.start && this.pauseSpriteIndex <= this.chara.skillidle.end) {
+                this.sprite.playAnimation(this.chara.skillidle.start, this.chara.skillidle.end, true, 30 * this.gamespeed * this.chara.skillidle.duration);
+            }
+        }
     }
 
     between(x, range) {

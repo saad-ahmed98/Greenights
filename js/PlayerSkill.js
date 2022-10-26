@@ -39,7 +39,6 @@ class PlayerSkill {
     }
 
     activateDmgUpSkill() {
-        this.currentsp = -1;
         return this.modifiers.dmg
     }
 
@@ -53,7 +52,6 @@ class PlayerSkill {
             if (this.applyeffects != undefined)
                 delete this.targets[i].applyeffects[this.name]
         }
-
     }
     applyHitEffects(b) {
         var ef = this.applyeffects

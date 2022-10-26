@@ -92,7 +92,7 @@ class Tile {
 
     displayRange(diffuse = true,color) {
         if (diffuse) {
-            this.mesh.material.diffuseColor = new BABYLON.Color3(1, 0.80, 0.9)
+            this.mesh.material.diffuseColor = new BABYLON.Color3(1, 0.51, 0.76);
             this.mesh.outlineColor = new BABYLON.Color3(1, 0.53, 0, 0.9);
             this.mesh.outlineWidth = 1;
         }

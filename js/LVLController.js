@@ -188,7 +188,7 @@ class LVLController extends LVLAbstract {
 
         binaryTask = assetsManager.addTextureTask(
             "g",
-            "images/textures/"+instance.place+"/g.jpg",
+            "images/textures/" + instance.place + "/g.jpg",
         );
         binaryTask.onSuccess = function (task) {
             instance.scene.assets[task.name] = task.texture
@@ -196,7 +196,7 @@ class LVLController extends LVLAbstract {
 
         binaryTask = assetsManager.addTextureTask(
             "blk",
-            "images/textures/"+instance.place+"/blk.jpg",
+            "images/textures/" + instance.place + "/blk.jpg",
         );
         binaryTask.onSuccess = function (task) {
             instance.scene.assets[task.name] = task.texture
@@ -204,7 +204,7 @@ class LVLController extends LVLAbstract {
 
         binaryTask = assetsManager.addTextureTask(
             "blue",
-            "images/textures/"+instance.place+"/blue.jpg",
+            "images/textures/" + instance.place + "/blue.jpg",
         );
         binaryTask.onSuccess = function (task) {
             instance.scene.assets[task.name] = task.texture
@@ -212,14 +212,14 @@ class LVLController extends LVLAbstract {
 
         binaryTask = assetsManager.addTextureTask(
             "red",
-            "images/textures/"+instance.place+"/red.jpg",
+            "images/textures/" + instance.place + "/red.jpg",
         );
         binaryTask.onSuccess = function (task) {
             instance.scene.assets[task.name] = task.texture
         };
         binaryTask = assetsManager.addTextureTask(
             "r",
-            "images/textures/"+instance.place+"/r.jpg",
+            "images/textures/" + instance.place + "/r.jpg",
         );
         binaryTask.onSuccess = function (task) {
             instance.scene.assets[task.name] = task.texture
@@ -401,7 +401,6 @@ class LVLController extends LVLAbstract {
             BABYLON.Color3.LerpToRef(BABYLON.Color3.BlackReadOnly, startingColor, t, this.scene.clearColor);
         }
         else {
-
             if (!this.render) {
                 this.createGUIs()
                 this.render = true;
@@ -866,7 +865,7 @@ class LVLController extends LVLAbstract {
                 this.enemycount++;
                 this.gui.updateStatsUI(this.enemycount + "/" + this.enemytot, this.hp, this.maxhp);
             }
-            else if (this.enemies[i].hp <= 0) {
+            else if (this.enemies[i].hp <= 0 || this.enemies[i].hp == NaN) {
                 //this.enemies[i].sprite.dispose();
                 this.updateOnAnyDeathSkills()
                 if (this.enemies[i].enemySkill != undefined) {
@@ -925,6 +924,8 @@ class LVLController extends LVLAbstract {
                 this.playSound(p.chara.name + "-skillact", p.chara.sfx.skillact.volume)
                 this.playSound(p.chara.name + "-skill", this.vcvolume)
                 p.playerSkill.activateDurationSkill([p], this)
+                if (p.chara.skillidle != undefined)
+                    p.sprite.playAnimation(p.chara.skillidle.start, p.chara.skillidle.end, true, this.gamespeed * 30);
                 p.createSkillAura(this.spriteManagers["skillaura"])
             }
         }
@@ -934,6 +935,8 @@ class LVLController extends LVLAbstract {
             if (p.playerSkill.duration <= 0) {
                 p.playerSkill.deactivateDurationSkill();
                 p.aura.dispose();
+                if (p.chara.skillidle != undefined && !p.attacking)
+                    p.sprite.playAnimation(p.chara.idle.start, p.chara.idle.end, true, this.gamespeed * 30);
             }
         }
     }
@@ -1031,9 +1034,9 @@ class LVLController extends LVLAbstract {
 
         if (player.aura != undefined)
             player.aura.dispose();
-        
+
         var keys = Object.keys(player.buffs.effectSprite)
-        for(let i=0;i<keys.length;i++)
+        for (let i = 0; i < keys.length; i++)
             player.buffs.effectSprite[keys[i]].dispose()
 
         player.hp = -999;
@@ -1235,266 +1238,278 @@ class LVLController extends LVLAbstract {
     displayRangeTiles(x, y, ranget) {
         var rangeexpand = 0
         var range = ranget
+        var line = false;
         if (range / 0.5 % 2 != 0) {
-            range = ranget - 0.5
-            rangeexpand + 1
-        }
-        var squarerange = [[Math.max(x - range, 0), Math.min(x + range, this.tiles.length - 1)], [Math.max(y - range, 0), Math.min(y + range, this.tiles[0].length - 1)]];
-        for (let i = squarerange[0][0]; i <= squarerange[0][1]; i++) {
-            var counter = Math.abs(Math.abs(i - x) - range);
-            for (let j = squarerange[1][0]; j <= squarerange[1][1]; j++) {
-                if (Math.abs(j - y) <= counter + rangeexpand)
-                    this.tiles[i][j].displayRange()
-            }
-        }
-    }
-
-
-    undisplayTiles() {
-        for (let i = 0; i < this.tiles.length; i++) {
-            for (let j = 0; j < this.tiles[i].length; j++) {
-                this.tiles[i][j].undisplay()
-            }
-        }
-    }
-
-    createGlobalCamera() {
-        var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 10, new BABYLON.Vector3(250, 290, 180), this.scene); //updown,
-        camera.alpha = -0.0034155996227517244
-        camera.beta = 0.45497477002057213
-
-        this.scene.activeCamera = camera;
-    }
-
-    createFocusCamera(x, z) {
-        var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 10, new BABYLON.Vector3(x + 125, 250, z), this.scene);
-        camera.alpha = -0.0034155996227517244
-        camera.beta = 0.45497477002057213
-
-        this.scene.activeCamera = camera;
-    }
-
-    createScene() {
-
-
-        this.createObstacles();
-        this.initDragNDrop();
-
-
-        this.createGlobalCamera();
-
-
-        for (let i = 0; i < this.waves.length; i++) {
-            this.enemytot += this.waves[i].count;
-        }
-
-        //camera.attachControl(this.canvas, true);
-
-
-        //camera.setPosition(new BABYLON.Vector3(20, 200, 400));
-        this.createLights();
-        if (this.gameconfig.inputStates.pause) {
-            if (!this.gui.showinggui)
-                this.gui.createPauseScreen(this)
-        }
-
-        this.createSkybox()
-
-        return this.scene;
-    }
-
-    createSkybox() {
-        // Skybox
-        let skybox = new BABYLON.MeshBuilder.CreateBox("skybox", { height: 1, depth: 1920 / 2, width: 1080 / 2 }, this.scene);
-        skybox.position.x = 5
-        skybox.position.z += 180
-        skybox.position.y -= 150
-
-
-
-        var skyboxMaterial = new BABYLON.StandardMaterial("skyBoxx", this.scene);
-
-
-        skyboxMaterial.diffuseTexture = this.scene.assets.skybox
-        skybox.material = skyboxMaterial;
-        skybox.rotation.z = -Math.PI / 5;
-
-    }
-
-
-    updateSpeed() {
-        for (let i = 0; i < this.enemies.length; i++)
-            this.enemies[i].updateSpeed(this.gamespeed, this.pause);
-        for (let i = 0; i < this.activePlayers.length; i++)
-            this.activePlayers[i].updateSpeed(this.gamespeed, this.pause);
-    }
-
-
-    createObstacles() {
-        let array = this.layout
-        this.matrix = [];
-        for (let i = 0; i < array.length; i++) {
-            var line = [];
-            var linetiles = [];
-            for (let j = 0; j < array[i].length; j++) {
-                var type = array[i][j];
-                line.push(this.getWalkable(array[i][j]));
-                var tile = new Tile(type, i, j, this.scene)
-                linetiles.push(tile);
-                if (array[i][j] == "blue")
-                    this.hpbox.push(new HPBox("", i, j, this.scene))
-
-                if (array[i][j] == "red")
-                    this.spawns.push(new EnemySpawn("", i, j, this.scene))
-
-                if (array[i][j] == "altar")
-                    this.hazards.push(new FireAltar(i, j, this))
-                if (array[i][j] == "icealtar")
-                    this.hazards.push(new IceAltar(i, j, this))
-                if (array[i][j] == "magma")
-                    this.hazards.push(new MagmaTile(tile, this))
-
-            }
-            this.tiles.push(linetiles);
-            this.matrix.push(line);
-        }
-
-    }
-
-    moveEnemies() {
-        for (let i = 0; i < this.enemies.length; i++)
-            this.enemies[i].move(this.tiles, this.activePlayers);
-    }
-
-    movePlayers() {
-        for (let i = 0; i < this.activePlayers.length; i++)
-            this.activePlayers[i].move(this.enemies, this.activePlayers);
-    }
-
-    getWalkable(tiletype) {
-        switch (tiletype) {
-            case "bg":
-            case "blkr":
-            case "icealtar":
-            case "altar":
-            case "r":
-                return 1;
-            default:
-                return 0;
-        }
-    }
-
-    createEnemy(e, start, checkpoints, id) {
-        var enemy = new EnemyController(this.enemylist[e], this.scene, start[0], start[1], this, id);
-        enemy.createEnemy(this.matrix, checkpoints, this.spriteManagers, this.gui, this.spriteManagers["icons"]);
-        enemy.gamespeed = this.gamespeed;
-        this.enemies.push(enemy);
-    }
-
-    createPlayer(p, x, y) {
-        this.playSound("deploy", 2)
-        this.playSound(p + "-deploy", this.vcvolume)
-        this.playerlist[p].rdcounter = this.playerlist[p].rdtimer * 30;
-        var player = new PlayerController(this.playerlist[p], this.scene, x, y, this);
-        this.tiles[x][y].player = player;
-        player.createPlayer(player, this.spriteManagers[p], this.gui, this.spriteManagers["icons"]);
-        player.gamespeed = this.gamespeed;
-        this.activePlayers.push(player);
-
-    }
-
-    spawnEnemies() {
-        this.isSpawning = true;
-        for (let i = 0; i < this.waves.length; i++) {
-            if ((this.waves[i]["time"] - 2) * 30 <= this.maptimer && this.waves[i]["line"]) {
-                if (this.waves[i]["taunt"]) {
-                    var keys = Object.keys(this.playerlist)
-                    if (keys.length > 0) {
-                        this.playSound(this.playerlist[keys[Math.floor(Math.random() * keys.length)]].name + "-taunt", this.vcvolume);
-                    }
-                    else {
-                        var keys = Object.keys(this.activePlayers)
-                        if (keys.length > 0) {
-                            this.playSound(this.activePlayers[keys[Math.floor(Math.random() * keys.length)]].chara.name + "-taunt", this.vcvolume);
-                        }
-                    }
-                }
-                this.waves[i]["line"] = false;
-                this.drawLine(this.waves[i]["checkpoints"])
-            }
-            if (this.waves[i]["time"] * 30 <= this.maptimer) {
-                if (this.waves[i]["tooltip"]) {
-                    this.playSound("tooltip", 0.5);
-                    this.gui.createTooltip(this.enemylist[this.waves[i]["enemies"]])
-                    this.waves[i]["tooltip"] = false;
-                }
-
-                this.waves[i]["time"] += this.waves[i]["gap"];
-
-                this.createEnemy(this.waves[i]["enemies"], this.waves[i]["start"], this.waves[i]["checkpoints"], "wave" + this.waves[i]["number"] + this.waves[i]["count"]);
-                this.waves[i]["count"]--;
-                if (this.waves[i]["count"] <= 0) {
-                    this.waves.splice(i, 1)
-                    i--
-                }
-            }
-        }
-        this.isSpawning = false;
-    }
-
-    drawLine(checkpoints) {
-
-        var res = this.createPathfinding(checkpoints, this.matrix)
-
-        var myPoints = [new BABYLON.Vector3(res[0][1] * 31, 20, res[0][0] * 30)]
-        var i = 1;
-        var options = {
-            points: myPoints,
-            updatable: true
-        }
-
-        let lines = BABYLON.MeshBuilder.CreateLines("lines", options);
-        lines.color = new BABYLON.Color3(1, 0, 0);
-
-        var interval = setInterval(() => {
-            lines.dispose();
-            if (i < res.length) {
-                options.points.push(new BABYLON.Vector3(res[i][1] * 31, 20, res[i][0] * 30))
-                if (options.points.length > 10) {
-                    options.points.shift()
-                }
-                lines = BABYLON.MeshBuilder.CreateLines("lines", options);
-                lines.color = new BABYLON.Color3(1, 0, 0);
-                i++
+            if ((range - 0.3) % Math.round(range) == 0) {
+                range = ranget - 0.3
+                line = true;
             }
             else {
-                if (options.points.length > 1) {
-                    options.points.shift()
-                    lines = BABYLON.MeshBuilder.CreateLines("lines", options);
-                    lines.color = new BABYLON.Color3(1, 0, 0);
-                }
-
-                else clearInterval(interval)
+                range = ranget - 0.5
+                rangeexpand += 1
             }
-        }, 60)
-
-
-
-    }
-
-    createPathfinding(points, matrix) {
-        var checks = [];
-        for (let i = 0; i < points.length; i++) {
-            var grid = new PF.Grid(matrix);
-            var finder = new PF.AStarFinder();
-
-            var path = finder.findPath(points[i].start[1], points[i].start[0], points[i].end[1], points[i].end[0], grid);
-            if (i > 0)
-                path.shift()
-            checks = checks.concat(path);
         }
-        return checks;
+var squarerange = [[Math.max(x - range, 0), Math.min(x + range, this.tiles.length - 1)], [Math.max(y - range, 0), Math.min(y + range, this.tiles[0].length - 1)]];
+for (let i = squarerange[0][0]; i <= squarerange[0][1]; i++) {
+    var counter = Math.abs(Math.abs(i - x) - range);
+    for (let j = squarerange[1][0]; j <= squarerange[1][1]; j++) {
+        if (Math.abs(j - y) <= counter + rangeexpand) {
+            if (line) {
+                if (i - x == 0 || j - y == 0)
+                    this.tiles[i][j].displayRange()
+            }
+            else this.tiles[i][j].displayRange()
+        }
     }
+}
+    }
+
+
+undisplayTiles() {
+    for (let i = 0; i < this.tiles.length; i++) {
+        for (let j = 0; j < this.tiles[i].length; j++) {
+            this.tiles[i][j].undisplay()
+        }
+    }
+}
+
+createGlobalCamera() {
+    var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 10, new BABYLON.Vector3(250, 290, 180), this.scene); //updown,
+    camera.alpha = -0.0034155996227517244
+    camera.beta = 0.45497477002057213
+
+    this.scene.activeCamera = camera;
+}
+
+createFocusCamera(x, z) {
+    var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 10, new BABYLON.Vector3(x + 125, 250, z), this.scene);
+    camera.alpha = -0.0034155996227517244
+    camera.beta = 0.45497477002057213
+
+    this.scene.activeCamera = camera;
+}
+
+createScene() {
+
+
+    this.createObstacles();
+    this.initDragNDrop();
+
+
+    this.createGlobalCamera();
+
+
+    for (let i = 0; i < this.waves.length; i++) {
+        this.enemytot += this.waves[i].count;
+    }
+
+    //camera.attachControl(this.canvas, true);
+
+
+    //camera.setPosition(new BABYLON.Vector3(20, 200, 400));
+    this.createLights();
+    if (this.gameconfig.inputStates.pause) {
+        if (!this.gui.showinggui)
+            this.gui.createPauseScreen(this)
+    }
+
+    this.createSkybox()
+
+    return this.scene;
+}
+
+createSkybox() {
+    // Skybox
+    let skybox = new BABYLON.MeshBuilder.CreateBox("skybox", { height: 1, depth: 1920 / 2, width: 1080 / 2 }, this.scene);
+    skybox.position.x = 5
+    skybox.position.z += 180
+    skybox.position.y -= 150
+
+
+
+    var skyboxMaterial = new BABYLON.StandardMaterial("skyBoxx", this.scene);
+
+
+    skyboxMaterial.diffuseTexture = this.scene.assets.skybox
+    skybox.material = skyboxMaterial;
+    skybox.rotation.z = -Math.PI / 5;
+
+}
+
+
+updateSpeed() {
+    for (let i = 0; i < this.enemies.length; i++)
+        this.enemies[i].updateSpeed(this.gamespeed, this.pause);
+    for (let i = 0; i < this.activePlayers.length; i++)
+        this.activePlayers[i].updateSpeed(this.gamespeed, this.pause);
+}
+
+
+createObstacles() {
+    let array = this.layout
+    this.matrix = [];
+    for (let i = 0; i < array.length; i++) {
+        var line = [];
+        var linetiles = [];
+        for (let j = 0; j < array[i].length; j++) {
+            var type = array[i][j];
+            line.push(this.getWalkable(array[i][j]));
+            var tile = new Tile(type, i, j, this.scene)
+            linetiles.push(tile);
+            if (array[i][j] == "blue")
+                this.hpbox.push(new HPBox("", i, j, this.scene))
+
+            if (array[i][j] == "red")
+                this.spawns.push(new EnemySpawn("", i, j, this.scene))
+
+            if (array[i][j] == "altar")
+                this.hazards.push(new FireAltar(i, j, this))
+            if (array[i][j] == "icealtar")
+                this.hazards.push(new IceAltar(i, j, this))
+            if (array[i][j] == "magma")
+                this.hazards.push(new MagmaTile(tile, this))
+
+        }
+        this.tiles.push(linetiles);
+        this.matrix.push(line);
+    }
+
+}
+
+moveEnemies() {
+    for (let i = 0; i < this.enemies.length; i++)
+        this.enemies[i].move(this.tiles, this.activePlayers);
+}
+
+movePlayers() {
+    for (let i = 0; i < this.activePlayers.length; i++)
+        this.activePlayers[i].move(this.enemies, this.activePlayers);
+}
+
+getWalkable(tiletype) {
+    switch (tiletype) {
+        case "bg":
+        case "blkr":
+        case "icealtar":
+        case "altar":
+        case "r":
+            return 1;
+        default:
+            return 0;
+    }
+}
+
+createEnemy(e, start, checkpoints, id) {
+    var enemy = new EnemyController(this.enemylist[e], this.scene, start[0], start[1], this, id);
+    enemy.createEnemy(this.matrix, checkpoints, this.spriteManagers, this.gui, this.spriteManagers["icons"]);
+    enemy.gamespeed = this.gamespeed;
+    this.enemies.push(enemy);
+}
+
+createPlayer(p, x, y) {
+    this.playSound("deploy", 2)
+    this.playSound(p + "-deploy", this.vcvolume)
+    this.playerlist[p].rdcounter = this.playerlist[p].rdtimer * 30;
+    var player = new PlayerController(this.playerlist[p], this.scene, x, y, this);
+    this.tiles[x][y].player = player;
+    player.createPlayer(player, this.spriteManagers[p], this.gui, this.spriteManagers["icons"]);
+    player.gamespeed = this.gamespeed;
+    this.activePlayers.push(player);
+
+}
+
+spawnEnemies() {
+    this.isSpawning = true;
+    for (let i = 0; i < this.waves.length; i++) {
+        if ((this.waves[i]["time"] - 2) * 30 <= this.maptimer && this.waves[i]["line"]) {
+            if (this.waves[i]["taunt"]) {
+                var keys = Object.keys(this.playerlist)
+                if (keys.length > 0) {
+                    this.playSound(this.playerlist[keys[Math.floor(Math.random() * keys.length)]].name + "-taunt", this.vcvolume);
+                }
+                else {
+                    var keys = Object.keys(this.activePlayers)
+                    if (keys.length > 0) {
+                        this.playSound(this.activePlayers[keys[Math.floor(Math.random() * keys.length)]].chara.name + "-taunt", this.vcvolume);
+                    }
+                }
+            }
+            this.waves[i]["line"] = false;
+            this.drawLine(this.waves[i]["checkpoints"])
+        }
+        if (this.waves[i]["time"] * 30 <= this.maptimer) {
+            if (this.waves[i]["tooltip"]) {
+                this.playSound("tooltip", 0.5);
+                this.gui.createTooltip(this.enemylist[this.waves[i]["enemies"]])
+                this.waves[i]["tooltip"] = false;
+            }
+
+            this.waves[i]["time"] += this.waves[i]["gap"];
+
+            this.createEnemy(this.waves[i]["enemies"], this.waves[i]["start"], this.waves[i]["checkpoints"], "wave" + this.waves[i]["number"] + this.waves[i]["count"]);
+            this.waves[i]["count"]--;
+            if (this.waves[i]["count"] <= 0) {
+                this.waves.splice(i, 1)
+                i--
+            }
+        }
+    }
+    this.isSpawning = false;
+}
+
+drawLine(checkpoints) {
+
+    var res = this.createPathfinding(checkpoints, this.matrix)
+
+    var myPoints = [new BABYLON.Vector3(res[0][1] * 31, 20, res[0][0] * 30)]
+    var i = 1;
+    var options = {
+        points: myPoints,
+        updatable: true
+    }
+
+    let lines = BABYLON.MeshBuilder.CreateLines("lines", options);
+    lines.color = new BABYLON.Color3(1, 0, 0);
+
+    var interval = setInterval(() => {
+        lines.dispose();
+        if (i < res.length) {
+            options.points.push(new BABYLON.Vector3(res[i][1] * 31, 20, res[i][0] * 30))
+            if (options.points.length > 10) {
+                options.points.shift()
+            }
+            lines = BABYLON.MeshBuilder.CreateLines("lines", options);
+            lines.color = new BABYLON.Color3(1, 0, 0);
+            i++
+        }
+        else {
+            if (options.points.length > 1) {
+                options.points.shift()
+                lines = BABYLON.MeshBuilder.CreateLines("lines", options);
+                lines.color = new BABYLON.Color3(1, 0, 0);
+            }
+
+            else clearInterval(interval)
+        }
+    }, 60)
+
+
+
+}
+
+createPathfinding(points, matrix) {
+    var checks = [];
+    for (let i = 0; i < points.length; i++) {
+        var grid = new PF.Grid(matrix);
+        var finder = new PF.AStarFinder();
+
+        var path = finder.findPath(points[i].start[1], points[i].start[0], points[i].end[1], points[i].end[0], grid);
+        if (i > 0)
+            path.shift()
+        checks = checks.concat(path);
+    }
+    return checks;
+}
 
 
 }

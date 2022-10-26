@@ -78,7 +78,7 @@ class EnemyController extends CharaController {
                     var duration = this.chara[keys[i]].duration
                     var delay = 30 * this.gamespeed * duration
                     if (keys[i] == "move") {
-                        delay = 30 * this.gamespeed * duration / ((this.buffs.getFinalSpeed(this.chara.speed)) / this.chara.speed)
+                        delay = 30 * this.gamespeed * duration
                         //this.running = false
                     }
                     if (keys[i] == "atkanim") {
@@ -104,7 +104,7 @@ class EnemyController extends CharaController {
 
         if (!this.running) {
             var duration = this.chara.move.duration
-            this.sprite.playAnimation(this.chara.move.start, this.chara.move.end, true, 30 * this.gamespeed * duration / ((this.buffs.getFinalSpeed(this.chara.speed)) / this.chara.speed));
+            this.sprite.playAnimation(this.chara.move.start, this.chara.move.end, true, 30 * this.gamespeed * duration );
             this.running = true;
         }
 
@@ -364,12 +364,7 @@ class EnemyController extends CharaController {
 
             //if attackingplayer can activate a on trigger dmg up skill, activate it 
             if (attackingplayer.playerSkill.chargetype == "attack" && attackingplayer.playerSkill.triggertype == "auto" && attackingplayer.playerSkill.currentsp >= attackingplayer.playerSkill.totalsp) {
-                if (Math.random() < 0.20)
-                    this.lvlcontroller.playSound(attackingplayer.chara.name + "-skill", this.lvlcontroller.vcvolume)
-                if (attackingplayer.chara.skillsfx) {
-                    if (attackingplayer.chara.sfx.skillhit != undefined)
-                        this.lvlcontroller.playSound(attackingplayer.chara.name + "-skillhit", attackingplayer.chara.sfx.skillhit.volume)
-                }
+
                 dmgmodifier *= attackingplayer.playerSkill.activateDmgUpSkill();
                 attackingplayer.playerSkill.applyHitEffects(this.buffs)
             }
@@ -384,7 +379,7 @@ class EnemyController extends CharaController {
 
             dmg = attackingplayer.buffs.getFinalAtk(attackingplayer.chara.atk - (attackingplayer.chara.atk * dmgpen)) * dmgmodifier
             dmgtype = attackingplayer.buffs.getDmgType()
-            if (dmgtype == "")
+            if (dmgtype == "" || dmgtype == "heal")
                 dmgtype = attackingplayer.chara.dmgtype
         }
 
@@ -508,7 +503,7 @@ class EnemyController extends CharaController {
         }
         if (players.length > 0) {
             //turn towards the player to hit
-            if (player[0].mesh.position.z <= this.mesh.position.z)
+            if (players[0].mesh.position.z <= this.mesh.position.z)
                 this.sprite.invertU = 1
             else this.sprite.invertU = 0;
             this.running = false;

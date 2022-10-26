@@ -67,10 +67,11 @@ class PlayerController extends CharaController {
         if (this.sprite.cellIndex >= this.chara.death.start && this.sprite.cellIndex <= this.chara.death.end) {
             this.sprite.playAnimation(this.sprite.cellIndex, this.chara.death.end, false, 30 * this.gamespeed);
         }
-        if (this.chara.skillanim == true) {
+        if (this.chara.skillatkanim != undefined) {
             if (this.sprite.cellIndex >= this.chara.skillatkanim.start && this.sprite.cellIndex <= this.chara.skillatkanim.end) {
                 this.sprite.playAnimation(this.sprite.cellIndex, this.chara.skillatkanim.end, false, 30 * this.gamespeed * this.buffs.getFinalAtkInterval(1));
             }
+            else this.sprite.delay = 30 * this.gamespeed
         }
         else this.sprite.delay = 30 * this.gamespeed
 
@@ -82,6 +83,8 @@ class PlayerController extends CharaController {
         var res = this.buffs.getCurrentHpRatio(this.hp, this.maxhp, this.chara.hp)
         this.hp = res.hp
         this.maxhp = res.maxhp
+        this.hp = Math.min(this.maxhp, this.hp + this.buffs.getFinalHpRegen(this.maxhp) * (1 / 30) / this.gamespeed)
+        this.updateHpBar()
     }
 
     createPlayer(id, spriteManager, gui, iconsManager) {
@@ -185,7 +188,10 @@ class PlayerController extends CharaController {
 
     attack(enemies, players) {
         var enemy;
-        if (this.chara.dmgtype == "heal")
+        var dmgtype = this.buffs.getDmgType()
+        if (dmgtype == "")
+            dmgtype = this.chara.dmgtype
+        if (dmgtype == "heal")
             enemy = this.getLowestHpPlayerInRange(players, this.buffs.getFinalRange(this.chara.range), this.chara.targets + this.buffs.getTargets());
         else {
             if (this.blocking == 0) {
@@ -227,7 +233,7 @@ class PlayerController extends CharaController {
                     else if (this.chara.sfx.hit != undefined)
                         this.lvlcontroller.playSound(this.chara.name + "-hit", this.chara.sfx.hit.volume)
 
-                    if (instance.chara.dmgtype == "heal") {
+                    if (dmgtype == "heal") {
                         for (let i = 0; i < enemy.length; i++)
                             enemy[i].receiveHealing(instance);
                     }
@@ -243,6 +249,16 @@ class PlayerController extends CharaController {
                             }
                         }
                     };
+                    if (instance.playerSkill.chargetype == "attack" && instance.playerSkill.triggertype == "auto" && instance.playerSkill.currentsp >= instance.playerSkill.totalsp) {
+                        if (Math.random() < 0.30)
+                            this.lvlcontroller.playSound(instance.chara.name + "-skill", this.lvlcontroller.vcvolume)
+                        if (instance.chara.skillsfx) {
+                            if (instance.chara.sfx.skillhit != undefined)
+                                this.lvlcontroller.playSound(instance.chara.name + "-skillhit", instance.chara.sfx.skillhit.volume)
+                        }
+                        instance.playerSkill.currentsp = -1
+                    }
+
                     if (instance.playerSkill.chargetype == "attack" && !instance.playerSkill.active) {
                         instance.playerSkill.currentsp = Math.min(instance.playerSkill.currentsp + 1, instance.playerSkill.totalsp);
                         instance.updateSkillBarCharging();
@@ -262,11 +278,13 @@ class PlayerController extends CharaController {
         if (!this.spawning) {
             if (!this.resuming) {
                 if (!this.running && !this.sprite.animationStarted) {
-                    this.sprite.playAnimation(this.chara.idle.start, this.chara.idle.end, true, this.gamespeed * 30);
+                    if (this.playerSkill.active && this.chara.skillidle != undefined)
+                        this.sprite.playAnimation(this.chara.skillidle.start, this.chara.skillidle.end, true, this.gamespeed * 30);
+                    else this.sprite.playAnimation(this.chara.idle.start, this.chara.idle.end, true, this.gamespeed * 30);
                     this.running = true;
                 }
                 this.atktimer += 1 / this.gamespeed;
-                if (this.atktimer >= this.buffs.getFinalAtkInterval(this.chara.atkinterval) * 20) {
+                if (this.atktimer >= this.buffs.getFinalAtkInterval(this.chara.atkinterval) * 20 && this.buffs.getCanAttack()) {
                     this.atktimer = 0;
                     var success = this.attack(enemies, players);
                     if (!success)

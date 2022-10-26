@@ -1,5 +1,571 @@
 let playerlist = {};
 
+playerlist["Savage"] = {
+    name: "Savage",
+    hp: 2680,
+    atk: 740,
+    def: 395,
+    res: 0,
+    atkinterval: 1.2,
+    blockcount: 3,
+    rarity: "rgb(255, 221, 26)",
+
+    rdtimer: 70,
+
+    rdcounter: 0,
+
+    type: "g",
+    class: "guard",
+    subclass: "Centurion",
+
+    cost: 21,
+    basecost: 21,
+    range: 1,
+
+    targets: 3,
+
+    dmgtype: "physical",
+
+    classicon: "images/classicons/centurion.png",
+
+    opicon: "images/opicons/savage.webp",
+
+    spritesheet: "images/sprites/savage-sheet.webp",
+    skillsfx: true,
+
+    atkanim: {
+        start: 0,
+        end: 16,
+        contact: 6,
+        duration: 1,
+    },
+
+    death: {
+        start: 17,
+        end: 30,
+    },
+
+    idle: {
+        start: 31,
+        end: 60
+    },
+
+    drop: {
+        start: 61,
+        end: 75
+    },
+    skill: {
+        name: "Power Strike β",
+        description: "Increase ATK \nof next hit to 230%",
+        duration: 0,
+        sp: 3,
+        initialsp: 0,
+        chargetype: "attack",
+        triggertype: "auto",
+        modifiers: {
+            dmg: 2.3,
+        },
+        apply: "self",
+        skillimage: "images/opicons/durinskill.png"
+
+    },
+    talents: [{
+        name: "Valley",
+        description: "ATK +10%; DEF +10%",
+        modifiers: {
+            flatmultiatk: 1.1,
+            flatmultidef: 1.1,
+        },
+        apply: "self",
+    },
+    {
+        name: "Trait",
+        description: "Hit multiple targets within range equals to block count",
+        modifiers: {
+        },
+        apply: "self",
+    }
+],
+    sfx: {
+        atk: {
+            src: "savage-atk",
+            volume: 0.1
+        },
+        hit: {
+            src: "savage-hit",
+            volume: 0.1
+        },
+        skillhit: {
+            src: "savage-skill-hit",
+            volume: 0.1
+        },
+    }
+}
+
+
+playerlist["Istina"] = {
+    name: "Istina",
+    hp: 1280,
+    atk: 606,
+    def: 104,
+    res: 20,
+    atkinterval: 1.9,
+    blockcount: 1,
+    rarity: "rgb(255, 221, 26)",
+
+
+    rdtimer: 66,
+    rdcounter: 0,
+
+    type: "r",
+    class: "supporter",
+    subclass: "Decel bender",
+
+
+    cost: 13,
+    basecost: 13,
+
+    range: 2,
+    targets: 1,
+
+    dmgtype: "arts",
+
+    classicon: "images/classicons/decel.png",
+
+    opicon: "images/opicons/istina.webp",
+
+    spritesheet: "images/sprites/istina-sheet.webp",
+
+    skillsfx: false,
+
+    atkanim: {
+        start: 0,
+        end: 16,
+        contact: 8,
+        duration: 1,
+    },
+
+    death: {
+        start: 17,
+        end: 30,
+    },
+
+    idle: {
+        start: 31,
+        end: 60
+    },
+
+    drop: {
+        start: 61,
+        end: 75
+    },
+
+    skill: {
+        name: "Literature Storm",
+        description: "ATK +75%; Range expands;\nAttacks 2 extra targets",
+        duration: 25,
+        sp: 50,
+        initialsp: 30,
+        chargetype: "second",
+        triggertype: "manual",
+        modifiers: {
+            atk: 0.75,
+            range: 0.5,
+            targets:2,
+        },
+        apply: "self",
+        skillimage: "images/opicons/istinaskill.webp"
+    },
+    talents: [{
+        name: "Explorer",
+        description: "DEF -35%; ASPD +21",
+        modifiers: {
+            aspd: 21,
+            flatmultidef: 0.65
+        },
+        apply: "self",
+    },
+    {
+        name: "Trait",
+        description: "Each attack lowers the movement speed\nby 80% for 1sec",
+        modifiers: {
+        },
+        applyeffects: {
+            apply: "hit",
+            modifiers: {
+                speedpercent: 0.20,
+            },
+            duration: 1
+        },
+        apply: "self",
+    }
+    ],
+    sfx: {
+        atk: {
+            src: "istina-atk",
+            volume: 0.1
+        },
+        hit: {
+            src: "istina-hit",
+            volume: 0.1
+        },
+        skillact: {
+            src: "skill-atk",
+            volume: 0.3
+        },
+    }
+}
+
+playerlist["Nearl"] = {
+    name: "Nearl",
+    hp: 2780,
+    atk: 502,
+    def: 650,
+    res: 10,
+    atkinterval: 2,
+    blockcount: 3,
+    rarity: "rgb(255, 221, 26)",
+
+    rdtimer: 66,
+    rdcounter: 0,
+
+    type: "g",
+    class: "defender",
+    subclass: "Guardian",
+
+
+    cost: 19,
+    basecost: 19,
+
+    range: 0,
+    targets: 1,
+
+
+    dmgtype: "physical",
+
+    classicon: "images/classicons/guardian.webp",
+
+    opicon: "images/opicons/nearl.webp",
+
+    spritesheet: "images/sprites/nearl-sheet.webp",
+
+    skillsfx: true,
+
+    atkanim: {
+        start: 0,
+        end: 14,
+        contact: 8,
+        duration: 1,
+    },
+
+    death: {
+        start: 15,
+        end: 29,
+    },
+
+    idle: {
+        start: 30,
+        end: 60
+    },
+
+    drop: {
+        start: 61,
+        end: 73
+    },
+
+    skillatkanim: {
+        start: 74,
+        end: 91,
+        contact: 81,
+
+    },
+
+    skill: {
+        name: "First Aid Mode",
+        description: "ATK +80%; Range expands;\nFocuses on healing allies.",
+        duration: 40,
+        sp: 40,
+        initialsp: 30,
+        chargetype: "second",
+        triggertype: "manual",
+        modifiers: {
+            range:1.5,
+            atk: 1,
+            dmgtype: "heal",
+        },
+        apply: "self",
+        skillimage: "images/opicons/nearlskill.webp"
+
+    },
+    talents: [
+        {
+            name: "Healing Boost",
+            description: "ATK +5%; Max HP +5%;\nNearl's healing effect increases by 20%;",
+            modifiers: {
+                flatmultiatk: 1.05,
+                maxhp: 0.05,
+            },
+            apply: "self",
+        },
+        {
+            name: "Trait",
+            description: "Can heal allies by using the skill;",
+            modifiers: {
+            },
+            apply: "self",
+        },
+
+    ],
+    sfx: {
+        atk: {
+            src: "nearl-atk",
+            volume: 0.1
+        },
+        hit: {
+            src: "nearl-hit",
+            volume: 0.1
+        },
+        skillact: {
+            src: "skill-heal",
+            volume: 0.3
+        },
+
+        skillatk: {
+            src: "hibiscus-atk",
+            volume: 0.1
+        },
+        skillhit: {
+            src: "mute",
+            volume: 0.1
+        },
+
+    }
+}
+
+playerlist["Breeze"] = {
+    //hasmodule
+    name: "Breeze",
+    hp: 1795,
+    atk: 393,
+    def: 145,
+    res: 0,
+    atkinterval: 2.85,
+    blockcount: 1,
+    rarity: "rgb(255, 221, 26)",
+
+    rdtimer: 60,
+    rdcounter: 0,
+
+    type: "r",
+    class: "medic",
+    subclass: "Multi-target healer",
+
+
+    cost: 15,
+    basecost: 15,
+
+    range: 2,
+    targets: 3,
+
+
+    dmgtype: "heal",
+
+    classicon: "images/classicons/multitarget.png",
+
+    opicon: "images/opicons/breeze.webp",
+
+    spritesheet: "images/sprites/breeze-sheet.webp",
+
+    skillsfx: false,
+
+    atkanim: {
+        start: 0,
+        end: 14,
+        contact: 8,
+        duration: 1,
+    },
+
+    death: {
+        start: 15,
+        end: 29,
+    },
+
+    idle: {
+        start: 30,
+        end: 69
+    },
+
+    drop: {
+        start: 70,
+        end: 84
+    },
+
+    skill: {
+        name: "Cluster Therapy",
+        description: "ATK +140%;\nTargets healed -1",
+        duration: 35,
+        sp: 30,
+        initialsp: 20,
+        chargetype: "second",
+        triggertype: "manual",
+        modifiers: {
+            targets:-1,
+            atk: 1.4,
+        },
+        apply: "self",
+        skillimage: "images/opicons/breezeskill.webp"
+
+    },
+    talents: [
+        {
+            name: "Surgical Instrument Kit",
+            description: "ATK +5%; Max HP +5%; Range expands",
+
+            modifiers: {
+                range: 0.5,
+                flatmultiatk: 1.05,
+                maxhp: 0.05
+            },
+            apply: "self",
+        },
+        {
+            name: "Trait",
+            description: "Restores the HP of 3 allies simultaneously",
+            modifiers: {
+            },
+            apply: "self",
+        }
+    ],
+    sfx: {
+        atk: {
+            src: "hibiscus-atk",
+            volume: 0.1
+        },
+        skillact: {
+            src: "skill-heal",
+            volume: 0.3
+        }
+    }
+}
+
+playerlist["Beeswax"] = {
+    //hasmodule
+    name: "Beeswax",
+    hp: 2005,
+    atk: 845,
+    def: 225,
+    res: 15,
+    atkinterval: 2,
+    blockcount: 1,
+    rarity: "rgb(255, 221, 26)",
+
+    rdtimer: 60,
+    rdcounter: 0,
+
+    type: "r",
+    class: "caster",
+    subclass: "Phalanx",
+
+
+    cost: 21,
+    basecost: 21,
+
+    range: 2,
+    targets: 99,
+
+
+    dmgtype: "arts",
+
+    classicon: "images/classicons/phalanx.webp",
+
+    opicon: "images/opicons/beeswax.webp",
+
+    spritesheet: "images/sprites/beeswax-sheet.webp",
+
+    skillsfx: false,
+
+
+    atkanim: {
+        start: 0,
+        end: 14,
+        contact: 5,
+        duration: 1,
+    },
+
+    death: {
+        start: 15,
+        end: 29,
+    },
+
+    idle: {
+        start: 30,
+        end: 59
+    },
+
+    drop: {
+        start: 60,
+        end: 74
+    },
+
+    skillidle: {
+        start: 75,
+        end: 104,
+
+    },
+
+    skill: {
+        name: "Growing Sandstorm",
+        description: "Range expands; ATK +60%",
+        duration: 20,
+        sp: 18,
+        initialsp: 0,
+        chargetype: "second",
+        triggertype: "manual",
+        modifiers: {
+            range:0.5,
+            atk: 0.6,
+            flatmultidef:(1/3),
+            flatres:-20,
+            hpregenpercent:-0.04,
+            canattack:true,
+        },
+        apply: "self",
+        skillimage: "images/opicons/beeswaxskill.webp"
+
+    },
+    talents: [
+        {
+            name: "Shambhala's Sanctuary",
+            description: "When this unit's skill is not active,\nrestores 4% Max HP per second",
+
+            modifiers: {
+                hpregenpercent:0.04
+            },
+            apply: "self",
+        },
+        {
+            name: "Trait",
+            description: "Normally does not attack,\nbut has greatly increased DEF and RES;\nWhen skill is active, attacks deal AoE Arts Damage",
+            modifiers: {
+                flatmultidef:3,
+                flatres:20,
+                canattack:false,
+            },
+            apply: "self",
+        },
+    ],
+    sfx: {
+        hit: {
+            src: "beeswax-hit",
+            volume: 0.2
+        },
+        skillact: {
+            src: "skill-atk",
+            volume: 0.3
+        }
+    }
+}
+
 playerlist["Franka"] = {
     //hasmodule
     name: "Franka",
@@ -35,7 +601,6 @@ playerlist["Franka"] = {
     spritesheet: "images/sprites/franka-sheet.webp",
 
     skillsfx: true,
-    skillanim: true,
 
     atkanim: {
         start: 0,
@@ -224,6 +789,8 @@ playerlist["Matterhorn"] = {
 }
 
 
+
+
 playerlist["Perfumer"] = {
     //hasmodule
     name: "Perfumer",
@@ -291,7 +858,7 @@ playerlist["Perfumer"] = {
         chargetype: "second",
         triggertype: "manual",
         modifiers: {
-            aspd:-20,
+            aspd:-25,
             atk: 2.5,
         },
         apply: "self",
@@ -302,15 +869,22 @@ playerlist["Perfumer"] = {
         {
             //TODO hpregen
             name: "Aegean's Kiss",
-            description: "ATK +5%; Max HP +5%; Targets +1",
+            description: "ATK +5%; Max HP +5%; Targets healed +1",
 
             modifiers: {
                 targets: 1,
-                atk: 0.05,
+                flatmultiatk: 1.05,
                 maxhp: 0.05
             },
             apply: "self",
         },
+        {
+            name: "Trait",
+            description: "Restores the HP of 3 allies simultaneously",
+            modifiers: {
+            },
+            apply: "self",
+        }
     ],
     sfx: {
         atk: {
@@ -404,7 +978,7 @@ playerlist["Matoimaru"] = {
             description: "DEF -20%; Max HP +35%",
 
             modifiers: {
-                def: -0.20,
+                flatmultidef: 0.80,
                 maxhp: 0.35,
             },
             apply: "self",
@@ -506,7 +1080,7 @@ playerlist["Gitano"] = {
             description: "ASPD +10; ATK +10%",
             modifiers: {
                 aspd: 10,
-                atk: 0.10,
+                flatmultiatk: 1.10,
 
             },
             apply: "self",
@@ -823,7 +1397,7 @@ playerlist["Haze"] = {
     talents: [
     {
         name: "Black mist",
-        description: "Each attack lowers \nthe RES\nby 23% for 1sec",
+        description: "Each attack lowers the RES by 23% for 1sec.",
         modifiers: {
         },
         applyeffects: {
@@ -921,7 +1495,7 @@ playerlist["Courier"] = {
         name: "Karlan Patrol",
         description: "DEF +9%",
         modifiers: {
-            def:0.09
+            flatmultidef:1.09
         },
         apply: "self",
     }],
@@ -1014,8 +1588,8 @@ playerlist["Scavenger"] = {
         name: "Lone Wolf",
         description: "ATK +8%; DEF +9%",
         modifiers: {
-            atk:0.08,
-            def:0.09
+            flatmultiatk:1.08,
+            flatmultidef:1.09
         },
         apply: "self",
     }],
@@ -1111,7 +1685,7 @@ playerlist["Plume"] = {
         name: "ATK Up",
         description: "ATK +8%",
         modifiers: {
-            atk: 0.08,
+            flatmultiatk: 1.08,
         },
         apply: "self",
     }, {
@@ -1211,7 +1785,7 @@ playerlist["Melantha"] = {
         name: "ATK Up",
         description: "ATK +8%",
         modifiers: {
-            atk: 0.08,
+            flatmultiatk: 0.08,
         },
         apply: "self",
     }]
@@ -1304,11 +1878,19 @@ playerlist["Popukar"] = {
         name: "HP Up",
         description: "ATK +8%; Max HP +8%",
         modifiers: {
-            atk: 0.08,
+            flatmultiatk: 1.08,
             maxhp: 0.08,
         },
         apply: "self",
-    }],
+    },
+    {
+        name: "Trait",
+        description: "Hit multiple targets within range equals to block count",
+        modifiers: {
+        },
+        apply: "self",
+    }
+],
     sfx: {
         atk: {
             src: "popukar-atk",
@@ -1394,7 +1976,13 @@ playerlist["Fang"] = {
         apply: "self",
         skillimage: "images/opicons/fangskill.png"
     },
-    talents: [],
+    talents: [{
+        name: "Lightweight",
+        description: "DP cost -1",
+        modifiers: {
+        },
+        apply: "self",
+    }],
     sfx: {
         atk: {
             src: "fang-atk",
@@ -1578,7 +2166,7 @@ playerlist["Hibiscus"] = {
         name: "Neurology",
         description: "ATK +8%",
         modifiers: {
-            atk: 0.08,
+            flatmultiatk: 1.08,
         },
         apply: "self",
     }],
@@ -1864,10 +2452,10 @@ playerlist["Durin"] = {
     },
     talents: [{
         name: "Armor Break",
-        description: "ATK +6%\nPrioritizes enemies with the\n highest DEF",
+        description: "ATK +6%",
 
         modifiers: {
-            atk: 0.06,
+            flatmultiatk: 1.06,
         },
         apply: "self",
     }],

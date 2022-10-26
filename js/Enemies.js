@@ -1908,7 +1908,7 @@ enemylist["Vicious Training Gloompincer"] = {
 
 enemylist["Tytus Topola"] = {
     name:"Tytus Topola",
-    hp: 25000,
+    hp: 20000,
     atk: 750,
     def: 700,
     res:50,

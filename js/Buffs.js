@@ -39,7 +39,9 @@ class Buffs {
             maxhp:1,
             flatmultiatk:1,
             flatmultidef:1,
-
+            canattack:true,
+            flathpregen:0,
+            hpregenpercent:0,
         }
     }
 
@@ -81,7 +83,7 @@ class Buffs {
     getFinalDef(def) {
         this.initModifiers();
         this.sumBuffs();
-        return Math.max(0,Math.round(((def+this.modifiers.flatdef) *(1+this.modifiers.flatmultidef)* (1 + this.modifiers.def))));
+        return Math.max(0,Math.round(((def+this.modifiers.flatdef) *(this.modifiers.flatmultidef)* (1 + this.modifiers.def))));
     }
 
     getFinalRes(res) {
@@ -94,6 +96,12 @@ class Buffs {
         this.initModifiers();
         this.sumBuffs();
         return this.modifiers.dponkill;
+    }
+
+    getCanAttack() {
+        this.initModifiers();
+        this.sumBuffs();
+        return this.modifiers.canattack;
     }
 
     getSplash() {
@@ -150,6 +158,12 @@ class Buffs {
             return {"hp":hp,"maxhp":maxhp}
         var currentratio  = hp/maxhp
         return {"hp":Math.round(newmaxhp*currentratio),"maxhp":newmaxhp}
+    }
+
+    getFinalHpRegen(maxhp){
+        this.initModifiers();
+        this.sumBuffs();
+        return this.modifiers.flathpregen+maxhp*this.modifiers.hpregenpercent
     }
 
     getFinalBlock(block){
