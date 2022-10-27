@@ -651,7 +651,7 @@ class EnemyController extends CharaController {
                     enter = false;
                 //if no not attack condition met, attack if atk timer is over
                 if (enter) {
-                    if (this.atktimer >= this.buffs.getFinalAtkInterval(this.chara.atkinterval) * 20 && !this.attacking) {
+                    if (this.atktimer >= this.buffs.getFinalAtkInterval(this.chara.atkinterval) * 25 && !this.attacking) {
                         this.atktimer = 0;
                         this.attacking = this.attack(players);
                     }
