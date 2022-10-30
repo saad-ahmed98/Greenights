@@ -36,7 +36,7 @@ class EnemyController extends CharaController {
     startInvincibility() {
         this.invincible = true;
         this.invincibleaura = new BABYLON.Sprite("", this.lvlcontroller.spriteManagers["skillaura"]);
-        this.invincibleaura.position = new BABYLON.Vector3(-15 + this.mesh.position.x, 20, 6 + this.mesh.position.z);
+        this.invincibleaura.position = new BABYLON.Vector3((-15*this.chara.size) + this.mesh.position.x, 20, 6 + this.mesh.position.z);
         this.invincibleaura.size = 70 * this.chara.size;
         this.invincibleaura.width = 100 * this.chara.size;
         this.invincibleaura.playAnimation(4, 7, true, 30 * this.gamespeed);
@@ -55,13 +55,13 @@ class EnemyController extends CharaController {
     //create buff icon depending on buff type
     createBuffAura(bufftype) {
         this.aura = new BABYLON.Sprite("", this.lvlcontroller.spriteManagers["icons"]);
-        this.aura.position = new BABYLON.Vector3(-5 + this.mesh.position.x, 22, 2 + this.mesh.position.z);
+        this.aura.position = new BABYLON.Vector3(this.sprite.position.x, this.sprite.position.y+1, this.sprite.position.z);
         this.aura.cellIndex = bufftype
-        this.aura.size = 65;
+        this.aura.size = 65 ;
         this.aura.width = 90;
 
-        this.aura.position.z -= (8 - (this.mesh.position.z / 30));
-        this.aura.position.x -= (13 - (this.mesh.position.x / 30));
+       // this.aura.position.z -= (8 - (this.mesh.position.z / 30));
+        //this.aura.position.x -= (13 - (this.mesh.position.x / 30));
 
 
     }
@@ -104,7 +104,7 @@ class EnemyController extends CharaController {
 
         if (!this.running) {
             var duration = this.chara.move.duration
-            this.sprite.playAnimation(this.chara.move.start, this.chara.move.end, true, 30 * this.gamespeed * duration );
+            this.sprite.playAnimation(this.chara.move.start, this.chara.move.end, true, 30 * this.gamespeed * duration);
             this.running = true;
         }
 
@@ -182,11 +182,11 @@ class EnemyController extends CharaController {
         if (this.hp == this.maxhp)
             this.healthBar.isVisible = false;
         else this.healthBar.isVisible = true;
-        this.healthBar.linkOffsetX = 0 + (this.sprite.position.z - this.mesh.position.z) * 2
+        this.healthBar.linkOffsetX = -10 +this.mesh.position.z/30
 
         if (this.spattacktimer != undefined) {
             this.skillBar.value = this.spattacktimer / this.chara.spattack.sp * 100;
-            this.skillBar.linkOffsetX = 0 + (this.sprite.position.z - this.mesh.position.z) * 2
+            this.skillBar.linkOffsetX = -10 + this.mesh.position.z/30
         }
 
     }
@@ -204,10 +204,10 @@ class EnemyController extends CharaController {
         this.shadow.size = 65 * this.chara.size;
         this.shadow.width = 90 * this.chara.size;
 
-        this.shadow.position = new BABYLON.Vector3(-15 + this.x * 30, 20, 6 + this.y * 30 - (30 * this.chara.size - 30));
+        this.shadow.position = new BABYLON.Vector3((-15*this.chara.size) + this.x * 30, 19, this.y * 30 );
 
         var player0 = new BABYLON.Sprite(this.id, spriteManager[this.chara.spritesheet]);
-        player0.position = new BABYLON.Vector3(-15 + this.x * 30, 20, 6 + this.y * 30 - (30 * this.chara.size - 30));
+        player0.position = new BABYLON.Vector3((-15*this.chara.size) + this.x * 30, 20, this.y * 30 );
         player0.size = 65 * this.chara.size;
         player0.width = 90 * this.chara.size;
         this.sprite = player0;
@@ -215,6 +215,7 @@ class EnemyController extends CharaController {
         this.mesh.position.z = 0 + this.y * 30;
         this.mesh.position.x = 0 + this.x * 30;
         this.mesh.position.y = 0;
+        //this.mesh.visibility = 0;
 
         //activate starting talents
         this.startingTalents()
@@ -619,6 +620,7 @@ class EnemyController extends CharaController {
             this.atktimer += 1 / this.gamespeed;
             if (this.spattacktimer != undefined)
                 this.spattacktimer = Math.min(this.chara.spattack.sp, this.spattacktimer + (1 / 30) / this.gamespeed);
+            this.hp = Math.min(this.maxhp, this.hp + this.buffs.getFinalHpRegen(this.maxhp) * (1 / 30) / this.gamespeed)
 
             var currenttile = tiles[Math.round(this.mesh.position.x / 30)][Math.round(this.mesh.position.z / 30)];
             //verify if blocking player can still block the enemy

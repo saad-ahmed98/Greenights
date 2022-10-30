@@ -1658,7 +1658,7 @@ enemylist["Roar Knightclub Elite"] = {
     type:"g",
     range:2,
     dmgtype:"physical",
-    size:1,
+    size:0.9,
     tooltip:"Has significantly increased DEF\nand RES for a period of time.",
     targets:1,
 

@@ -300,6 +300,8 @@ levels["GUERRILLA-EX"] = {
     hazards : ["altar"],
 
 
+    // 13 width
+    // 8 height
     layout: [["e","bg", "bg", "bg", "bg", "red", "red", "red", "bg", "bg", "bg", "bg", "e"],
     ["e", "bg", "red", "g", "g", "blk", "blk", "blk", "g", "g", "red", "bg", "e"],
     ["e","bg", "g", "g", "r","g", "g", "g","r", "g", "g", "bg","e"],
@@ -379,7 +381,7 @@ levels["KNIGHT-EX"] = {
     ],
 }
 
-
+/*
 levels["TEST"] = {
     level: "TEST",
     name: "Title",
@@ -391,10 +393,10 @@ levels["TEST"] = {
     description: "Sussy",
     place:"Plain",
 
-    waves: [/*{"number":0, "time": 0, "gap": 5, "enemies": "Sarkaz Guerrilla Fighter Leader", "line": false, "tooltip": true, "count": 1, "taunt": false, "start": [4, 5], "checkpoints": [{ "start": [4, 5], "end": [4, 5], "pause": 300 }]},
-        */{ "number":4,"time": 30, "gap": 5, "enemies": "Guerrilla Siegebreaker Leader", "line": false, "tooltip": true, "taunt": false, "count": 1, "start": [7, 12], "checkpoints": [{ "start": [7, 12], "end": [7, 11], "pause": 200 }, { "start": [7, 11], "end": [7, 0], "pause": 0 }] },
+    waves: [{"number":0, "time": 0, "gap": 5, "enemies": "Sarkaz Guerrilla Fighter Leader", "line": false, "tooltip": true, "count": 1, "taunt": false, "start": [4, 5], "checkpoints": [{ "start": [4, 5], "end": [4, 5], "pause": 300 }]},
+        { "number":4,"time": 30, "gap": 5, "enemies": "Guerrilla Siegebreaker Leader", "line": false, "tooltip": true, "taunt": false, "count": 1, "start": [7, 12], "checkpoints": [{ "start": [7, 12], "end": [7, 11], "pause": 200 }, { "start": [7, 11], "end": [7, 0], "pause": 0 }] },
        
-        //{"number":3, "time": 10, "gap": 5, "enemies": "Guerrilla Fighter Leader", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [7, 12], "checkpoints": [{ "start": [7, 12], "end": [7, 11], "pause": 19 }, { "start": [7, 11], "end": [7, 0], "pause": 0 }] },
+        {"number":3, "time": 10, "gap": 5, "enemies": "Guerrilla Fighter Leader", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [7, 12], "checkpoints": [{ "start": [7, 12], "end": [7, 11], "pause": 19 }, { "start": [7, 11], "end": [7, 0], "pause": 0 }] },
         {"number":2, "time": 0, "gap": 5, "enemies": "Patriot", "line": false, "tooltip": true, "taunt": false, "count": 1, "start": [7, 10], "checkpoints": [{ "start": [7, 10], "end": [7, 2], "pause": 300 }, { "start": [7, 2], "end": [7, 10], "pause": 5 }, { "start": [7, 10], "end": [7, 2], "pause": 5 }, { "start": [7, 2], "end": [7, 10], "pause": 300 }, { "start": [7, 10], "end": [7, 0], "pause": 0 }] },
 
     ],
@@ -411,4 +413,37 @@ levels["TEST"] = {
     ["bg", "bg", "r", "r", "r", "bg", "bg", "bg", "bg", "r", "r", "bg", "bg"],
     ["blue", "g", "g", "g", "g", "g", "g", "g", "g", "g", "g", "blk", "red"]
     ],
+}    
+
+
+levels["HERD-EX"] = {
+    level: "HERD-EX",
+    name: "Raging madness",
+    bgm: "epm8_1",
+    initialdp: 40,
+    squadlimit: 9,
+    hp: 3,
+    background: "loading_CB_under",
+    description: "Through the many cries of rage, pain and insanity,\nhis wicked smile only keeps growing wider and wider.",
+    place:"Plain",
+
+    waves: [{ "number":4,"time": 30, "gap": 5, "enemies": "Guerrilla Siegebreaker Leader", "line": false, "tooltip": true, "taunt": false, "count": 1, "start": [7, 12], "checkpoints": [{ "start": [7, 12], "end": [7, 11], "pause": 200 }, { "start": [7, 11], "end": [7, 0], "pause": 0 }] },
+       
+    ],
+
+    enemies: ["Guerrilla Siegebreaker Leader"],
+    tooltips: ["Guerrilla Siegebreaker Leader"],
+    hazards : [],
+
+    layout: [["e", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "e"],
+    ["e", "bg", "bg", "blk", "blk", "r", "r", "r", "blk", "blk", "red", "bg", "e"],
+    ["e", "bg", "bg", "blk", "bg", "bg", "bg", "r", "r", "g", "blk", "red", "e"],
+    ["e", "blue", "blk", "g", "bg", "bg", "bg", "r", "r", "g", "blk", "red", "e"],
+    ["e", "blue", "blk", "g", "g", "r", "r", "r", "r", "g", "blk", "red", "e"],
+    ["e", "bg", "bg", "g", "g", "r", "g", "r", "g", "g", "bg", "bg", "e"],
+    ["e", "bg", "bg", "g", "blk", "blk", "g", "blk", "blk", "g", "bg", "bg", "e"],
+    ["e", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "e"]
+    ],
 }
+
+*/

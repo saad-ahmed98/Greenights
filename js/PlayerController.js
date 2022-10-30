@@ -94,7 +94,7 @@ class PlayerController extends CharaController {
         this.mesh.position.z = 0 + this.y * 30;
         this.mesh.position.x = 0 + this.x * 30;
         this.mesh.position.y = 10;
-        this.mesh.visibility = 0;
+        //this.mesh.visibility = 0;
 
         this.shadow = new BABYLON.Sprite(id + "shadow", iconsManager);
         this.shadow.cellIndex = 0;
@@ -111,7 +111,7 @@ class PlayerController extends CharaController {
         var player0 = new BABYLON.Sprite(id, spriteManager);
 
         player0.position = new BABYLON.Vector3(-10 + this.x * 30, 20, 6 + this.y * 30);
-        this.shadow.position = new BABYLON.Vector3(-10 + this.x * 30, 20, 6 + this.y * 30);
+        this.shadow.position = new BABYLON.Vector3(-10 + this.x * 30, 19, 6 + this.y * 30);
         this.skillready.position = new BABYLON.Vector3(-10 + this.x * 30, 20, 6 + this.y * 30);
 
 
