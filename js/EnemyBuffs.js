@@ -27,6 +27,7 @@ class EnemyBuffs extends Buffs {
             flatmultidef:1,
             flathpregen:0,
             hpregenpercent:0,
+            dmgreduction:0,
         }
     }
 

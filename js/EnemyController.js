@@ -36,7 +36,7 @@ class EnemyController extends CharaController {
     startInvincibility() {
         this.invincible = true;
         this.invincibleaura = new BABYLON.Sprite("", this.lvlcontroller.spriteManagers["skillaura"]);
-        this.invincibleaura.position = new BABYLON.Vector3((-15*this.chara.size) + this.mesh.position.x, 20, 6 + this.mesh.position.z);
+        this.invincibleaura.position = new BABYLON.Vector3(this.sprite.position.x, this.sprite.position.y+1, this.sprite.position.z);
         this.invincibleaura.size = 70 * this.chara.size;
         this.invincibleaura.width = 100 * this.chara.size;
         this.invincibleaura.playAnimation(4, 7, true, 30 * this.gamespeed);
@@ -199,6 +199,7 @@ class EnemyController extends CharaController {
     //iconsmanager contains the icon sprites
     createEnemy(matrix, points, spriteManager, gui, iconsmanager) {
         this.mesh = this.scene.assets.meshchara.clone(this.id)
+        
 
         this.shadow = new BABYLON.Sprite(this.id + "shadow", iconsmanager);
         this.shadow.size = 65 * this.chara.size;
@@ -225,8 +226,10 @@ class EnemyController extends CharaController {
         this.checkpoints = this.pattern.shift();
         this.currentpoint = this.checkpoints.path.shift();
 
+
         //create hp bar
         this.addHPBar(gui);
+        //this.addParticleEffects()
 
         //TODO HARD CODED BAD
         if (this.chara.name == "Patriot") {
@@ -348,12 +351,15 @@ class EnemyController extends CharaController {
     }
 
     //receive damage, attackingplayer can be a hazard
-    receiveDamage(attackingplayer, hazard = false) {
+    //mod, dmtype and bombeffects are for skillbombs
+    receiveDamage(attackingplayer, hazard = false,mod=1,dmtype="",bombeffects) {
         var dmg;
         var dmgtype;
 
         if (!hazard) {
             let ef = attackingplayer.buffs.applyeffects
+            if(bombeffects)
+                ef = bombeffects
             var keys = Object.keys(ef)
             for (let i = 0; i < keys.length; i++) {
                 if (ef[keys[i]].apply == "hit") {
@@ -361,7 +367,7 @@ class EnemyController extends CharaController {
                     this.buffs.buffs[keys[i]] = { "name": keys[i], "modifiers": ef[keys[i]].modifiers }
                 }
             }
-            var dmgmodifier = 1;
+            var dmgmodifier = mod;
 
             //if attackingplayer can activate a on trigger dmg up skill, activate it 
             if (attackingplayer.playerSkill.chargetype == "attack" && attackingplayer.playerSkill.triggertype == "auto" && attackingplayer.playerSkill.currentsp >= attackingplayer.playerSkill.totalsp) {
@@ -370,7 +376,16 @@ class EnemyController extends CharaController {
                 attackingplayer.playerSkill.applyHitEffects(this.buffs)
             }
 
-            dmgmodifier *= attackingplayer.buffs.getCritModifier();
+            var critmod = attackingplayer.buffs.getCritModifier()
+            if(critmod!=1){
+                for (let i = 0; i < keys.length; i++) {
+                    if (ef[keys[i]].apply == "crit") {
+                        this.buffs.effects[keys[i]] = ef[keys[i]].duration
+                        this.buffs.buffs[keys[i]] = { "name": keys[i], "modifiers": ef[keys[i]].modifiers }
+                    }
+                }
+            }
+            dmgmodifier *= critmod;
 
             var dmgpen = 0;
 
@@ -390,14 +405,17 @@ class EnemyController extends CharaController {
             dmgtype = "true"
         }
 
-        var dmgreceived;
+        if(dmtype!="")
+        dmgtype=dmtype;
 
+        var dmgreceived;
+    
         switch (dmgtype) {
             case "physical":
                 dmgreceived = Math.max(dmg * 0.05, dmg - this.buffs.getFinalDef(this.chara.def))
                 break;
             case "arts":
-                dmgreceived = Math.max(dmg * 0.10, dmg * ((100 - this.buffs.getFinalRes(this.chara.res)) / 100))
+                dmgreceived = Math.max(dmg * 0.10, (dmg+attackingplayer.buffs.getBonusDefDmg(this.chara.def)) * ((100 - this.buffs.getFinalRes(this.chara.res)) / 100))
                 break;
             case "true":
                 dmgreceived = dmg;
@@ -422,6 +440,10 @@ class EnemyController extends CharaController {
         if (this.hp <= 0) {
             //add dp to the lvl dp counter if possible
             if (!hazard) {
+                if(attackingplayer.condtalent!=undefined){
+                    if(attackingplayer.condtalent.condition=="kill")
+                        attackingplayer.checkConditionTalent();
+                }
                 this.lvlcontroller.currentdp += attackingplayer.buffs.getDpOnKill();
                 this.lvlcontroller.gui.updatePlayerWheelUI(this.lvlcontroller.currentdp, this.lvlcontroller.squadlimit)
             }
@@ -545,6 +567,8 @@ class EnemyController extends CharaController {
                 }
                 timer--;
             }, 1);
+           
+
         }
 
         //if on skill activation, animations change, then modify them
@@ -558,6 +582,8 @@ class EnemyController extends CharaController {
         }
         if (this.chara.skill.death != undefined)
             this.chara.death = this.chara.skill.death
+            
+        this.attacking = false;
 
     }
 

@@ -380,8 +380,6 @@ levels["KNIGHT-EX"] = {
     [ "bg","bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg",],
     ],
 }
-
-/*
 levels["TEST"] = {
     level: "TEST",
     name: "Title",
@@ -393,7 +391,7 @@ levels["TEST"] = {
     description: "Sussy",
     place:"Plain",
 
-    waves: [{"number":0, "time": 0, "gap": 5, "enemies": "Sarkaz Guerrilla Fighter Leader", "line": false, "tooltip": true, "count": 1, "taunt": false, "start": [4, 5], "checkpoints": [{ "start": [4, 5], "end": [4, 5], "pause": 300 }]},
+    waves: [{"number":0, "time": 0, "gap": 5, "enemies": "Sarkaz Guerrilla Fighter Leader", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [4, 4], "checkpoints": [{ "start": [4, 4], "end": [4, 4], "pause": 300 }]},
         { "number":4,"time": 30, "gap": 5, "enemies": "Guerrilla Siegebreaker Leader", "line": false, "tooltip": true, "taunt": false, "count": 1, "start": [7, 12], "checkpoints": [{ "start": [7, 12], "end": [7, 11], "pause": 200 }, { "start": [7, 11], "end": [7, 0], "pause": 0 }] },
        
         {"number":3, "time": 10, "gap": 5, "enemies": "Guerrilla Fighter Leader", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [7, 12], "checkpoints": [{ "start": [7, 12], "end": [7, 11], "pause": 19 }, { "start": [7, 11], "end": [7, 0], "pause": 0 }] },
@@ -401,7 +399,7 @@ levels["TEST"] = {
 
     ],
 
-    enemies: ["Patriot","Patriot2","Guerrilla Siegebreaker Leader"],
+    enemies: ["Patriot","Patriot2","Guerrilla Siegebreaker Leader","Sarkaz Guerrilla Fighter Leader"],
     tooltips: ["Patriot","Guerrilla Siegebreaker Leader"],
     hazards : ["altar"],
 
@@ -415,7 +413,7 @@ levels["TEST"] = {
     ],
 }    
 
-
+/*
 levels["HERD-EX"] = {
     level: "HERD-EX",
     name: "Raging madness",
@@ -435,15 +433,14 @@ levels["HERD-EX"] = {
     tooltips: ["Guerrilla Siegebreaker Leader"],
     hazards : [],
 
-    layout: [["e", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "e"],
-    ["e", "bg", "bg", "blk", "blk", "r", "r", "r", "blk", "blk", "red", "bg", "e"],
-    ["e", "bg", "bg", "blk", "bg", "bg", "bg", "r", "r", "g", "blk", "red", "e"],
-    ["e", "blue", "blk", "g", "bg", "bg", "bg", "r", "r", "g", "blk", "red", "e"],
-    ["e", "blue", "blk", "g", "g", "r", "r", "r", "r", "g", "blk", "red", "e"],
-    ["e", "bg", "bg", "g", "g", "r", "g", "r", "g", "g", "bg", "bg", "e"],
-    ["e", "bg", "bg", "g", "blk", "blk", "g", "blk", "blk", "g", "bg", "bg", "e"],
-    ["e", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "e"]
+    layout: [[ "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg","bg","bg"],
+    [ "bg", "bg", "blk", "blk", "r", "r", "r", "blk", "blk","blk","blk", "red", "bg"],
+    [ "bg", "bg", "blk", "bg", "bg", "bg", "r", "r", "g", "blk","blk","blk", "red"],
+    [ "blue", "blk", "g", "bg", "bg", "bg", "r", "r", "g", "blk","blk","blk", "red"],
+    [ "blue", "blk", "g", "g", "r", "r", "r", "r", "g", "blk","blk","blk", "red"],
+    ["bg", "bg", "g", "g", "r", "g", "r", "g", "g", "r", "r","bg","bg"],
+    [ "bg", "bg", "g", "blk", "blk", "g", "blk", "blk", "g", "g","blk","blk","red" ],
+    ["bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg","bg","bg", "bg"]
     ],
 }
-
 */

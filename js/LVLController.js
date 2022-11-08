@@ -601,6 +601,18 @@ class LVLController extends LVLAbstract {
             instance.spriteManagers[task.name].texture = task.texture
         };
 
+        binaryTask = assetsManager.addTextureTask(
+            "effects",
+            "images/common/effects-sheet.png",
+            true,
+            false,
+            BABYLON.Texture.TRILINEAR_SAMPLINGMODE
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.spriteManagers[task.name] = new BABYLON.SpriteManager("EffectsManager", undefined, 15, { width: 888, height: 605 });
+            instance.spriteManagers[task.name].texture = task.texture
+        };
+
     }
 
     loadSounds() {
@@ -924,9 +936,9 @@ class LVLController extends LVLAbstract {
                 this.playSound(p.chara.name + "-skillact", p.chara.sfx.skillact.volume)
                 this.playSound(p.chara.name + "-skill", this.vcvolume)
                 p.playerSkill.activateDurationSkill([p], this)
+                p.createSkillAura(this.spriteManagers["skillaura"])
                 if (p.chara.skillidle != undefined)
                     p.sprite.playAnimation(p.chara.skillidle.start, p.chara.skillidle.end, true, this.gamespeed * 30);
-                p.createSkillAura(this.spriteManagers["skillaura"])
             }
         }
         else if (p.playerSkill.active) {
@@ -935,6 +947,7 @@ class LVLController extends LVLAbstract {
             if (p.playerSkill.duration <= 0) {
                 p.playerSkill.deactivateDurationSkill();
                 p.aura.dispose();
+                p.aura = undefined;
                 if (p.chara.skillidle != undefined && !p.attacking)
                     p.sprite.playAnimation(p.chara.idle.start, p.chara.idle.end, true, this.gamespeed * 30);
             }
@@ -1007,10 +1020,11 @@ class LVLController extends LVLAbstract {
     checkPlayers() {
         for (let i = 0; i < this.activePlayers.length; i++) {
             this.activePlayers[i].updateHP()
+            this.activePlayers[i].checkAliveBuffs()
             this.activePlayers[i].checkBlocking()
             if (this.activePlayers[i].hp <= 0) {
                 this.tiles[this.activePlayers[i].x][this.activePlayers[i].y].player = undefined;
-                this.activePlayers[i].chara.cost = Math.min(this.activePlayers[i].chara.cost + Math.round(this.activePlayers[i].chara.cost * 0.5), this.activePlayers[i].chara.basecost * 2),
+                this.activePlayers[i].chara.cost = Math.min(this.activePlayers[i].chara.basecost + Math.round(this.activePlayers[i].chara.basecost * 0.5), this.activePlayers[i].chara.basecost * 2),
 
                     this.playerlist[this.activePlayers[i].chara.name] = this.activePlayers[i].chara
                 this.activePlayers.splice(i, 1)
@@ -1240,8 +1254,8 @@ class LVLController extends LVLAbstract {
         var range = ranget
         var line = false;
         if (range / 0.5 % 2 != 0) {
-            if ((range - 0.3) % Math.round(range) == 0) {
-                range = ranget - 0.3
+            if (Math.round(range - 0.3) % Math.round(range) == 0) {
+                range = Math.round(ranget - 0.3)
                 line = true;
             }
             else {

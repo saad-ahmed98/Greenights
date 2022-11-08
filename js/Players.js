@@ -1,5 +1,919 @@
 let playerlist = {};
+playerlist["Texas"] = {
+    name: "Texas",
+    hp: 1598,
+    atk: 681,
+    def: 320,
+    res: 0,
+    atkinterval: 0.93,
+    blockcount: 1,
+    rarity: "rgb(255, 115, 0)",
 
+    rdtimer: 16,
+    rdcounter: 0,
+
+    type: "g",
+    class: "specialist",
+    subclass: "Executor",
+
+
+    cost: 8,
+    basecost: 8,
+
+    range: 1,
+    targets: 1,
+
+
+    dmgtype: "physical",
+
+    classicon: "images/classicons/executor.webp",
+
+    opicon: "images/opicons/texas.webp",
+
+    spritesheet: "images/sprites/texas-sheet.webp",
+
+    skillsfx: true,
+    deploybomb: true,
+
+    atkanim: {
+        start: 0,
+        end: 14,
+        contact: 4,
+        duration: 1,
+    },
+
+    death: {
+        start: 15,
+        end: 28,
+    },
+
+    idle: {
+        start: 29,
+        end: 73
+    },
+
+    drop: {
+        start: 74,
+        end: 88
+    },
+
+    skillatkanim: {
+        start: 89,
+        end: 103,
+        contact: 93,
+        duration: 1,
+
+    },
+
+    skillidle: {
+        start: 104,
+        end: 148,
+
+    },
+
+    skill: {
+        name: "Downpour",
+        description: "DMG turns into ARTS;\nDeals 240% ATK to surrounding enemies\nand the targets' RES -30% for 10 seconds;\nATK +55% and attacks twice in a row\nfor the rest of the duration.",
+        duration: 10,
+        sp: 0,
+        initialsp: 0,
+        chargetype: "passive",
+        triggertype: "",
+
+        modifiers: {
+            skillbomb: {
+                range: 1.5,
+                dmg: 2.4,
+                dmgtype: "arts",
+                targets: 99,
+                applyeffects:
+                {
+                    "Downpour": {
+                        apply: "hit",
+                        modifiers: {
+                            res: -0.30,
+                        },
+                        duration: 10
+                    }
+                },
+            },
+            dmgtype: "arts",
+            atk: 0.55,
+            attacks: 1
+        },
+        apply: "self",
+        skillimage: "images/opicons/texasskill.webp"
+
+    },
+    talents: [
+        {
+            name: "Texan Tradition",
+            description: "While skill is active, ATK +20%;\nWhen defeating an enemy for the first time,\nrestores all HP and reactivates the skill.",
+            condtalent: 1,
+            modifiers: {
+                instantheal: 1,
+                aspd: -10,
+                dmgreduction: -0.30,
+                reactivateskill: true,
+            },
+            condition: "kill",
+        },
+        {
+            name: "Texan Swordmanship",
+            description: "ASPD +10 and damage taken is reduced by 30%\nbefore defeating an enemy for the first time.",
+            modifiers: {
+                aspd: 10,
+                dmgreduction: 0.30,
+            },
+            apply: "self",
+        },
+        {
+            name: "Trait",
+            description: "Has significantly reduced redeployment time.",
+            modifiers: {
+
+            },
+            apply: "self",
+        },
+    ],
+    sfx: {
+        hit: {
+            src: "texas-atk",
+            volume: 0.1
+        },
+
+        skillhit: {
+            src: "texas-skillhit",
+            volume: 0.1
+        },
+        skillbomb: {
+            src: "skill-texas",
+            volume: 0.2
+        },
+        skillact: {
+            src: "mute",
+            volume: 0.3
+        }
+    }
+}
+
+playerlist["Shining"] = {
+    name: "Shining",
+    hp: 1613,
+    atk: 590,
+    def: 183,
+    res: 0,
+    atkinterval: 2.85,
+    blockcount: 1,
+
+    rdtimer: 70,
+    rdcounter: 0,
+
+    type: "r",
+    class: "medic",
+    subclass: "Doctor",
+    rarity: "rgb(255, 115, 0)",
+
+
+    cost: 18,
+    basecost: 18,
+
+    range: 3,
+    targets: 1,
+
+    dmgtype: "heal",
+
+    classicon: "images/classicons/doctor.png",
+
+    opicon: "images/opicons/shining.webp",
+
+    spritesheet: "images/sprites/shining-sheet.webp",
+    skillsfx: false,
+
+    atkanim: {
+        start: 0,
+        end: 14,
+        contact: 8,
+        duration: 1,
+    },
+
+    death: {
+        start: 15,
+        end: 29,
+    },
+    idle: {
+        start: 30,
+        end: 59,
+        duration: 1,
+    },
+
+    drop: {
+        start: 60,
+        end: 72
+    },
+
+    skill: {
+        name: "Creed Field",
+        description: "ATK +50%;\nAll allies within range DEF +100%",
+        duration: 60,
+        sp: 120,
+        initialsp: 115,
+        chargetype: "second",
+        triggertype: "manual",
+        modifiers: {
+            atk: 0.50,
+        },
+        applyeffects:
+        {
+            name: "Creed Field effect",
+            apply: "aliveallies",
+            range:3,
+            modifiers: {
+                def: 1,
+            },
+            duration: 0.5
+        },
+        apply: "self",
+        skillimage: "images/opicons/shiningskill.webp"
+
+
+    },
+    talents: [{
+        name: "Code of Law",
+        description: "ASPD +13",
+        modifiers: {
+            aspd: 13,
+        },
+        apply: "self",
+    },{
+        name: "Black Fiend's Protection",
+        description: "DEF of allies within range +65",
+        modifiers: {
+        },
+        applyeffects:
+        {
+            name:"Black Fiend's Protection effect",
+            apply: "aliveallies",
+            range:3,
+            modifiers: {
+                flatdef: 65,
+            },
+            duration: 0.5
+        },
+        apply: "self",
+    }
+],
+    sfx: {
+        atk: {
+            src: "hibiscus-atk",
+            volume: 0.1
+        },
+        skillact: {
+            src: "skill-heal",
+            volume: 0.3
+        }
+    }
+
+
+}
+
+playerlist["Saga"] = {
+    name: "Saga",
+    hp: 2205,
+    atk: 640,
+    def: 372,
+    res: 0,
+    atkinterval: 1,
+    blockcount: 2,
+    rarity: "rgb(255, 115, 0)",
+
+    rdtimer: 66,
+    rdcounter: 0,
+
+    type: "g",
+    class: "vanguard",
+    subclass: "Pioneer",
+
+
+    cost: 8,
+    basecost: 12,
+
+    range: 1,
+    targets: 1,
+
+
+    dmgtype: "physical",
+
+    classicon: "images/classicons/pioneer.png",
+
+    opicon: "images/opicons/saga.webp",
+
+    spritesheet: "images/sprites/saga-sheet.webp",
+
+    skillsfx: true,
+
+    atkanim: {
+        start: 0,
+        end: 15,
+        contact: 4,
+        duration: 1,
+    },
+
+    death: {
+        start: 16,
+        end: 30,
+    },
+
+    idle: {
+        start: 31,
+        end: 90
+    },
+
+    drop: {
+        start: 91,
+        end: 105
+    },
+
+    skillidle: {
+        start: 106,
+        end: 165,
+    },
+    skillatkanim: {
+        start: 166,
+        end: 180,
+        contact: 172,
+        duration: 1,
+    },
+
+
+    skill: {
+        name: "Fierce Glare",
+        description: "Instantly gains 20 DP.\nAttack Interval slightly increases;\nAttack Range +1 tile;\nATK +130%, Targets hit +1.",
+        duration: 20,
+        sp: 40,
+        initialsp: 28,
+        chargetype: "second",
+        triggertype: "manual",
+
+        modifiers: {
+            instantdp: 20,
+            targets: 1,
+            range: 1.3,
+            atk: 1.3,
+            atkinterval: 0.5,
+            ignoreaniminterval: true,
+        },
+        apply: "self",
+        skillimage: "images/opicons/sagaskill.webp"
+
+    },
+    talents: [
+        {
+            name: "Walking the Wetclouds",
+            description: "At first deployment, DP Cost -4",
+            modifiers: {
+            },
+            apply: "self",
+
+        },
+        {
+            name: "Clear Mind",
+            description: "When HP falls below 40% for the first time;\ngains 70% Physical Dodge and restores 6% Max HP per second,\nlasting 17 seconds.",
+            condtalent: 1,
+            applyeffects:
+            {
+                apply: "self",
+                modifiers: {
+                    physdodge: 0.70,
+                    hpregenpercent: 0.06,
+                },
+                duration: 17
+            },
+            modifiers: {
+            },
+            condition: "hp",
+        },
+    ],
+    sfx: {
+        hit: {
+            src: "saga-hit",
+            volume: 0.1
+        },
+
+        skillhit: {
+            src: "saga-skillhit",
+            volume: 0.15
+        },
+
+        skillact: {
+            src: "skill-saga",
+            volume: 0.3
+        }
+    }
+}
+
+playerlist["Exusiai"] = {
+    name: "Exusiai",
+    hp: 1673,
+    atk: 657,
+    def: 161,
+    res: 0,
+    atkinterval: 1,
+    blockcount: 1,
+    rarity: "rgb(255, 115, 0)",
+
+    rdtimer: 70,
+    rdcounter: 0,
+
+    type: "r",
+    class: "sniper",
+    subclass: "Marksman",
+
+
+    cost: 12,
+    basecost: 12,
+
+    range: 3,
+    targets: 1,
+
+
+    dmgtype: "physical",
+
+    classicon: "images/classicons/marksman.png",
+
+    opicon: "images/opicons/exusiai.webp",
+
+    spritesheet: "images/sprites/exusiai-sheet.webp",
+
+    skillsfx: true,
+
+    atkanim: {
+        start: 0,
+        end: 14,
+        contact: 7,
+        duration: 1,
+    },
+
+    death: {
+        start: 15,
+        end: 29,
+    },
+
+    idle: {
+        start: 30,
+        end: 59
+    },
+
+    drop: {
+        start: 60,
+        end: 74
+    },
+
+
+    skill: {
+        name: "Overloading Mode",
+        description: "Shoots 5 times in a row;\nATK +10%, attack interval decreases.",
+        duration: 15,
+        sp: 30,
+        initialsp: 20,
+        chargetype: "second",
+        triggertype: "auto",
+
+        modifiers: {
+            atk: 0.1,
+            attacks: 4,
+            atkinterval: -0.22,
+        },
+        apply: "self",
+        skillimage: "images/opicons/exusiaiskill.webp"
+
+    },
+    talents: [
+        {
+            name: "Fast Cartridge",
+            description: "ASPD +15",
+            modifiers: {
+                aspd: 15,
+            },
+            apply: "self",
+
+        },
+        {
+            name: "Angel's Blessings",
+            description: "ATK +8%; Max HP +13%;\nThe same buff is given to a random ally when Exusiai is deployed.",
+            modifiers: {
+                atk: 0.08,
+                maxhp: 0.13
+            },
+            apply: "selfplus",
+            applyaura: 10
+        },
+    ],
+    sfx: {
+        atk: {
+            src: "exusiai-atk",
+            volume: 0.1
+        },
+
+        skillatk: {
+            src: "exusiai-skillatk",
+            volume: 0.1
+        },
+
+        skillact: {
+            src: "skill-atk",
+            volume: 0.3
+        }
+    }
+}
+
+playerlist["Schwarz"] = {
+    name: "Schwarz",
+    hp: 1833,
+    atk: 970,
+    def: 225,
+    res: 0,
+    atkinterval: 1.6,
+    blockcount: 1,
+    rarity: "rgb(255, 115, 0)",
+
+    rdtimer: 41,
+    rdcounter: 0,
+
+    type: "r",
+    class: "sniper",
+    subclass: "Heavy shooter",
+
+
+    cost: 18,
+    basecost: 18,
+
+    range: 2,
+    targets: 1,
+
+
+    dmgtype: "physical",
+
+    classicon: "images/classicons/heavyshooter.webp",
+
+    opicon: "images/opicons/schwarz.webp",
+
+    spritesheet: "images/sprites/schwarz-sheet.webp",
+
+    skillsfx: true,
+
+    atkanim: {
+        start: 0,
+        end: 27,
+        contact: 3,
+        duration: 1,
+    },
+
+    death: {
+        start: 28,
+        end: 41,
+    },
+
+    idle: {
+        start: 42,
+        end: 71
+    },
+
+    drop: {
+        start: 72,
+        end: 86
+    },
+
+    skillidle: {
+        start: 87,
+        end: 146,
+
+    },
+    skillatkanim: {
+        start: 147,
+        end: 174,
+        contact: 150,
+        duration: 1,
+    },
+
+    skill: {
+        name: "Final Tactics",
+        description: "Range changes to 4 tiles in a straight line;\nATK +120%, attack interval increases.\nActivation chance of talent\nincreases to 100%.",
+        duration: 25,
+        sp: 25,
+        initialsp: 12,
+        chargetype: "second",
+        triggertype: "manual",
+
+        modifiers: {
+            atk: 1.2,
+            atkinterval: 0.4,
+            ignoreaniminterval: true,
+            range: 2.3,
+            critchance: 1,
+        },
+        apply: "self",
+        skillimage: "images/opicons/schwarzskill.webp"
+
+    },
+    talents: [
+        {
+            name: "Armor Penetration Arrow",
+            description: "Has a 20% chance of increasing\nthe next atk damage to 160%\nand reduce the target's DEF by 20% for 5 seconds.",
+            modifiers: {
+                critchance: 0.20,
+                critdmg: 1.6,
+            },
+            applyeffects: {
+                apply: "crit",
+                modifiers: {
+                    flatmultidef: 0.8,
+                },
+                duration: 5
+            },
+            apply: "self",
+
+        },
+        {
+            name: "Swift Action",
+            description: "Redeployment time -25 seconds",
+            modifiers: {
+            },
+            apply: "self",
+        },
+    ],
+    sfx: {
+        atk: {
+            src: "schwarz-atk",
+            volume: 0.05
+        },
+
+        hit: {
+            src: "schwarz-hit",
+            volume: 0.1
+        },
+
+        skillhit: {
+            src: "schwarz-skillhit",
+            volume: 0.15
+        },
+
+        skillact: {
+            src: "skill-atk",
+            volume: 0.3
+        }
+    }
+}
+
+playerlist["Ceobe"] = {
+    name: "Ceobe",
+    hp: 1565,
+    atk: 784,
+    def: 128,
+    res: 20,
+    atkinterval: 1.6,
+    blockcount: 1,
+    rarity: "rgb(255, 115, 0)",
+
+    rdtimer: 66,
+    rdcounter: 0,
+
+    type: "r",
+    class: "caster",
+    subclass: "Core caster",
+
+
+    cost: 19,
+    basecost: 19,
+
+    range: 2,
+    targets: 1,
+
+
+    dmgtype: "arts",
+
+    classicon: "images/classicons/core.png",
+
+    opicon: "images/opicons/ceobe.webp",
+
+    spritesheet: "images/sprites/ceobe-sheet.webp",
+
+    skillsfx: true,
+
+    atkanim: {
+        start: 0,
+        end: 23,
+        contact: 12,
+        duration: 1,
+    },
+
+    death: {
+        start: 24,
+        end: 38,
+    },
+
+    idle: {
+        start: 39,
+        end: 86
+    },
+
+    drop: {
+        start: 87,
+        end: 101
+    },
+
+    skillidle: {
+        start: 102,
+        end: 117,
+
+    },
+    skillatkanim: {
+        start: 118,
+        end: 127,
+        contact: 124,
+        duration: 1,
+
+    },
+
+    skill: {
+        name: "Really Hot Knives",
+        description: "Attack interval is reduced greatly;\nPrioritizes enemies with the highest DEF.",
+        duration: 40,
+        sp: 40,
+        initialsp: 25,
+        chargetype: "second",
+        triggertype: "manual",
+
+        modifiers: {
+            priority: "highDEF",
+            atkinterval: -1.072
+        },
+        apply: "self",
+        skillimage: "images/opicons/ceobeskill.webp"
+
+    },
+    talents: [
+        {
+            name: "Lone Journey",
+            description: "ATK +8%; ASPD+8%",
+            modifiers: {
+                flatmultiatk: 1.08,
+                aspd: 8,
+            },
+            apply: "self",
+        },
+        {
+            name: "Thresher",
+            description: "Each attack deals additional ARTS damage\nequal to 44% of the target's DEF.",
+            modifiers: {
+                bonusdefdmg: 0.44,
+            },
+            apply: "self",
+        },
+    ],
+    sfx: {
+        atk: {
+            src: "ceobe-atk",
+            volume: 0.05
+        },
+
+        hit: {
+            src: "ceobe-hit",
+            volume: 0.1
+        },
+
+        skillatk: {
+            src: "ceobe-skillatk",
+            volume: 0.1
+        },
+
+        skillhit: {
+            src: "ceobe-skillhit",
+            volume: 0.05
+        },
+
+        skillact: {
+            src: "skill-atk",
+            volume: 0.3
+        }
+    }
+}
+
+playerlist["Skadi"] = {
+    name: "Skadi",
+    hp: 3866,
+    atk: 1128,
+    def: 304,
+    res: 0,
+    atkinterval: 1.5,
+    blockcount: 1,
+    rarity: "rgb(255, 115, 0)",
+
+    rdtimer: 56,
+    rdcounter: 0,
+
+    type: "g",
+    class: "guard",
+    subclass: "Dreadnought",
+
+
+    cost: 17,
+    basecost: 17,
+
+    range: 1,
+    targets: 1,
+
+
+    dmgtype: "physical",
+
+    classicon: "images/classicons/dreadnought.png",
+
+    opicon: "images/opicons/skadi.webp",
+
+    spritesheet: "images/sprites/skadi-sheet.webp",
+
+    skillsfx: true,
+
+    atkanim: {
+        start: 0,
+        end: 22,
+        contact: 12,
+        duration: 1,
+    },
+
+    death: {
+        start: 23,
+        end: 37,
+    },
+
+    idle: {
+        start: 38,
+        end: 67
+    },
+
+    drop: {
+        start: 68,
+        end: 82
+    },
+
+
+    skill: {
+        name: "Wave Strike",
+        description: "ATK +170% for 30 seconds after deployment.",
+        duration: 30,
+        sp: 0,
+        initialsp: 0,
+        chargetype: "passive",
+        triggertype: "",
+
+        modifiers: {
+            atk: 1.7,
+        },
+        apply: "self",
+        skillimage: "images/opicons/skadiskill.webp"
+
+    },
+    talents: [
+
+        {
+            name: "Abyssal Predator",
+            description: "ATK +16%; Redeployment time -10 seconds.",
+            modifiers: {
+                flatmultiatk: 1.16
+            },
+            apply: "self",
+        },
+        {
+            name: "Abyssal Resurrection",
+            description: "When defeated for the first time,\ndoes not retreat and recovers HP instead.\nHowever, Max HP -60% and ASPD +30.",
+            condtalent: 1,
+            modifiers: {
+                instantheal: 1,
+                aspd: 30,
+                maxhp: -0.60,
+            },
+            condition: "death",
+        }
+    ],
+    sfx: {
+        atk: {
+            src: "melantha-atk",
+            volume: 0.1
+        },
+        hit: {
+            src: "melantha-hit",
+            volume: 0.1
+        },
+        skillhit: {
+            src: "skadi-skillhit",
+            volume: 0.1
+        },
+        skillact: {
+            src: "skill-atk",
+            volume: 0.3
+        }
+    }
+}
 playerlist["Savage"] = {
     name: "Savage",
     hp: 2680,
@@ -85,7 +999,7 @@ playerlist["Savage"] = {
         },
         apply: "self",
     }
-],
+    ],
     sfx: {
         atk: {
             src: "savage-atk",
@@ -171,7 +1085,7 @@ playerlist["Istina"] = {
         modifiers: {
             atk: 0.75,
             range: 0.5,
-            targets:2,
+            targets: 2,
         },
         apply: "self",
         skillimage: "images/opicons/istinaskill.webp"
@@ -222,7 +1136,7 @@ playerlist["Nearl"] = {
     atk: 502,
     def: 650,
     res: 10,
-    atkinterval: 2,
+    atkinterval: 1.2,
     blockcount: 3,
     rarity: "rgb(255, 221, 26)",
 
@@ -277,6 +1191,7 @@ playerlist["Nearl"] = {
         start: 74,
         end: 91,
         contact: 81,
+        duration: 1,
 
     },
 
@@ -289,9 +1204,11 @@ playerlist["Nearl"] = {
         chargetype: "second",
         triggertype: "manual",
         modifiers: {
-            range:1.5,
+            range: 1.5,
             atk: 1,
             dmgtype: "heal",
+            atkinterval: 1.56,
+            ignoreaniminterval: true,
         },
         apply: "self",
         skillimage: "images/opicons/nearlskill.webp"
@@ -409,7 +1326,7 @@ playerlist["Breeze"] = {
         chargetype: "second",
         triggertype: "manual",
         modifiers: {
-            targets:-1,
+            targets: -1,
             atk: 1.4,
         },
         apply: "self",
@@ -522,12 +1439,12 @@ playerlist["Beeswax"] = {
         chargetype: "second",
         triggertype: "manual",
         modifiers: {
-            range:0.5,
+            range: 0.5,
             atk: 0.6,
-            flatmultidef:(1/3),
-            flatres:-20,
-            hpregenpercent:-0.04,
-            canattack:true,
+            flatmultidef: (1 / 3),
+            flatres: -20,
+            hpregenpercent: -0.04,
+            canattack: true,
         },
         apply: "self",
         skillimage: "images/opicons/beeswaxskill.webp"
@@ -539,7 +1456,7 @@ playerlist["Beeswax"] = {
             description: "When this unit's skill is not active,\nrestores 4% Max HP per second",
 
             modifiers: {
-                hpregenpercent:0.04
+                hpregenpercent: 0.04
             },
             apply: "self",
         },
@@ -547,9 +1464,9 @@ playerlist["Beeswax"] = {
             name: "Trait",
             description: "Normally does not attack,\nbut has greatly increased DEF and RES;\nWhen skill is active, attacks deal AoE Arts Damage",
             modifiers: {
-                flatmultidef:3,
-                flatres:20,
-                canattack:false,
+                flatmultidef: 3,
+                flatres: 20,
+                canattack: false,
             },
             apply: "self",
         },
@@ -640,7 +1557,7 @@ playerlist["Franka"] = {
         chargetype: "second",
         triggertype: "manual",
         modifiers: {
-            def:-1,
+            def: -1,
             atk: 1,
             dmgtype: "true",
         },
@@ -752,9 +1669,9 @@ playerlist["Matterhorn"] = {
         chargetype: "second",
         triggertype: "manual",
         modifiers: {
-            maxhp:0.5,
+            maxhp: 0.5,
             def: 0.3,
-            res:1,
+            res: 1,
         },
         apply: "self",
         skillimage: "images/opicons/matterhornskill.webp"
@@ -851,14 +1768,14 @@ playerlist["Perfumer"] = {
 
     skill: {
         name: "Fine Blending",
-        description: "ASPD -50, ATK +250%",
+        description: "ASPD -25, ATK +250%",
         duration: 30,
         sp: 60,
         initialsp: 20,
         chargetype: "second",
         triggertype: "manual",
         modifiers: {
-            aspd:-25,
+            aspd: -25,
             atk: 2.5,
         },
         apply: "self",
@@ -867,6 +1784,7 @@ playerlist["Perfumer"] = {
     },
     talents: [
         {
+            
             //TODO hpregen
             name: "Aegean's Kiss",
             description: "ATK +5%; Max HP +5%; Targets healed +1",
@@ -965,7 +1883,7 @@ playerlist["Matoimaru"] = {
         chargetype: "second",
         triggertype: "manual",
         modifiers: {
-            def:-1,
+            def: -1,
             atk: 1.5,
         },
         apply: "self",
@@ -1185,7 +2103,7 @@ playerlist["Mousse"] = {
         applyeffects: {
             apply: "hit",
             modifiers: {
-                flatmultiatk: 0.40,
+                flatmultiatk: 0.60,
             },
             duration: 5
         },
@@ -1287,7 +2205,7 @@ playerlist["Meteor"] = {
         applyeffects: {
             apply: "hit",
             modifiers: {
-                flatmultidef: 0.35,
+                flatmultidef: 0.65,
             },
             duration: 5
         },
@@ -1387,7 +2305,7 @@ playerlist["Haze"] = {
         chargetype: "second",
         triggertype: "manual",
         modifiers: {
-            maxhp:-0.25,
+            maxhp: -0.25,
             atk: 0.60,
             aspd: 60,
         },
@@ -1395,20 +2313,20 @@ playerlist["Haze"] = {
         skillimage: "images/opicons/hazeskill.png"
     },
     talents: [
-    {
-        name: "Black mist",
-        description: "Each attack lowers the RES by 23% for 1sec.",
-        modifiers: {
-        },
-        applyeffects: {
-            apply: "hit",
+        {
+            name: "Black mist",
+            description: "Each attack lowers the RES by 23% for 1sec.",
             modifiers: {
-                res: -0.23,
             },
-            duration: 1
-        },
-        apply: "self",
-    }
+            applyeffects: {
+                apply: "hit",
+                modifiers: {
+                    res: -0.23,
+                },
+                duration: 1
+            },
+            apply: "self",
+        }
     ],
     sfx: {
         hit: {
@@ -1486,7 +2404,7 @@ playerlist["Courier"] = {
         triggertype: "manual",
         modifiers: {
             instantdp: 11,
-            def:0.9,
+            def: 0.9,
         },
         apply: "self",
         skillimage: "images/opicons/courierskill.png"
@@ -1495,7 +2413,7 @@ playerlist["Courier"] = {
         name: "Karlan Patrol",
         description: "DEF +9%",
         modifiers: {
-            flatmultidef:1.09
+            flatmultidef: 1.09
         },
         apply: "self",
     }],
@@ -1579,7 +2497,7 @@ playerlist["Scavenger"] = {
         triggertype: "manual",
         modifiers: {
             instantdp: 11,
-            atk:0.7
+            atk: 0.7
         },
         apply: "self",
         skillimage: "images/opicons/scavengerskill.png"
@@ -1588,8 +2506,8 @@ playerlist["Scavenger"] = {
         name: "Lone Wolf",
         description: "ATK +8%; DEF +9%",
         modifiers: {
-            flatmultiatk:1.08,
-            flatmultidef:1.09
+            flatmultiatk: 1.08,
+            flatmultidef: 1.09,
         },
         apply: "self",
     }],
@@ -1785,7 +2703,7 @@ playerlist["Melantha"] = {
         name: "ATK Up",
         description: "ATK +8%",
         modifiers: {
-            flatmultiatk: 0.08,
+            flatmultiatk: 1.08,
         },
         apply: "self",
     }]
@@ -1890,7 +2808,7 @@ playerlist["Popukar"] = {
         },
         apply: "self",
     }
-],
+    ],
     sfx: {
         atk: {
             src: "popukar-atk",
@@ -2452,10 +3370,11 @@ playerlist["Durin"] = {
     },
     talents: [{
         name: "Armor Break",
-        description: "ATK +6%",
+        description: "ATK +6%;\nAttacks prioritize the enemy with the highest DEF.",
 
         modifiers: {
             flatmultiatk: 1.06,
+            priority: "highDEF",
         },
         apply: "self",
     }],

@@ -13,19 +13,35 @@ class PlayerController extends CharaController {
 
         this.aura;
         this.dead = false;
+        this.deploybomb = false;
+        this.condtalent;
+        this.condtalentcounter = 0;
+        this.alivebuffs = [];
+
+    }
+    createEffects(auraManager) {
+        var aura = new BABYLON.Sprite("", auraManager);
+        aura.playAnimation(0, 13, false, 30);
+        aura.position = new BABYLON.Vector3(5 + this.x * 30, 19, 10 + this.y * 30);
+        aura.size = 70;
+        aura.width = 90;
+
+        aura.position.z -= this.y;
+        aura.position.x -= this.x;
 
     }
 
     createSkillAura(auraManager) {
-        this.aura = new BABYLON.Sprite("", auraManager);
-        this.aura.playAnimation(0, 3, true, 30 * this.gamespeed);
-        this.aura.position = new BABYLON.Vector3(-5 + this.x * 30, 20, 6 + this.y * 30);
-        this.aura.size = 65;
-        this.aura.width = 100;
+        if (this.aura == undefined) {
+            this.aura = new BABYLON.Sprite("", auraManager);
+            this.aura.playAnimation(0, 3, true, 30 * this.gamespeed);
+            this.aura.position = new BABYLON.Vector3(-5 + this.x * 30, 20, 6 + this.y * 30);
+            this.aura.size = 65;
+            this.aura.width = 100;
 
-        this.aura.position.z -= this.y * 1;
-        this.aura.position.x -= this.x * 1;
-
+            this.aura.position.z -= this.y;
+            this.aura.position.x -= this.x;
+        }
     }
 
     createDebuffAura(name, cellindex) {
@@ -58,7 +74,7 @@ class PlayerController extends CharaController {
     updateSpeed(gamespeed, pause) {
         this.gamespeed = gamespeed;
         if (this.sprite.cellIndex >= this.chara.atkanim.start && this.sprite.cellIndex <= this.chara.atkanim.end) {
-            this.sprite.playAnimation(this.sprite.cellIndex, this.chara.atkanim.end, false, 30 * this.gamespeed * this.buffs.getFinalAtkInterval(1));
+            this.sprite.playAnimation(this.sprite.cellIndex, this.chara.atkanim.end, false, 30 * this.gamespeed * this.buffs.getFinalAtkInterval(this.chara.atkanim.duration, true));
         }
 
         if (this.sprite.cellIndex >= this.chara.drop.start && this.sprite.cellIndex <= this.chara.drop.end) {
@@ -69,7 +85,7 @@ class PlayerController extends CharaController {
         }
         if (this.chara.skillatkanim != undefined) {
             if (this.sprite.cellIndex >= this.chara.skillatkanim.start && this.sprite.cellIndex <= this.chara.skillatkanim.end) {
-                this.sprite.playAnimation(this.sprite.cellIndex, this.chara.skillatkanim.end, false, 30 * this.gamespeed * this.buffs.getFinalAtkInterval(1));
+                this.sprite.playAnimation(this.sprite.cellIndex, this.chara.skillatkanim.end, false, 30 * this.gamespeed * this.buffs.getFinalAtkInterval(this.chara.atkanim.duration, true));
             }
             else this.sprite.delay = 30 * this.gamespeed
         }
@@ -84,6 +100,13 @@ class PlayerController extends CharaController {
         this.hp = res.hp
         this.maxhp = res.maxhp
         this.hp = Math.min(this.maxhp, this.hp + this.buffs.getFinalHpRegen(this.maxhp) * (1 / 30) / this.gamespeed)
+        if (this.hp / this.maxhp <= 0.4) {
+            if (this.condtalent != undefined) {
+                if (this.condtalent.condition == "hp") {
+                    this.checkConditionTalent();
+                }
+            }
+        }
         this.updateHpBar()
     }
 
@@ -112,7 +135,7 @@ class PlayerController extends CharaController {
 
         player0.position = new BABYLON.Vector3(-10 + this.x * 30, 20, 6 + this.y * 30);
         this.shadow.position = new BABYLON.Vector3(-10 + this.x * 30, 19, 6 + this.y * 30);
-        this.skillready.position = new BABYLON.Vector3(-10 + this.x * 30, 20, 6 + this.y * 30);
+        this.skillready.position = new BABYLON.Vector3(-10 + this.x * 30, 21, 6 + this.y * 30);
 
 
         player0.size = 65;
@@ -146,7 +169,21 @@ class PlayerController extends CharaController {
         this.activateTalents();
 
         var interval = setInterval(() => {
+            if (instance.sprite.cellIndex >= instance.chara.drop.start + 2) {
+                if (instance.chara.deploybomb && !instance.deploybomb) {
+                    instance.createEffects(instance.lvlcontroller.spriteManagers["effects"])
+                    instance.deploybomb = true
+                    instance.lvlcontroller.playSound(instance.chara.name + "-skillbomb", instance.chara.sfx.skillbomb.volume)
+                    instance.playerSkill.activateSkillBomb(instance, instance.lvlcontroller);
+                }
+            }
             if (instance.sprite.cellIndex == instance.chara.drop.end) {
+                if (instance.playerSkill.chargetype == "passive") {
+                    instance.lvlcontroller.playSound(instance.chara.name + "-skillact", instance.chara.sfx.skillact.volume)
+                    instance.lvlcontroller.playSound(instance.chara.name + "-skill", instance.lvlcontroller.vcvolume)
+                    instance.createSkillAura(instance.lvlcontroller.spriteManagers["skillaura"])
+                    instance.playerSkill.activateDurationSkill([instance], instance.lvlcontroller)
+                }
                 instance.spawning = false;
                 clearInterval(interval);
             }
@@ -167,13 +204,59 @@ class PlayerController extends CharaController {
 
     }
 
+    getApplyTargets(apply, playerlist) {
+        var res = [];
+        switch (apply) {
+            case "self":
+                res.push(this);
+                break;
+            case "selfplus":
+                res.push(this);
+                if (playerlist.length > 0) {
+                    let random = Math.floor(Math.random() * playerlist.length);
+                    let player = playerlist[random]
+                    res.push(player)
+                }
+                break;
+        }
+        return res;
+    }
+
     activateTalents() {
         var talents = this.chara.talents;
         for (let i = 0; i < talents.length; i++) {
-            if (talents[i].apply == "self")
-                this.buffs.buffs[talents[i].name] = { "name": talents[i].name, "modifiers": talents[i].modifiers }
-            if (talents[i].applyeffects != undefined)
-                this.buffs.applyeffects[talents[i].name] = talents[i].applyeffects
+            if (talents[i].condtalent != undefined)
+                this.condtalent = talents[i];
+            else {
+
+                var targets = [];
+                targets = this.getApplyTargets(talents[i].apply, this.lvlcontroller.activePlayers)
+                for (let j = 0; j < targets.length; j++) {
+                    targets[j].buffs.buffs[talents[i].name] = { "name": talents[i].name, "modifiers": talents[i].modifiers }
+                    if (talents[i].applyeffects != undefined) {
+                        if (talents[i].applyeffects.apply == "aliveallies")
+                            this.alivebuffs.push(talents[i].applyeffects)
+                        else targets[j].buffs.applyeffects[talents[i].name] = talents[i].applyeffects
+                    }
+                    if (talents[i].applyaura != undefined)
+                        targets[j].createDebuffAura(talents[i].name, talents[i].applyaura)
+
+                }
+            }
+        }
+    }
+
+    checkAliveBuffs() {
+        var targets = []
+        for (let i = 0; i < this.alivebuffs.length; i++) {
+            targets = this.getFirstPlayerInRange(this.lvlcontroller.activePlayers, this.alivebuffs[i].range, 99)
+            if (targets.length > 0) {
+                for (let j = 0; j < targets.length; j++) {
+                    targets[j].buffs.buffs[this.alivebuffs[i].name] = this.alivebuffs[i]
+                    targets[j].buffs.effects[this.alivebuffs[i].name] = this.alivebuffs[i].duration
+                }
+
+            }
         }
     }
 
@@ -211,9 +294,9 @@ class PlayerController extends CharaController {
             var contactframe = this.chara.atkanim.contact
             if (this.playerSkill.active && this.chara.skillatkanim != undefined) {
                 contactframe = this.chara.skillatkanim.contact
-                this.sprite.playAnimation(this.chara.skillatkanim.start, this.chara.skillatkanim.end, false, this.buffs.getFinalAtkInterval(1) * 30 * this.gamespeed);
+                this.sprite.playAnimation(this.chara.skillatkanim.start, this.chara.skillatkanim.end, false, this.buffs.getFinalAtkInterval(this.chara.atkanim.duration, true) * 30 * this.gamespeed);
             }
-            else this.sprite.playAnimation(this.chara.atkanim.start, this.chara.atkanim.end, false, this.buffs.getFinalAtkInterval(1) * 30 * this.gamespeed);
+            else this.sprite.playAnimation(this.chara.atkanim.start, this.chara.atkanim.end, false, this.buffs.getFinalAtkInterval(this.chara.atkanim.duration, true) * 30 * this.gamespeed);
 
             if (this.playerSkill.active && this.chara.skillsfx) {
                 if (this.chara.sfx.skillatk != undefined)
@@ -240,8 +323,11 @@ class PlayerController extends CharaController {
                     else {
                         for (let i = 0; i < enemy.length; i++) {
                             let splash = this.buffs.getSplash()
-                            if (!splash.splash)
-                                enemy[i].receiveDamage(instance)
+                            if (!splash.splash) {
+                                for (let j = 0; j < this.buffs.getAttacks(); j++) {
+                                    enemy[i].receiveDamage(instance)
+                                }
+                            }
                             else {
                                 let splashenemies = this.getSplashEnemiesInRange(enemies, enemy[i], splash.radius)
                                 for (let j = 0; j < splashenemies.length; j++)
@@ -273,6 +359,33 @@ class PlayerController extends CharaController {
         return false;
     }
 
+    checkConditionTalent() {
+        if (this.condtalent != undefined) {
+            if (this.condtalentcounter < this.condtalent.condtalent) {
+                this.condtalentcounter++
+                this.buffs.buffs[this.condtalent.name + this.condtalentcounter] = { "name": this.condtalent.name + this.condtalentcounter, "modifiers": this.condtalent.modifiers }
+                if (this.condtalent.applyeffects != undefined) {
+                    this.buffs.buffs[this.condtalent.name + this.condtalentcounter] = { "name": this.condtalent.name + this.condtalentcounter, "modifiers": this.condtalent.applyeffects.modifiers }
+                    this.buffs.effects[this.condtalent.name + this.condtalentcounter] = this.condtalent.applyeffects.duration
+                }
+
+                if (this.condtalent.modifiers.instantheal != undefined) {
+                    this.hp = Math.min(this.maxhp, this.hp + this.maxhp * this.condtalent.modifiers.instantheal)
+                    this.updateHpBar()
+                }
+
+                if (this.condtalent.modifiers.reactivateskill) {
+                    this.playerSkill.deactivateDurationSkill();
+                    this.lvlcontroller.playSound(this.chara.name + "-skillbomb", this.chara.sfx.skillbomb.volume)
+                    this.createEffects(this.lvlcontroller.spriteManagers["effects"])
+                    this.playerSkill.activateSkillBomb(this, this.lvlcontroller);
+
+                    this.createSkillAura(this.lvlcontroller.spriteManagers["skillaura"])
+                    this.playerSkill.activateDurationSkill([this], this.lvlcontroller)
+                }
+            }
+        }
+    }
 
     move(enemies, players) {
         if (!this.spawning) {

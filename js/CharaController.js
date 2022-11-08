@@ -46,6 +46,70 @@ class CharaController {
         this.healthBar.value = Math.round(this.hp / this.maxhp * 100)
 
     }
+    /*
+        addParticleEffects(){
+            var particleSystem = new BABYLON.ParticleSystem("particles", 30 , this.lvlcontroller.scene, null, true);
+            particleSystem.particleTexture = new BABYLON.Texture("images/textures/steamanger.png", this.lvlcontroller.scene, true,
+                false, BABYLON.Texture.TRILINEAR_SAMPLINGMODE);
+    
+            particleSystem.startSpriteCellID = 0;
+            particleSystem.endSpriteCellID = 31;
+            particleSystem.spriteCellHeight = 256;
+            particleSystem.spriteCellWidth = 128;
+            particleSystem.spriteCellChangeSpeed = 4;
+    
+            particleSystem.minScaleX = 50.0;
+            particleSystem.minScaleY = 80.0;
+            particleSystem.maxScaleX = 50.0;
+            particleSystem.maxScaleY = 80.0;
+            particleSystem.worldOffset = new BABYLON.Vector3(0,0, 3);
+    
+    
+            particleSystem.addSizeGradient(0, 0.0, 0.0);
+            particleSystem.addSizeGradient(1.0, 1, 1);
+    
+            particleSystem.translationPivot = new BABYLON.Vector2(0, -0.5);
+    
+            // Where the particles come from
+            var radius = 10;
+            var angle = Math.PI;
+            var coneEmitter = new BABYLON.ConeParticleEmitter(radius, 0);
+            coneEmitter.radiusRange = 0;
+            coneEmitter.heightRange = 0;
+    
+            particleSystem.particleEmitterType = coneEmitter;
+            particleSystem.emitter= this.mesh;
+    
+            // Life time of each particle (random between...
+            particleSystem.minLifeTime = 1.0;
+            particleSystem.maxLifeTime = 1.0;
+    
+            particleSystem.billboardMode = BABYLON.AbstractMesh.BILLBOARDMODE_Y;
+    
+            // Color gradient over life
+            particleSystem.addColorGradient(0, new BABYLON.Color4(1, 1, 1, 0));
+            particleSystem.addColorGradient(0.5, new BABYLON.Color4(1, 1, 1, 70/255));
+            particleSystem.addColorGradient(1.0, new BABYLON.Color4(1, 1, 1, 0));
+    
+            // Emission rate
+            particleSystem.emitRate = 20 ;
+    
+            // Blend mode : BLENDMODE_ONEONE, or BLENDMODE_STANDARD
+            particleSystem.blendMode = BABYLON.ParticleSystem.BLENDMODE_ADD;
+    
+            // Set the gravity of all particles
+            particleSystem.gravity = new BABYLON.Vector3(0, 0, 0);
+    
+            // Speed
+            particleSystem.minEmitPower = 0;
+            particleSystem.maxEmitPower = 0 ;
+            particleSystem.updateSpeed = 1/50;
+    
+            // Start the particle system
+            particleSystem.start();
+    
+        }
+        */
 
     //if healed, then receive healing
     receiveHealing(healer) {
@@ -138,6 +202,7 @@ class CharaController {
             }
             return 0;
         });
+        this.buffs.sortByPriority(enemies);
 
         //if player can hit more targets, get player range and find enemies that can be hit outside of blocked
 
@@ -145,8 +210,8 @@ class CharaController {
         var range = this.buffs.getFinalRange(this.chara.range)
         var line = false
         if (range / 0.5 % 2 != 0) {
-            if ((range - 0.3) % Math.round(range) == 0) {
-                range = this.buffs.getFinalRange(this.chara.range) - 0.3
+            if (Math.round(range - 0.3) % Math.round(range) == 0) {
+                range = Math.round(this.buffs.getFinalRange(this.chara.range) - 0.3)
                 line = true;
             }
             else {
@@ -253,7 +318,7 @@ class CharaController {
             }
             return 0;
         });
-
+        this.buffs.sortByPriority(enemies);
 
         var res = [];
         var targetcount = targets;
@@ -261,8 +326,8 @@ class CharaController {
         var range = ranget
         var line = false
         if (range / 0.5 % 2 != 0) {
-            if ((range - 0.3) % Math.round(range) == 0) {
-                range = ranget - 0.3
+            if (Math.round(range - 0.3) % Math.round(range) == 0) {
+                range = Math.round(ranget - 0.3)
                 line = true;
             }
             else {
@@ -341,11 +406,19 @@ class CharaController {
                 dmgreceived = dmg;
                 break;
         }
-        this.hp -= dmgreceived
+        if (this.buffs.getHitOrMiss(dmgtype))
+            this.hp -= this.buffs.getFinalDamage(dmgreceived)
 
         //update hp bar after receiving damage
         this.updateHpBar();
-
+        if (this.hp <= 0) {
+            if (this.condtalent != undefined) {
+                if (this.condtalent.condition == "death") {
+                    this.hp = 0;
+                    this.checkConditionTalent();
+                }
+            }
+        }
         //if dead
         if (this.hp <= 0) {
             if (!this.dead) {

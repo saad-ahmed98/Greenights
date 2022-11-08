@@ -349,8 +349,8 @@ class MainMenu extends LVLAbstract {
         select.text = "SELECTED " + selected.length + "/12";
         select.fontSize = "3%";
         select.color = "white";
-        select.top = "30%";
-        select.left = "25%";
+        select.top = "32%";
+        select.left = "30%";
         this.lvlcontroller.addControl(select)
 
 
@@ -360,14 +360,14 @@ class MainMenu extends LVLAbstract {
         var z = 0;
         var myScrollViewer = new BABYLON.GUI.ScrollViewer();
         myScrollViewer.width = "70%"
-        myScrollViewer.height = "60%";
-        myScrollViewer.left = "-13.5%";
+        myScrollViewer.height = "70%";
+        myScrollViewer.left = "-5%";
 
-        myScrollViewer.top = "-5%";
+        myScrollViewer.top = "-2%";
         myScrollViewer.color = "transparent"
 
         for (let i = 0; i < keys.length; i++) {
-            if (i % 7 == 0 && i > 0) {
+            if (i % 8 == 0 && i > 0) {
                 j++
                 z = 0
             }
@@ -378,8 +378,8 @@ class MainMenu extends LVLAbstract {
             
             let button = BABYLON.GUI.Button.CreateSimpleButton("but", "");
             button.width = "20.5%";
-            button.height = "12%";
-            button.top = (10 + z * 13) + "%";
+            button.height = "9.5%";
+            button.top = (10 + z * 10) + "%";
             button.left = (0 + j * 21.5) + "%";
             button.color = "white";
             button.hoverCursor = "pointer";
@@ -487,7 +487,7 @@ class MainMenu extends LVLAbstract {
         container.width = "28%";
         container.height = "18%";
         container.left = "0%";
-        container.top = "15%";
+        container.top = "17%";
         container.color = "white";
         container.thickness = 1;
         container.background = "rgba(0, 0, 0, 0.3)";
@@ -505,7 +505,7 @@ class MainMenu extends LVLAbstract {
         //stats description
         var text = new BABYLON.GUI.TextBlock();
         text.text = "\"" + player.name + "\"\n\tHP\t\t" + player.hp + "\n\tATK\t\t" + player.atk + "\n\tDEF\t\t" + player.def + "\n\tRES\t\t" + player.res + "\n\tBLOCK\t\t" +
-            player.blockcount + "\n\tDMG\t\t" + player.dmgtype.toUpperCase() + "\n\tCOST\t\t" + player.cost;
+            player.blockcount + "\n\tDMG\t\t" + player.dmgtype.toUpperCase() + "\n\tCOST\t\t" + player.basecost;
         text.color = "white";
         text.fontSize = "10%";
         text.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT
@@ -543,7 +543,7 @@ class MainMenu extends LVLAbstract {
 
         this.opcontroller.addControl(container);
         var image = new BABYLON.GUI.Image("tooltip", player.skill.skillimage);
-        image.width = "25%"
+        image.width = "27%"
         image.height = "75%"
         image.top = "-5%"
         image.left = "-33%"
@@ -561,7 +561,7 @@ class MainMenu extends LVLAbstract {
         container.width = "28%";
         container.height = "18%";
         container.left = "0%";
-        container.top = "32.9%";
+        container.top = "34.9%";
         container.color = "white";
         container.thickness = 1;
         container.background = "rgba(0, 0, 0, 0.3)";
@@ -578,7 +578,7 @@ class MainMenu extends LVLAbstract {
         //skill description
         text = new BABYLON.GUI.TextBlock();
         text.text = "\"" + player.skill.name + "\"\n\n" + player.skill.chargetype + "\t\t|\t\t" + player.skill.triggertype + "\n\n" + player.skill.description
-        text.fontSize = "10%";
+        text.fontSize = "8.5%";
         text.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT
         text.textVerticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP
 
@@ -607,7 +607,7 @@ class MainMenu extends LVLAbstract {
         container.width = "28%";
         container.height = "24%";
         container.left = "0%";
-        container.top = "50.9%";
+        container.top = "52.9%";
         container.color = "white";
         container.thickness = 1;
         container.background = "rgba(0, 0, 0, 0.3)";
@@ -629,7 +629,7 @@ class MainMenu extends LVLAbstract {
                 text.text += "-------\n"
         }
         text.color = "white";
-        text.fontSize = "8%";
+        text.fontSize = "6.5%";
         text.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT
         text.left = "5%";
 
@@ -664,7 +664,7 @@ class MainMenu extends LVLAbstract {
         container.width = "28%";
         container.height = "59.9%";
         container.left = "0%";
-        container.top = "15%";
+        container.top = "17%";
         container.color = "white";
         container.thickness = 1;
         container.background = "rgba(0, 0, 0, 0.3)";

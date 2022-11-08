@@ -35,13 +35,21 @@ class Buffs {
             dmgtype: "",
             doublehitchance: 0,
             dmgpen: true,
-            taunt:1,
-            maxhp:1,
-            flatmultiatk:1,
-            flatmultidef:1,
-            canattack:true,
-            flathpregen:0,
-            hpregenpercent:0,
+            taunt: 1,
+            maxhp: 1,
+            flatmultiatk: 1,
+            flatmultidef: 1,
+            canattack: true,
+            flathpregen: 0,
+            hpregenpercent: 0,
+            dmgreduction: 0,
+            bonusdefdmg: 0,
+            priority: "",
+            ignoreaniminterval: false,
+            attacks: 1,
+            physdodge: 0,
+            artsdodge: 0
+
         }
     }
 
@@ -55,9 +63,9 @@ class Buffs {
                     this.modifiers[keysmodifiers[j]] = this.buffs[keys[i]].modifiers[keysmodifiers[j]]
                 else {
                     //if movspeed change, then have at least a min of 0.1
-                    if(keysmodifiers[j]=="flatmultiatk" || keysmodifiers[j]=="flatmultidef" || keysmodifiers[j]=="speedpercent"){
+                    if (keysmodifiers[j] == "flatmultiatk" || keysmodifiers[j] == "flatmultidef" || keysmodifiers[j] == "speedpercent") {
 
-                        this.modifiers[keysmodifiers[j]] *=this.buffs[keys[i]].modifiers[keysmodifiers[j]]
+                        this.modifiers[keysmodifiers[j]] *= this.buffs[keys[i]].modifiers[keysmodifiers[j]]
                     }
                     //add the values to the currently known value
                     else
@@ -71,25 +79,62 @@ class Buffs {
     getFinalAtk(atk) {
         this.initModifiers();
         this.sumBuffs();
-        return Math.max(0,Math.round(((atk *this.modifiers.flatmultiatk)* (1 + this.modifiers.atk))));
+        return Math.max(0, Math.round(((atk * this.modifiers.flatmultiatk) * (1 + this.modifiers.atk))));
     }
 
-    getFinalAtkInterval(atkinterval) {
+    getAttacks() {
         this.initModifiers();
         this.sumBuffs();
-        return 100 / ((100 + this.modifiers.aspd) / (atkinterval + this.modifiers.atkinterval));
+        return this.modifiers.attacks;
+    }
+
+    getBonusDefDmg(def) {
+        this.initModifiers();
+        this.sumBuffs();
+        return def * this.modifiers.bonusdefdmg;
+    }
+
+    sortByPriority(enemies) {
+        this.initModifiers();
+        this.sumBuffs();
+        switch (this.modifiers.priority) {
+            case "highDEF":
+                //sort by highest DEF
+                enemies.sort(function (x, y) {
+                    if (x.buffs.getFinalDef(x.chara.def) > y.buffs.getFinalDef(y.chara.def)) {
+                        return -1;
+                    }
+                    if (x.buffs.getFinalDef(x.chara.def) < y.buffs.getFinalDef(y.chara.def)) {
+                        return 1;
+                    }
+                    return 0;
+                });
+                break;
+            case "":
+                break;
+        }
+    }
+
+    getFinalAtkInterval(atkinterval, anim = false) {
+        this.initModifiers();
+        this.sumBuffs();
+        var atkint = this.modifiers.atkinterval
+
+        if (anim && this.modifiers.ignoreaniminterval)
+            atkint = 0
+        return 100 / ((100 + this.modifiers.aspd) / (atkinterval + atkint));
     }
 
     getFinalDef(def) {
         this.initModifiers();
         this.sumBuffs();
-        return Math.max(0,Math.round(((def+this.modifiers.flatdef) *(this.modifiers.flatmultidef)* (1 + this.modifiers.def))));
+        return Math.max(0, Math.round(((def + this.modifiers.flatdef) * (this.modifiers.flatmultidef) * (1 + this.modifiers.def))));
     }
 
     getFinalRes(res) {
         this.initModifiers();
         this.sumBuffs();
-        return Math.max(0,Math.round(((res+this.modifiers.flatres) * (1 + this.modifiers.res))));
+        return Math.max(0, Math.round(((res + this.modifiers.flatres) * (1 + this.modifiers.res))));
     }
 
     getDpOnKill() {
@@ -150,31 +195,53 @@ class Buffs {
         return false;
     }
 
-    getCurrentHpRatio(hp,maxhp,charahp){
+    getCurrentHpRatio(hp, maxhp, charahp) {
         this.initModifiers();
         this.sumBuffs();
-        var newmaxhp = Math.round(charahp*this.modifiers.maxhp)
-        if(newmaxhp==maxhp)
-            return {"hp":hp,"maxhp":maxhp}
-        var currentratio  = hp/maxhp
-        return {"hp":Math.round(newmaxhp*currentratio),"maxhp":newmaxhp}
+        var newmaxhp = Math.round(charahp * this.modifiers.maxhp)
+        if (newmaxhp == maxhp)
+            return { "hp": hp, "maxhp": maxhp }
+        var currentratio = hp / maxhp
+        return { "hp": Math.round(newmaxhp * currentratio), "maxhp": newmaxhp }
     }
 
-    getFinalHpRegen(maxhp){
+    getFinalHpRegen(maxhp) {
         this.initModifiers();
         this.sumBuffs();
-        return this.modifiers.flathpregen+maxhp*this.modifiers.hpregenpercent
+        return this.modifiers.flathpregen + maxhp * this.modifiers.hpregenpercent
     }
 
-    getFinalBlock(block){
+    getFinalBlock(block) {
         this.initModifiers();
         this.sumBuffs();
-        return block+this.modifiers.block
+        return block + this.modifiers.block
     }
 
-    getFinalRange(range){
+    getFinalRange(range) {
         this.initModifiers();
         this.sumBuffs();
-        return range+this.modifiers.range
+        return range + this.modifiers.range
+    }
+
+    getHitOrMiss(dmgtype) {
+        this.initModifiers();
+        this.sumBuffs();
+        switch (dmgtype) {
+            case "arts":
+                if (Math.random() <= this.modifiers.artsdodge && this.modifiers.artsdodge > 0)
+                    return false
+            case "physical":
+                if (Math.random() <= this.modifiers.physdodge && this.modifiers.physdodge > 0)
+                    return false
+        }
+        return true
+    }
+
+
+
+    getFinalDamage(dmg) {
+        this.initModifiers();
+        this.sumBuffs();
+        return dmg - dmg * this.modifiers.dmgreduction
     }
 }

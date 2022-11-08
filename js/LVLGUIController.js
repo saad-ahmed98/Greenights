@@ -875,7 +875,7 @@ class LVLGUIController {
 
         textbox = new BABYLON.GUI.Rectangle();
         textbox.width = "60%";
-        textbox.left = "20%";
+        textbox.left = "18%";
         textbox.color = "white";
         textbox.thickness = 0;
         textbox.background = "transparent";
@@ -883,11 +883,11 @@ class LVLGUIController {
         //skill description
         text = new BABYLON.GUI.TextBlock();
         text.text = player.chara.skill.name + "\n\n" + player.chara.skill.chargetype + "\t\t|\t\t" + player.chara.skill.triggertype + "\n\n" + player.chara.skill.description
-        text.fontSize = "10%";
+        text.fontSize = "7.5%";
         text.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT
         text.textVerticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP
 
-        text.left = "5%";
+        text.left = "0%";
         text.top = "6%";
 
         textbox.addControl(text)

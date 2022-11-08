@@ -1460,7 +1460,7 @@ enemylist["Patriot"] = {
     name:"Patriot",
     hp: 45000,
     atk: 4000,
-    def: 1700,
+    def: 1900,
     res:90,
     atkinterval: 4,
     speed:0.3,
@@ -1860,7 +1860,7 @@ enemylist["Vicious Training Gloompincer"] = {
     type:"g",
     range:0,
     dmgtype:"physical",
-    size:1,
+    size:0.95,
     tooltip:"An Infected creature commonly\nfound in the rivers of Kazimierz.",
     targets:1,
 

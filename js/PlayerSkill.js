@@ -29,13 +29,42 @@ class PlayerSkill {
         for (let i = 0; i < targets.length; i++) {
 
             targets[i].buffs.buffs[this.name] = { "name": this.name, "modifiers": this.modifiers }
-            if (this.applyeffects != undefined)
-                targets[i].buffs.applyeffects[this.name] = this.applyeffects
+            if (this.applyeffects != undefined) {
+                if (this.applyeffects.apply == "aliveallies")
+                    targets[i].alivebuffs.push(this.applyeffects)
+                else targets[i].buffs.applyeffects[this.name] = this.applyeffects
+                
+            }
 
         }
 
         this.targets = targets;
 
+    }
+
+    activateSkillBomb(player, lvl) {
+        var skillbomb = this.modifiers.skillbomb;
+        var enemy = [];
+        if (skillbomb == undefined)
+            return;
+        if (skillbomb.dmgtype == "heal")
+            enemy = player.getLowestHpPlayerInRange(lvl.activePlayers, skillbomb.range, skillbomb.targets);
+        else {
+            enemy = player.getFirstEnemyInRange(lvl.enemies, skillbomb.range, skillbomb.targets);
+
+        }
+        if (enemy.length > 0) {
+            if (skillbomb.dmgtype == "heal") {
+                for (let i = 0; i < enemy.length; i++)
+                    enemy[i].receiveHealing(player);
+            }
+            else {
+                for (let i = 0; i < enemy.length; i++) {
+                    enemy[i].receiveDamage(player, false, skillbomb.dmg, skillbomb.dmgtype, skillbomb.applyeffects);
+
+                }
+            };
+        }
     }
 
     activateDmgUpSkill() {
