@@ -136,8 +136,11 @@ class CharaController {
     getFirstPlayerInRange(players, range, targets) {
         var res = []
         var targetcount = targets;
+        var offset = 15
+        if(range>0)
+            offset = 0
 
-        var squarerange = [[this.mesh.position.x - 15 - 30 * range, this.mesh.position.x + 15 + 30 * range], [this.mesh.position.z - 15 - 30 * range, this.mesh.position.z + 15 + 30 * range]];
+        var squarerange = [[this.mesh.position.x - offset - 30 * range, this.mesh.position.x + offset + 30 * range], [this.mesh.position.z -  offset - 30 * range, this.mesh.position.z + offset + 30 * range]];
         for (let i = players.length - 1; i >= 0; i--) {
             if (this.between(players[i].x * 30, squarerange[0]) && this.between(players[i].y * 30, squarerange[1])) {
                 res.push(players[i])
@@ -153,7 +156,9 @@ class CharaController {
         if (range == 0 && targets > 1) {
             // get the chara real range
             range = this.chara.range
-            var squarerange = [[this.mesh.position.x - 15 - 30 * range, this.mesh.position.x + 15 + 30 * range], [this.mesh.position.z - 15 - 30 * range, this.mesh.position.z + 15 + 30 * range]];
+            if(range>0)
+                offset = 0
+            var squarerange = [[this.mesh.position.x - offset - 30 * range, this.mesh.position.x + offset + 30 * range], [this.mesh.position.z - offset - 30 * range, this.mesh.position.z + offset + 30 * range]];
             for (let i = players.length - 1; i >= 0; i--) {
                 if (this.between(players[i].x * 30, squarerange[0]) && this.between(players[i].y * 30, squarerange[1])) {
                     var found = false;
