@@ -218,7 +218,7 @@ class Buffs {
     getFinalBlock(block) {
         this.initModifiers();
         this.sumBuffs();
-        return block + this.modifiers.block
+        return Math.max(0,block + this.modifiers.block)
     }
 
     getFinalRange(range) {

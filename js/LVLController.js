@@ -78,6 +78,8 @@ class LVLController extends LVLAbstract {
         this.vcvolume = 0.3
 
         this.zoom = false;
+
+        this.saileach = false;
     }
 
     restart() {
@@ -879,7 +881,7 @@ class LVLController extends LVLAbstract {
             }
             if (this.enemies[i].finish) {
                 this.playSound("alarmenter", 0.3)
-                this.hp-=this.enemies[i].chara.hploss;
+                this.hp -= this.enemies[i].chara.hploss;
                 if (this.enemies[i].enemySkill != undefined) {
                     if (this.enemies[i].enemySkill.skilltype == "alive") {
                         this.enemies[i].enemySkill.deactivateSkill(this.enemies)
@@ -1066,7 +1068,7 @@ class LVLController extends LVLAbstract {
         var keys = Object.keys(player.buffs.effectSprite)
         for (let i = 0; i < keys.length; i++)
             player.buffs.effectSprite[keys[i]].dispose()
-        
+
         player.hp = -999;
         this.currentdp += Math.round(player.chara.cost / 2)
         player.dead = true;
@@ -1443,7 +1445,21 @@ class LVLController extends LVLAbstract {
         this.tiles[x][y].player = player;
         player.createPlayer(player, this.spriteManagers[p], this.gui, this.spriteManagers["icons"]);
         player.gamespeed = this.gamespeed;
+        if (this.saileach) {
+            var keys = Object.keys(this.playerlist);
+            for (let i = 0; i < keys.length; i++)
+                this.playerlist[keys[i]].cost += 2
+            this.saileach = false;
+        }
+        if (player.chara.name == "Saileach") {
+            var keys = Object.keys(this.playerlist);
+            for (let i = 0; i < keys.length; i++)
+                this.playerlist[keys[i]].cost -= 2
+            this.saileach = true;
+        }
+
         this.activePlayers.push(player);
+        
 
     }
 

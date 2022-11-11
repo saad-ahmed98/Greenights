@@ -1,4 +1,147 @@
 let playerlist = {};
+
+playerlist["Saileach"] = {
+    name: "Saileach",
+    hp: 1835,
+    atk: 611,
+    def: 407,
+    res: 0,
+    atkinterval: 1.3,
+    blockcount: 1,
+
+    rdtimer: 66,
+    rdcounter: 0,
+
+    type: "g",
+    class: "vanguard",
+    subclass: "Flagbearer",
+    rarity: "rgb(255, 115, 0)",
+
+
+    cost: 10,
+    basecost: 10,
+
+    range: 1,
+    targets: 1,
+
+    dmgtype: "physical",
+
+    classicon: "images/classicons/flagbearer.webp",
+
+    opicon: "images/opicons/saileach.webp",
+
+    spritesheet: "images/sprites/saileach-sheet.webp",
+    skillsfx: false,
+
+    atkanim: {
+        start: 0,
+        end: 14,
+        contact: 8,
+        duration: 1.2,
+    },
+
+    death: {
+        start: 15,
+        end: 29,
+    },
+
+    idle: {
+        start: 30,
+        end: 69,
+        duration: 1.2,
+    },
+
+    drop: {
+        start: 70,
+        end: 84
+    },
+    skillidle:{
+        start: 85,
+        end: 124
+    },
+
+    skill: {
+        name: "Inheritance of Faith",
+        description: "Range +1.Instantly gains 20 DP.\nGrants DEF +50% and regenerates HP\nequals to 50% of Saileach's ATK\nto the ally with the lowest HP percentage\nin range.",
+        duration: 15,
+        sp: 29,
+        initialsp: 15,
+        chargetype: "second",
+        triggertype: "manual",
+        modifiers: {
+            instantdp:20,
+            canattack:false,
+            range:1,
+            block:-99,
+        },
+        applyeffects:
+        {
+            name: "Faith effect",
+            apply: "aliveallies",
+            range:2,
+            modifiers: {
+                def: 0.5,
+                flathpregen:{
+                    stat:"atk",
+                    percent:0.5
+                }
+            },
+            duration: 0.1,
+            targets:1,
+            effecticon:13,
+            targetselected:[],
+        },
+        apply: "self",
+        skillimage: "images/opicons/saileachskill.webp"
+
+    },
+    talents: [{
+        name: "Spiritual Influence",
+        description: "After deployment, the next operator has -2 DP Cost",
+        modifiers: {
+        },
+        apply: "self",
+    },{
+        name: "Unwavering Banner",
+        description: "Allied units within the surrounding 8 tiles of Saileach\nhave ASPD +12 and regenerate 1.5% of their own Max HP.",
+        modifiers: {
+        },
+        applyeffects:
+        {
+            name:"Unwavering Banner effect",
+            apply: "aliveallies",
+            range:1.5,
+            modifiers: {
+                aspd: 12,
+                hpregenpercent: 0.015,
+            },
+            duration: 0.5,
+            targets:99,
+        },
+        apply: "self",
+    },
+    {
+        name: "Trait",
+        description: "Cannot block enemies or attack during the skill duration.",
+        modifiers: {
+
+        },
+        apply: "self",
+    },
+],
+    sfx: {
+        hit: {
+            src: "saileach-hit",
+            volume: 0.1
+        },
+        skillact: {
+            src: "skill-flag",
+            volume: 0.3
+        }
+    }
+
+}
+
 playerlist["Texas"] = {
     name: "Texas",
     hp: 1598,
@@ -232,7 +375,8 @@ playerlist["Shining"] = {
             modifiers: {
                 def: 1,
             },
-            duration: 0.5
+            duration: 0.5,
+            targets:99,
         },
         apply: "self",
         skillimage: "images/opicons/shiningskill.webp"
@@ -259,7 +403,8 @@ playerlist["Shining"] = {
             modifiers: {
                 flatdef: 65,
             },
-            duration: 0.5
+            duration: 0.5,
+            targets:99,
         },
         apply: "self",
     }
@@ -274,7 +419,6 @@ playerlist["Shining"] = {
             volume: 0.3
         }
     }
-
 
 }
 
@@ -2728,6 +2872,7 @@ playerlist["Melantha"] = {
     }
 }
 
+/*
 playerlist["Popukar"] = {
     name: "Popukar",
     hp: 1858,
@@ -2828,7 +2973,7 @@ playerlist["Popukar"] = {
         }
     }
 }
-
+*/
 playerlist["Fang"] = {
     name: "Fang",
     hp: 1325,

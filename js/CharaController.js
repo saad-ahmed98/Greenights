@@ -120,12 +120,15 @@ class CharaController {
 
     //creates a debuff icon on top of the player or enemy
     createDebuffAura(name, cellindex) {
+        if(this.buffs.effectSprite[name]==undefined){
         var icon = new BABYLON.Sprite("", this.lvlcontroller.spriteManagers["icons"]);
         icon.cellIndex = cellindex
         icon.position = new BABYLON.Vector3(this.sprite.position.x, 21, this.sprite.position.z);
         icon.size = 65;
         icon.width = 90;
         this.buffs.effectSprite[name] = icon
+        }
+
     }
 
 
@@ -282,6 +285,44 @@ class CharaController {
         for (let i = 0; i < players.length; i++) {
             var counter = Math.abs(Math.abs(Math.round(players[i].mesh.position.x / 30) - this.x) - range);
             if (this.between(players[i].x * 30, squarerange[0]) && this.between(players[i].y * 30, squarerange[1]) && players[i].hp < players[i].chara.hp) {
+                if (Math.abs(Math.round(players[i].mesh.position.z / 30) - this.y) <= counter + rangeexpand) {
+                    if (res.length < targetcount)
+                        res.push(players[i])
+                    else {
+                        let count = 99
+                        for (let j = 0; j < res.length; j++) {
+                            if ((players[i].hp / players[i].maxhp) < res[j].hp / res[j].maxhp) {
+                                if (count == 99) {
+                                    count = j;
+                                }
+                                else if (res[count].hp / res[count].maxhp > res[j].hp / res[j].maxhp)
+                                    count = j
+                            }
+                        }
+                        if (count != 99)
+                            res[count] = players[i];
+                    }
+
+                }
+            }
+        }
+        return res;
+    }
+
+     //get player for healing, heal the player with the least amount of hp % in priority
+     getHpPlayerInRange(players, ranget, targets) {
+        var rangeexpand = 0
+        var range = ranget
+        if (range / 0.5 % 2 != 0) {
+            range = ranget - 0.5
+            rangeexpand += 1
+        }
+        var squarerange = [[this.x * 30 - 15 - 30 * range, this.x * 30 + 15 + 30 * range], [this.y * 30 - 15 - 30 * range, this.y * 30 + 15 + 30 * range]];
+        var targetcount = targets;
+        var res = [];
+        for (let i = 0; i < players.length; i++) {
+            var counter = Math.abs(Math.abs(Math.round(players[i].mesh.position.x / 30) - this.x) - range);
+            if (this.between(players[i].x * 30, squarerange[0]) && this.between(players[i].y * 30, squarerange[1])) {
                 if (Math.abs(Math.round(players[i].mesh.position.z / 30) - this.y) <= counter + rangeexpand) {
                     if (res.length < targetcount)
                         res.push(players[i])

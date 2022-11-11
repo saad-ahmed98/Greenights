@@ -44,10 +44,11 @@ class PlayerController extends CharaController {
     }
 
     checkBlocking() {
-        if (this.blockedenemies.length > this.buffs.getFinalBlock(this.chara.blockcount)) {
+        if (this.blockedenemies.length > this.buffs.getFinalBlock(this.chara.blockcount) && this.blockedenemies.length>0) {
             this.blockedenemies[this.blockedenemies.length - 1].unblock()
             this.blockedenemies.splice(this.blockedenemies.length - 1, 1)
         }
+        this.blocking = this.blockedenemies.length
     }
 
     removeBlocked(id) {
@@ -224,7 +225,7 @@ class PlayerController extends CharaController {
                     targets[j].buffs.buffs[talents[i].name] = { "name": talents[i].name, "modifiers": talents[i].modifiers }
                     if (talents[i].applyeffects != undefined) {
                         if (talents[i].applyeffects.apply == "aliveallies")
-                            this.alivebuffs.push(talents[i].applyeffects)
+                            this.alivebuffs.push(JSON.parse(JSON.stringify(talents[i].applyeffects)))
                         else targets[j].buffs.applyeffects[talents[i].name] = talents[i].applyeffects
                     }
                     if (talents[i].effecticon != undefined)
@@ -238,15 +239,35 @@ class PlayerController extends CharaController {
     checkAliveBuffs() {
         var targets = []
         for (let i = 0; i < this.alivebuffs.length; i++) {
-            targets = this.getFirstPlayerInRange(this.lvlcontroller.activePlayers, this.alivebuffs[i].range, 99)
+            targets = this.getHpPlayerInRange(this.lvlcontroller.activePlayers, this.alivebuffs[i].range,this.alivebuffs[i].targets )
+            if(this.alivebuffs[i].targetselected!=undefined){
+                if(this.alivebuffs[i].targetselected.length>0)
+                    targets = this.alivebuffs[i].targetselected
+                else this.alivebuffs[i].targetselected = targets
+            }
+
             if (targets.length > 0) {
                 for (let j = 0; j < targets.length; j++) {
+                    this.alivebuffs[i].modifiers = this.constructBuffs(this.alivebuffs[i].modifiers)
                     targets[j].buffs.buffs[this.alivebuffs[i].name] = this.alivebuffs[i]
                     targets[j].buffs.effects[this.alivebuffs[i].name] = this.alivebuffs[i].duration
+                    if (this.alivebuffs[i].effecticon != undefined)
+                    targets[j].createDebuffAura(this.alivebuffs[i].name, this.alivebuffs[i].effecticon)
                 }
 
             }
         }
+    }
+
+    //if the buff is directly tied to the current player stats
+    constructBuffs(modifiers){
+        var keys = Object.keys(modifiers);
+        for(let i = 0;i<keys.length;i++){
+            if(typeof modifiers[keys[i]] === 'object'){
+                modifiers[keys[i]]=this.chara[modifiers[keys[i]].stat]*modifiers[keys[i]].percent
+            }
+        }
+        return modifiers
     }
 
     addHPBar(gui) {
