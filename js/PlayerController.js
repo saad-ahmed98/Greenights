@@ -28,7 +28,6 @@ class PlayerController extends CharaController {
 
         aura.position.z -= this.y;
         aura.position.x -= this.x;
-
     }
 
     createSkillAura(auraManager) {
@@ -42,17 +41,6 @@ class PlayerController extends CharaController {
             this.aura.position.z -= this.y;
             this.aura.position.x -= this.x;
         }
-    }
-
-    createDebuffAura(name, cellindex) {
-        var icon = new BABYLON.Sprite("", this.lvlcontroller.spriteManagers["icons"]);
-        icon.cellIndex = cellindex
-        icon.position = new BABYLON.Vector3(-10.5 + this.x * 30, 21, 5 + this.y * 30);
-        icon.size = 65;
-        icon.width = 90;
-        icon.position.z -= this.y;
-        icon.position.x -= this.x;
-        this.buffs.effectSprite[name] = icon
     }
 
     checkBlocking() {
@@ -108,6 +96,7 @@ class PlayerController extends CharaController {
             }
         }
         this.updateHpBar()
+        this.checkDeath()
     }
 
     createPlayer(id, spriteManager, gui, iconsManager) {
@@ -135,7 +124,7 @@ class PlayerController extends CharaController {
 
         player0.position = new BABYLON.Vector3(-10 + this.x * 30, 20, 6 + this.y * 30);
         this.shadow.position = new BABYLON.Vector3(-10 + this.x * 30, 19, 6 + this.y * 30);
-        this.skillready.position = new BABYLON.Vector3(-10 + this.x * 30, 21, 6 + this.y * 30);
+        this.skillready.position = new BABYLON.Vector3(-10 + this.x * 30, 22, 6 + this.y * 30);
 
 
         player0.size = 65;
@@ -238,8 +227,8 @@ class PlayerController extends CharaController {
                             this.alivebuffs.push(talents[i].applyeffects)
                         else targets[j].buffs.applyeffects[talents[i].name] = talents[i].applyeffects
                     }
-                    if (talents[i].applyaura != undefined)
-                        targets[j].createDebuffAura(talents[i].name, talents[i].applyaura)
+                    if (talents[i].effecticon != undefined)
+                        targets[j].createDebuffAura(talents[i].name, talents[i].effecticon)
 
                 }
             }
@@ -397,7 +386,7 @@ class PlayerController extends CharaController {
                     this.running = true;
                 }
                 this.atktimer += 1 / this.gamespeed;
-                if (this.atktimer >= this.buffs.getFinalAtkInterval(this.chara.atkinterval) * 20 && this.buffs.getCanAttack()) {
+                if (this.atktimer >= this.buffs.getFinalAtkInterval(this.chara.atkinterval) * 25 && this.buffs.getCanAttack()) {
                     this.atktimer = 0;
                     var success = this.attack(enemies, players);
                     if (!success)

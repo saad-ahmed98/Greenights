@@ -118,6 +118,17 @@ class CharaController {
         this.updateHpBar();
     }
 
+    //creates a debuff icon on top of the player or enemy
+    createDebuffAura(name, cellindex) {
+        var icon = new BABYLON.Sprite("", this.lvlcontroller.spriteManagers["icons"]);
+        icon.cellIndex = cellindex
+        icon.position = new BABYLON.Vector3(this.sprite.position.x, 21, this.sprite.position.z);
+        icon.size = 65;
+        icon.width = 90;
+        this.buffs.effectSprite[name] = icon
+    }
+
+
     //used by enemy, get first player in range
     // players is the list of all the active players
     //range is the range of the enemy
@@ -180,12 +191,12 @@ class CharaController {
             }
         }
 
-        //sort by distance between the player
+        //sort by distance from final destination
         enemies.sort(function (x, y) {
-            if (x.getDistanceFromPlayer(instance) < y.getDistanceFromPlayer(instance)) {
+            if (x.getCloseToDestination() < y.getCloseToDestination()) {
                 return -1;
             }
-            if (x.getDistanceFromPlayer(instance) > y.getDistanceFromPlayer(instance)) {
+            if (x.getCloseToDestination() > y.getCloseToDestination()) {
                 return 1;
             }
             return 0;
@@ -299,10 +310,10 @@ class CharaController {
 
         //sort by distance between the player
         enemies.sort(function (x, y) {
-            if (x.getDistanceFromPlayer(instance) < y.getDistanceFromPlayer(instance)) {
+            if (x.getCloseToDestination() < y.getCloseToDestination()) {
                 return -1;
             }
-            if (x.getDistanceFromPlayer(instance) > y.getDistanceFromPlayer(instance)) {
+            if (x.getCloseToDestination() > y.getCloseToDestination()) {
                 return 1;
             }
             return 0;
@@ -406,11 +417,24 @@ class CharaController {
                 dmgreceived = dmg;
                 break;
         }
-        if (this.buffs.getHitOrMiss(dmgtype))
-            this.hp -= this.buffs.getFinalDamage(dmgreceived)
+        if (this.buffs.getHitOrMiss(dmgtype)){
+            var finaldmg = this.buffs.getFinalDamage(dmgreceived)
+            this.hp -= finaldmg
+            if(!hazard){
+                enemy.hp=Math.min(enemy.hp+enemy.buffs.getHPRecovered(finaldmg),enemy.maxhp)
+                enemy.updateHpBar()
+            }
+
+
+        }
 
         //update hp bar after receiving damage
         this.updateHpBar();
+        this.checkDeath();
+    }
+
+    //checks if a player died and does the death related actions if they are
+    checkDeath(){
         if (this.hp <= 0) {
             if (this.condtalent != undefined) {
                 if (this.condtalent.condition == "death") {

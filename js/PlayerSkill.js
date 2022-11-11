@@ -14,7 +14,6 @@ class PlayerSkill {
         this.skillimage = source;
         this.applyeffects = applyeffects
         //this.infinite;
-
     }
     activateDurationSkill(targets, lvl) {
         this.currentsp = 0;
@@ -33,7 +32,7 @@ class PlayerSkill {
                 if (this.applyeffects.apply == "aliveallies")
                     targets[i].alivebuffs.push(this.applyeffects)
                 else targets[i].buffs.applyeffects[this.name] = this.applyeffects
-                
+
             }
 
         }
@@ -78,16 +77,28 @@ class PlayerSkill {
 
         for (let i = 0; i < this.targets.length; i++) {
             delete this.targets[i].buffs.buffs[this.name]
-            if (this.applyeffects != undefined)
-                delete this.targets[i].applyeffects[this.name]
+            if (this.applyeffects != undefined) {
+                if (this.applyeffects.apply == "aliveallies") {
+                    for (let j = 0; j < this.targets[i].alivebuffs.length; j++) {
+                        if (this.applyeffects.name == this.targets[i].alivebuffs[j].name) {
+                            this.targets[i].alivebuffs.splice(j, 1)
+                            j--
+                        }
+                    }
+
+                }
+                else delete this.targets[i].buffs.applyeffects[this.name]
+            }
         }
     }
-    applyHitEffects(b) {
+    applyHitEffects(b,enemy) {
         var ef = this.applyeffects
         if (ef != undefined) {
             if (ef.apply == "hit") {
                 b.effects[this.name] = ef.duration
                 b.buffs[this.name] = { "name": this.name, "modifiers": ef.modifiers }
+                if (ef.effecticon != undefined && b.effectSprite[this.name] == undefined)
+                    enemy.createDebuffAura(this.name, ef.effecticon)
             }
 
         }

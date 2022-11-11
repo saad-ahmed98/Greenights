@@ -48,7 +48,8 @@ class Buffs {
             ignoreaniminterval: false,
             attacks: 1,
             physdodge: 0,
-            artsdodge: 0
+            artsdodge: 0,
+            hpregenbuff:1
 
         }
     }
@@ -208,7 +209,10 @@ class Buffs {
     getFinalHpRegen(maxhp) {
         this.initModifiers();
         this.sumBuffs();
-        return this.modifiers.flathpregen + maxhp * this.modifiers.hpregenpercent
+        var finalhpregen = this.modifiers.flathpregen + maxhp * this.modifiers.hpregenpercent
+        if(finalhpregen>0)
+            finalhpregen *= this.modifiers.hpregenbuff
+        return finalhpregen;
     }
 
     getFinalBlock(block) {
@@ -230,9 +234,11 @@ class Buffs {
             case "arts":
                 if (Math.random() <= this.modifiers.artsdodge && this.modifiers.artsdodge > 0)
                     return false
+                    break;
             case "physical":
                 if (Math.random() <= this.modifiers.physdodge && this.modifiers.physdodge > 0)
                     return false
+                    break;
         }
         return true
     }

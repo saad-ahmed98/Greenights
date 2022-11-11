@@ -54,6 +54,7 @@ class Tile {
             case "blue":
             case "red":
             case "magma":
+            case "blood":
             case "r":
                 colorMaterial.diffuseTexture = this.scene.assets[this.type]
                 break;
@@ -111,6 +112,6 @@ class Tile {
 
     }
     canBeDeployed(type){
-        return (this.type == type || (type == "g" && this.type == "magma"))
+        return (this.type == type || (type == "g" && this.type == "magma") || (type == "g" && this.type == "blood"))
     }
 }

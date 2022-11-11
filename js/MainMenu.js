@@ -17,6 +17,8 @@ class MainMenu extends LVLAbstract {
         this.loadAssets();
         this.scene.assetsManager.load();
 
+        this.texts = {}
+
 
     }
 
@@ -145,6 +147,8 @@ class MainMenu extends LVLAbstract {
         var camera = new BABYLON.UniversalCamera("UniversalCamera", new BABYLON.Vector3(-30, 90, -100), this.scene);
         this.createMainMenu()
         this.createSkybox()
+        var postProcess = new BABYLON.FxaaPostProcess("fxaa", 1.0, camera);
+
     }
 
 
@@ -203,7 +207,7 @@ class MainMenu extends LVLAbstract {
             var button = BABYLON.GUI.Button.CreateSimpleButton("but", "");
             button.width = "30%";
             button.height = "10%";
-            button.top = (25 + i * 12) + "%";
+            button.top = (25 + i * 9) + "%";
             button.color = "transparent";
             button.background = "transparent";
             button.hoverCursor = "pointer";
@@ -216,6 +220,8 @@ class MainMenu extends LVLAbstract {
             msg.fontSize = "60%";
             msg.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT
 
+            this.texts[keys[i]] = msg
+
 
             button.addControl(msg)
             button.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
@@ -226,8 +232,21 @@ class MainMenu extends LVLAbstract {
             button.onPointerUpObservable.add(function () {
                 instance.playSound("click", 0.3)
                 instance.createOperationInfo(keys[i])
+                localStorage.setItem("lvl", keys[i])
+                instance.resetOutlines(keys)
+                instance.texts[keys[i]].outlineColor = "blue"
+                instance.texts[keys[i]].outlineWidth = 10
+
             });
         }
+
+        var lvlselected = localStorage.getItem("lvl")
+        if ( lvlselected != null) {
+            this.createOperationInfo(lvlselected)
+            this.texts[lvlselected].outlineColor = "blue"
+            this.texts[lvlselected].outlineWidth = 10
+        }
+        
         var quit = BABYLON.GUI.Button.CreateImageOnlyButton("but", "images/menu/back.png");
 
         quit.width = "17%"
@@ -249,6 +268,11 @@ class MainMenu extends LVLAbstract {
             instance.createMainMenu()
         });
 
+    }
+    resetOutlines(keys) {
+        for (let i = 0; i < keys.length; i++) {
+            this.texts[keys[i]].outlineWidth = 0
+        }
     }
 
     createOperationInfo(lvlname) {
@@ -344,6 +368,11 @@ class MainMenu extends LVLAbstract {
         this.lvlcontroller.addControl(label)
 
         let selected = [];
+        var storage = localStorage.getItem("team");
+        if (storage != null)
+            selected = JSON.parse(storage)
+
+
 
         let select = new BABYLON.GUI.TextBlock();
         select.text = "SELECTED " + selected.length + "/12";
@@ -375,7 +404,7 @@ class MainMenu extends LVLAbstract {
             image.width = "26%"
             image.left = "-35%"
 
-            
+
             let button = BABYLON.GUI.Button.CreateSimpleButton("but", "");
             button.width = "20.5%";
             button.height = "9.5%";
@@ -383,6 +412,13 @@ class MainMenu extends LVLAbstract {
             button.left = (0 + j * 21.5) + "%";
             button.color = "white";
             button.hoverCursor = "pointer";
+            for (let x = 0; x < selected.length; x++) {
+                if (selected[x] == keys[i]) {
+                    button.color = "blue"
+                    button.thickness = 3;
+                }
+            }
+
 
 
             button.background = playerlist[keys[i]].rarity;
@@ -419,7 +455,7 @@ class MainMenu extends LVLAbstract {
                         instance.createPlayerTooltip(playerlist[keys[i]])
                         selected.push(keys[i])
                         button.color = "blue"
-                        button.thickness = 4;
+                        button.thickness = 3;
                     }
                 }
                 select.text = "SELECTED " + selected.length + "/12";
@@ -448,6 +484,7 @@ class MainMenu extends LVLAbstract {
         quit.onPointerUpObservable.add(function () {
             instance.playSound("back", 0.3)
             instance.createLVLSelect()
+            localStorage.setItem("team", JSON.stringify(selected))
         });
 
         var image2 = BABYLON.GUI.Button.CreateImageOnlyButton("but", "images/menu/combat.png");
@@ -466,6 +503,7 @@ class MainMenu extends LVLAbstract {
             instance.playSound("confirm", 0.3)
 
             if (selected.length > 0) {
+                localStorage.setItem("team", JSON.stringify(selected))
                 let players = {}
                 for (let i = 0; i < selected.length; i++) {
                     players[selected[i]] = JSON.parse(JSON.stringify(playerlist[selected[i]]));
@@ -678,7 +716,7 @@ class MainMenu extends LVLAbstract {
         icon.left = "-1%"
 
         container.addControl(icon)
-        
+
         this.opcontroller.addControl(container);
 
     }

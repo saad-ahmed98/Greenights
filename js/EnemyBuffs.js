@@ -28,6 +28,8 @@ class EnemyBuffs extends Buffs {
             flathpregen:0,
             hpregenpercent:0,
             dmgreduction:0,
+            hpregenbuff:1,
+            lifesteal:0,
         }
     }
 
@@ -46,5 +48,10 @@ class EnemyBuffs extends Buffs {
         this.initModifiers();
         this.sumBuffs();
         return this.modifiers.inspire;
+    }
+    getHPRecovered(dmg){
+        this.initModifiers();
+        this.sumBuffs();
+        return dmg*this.modifiers.lifesteal
     }
 }
