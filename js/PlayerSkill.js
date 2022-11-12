@@ -32,7 +32,6 @@ class PlayerSkill {
                 if (this.applyeffects.apply == "aliveallies")
                     targets[i].alivebuffs.push(JSON.parse(JSON.stringify(this.applyeffects)))
                 else targets[i].buffs.applyeffects[this.name] = this.applyeffects
-
             }
 
         }

@@ -208,7 +208,7 @@ levels["GUERRILLA-EX"] = {
     level: "GUERRILLA-EX",
     name: "Operation Shield Breaker",
     bgm: "patriot_2",
-    initialdp: 10,
+    initialdp: 40,
     squadlimit: 9,
     hp:3,
     background: "loading_CB_under",
@@ -471,7 +471,7 @@ levels["POSSESSED-EX"] = {
     ["bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg","bg","bg", "bg"]
     ],
 }
-/*
+
 levels["TEST"] = {
     level: "TEST",
     name: "Title",
@@ -504,5 +504,5 @@ levels["TEST"] = {
     ["blue", "g", "g", "blood", "g", "g", "g", "g", "g", "g", "g", "blk", "red"]
     ],
 }    
-*/
+
 

@@ -51,6 +51,12 @@ class PlayerController extends CharaController {
         this.blocking = this.blockedenemies.length
     }
 
+    removeAllBlocking(){
+        for(let i = 0;i<this.blockedenemies.length;i++){
+            this.blockedenemies[i].unblock()
+        }
+    }
+
     removeBlocked(id) {
         for (let i = 0; i < this.blockedenemies.length; i++) {
             if (this.blockedenemies[i].id = id) {

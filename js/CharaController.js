@@ -142,7 +142,13 @@ class CharaController {
         var offset = 15
         if(range>0)
             offset = 0
-
+        
+        if(range==0 && this.blockingplayer!=undefined){
+            res.push(this.blockingplayer)
+            targetcount--
+            if (targetcount <= 0)
+                return res;
+        }
         var squarerange = [[this.mesh.position.x - offset - 30 * range, this.mesh.position.x + offset + 30 * range], [this.mesh.position.z -  offset - 30 * range, this.mesh.position.z + offset + 30 * range]];
         for (let i = players.length - 1; i >= 0; i--) {
             if (this.between(players[i].x * 30, squarerange[0]) && this.between(players[i].y * 30, squarerange[1])) {

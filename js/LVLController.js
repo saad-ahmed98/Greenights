@@ -1039,6 +1039,7 @@ class LVLController extends LVLAbstract {
             this.activePlayers[i].checkBlocking()
             if (this.activePlayers[i].hp <= 0) {
                 this.tiles[this.activePlayers[i].x][this.activePlayers[i].y].player = undefined;
+                this.activePlayers[i].removeAllBlocking()
                 this.activePlayers[i].chara.cost = Math.min(this.activePlayers[i].chara.basecost + Math.round(this.activePlayers[i].chara.basecost * 0.5), this.activePlayers[i].chara.basecost * 2),
 
                     this.playerlist[this.activePlayers[i].chara.name] = this.activePlayers[i].chara
@@ -1152,8 +1153,10 @@ class LVLController extends LVLAbstract {
                 return;
             }
 
-            var diff = current.subtract(startingPoint);
-            currentMesh.position.addInPlace(diff);
+
+            currentMesh.position = getGroundPosition();
+            currentMesh.position.y = 20;
+
             //currentPlayer.sprite.position.addInPlace(diff);
 
             startingPoint = current;
@@ -1247,7 +1250,7 @@ class LVLController extends LVLAbstract {
                     case BABYLON.PointerEventTypes.POINTERMOVE:
                         if (instance.gui.wheelclick == true) {
                             dragging = true;
-                            pointerMove();
+                            pointerMove(pointerInfo);
                         }
                         break;
                 }
