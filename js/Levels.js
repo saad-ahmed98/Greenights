@@ -9,6 +9,8 @@ levels["AMOGUS-1"] = {
     background: "loading4",
     description: "OooooOHOO OOO\n\n YOU WANT TO GAMING SO BADLY\n",
     place:"CB",
+    offsetX:0,
+    offsetY:0,
 
     waves: [
         {"number":0, "time": 1, "gap": 5, "enemies": "Sarkaz Grudgebearer", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [1, 8], "checkpoints": [{ "start": [1, 8], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [1, 8], "pause": 0 }, { "start": [1, 8], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [1, 8], "pause": 0 }, { "start": [1, 8], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [1, 8], "pause": 0 }, { "start": [1, 8], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [1, 8], "pause": 0 }, { "start": [1, 8], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [6, 8], "pause": 0 }, { "start": [6, 8], "end": [2, 1], "pause": 0 }] },
@@ -122,7 +124,8 @@ levels["GUERRILLA-1"] = {
     background: "loading_CB_center",
     description: "The spearhead of Reunion's reconnaissance \nforce has appeared at the location where we\n established a concealed facility.\n Be careful, these are no ordinary Reunion grunts\n that we're dealing with.",
     place:"Plain",
-
+    offsetX:-10,
+    offsetY:-40,
 
     waves: [{"number":0, "time": 0, "gap": 5, "enemies": "Guerrilla Fighter", "line": false, "tooltip": true, "count": 1, "taunt": false, "start": [4, 11], "checkpoints": [{ "start": [4, 11], "end": [4, 9], "pause": 155 },{ "start": [4, 9], "end": [4, 1], "pause": 0 }]},
     {"number":1, "time": 0, "gap": 5, "enemies": "Guerrilla Fighter", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [3, 11], "checkpoints": [{ "start": [3, 11], "end": [3, 9], "pause": 156 },{ "start": [3, 9], "end": [4, 1], "pause": 0 }]},
@@ -214,6 +217,8 @@ levels["GUERRILLA-EX"] = {
     background: "loading_CB_under",
     description: "The Aegis of the Infected is attacking us with all their might.\nUse everything you have to push them back!\n\n<Originium Altar> Periodically emits pulse waves\ndamaging both allied and enemy units.",
     place:"Plain",
+    offsetX:0,
+    offsetY:0,
 
     waves: [            
         {"number":1, "time": 2, "gap": 5, "enemies": "Guerrilla Herald Leader", "line": false, "tooltip": true, "count": 1, "taunt": false, "start": [1, 10], "checkpoints": [{ "start": [1, 10], "end": [2, 10], "pause": 5 },{ "start": [2, 10], "end": [4, 9], "pause": 50 },{ "start": [4, 9], "end": [7, 7], "pause": 0 }]},
@@ -333,6 +338,8 @@ levels["KNIGHT-EX"] = {
     "<Originium Ice Crystal> Periodically emits a frigid wave\n lowering the attack speed of affected allies.\n"+
     "<Originium Altar> Periodically emits pulse waves,\n damaging both allied and enemy units.",
     place:"CB",
+    offsetX:0,
+    offsetY:0,
 
     waves: [
         { "number":0,"time": 0, "gap": 5, "enemies": "Bloodboil Knightclub Elite", "line": false, "tooltip": true, "taunt": false, "count": 1, "start": [3, 11], "checkpoints": [{ "start": [3, 11], "end": [3, 10], "pause": 90 },{ "start": [3, 10], "end": [1, 11], "pause": 0 }] },
@@ -392,6 +399,8 @@ levels["POSSESSED-EX"] = {
     description: "Put them out of their misery.\n\n"+
     "<Active Originium> Allies deployed on it and enemies who have passed it\nwill take constant damage,\nbut their ATK and Attack Speed will be increased significantly.",
     place:"Plain",
+    offsetX:0,
+    offsetY:0,
 
     waves: [
     //{ "number":1,"time": 0, "gap": 15, "enemies": "Mephisto", "line": true, "tooltip": true, "taunt": false, "count": 1, "start": [3, 12], "checkpoints": [{ "start": [3, 12], "end": [3, 11], "pause": 100 },{ "start": [3, 11], "end": [3, 0], "pause": 0 }] },
@@ -480,6 +489,8 @@ levels["TEST"] = {
     background: "loading_CB_under",
     description: "Sussy",
     place:"Plain",
+    offsetX:10,
+    offsetY:-10,
 
     waves: [{"number":0, "time": 0, "gap": 5, "enemies": "Sarkaz Guerrilla Fighter Leader", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [4, 4], "checkpoints": [{ "start": [4, 4], "end": [4, 4], "pause": 300 }]},
         { "number":4,"time": 30, "gap": 5, "enemies": "Guerrilla Siegebreaker Leader", "line": false, "tooltip": true, "taunt": false, "count": 1, "start": [7, 12], "checkpoints": [{ "start": [7, 12], "end": [7, 11], "pause": 200 }, { "start": [7, 11], "end": [7, 0], "pause": 0 }] },

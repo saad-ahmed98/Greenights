@@ -80,6 +80,9 @@ class LVLController extends LVLAbstract {
         this.zoom = false;
 
         this.saileach = false;
+
+        this.cameraOffsetX = lvl.offsetX;
+        this.cameraOffsetY = lvl.offsetY;
     }
 
     restart() {
@@ -1307,7 +1310,7 @@ class LVLController extends LVLAbstract {
     }
 
     createGlobalCamera() {
-        var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 10, new BABYLON.Vector3(250, 290, 180), this.scene); //updown,
+        var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 10, new BABYLON.Vector3(250+this.cameraOffsetX, 290+this.cameraOffsetY, 180), this.scene); //updown,
         camera.alpha = -0.0034155996227517244
         camera.beta = 0.45497477002057213
 
@@ -1316,7 +1319,7 @@ class LVLController extends LVLAbstract {
     }
 
     createFocusCamera(x, z) {
-        var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 10, new BABYLON.Vector3(x + 125, 250, z), this.scene);
+        var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 10, new BABYLON.Vector3(x + 125+this.cameraOffsetX, 250+this.cameraOffsetY, z), this.scene);
         camera.alpha = -0.0034155996227517244
         camera.beta = 0.45497477002057213
 
