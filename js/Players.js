@@ -37,7 +37,7 @@ playerlist["Saileach"] = {
         start: 0,
         end: 14,
         contact: 8,
-        duration: 1.2,
+        duration: 1.05,
     },
 
     death: {
@@ -48,7 +48,7 @@ playerlist["Saileach"] = {
     idle: {
         start: 30,
         end: 69,
-        duration: 1.2,
+        duration: 1.05,
     },
 
     drop: {
@@ -182,7 +182,7 @@ playerlist["Texas"] = {
         start: 0,
         end: 14,
         contact: 4,
-        duration: 1.2,
+        duration: 1.05,
     },
 
     death: {
@@ -338,7 +338,7 @@ playerlist["Shining"] = {
         start: 0,
         end: 14,
         contact: 8,
-        duration: 1.2,
+        duration: 1.05,
     },
 
     death: {
@@ -348,7 +348,7 @@ playerlist["Shining"] = {
     idle: {
         start: 30,
         end: 59,
-        duration: 1.2,
+        duration: 1.05,
     },
 
     drop: {
@@ -461,7 +461,7 @@ playerlist["Saga"] = {
         start: 0,
         end: 15,
         contact: 4,
-        duration: 1.2,
+        duration: 1.05,
     },
 
     death: {
@@ -487,7 +487,7 @@ playerlist["Saga"] = {
         start: 166,
         end: 180,
         contact: 172,
-        duration: 1.2,
+        duration: 1.05,
     },
 
 
@@ -596,7 +596,7 @@ playerlist["Exusiai"] = {
         start: 0,
         end: 14,
         contact: 7,
-        duration: 1.2,
+        duration: 1.05,
     },
 
     death: {
@@ -711,7 +711,7 @@ playerlist["Schwarz"] = {
         start: 0,
         end: 27,
         contact: 3,
-        duration: 1.2,
+        duration: 1.05,
     },
 
     death: {
@@ -738,7 +738,7 @@ playerlist["Schwarz"] = {
         start: 147,
         end: 174,
         contact: 150,
-        duration: 1.2,
+        duration: 1.05,
     },
 
     skill: {
@@ -850,7 +850,7 @@ playerlist["Ceobe"] = {
         start: 0,
         end: 23,
         contact: 12,
-        duration: 1.2,
+        duration: 1.05,
     },
 
     death: {
@@ -984,7 +984,7 @@ playerlist["Skadi"] = {
         start: 0,
         end: 22,
         contact: 12,
-        duration: 1.2,
+        duration: 1.05,
     },
 
     death: {
@@ -1202,7 +1202,7 @@ playerlist["Istina"] = {
         start: 0,
         end: 16,
         contact: 8,
-        duration: 1.2,
+        duration: 1.05,
     },
 
     death: {
@@ -1315,7 +1315,7 @@ playerlist["Nearl"] = {
         start: 0,
         end: 14,
         contact: 8,
-        duration: 1.2,
+        duration: 1.05,
     },
 
     death: {
@@ -1445,7 +1445,7 @@ playerlist["Breeze"] = {
         start: 0,
         end: 14,
         contact: 8,
-        duration: 1.2,
+        duration: 1.05,
     },
 
     death: {
@@ -1552,7 +1552,7 @@ playerlist["Beeswax"] = {
         start: 0,
         end: 14,
         contact: 5,
-        duration: 1.2,
+        duration: 1.05,
     },
 
     death: {
@@ -1669,7 +1669,7 @@ playerlist["Franka"] = {
         start: 0,
         end: 14,
         contact: 9,
-        duration: 1.2,
+        duration: 1.05,
     },
 
     death: {
@@ -1788,7 +1788,7 @@ playerlist["Matterhorn"] = {
         start: 0,
         end: 19,
         contact: 8,
-        duration: 1.2,
+        duration: 1.05,
     },
 
     death: {
@@ -1855,7 +1855,6 @@ playerlist["Matterhorn"] = {
 
 
 playerlist["Perfumer"] = {
-    //hasmodule
     name: "Perfumer",
     hp: 1710,
     atk: 364,
@@ -1894,7 +1893,7 @@ playerlist["Perfumer"] = {
         start: 0,
         end: 30,
         contact: 14,
-        duration: 1.2,
+        duration: 1.05,
     },
 
     death: {
@@ -1930,15 +1929,23 @@ playerlist["Perfumer"] = {
     },
     talents: [
         {
-            
-            //TODO hpregen
-            name: "Aegean's Kiss",
-            description: "ATK +5%; Max HP +5%; Targets healed +1",
-
+            name: "Lavender's Fragrance",
+            description: "Restores the HP of all allies by 5.5% of Perfumer's ATK per second.",
             modifiers: {
-                targets: 1,
-                flatmultiatk: 1.05,
-                maxhp: 0.05
+            },
+            applyeffects:
+            {
+                name:"Lavender's Fragrance effect",
+                apply: "aliveallies",
+                range:99,
+                modifiers: {
+                    flathpregen:{
+                        stat:"atk",
+                        percent:0.055
+                    }
+                },
+                duration: 0.5,
+                targets:99,
             },
             apply: "self",
         },
@@ -2002,7 +2009,7 @@ playerlist["Matoimaru"] = {
         start: 0,
         end: 14,
         contact: 8,
-        duration: 1.2,
+        duration: 1.05,
     },
 
     death: {
@@ -2108,7 +2115,7 @@ playerlist["Gitano"] = {
         start: 0,
         end: 14,
         contact: 10,
-        duration: 1.2,
+        duration: 1.05,
     },
 
     death: {
@@ -2222,7 +2229,7 @@ playerlist["Mousse"] = {
         start: 0,
         end: 16,
         contact: 9,
-        duration: 1.2,
+        duration: 1.05,
     },
 
     death: {
@@ -2320,7 +2327,7 @@ playerlist["Meteor"] = {
         start: 0,
         end: 15,
         contact: 8,
-        duration: 1.2,
+        duration: 1.05,
     },
 
     death: {
@@ -2426,7 +2433,7 @@ playerlist["Haze"] = {
         start: 0,
         end: 18,
         contact: 9,
-        duration: 1.2,
+        duration: 1.05,
     },
 
     death: {
@@ -2525,7 +2532,7 @@ playerlist["Courier"] = {
         start: 0,
         end: 21,
         contact: 9,
-        duration: 1.2,
+        duration: 1.05,
     },
 
     death: {
@@ -2720,7 +2727,7 @@ playerlist["Plume"] = {
         start: 45,
         end: 60,
         contact: 52,
-        duration: 1.2,
+        duration: 1.05,
     },
 
     death: {
@@ -2821,7 +2828,7 @@ playerlist["Melantha"] = {
         start: 4,
         end: 29,
         contact: 16,
-        duration: 1.2,
+        duration: 1.05,
     },
 
     death: {
@@ -3010,14 +3017,14 @@ playerlist["Fang"] = {
     idle: {
         start: 32,
         end: 60,
-        duration: 1.2,
+        duration: 1.05,
     },
 
     atkanim: {
         start: 0,
         end: 14,
         contact: 5,
-        duration: 1.2,
+        duration: 1.05,
     },
 
     death: {
@@ -3109,7 +3116,7 @@ playerlist["Adnachiel"] = {
         start: 0,
         end: 14,
         contact: 5,
-        duration: 1.2,
+        duration: 1.05,
     },
 
     death: {
@@ -3193,14 +3200,14 @@ playerlist["Hibiscus"] = {
     idle: {
         start: 29,
         end: 87,
-        duration: 1.2,
+        duration: 1.05,
     },
 
     atkanim: {
         start: 0,
         end: 13,
         contact: 9,
-        duration: 1.2,
+        duration: 1.05,
     },
 
     death: {
@@ -3289,7 +3296,7 @@ playerlist["Midnight"] = {
     idle: {
         start: 33,
         end: 62,
-        duration: 1.2,
+        duration: 1.05,
     },
 
     atkanim: {
@@ -3385,14 +3392,14 @@ playerlist["Beagle"] = {
     idle: {
         start: 30,
         end: 59,
-        duration: 1.2,
+        duration: 1.05,
     },
 
     atkanim: {
         start: 0,
         end: 13,
         contact: 9,
-        duration: 1.2,
+        duration: 1.05,
     },
 
     death: {

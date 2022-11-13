@@ -140,8 +140,6 @@ class CharaController {
         var res = []
         var targetcount = targets;
         var offset = 15
-        if(range>0)
-            offset = 0
         
         if(range==0 && this.blockingplayer!=undefined){
             res.push(this.blockingplayer)
@@ -165,8 +163,7 @@ class CharaController {
         if (range == 0 && targets > 1) {
             // get the chara real range
             range = this.chara.range
-            if(range>0)
-                offset = 0
+
             var squarerange = [[this.mesh.position.x - offset - 30 * range, this.mesh.position.x + offset + 30 * range], [this.mesh.position.z - offset - 30 * range, this.mesh.position.z + offset + 30 * range]];
             for (let i = players.length - 1; i >= 0; i--) {
                 if (this.between(players[i].x * 30, squarerange[0]) && this.between(players[i].y * 30, squarerange[1])) {
@@ -439,12 +436,12 @@ class CharaController {
     }
 
     //receive damage used by player
-    receiveDamage(enemy, hazard = false) {
+    receiveDamage(enemy, hazard = false,mod = 1) {
         var dmg;
         var dmgtype;
 
         if (!hazard) {
-            dmg = enemy.buffs.getFinalAtk(enemy.chara.atk)
+            dmg = enemy.buffs.getFinalAtk(enemy.chara.atk)*mod
             dmgtype = enemy.buffs.getDmgType()
 
             if (dmgtype == "")

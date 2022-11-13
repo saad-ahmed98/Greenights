@@ -30,6 +30,7 @@ class EnemyBuffs extends Buffs {
             dmgreduction:0,
             hpregenbuff:1,
             lifesteal:0,
+            attacks: 1,
         }
     }
 

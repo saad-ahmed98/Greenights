@@ -1480,7 +1480,7 @@ enemylist["Guerrilla Herald Leader"] = {
 enemylist["Patriot"] = {
     name: "Patriot",
     hp: 45000,
-    atk: 4000,
+    atk: 2400,
     def: 1900,
     res: 90,
     atkinterval: 4,
@@ -1538,7 +1538,7 @@ enemylist["Patriot"] = {
     sfx: {
         revival: {
             src: "patriot-revival",
-            volume: 0.1
+            volume: 0.05
         },
         atk: {
             src: "patriot1-atk",
@@ -1586,6 +1586,7 @@ enemylist["Patriot2"] = {
     spritesheet: "images/sprites/patriot2-sheet.webp",
 
     hasskill: true,
+    hasspatk : true,
     invincible: 15,
 
     atkanim: {
@@ -1617,7 +1618,12 @@ enemylist["Patriot2"] = {
         end: 200,
         duration: 2,
     },
-
+    spatk:{
+        start: 201,
+        end: 252,
+        contact : 230,
+        duration: 1.3,
+    },
 
     sfx: {
         start: {
@@ -1643,7 +1649,16 @@ enemylist["Patriot2"] = {
         hit: {
             src: "patriot2-hit",
             volume: 0.1
-        }
+        },
+        spatk:{
+            src: "patriot2-spatk",
+            volume: 0.3
+        },
+        sphit:{
+            src: "patriot2-sphit",
+            volume: 0.3
+        },
+
     },
     skill: {
         name: "inspireguerrilla",
@@ -1661,11 +1676,17 @@ enemylist["Patriot2"] = {
 
     spattack: {
         name: "javelin",
-        target: "r",
+        target: "farthest",
         range: 99,
-        dmgmodifier: 1.35,
         initialsp: 5,
         sp: 20,
+        dmgmodifier:1.35,
+        applyeffects: {
+            modifiers: {
+            },
+            duration: 3,
+            effecticon: 14
+        },
     }
 }
 
@@ -1984,7 +2005,6 @@ enemylist["Tytus Topola"] = {
         start: 94,
         end: 115,
         duration: 1,
-
     },
 
     sfx: {
@@ -1995,6 +2015,10 @@ enemylist["Tytus Topola"] = {
         hit: {
             src: "lancer-hit",
             volume: 0.1
+        },
+        spatk:{
+            src: "mute",
+            volume:0.1
         }
     },
     spattack: {
@@ -2067,7 +2091,6 @@ enemylist["Tytus Topola2"] = {
         start: 94,
         end: 115,
         duration: 1,
-
     },
     start: {
         start: 116,
@@ -2082,6 +2105,10 @@ enemylist["Tytus Topola2"] = {
         hit: {
             src: "lancer-hit",
             volume: 0.1
+        },
+        spatk:{
+            src: "mute",
+            volume:0.1
         }
     },
 
@@ -2324,7 +2351,7 @@ enemylist["Enraged Possessed Bonethrower"] = {
     speed: (0.5 + 0.2) * 0.66,
     blockcount: 1,
     type: "g",
-    range: 2.5,
+    range: 2.1,
     hploss: 1,
     dmgtype: "physical",
     size: 1.05,
@@ -2390,11 +2417,11 @@ enemylist["Enraged Possessed Thrower"] = {
     atk: 750,
     def: 200,
     res: 30,
-    atkinterval: 2,
+    atkinterval: 2.1,
     speed: (0.5 + 0.2) * 0.66,
     blockcount: 1,
     type: "g",
-    range: 2.5,
+    range: 2.3,
     hploss: 1,
     dmgtype: "physical",
     size: 1.05,

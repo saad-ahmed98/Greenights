@@ -245,7 +245,7 @@ class EnemyController extends CharaController {
 
         //TODO HARD CODED BAD
         if (this.chara.name == "Patriot") {
-            this.buffs.buffs["patriottaunt"] = { "name": "patriottaunt", "modifiers": { "taunt": 2 } }
+            this.buffs.buffs["patriottaunt"] = { "name": "patriottaunt", "modifiers": { "taunt": 2, "attacks": 3 } }
         }
         if (this.chara.name == "Mephisto") {
             this.buffs.buffs["mephistotaunt"] = { "name": "mephistotaunt", "modifiers": { "taunt": -1 } }
@@ -350,8 +350,11 @@ class EnemyController extends CharaController {
                     for (let i = 0; i < player.length; i++) {
                         if (instance.chara.dmgtype == "heal")
                             player[i].receiveHealing(instance);
-                        else
-                            player[i].receiveDamage(instance);
+                        else {
+                            for (let j = 0; j < this.buffs.getAttacks(); j++) {
+                                player[i].receiveDamage(instance)
+                            }
+                        }
                     }
                     if (this.chara.sfx.hit != undefined)
                         this.lvlcontroller.playSound(this.chara.name + "-hit", this.chara.sfx.hit.volume)
@@ -533,21 +536,43 @@ class EnemyController extends CharaController {
         }
     }
 
+    sortBySpAtkPriority(targets) {
+
+        switch (this.chara.spattack.target) {
+            case "highestatk":
+                //sort by highest ATK
+                targets.sort(function (x, y) {
+                    if (x.buffs.getFinalAtk(x.chara.atk) < y.buffs.getFinalAtk(y.chara.atk)) {
+                        return -1;
+                    }
+                    if (x.buffs.getFinalAtk(x.chara.atk) > y.buffs.getFinalAtk(y.chara.atk)) {
+                        return 1;
+                    }
+                    return 0;
+                });
+                break;
+            case "farthest":
+                var instance = this;
+                targets.sort(function (x, y) {
+                    if (instance.getDistanceFromPlayer(x) < instance.getDistanceFromPlayer(y)) {
+                        return -1;
+                    }
+                    if (instance.getDistanceFromPlayer(x) > instance.getDistanceFromPlayer(y)) {
+                        return 1;
+                    }
+                    return 0;
+                });
+                break;
+        }
+    }
+
     //activate special skills if any
     activateSpSkill(playerz) {
         var targets = []
         for (let i = 0; i < playerz.length; i++)
             targets.push(playerz[i])
-        //sort by highest atk
-        targets.sort(function (x, y) {
-            if (x.buffs.getFinalAtk(x.chara.atk) < y.buffs.getFinalAtk(y.chara.atk)) {
-                return -1;
-            }
-            if (x.buffs.getFinalAtk(x.chara.atk) > y.buffs.getFinalAtk(y.chara.atk)) {
-                return 1;
-            }
-            return 0;
-        });
+        this.sortBySpAtkPriority(targets)
+        
         var players = this.getFirstPlayerInRange(targets, this.chara.spattack.range, this.chara.targets + this.buffs.getTargets())
         for (let i = 0; i < players.length; i++) {
             if (players[i].buffs.effects[this.chara.spattack.name] != undefined) {
@@ -563,6 +588,8 @@ class EnemyController extends CharaController {
             this.running = false;
             this.attacking = true;
             this.sprite.playAnimation(this.chara.spatk.start, this.chara.spatk.end, false, 30 * this.gamespeed * (this.chara.spatk.duration));
+            this.lvlcontroller.playSound(this.chara.name + "-spatk", this.chara.sfx.spatk.volume)
+
             var instance = this;
             var interval = setInterval(() => {
                 if (instance.sprite.cellIndex == instance.chara.spatk.end) {
@@ -576,6 +603,16 @@ class EnemyController extends CharaController {
             players[0].buffs.effects[this.chara.spattack.name] = this.chara.spattack.applyeffects.duration
             if (players[0].buffs.effectSprite[this.chara.spattack.name] == undefined)
                 players[0].createDebuffAura(this.chara.spattack.name, this.chara.spattack.applyeffects.effecticon)
+
+            if(this.chara.spattack.dmgmodifier!=undefined){
+                var interval2 = setInterval(() => {
+                    if (instance.sprite.cellIndex >= instance.chara.spatk.contact && instance.hp > 0) {
+                        players[0].receiveDamage(instance,false,instance.chara.spattack.dmgmodifier)
+                        instance.lvlcontroller.playSound(instance.chara.name + "-sphit", instance.chara.sfx.sphit.volume)
+                        clearInterval(interval2);
+                    }
+                }, 1);
+            }
 
         }
     }
@@ -618,14 +655,18 @@ class EnemyController extends CharaController {
 
     }
 
-    //create hp bar
+    //create sp bar
     addHPBar(gui) {
         this.healthBar = gui.addHPBar(this.mesh, "red", 10, "3%");
         this.healthBar.isVisible = false;
         if (this.spattacktimer != undefined) {
-            this.skillBar = gui.addHPBar(this.mesh, "yellow", 15, "3%");
-            this.skillBar.value = this.spattacktimer / this.chara.spattack.sp * 100;
+           this.addSPBar(gui)
         }
+    }
+    addSPBar(gui){
+        this.skillBar = gui.addHPBar(this.mesh, "yellow", 15, "3%");
+        this.skillBar.linkOffsetX = this.healthBar.linkOffsetX
+        this.skillBar.value = this.spattacktimer / this.chara.spattack.sp * 100;
     }
 
     //unblock from the player
@@ -658,8 +699,11 @@ class EnemyController extends CharaController {
         enemy.sprite.invertU = this.sprite.invertU
         enemy.startingTalents()
         this.sprite.dispose()
+        if(enemy.skillBar==undefined && enemy.spattacktimer != undefined) {
+            enemy.addSPBar(this.lvlcontroller.gui);
+        }
         enemy.updateHpBar();
-
+       
         this.lvlcontroller.enemies.push(enemy)
 
     }
@@ -701,7 +745,7 @@ class EnemyController extends CharaController {
                         foundblock = true;
                     }
                     if (this.blockingplayer != undefined) {
-                        if (players[i].name == this.blockingplayer.name)
+                        if (players[i].chara.name == this.blockingplayer.chara.name)
                             foundblock = true;
                     }
                 }

@@ -44,15 +44,32 @@ class PlayerController extends CharaController {
     }
 
     checkBlocking() {
-        if (this.blockedenemies.length > this.buffs.getFinalBlock(this.chara.blockcount) && this.blockedenemies.length>0) {
+
+        if (this.blockedenemies.length > this.buffs.getFinalBlock(this.chara.blockcount) && this.blockedenemies.length > 0) {
             this.blockedenemies[this.blockedenemies.length - 1].unblock()
             this.blockedenemies.splice(this.blockedenemies.length - 1, 1)
+        }
+        var enemies = this.lvlcontroller.enemies
+        for (let i = 0; i < enemies.length; i++) {
+            if (enemies[i].blockingplayer != undefined) {
+                if (enemies[i].blockingplayer.chara.name == this.chara.name) {
+                    var j = 0;
+                    var found = false;
+                    while (j < this.blockedenemies.length && !found) {
+                        if (this.blockedenemies[j].id == enemies[i].id)
+                            found = true;
+                        j++
+                    }
+                    if (!found)
+                        enemies[i].unblock()
+                }
+            }
         }
         this.blocking = this.blockedenemies.length
     }
 
-    removeAllBlocking(){
-        for(let i = 0;i<this.blockedenemies.length;i++){
+    removeAllBlocking() {
+        for (let i = 0; i < this.blockedenemies.length; i++) {
             this.blockedenemies[i].unblock()
         }
     }
@@ -245,9 +262,9 @@ class PlayerController extends CharaController {
     checkAliveBuffs() {
         var targets = []
         for (let i = 0; i < this.alivebuffs.length; i++) {
-            targets = this.getHpPlayerInRange(this.lvlcontroller.activePlayers, this.alivebuffs[i].range,this.alivebuffs[i].targets )
-            if(this.alivebuffs[i].targetselected!=undefined){
-                if(this.alivebuffs[i].targetselected.length>0)
+            targets = this.getHpPlayerInRange(this.lvlcontroller.activePlayers, this.alivebuffs[i].range, this.alivebuffs[i].targets)
+            if (this.alivebuffs[i].targetselected != undefined) {
+                if (this.alivebuffs[i].targetselected.length > 0)
                     targets = this.alivebuffs[i].targetselected
                 else this.alivebuffs[i].targetselected = targets
             }
@@ -258,7 +275,7 @@ class PlayerController extends CharaController {
                     targets[j].buffs.buffs[this.alivebuffs[i].name] = this.alivebuffs[i]
                     targets[j].buffs.effects[this.alivebuffs[i].name] = this.alivebuffs[i].duration
                     if (this.alivebuffs[i].effecticon != undefined)
-                    targets[j].createDebuffAura(this.alivebuffs[i].name, this.alivebuffs[i].effecticon)
+                        targets[j].createDebuffAura(this.alivebuffs[i].name, this.alivebuffs[i].effecticon)
                 }
 
             }
@@ -266,11 +283,11 @@ class PlayerController extends CharaController {
     }
 
     //if the buff is directly tied to the current player stats
-    constructBuffs(modifiers){
+    constructBuffs(modifiers) {
         var keys = Object.keys(modifiers);
-        for(let i = 0;i<keys.length;i++){
-            if(typeof modifiers[keys[i]] === 'object'){
-                modifiers[keys[i]]=this.chara[modifiers[keys[i]].stat]*modifiers[keys[i]].percent
+        for (let i = 0; i < keys.length; i++) {
+            if (typeof modifiers[keys[i]] === 'object') {
+                modifiers[keys[i]] = this.chara[modifiers[keys[i]].stat] * modifiers[keys[i]].percent
             }
         }
         return modifiers
@@ -413,7 +430,7 @@ class PlayerController extends CharaController {
                     this.running = true;
                 }
                 this.atktimer += 1 / this.gamespeed;
-                if (this.atktimer >= this.buffs.getFinalAtkInterval(this.chara.atkinterval) * 25 && this.buffs.getCanAttack()) {
+                if (this.atktimer >= this.buffs.getFinalAtkInterval(this.chara.atkinterval) * 22 && this.buffs.getCanAttack()) {
                     this.atktimer = 0;
                     var success = this.attack(enemies, players);
                     if (!success)
