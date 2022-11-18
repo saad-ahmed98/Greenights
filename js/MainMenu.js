@@ -281,8 +281,8 @@ class MainMenu extends LVLAbstract {
 
         let lvl = levels[lvlname]
         var container = new BABYLON.GUI.Rectangle();
-        container.width = "60%"
-        container.height = "90%";
+        container.width = "55%"
+        container.height = "80%";
         //container.left = (i * -8.3) + "%";
         container.color = "White";
         //container.thickness = 1;

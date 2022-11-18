@@ -252,6 +252,37 @@ class LVLController extends LVLAbstract {
         };
 
         binaryTask = assetsManager.addTextureTask(
+            "enterright",
+            "images/textures/enterright.jpg",
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets[task.name] = task.texture
+        };
+
+        binaryTask = assetsManager.addTextureTask(
+            "enterleft",
+            "images/textures/enterleft.jpg",
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets[task.name] = task.texture
+        };
+
+        binaryTask = assetsManager.addTextureTask(
+            "entertop",
+            "images/textures/entertop.jpg",
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets[task.name] = task.texture
+        };
+        binaryTask = assetsManager.addTextureTask(
+            "enterbottom",
+            "images/textures/enterbottom.jpg",
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets[task.name] = task.texture
+        };
+
+        binaryTask = assetsManager.addTextureTask(
             "skybox",
             "images/common/skybox.jpg",
         );

@@ -48,16 +48,7 @@ class Tile {
 
     colorMesh() {
         var colorMaterial = new BABYLON.StandardMaterial("", this.scene);
-        switch(this.type){
-            case "g":
-            case "blk":
-            case "blue":
-            case "red":
-            case "magma":
-            case "blood":
-            case "r":
-                colorMaterial.diffuseTexture = this.scene.assets[this.type]
-                break;
+        switch (this.type) {
             case "altar":
                 /*
                 let box1 =new BABYLON.MeshBuilder.CreateBox("box2", { height: 15, depth: 24, width: 24 }, this.scene)
@@ -76,10 +67,14 @@ class Tile {
                 box2.dispose()
                 newMeshHolePlate.material.diffuseColor =  new BABYLON.Color3(0.1, 0.1, 0.1);
                 */
-
-
+                break;
+            case "bg":
+                break;
+            default:
+                colorMaterial.diffuseTexture = this.scene.assets[this.type]
+                break;
         }
-      
+
         this.mesh.material = colorMaterial
         //this.mesh.material.freeze();
         this.mesh.renderOutline = true;
@@ -91,7 +86,7 @@ class Tile {
         this.mesh.material.diffuseColor = new BABYLON.Color3(0, 1, 0.5)
     }
 
-    displayRange(diffuse = true,color) {
+    displayRange(diffuse = true, color) {
         if (diffuse) {
             this.mesh.material.diffuseColor = new BABYLON.Color3(1, 0.51, 0.76);
             this.mesh.outlineColor = new BABYLON.Color3(1, 0.53, 0, 0.9);
@@ -111,7 +106,7 @@ class Tile {
         this.mesh.outlineWidth = 0.1;
 
     }
-    canBeDeployed(type){
+    canBeDeployed(type) {
         return (this.type == type || (type == "g" && this.type == "magma") || (type == "g" && this.type == "blood"))
     }
 }

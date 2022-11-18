@@ -29,6 +29,7 @@ class EnemyController extends CharaController {
         this.skillBar;
         if (this.chara.hasspatk)
             this.spattacktimer = this.chara.spattack.initialsp
+        this.stairs = false;
 
     }
 
@@ -110,80 +111,115 @@ class EnemyController extends CharaController {
 
         //move on x axis first to the current point x
         var xfound = false;
+        if (Math.abs(this.mesh.position.x / 30 - this.currentpoint[1]) > 1 && Math.abs(this.mesh.position.z / 30 - this.currentpoint[0]) > 1) {
 
-        if (this.mesh.position.x <= this.currentpoint[1] * 30 + 1 && this.mesh.position.x >= this.currentpoint[1] * 30 - 1)
-            xfound = true;
-        else {
-            var dir = 1;
-            if (this.mesh.position.x > this.currentpoint[1] * 30)
-                dir = -1;
-            this.mesh.position.x += (1 * (this.buffs.getFinalSpeed(this.chara.speed)) * dir) / this.gamespeed;
-            this.sprite.position.x += (1 * (this.buffs.getFinalSpeed(this.chara.speed)) * dir) / this.gamespeed;
-            this.shadow.position.x += (1 * (this.buffs.getFinalSpeed(this.chara.speed)) * dir) / this.gamespeed;
-            if (this.aura != undefined)
-                this.aura.position.x += (1 * (this.buffs.getFinalSpeed(this.chara.speed)) * dir) / this.gamespeed;
-            var keys = Object.keys(this.buffs.effectSprite)
-            for (let i = 0; i < keys.length; i++)
-                this.buffs.effectSprite[keys[i]].position.x += (1 * (this.buffs.getFinalSpeed(this.chara.speed)) * dir) / this.gamespeed;
+            this.mesh.position.z = this.currentpoint[0] * 30
+            this.sprite.position.z = this.currentpoint[0] * 30
+            this.shadow.position.z = this.currentpoint[0] * 30
+            this.mesh.position.x = this.currentpoint[1] * 30
+            this.sprite.position.x = this.mesh.position.x + (-15 * this.chara.size)
+            this.shadow.position.x = this.mesh.position.x + (-15 * this.chara.size)
 
-            if (this.invincibleaura != undefined)
-                this.invincibleaura.position.x += (1 * (this.buffs.getFinalSpeed(this.chara.speed)) * dir) / this.gamespeed;
-
-        }
-        //if x found then move on the y axis to the current pooint z
-        if (xfound) {
-            if (this.mesh.position.z <= this.currentpoint[0] * 30 + 1 && this.mesh.position.z >= this.currentpoint[0] * 30 - 1) {
-                //if reached, then get the next point of the checkpoint path
-                if (this.checkpoints.path.length > 0)
-                    this.currentpoint = this.checkpoints.path.shift();
-                else {
-                    //if there isn't any left, wait
-                    this.wait = true;
-                }
-                this.sprite.position.x -= Math.round(this.mesh.position.x / 30) / 40;
-                this.sprite.position.z -= Math.round(this.mesh.position.z / 30) / 40;
-
-                this.shadow.position.x -= Math.round(this.mesh.position.x / 30) / 40;
-                this.shadow.position.z -= Math.round(this.mesh.position.z / 30) / 40;
-
-                if (this.aura != undefined) {
-                    this.aura.position.x -= Math.round(this.mesh.position.x / 30) / 40;
-                    this.aura.position.z -= Math.round(this.mesh.position.z / 30) / 40;
-                }
-                var keys = Object.keys(this.buffs.effectSprite)
-                for (let i = 0; i < keys.length; i++) {
-                    this.buffs.effectSprite[keys[i]].position.x -= Math.round(this.mesh.position.x / 30) / 40;
-                    this.buffs.effectSprite[keys[i]].position.z -= Math.round(this.mesh.position.z / 30) / 40;
-                }
-                if (this.invincibleaura != undefined) {
-                    this.invincibleaura.position.x -= Math.round(this.mesh.position.x / 30) / 40;
-                    this.invincibleaura.position.z -= Math.round(this.mesh.position.z / 30) / 40;
-                }
-
+            if (this.aura != undefined) {
+                this.aura.position.z = this.currentpoint[0] * 30
+                this.aura.position.x = this.mesh.position.x + (-15 * this.chara.size)
 
             }
+            var keys = Object.keys(this.buffs.effectSprite)
+            for (let i = 0; i < keys.length; i++) {
+                this.buffs.effectSprite[keys[i]].position.z = this.currentpoint[0] * 30
+                this.buffs.effectSprite[keys[i]].position.x = this.mesh.position.x + (-15 * this.chara.size)
+
+            }
+            if (this.invincibleaura != undefined) {
+                this.invincibleaura.position.z = this.currentpoint[0] * 30
+                this.invincibleaura.position.x = this.mesh.position.x + (-15 * this.chara.size)
+            }
+            if (this.stairs)
+                this.unhideInStairs();
+
+            if (this.checkpoints.path.length > 0)
+                this.currentpoint = this.checkpoints.path.shift();
+            else {
+                //if there isn't any left, wait
+                this.wait = true;
+            }
+        }
+        else {
+            if (this.mesh.position.x <= this.currentpoint[1] * 30 + 1 && this.mesh.position.x >= this.currentpoint[1] * 30 - 1)
+                xfound = true;
             else {
                 var dir = 1;
-                if (this.mesh.position.z > this.currentpoint[0] * 30) {
-                    this.sprite.invertU = 1;
+                if (this.mesh.position.x > this.currentpoint[1] * 30)
                     dir = -1;
-                }
-                else this.sprite.invertU = 0;
-                this.mesh.position.z += (1 * (this.buffs.getFinalSpeed(this.chara.speed)) * dir) / this.gamespeed;
-                this.sprite.position.z += (1 * (this.buffs.getFinalSpeed(this.chara.speed)) * dir) / this.gamespeed;
-                this.shadow.position.z += (1 * (this.buffs.getFinalSpeed(this.chara.speed)) * dir) / this.gamespeed;
-
+                this.mesh.position.x += (1 * (this.buffs.getFinalSpeed(this.chara.speed)) * dir) / this.gamespeed;
+                this.sprite.position.x += (1 * (this.buffs.getFinalSpeed(this.chara.speed)) * dir) / this.gamespeed;
+                this.shadow.position.x += (1 * (this.buffs.getFinalSpeed(this.chara.speed)) * dir) / this.gamespeed;
                 if (this.aura != undefined)
-                    this.aura.position.z += (1 * (this.buffs.getFinalSpeed(this.chara.speed)) * dir) / this.gamespeed;
+                    this.aura.position.x += (1 * (this.buffs.getFinalSpeed(this.chara.speed)) * dir) / this.gamespeed;
                 var keys = Object.keys(this.buffs.effectSprite)
                 for (let i = 0; i < keys.length; i++)
-                    this.buffs.effectSprite[keys[i]].position.z += (1 * (this.buffs.getFinalSpeed(this.chara.speed)) * dir) / this.gamespeed;
-                if (this.invincibleaura != undefined)
-                    this.invincibleaura.position.z += (1 * (this.buffs.getFinalSpeed(this.chara.speed)) * dir) / this.gamespeed;
+                    this.buffs.effectSprite[keys[i]].position.x += (1 * (this.buffs.getFinalSpeed(this.chara.speed)) * dir) / this.gamespeed;
 
+                if (this.invincibleaura != undefined)
+                    this.invincibleaura.position.x += (1 * (this.buffs.getFinalSpeed(this.chara.speed)) * dir) / this.gamespeed;
 
             }
+            //if x found then move on the y axis to the current pooint z
+            if (xfound) {
+                if (this.mesh.position.z <= this.currentpoint[0] * 30 + 1 && this.mesh.position.z >= this.currentpoint[0] * 30 - 1) {
+                    //if reached, then get the next point of the checkpoint path
+                    if (this.checkpoints.path.length > 0)
+                        this.currentpoint = this.checkpoints.path.shift();
+                    else {
+                        //if there isn't any left, wait
+                        this.wait = true;
+                    }
+                    this.sprite.position.x -= Math.round(this.mesh.position.x / 30) / 40;
+                    this.sprite.position.z -= Math.round(this.mesh.position.z / 30) / 40;
 
+                    this.shadow.position.x -= Math.round(this.mesh.position.x / 30) / 40;
+                    this.shadow.position.z -= Math.round(this.mesh.position.z / 30) / 40;
+
+                    if (this.aura != undefined) {
+                        this.aura.position.x -= Math.round(this.mesh.position.x / 30) / 40;
+                        this.aura.position.z -= Math.round(this.mesh.position.z / 30) / 40;
+                    }
+                    var keys = Object.keys(this.buffs.effectSprite)
+                    for (let i = 0; i < keys.length; i++) {
+                        this.buffs.effectSprite[keys[i]].position.x -= Math.round(this.mesh.position.x / 30) / 40;
+                        this.buffs.effectSprite[keys[i]].position.z -= Math.round(this.mesh.position.z / 30) / 40;
+                    }
+                    if (this.invincibleaura != undefined) {
+                        this.invincibleaura.position.x -= Math.round(this.mesh.position.x / 30) / 40;
+                        this.invincibleaura.position.z -= Math.round(this.mesh.position.z / 30) / 40;
+                    }
+
+
+                }
+                else {
+                    var dir = 1;
+                    if (this.mesh.position.z > this.currentpoint[0] * 30) {
+                        this.sprite.invertU = 1;
+                        dir = -1;
+                    }
+                    else this.sprite.invertU = 0;
+                    this.mesh.position.z += (1 * (this.buffs.getFinalSpeed(this.chara.speed)) * dir) / this.gamespeed;
+                    this.sprite.position.z += (1 * (this.buffs.getFinalSpeed(this.chara.speed)) * dir) / this.gamespeed;
+                    this.shadow.position.z += (1 * (this.buffs.getFinalSpeed(this.chara.speed)) * dir) / this.gamespeed;
+
+                    if (this.aura != undefined)
+                        this.aura.position.z += (1 * (this.buffs.getFinalSpeed(this.chara.speed)) * dir) / this.gamespeed;
+                    var keys = Object.keys(this.buffs.effectSprite)
+                    for (let i = 0; i < keys.length; i++)
+                        this.buffs.effectSprite[keys[i]].position.z += (1 * (this.buffs.getFinalSpeed(this.chara.speed)) * dir) / this.gamespeed;
+                    if (this.invincibleaura != undefined)
+                        this.invincibleaura.position.z += (1 * (this.buffs.getFinalSpeed(this.chara.speed)) * dir) / this.gamespeed;
+
+
+                }
+
+            }
         }
 
     }
@@ -536,6 +572,43 @@ class EnemyController extends CharaController {
         }
     }
 
+    hideInStairs() {
+        this.sprite.isVisible = false
+        this.shadow.isVisible = false
+
+        if (this.aura != undefined)
+            this.aura.isVisible = false
+
+        var keys = Object.keys(this.buffs.effectSprite)
+        for (let i = 0; i < keys.length; i++)
+            this.buffs.effectSprite[keys[i]].isVisible = false
+
+        if (this.invincibleaura != undefined)
+            this.invincibleaura.isVisible = false
+        this.stairs = true;
+        this.healthBar.isVisible = false
+        if (this.spattacktimer != undefined)
+            this.skillBar.isVisible = false
+    }
+
+    unhideInStairs() {
+        this.sprite.isVisible = true
+        this.shadow.isVisible = true
+
+        if (this.aura != undefined)
+            this.aura.isVisible = true
+
+        var keys = Object.keys(this.buffs.effectSprite)
+        for (let i = 0; i < keys.length; i++)
+            this.buffs.effectSprite[keys[i]].isVisible = true
+
+        if (this.invincibleaura != undefined)
+            this.invincibleaura.isVisible = true
+        this.stairs = false;
+        this.healthBar.isVisible = true
+
+    }
+
     sortBySpAtkPriority(targets) {
 
         switch (this.chara.spattack.target) {
@@ -572,7 +645,7 @@ class EnemyController extends CharaController {
         for (let i = 0; i < playerz.length; i++)
             targets.push(playerz[i])
         this.sortBySpAtkPriority(targets)
-        
+
         var players = this.getFirstPlayerInRange(targets, this.chara.spattack.range, this.chara.targets + this.buffs.getTargets())
         for (let i = 0; i < players.length; i++) {
             if (players[i].buffs.effects[this.chara.spattack.name] != undefined) {
@@ -604,10 +677,10 @@ class EnemyController extends CharaController {
             if (players[0].buffs.effectSprite[this.chara.spattack.name] == undefined)
                 players[0].createDebuffAura(this.chara.spattack.name, this.chara.spattack.applyeffects.effecticon)
 
-            if(this.chara.spattack.dmgmodifier!=undefined){
+            if (this.chara.spattack.dmgmodifier != undefined) {
                 var interval2 = setInterval(() => {
                     if (instance.sprite.cellIndex >= instance.chara.spatk.contact && instance.hp > 0) {
-                        players[0].receiveDamage(instance,false,instance.chara.spattack.dmgmodifier)
+                        players[0].receiveDamage(instance, false, instance.chara.spattack.dmgmodifier)
                         instance.lvlcontroller.playSound(instance.chara.name + "-sphit", instance.chara.sfx.sphit.volume)
                         clearInterval(interval2);
                     }
@@ -660,10 +733,10 @@ class EnemyController extends CharaController {
         this.healthBar = gui.addHPBar(this.mesh, "red", 10, "3%");
         this.healthBar.isVisible = false;
         if (this.spattacktimer != undefined) {
-           this.addSPBar(gui)
+            this.addSPBar(gui)
         }
     }
-    addSPBar(gui){
+    addSPBar(gui) {
         this.skillBar = gui.addHPBar(this.mesh, "yellow", 15, "3%");
         this.skillBar.linkOffsetX = this.healthBar.linkOffsetX
         this.skillBar.value = this.spattacktimer / this.chara.spattack.sp * 100;
@@ -699,11 +772,11 @@ class EnemyController extends CharaController {
         enemy.sprite.invertU = this.sprite.invertU
         enemy.startingTalents()
         this.sprite.dispose()
-        if(enemy.skillBar==undefined && enemy.spattacktimer != undefined) {
+        if (enemy.skillBar == undefined && enemy.spattacktimer != undefined) {
             enemy.addSPBar(this.lvlcontroller.gui);
         }
         enemy.updateHpBar();
-       
+
         this.lvlcontroller.enemies.push(enemy)
 
     }
@@ -773,16 +846,19 @@ class EnemyController extends CharaController {
             if (!this.skillproc) {
                 //conditions to see if enemy can attack
                 if (this.spattacktimer != undefined) {
-                    if (this.spattacktimer == this.chara.spattack.sp && !this.attacking)
+                    if (this.spattacktimer == this.chara.spattack.sp && !this.attacking && !this.stairs)
                         this.activateSpSkill(players)
                 }
                 //if enemy has no atk, can't attack
 
                 var enter = false;
+
                 if (this.chara.atk > 0)
-                    var enter = true;
+                    enter = true;
                 //if enemy is standby, can't attack
                 if (this.chara.enemytype == "standby" && this.buffs.getStandby())
+                    enter = false;
+                if (this.stairs)
                     enter = false;
                 //if no not attack condition met, attack if atk timer is over
                 if (enter) {
@@ -808,6 +884,9 @@ class EnemyController extends CharaController {
 
             //if waiting, increase wait timer and when the timer reaches the specified amount, get the new checkpoint to reach
             if (this.wait) {
+                if (this.lvlcontroller.tiles[Math.round(this.mesh.position.x / 30)][Math.round(this.mesh.position.z / 30)].type.includes("enter")) {
+                    this.hideInStairs()
+                }
                 this.waittimer += 1 / this.gamespeed;
                 if (this.waittimer >= this.checkpoints.pause * 30) {
                     if (this.pattern.length > 0) {
@@ -834,7 +913,7 @@ class EnemyController extends CharaController {
                     }
                 }
             }
-            if (this.hp < 0)
+            if (this.hp <= 0)
                 this.activateDeath()
         }
     }
