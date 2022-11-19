@@ -49,6 +49,7 @@ class Tile {
     colorMesh() {
         var colorMaterial = new BABYLON.StandardMaterial("", this.scene);
         switch (this.type) {
+            case "icealtar":
             case "altar":
                 /*
                 let box1 =new BABYLON.MeshBuilder.CreateBox("box2", { height: 15, depth: 24, width: 24 }, this.scene)

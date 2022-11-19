@@ -23,6 +23,7 @@ class LVLController extends LVLAbstract {
         this.bgm = lvl.bgm
         this.maxhp = lvl.hp
         this.hp = lvl.hp
+        this.skyboxtext = lvl.skybox
 
         this.matrix;
         this.maptimer = 0;
@@ -45,6 +46,7 @@ class LVLController extends LVLAbstract {
 
         this.startingdp = lvl.initialdp;
         this.currentdp = this.startingdp;
+        this.bullets = [];
 
         this.squadlimit = lvl.squadlimit;
 
@@ -111,6 +113,7 @@ class LVLController extends LVLAbstract {
             if (!this.isSpawning)
                 this.spawnEnemies();
             this.checkSkills();
+            this.checkBullets();
             this.checkTimeEffects();
         }
 
@@ -133,7 +136,6 @@ class LVLController extends LVLAbstract {
 
         }
 
-        //this.playBGM(0.3);
     }
 
     loadAssets() {
@@ -141,9 +143,6 @@ class LVLController extends LVLAbstract {
         this.loadSounds();
         this.loadSprites();
         this.loadHazards();
-
-        //this.loadBuildings();
-        //this.loadSkybox("images/LVL1/skybox.jpg");
     }
     loadIcons() {
         this.loadPlayerIcons();
@@ -284,7 +283,7 @@ class LVLController extends LVLAbstract {
 
         binaryTask = assetsManager.addTextureTask(
             "skybox",
-            "images/common/skybox.jpg",
+            "images/textures/skybox/"+instance.skyboxtext,
         );
         binaryTask.onSuccess = function (task) {
             instance.scene.assets[task.name] = task.texture
@@ -450,6 +449,7 @@ class LVLController extends LVLAbstract {
             BABYLON.Color3.LerpToRef(BABYLON.Color3.BlackReadOnly, startingColor, t, this.scene.clearColor);
         }
         else {
+            /*
             if (!this.render) {
                 this.createGUIs()
                 this.render = true;
@@ -467,6 +467,7 @@ class LVLController extends LVLAbstract {
                 if (!this.gui.isPaused)
                     this.createLvl();
             }
+            */
 
         }
         this.scene.render();
@@ -1044,6 +1045,19 @@ class LVLController extends LVLAbstract {
 
     }
 
+    checkBullets() {
+        for (let i = 0; i < this.bullets.length; i++) {
+            if(this.bullets[i].done){
+                this.bullets[i].mesh.dispose();
+                this.bullets.splice(i, 1)
+            }
+            else this.bullets[i].move(this.gamespeed);
+        }
+
+    }
+
+
+
     checkTimeEffects() {
         for (let i = 0; i < this.activePlayers.length; i++)
             // player debuffs
@@ -1350,7 +1364,7 @@ class LVLController extends LVLAbstract {
     }
 
     createFocusCamera(x, z) {
-        var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 10, new BABYLON.Vector3(x + 125+this.cameraOffsetX, 250+this.cameraOffsetY, z), this.scene);
+        var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 10, new BABYLON.Vector3(x + 160+this.cameraOffsetX, 290+this.cameraOffsetY, z), this.scene);
         camera.alpha = -0.0034155996227517244
         camera.beta = 0.45497477002057213
 
@@ -1382,7 +1396,7 @@ class LVLController extends LVLAbstract {
                 this.gui.createPauseScreen(this)
         }
 
-        this.createSkybox()
+       this.createSkybox()
 
         return this.scene;
     }

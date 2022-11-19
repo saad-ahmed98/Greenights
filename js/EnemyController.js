@@ -195,7 +195,6 @@ class EnemyController extends CharaController {
                         this.invincibleaura.position.z -= Math.round(this.mesh.position.z / 30) / 40;
                     }
 
-
                 }
                 else {
                     var dir = 1;
@@ -388,7 +387,10 @@ class EnemyController extends CharaController {
                             player[i].receiveHealing(instance);
                         else {
                             for (let j = 0; j < this.buffs.getAttacks(); j++) {
-                                player[i].receiveDamage(instance)
+                                if(this.chara.bullet!=undefined){
+                                    new Bullet(this,this.scene,player[i],this.lvlcontroller)
+                                }
+                                else player[i].receiveDamage(instance)
                             }
                         }
                     }

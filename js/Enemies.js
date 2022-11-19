@@ -71,6 +71,7 @@ enemylist['Crossbowman'] = {
     range: 2,
     hploss: 1,
     dmgtype: "physical",
+    bullet: { size: { height: 1, depth: 8, width: 0.5 }, color: new BABYLON.Color3(0.95, 0, 0)},
 
     enemytype: "normal",
     targets: 1,
@@ -425,6 +426,7 @@ enemylist['Sarkaz Crossbowman'] = {
     dmgtype: "physical",
     targets: 1,
     size: 1.05,
+    bullet: { size: { height: 1, depth: 8, width: 0.5 }, color: new BABYLON.Color3(0.95, 0, 0)},
 
     enemytype: "normal",
 
@@ -703,6 +705,7 @@ enemylist["Guerrilla Sniper"] = {
     size: 1,
     tooltip: "Attacks two targets at once when\nInspired by a Herald or by Patriot.",
     targets: 1,
+    bullet: { size: { height: 1, depth: 8, width: 0.5 }, color: new BABYLON.Color3(0.95, 0, 0)},
 
     enemytype: "normal",
 
@@ -776,6 +779,7 @@ enemylist["Guerrilla Sniper Leader"] = {
     size: 1,
     tooltip: "Attacks two targets at once when\nInspired by a Herald or by Patriot.",
     targets: 1,
+    bullet: { size: { height: 1, depth: 8, width: 0.5 }, color: new BABYLON.Color3(0.95, 0, 0)},
 
     enemytype: "normal",
 
@@ -1586,7 +1590,7 @@ enemylist["Patriot2"] = {
     spritesheet: "images/sprites/patriot2-sheet.webp",
 
     hasskill: true,
-    hasspatk : true,
+    hasspatk: true,
     invincible: 15,
 
     atkanim: {
@@ -1618,10 +1622,10 @@ enemylist["Patriot2"] = {
         end: 200,
         duration: 2,
     },
-    spatk:{
+    spatk: {
         start: 201,
         end: 252,
-        contact : 230,
+        contact: 230,
         duration: 1.3,
     },
 
@@ -1650,11 +1654,11 @@ enemylist["Patriot2"] = {
             src: "patriot2-hit",
             volume: 0.1
         },
-        spatk:{
+        spatk: {
             src: "patriot2-spatk",
             volume: 0.3
         },
-        sphit:{
+        sphit: {
             src: "patriot2-sphit",
             volume: 0.3
         },
@@ -1680,7 +1684,7 @@ enemylist["Patriot2"] = {
         range: 99,
         initialsp: 5,
         sp: 20,
-        dmgmodifier:1.35,
+        dmgmodifier: 1.35,
         applyeffects: {
             modifiers: {
             },
@@ -1706,6 +1710,7 @@ enemylist["Roar Knightclub Elite"] = {
     size: 0.9,
     tooltip: "Has significantly increased DEF\nand RES for a period of time.",
     targets: 1,
+    bullet: { size: { height: 1, depth: 8, width: 0.5 }, color: new BABYLON.Color3(0.95, 0, 0)},
 
     enemytype: "normal",
 
@@ -2016,9 +2021,9 @@ enemylist["Tytus Topola"] = {
             src: "lancer-hit",
             volume: 0.1
         },
-        spatk:{
+        spatk: {
             src: "mute",
-            volume:0.1
+            volume: 0.1
         }
     },
     spattack: {
@@ -2106,9 +2111,9 @@ enemylist["Tytus Topola2"] = {
             src: "lancer-hit",
             volume: 0.1
         },
-        spatk:{
+        spatk: {
             src: "mute",
-            volume:0.1
+            volume: 0.1
         }
     },
 
@@ -2357,6 +2362,8 @@ enemylist["Enraged Possessed Bonethrower"] = {
     size: 1.05,
     tooltip: "Has extremely ATK.\nLoses HP over time.",
     targets: 1,
+    bullet: { size: { height: 1, depth: 12, width: 1.2 }, color: new BABYLON.Color3(0.95, 0, 0) },
+
 
     enemytype: "normal",
 
@@ -2367,7 +2374,7 @@ enemylist["Enraged Possessed Bonethrower"] = {
     atkanim: {
         start: 0,
         end: 37,
-        contact: 28,
+        contact: 24,
         duration: 1.1,
     },
 
@@ -2427,6 +2434,7 @@ enemylist["Enraged Possessed Thrower"] = {
     size: 1.05,
     tooltip: "Has high ATK.\nLoses HP over time.",
     targets: 1,
+    bullet: { size: { height: 1, depth: 12, width: 1.2 }, color: new BABYLON.Color3(0.95, 0, 0) },
 
     enemytype: "normal",
 
@@ -2437,7 +2445,7 @@ enemylist["Enraged Possessed Thrower"] = {
     atkanim: {
         start: 0,
         end: 37,
-        contact: 28,
+        contact: 24,
         duration: 1.1,
     },
 
