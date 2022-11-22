@@ -85,6 +85,7 @@ class LVLController extends LVLAbstract {
 
         this.cameraOffsetX = lvl.offsetX;
         this.cameraOffsetY = lvl.offsetY;
+        this.cameraOffsetZ = lvl.offsetZ;
     }
 
     restart() {
@@ -129,7 +130,9 @@ class LVLController extends LVLAbstract {
         }
         if (this.enemycount >= this.enemytot) {
             var instance = this;
+
             setTimeout(() => {
+                localStorage.setItem(lvlnumber, true)
                 if (!instance.gui.showinggui)
                     instance.gui.createLevelClearScreen(instance)
             }, 1000)
@@ -251,6 +254,14 @@ class LVLController extends LVLAbstract {
         };
 
         binaryTask = assetsManager.addTextureTask(
+            "bloodblk",
+            "images/textures/bloodblk.jpg",
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets[task.name] = task.texture
+        };
+
+        binaryTask = assetsManager.addTextureTask(
             "enterright",
             "images/textures/enterright.jpg",
         );
@@ -283,7 +294,7 @@ class LVLController extends LVLAbstract {
 
         binaryTask = assetsManager.addTextureTask(
             "skybox",
-            "images/textures/skybox/"+instance.skyboxtext,
+            "images/textures/skybox/" + instance.skyboxtext,
         );
         binaryTask.onSuccess = function (task) {
             instance.scene.assets[task.name] = task.texture
@@ -449,7 +460,7 @@ class LVLController extends LVLAbstract {
             BABYLON.Color3.LerpToRef(BABYLON.Color3.BlackReadOnly, startingColor, t, this.scene.clearColor);
         }
         else {
-            /*
+            
             if (!this.render) {
                 this.createGUIs()
                 this.render = true;
@@ -466,8 +477,9 @@ class LVLController extends LVLAbstract {
                 }
                 if (!this.gui.isPaused)
                     this.createLvl();
+
             }
-            */
+            
 
         }
         this.scene.render();
@@ -1047,7 +1059,7 @@ class LVLController extends LVLAbstract {
 
     checkBullets() {
         for (let i = 0; i < this.bullets.length; i++) {
-            if(this.bullets[i].done){
+            if (this.bullets[i].done) {
                 this.bullets[i].mesh.dispose();
                 this.bullets.splice(i, 1)
             }
@@ -1355,7 +1367,7 @@ class LVLController extends LVLAbstract {
     }
 
     createGlobalCamera() {
-        var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 10, new BABYLON.Vector3(250+this.cameraOffsetX, 290+this.cameraOffsetY, 180), this.scene); //updown,
+        var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 10, new BABYLON.Vector3(250 + this.cameraOffsetX, 290 + this.cameraOffsetY, 180 + this.cameraOffsetZ), this.scene); //updown,
         camera.alpha = -0.0034155996227517244
         camera.beta = 0.45497477002057213
 
@@ -1364,7 +1376,7 @@ class LVLController extends LVLAbstract {
     }
 
     createFocusCamera(x, z) {
-        var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 10, new BABYLON.Vector3(x + 160+this.cameraOffsetX, 290+this.cameraOffsetY, z), this.scene);
+        var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 10, new BABYLON.Vector3(x + 120, 290 + this.cameraOffsetY, z + this.cameraOffsetZ), this.scene);
         camera.alpha = -0.0034155996227517244
         camera.beta = 0.45497477002057213
 
@@ -1396,7 +1408,7 @@ class LVLController extends LVLAbstract {
                 this.gui.createPauseScreen(this)
         }
 
-       this.createSkybox()
+        this.createSkybox()
 
         return this.scene;
     }
@@ -1448,14 +1460,13 @@ class LVLController extends LVLAbstract {
                     this.hazards.push(new IceAltar(i, j, this))
                 if (array[i][j] == "magma")
                     this.hazards.push(new MagmaTile(tile, this))
-                if (array[i][j] == "blood")
+                if (array[i][j] == "blood" || array[i][j] == "bloodblk")
                     this.hazards.push(new BloodTile(tile, this))
 
             }
             this.tiles.push(linetiles);
             this.matrix.push(line);
         }
-
     }
 
     moveEnemies() {
@@ -1475,6 +1486,8 @@ class LVLController extends LVLAbstract {
             case "icealtar":
             case "altar":
             case "r":
+            case "e":
+            case "gblk":
                 return 1;
             default:
                 return 0;
@@ -1510,7 +1523,7 @@ class LVLController extends LVLAbstract {
         }
 
         this.activePlayers.push(player);
-        
+
 
     }
 

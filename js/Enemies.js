@@ -71,7 +71,7 @@ enemylist['Crossbowman'] = {
     range: 2,
     hploss: 1,
     dmgtype: "physical",
-    bullet: { size: { height: 1, depth: 8, width: 0.5 }, color: new BABYLON.Color3(0.95, 0, 0)},
+    bullet: { size: { height: 1, depth: 8, width: 0.5 }, arc:false, speed:5, color: new BABYLON.Color3(0.4, 0.4, 0.4)},
 
     enemytype: "normal",
     targets: 1,
@@ -426,7 +426,7 @@ enemylist['Sarkaz Crossbowman'] = {
     dmgtype: "physical",
     targets: 1,
     size: 1.05,
-    bullet: { size: { height: 1, depth: 8, width: 0.5 }, color: new BABYLON.Color3(0.95, 0, 0)},
+    bullet: { size: { height: 1, depth: 8, width: 0.5 }, arc:false, speed:5, color: new BABYLON.Color3(0.4, 0.4, 0.4)},
 
     enemytype: "normal",
 
@@ -615,6 +615,7 @@ enemylist["Guerrilla Fighter"] = {
 
 }
 
+
 enemylist["Guerrilla Fighter Leader"] = {
     name: "Guerrilla Fighter Leader",
     hp: 4500,
@@ -689,6 +690,162 @@ enemylist["Guerrilla Fighter Leader"] = {
 
 }
 
+enemylist["Guerrilla Mortar"] = {
+    name: "Guerrilla Mortar",
+    hp: 5500,
+    atk: 450,
+    def: 550,
+    res: 20,
+    atkinterval: 4.8,
+    speed: 0.6 * 0.66,
+    blockcount: 1,
+    type: "g",
+    range: 15,
+    hploss: 1,
+    dmgtype: "physical",
+    size: 1,
+    tooltip: "Gains significantly\nincreased ASPD when inspired\nby a Herald or by Patriot.",
+    targets: 1,
+    splashradius:1,
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/guerrilla-mortar-sheet.webp",
+    bullet: { size: { height: 3, depth: 3, width: 3 }, arc:true, speed:10, color: new BABYLON.Color3(0.95, 0, 0)},
+
+    hasskill: true,
+
+    atkanim: {
+        start: 0,
+        end: 17,
+        contact: 9,
+        duration: 1,
+    },
+
+    death: {
+        start: 18,
+        end: 31,
+        duration: 1,
+
+    },
+
+    idle: {
+        start: 32,
+        end: 46,
+        duration: 1,
+
+    },
+
+    move: {
+        start: 47,
+        end: 61,
+        duration: 1.2,
+
+    },
+
+    sfx: {
+        hit: {
+            src: "mortar-hit",
+            volume: 0.1
+        },
+        atk: {
+            src: "mortar-atk",
+            volume: 0.1
+        }
+    },
+
+    skill: {
+        name: "inspiredfighter",
+        triggertype: "on_inspire",
+        skilltype: "guerrilainspire",
+        target: "self",
+        modifiers: {
+            aspd: 50*1.3,
+        },
+        aura: true,
+        auratype: 2
+    },
+}
+
+enemylist["Guerrilla Mortar Leader"] = {
+    name: "Guerrilla Mortar Leader",
+    hp: 6500,
+    atk: 590,
+    def: 550,
+    res: 20,
+    atkinterval: 4.8,
+    speed: 0.6 * 0.66,
+    blockcount: 1,
+    type: "g",
+    range: 15,
+    hploss: 1,
+    dmgtype: "physical",
+    size: 1,
+    tooltip: "Gains significantly\nincreased ASPD when inspired\nby a Herald or by Patriot.",
+    targets: 1,
+    splashradius:1,
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/guerrilla-mortar-leader-sheet.webp",
+    bullet: { size: { height: 3, depth: 3, width: 3 }, arc:true, speed:10, color: new BABYLON.Color3(0.95, 0, 0)},
+
+    hasskill: true,
+
+    atkanim: {
+        start: 0,
+        end: 17,
+        contact: 9,
+        duration: 1,
+    },
+
+    death: {
+        start: 18,
+        end: 31,
+        duration: 1,
+
+    },
+
+    idle: {
+        start: 32,
+        end: 46,
+        duration: 1,
+
+    },
+
+    move: {
+        start: 47,
+        end: 61,
+        duration: 1.2,
+
+    },
+
+    sfx: {
+        hit: {
+            src: "mortar-hit",
+            volume: 0.1
+        },
+        atk: {
+            src: "mortar-atk",
+            volume: 0.1
+        }
+    },
+
+    skill: {
+        name: "inspiredmortar",
+        triggertype: "on_inspire",
+        skilltype: "guerrilainspire",
+        target: "self",
+        modifiers: {
+            aspd: 50*1.3,
+        },
+        aura: true,
+        auratype: 2
+    },
+
+}
+
+
 enemylist["Guerrilla Sniper"] = {
     name: "Guerrilla Sniper",
     hp: 3000,
@@ -705,7 +862,7 @@ enemylist["Guerrilla Sniper"] = {
     size: 1,
     tooltip: "Attacks two targets at once when\nInspired by a Herald or by Patriot.",
     targets: 1,
-    bullet: { size: { height: 1, depth: 8, width: 0.5 }, color: new BABYLON.Color3(0.95, 0, 0)},
+    bullet: { size: { height: 1, depth: 8, width: 0.5 }, arc:false, speed:5, color: new BABYLON.Color3(0.4, 0.4, 0.4)},
 
     enemytype: "normal",
 
@@ -779,7 +936,7 @@ enemylist["Guerrilla Sniper Leader"] = {
     size: 1,
     tooltip: "Attacks two targets at once when\nInspired by a Herald or by Patriot.",
     targets: 1,
-    bullet: { size: { height: 1, depth: 8, width: 0.5 }, color: new BABYLON.Color3(0.95, 0, 0)},
+    bullet: { size: { height: 1, depth: 8, width: 0.5 }, arc:false, speed:5, color: new BABYLON.Color3(0.4, 0.4, 0.4)},
 
     enemytype: "normal",
 
@@ -1195,6 +1352,251 @@ enemylist["Sarkaz Guerrilla Fighter Leader"] = {
     },
 }
 
+enemylist["Sarkaz Guerrilla Fighter"] = {
+    name: "Sarkaz Guerrilla Fighter",
+    hp: 8000,
+    atk: 480,
+    def: 400,
+    res: 50,
+    atkinterval: 2.5,
+    speed: (0.65 + 0.2) * 0.66,
+    blockcount: 1,
+    type: "g",
+    range: 0,
+    hploss: 1,
+    dmgtype: "physical",
+    size: 1.2,
+    tooltip: "Does not take damage when \ncoming in contact with \na pulse wave and attacks\n instead deal Arts damage.",
+    targets: 1,
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/sarkaz-guerrilla-fighter-sheet.webp",
+
+    hasskill: true,
+
+
+    atkanim: {
+        start: 0,
+        end: 17,
+        contact: 8,
+        duration: 1,
+    },
+
+    death: {
+        start: 18,
+        end: 32,
+        duration: 1,
+
+    },
+    idle: {
+        start: 33,
+        end: 60,
+        duration: 1,
+
+    },
+    move: {
+        start: 61,
+        end: 80,
+        duration: 1.5,
+
+    },
+
+    sfx: {
+        hit: {
+            src: "sarkaz-guerrilla-hit",
+            volume: 0.1
+        }
+    },
+
+
+    skill: {
+        name: "altarfighter",
+        triggertype: "on_altar",
+        skilltype: "sarkazaltar",
+        target: "self",
+        modifiers: {
+            dmgtype: "arts",
+        },
+        aura: true,
+        auratype: 2,
+        atkanim: {
+            start: 81,
+            end: 105,
+            contact: 95,
+            duration: 1,
+        },
+    },
+}
+
+enemylist["Sarkaz Guerrilla Caster"] = {
+    name: "Sarkaz Guerrilla Caster",
+    hp: 7000,
+    atk: 350,
+    def: 400,
+    res: 50,
+    atkinterval: 5,
+    speed: 0.75 * 0.66,
+    blockcount: 1,
+    type: "g",
+    range: 1.5,
+    hploss: 1,
+    dmgtype: "arts",
+    size: 1.2,
+    tooltip: "Deals arts to all surrounding units;\ncoming in contact with pulse\n waves increases atk range.",
+    targets: 99,
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/sarkaz-guerrilla-caster-sheet.webp",
+    bullet: { size: { height: 1, depth: 5, width: 3 }, arc:false, speed:5, color: new BABYLON.Color3(0.69, 0.21, 0.67)},
+
+    hasskill: true,
+    hasatkanim: false,
+
+    atkanim:{
+        start :99999,
+        end: 99999,
+        duration:1
+    },
+
+    death: {
+        start: 0,
+        end: 14,
+        duration: 1,
+
+    },
+    idle: {
+        start: 15,
+        end: 37,
+        duration: 1,
+
+    },
+    move: {
+        start: 38,
+        end: 60,
+        duration: 1.2,
+
+    },
+
+    sfx: {
+        atk: {
+            src: "sarkaz-caster-atk",
+            volume: 0.3
+        }
+    },
+
+
+    skill: {
+        name: "altarfighter",
+        triggertype: "on_altar",
+        skilltype: "sarkazaltar",
+        target: "self",
+        modifiers: {
+            range: 1,
+        },
+        aura: true,
+        auratype: 2,
+
+        idle: {
+            start: 61,
+            end: 83,
+            duration: 1,
+    
+        },
+        move: {
+            start: 84,
+            end: 106,
+            duration: 1.5,
+    
+        },
+    },
+}
+
+enemylist["Sarkaz Guerrilla Caster Leader"] = {
+    name: "Sarkaz Guerrilla Caster Leader",
+    hp: 10000,
+    atk: 450,
+    def: 400,
+    res: 50,
+    atkinterval: 5,
+    speed: 0.75 * 0.66,
+    blockcount: 1,
+    type: "g",
+    range: 1.5,
+    hploss: 1,
+    dmgtype: "arts",
+    size: 1.2,
+    tooltip: "Deals arts to all surrounding units;\ncoming in contact with pulse\n waves increases atk range.",
+    targets: 99,
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/sarkaz-guerrilla-caster-leader-sheet.webp",
+    bullet: { size: { height: 1, depth: 5, width: 3 }, arc:false, speed:5, color: new BABYLON.Color3(0.69, 0.21, 0.67)},
+
+    hasskill: true,
+    hasatkanim: false,
+
+    atkanim:{
+        start :99999,
+        end: 99999,
+        duration:1
+    },
+
+    death: {
+        start: 0,
+        end: 14,
+        duration: 1,
+
+    },
+    idle: {
+        start: 15,
+        end: 37,
+        duration: 1,
+
+    },
+    move: {
+        start: 38,
+        end: 60,
+        duration: 1,
+
+    },
+
+    sfx: {
+        atk: {
+            src: "sarkaz-caster-atk",
+            volume: 0.3
+        }
+    },
+
+
+    skill: {
+        name: "altarfighter",
+        triggertype: "on_altar",
+        skilltype: "sarkazaltar",
+        target: "self",
+        modifiers: {
+            range: 1,
+        },
+        aura: true,
+        auratype: 2,
+
+        idle: {
+            start: 61,
+            end: 83,
+            duration: 1,
+    
+        },
+        move: {
+            start: 84,
+            end: 106,
+            duration: 1,
+    
+        },
+    },
+}
+
 enemylist["Guerrilla Shieldguard"] = {
     name: "Guerrilla Shieldguard",
     hp: 15000,
@@ -1209,7 +1611,7 @@ enemylist["Guerrilla Shieldguard"] = {
     hploss: 1,
     dmgtype: "physical",
     size: 1.2,
-    tooltip: "Covers the advance of \nenemy troops by making themselves\n more likely to be attacked.",
+    tooltip: "Covers the advance of \nenemies by making themselves\n more likely to be attacked.",
     targets: 1,
 
     enemytype: "normal",
@@ -1488,7 +1890,7 @@ enemylist["Patriot"] = {
     def: 1900,
     res: 90,
     atkinterval: 4,
-    speed: (0.3 + 0.2) * 0.66,
+    speed: 0.4 * 0.66,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -1574,8 +1976,8 @@ enemylist["Patriot2"] = {
     atk: 1600,
     def: 500,
     res: 45,
-    atkinterval: 4.5,
-    speed: (0.4 + 0.2) * 0.66,
+    atkinterval: 3.6,
+    speed: 0.5 * 0.66,
     blockcount: 1,
     type: "g",
     range: 0.85,
@@ -1710,7 +2112,7 @@ enemylist["Roar Knightclub Elite"] = {
     size: 0.9,
     tooltip: "Has significantly increased DEF\nand RES for a period of time.",
     targets: 1,
-    bullet: { size: { height: 1, depth: 8, width: 0.5 }, color: new BABYLON.Color3(0.95, 0, 0)},
+    bullet: { size: { height: 1, depth: 8, width: 0.5 }, arc:false, speed:5, color: new BABYLON.Color3(0.4, 0.4, 0.4)},
 
     enemytype: "normal",
 
@@ -1834,7 +2236,7 @@ enemylist["Bloodboil Knightclub Elite"] = {
         target: "self",
         modifiers: {
             atk: 0.1,
-            aspd: 5,
+            aspd: 5*1.3,
             stack: 10
         },
         aura: false,
@@ -2362,7 +2764,7 @@ enemylist["Enraged Possessed Bonethrower"] = {
     size: 1.05,
     tooltip: "Has extremely ATK.\nLoses HP over time.",
     targets: 1,
-    bullet: { size: { height: 1, depth: 12, width: 1.2 }, color: new BABYLON.Color3(0.95, 0, 0) },
+    bullet: { size: { height: 1, depth: 12, width: 1.2 }, arc:false, speed:5, color: new BABYLON.Color3(0.4, 0.4, 0.4) },
 
 
     enemytype: "normal",
@@ -2434,7 +2836,7 @@ enemylist["Enraged Possessed Thrower"] = {
     size: 1.05,
     tooltip: "Has high ATK.\nLoses HP over time.",
     targets: 1,
-    bullet: { size: { height: 1, depth: 12, width: 1.2 }, color: new BABYLON.Color3(0.95, 0, 0) },
+    bullet: { size: { height: 1, depth: 12, width: 1.2 }, arc:false, speed:5, color: new BABYLON.Color3(0.4, 0.4, 0.4) },
 
     enemytype: "normal",
 
@@ -2693,7 +3095,7 @@ enemylist["Mephisto"] = {
         target: "all",
         modifiers: {
             atk: 0.2,
-            aspd: 10,
+            aspd: 10*1.3,
             hpregenbuff: 2
         },
         aura: false,

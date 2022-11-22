@@ -382,19 +382,27 @@ class MainMenu extends LVLAbstract {
         var dir = 1;
         let chapterlvl = [];
         for (let i = 0; i < keys.length; i++) {
-            console.log(label)
             if (keys[i].split("-")[0] == label)
                 chapterlvl.push(levels[keys[i]])
         }
+        let offs = 0
+        let stop = false;
         for (let i = 0; i < chapterlvl.length; i++) {
-
+            if (stop)
+                break;
             if (i % 6 == 0 && i > 0) {
                 j++
                 z = 0
                 dir *= -1;
                 if (dir < 0)
                     z = 5;
+                offs++
             }
+
+            var iscleared = localStorage.getItem(chapterlvl[i].level)
+            if (iscleared == null)
+                stop = true;
+
 
             const button = BABYLON.GUI.Button.CreateImageOnlyButton("but", "images/menu/" + chapterlvl[i].type + ".png");
             button.width = "13%";
@@ -424,36 +432,51 @@ class MainMenu extends LVLAbstract {
             button.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
             button.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
 
-            if (i < chapterlvl.length - 1) {
-                if (!(i % 5 == 0 && i > 0)) {
-                    var line = new BABYLON.GUI.Image("tooltip", "images/menu/linevertical.png");
-                    line.width = "0.5%"
-                    line.height = "6%"
-                    var finalz = z;
-                    if (dir < 0)
-                        finalz--
-                    line.top = (29 + finalz * 12) + "%";
-                    line.left = (12.3 + j * 19) + "%";
-                    line.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
-                    line.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
-                    this.lvlcontroller.addControl(line);
-                }
-                else {
-                    var line = new BABYLON.GUI.Image("tooltip", "images/menu/linehorizontal.png");
-                    line.width = "6.5%"
-                    line.height = "1%"
-                    line.top = (25.5 + z * 12) + "%";
-                    line.left = (18.6 + j * 19) + "%";
-                    line.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
-                    line.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
-                    this.lvlcontroller.addControl(line);
+            if (i < chapterlvl.length - 1 && !stop) {
+                if (!chapterlvl[i].level.includes("H") && chapterlvl[i+1].level.includes("H"))
+                    console.log("off")
+                else{
+                    if ((i - offs) % 5 == 0 && i > 0 && !(i % 6 == 0)) {
+                        var line = new BABYLON.GUI.Image("tooltip", "images/menu/linehorizontal.png");
+                        line.width = "6.5%"
+                        line.height = "1%"
+                        line.top = (25.5 + z * 12) + "%";
+                        line.left = (18.6 + j * 19) + "%";
+                        line.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
+                        line.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
+                        this.lvlcontroller.addControl(line);
+                    }
+                    else {
+                        var line = new BABYLON.GUI.Image("tooltip", "images/menu/linevertical.png");
+                        line.width = "0.5%"
+                        line.height = "6%"
+                        var finalz = z;
+                        if (dir < 0)
+                            finalz--
+                        line.top = (29 + finalz * 12) + "%";
+                        line.left = (12.3 + j * 19) + "%";
+                        line.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
+                        line.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
+                        this.lvlcontroller.addControl(line);
+                    }
                 }
             }
 
+
             this.lvlcontroller.addControl(button);
 
+            if (iscleared != null) {
+                var image = new BABYLON.GUI.Image("tooltip", "images/menu/clearicon.png");
+                image.width = "4%"
+                image.height = "7%"
+                image.top = (22.5 + z * 12) + "%";
+                image.left = (16 + j * 19) + "%";
+                image.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
+                image.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
+                this.lvlcontroller.addControl(image);
+            }
 
-            if (chapterlvl[i].type == "boss") {
+            if (chapterlvl[i].type.includes("boss")) {
 
                 var image = new BABYLON.GUI.Image("tooltip", "images/menu/bossicon.png");
                 image.width = "7.5%"
@@ -469,7 +492,7 @@ class MainMenu extends LVLAbstract {
 
             button.onPointerUpObservable.add(function () {
                 instance.playSound("click", 0.3)
-                if (instance.texts[chapterlvl[i].level].outlineWidth== 3) {
+                if (instance.texts[chapterlvl[i].level].outlineWidth == 3) {
                     instance.opcontroller.dispose();
                     instance.resetOutlines(chapterlvl)
                 }
@@ -519,7 +542,8 @@ class MainMenu extends LVLAbstract {
     }
     resetOutlines(keys) {
         for (let i = 0; i < keys.length; i++) {
-            this.texts[keys[i].level].outlineWidth = 0
+            if (this.texts[keys[i].level] != undefined)
+                this.texts[keys[i].level].outlineWidth = 0
         }
     }
 
@@ -536,6 +560,11 @@ class MainMenu extends LVLAbstract {
         container.color = "White";
         //container.thickness = 1;
         container.background = "rgba(0, 0, 0, 0.8)";
+
+        if (lvl.type.includes("hell")) {
+            container.background = "rgba(166, 29, 29,0.8)";
+        }
+
         container.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_RIGHT;
 
         var msg = new BABYLON.GUI.TextBlock();

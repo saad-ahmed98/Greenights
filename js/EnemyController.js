@@ -111,7 +111,7 @@ class EnemyController extends CharaController {
 
         //move on x axis first to the current point x
         var xfound = false;
-        if (Math.abs(this.mesh.position.x / 30 - this.currentpoint[1]) > 1 && Math.abs(this.mesh.position.z / 30 - this.currentpoint[0]) > 1) {
+        if (this.stairs && (Math.abs(this.mesh.position.x / 30 - this.currentpoint[1]) > 1 || Math.abs(this.mesh.position.z / 30 - this.currentpoint[0]) > 1)) {
 
             this.mesh.position.z = this.currentpoint[0] * 30
             this.sprite.position.z = this.currentpoint[0] * 30
@@ -373,43 +373,62 @@ class EnemyController extends CharaController {
                 this.sprite.playAnimation(this.chara.idle.start, this.chara.idle.end, true, 30 * this.gamespeed * this.chara.idle.duration);
                 this.running = false;
             }
-            this.sprite.playAnimation(this.chara.atkanim.start, this.chara.atkanim.end, false, 30 * this.gamespeed * this.buffs.getFinalAtkInterval(this.chara.atkanim.duration));
+            var instance = this
             if (this.chara.sfx.atk != undefined) {
                 //dog rawr spam prevention
                 if (Math.random() < 0.20 || this.chara.sfx.atk.src != "dog-atk")
                     this.lvlcontroller.playSound(this.chara.name + "-atk", this.chara.sfx.atk.volume)
             }
-            var instance = this
-            var interval1 = setInterval(() => {
-                if (instance.sprite.cellIndex >= instance.chara.atkanim.contact && instance.hp > 0) {
+            if (this.chara.hasatkanim!=undefined) {
+                if (this.hp > 0) {
                     for (let i = 0; i < player.length; i++) {
                         if (instance.chara.dmgtype == "heal")
                             player[i].receiveHealing(instance);
                         else {
                             for (let j = 0; j < this.buffs.getAttacks(); j++) {
-                                if(this.chara.bullet!=undefined){
-                                    new Bullet(this,this.scene,player[i],this.lvlcontroller)
+                                if (this.chara.bullet != undefined) {
+                                    new Bullet(this, this.scene, player[i], this.lvlcontroller)
                                 }
                                 else player[i].receiveDamage(instance)
                             }
                         }
                     }
-                    if (this.chara.sfx.hit != undefined)
-                        this.lvlcontroller.playSound(this.chara.name + "-hit", this.chara.sfx.hit.volume)
-                    clearInterval(interval1);
-
                 }
-            }, 1);
+            }
+            else {
+                this.sprite.playAnimation(this.chara.atkanim.start, this.chara.atkanim.end, false, 30 * this.gamespeed * this.buffs.getFinalAtkInterval(this.chara.atkanim.duration));
 
-            //stay idle while waiting to be able to attack again
-            var interval2 = setInterval(() => {
-                if (instance.sprite.cellIndex == instance.chara.atkanim.end && instance.hp > 0) {
-                    this.sprite.playAnimation(this.chara.idle.start, this.chara.idle.end, true, 30 * this.gamespeed * this.chara.idle.duration);
-                    this.attacking = false;
-                    clearInterval(interval2);
-                }
-            }, 1);
-            return true;
+                var interval1 = setInterval(() => {
+                    if (instance.sprite.cellIndex >= instance.chara.atkanim.contact && instance.hp > 0) {
+                        for (let i = 0; i < player.length; i++) {
+                            if (instance.chara.dmgtype == "heal")
+                                player[i].receiveHealing(instance);
+                            else {
+                                for (let j = 0; j < this.buffs.getAttacks(); j++) {
+                                    if (this.chara.bullet != undefined) {
+                                        new Bullet(this, this.scene, player[i], this.lvlcontroller)
+                                    }
+                                    else player[i].receiveDamage(instance)
+                                }
+                            }
+                        }
+                        if (this.chara.sfx.hit != undefined && this.chara.bullet==undefined)
+                            this.lvlcontroller.playSound(this.chara.name + "-hit", this.chara.sfx.hit.volume)
+                        clearInterval(interval1);
+
+                    }
+                }, 1);
+
+                //stay idle while waiting to be able to attack again
+                var interval2 = setInterval(() => {
+                    if (instance.sprite.cellIndex == instance.chara.atkanim.end && instance.hp > 0) {
+                        this.sprite.playAnimation(this.chara.idle.start, this.chara.idle.end, true, 30 * this.gamespeed * this.chara.idle.duration);
+                        this.attacking = false;
+                        clearInterval(interval2);
+                    }
+                }, 1);
+                return true;
+            }
         }
         return false;
     }
@@ -417,6 +436,7 @@ class EnemyController extends CharaController {
     //receive damage, attackingplayer can be a hazard
     //mod, dmtype and bombeffects are for skillbombs
     receiveDamage(attackingplayer, hazard = false, mod = 1, dmtype = "", bombeffects) {
+
         var dmg;
         var dmgtype;
 

@@ -26,7 +26,7 @@ class PlayerController extends CharaController {
         aura.size = 70;
         aura.width = 90;
 
-        aura.position.z -= this.y;
+        aura.position.z -= Math.min(5,this.y);
         aura.position.x -= this.x;
     }
 
@@ -38,7 +38,7 @@ class PlayerController extends CharaController {
             this.aura.size = 65;
             this.aura.width = 100;
 
-            this.aura.position.z -= this.y;
+            this.aura.position.z -= Math.min(5,this.y);
             this.aura.position.x -= this.x;
         }
     }
@@ -159,19 +159,20 @@ class PlayerController extends CharaController {
         var instance = this
 
         this.sprite.playAnimation(this.chara.drop.start, this.chara.drop.end, false, this.gamespeed * 30);
-
-        this.mesh.position.z -= this.y;
+        
+        this.mesh.position.z -= Math.min(5,this.y)
         this.mesh.position.x -= this.x;
 
-        this.sprite.position.z -= this.y;
+        this.sprite.position.z -= Math.min(5,this.y);
         this.sprite.position.x -= this.x;
 
-        this.shadow.position.z -= this.y;
+        this.shadow.position.z -= Math.min(5,this.y);
         this.shadow.position.x -= this.x;
 
 
-        this.skillready.position.z -= this.y;
+        this.skillready.position.z -= Math.min(5,this.y);
         this.skillready.position.x -= this.x;
+        
 
         this.skillready.isVisible = false
 

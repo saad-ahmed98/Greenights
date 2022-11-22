@@ -51,25 +51,25 @@ class Tile {
         switch (this.type) {
             case "icealtar":
             case "altar":
-                /*
-                let box1 =new BABYLON.MeshBuilder.CreateBox("box2", { height: 15, depth: 24, width: 24 }, this.scene)
-                let box2 = new BABYLON.MeshBuilder.CreateBox("box3", { height: 15, depth: 30, width: 30 }, this.scene)
-
+                break;
+            case "bg":
+                break;
+            case "gblk":
+                let box1 =new BABYLON.MeshBuilder.CreateBox("box2", { height: 5, depth: 24, width: 24 }, this.scene)
+                let box2 = new BABYLON.MeshBuilder.CreateBox("box3", { height: 5, depth: 30, width: 30 }, this.scene)
                 let hole1 = new BABYLON.CSG.FromMesh(box1);
                 let holePlate = new BABYLON.CSG.FromMesh(box2);
                 let newHolePlate = holePlate.subtract(hole1);
                 let newMeshHolePlate = newHolePlate.toMesh("", null, this.scene);
                 newMeshHolePlate.position.z =this.mesh.position.z;
                 newMeshHolePlate.position.x = this.mesh.position.x;
-                newMeshHolePlate.position.y = 28 / 2 - 1.5
+                newMeshHolePlate.position.y = 2
                 var holeMat = new BABYLON.StandardMaterial("", this.scene);
                 newMeshHolePlate.material = holeMat
                 box1.dispose()
                 box2.dispose()
                 newMeshHolePlate.material.diffuseColor =  new BABYLON.Color3(0.1, 0.1, 0.1);
-                */
-                break;
-            case "bg":
+                colorMaterial.diffuseTexture = this.scene.assets["g"]
                 break;
             default:
                 colorMaterial.diffuseTexture = this.scene.assets[this.type]
@@ -108,6 +108,6 @@ class Tile {
 
     }
     canBeDeployed(type) {
-        return (this.type == type || (type == "g" && this.type == "magma") || (type == "g" && this.type == "blood"))
+        return (this.type == type || (type == "g" && this.type == "magma") || (type == "g" && this.type == "blood")|| (type == "g" && this.type == "gblk"))
     }
 }
