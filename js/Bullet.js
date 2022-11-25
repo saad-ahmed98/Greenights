@@ -1,5 +1,5 @@
 class Bullet {
-    constructor(source, scene, target, lvlcontroller) {
+    constructor(source, scene, target, lvlcontroller, skill=false) {
         this.source = source;
         this.scene = scene,
             this.lvl = lvlcontroller
@@ -7,7 +7,10 @@ class Bullet {
         this.mesh;
         this.done = false;
         this.halfarc;
-        this.speed = source.chara.bullet.speed;
+        if(skill)
+            this.sourcebullet = source.chara.skillbullet
+        else this.sourcebullet = source.chara.bullet
+        this.speed = this.sourcebullet.speed;
         this.offsetX;
         this.offsetZ;
         this.offsetY;
@@ -21,20 +24,22 @@ class Bullet {
     createBullet() {
         if (this.source.chara.splashradius != undefined)
             this.splashradius = this.source.chara.splashradius;
-        this.mesh = new BABYLON.MeshBuilder.CreateBox(this.id, this.source.chara.bullet.size, this.scene);
-        var dir = -1;
+        this.mesh = new BABYLON.MeshBuilder.CreateBox(this.id, this.sourcebullet.size, this.scene);
+        var dir = 1;
         if (this.source.mesh.position.z <= this.target.mesh.position.z)
-            dir = 1
-
-        this.mesh.position = new BABYLON.Vector3(this.source.mesh.position.x + 5, 28 + this.source.mesh.position.y, this.source.mesh.position.z + (7 * dir));
+            dir = 2
+        
+        var offX = this.source.mesh.position.x/30/8
+        var offZ = Math.min(2,this.source.mesh.position.z/30)
+        this.mesh.position = new BABYLON.Vector3(this.source.mesh.position.x + (5*offX), 20 + this.source.mesh.position.y, this.source.mesh.position.z + (offZ * dir));
         var colorMaterial = new BABYLON.StandardMaterial("", this.scene);
-        colorMaterial.diffuseColor = this.source.chara.bullet.color;
+        colorMaterial.diffuseColor = this.sourcebullet.color;
         this.mesh.material = colorMaterial;
         this.lvl.bullets.push(this)
         this.mesh.lookAt(new BABYLON.Vector3(this.target.mesh.position.x, this.mesh.position.y - 10, this.target.mesh.position.z));
-        if (this.source.chara.bullet.arc) {
+        if (this.sourcebullet.arc) {
             this.halfarc = Math.sqrt(Math.abs(this.mesh.position.x - this.target.mesh.position.x) + Math.abs(this.mesh.position.z - this.target.mesh.position.z)) / 2
-            this.offsetY = Math.sqrt(Math.abs(this.mesh.position.x - this.target.mesh.position.x) + Math.abs(this.mesh.position.z - this.target.mesh.position.z))*2
+            this.offsetY = Math.sqrt(Math.abs(this.mesh.position.x - this.target.mesh.position.x) + Math.abs(this.mesh.position.z - this.target.mesh.position.z)) * 2
 
         }
         this.offsetX = Math.abs(this.mesh.position.x - this.target.mesh.position.x) / this.speed
@@ -51,18 +56,24 @@ class Bullet {
             this.friction += this.offsetY / 5 / gamespeed
             if (this.friction > this.offsetY)
                 this.friction = this.offsetY
-            this.mesh.position.y -= this.offsetY/3 / gamespeed
+            this.mesh.position.y -= this.offsetY / 3 / gamespeed
         }
-        if (this.mesh.position.x <= this.target.mesh.position.x + 5 && this.mesh.position.x >= this.target.mesh.position.x - 5)
+        if (this.mesh.position.x <= this.target.mesh.position.x + 10 && this.mesh.position.x >= this.target.mesh.position.x - 10) {
             xfound = true;
+            if (this.halfarc == undefined)
+                this.offsetZ += 0.1
+        }
         else {
             var dir = 1;
             if (this.mesh.position.x > this.target.mesh.position.x)
                 dir = -1;
             this.mesh.position.x += this.offsetX * dir / gamespeed;
         }
-        if (this.mesh.position.z <= this.target.mesh.position.z + 5 && this.mesh.position.z >= this.target.mesh.position.z - 5)
+        if (this.mesh.position.z <= this.target.mesh.position.z + 10 && this.mesh.position.z >= this.target.mesh.position.z - 10) {
             zfound = true;
+            if (this.halfarc == undefined)
+                this.offsetX += 0.1
+        }
         else {
             var dir = 1;
             if (this.mesh.position.z > this.target.mesh.position.z)
@@ -72,7 +83,11 @@ class Bullet {
 
         if (!this.done && xfound && zfound) {
             this.done = true;
-            if (this.source.chara.sfx.hit != undefined)
+            if (this.source.playerSkill.active && this.source.chara.skillsfx) {
+                if (this.source.chara.sfx.skillhit != undefined)
+                    this.lvl.playSound(this.source.chara.name + "-skillhit", this.source.chara.sfx.skillhit.volume)
+            }
+            else if (this.source.chara.sfx.hit != undefined)
                 this.lvl.playSound(this.source.chara.name + "-hit", this.source.chara.sfx.hit.volume)
 
             if (this.splashradius != undefined) {

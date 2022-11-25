@@ -1,5 +1,5 @@
 class MainMenu extends LVLAbstract {
-    constructor(gameconfig) {
+    constructor(gameconfig,startscreen="") {
         super(gameconfig)
         backgroundimg = "images/background/default.png"
 
@@ -8,7 +8,7 @@ class MainMenu extends LVLAbstract {
         this.lvlcontroller = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI", true, this.scene);
         this.opcontroller = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("opUI", true, this.scene);
 
-
+        this.startingscreen = startscreen;
         //this.createSkybox()
 
         this.gameconfig.scenes.push(this.scene)
@@ -24,7 +24,6 @@ class MainMenu extends LVLAbstract {
         this.loop;
         this.currentbgm;
         this.bgmfix = 0;
-
     }
 
     loadAssets() {
@@ -217,8 +216,11 @@ class MainMenu extends LVLAbstract {
 
 
     renderScene() {
-        if (this.bgmfix < 20)
+        if (this.bgmfix < 20){
+            if(this.startingscreen=="")
             this.playBGM("bgm", 0.2)
+            else this.playBGM(chapters[this.startingscreen].bgm, 0.2)
+        }
         this.scene.render();
         this.bgmfix++
     }
@@ -237,8 +239,9 @@ class MainMenu extends LVLAbstract {
         // Default intensity is 1. Let's dim the light a small amount
         light.intensity = 1;
 
-
-        this.createMainMenu()
+        if(this.startingscreen!="")
+            this.createLVLSelect(this.startingscreen)
+        else this.createMainMenu()
         var postProcess = new BABYLON.FxaaPostProcess("fxaa", 1.0, camera);
 
         return this.scene;
@@ -305,16 +308,25 @@ class MainMenu extends LVLAbstract {
         label.left = "10%";
         label.fontFamily = "Butler Stencil";
         this.lvlcontroller.addControl(label)
+        for (let i = 0; i < keys.length; i++) {
+            let title = new BABYLON.GUI.TextBlock();
+            title.text = chapters[keys[i]].title;
+            title.fontSize = "5%";
+            title.color = "white";
+            title.top = "35%";
+            title.left = (0 + (i - 1) * 30) + "%";
+            title.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
+            title.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
+            this.lvlcontroller.addControl(title)
+        }
 
         for (let i = 0; i < keys.length; i++) {
-
-
 
             const button = BABYLON.GUI.Button.CreateImageOnlyButton("but", "images/menu/" + chapters[keys[i]].select);
             button.width = "28%";
             button.height = "50%";
             button.top = "30%";
-            button.left = (6 + i * 19) + "%";
+            button.left = (6 + i * 30) + "%";
 
             button.color = "transparent";
             button.background = "transparent";
@@ -324,16 +336,13 @@ class MainMenu extends LVLAbstract {
             button.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
             button.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
 
-
             this.lvlcontroller.addControl(button);
+
 
 
             button.onPointerUpObservable.add(function () {
                 instance.playSound("click", 0.3)
-                instance.playBGM(chapters[keys[i]].bgm, 0.2)
-                instance.createSkybox(chapters[keys[i]].background)
                 instance.createLVLSelect(chapters[keys[i]].label)
-
             });
 
         }
@@ -362,6 +371,8 @@ class MainMenu extends LVLAbstract {
     }
 
     createLVLSelect(label) {
+        this.playBGM(chapters[label].bgm, 0.2)
+        this.createSkybox(chapters[label].background)
         this.lvlcontroller.dispose()
         this.lvlcontroller = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI", true, this.scene);
         this.opcontroller.dispose()
@@ -400,7 +411,7 @@ class MainMenu extends LVLAbstract {
             }
 
             var iscleared = localStorage.getItem(chapterlvl[i].level)
-            if (iscleared == null)
+            if (iscleared == null && !chapters[label].unlock)
                 stop = true;
 
 
@@ -433,9 +444,9 @@ class MainMenu extends LVLAbstract {
             button.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
 
             if (i < chapterlvl.length - 1 && !stop) {
-                if (!chapterlvl[i].level.includes("H") && chapterlvl[i+1].level.includes("H"))
+                if (!chapterlvl[i].level.includes("H") && chapterlvl[i + 1].level.includes("H"))
                     console.log("off")
-                else{
+                else {
                     if ((i - offs) % 5 == 0 && i > 0 && !(i % 6 == 0)) {
                         var line = new BABYLON.GUI.Image("tooltip", "images/menu/linehorizontal.png");
                         line.width = "6.5%"
@@ -513,9 +524,11 @@ class MainMenu extends LVLAbstract {
 
         var lvlselected = localStorage.getItem("lvl")
         if (lvlselected != null && this.texts[lvlselected] != undefined) {
-            this.createOperationInfo(lvlselected, label)
-            this.texts[lvlselected].outlineColor = "blue"
-            this.texts[lvlselected].outlineWidth = 3
+            if (lvlselected.split("-")[0] == label) {
+                this.createOperationInfo(lvlselected, label)
+                this.texts[lvlselected].outlineColor = "blue"
+                this.texts[lvlselected].outlineWidth = 3
+            }
         }
 
         var quit = BABYLON.GUI.Button.CreateImageOnlyButton("but", "images/menu/back.png");

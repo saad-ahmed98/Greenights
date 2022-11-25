@@ -34,7 +34,7 @@ class EnemySkill {
             if (this.skilltype == "sarkazalert") {
                 if (targets[i].chara.enemytype == "standby" && targets[i].buffs.getStandby()) {
                     targets[i].activateSkillAnims()
-                    targets[i].enemySkill.activateSkill([targets[i]])
+                    targets[i].playerSkill.activateSkill([targets[i]])
                 }
             }
         }

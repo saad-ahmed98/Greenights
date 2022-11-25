@@ -204,8 +204,9 @@ class LVLGUIController {
         //on click, back to main menu
         containerq.onPointerDownObservable.add(() => {
             titleLoading = ""
+            var startingscreen = lvlnumber.split("-")[0]
             lvlnumber = ""
-            new MainMenu(lvlcont.gameconfig)
+            new MainMenu(lvlcont.gameconfig,startingscreen)
         });
 
         //retry button
@@ -275,8 +276,9 @@ class LVLGUIController {
         //on click, quit
         containerq.onPointerDownObservable.add(() => {
             titleLoading = ""
+            var startingscreen = lvlnumber.split("-")[0]
             lvlnumber = ""
-            new MainMenu(lvlcont.gameconfig)
+            new MainMenu(lvlcont.gameconfig,startingscreen)
         });
         //retry button
         var container2 = new BABYLON.GUI.Rectangle();
@@ -716,8 +718,9 @@ class LVLGUIController {
         //escapes to main menu on click
         container.onPointerDownObservable.add(() => {
             titleLoading = ""
+            var startingscreen = lvlnumber.split("-")[0]
             lvlnumber = ""
-            new MainMenu(lvlcont.gameconfig)
+            new MainMenu(lvlcont.gameconfig,startingscreen)
         });
 
         //retry button
@@ -781,7 +784,7 @@ class LVLGUIController {
         var text = new BABYLON.GUI.TextBlock();
         text.text = enemy.name + "\n\n" + enemy.tooltip;
         text.color = "white";
-        text.fontSize = "10%";
+        text.fontSize = "9%";
 
         textbox.addControl(text)
         container.addControl(image)

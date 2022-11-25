@@ -477,10 +477,7 @@ class LVLController extends LVLAbstract {
                 }
                 if (!this.gui.isPaused)
                     this.createLvl();
-
             }
-            
-
         }
         this.scene.render();
     }
@@ -918,20 +915,20 @@ class LVLController extends LVLAbstract {
 
     checkEnemies() {
         for (let i = 0; i < this.enemies.length; i++) {
-            if (this.enemies[i].enemySkill != undefined) {
-                if (this.enemies[i].enemySkill.skilltype == "alive") {
-                    this.enemies[i].enemySkill.updateSkill(this.enemies)
+            if (this.enemies[i].playerSkill != undefined) {
+                if (this.enemies[i].playerSkill.skilltype == "alive") {
+                    this.enemies[i].playerSkill.updateSkill(this.enemies)
                 }
-                if (this.enemies[i].enemySkill.skilltype == "duration") {
-                    this.enemies[i].enemySkill.updateDurationSkill(this.enemies[i])
+                if (this.enemies[i].playerSkill.skilltype == "duration") {
+                    this.enemies[i].playerSkill.updateDurationSkill(this.enemies[i])
                 }
             }
             if (this.enemies[i].finish) {
                 this.playSound("alarmenter", 0.3)
                 this.hp -= this.enemies[i].chara.hploss;
-                if (this.enemies[i].enemySkill != undefined) {
-                    if (this.enemies[i].enemySkill.skilltype == "alive") {
-                        this.enemies[i].enemySkill.deactivateSkill(this.enemies)
+                if (this.enemies[i].playerSkill != undefined) {
+                    if (this.enemies[i].playerSkill.skilltype == "alive") {
+                        this.enemies[i].playerSkill.deactivateSkill(this.enemies)
                     }
                 }
                 this.enemies.splice(i, 1)
@@ -942,9 +939,9 @@ class LVLController extends LVLAbstract {
             else if (this.enemies[i].hp <= 0 || this.enemies[i].hp == NaN) {
                 //this.enemies[i].sprite.dispose();
                 this.updateOnAnyDeathSkills()
-                if (this.enemies[i].enemySkill != undefined) {
-                    if (this.enemies[i].enemySkill.skilltype == "alive") {
-                        this.enemies[i].enemySkill.deactivateSkill(this.enemies)
+                if (this.enemies[i].playerSkill != undefined) {
+                    if (this.enemies[i].playerSkill.skilltype == "alive") {
+                        this.enemies[i].playerSkill.deactivateSkill(this.enemies)
                     }
                 }
                 if (this.enemies[i].chara.revive == true)
@@ -961,13 +958,13 @@ class LVLController extends LVLAbstract {
         if (this.enemies.length > 0) {
             let inspired = this.enemies[0].buffs.getInspire()
             for (let i = 0; i < this.enemies.length; i++) {
-                if (this.enemies[i].enemySkill != undefined) {
-                    if (this.enemies[i].enemySkill.triggertype == "on_inspire") {
+                if (this.enemies[i].playerSkill != undefined) {
+                    if (this.enemies[i].playerSkill.triggertype == "on_inspire") {
                         if (inspired)
-                            this.enemies[i].enemySkill.activateSkill([this.enemies[i]])
+                            this.enemies[i].playerSkill.activateSkill([this.enemies[i]])
                         else {
-                            if (this.enemies[i].enemySkill.active)
-                                this.enemies[i].enemySkill.deactivateSkill([this.enemies[i]], true)
+                            if (this.enemies[i].playerSkill.active)
+                                this.enemies[i].playerSkill.deactivateSkill([this.enemies[i]], true)
                         }
                     }
 
@@ -979,9 +976,9 @@ class LVLController extends LVLAbstract {
     //activates enemy skills with on_anydeath triggertype
     updateOnAnyDeathSkills() {
         for (let i = 0; i < this.enemies.length; i++) {
-            if (this.enemies[i].enemySkill != undefined) {
-                if (this.enemies[i].enemySkill.triggertype == "on_anydeath")
-                    this.enemies[i].enemySkill.updateBloodboilSkill(this.enemies[i])
+            if (this.enemies[i].playerSkill != undefined) {
+                if (this.enemies[i].playerSkill.triggertype == "on_anydeath")
+                    this.enemies[i].playerSkill.updateBloodboilSkill(this.enemies[i])
 
             }
         }

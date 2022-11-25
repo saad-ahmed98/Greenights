@@ -18,7 +18,7 @@ class EnemyController extends CharaController {
         this.wait = false;
         this.aura;
         if (this.chara.hasskill)
-            this.enemySkill = new EnemySkill(chara.skill.name + id, chara.skill.triggertype, chara.skill.modifiers, chara.skill.aura, chara.skill.skilltype, chara.skill.target, chara.skill.auratype)
+            this.playerSkill = new EnemySkill(chara.skill.name + id, chara.skill.triggertype, chara.skill.modifiers, chara.skill.aura, chara.skill.skilltype, chara.skill.target, chara.skill.auratype)
 
         this.buffs = new EnemyBuffs();
 
@@ -279,7 +279,7 @@ class EnemyController extends CharaController {
         //this.addParticleEffects()
 
         //TODO HARD CODED BAD
-        if (this.chara.name == "Patriot") {
+        if (this.chara.name == "Patriot" || this.chara.name == "PatriotEX") {
             this.buffs.buffs["patriottaunt"] = { "name": "patriottaunt", "modifiers": { "taunt": 2, "attacks": 3 } }
         }
         if (this.chara.name == "Mephisto") {
@@ -325,13 +325,13 @@ class EnemyController extends CharaController {
             }, 1);
         }
         //if has skill that activates on spawn, activate
-        if (this.enemySkill != undefined) {
-            if (this.enemySkill.triggertype == "on_start") {
-                if (this.enemySkill.targettype == "all") {
-                    this.enemySkill.activateSkill(this.lvlcontroller.enemies)
-                    this.enemySkill.activateSkill([this], true)
+        if (this.playerSkill != undefined) {
+            if (this.playerSkill.triggertype == "on_start") {
+                if (this.playerSkill.targettype == "all") {
+                    this.playerSkill.activateSkill(this.lvlcontroller.enemies)
+                    this.playerSkill.activateSkill([this], true)
                 }
-                else this.enemySkill.activateSkill([this])
+                else this.playerSkill.activateSkill([this])
             }
         }
     }
@@ -516,12 +516,12 @@ class EnemyController extends CharaController {
         this.updateHpBar();
 
         //if enemy has a on hit skill, activate it
-        if (this.chara.hasskill && !this.enemySkill.active) {
-            if (this.enemySkill.triggertype == "on_hit") {
+        if (this.chara.hasskill && !this.playerSkill.active) {
+            if (this.playerSkill.triggertype == "on_hit") {
                 this.activateSkillAnims()
-                if (this.enemySkill.targettype == "all")
-                    this.enemySkill.activateSkill(this.lvlcontroller.enemies)
-                else this.enemySkill.activateSkill([this])
+                if (this.playerSkill.targettype == "all")
+                    this.playerSkill.activateSkill(this.lvlcontroller.enemies)
+                else this.playerSkill.activateSkill([this])
             }
         }
 
@@ -667,6 +667,8 @@ class EnemyController extends CharaController {
         for (let i = 0; i < playerz.length; i++)
             targets.push(playerz[i])
         this.sortBySpAtkPriority(targets)
+        if(this.chara.spattack.target=="farthest")
+        targets = targets.filter(player => player.chara.type=="r");
 
         var players = this.getFirstPlayerInRange(targets, this.chara.spattack.range, this.chara.targets + this.buffs.getTargets())
         for (let i = 0; i < players.length; i++) {

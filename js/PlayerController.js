@@ -344,10 +344,10 @@ class PlayerController extends CharaController {
             var interval = setInterval(() => {
                 if (instance.sprite.cellIndex >= contactframe && instance.hp > 0) {
                     if (this.playerSkill.active && this.chara.skillsfx) {
-                        if (this.chara.sfx.skillhit != undefined)
+                        if (this.chara.sfx.skillhit != undefined && this.chara.bullet==undefined)
                             this.lvlcontroller.playSound(this.chara.name + "-skillhit", this.chara.sfx.skillhit.volume)
                     }
-                    else if (this.chara.sfx.hit != undefined)
+                    else if (this.chara.sfx.hit != undefined && this.chara.bullet==undefined)
                         this.lvlcontroller.playSound(this.chara.name + "-hit", this.chara.sfx.hit.volume)
 
                     if (dmgtype == "heal") {
@@ -359,7 +359,13 @@ class PlayerController extends CharaController {
                             let splash = this.buffs.getSplash()
                             if (!splash.splash) {
                                 for (let j = 0; j < this.buffs.getAttacks(); j++) {
-                                    enemy[i].receiveDamage(instance)
+                                    if (this.chara.skillbullet != undefined && this.playerSkill.active) {
+                                        new Bullet(this, this.scene, enemy[i], this.lvlcontroller,true)
+                                    }
+                                    else if (this.chara.bullet != undefined) {
+                                        new Bullet(this, this.scene, enemy[i], this.lvlcontroller)
+                                    }
+                                    else enemy[i].receiveDamage(instance)
                                 }
                             }
                             else {

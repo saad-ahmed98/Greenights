@@ -589,6 +589,8 @@ playerlist["Exusiai"] = {
     opicon: "images/opicons/exusiai.webp",
 
     spritesheet: "images/sprites/exusiai-sheet.webp",
+    bullet: { size: { height: 1, depth: 4, width: 0.5 }, arc:false, speed:4, color: new BABYLON.Color3(1, 0.78, 0.08)},
+    
 
     skillsfx: true,
 
@@ -706,6 +708,8 @@ playerlist["Schwarz"] = {
     spritesheet: "images/sprites/schwarz-sheet.webp",
 
     skillsfx: true,
+    bullet: { size: { height: 1, depth: 8, width: 0.5 }, arc:false, speed:4, color: new BABYLON.Color3(0.4, 0.4, 0.4)},
+    skillbullet: { size: { height: 1, depth: 8, width: 1.5 }, arc:false, speed:4, color: new BABYLON.Color3(0.93, 0.36, 0.6)},
 
     atkanim: {
         start: 0,
@@ -716,7 +720,7 @@ playerlist["Schwarz"] = {
 
     death: {
         start: 28,
-        end: 41.2,
+        end: 41,
     },
 
     idle: {
@@ -845,6 +849,8 @@ playerlist["Ceobe"] = {
     spritesheet: "images/sprites/ceobe-sheet.webp",
 
     skillsfx: true,
+    bullet: { size: { height: 1, depth: 5, width: 2 }, arc:false, speed:4, color: new BABYLON.Color3(0.87, 0.18, 0.89)},
+    skillbullet: { size: { height: 1, depth: 6, width: 1.5 }, arc:false, speed:4, color: new BABYLON.Color3(1, 0.4, 0)},
 
     atkanim: {
         start: 0,
@@ -1197,6 +1203,8 @@ playerlist["Istina"] = {
     spritesheet: "images/sprites/istina-sheet.webp",
 
     skillsfx: false,
+    bullet: { size: { height: 1, depth: 5, width: 2 }, arc:false, speed:4, color: new BABYLON.Color3(1, 1, 1)},
+
 
     atkanim: {
         start: 0,
@@ -1546,6 +1554,7 @@ playerlist["Beeswax"] = {
     spritesheet: "images/sprites/beeswax-sheet.webp",
 
     skillsfx: false,
+    bullet: { size: { height: 1, depth: 5, width: 2 }, arc:false, speed:4, color: new BABYLON.Color3(1, 0.78, 0.08)},
 
 
     atkanim: {
@@ -1618,7 +1627,7 @@ playerlist["Beeswax"] = {
         },
     ],
     sfx: {
-        hit: {
+        atk: {
             src: "beeswax-hit",
             volume: 0.2
         },
@@ -2320,6 +2329,7 @@ playerlist["Meteor"] = {
     opicon: "images/opicons/meteor.png",
 
     spritesheet: "images/sprites/meteor-sheet.webp",
+    bullet: { size: { height: 1, depth: 8, width: 0.5 }, arc:false, speed:4, color: new BABYLON.Color3(0.4, 0.4, 0.4)},
 
     skillsfx: true,
 
@@ -2428,6 +2438,7 @@ playerlist["Haze"] = {
     spritesheet: "images/sprites/haze-sheet.webp",
 
     skillsfx: false,
+    bullet: { size: { height: 1, depth: 5, width: 2 }, arc:false, speed:4, color: new BABYLON.Color3(0.87, 0.18, 0.89)},
 
     atkanim: {
         start: 0,
@@ -2853,6 +2864,7 @@ playerlist["Melantha"] = {
         },
         apply: "self",
         skillimage: "images/opicons/adnachielskill.png"
+
     },
     talents: [{
         name: "ATK Up",
@@ -3106,6 +3118,7 @@ playerlist["Adnachiel"] = {
 
     spritesheet: "images/sprites/adnachiel-sheet.webp",
     skillsfx: false,
+    bullet: { size: { height: 1, depth: 8, width: 0.5 }, arc:false, speed:4, color: new BABYLON.Color3(0.4, 0.4, 0.4)},
 
     idle: {
         start: 30,
@@ -3486,6 +3499,7 @@ playerlist["Durin"] = {
     spritesheet: "images/sprites/durin-sheet.webp",
 
     skillsfx: false,
+    bullet: { size: { height: 1, depth: 5, width: 2 }, arc:false, speed:4, color: new BABYLON.Color3(0.87, 0.18, 0.89)},
 
     idle: {
         start: 38,
@@ -3576,6 +3590,7 @@ playerlist["Orchid"] = {
     spritesheet: "images/sprites/orchid-sheet.webp",
 
     skillsfx: false,
+    bullet: { size: { height: 1, depth: 5, width: 1 }, arc:false, speed:4, color: new BABYLON.Color3(0.87, 0.18, 0.89)},
 
     idle: {
         start: 30,

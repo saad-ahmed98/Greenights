@@ -58,17 +58,18 @@ class FireAltar {
         let hitenemies = this.getEnemiesInRange(enemies, 2)
         let hitplayers = this.getEnemiesInRange(players, 2)
         for (let i = 0; i < hitenemies.length; i++) {
-            if (hitenemies[i].enemySkill != undefined) {
+            if (hitenemies[i].playerSkill != undefined) {
 
                 //if enemy has skill activating from being hit by altar, then activate it
-                if (hitenemies[i].enemySkill.triggertype == "on_altar") {
-                    if (!hitenemies[i].enemySkill.active) {
-                        hitenemies[i].enemySkill.activateSkill([hitenemies[i]])
+                if (hitenemies[i].playerSkill.triggertype == "on_altar") {
+                    if (!hitenemies[i].playerSkill.active) {
+                        hitenemies[i].playerSkill.activateSkill([hitenemies[i]])
                         hitenemies[i].activateSkillAnims()
                     }
                 }
                 //if not, hit the enemy
-                else hitenemies[i].receiveDamage(this, true)
+                else if(!hitenemies[i].chara.name.includes("Patriot"))
+                    hitenemies[i].receiveDamage(this, true)
             }
             else
                 hitenemies[i].receiveDamage(this, true)

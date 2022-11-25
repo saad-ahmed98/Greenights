@@ -73,6 +73,7 @@ enemylist['Crossbowman'] = {
     dmgtype: "physical",
     bullet: { size: { height: 1, depth: 8, width: 0.5 }, arc:false, speed:5, color: new BABYLON.Color3(0.4, 0.4, 0.4)},
 
+
     enemytype: "normal",
     targets: 1,
     size: 1,
@@ -137,6 +138,7 @@ enemylist['Sarkaz Grudgebearer'] = {
 
     hasskill: true,
     size: 1.1,
+    bullet: { size: { height: 1, depth: 5, width: 3 }, arc:false, speed:5, color: new BABYLON.Color3(0.69, 0.21, 0.67)},
 
 
     spritesheet: "images/sprites/sarkaz-grudgebearer-sheet.webp",
@@ -532,6 +534,12 @@ enemylist['Sarkaz Bladeweaver'] = {
             standby: false,
         },
         aura: false,
+        move: {
+            start: 72,
+            end: 87,
+            duration: 0.7,
+    
+        },
     },
     sfx: {
         atk: {
@@ -1737,6 +1745,76 @@ enemylist["Guerrilla Shieldguard Leader"] = {
     },
 }
 
+enemylist["Guerrilla Shieldguard LeaderEX"] = {
+    name: "Guerrilla Shieldguard LeaderEX",
+    hp: 25000,
+    atk: 800,
+    def: 1500,
+    res: 60,
+    atkinterval: 3.8,
+    speed: 0.4 * 0.66,
+    blockcount: 1,
+    type: "g",
+    range: 0,
+    hploss: 1,
+    dmgtype: "physical",
+    size: 1.2,
+    tooltip: "Covers the advance of \nenemies by making themselves\nmore likely to be attacked.",
+    targets: 1,
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/guerrilla-shieldguard-leader-sheet.webp",
+
+    hasskill: true,
+
+
+    atkanim: {
+        start: 0,
+        end: 24,
+        contact: 15,
+        duration: 1,
+    },
+
+    death: {
+        start: 25,
+        end: 38,
+        duration: 1,
+
+    },
+    idle: {
+        start: 39,
+        end: 54,
+        duration: 1,
+
+    },
+    move: {
+        start: 55,
+        end: 72,
+        duration: 1.5,
+
+    },
+
+    sfx: {
+        hit: {
+            src: "shieldguard-hit",
+            volume: 0.1
+        }
+    },
+
+
+    skill: {
+        name: "tauntguerrilla",
+        triggertype: "on_start",
+        skilltype: "taunt",
+        target: "self",
+        modifiers: {
+            taunt: 1,
+        },
+        aura: false,
+    },
+}
+
 enemylist["Guerrilla Herald"] = {
     name: "Guerrilla Herald",
     hp: 7000,
@@ -1896,7 +1974,7 @@ enemylist["Patriot"] = {
     range: 0,
     hploss: 2,
     dmgtype: "physical",
-    size: 1,
+    size: 1.1,
     tooltip: "Has extremely high DEF & RES.\n Inspires all enemies,\n increasing their ATK and DEF.",
     revive: true,
     revivetimer: 30,
@@ -1983,7 +2061,220 @@ enemylist["Patriot2"] = {
     range: 0.85,
     hploss: 2,
     dmgtype: "physical",
-    size: 1,
+    size: 1.1,
+    tooltip: "Has extremely high DEF and RES.\n Inspires all enemies,\n increasing their ATK and DEF.",
+    targets: 1,
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/patriot2-sheet.webp",
+
+    hasskill: true,
+    hasspatk: true,
+    invincible: 15,
+
+    atkanim: {
+        start: 0,
+        end: 20,
+        contact: 10,
+        duration: 1.6,
+    },
+    death: {
+        start: 21,
+        end: 98,
+        duration: 1,
+    },
+
+    idle: {
+        start: 99,
+        end: 116,
+        duration: 1,
+
+    },
+    move: {
+        start: 117,
+        end: 146,
+        duration: 1.5,
+
+    },
+    start: {
+        start: 147,
+        end: 200,
+        duration: 2,
+    },
+    spatk: {
+        start: 201,
+        end: 252,
+        contact: 230,
+        duration: 1.3,
+    },
+
+    sfx: {
+        start: {
+            src: "patriot2-start1",
+            volume: 0.3
+        },
+        start2: {
+            src: "patriot2-start2",
+            volume: 0.3,
+            sprite: 160,
+            playing: false
+        },
+        start3: {
+            src: "patriot2-start3",
+            volume: 0.3,
+            sprite: 188,
+            playing: false
+        },
+        atk: {
+            src: "patriot2-atk",
+            volume: 0.1
+        },
+        hit: {
+            src: "patriot2-hit",
+            volume: 0.1
+        },
+        spatk: {
+            src: "patriot2-spatk",
+            volume: 0.3
+        },
+        sphit: {
+            src: "patriot2-sphit",
+            volume: 0.3
+        },
+
+    },
+    skill: {
+        name: "inspireguerrilla",
+        triggertype: "on_start",
+        skilltype: "alive",
+        target: "all",
+        modifiers: {
+            inspire: true,
+            atk: 0.2,
+            flatdef: 200,
+        },
+        aura: false,
+        auratype: 2
+    },
+
+    spattack: {
+        name: "javelin",
+        target: "farthest",
+        range: 99,
+        initialsp: 5,
+        sp: 20,
+        dmgmodifier: 1.35,
+        applyeffects: {
+            modifiers: {
+            },
+            duration: 3,
+            effecticon: 14
+        },
+    }
+}
+
+enemylist["PatriotEX"] = {
+    name: "PatriotEX",
+    hp: 60000,
+    atk: 3000,
+    def: 1900,
+    res: 90,
+    atkinterval: 4,
+    speed: 0.4 * 0.66,
+    blockcount: 1,
+    type: "g",
+    range: 0,
+    hploss: 2,
+    dmgtype: "physical",
+    size: 1.1,
+    tooltip: "Has extremely high DEF & RES.\n Inspires all enemies,\n increasing their ATK and DEF.",
+    revive: true,
+    revivetimer: 30,
+    revivemax: 30,
+    targets: 1,
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/patriot-sheet.webp",
+
+    hasskill: true,
+
+
+    atkanim: {
+        start: 0,
+        end: 22,
+        contact: 12,
+        duration: 1,
+    },
+
+
+    idle: {
+        start: 23,
+        end: 47,
+        duration: 1,
+
+    },
+    move: {
+        start: 48,
+        end: 76,
+        duration: 1.5,
+
+    },
+    revival1: {
+        start: 77,
+        end: 94,
+        duration: 1,
+    },
+    revival2: {
+        start: 95,
+        end: 114,
+        duration: 1,
+    },
+
+    sfx: {
+        revival: {
+            src: "patriot-revival",
+            volume: 0.05
+        },
+        atk: {
+            src: "patriot1-atk",
+            volume: 0.1
+        },
+        hit: {
+            src: "patriot1-hit",
+            volume: 0.1
+        }
+    },
+    skill: {
+        name: "inspireguerrilla",
+        triggertype: "on_start",
+        skilltype: "alive",
+        target: "all",
+        modifiers: {
+            inspire: true,
+            atk: 0.2,
+            flatdef: 200,
+        },
+        aura: false,
+        auratype: 2
+    },
+}
+
+enemylist["PatriotEX2"] = {
+    name: "PatriotEX2",
+    hp: 60000,
+    atk: 2000,
+    def: 500,
+    res: 45,
+    atkinterval: 3.6,
+    speed: 0.5 * 0.66,
+    blockcount: 1,
+    type: "g",
+    range: 0.85,
+    hploss: 2,
+    dmgtype: "physical",
+    size: 1.1,
     tooltip: "Has extremely high DEF and RES.\n Inspires all enemies,\n increasing their ATK and DEF.",
     targets: 1,
 
@@ -2764,7 +3055,7 @@ enemylist["Enraged Possessed Bonethrower"] = {
     size: 1.05,
     tooltip: "Has extremely ATK.\nLoses HP over time.",
     targets: 1,
-    bullet: { size: { height: 1, depth: 12, width: 1.2 }, arc:false, speed:5, color: new BABYLON.Color3(0.4, 0.4, 0.4) },
+    bullet: { size: { height: 1, depth: 12, width: 1.2 }, arc:false, speed:5, color: new BABYLON.Color3(0, 0, 0) },
 
 
     enemytype: "normal",
@@ -2836,7 +3127,7 @@ enemylist["Enraged Possessed Thrower"] = {
     size: 1.05,
     tooltip: "Has high ATK.\nLoses HP over time.",
     targets: 1,
-    bullet: { size: { height: 1, depth: 12, width: 1.2 }, arc:false, speed:5, color: new BABYLON.Color3(0.4, 0.4, 0.4) },
+    bullet: { size: { height: 1, depth: 12, width: 1.2 }, arc:false, speed:5, color: new BABYLON.Color3(0, 0, 0) },
 
     enemytype: "normal",
 
@@ -3118,7 +3409,9 @@ enemylist["Sarkaz Centurion Nidus Guard"] = {
     dmgtype: "arts",
     size: 1.1,
     tooltip: "Attacks 3 targets at once;\neach attack restores\nsome of this unit's HP.",
-    targets: 1,
+    targets: 3,
+    bullet: { size: { height: 1, depth: 5, width: 3 }, arc:false, speed:5, color: new BABYLON.Color3(0.69, 0.21, 0.67)},
+
 
     enemytype: "normal",
 
@@ -3170,6 +3463,112 @@ enemylist["Sarkaz Centurion Nidus Guard"] = {
         },
         aura: false,
     },
+}
+
+enemylist["Ergate"] = {
+    name: "Ergate",
+    hp: 2300,
+    atk: 0,
+    def: 120,
+    res: 40,
+    atkinterval: 1,
+    speed: 1.2 * 0.66,
+    blockcount: 99,
+    type: "g",
+    range: 0,
+    hploss: 1,
+    dmgtype: "physical",
+    size: 1,
+    tooltip: "Specializes in sabotage.\nCannot be blocked.\nMust be eliminated quickly.",
+    targets: 1,
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/ergate-sheet.webp",
+
+    hasskill: false,
+
+    atkanim: {
+        start: 999,
+        end: 999,
+        contact: 999,
+        duration: 1,
+    },
+
+    death: {
+        start: 0,
+        end: 10,
+        duration: 1,
+
+    },
+    idle: {
+        start: 11,
+        end: 25,
+        duration: 1,
+
+    },
+    move: {
+        start: 26,
+        end: 37,
+        duration: 1.2,
+    },
+
+    sfx: {
+    },
+
+}
+
+enemylist["Ergate Leader"] = {
+    name: "Ergate Leader",
+    hp: 3800,
+    atk: 0,
+    def: 260,
+    res: 45,
+    atkinterval: 1,
+    speed: 1.2 * 0.66,
+    blockcount: 99,
+    type: "g",
+    range: 0,
+    hploss: 1,
+    dmgtype: "physical",
+    size: 1,
+    tooltip: "More durable than Ergates.\nCannot be blocked.\nMust be eliminated quickly.",
+    targets: 1,
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/ergate-leader-sheet.webp",
+
+    hasskill: false,
+
+    atkanim: {
+        start: 999,
+        end: 999,
+        contact: 999,
+        duration: 1,
+    },
+
+    death: {
+        start: 0,
+        end: 10,
+        duration: 1,
+
+    },
+    idle: {
+        start: 11,
+        end: 25,
+        duration: 1,
+
+    },
+    move: {
+        start: 26,
+        end: 37,
+        duration: 1.2,
+    },
+
+    sfx: {
+    },
+
 }
 
 
