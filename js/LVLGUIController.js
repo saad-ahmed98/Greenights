@@ -41,6 +41,7 @@ class LVLGUIController {
     */
     createContextMenu(player, lvlcontroller) {
         this.contextMenuController = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI4", true, this.scene);
+        this.createPlayerTooltip(player)
 
         //retreat button
         var image = BABYLON.GUI.Button.CreateImageOnlyButton("retreat", "images/common/retreat.png");
@@ -88,8 +89,6 @@ class LVLGUIController {
             //instance.contextMenuController.dispose();
 
         });
-
-        this.createPlayerTooltip(player)
 
     }
 

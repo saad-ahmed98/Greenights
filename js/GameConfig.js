@@ -22,7 +22,6 @@ class GameConfig{
 
 
     modifySettings() {
-
         this.inputStates.pause=false;
 
     //add the listener to the main, window object, and update the states

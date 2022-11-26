@@ -214,7 +214,6 @@ class MainMenu extends LVLAbstract {
 
     }
 
-
     renderScene() {
         if (this.bgmfix < 20){
             if(this.startingscreen=="")
@@ -411,7 +410,7 @@ class MainMenu extends LVLAbstract {
             }
 
             var iscleared = localStorage.getItem(chapterlvl[i].level)
-            if (iscleared == null && !chapters[label].unlock)
+            if (iscleared == null && !chapters[label].unlock && !unlockAll)
                 stop = true;
 
 

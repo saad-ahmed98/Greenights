@@ -1128,9 +1128,8 @@ class LVLController extends LVLAbstract {
             player.buffs.effectSprite[keys[i]].dispose()
 
         player.hp = -999;
-        this.currentdp += Math.round(player.chara.cost / 2)
+        this.currentdp = Math.min(99,this.currentdp+Math.round(player.chara.cost / 2))
         player.dead = true;
-
     }
 
     pauseGame() {

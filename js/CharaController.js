@@ -120,13 +120,13 @@ class CharaController {
 
     //creates a debuff icon on top of the player or enemy
     createDebuffAura(name, cellindex) {
-        if(this.buffs.effectSprite[name]==undefined){
-        var icon = new BABYLON.Sprite("", this.lvlcontroller.spriteManagers["icons"]);
-        icon.cellIndex = cellindex
-        icon.position = new BABYLON.Vector3(this.sprite.position.x, 21, this.sprite.position.z);
-        icon.size = 65;
-        icon.width = 90;
-        this.buffs.effectSprite[name] = icon
+        if (this.buffs.effectSprite[name] == undefined) {
+            var icon = new BABYLON.Sprite("", this.lvlcontroller.spriteManagers["icons"]);
+            icon.cellIndex = cellindex
+            icon.position = new BABYLON.Vector3(this.sprite.position.x, 21, this.sprite.position.z);
+            icon.size = 65;
+            icon.width = 90;
+            this.buffs.effectSprite[name] = icon
         }
 
     }
@@ -139,17 +139,15 @@ class CharaController {
     getFirstPlayerInRange(players, range, targets) {
         var res = []
         var targetcount = targets;
-        var offset = 15
-        
-        if(range==0 && this.blockingplayer!=undefined){
+
+        if (range == 0 && this.blockingplayer != undefined) {
             res.push(this.blockingplayer)
             targetcount--
             if (targetcount <= 0)
                 return res;
         }
-        var squarerange = [[this.mesh.position.x - offset - 30 * range, this.mesh.position.x + offset + 30 * range], [this.mesh.position.z -  offset - 30 * range, this.mesh.position.z + offset + 30 * range]];
         for (let i = players.length - 1; i >= 0; i--) {
-            if (this.between(players[i].x * 30, squarerange[0]) && this.between(players[i].y * 30, squarerange[1])) {
+            if (this.distanceFromCenter(players[i].y*30, players[i].x*30, this.mesh.position.z,this.mesh.position.x,range*30+16)) {
                 res.push(players[i])
                 targetcount--
                 if (targetcount <= 0)
@@ -164,9 +162,8 @@ class CharaController {
             // get the chara real range
             range = this.chara.range
 
-            var squarerange = [[this.mesh.position.x - offset - 30 * range, this.mesh.position.x + offset + 30 * range], [this.mesh.position.z - offset - 30 * range, this.mesh.position.z + offset + 30 * range]];
             for (let i = players.length - 1; i >= 0; i--) {
-                if (this.between(players[i].x * 30, squarerange[0]) && this.between(players[i].y * 30, squarerange[1])) {
+                if (this.distanceFromCenter(players[i].y*30, players[i].x*30, this.mesh.position.z,this.mesh.position.x,range*30+16)) {
                     var found = false;
                     //check if player is not already a target
                     for (let j = 0; j < res.length; j++) {
@@ -185,6 +182,17 @@ class CharaController {
         return res;
 
     }
+
+    distanceFromCenter(a, b, x, y, r) {
+        var dist_points = (a - x) * (a - x) + (b - y) * (b - y);
+        r *= r;
+
+        if (dist_points < r) {
+            return true;
+        }
+        return false;
+    }
+
 
     //if player is blocked, then hit the blocked enemies in priority
     getBlockedEnemyInRange(enemies, targets) {
@@ -312,8 +320,8 @@ class CharaController {
         return res;
     }
 
-     //get player for healing, heal the player with the least amount of hp % in priority
-     getHpPlayerInRange(players, ranget, targets) {
+    //get player for healing, heal the player with the least amount of hp % in priority
+    getHpPlayerInRange(players, ranget, targets) {
         var rangeexpand = 0
         var range = ranget
         if (range / 0.5 % 2 != 0) {
@@ -436,12 +444,12 @@ class CharaController {
     }
 
     //receive damage used by player
-    receiveDamage(enemy, hazard = false,mod = 1) {
+    receiveDamage(enemy, hazard = false, mod = 1) {
         var dmg;
         var dmgtype;
 
         if (!hazard) {
-            dmg = enemy.buffs.getFinalAtk(enemy.chara.atk)*mod
+            dmg = enemy.buffs.getFinalAtk(enemy.chara.atk) * mod
             dmgtype = enemy.buffs.getDmgType()
 
             if (dmgtype == "")
@@ -466,11 +474,11 @@ class CharaController {
                 dmgreceived = dmg;
                 break;
         }
-        if (this.buffs.getHitOrMiss(dmgtype)){
+        if (this.buffs.getHitOrMiss(dmgtype)) {
             var finaldmg = this.buffs.getFinalDamage(dmgreceived)
             this.hp -= finaldmg
-            if(!hazard){
-                enemy.hp=Math.min(enemy.hp+enemy.buffs.getHPRecovered(finaldmg),enemy.maxhp)
+            if (!hazard) {
+                enemy.hp = Math.min(enemy.hp + enemy.buffs.getHPRecovered(finaldmg), enemy.maxhp)
                 enemy.updateHpBar()
             }
 
@@ -483,7 +491,7 @@ class CharaController {
     }
 
     //checks if a player died and does the death related actions if they are
-    checkDeath(){
+    checkDeath() {
         if (this.hp <= 0) {
             if (this.condtalent != undefined) {
                 if (this.condtalent.condition == "death") {
@@ -503,7 +511,6 @@ class CharaController {
                 this.mesh.dispose(true, true)
                 this.healthBar.dispose()
                 this.skillBar.dispose()
-                this.shadow.dispose()
                 this.skillready.dispose()
 
                 if (this.aura != undefined)
@@ -513,13 +520,14 @@ class CharaController {
                     this.buffs.effectSprite[keys[i]].dispose()
 
                 //play death animation
-                this.sprite.playAnimation(this.chara.death.start, this.chara.death.end, false, 30 * this.gamespeed);
+                this.sprite.playAnimation(this.chara.death.start, this.chara.death.end, false, 30 * Math.min(2,this.gamespeed));
 
                 var instance = this
                 var interval = setInterval(() => {
                     if (instance.sprite.cellIndex == instance.chara.death.end) {
                         //after death animation is over, remove the sprite
                         instance.sprite.dispose()
+                        instance.shadow.dispose()
                         clearInterval(interval);
                     }
                 }, 1);
@@ -546,7 +554,7 @@ class CharaController {
             }
         }
         if (this.pauseSpriteIndex >= this.chara.atkanim.start && this.pauseSpriteIndex <= this.chara.atkanim.end) {
-            this.sprite.playAnimation(this.chara.atkanim.start, this.chara.atkanim.end, true, 30 * this.gamespeed * this.chara.atkinterval * this.chara.atkanim.duration);
+            this.sprite.playAnimation(this.pauseSpriteIndex, this.chara.atkanim.end, false, 30 * this.gamespeed * this.buffs.getFinalAtkInterval(this.chara.atkanim.duration, true));
         }
         if (this.pauseSpriteIndex >= this.chara.idle.start && this.pauseSpriteIndex <= this.chara.idle.end) {
             this.sprite.playAnimation(this.chara.idle.start, this.chara.idle.end, true, 30 * this.gamespeed * this.chara.idle.duration);

@@ -1,5 +1,5 @@
 class Bullet {
-    constructor(source, scene, target, lvlcontroller, skill=false) {
+    constructor(source, scene, target, lvlcontroller, skill = false) {
         this.source = source;
         this.scene = scene,
             this.lvl = lvlcontroller
@@ -7,7 +7,7 @@ class Bullet {
         this.mesh;
         this.done = false;
         this.halfarc;
-        if(skill)
+        if (skill)
             this.sourcebullet = source.chara.skillbullet
         else this.sourcebullet = source.chara.bullet
         this.speed = this.sourcebullet.speed;
@@ -28,10 +28,10 @@ class Bullet {
         var dir = 1;
         if (this.source.mesh.position.z <= this.target.mesh.position.z)
             dir = 2
-        
-        var offX = this.source.mesh.position.x/30/8
-        var offZ = Math.min(2,this.source.mesh.position.z/30)
-        this.mesh.position = new BABYLON.Vector3(this.source.mesh.position.x + (5*offX), 20 + this.source.mesh.position.y, this.source.mesh.position.z + (offZ * dir));
+
+        var offX = this.source.mesh.position.x / 30 / 8
+        var offZ = Math.min(2, this.source.mesh.position.z / 30)
+        this.mesh.position = new BABYLON.Vector3(this.source.mesh.position.x + (5 * offX), 20 + this.source.mesh.position.y, this.source.mesh.position.z + (offZ * dir));
         var colorMaterial = new BABYLON.StandardMaterial("", this.scene);
         colorMaterial.diffuseColor = this.sourcebullet.color;
         this.mesh.material = colorMaterial;
@@ -83,13 +83,17 @@ class Bullet {
 
         if (!this.done && xfound && zfound) {
             this.done = true;
-            if (this.source.playerSkill.active && this.source.chara.skillsfx) {
-                if (this.source.chara.sfx.skillhit != undefined)
-                    this.lvl.playSound(this.source.chara.name + "-skillhit", this.source.chara.sfx.skillhit.volume)
+            if (this.source.playerSkill != undefined) {
+                if (this.source.playerSkill.active && this.source.chara.skillsfx) {
+                    if (this.source.chara.sfx.skillhit != undefined)
+                        this.lvl.playSound(this.source.chara.name + "-skillhit", this.source.chara.sfx.skillhit.volume)
+                }
+                else if (this.source.chara.sfx.hit != undefined)
+                    this.lvl.playSound(this.source.chara.name + "-hit", this.source.chara.sfx.hit.volume)
             }
             else if (this.source.chara.sfx.hit != undefined)
                 this.lvl.playSound(this.source.chara.name + "-hit", this.source.chara.sfx.hit.volume)
-
+                
             if (this.splashradius != undefined) {
                 let splashenemies = this.source.getSplashEnemiesInRange(this.lvl.activePlayers, this.target, this.splashradius)
                 for (let j = 0; j < splashenemies.length; j++)

@@ -382,8 +382,10 @@ class EnemyController extends CharaController {
             if (this.chara.hasatkanim!=undefined) {
                 if (this.hp > 0) {
                     for (let i = 0; i < player.length; i++) {
-                        if (instance.chara.dmgtype == "heal")
+                        if (instance.chara.dmgtype == "heal"){
+                            if(player[i].hp>0)
                             player[i].receiveHealing(instance);
+                        }
                         else {
                             for (let j = 0; j < this.buffs.getAttacks(); j++) {
                                 if (this.chara.bullet != undefined) {
@@ -550,17 +552,17 @@ class EnemyController extends CharaController {
             this.buffs.effectSprite[keys[i]].dispose()
         if (this.chara.revive != true) {
             this.mesh.dispose(true, true)
-            this.shadow.dispose()
 
             this.healthBar.dispose()
             if (this.skillBar != undefined)
                 this.skillBar.dispose();
             this.sprite.stopAnimation();
-            this.sprite.playAnimation(this.chara.death.start, this.chara.death.end, false, 30 * this.gamespeed * (this.chara.death.duration));
+            this.sprite.playAnimation(this.chara.death.start, this.chara.death.end, false, 30 * Math.min(2,this.gamespeed) * (this.chara.death.duration));
             var instance = this
             var timer = this.chara.death.end - this.chara.death.start + 2
             var interval = setInterval(() => {
                 if (instance.sprite.cellIndex == instance.chara.death.end || timer <= 0) {
+                    instance.shadow.dispose()
                     instance.sprite.dispose()
                     clearInterval(interval);
                 }

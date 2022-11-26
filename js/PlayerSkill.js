@@ -21,7 +21,7 @@ class PlayerSkill {
 
         var keys = Object.keys(this.modifiers)
         if (keys.includes("instantdp")) {
-            lvl.currentdp += this.modifiers.instantdp
+            lvl.currentdp = Math.min(99,lvl.currentdp+this.modifiers.instantdp)
             lvl.gui.updatePlayerWheelUI(lvl.currentdp, lvl.squadlimit)
         }
 

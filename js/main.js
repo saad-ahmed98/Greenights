@@ -4,6 +4,7 @@ let gameconfig;
 let titleLoading = "";
 let lvlnumber = "";
 let backgroundimg = "";
+let unlockAll = false;
 
 function startGame() {
     let canvas = document.querySelector("#myCanvas");

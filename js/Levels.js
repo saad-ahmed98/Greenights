@@ -1337,13 +1337,13 @@ levels["7-H4"] = {
 
 levels["T-DM"] = {
     level: "T-DM",
-    name: "Bread in french",
-    initialdp: 10,
+    name: "Warm up",
+    initialdp: 99,
     squadlimit: 8,
     hp: 3,
     bgm: "dm_2",
     background: "loading4",
-    description: "OooooOHOO OOO\n\n YOU WANT TO GAMING SO BADLY\n",
+    description: "This is just the beginning, don't let your guard down though.\n",
     place: "CB",
     offsetX: -20,
     offsetY: -60,
