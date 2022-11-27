@@ -11,7 +11,7 @@ class MainMenu extends LVLAbstract {
         this.startingscreen = startscreen;
         //this.createSkybox()
 
-        this.gameconfig.scenes.push(this.scene)
+        this.gameconfig.scene=this.scene
 
         this.configureAssetManager();
         this.loadAssets();

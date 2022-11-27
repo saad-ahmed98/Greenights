@@ -124,7 +124,7 @@ class PlayerController extends CharaController {
     }
 
     createPlayer(id, spriteManager, gui, iconsManager) {
-        this.mesh = this.scene.assets.meshchara.clone(id)
+        this.mesh = this.scene.assets.meshchara.createInstance(id)
 
 
         this.mesh.position.z = 0 + this.y * 30;
@@ -154,7 +154,6 @@ class PlayerController extends CharaController {
         player0.size = 65;
         player0.width = 90;
         this.sprite = player0;
-
 
         var instance = this
 

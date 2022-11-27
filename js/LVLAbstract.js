@@ -3,7 +3,7 @@ class LVLAbstract {
 
         gameconfig.createNewEngine()
         this.scene = new BABYLON.Scene(gameconfig.engine);
-        gameconfig.scenes.push(this.scene)
+        gameconfig.scene = this.scene
        
         this.gameconfig = gameconfig;
         this.gui;

@@ -245,7 +245,7 @@ class EnemyController extends CharaController {
     //gui is the gui of the level,
     //iconsmanager contains the icon sprites
     createEnemy(matrix, points, spriteManager, gui, iconsmanager) {
-        this.mesh = this.scene.assets.meshchara.clone(this.id)
+        this.mesh = this.scene.assets.meshchara.createInstance(this.id)
 
 
         this.shadow = new BABYLON.Sprite(this.id + "shadow", iconsmanager);

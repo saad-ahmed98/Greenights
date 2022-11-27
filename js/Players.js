@@ -1520,7 +1520,6 @@ playerlist["Breeze"] = {
 }
 
 playerlist["Beeswax"] = {
-    //hasmodule
     name: "Beeswax",
     hp: 2005,
     atk: 845,

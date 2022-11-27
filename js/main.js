@@ -8,12 +8,13 @@ let unlockAll = false;
 
 function startGame() {
     let canvas = document.querySelector("#myCanvas");
-    //divFps= document.getElementById("fps");
 
     gameconfig = new GameConfig(canvas)
     resize()
-    new MainMenu(gameconfig)
-    //new LVLController(gameconfig, enemylist, playerlist, levels["TEST-1"]);
+    let startingscreen = "";
+    if(sessionStorage.getItem("startingscreen")!=null)
+        startingscreen = sessionStorage.getItem("startingscreen")
+    new MainMenu(gameconfig,startingscreen)
 
 }
 

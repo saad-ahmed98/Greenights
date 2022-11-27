@@ -203,9 +203,9 @@ class LVLGUIController {
         //on click, back to main menu
         containerq.onPointerDownObservable.add(() => {
             titleLoading = ""
-            var startingscreen = lvlnumber.split("-")[0]
+            sessionStorage.setItem("startingscreen",lvlnumber.split("-")[0])
             lvlnumber = ""
-            new MainMenu(lvlcont.gameconfig,startingscreen)
+            window.location.reload()
         });
 
         //retry button
@@ -275,9 +275,9 @@ class LVLGUIController {
         //on click, quit
         containerq.onPointerDownObservable.add(() => {
             titleLoading = ""
-            var startingscreen = lvlnumber.split("-")[0]
+            sessionStorage.setItem("startingscreen",lvlnumber.split("-")[0])
             lvlnumber = ""
-            new MainMenu(lvlcont.gameconfig,startingscreen)
+            window.location.reload()
         });
         //retry button
         var container2 = new BABYLON.GUI.Rectangle();
@@ -717,9 +717,9 @@ class LVLGUIController {
         //escapes to main menu on click
         container.onPointerDownObservable.add(() => {
             titleLoading = ""
-            var startingscreen = lvlnumber.split("-")[0]
+            sessionStorage.setItem("startingscreen",lvlnumber.split("-")[0])
             lvlnumber = ""
-            new MainMenu(lvlcont.gameconfig,startingscreen)
+            window.location.reload()
         });
 
         //retry button
