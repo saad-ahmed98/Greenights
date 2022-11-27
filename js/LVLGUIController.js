@@ -113,13 +113,41 @@ class LVLGUIController {
         slider.isEnabled = false;
 
         slider.color = color;
-        slider.background = "rgba(0, 0, 0, 0.3)";
+        if(color=="yellow")
+            slider.background = "rgba(0, 0, 0, 0.3)";
+        else slider.background = "rgba(0, 0, 0, 0)";
 
         this.statscontroller.addControl(slider)
         slider.linkWithMesh(mesh);
 
         return slider;
+    }
 
+    /* 
+     creates the hp or sp bar element for a given player or enemy
+     takes as an argument : the distance in Y from the mesh and bar,
+     width of the bar and its color
+    */
+     addBackgroundBar(mesh, color, offsetY, width) {
+        var slider = new BABYLON.GUI.Slider();
+        slider.minimum = 0;
+        slider.maximum = 100;
+        slider.value = 100;
+
+        slider.displayThumb = false;
+        slider.height = "15px";
+        slider.width = width;
+        slider.linkOffsetY = offsetY + (15 * ((mesh.position.x / 30) / 8));
+        slider.linkOffsetX = 30 - 20 * (1 - ((mesh.position.z / 30) / 13));
+
+        slider.isEnabled = false;
+
+        slider.color = color;
+        slider.background = "rgba(0, 0, 0, 0.3)";
+
+        this.statscontroller.addControl(slider)
+        slider.linkWithMesh(mesh);
+        return slider;
     }
 
     //updates the redeploy timers of each player in the wheel

@@ -294,7 +294,9 @@ class PlayerController extends CharaController {
     }
 
     addHPBar(gui) {
+        this.healthBarBackground = gui.addBackgroundBar(this.mesh, "rgb(133, 224, 133)", 30, "5%");
         this.healthBar = gui.addHPBar(this.mesh, "green", 30, "5%");
+
     }
     addSkillBar(gui) {
         this.skillBar = gui.addHPBar(this.mesh, "yellow", 35, "5%");

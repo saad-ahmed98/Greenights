@@ -1,5 +1,5 @@
 class MainMenu extends LVLAbstract {
-    constructor(gameconfig,startscreen="") {
+    constructor(gameconfig, startscreen = "") {
         super(gameconfig)
         backgroundimg = "images/background/default.png"
 
@@ -11,7 +11,7 @@ class MainMenu extends LVLAbstract {
         this.startingscreen = startscreen;
         //this.createSkybox()
 
-        this.gameconfig.scene=this.scene
+        this.gameconfig.scene = this.scene
 
         this.configureAssetManager();
         this.loadAssets();
@@ -215,9 +215,9 @@ class MainMenu extends LVLAbstract {
     }
 
     renderScene() {
-        if (this.bgmfix < 20){
-            if(this.startingscreen=="")
-            this.playBGM("bgm", 0.2)
+        if (this.bgmfix < 20) {
+            if (this.startingscreen == "")
+                this.playBGM("bgm", 0.2)
             else this.playBGM(chapters[this.startingscreen].bgm, 0.2)
         }
         this.scene.render();
@@ -238,7 +238,7 @@ class MainMenu extends LVLAbstract {
         // Default intensity is 1. Let's dim the light a small amount
         light.intensity = 1;
 
-        if(this.startingscreen!="")
+        if (this.startingscreen != "")
             this.createLVLSelect(this.startingscreen)
         else this.createMainMenu()
         var postProcess = new BABYLON.FxaaPostProcess("fxaa", 1.0, camera);
@@ -665,6 +665,7 @@ class MainMenu extends LVLAbstract {
             selected = JSON.parse(storage)
 
 
+        let lastavailable= [1,2,3,4,5,6,7,8,9,10,11,12];
 
         let select = new BABYLON.GUI.TextBlock();
         select.text = "SELECTED " + selected.length + "/12";
@@ -704,13 +705,27 @@ class MainMenu extends LVLAbstract {
             button.left = (0 + j * 21.5) + "%";
             button.color = "white";
             button.hoverCursor = "pointer";
+
+            let container = new BABYLON.GUI.Rectangle();
+            container.width = "100%";
+            container.height = "100%";
+            container.color = "transparent";
+            container.background = "rgba(77, 184, 255,0)";
+
+            let txt = new BABYLON.GUI.TextBlock();
+            txt.text = "";
+            txt.color = "white";
+            txt.fontSize = "80%";
+            txt.left = "-35%"
+
             for (let x = 0; x < selected.length; x++) {
                 if (selected[x] == keys[i]) {
                     button.color = "blue"
-                    button.thickness = 3;
+                    button.thickness = 2;
+                    container.background = "rgba(77, 184, 255,0.6)";
+                    txt.text = lastavailable.shift()
                 }
             }
-
 
 
             button.background = playerlist[keys[i]].rarity;
@@ -723,9 +738,11 @@ class MainMenu extends LVLAbstract {
             msg.fontSize = "50%";
             msg.left = "15%"
 
-
-            button.addControl(msg)
             button.addControl(image)
+            button.addControl(container)
+            button.addControl(msg)
+            button.addControl(txt)
+
             button.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
             button.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
 
@@ -740,6 +757,10 @@ class MainMenu extends LVLAbstract {
                     selected = selected.filter(data => data != keys[i])
                     button.color = "white"
                     button.thickness = 1;
+                    container.background = "rgba(77, 184, 255,0)";
+                    lastavailable.push(parseInt(txt.text))
+                    lastavailable.sort((a, b) => a - b)
+                    txt.text = "";
 
                 }
                 else {
@@ -747,7 +768,9 @@ class MainMenu extends LVLAbstract {
                         instance.createPlayerTooltip(playerlist[keys[i]])
                         selected.push(keys[i])
                         button.color = "blue"
-                        button.thickness = 3;
+                        button.thickness = 2;
+                        container.background = "rgba(77, 184, 255,0.6)";
+                        txt.text = lastavailable.shift()
                     }
                 }
                 select.text = "SELECTED " + selected.length + "/12";

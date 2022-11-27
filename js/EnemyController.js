@@ -226,10 +226,16 @@ class EnemyController extends CharaController {
     //update hp bar, if hp max then hide the hp bar
     updateHpBar() {
         super.updateHpBar()
-        if (this.hp == this.maxhp)
+        if (this.hp == this.maxhp){
             this.healthBar.isVisible = false;
-        else this.healthBar.isVisible = true;
+            this.healthBarBackground.isVisible = false;
+        }
+        else {
+            this.healthBar.isVisible = true;
+            this.healthBarBackground.isVisible = true;
+        }
         this.healthBar.linkOffsetX = -10 + this.mesh.position.z / 30
+        this.healthBarBackground.linkOffsetX = -10 + this.mesh.position.z / 30;
 
         if (this.spattacktimer != undefined) {
             this.skillBar.value = this.spattacktimer / this.chara.spattack.sp * 100;
@@ -554,12 +560,14 @@ class EnemyController extends CharaController {
             this.mesh.dispose(true, true)
 
             this.healthBar.dispose()
+            this.healthBarBackground.dispose()
+
             if (this.skillBar != undefined)
                 this.skillBar.dispose();
             this.sprite.stopAnimation();
             this.sprite.playAnimation(this.chara.death.start, this.chara.death.end, false, 30 * Math.min(2,this.gamespeed) * (this.chara.death.duration));
             var instance = this
-            var timer = this.chara.death.end - this.chara.death.start + 2
+            let timer = this.chara.death.end - this.chara.death.start + 2
             var interval = setInterval(() => {
                 if (instance.sprite.cellIndex == instance.chara.death.end || timer <= 0) {
                     instance.shadow.dispose()
@@ -611,6 +619,8 @@ class EnemyController extends CharaController {
             this.invincibleaura.isVisible = false
         this.stairs = true;
         this.healthBar.isVisible = false
+        this.healthBarBackground.isVisible = false
+
         if (this.spattacktimer != undefined)
             this.skillBar.isVisible = false
     }
@@ -630,6 +640,7 @@ class EnemyController extends CharaController {
             this.invincibleaura.isVisible = true
         this.stairs = false;
         this.healthBar.isVisible = true
+        this.healthBarBackground.isVisible = true
 
     }
 
@@ -756,6 +767,8 @@ class EnemyController extends CharaController {
 
     //create sp bar
     addHPBar(gui) {
+        this.healthBarBackground = gui.addBackgroundBar(this.mesh, "rgb(255, 153, 153)", 10, "3%");
+        this.healthBarBackground.isVisible = false
         this.healthBar = gui.addHPBar(this.mesh, "red", 10, "3%");
         this.healthBar.isVisible = false;
         if (this.spattacktimer != undefined) {
@@ -766,6 +779,8 @@ class EnemyController extends CharaController {
         this.skillBar = gui.addHPBar(this.mesh, "yellow", 15, "3%");
         this.skillBar.linkOffsetX = this.healthBar.linkOffsetX
         this.skillBar.value = this.spattacktimer / this.chara.spattack.sp * 100;
+        this.skillBar.background = "rgba(0, 0, 0, 0.3)";
+
     }
 
     //unblock from the player
@@ -786,6 +801,8 @@ class EnemyController extends CharaController {
         enemy.shadow = this.shadow;
         //enemy.aura = this.aura;
         enemy.healthBar = this.healthBar;
+        enemy.healthBarBackground = this.healthBarBackground;
+
         enemy.waittimer = this.waittimer;
         if (this.skillBar != undefined)
             enemy.skillBar = this.skillBar
@@ -927,6 +944,7 @@ class EnemyController extends CharaController {
                         this.sprite.dispose();
                         this.shadow.dispose();
                         this.healthBar.dispose();
+                        this.healthBarBackground.dispose();
                         if (this.skillBar != undefined)
                             this.skillBar.dispose();
                         if (this.aura != undefined)

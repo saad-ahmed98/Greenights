@@ -1079,6 +1079,7 @@ class LVLController extends LVLAbstract {
                 this.enemies[i].updateInvincibility()
         }
         for (let i = 0; i < this.enemiesreviving.length; i++) {
+            this.enemiesreviving[i].healthBarBackground.value = 0
             this.enemiesreviving[i].chara.revivetimer -= (1 / 30) / this.gamespeed;
             this.enemiesreviving[i].healthBar.value = (this.enemiesreviving[i].chara.revivemax - this.enemiesreviving[i].chara.revivetimer) / this.enemiesreviving[i].chara.revivemax * 100
             if (this.enemiesreviving[i].chara.revivetimer <= 0) {
@@ -1116,6 +1117,7 @@ class LVLController extends LVLAbstract {
         player.mesh.dispose(true, true)
         player.sprite.dispose()
         player.healthBar.dispose()
+        player.healthBarBackground.dispose()
         player.skillBar.dispose()
         player.shadow.dispose()
         player.skillready.dispose()

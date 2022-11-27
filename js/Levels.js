@@ -1338,7 +1338,7 @@ levels["7-H4"] = {
 levels["T-DM"] = {
     level: "T-DM",
     name: "Warm up",
-    initialdp: 99,
+    initialdp: 10,
     squadlimit: 8,
     hp: 3,
     bgm: "dm_2",
@@ -1405,10 +1405,10 @@ levels["T-DM"] = {
         { "number": 19, "time": 135, "gap": 2, "enemies": "Sarkaz Swordsman", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [1, 7], "pause": 0 }, { "start": [1, 7], "end": [5, 12], "pause": 0 }] },
 
         //Sarkaz Swordsman
-        { "number": 20, "time": 135, "gap": 2, "enemies": "Sarkaz Swordsman", "line": true, "tooltip": false, "taunt": false, "count": 3, "start": [2, 12], "checkpoints": [{ "start": [2, 12], "end": [2, 1], "pause": 0 }] },
+        { "number": 20, "time": 135, "gap": 2, "enemies": "Sarkaz Swordsman", "line": true, "tooltip": false, "taunt": true, "count": 3, "start": [2, 12], "checkpoints": [{ "start": [2, 12], "end": [2, 1], "pause": 0 }] },
 
         //Sarkaz Crossbowman
-        { "number": 21, "time": 152, "gap": 4, "enemies": "Sarkaz Crossbowman", "line": true, "tooltip": false, "taunt": true, "count": 2, "start": [2, 12], "checkpoints": [{ "start": [2, 12], "end": [2, 4], "pause": 0 }, { "start": [2, 4], "end": [5, 4], "pause": 0 }, { "start": [5, 4], "end": [5, 12], "pause": 0 }] },
+        { "number": 21, "time": 152, "gap": 4, "enemies": "Sarkaz Crossbowman", "line": true, "tooltip": false, "taunt": false, "count": 2, "start": [2, 12], "checkpoints": [{ "start": [2, 12], "end": [2, 4], "pause": 0 }, { "start": [2, 4], "end": [5, 4], "pause": 0 }, { "start": [5, 4], "end": [5, 12], "pause": 0 }] },
 
         //Sarkaz Bladeweaver
         { "number": 22, "time": 165, "gap": 10, "enemies": "Sarkaz Bladeweaver", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 3], "pause": 4 }, { "start": [5, 3], "end": [5, 12], "pause": 0 }] },

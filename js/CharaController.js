@@ -8,6 +8,7 @@ class CharaController {
         this.sprite;
         this.shadow;
         this.healthBar;
+        this.healthBarBackground;
 
         //current hp
         this.hp = chara.hp;
@@ -44,7 +45,7 @@ class CharaController {
     //update health bar value
     updateHpBar() {
         this.healthBar.value = Math.round(this.hp / this.maxhp * 100)
-
+        this.healthBarBackground.value = Math.max(this.healthBar.value,this.healthBarBackground.value-1)
     }
     /*
         addParticleEffects(){
@@ -510,6 +511,8 @@ class CharaController {
                 //dispose of all the scene elements
                 this.mesh.dispose(true, true)
                 this.healthBar.dispose()
+                this.healthBarBackground.dispose()
+
                 this.skillBar.dispose()
                 this.skillready.dispose()
 
