@@ -535,6 +535,7 @@ class EnemyController extends CharaController {
 
         //if dead
         if (this.hp <= 0) {
+            if(!this.dead){
             //add dp to the lvl dp counter if possible
             if (!hazard) {
                 if (attackingplayer.condtalent != undefined) {
@@ -543,14 +544,16 @@ class EnemyController extends CharaController {
                 }
                 this.lvlcontroller.currentdp += attackingplayer.buffs.getDpOnKill();
                 this.lvlcontroller.gui.updatePlayerWheelUI(this.lvlcontroller.currentdp, this.lvlcontroller.squadlimit)
-                this.activateDeath()
             }
+        }
 
         }
     }
 
     activateDeath() {
-        //remove the elements on the scene
+        if (!this.dead) {
+            this.dead = true;
+            //remove the elements on the scene
         if (this.aura != undefined)
             this.aura.dispose()
         var keys = Object.keys(this.buffs.effectSprite)
@@ -567,14 +570,12 @@ class EnemyController extends CharaController {
             this.sprite.stopAnimation();
             this.sprite.playAnimation(this.chara.death.start, this.chara.death.end, false, 30 * Math.min(2,this.gamespeed) * (this.chara.death.duration));
             var instance = this
-            let timer = this.chara.death.end - this.chara.death.start + 2
-            var interval = setInterval(() => {
-                if (instance.sprite.cellIndex == instance.chara.death.end || timer <= 0) {
+            let interval = setInterval(() => {
+                if (instance.sprite.cellIndex == instance.chara.death.end) {
                     instance.shadow.dispose()
                     instance.sprite.dispose()
                     clearInterval(interval);
                 }
-                timer--;
             }, 1);
             this.hp = -999
         }
@@ -585,14 +586,12 @@ class EnemyController extends CharaController {
                 this.lvlcontroller.playSound(this.chara.name + "-revival", this.chara.sfx.revival.volume)
                 var instance = this
                 //execute first revival animation
-                var timer = this.chara.revival1.end - this.chara.revival1.start + 2
-                var interval = setInterval(() => {
-                    if (instance.sprite.cellIndex == instance.chara.revival1.end || timer <= 0) {
+                let interval = setInterval(() => {
+                    if (instance.sprite.cellIndex == instance.chara.revival1.end) {
                         //execute revival loop after first revival animation is over
                         instance.sprite.playAnimation(this.chara.revival2.start, this.chara.revival2.end, true, 30 * this.gamespeed * (this.chara.revival2.duration));
                         clearInterval(interval);
                     }
-                    timer--;
                 }, 1);
             }
         }
@@ -602,6 +601,7 @@ class EnemyController extends CharaController {
             this.blockingplayer.blocking = Math.max(this.blockingplayer.blocking - this.chara.blockcount, 0);
             this.blockingplayer.removeBlocked(this.id)
         }
+    }
     }
 
     hideInStairs() {

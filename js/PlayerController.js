@@ -12,7 +12,6 @@ class PlayerController extends CharaController {
         this.skillready;
 
         this.aura;
-        this.dead = false;
         this.deploybomb = false;
         this.condtalent;
         this.condtalentcounter = 0;

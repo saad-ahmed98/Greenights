@@ -9,6 +9,8 @@ class CharaController {
         this.shadow;
         this.healthBar;
         this.healthBarBackground;
+        this.dead = false;
+
 
         //current hp
         this.hp = chara.hp;

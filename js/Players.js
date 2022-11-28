@@ -455,6 +455,7 @@ playerlist["Saga"] = {
 
     spritesheet: "images/sprites/saga-sheet.webp",
 
+
     skillsfx: true,
 
     atkanim: {
@@ -691,7 +692,6 @@ playerlist["Schwarz"] = {
     class: "sniper",
     subclass: "Heavy shooter",
 
-
     cost: 18,
     basecost: 18,
 
@@ -706,6 +706,7 @@ playerlist["Schwarz"] = {
     opicon: "images/opicons/schwarz.webp",
 
     spritesheet: "images/sprites/schwarz-sheet.webp",
+
 
     skillsfx: true,
     bullet: { size: { height: 1, depth: 8, width: 0.5 }, arc:false, speed:4, color: new BABYLON.Color3(0.4, 0.4, 0.4)},
@@ -2114,6 +2115,8 @@ playerlist["Gitano"] = {
 
     skillsfx: true,
 
+    skillbullet: { size: { height: 1, depth: 5, width: 2 }, arc:false, speed:4, color: new BABYLON.Color3(0.87, 0.18, 0.89)},
+
     idle: {
         start: 28,
         end: 52
@@ -2187,6 +2190,10 @@ playerlist["Gitano"] = {
             volume: 0.3
         },
         skillhit: {
+            src: "mute",
+            volume: 0.1
+        },
+        skillatk: {
             src: "gitano-skill-atk",
             volume: 0.2
         }
