@@ -32,8 +32,10 @@ class LVLGUIController {
         //used when deploying a player
         this.wheelclick = false;
         this.wheelchoice = undefined;
+        this.playerTooltip = []
 
     }
+
 
     /*
     menu showing up when clicking on a deployed player
@@ -113,7 +115,7 @@ class LVLGUIController {
         slider.isEnabled = false;
 
         slider.color = color;
-        if(color=="yellow")
+        if (color == "yellow")
             slider.background = "rgba(0, 0, 0, 0.3)";
         else slider.background = "rgba(0, 0, 0, 0)";
 
@@ -128,7 +130,7 @@ class LVLGUIController {
      takes as an argument : the distance in Y from the mesh and bar,
      width of the bar and its color
     */
-     addBackgroundBar(mesh, color, offsetY, width) {
+    addBackgroundBar(mesh, color, offsetY, width) {
         var slider = new BABYLON.GUI.Slider();
         slider.minimum = 0;
         slider.maximum = 100;
@@ -231,7 +233,7 @@ class LVLGUIController {
         //on click, back to main menu
         containerq.onPointerDownObservable.add(() => {
             titleLoading = ""
-            sessionStorage.setItem("startingscreen",lvlnumber.split("-")[0])
+            sessionStorage.setItem("startingscreen", lvlnumber.split("-")[0])
             lvlnumber = ""
             window.location.reload()
         });
@@ -303,7 +305,7 @@ class LVLGUIController {
         //on click, quit
         containerq.onPointerDownObservable.add(() => {
             titleLoading = ""
-            sessionStorage.setItem("startingscreen",lvlnumber.split("-")[0])
+            sessionStorage.setItem("startingscreen", lvlnumber.split("-")[0])
             lvlnumber = ""
             window.location.reload()
         });
@@ -745,7 +747,7 @@ class LVLGUIController {
         //escapes to main menu on click
         container.onPointerDownObservable.add(() => {
             titleLoading = ""
-            sessionStorage.setItem("startingscreen",lvlnumber.split("-")[0])
+            sessionStorage.setItem("startingscreen", lvlnumber.split("-")[0])
             lvlnumber = ""
             window.location.reload()
         });
@@ -861,7 +863,7 @@ class LVLGUIController {
         textbox.background = "transparent";
 
         //stats description
-        var text = new BABYLON.GUI.TextBlock();
+        let text = new BABYLON.GUI.TextBlock();
         var dmgtype = player.chara.dmgtype
         if (player.buffs.getDmgType() != "")
             dmgtype = player.buffs.getDmgType()
@@ -871,7 +873,7 @@ class LVLGUIController {
         text.fontSize = "10%";
         text.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT
         text.left = "5%";
-
+        this.playerTooltip = [player.chara.name, text]
         textbox.addControl(text)
         container.addControl(image)
         container.addControl(textbox)
@@ -927,6 +929,19 @@ class LVLGUIController {
 
         this.contextMenuController.addControl(container);
     }
+
+    updatePlayerTooltip(player) {
+        if (this.playerTooltip.length > 0) {
+            if (this.playerTooltip[0] == player.chara.name) {
+                var dmgtype = player.chara.dmgtype
+                if (player.buffs.getDmgType() != "")
+                    dmgtype = player.buffs.getDmgType()
+                this.playerTooltip[1].text = player.chara.name + "\n\nHP\t\t" + Math.round(player.hp) + "/" + player.maxhp + "\nATK\t\t" + player.buffs.getFinalAtk(player.chara.atk) + "\nDEF\t\t" + player.buffs.getFinalDef(player.chara.def) + "\nRES\t\t" + player.buffs.getFinalRes(player.chara.res) + "\nBLOCK\t\t" +
+                    player.buffs.getFinalBlock(player.chara.blockcount) + "\nDMG\t\t" + dmgtype.toUpperCase();
+            }
+        }
+    }
+
 
     //removes pause screen
     removePauseScreen(lvlcont) {

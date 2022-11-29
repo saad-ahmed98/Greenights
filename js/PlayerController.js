@@ -118,9 +118,15 @@ class PlayerController extends CharaController {
                 }
             }
         }
+        this.updateTooltipStats()
         this.updateHpBar()
         this.checkDeath()
     }
+
+    updateTooltipStats(){
+        this.lvlcontroller.gui.updatePlayerTooltip(this);
+    }
+
 
     createPlayer(id, spriteManager, gui, iconsManager) {
         this.mesh = this.scene.assets.meshchara.createInstance(id)

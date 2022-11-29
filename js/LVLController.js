@@ -1608,7 +1608,10 @@ class LVLController extends LVLAbstract {
         var checks = [];
         for (let i = 0; i < points.length; i++) {
             var grid = new PF.Grid(matrix);
-            var finder = new PF.AStarFinder();
+            var finder =  new PF.AStarFinder({
+                allowDiagonal: true,
+                dontCrossCorners: true
+            });
 
             var path = finder.findPath(points[i].start[1], points[i].start[0], points[i].end[1], points[i].end[0], grid);
             if (i > 0)
