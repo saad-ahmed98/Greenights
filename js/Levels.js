@@ -1,5 +1,73 @@
 var levels = {}
 
+levels["6-X"] = {
+    level: "6-X",
+    name: "Dangerous Battlefield",
+    bgm: "ep6",
+    initialdp: 20,
+    squadlimit: 8,
+    hp: 3,
+    background: "loading_LM_frost",
+    description: "The most dangerous competitions are usually\nthe first ones to run out of tickets.\n" +
+        "As such, it is advised to make arenas as\nhazardous as possible for maximum profit.\n\n" +
+        "<Heated Path> Deals massive damage to any enemy or ally on it at intervals.\n" +
+        "<Originium Ice Crystal> Periodically emits a frigid wave\n lowering the attack speed of affected allies.\n" +
+        "<Originium Altar> Periodically emits pulse waves,\n damaging both allied and enemy units.",
+    place: "Frozen",
+    offsetX: -20,
+    offsetY: -60,
+    offsetZ: 0,
+    type: "hard",
+    skybox: "city.png",
+    snowstorm: true,
+
+    waves: [
+        { "number": 0, "time": 0, "gap": 5, "enemies": "Bloodboil Knightclub Elite", "line": false, "tooltip": true, "taunt": false, "count": 1, "start": [3, 11], "checkpoints": [{ "start": [3, 11], "end": [3, 10], "pause": 90 }, { "start": [3, 10], "end": [1, 11], "pause": 0 }] },
+        { "number": 1, "time": 0, "gap": 5, "enemies": "Bloodboil Knightclub Elite", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [4, 11], "checkpoints": [{ "start": [4, 11], "end": [4, 10], "pause": 90 }, { "start": [4, 10], "end": [6, 11], "pause": 0 }] },
+
+        //tytus
+        { "number": 2, "time": 5, "gap": 5, "enemies": "Tytus Topola", "line": true, "tooltip": true, "taunt": false, "count": 1, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [3, 1], "pause": 200 }, { "start": [3, 1], "end": [2, 2], "pause": 0 }, { "start": [2, 2], "end": [1, 11], "pause": 0 }] },
+
+        { "number": 3, "time": 13, "gap": 5, "enemies": "Yeti Operative", "line": true, "tooltip": true, "taunt": true, "count": 1, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [6, 11], "pause": 0 }] },
+        { "number": 4, "time": 23, "gap": 8, "enemies": "Vicious Training Gloompincer", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [6, 11], "pause": 0 }] },
+        { "number": 5, "time": 35, "gap": 4, "enemies": "Vicious Training Gloompincer", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [6, 11], "pause": 0 }] },
+
+        { "number": 6, "time": 35, "gap": 20, "enemies": "Roar Knightclub Elite", "line": true, "tooltip": true, "taunt": false, "count": 2, "start": [3, 11], "checkpoints": [{ "start": [3, 11], "end": [1, 11], "pause": 0 }] },
+        { "number": 7, "time": 35, "gap": 20, "enemies": "Roar Knightclub Elite", "line": true, "tooltip": false, "taunt": false, "count": 2, "start": [4, 11], "checkpoints": [{ "start": [4, 11], "end": [6, 11], "pause": 0 }] },
+        { "number": 5, "time": 45, "gap": 4, "enemies": "Vicious Training Gloompincer", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [6, 11], "pause": 0 }] },
+        { "number": 1, "time": 53, "gap": 20, "enemies": "Roar Knightclub Elite", "line": true, "tooltip": false, "taunt": false, "count": 2, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 11], "pause": 0 }] },
+        { "number": 5, "time": 66, "gap": 4, "enemies": "Vicious Training Gloompincer", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [6, 11], "pause": 0 }] },
+        { "number": 1, "time": 80, "gap": 20, "enemies": "Elite Knight Shielder", "line": false, "tooltip": true, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 11], "pause": 0 }] },
+        { "number": 6, "time": 110, "gap": 45, "enemies": "Elite Knight Shielder", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 11], "checkpoints": [{ "start": [3, 11], "end": [1, 11], "pause": 0 }] },
+        { "number": 7, "time": 110, "gap": 45, "enemies": "Elite Knight Shielder", "line": false, "tooltip": false, "taunt": true, "count": 2, "start": [4, 11], "checkpoints": [{ "start": [4, 11], "end": [6, 11], "pause": 0 }] },
+        { "number": 5, "time": 123, "gap": 4, "enemies": "Vicious Training Gloompincer", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [6, 11], "pause": 0 }] },
+        { "number": 6, "time": 128, "gap": 20, "enemies": "Roar Knightclub Elite", "line": false, "tooltip": false, "taunt": false, "count": 5, "start": [3, 11], "checkpoints": [{ "start": [3, 11], "end": [1, 11], "pause": 0 }] },
+        { "number": 7, "time": 128, "gap": 20, "enemies": "Roar Knightclub Elite", "line": false, "tooltip": false, "taunt": true, "count": 5, "start": [4, 11], "checkpoints": [{ "start": [4, 11], "end": [6, 11], "pause": 0 }] },
+        { "number": 0, "time": 140, "gap": 5, "enemies": "Bloodboil Knightclub Elite", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 11], "checkpoints": [{ "start": [3, 11], "end": [3, 10], "pause": 60 }, { "start": [3, 10], "end": [1, 11], "pause": 0 }] },
+        { "number": 1, "time": 140, "gap": 5, "enemies": "Bloodboil Knightclub Elite", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [4, 11], "checkpoints": [{ "start": [4, 11], "end": [4, 10], "pause": 60 }, { "start": [4, 10], "end": [6, 11], "pause": 0 }] },
+        { "number": 5, "time": 135, "gap": 3, "enemies": "Vicious Training Gloompincer", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [6, 11], "pause": 0 }] },
+        { "number": 1, "time": 140, "gap": 30, "enemies": "Elite Knight Shielder", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 11], "pause": 0 }] },
+        { "number": 5, "time": 160, "gap": 3, "enemies": "Vicious Training Gloompincer", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [6, 11], "pause": 0 }] },
+        { "number": 5, "time": 180, "gap": 3, "enemies": "Elite Knight Shielder", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [6, 11], "pause": 0 }] },
+        { "number": 5, "time": 190, "gap": 3, "enemies": "Vicious Training Gloompincer", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [6, 11], "pause": 0 }] },
+    ],
+
+    enemies: ["Yeti Operative","Bloodboil Knightclub Elite", "Elite Knight Shielder", "Roar Knightclub Elite", "Vicious Training Gloompincer", "Tytus Topola", "Tytus Topola2"],
+    tooltips: ["Yeti Operative","Bloodboil Knightclub Elite", "Elite Knight Shielder", "Roar Knightclub Elite", "Vicious Training Gloompincer", "Tytus Topola"],
+    hazards: ["altar", "icealtar"],
+
+    layout: [
+        ["bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg",],
+        ["bg", "red", "blk", "blk", "magma", "blk", "magma", "magma", "blk", "magma", "blk", "blue", "bg"],
+        ["bg", "blk", "g", "blk", "r", "altar", "r", "r", "icealtar", "r", "bg", "bg", "bg"],
+        ["bg", "blk", "r", "blk", "g", "g", "g", "g", "g", "blk", "blk", "red", "bg"],
+        ["bg", "blk", "r", "blk", "g", "g", "g", "g", "g", "blk", "blk", "red", "bg"],
+        ["bg", "blk", "g", "blk", "r", "altar", "r", "r", "icealtar", "r", "bg", "bg", "bg"],
+        ["bg", "red", "blk", "blk", "magma", "blk", "magma", "magma", "blk", "magma", "blk", "blue", "bg"],
+        ["bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg",],
+    ],
+}
+
 levels["7-1"] = {
     level: "7-1",
     name: "Side by Side-1",
@@ -1629,74 +1697,6 @@ levels["T-MN"] = {
 
     enemies: ["Bloodboil Knightclub Elite", "Elite Knight Shielder", "Roar Knightclub Elite", "Vicious Training Gloompincer", "Tytus Topola", "Tytus Topola2"],
     tooltips: ["Bloodboil Knightclub Elite", "Elite Knight Shielder", "Roar Knightclub Elite", "Vicious Training Gloompincer", "Tytus Topola"],
-    hazards: ["altar", "icealtar"],
-
-    layout: [
-        ["bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg",],
-        ["bg", "red", "blk", "blk", "magma", "blk", "magma", "magma", "blk", "magma", "blk", "blue", "bg"],
-        ["bg", "blk", "g", "blk", "r", "altar", "r", "r", "icealtar", "r", "bg", "bg", "bg"],
-        ["bg", "blk", "r", "blk", "g", "g", "g", "g", "g", "blk", "blk", "red", "bg"],
-        ["bg", "blk", "r", "blk", "g", "g", "g", "g", "g", "blk", "blk", "red", "bg"],
-        ["bg", "blk", "g", "blk", "r", "altar", "r", "r", "icealtar", "r", "bg", "bg", "bg"],
-        ["bg", "red", "blk", "blk", "magma", "blk", "magma", "magma", "blk", "magma", "blk", "blue", "bg"],
-        ["bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg",],
-    ],
-}
-
-levels["T-6"] = {
-    level: "T-6",
-    name: "Dangerous Battlefield",
-    bgm: "ep6",
-    initialdp: 20,
-    squadlimit: 8,
-    hp: 3,
-    background: "loading_LM_frost",
-    description: "The most dangerous competitions are usually\nthe first ones to run out of tickets.\n" +
-        "As such, it is advised to make arenas as\nhazardous as possible for maximum profit.\n\n" +
-        "<Heated Path> Deals massive damage to any enemy or ally on it at intervals.\n" +
-        "<Originium Ice Crystal> Periodically emits a frigid wave\n lowering the attack speed of affected allies.\n" +
-        "<Originium Altar> Periodically emits pulse waves,\n damaging both allied and enemy units.",
-    place: "Frozen",
-    offsetX: -20,
-    offsetY: -60,
-    offsetZ: 0,
-    type: "hard",
-    skybox: "cityfrozen.png",
-    snowstorm: true,
-
-    waves: [
-        { "number": 0, "time": 0, "gap": 5, "enemies": "Bloodboil Knightclub Elite", "line": false, "tooltip": true, "taunt": false, "count": 1, "start": [3, 11], "checkpoints": [{ "start": [3, 11], "end": [3, 10], "pause": 90 }, { "start": [3, 10], "end": [1, 11], "pause": 0 }] },
-        { "number": 1, "time": 0, "gap": 5, "enemies": "Bloodboil Knightclub Elite", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [4, 11], "checkpoints": [{ "start": [4, 11], "end": [4, 10], "pause": 90 }, { "start": [4, 10], "end": [6, 11], "pause": 0 }] },
-
-        //tytus
-        { "number": 2, "time": 5, "gap": 5, "enemies": "Tytus Topola", "line": true, "tooltip": true, "taunt": false, "count": 1, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [3, 1], "pause": 200 }, { "start": [3, 1], "end": [2, 2], "pause": 0 }, { "start": [2, 2], "end": [1, 11], "pause": 0 }] },
-
-        { "number": 3, "time": 13, "gap": 5, "enemies": "Yeti Operative", "line": true, "tooltip": true, "taunt": true, "count": 1, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [6, 11], "pause": 0 }] },
-        { "number": 4, "time": 23, "gap": 8, "enemies": "Vicious Training Gloompincer", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [6, 11], "pause": 0 }] },
-        { "number": 5, "time": 35, "gap": 4, "enemies": "Vicious Training Gloompincer", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [6, 11], "pause": 0 }] },
-
-        { "number": 6, "time": 35, "gap": 20, "enemies": "Roar Knightclub Elite", "line": true, "tooltip": true, "taunt": false, "count": 2, "start": [3, 11], "checkpoints": [{ "start": [3, 11], "end": [1, 11], "pause": 0 }] },
-        { "number": 7, "time": 35, "gap": 20, "enemies": "Roar Knightclub Elite", "line": true, "tooltip": false, "taunt": false, "count": 2, "start": [4, 11], "checkpoints": [{ "start": [4, 11], "end": [6, 11], "pause": 0 }] },
-        { "number": 5, "time": 45, "gap": 4, "enemies": "Vicious Training Gloompincer", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [6, 11], "pause": 0 }] },
-        { "number": 1, "time": 53, "gap": 20, "enemies": "Roar Knightclub Elite", "line": true, "tooltip": false, "taunt": false, "count": 2, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 11], "pause": 0 }] },
-        { "number": 5, "time": 66, "gap": 4, "enemies": "Vicious Training Gloompincer", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [6, 11], "pause": 0 }] },
-        { "number": 1, "time": 80, "gap": 20, "enemies": "Elite Knight Shielder", "line": false, "tooltip": true, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 11], "pause": 0 }] },
-        { "number": 6, "time": 110, "gap": 45, "enemies": "Elite Knight Shielder", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 11], "checkpoints": [{ "start": [3, 11], "end": [1, 11], "pause": 0 }] },
-        { "number": 7, "time": 110, "gap": 45, "enemies": "Elite Knight Shielder", "line": false, "tooltip": false, "taunt": true, "count": 2, "start": [4, 11], "checkpoints": [{ "start": [4, 11], "end": [6, 11], "pause": 0 }] },
-        { "number": 5, "time": 123, "gap": 4, "enemies": "Vicious Training Gloompincer", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [6, 11], "pause": 0 }] },
-        { "number": 6, "time": 128, "gap": 20, "enemies": "Roar Knightclub Elite", "line": false, "tooltip": false, "taunt": false, "count": 5, "start": [3, 11], "checkpoints": [{ "start": [3, 11], "end": [1, 11], "pause": 0 }] },
-        { "number": 7, "time": 128, "gap": 20, "enemies": "Roar Knightclub Elite", "line": false, "tooltip": false, "taunt": true, "count": 5, "start": [4, 11], "checkpoints": [{ "start": [4, 11], "end": [6, 11], "pause": 0 }] },
-        { "number": 0, "time": 140, "gap": 5, "enemies": "Bloodboil Knightclub Elite", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 11], "checkpoints": [{ "start": [3, 11], "end": [3, 10], "pause": 60 }, { "start": [3, 10], "end": [1, 11], "pause": 0 }] },
-        { "number": 1, "time": 140, "gap": 5, "enemies": "Bloodboil Knightclub Elite", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [4, 11], "checkpoints": [{ "start": [4, 11], "end": [4, 10], "pause": 60 }, { "start": [4, 10], "end": [6, 11], "pause": 0 }] },
-        { "number": 5, "time": 135, "gap": 3, "enemies": "Vicious Training Gloompincer", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [6, 11], "pause": 0 }] },
-        { "number": 1, "time": 140, "gap": 30, "enemies": "Elite Knight Shielder", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 11], "pause": 0 }] },
-        { "number": 5, "time": 160, "gap": 3, "enemies": "Vicious Training Gloompincer", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [6, 11], "pause": 0 }] },
-        { "number": 5, "time": 180, "gap": 3, "enemies": "Elite Knight Shielder", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [6, 11], "pause": 0 }] },
-        { "number": 5, "time": 190, "gap": 3, "enemies": "Vicious Training Gloompincer", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [6, 11], "pause": 0 }] },
-    ],
-
-    enemies: ["Yeti Operative","Bloodboil Knightclub Elite", "Elite Knight Shielder", "Roar Knightclub Elite", "Vicious Training Gloompincer", "Tytus Topola", "Tytus Topola2"],
-    tooltips: ["Yeti Operative","Bloodboil Knightclub Elite", "Elite Knight Shielder", "Roar Knightclub Elite", "Vicious Training Gloompincer", "Tytus Topola"],
     hazards: ["altar", "icealtar"],
 
     layout: [

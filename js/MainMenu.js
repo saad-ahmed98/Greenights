@@ -135,6 +135,23 @@ class MainMenu extends LVLAbstract {
         };
 
         binaryTask = assetsManager.addBinaryFileTask(
+            "chapter",
+            "sounds/ui/chapter_click.wav"
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets.chapter = new BABYLON.Sound(
+                "chapter",
+                task.data,
+                this.scene,
+                null,
+                {
+                    loop: false,
+                }
+            );
+        };
+
+
+        binaryTask = assetsManager.addBinaryFileTask(
             "click",
             "sounds/ui/click.wav"
         );
@@ -321,7 +338,7 @@ class MainMenu extends LVLAbstract {
 
         for (let i = 0; i < keys.length; i++) {
 
-            const button = BABYLON.GUI.Button.CreateImageOnlyButton("but", "images/menu/" + chapters[keys[i]].select);
+            const button = BABYLON.GUI.Button.CreateImageOnlyButton("but", "images/menu/chapters/" + chapters[keys[i]].select);
             button.width = "28%";
             button.height = "50%";
             button.top = "30%";
@@ -340,7 +357,7 @@ class MainMenu extends LVLAbstract {
 
 
             button.onPointerUpObservable.add(function () {
-                instance.playSound("click", 0.3)
+                instance.playSound("chapter", 0.3)
                 instance.createLVLSelect(chapters[keys[i]].label)
             });
 

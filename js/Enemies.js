@@ -3651,7 +3651,7 @@ enemylist["Yeti Operative"] = {
     move: {
         start: 44,
         end: 55,
-        duration: 1.1,
+        duration: 1.5,
 
     },
 
@@ -3738,7 +3738,7 @@ enemylist["Yeti Operative2"] = {
     move: {
         start: 44,
         end: 55,
-        duration: 1.1,
+        duration: 1.5,
 
     },
 
@@ -3779,7 +3779,3 @@ enemylist["Yeti Operative2"] = {
         aura: false,
     },
 }
-
-
-
-

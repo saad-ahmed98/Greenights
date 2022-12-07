@@ -489,9 +489,6 @@ class LVLController extends LVLAbstract {
     playMissionFailed() {
         this.scene.assets.bgmintro.stop()
         this.scene.assets.bgmloop.stop()
-        var sound = this.scene.assets["losevoice"]
-        sound.setVolume(0.3)
-        sound.play()
 
         var intro = this.scene.assets.loseintro
         var loop = this.scene.assets.loseloop
@@ -770,22 +767,6 @@ class LVLController extends LVLAbstract {
         binaryTask.onSuccess = function (task) {
             instance.scene.assets.deploy = new BABYLON.Sound(
                 "deploy",
-                task.data,
-                this.scene,
-                null,
-                {
-                    loop: false,
-                }
-            );
-        };
-
-        binaryTask = assetsManager.addBinaryFileTask(
-            "losevoice",
-            "sounds/ui/losevoice.wav"
-        );
-        binaryTask.onSuccess = function (task) {
-            instance.scene.assets.losevoice = new BABYLON.Sound(
-                "losevoice",
                 task.data,
                 this.scene,
                 null,
