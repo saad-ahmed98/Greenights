@@ -33,7 +33,6 @@ class CharaController {
         //status booleans
         this.isattacking = false;
         this.running = false;
-        this.resuming = false;
         this.skillproc = false;
 
         //current game speed : 1 is x2, 2 is x1, 8 is slow motion
@@ -41,13 +40,14 @@ class CharaController {
 
         //level controller
         this.lvlcontroller = lvlcontroller
+        this.isfrozen = false;
 
     }
 
     //update health bar value
     updateHpBar() {
         this.healthBar.value = Math.round(this.hp / this.maxhp * 100)
-        this.healthBarBackground.value = Math.max(this.healthBar.value,this.healthBarBackground.value-1)
+        this.healthBarBackground.value = Math.max(this.healthBar.value, this.healthBarBackground.value - 1)
     }
     /*
         addParticleEffects(){
@@ -114,6 +114,26 @@ class CharaController {
         }
         */
 
+    applyCold(duration) {
+        if (this.buffs.effects["cold"] == undefined && this.buffs.effects["frozen"] == undefined) {
+            this.buffs.buffs["cold"] = { "name": "cold", "modifiers": { "aspd": -25 } }
+            this.buffs.effects["cold"] = duration
+            if (this.buffs.effectSprite["cold"] == undefined)
+                this.createDebuffAura("cold", 9)
+        }
+        else {
+            this.buffs.effects["cold"] = 0
+            if (this.buffs.effects["frozen"] == undefined) {
+                this.buffs.buffs["frozen"] = { "name": "frozen", "modifiers": { "frozen": true } }
+                this.buffs.effects["frozen"] = duration
+                if (this.buffs.effectSprite["frozen"] == undefined)
+                    this.createDebuffAura("frozen", 15)
+            }
+            else this.buffs.effects["frozen"] += duration
+        }
+    }
+
+
     //if healed, then receive healing
     receiveHealing(healer) {
         var dmg = healer.buffs.getFinalAtk(healer.chara.atk)
@@ -131,7 +151,6 @@ class CharaController {
             icon.width = 90;
             this.buffs.effectSprite[name] = icon
         }
-
     }
 
 
@@ -150,7 +169,7 @@ class CharaController {
                 return res;
         }
         for (let i = players.length - 1; i >= 0; i--) {
-            if (this.distanceFromCenter(players[i].y*30, players[i].x*30, this.mesh.position.z,this.mesh.position.x,range*30+16)) {
+            if (this.distanceFromCenter(players[i].y * 30, players[i].x * 30, this.mesh.position.z, this.mesh.position.x, range * 30 + 16)) {
                 res.push(players[i])
                 targetcount--
                 if (targetcount <= 0)
@@ -166,7 +185,7 @@ class CharaController {
             range = this.chara.range
 
             for (let i = players.length - 1; i >= 0; i--) {
-                if (this.distanceFromCenter(players[i].y*30, players[i].x*30, this.mesh.position.z,this.mesh.position.x,range*30+16)) {
+                if (this.distanceFromCenter(players[i].y * 30, players[i].x * 30, this.mesh.position.z, this.mesh.position.x, range * 30 + 16)) {
                     var found = false;
                     //check if player is not already a target
                     for (let j = 0; j < res.length; j++) {
@@ -453,8 +472,10 @@ class CharaController {
 
         if (!hazard) {
             dmg = enemy.buffs.getFinalAtk(enemy.chara.atk) * mod
+            if(this.isfrozen)
+                dmg *=enemy.buffs.getFrozenModifier();
             dmgtype = enemy.buffs.getDmgType()
-
+            console.log(dmg)
             if (dmgtype == "")
                 dmgtype = enemy.chara.dmgtype
         }
@@ -493,6 +514,18 @@ class CharaController {
         this.checkDeath();
     }
 
+    applySpecialEffect(modifiers,target){
+        let keys = Object.keys(modifiers);
+        
+        for(let i =0;i<keys.length;i++){
+            switch(keys[i]){
+                case "cold":
+                    target.applyCold(modifiers[keys[i]]);
+                    break;
+            }
+        }
+    }
+
     //checks if a player died and does the death related actions if they are
     checkDeath() {
         if (this.hp <= 0) {
@@ -525,7 +558,7 @@ class CharaController {
                     this.buffs.effectSprite[keys[i]].dispose()
 
                 //play death animation
-                this.sprite.playAnimation(this.chara.death.start, this.chara.death.end, false, 30 * Math.min(2,this.gamespeed));
+                this.sprite.playAnimation(this.chara.death.start, this.chara.death.end, false, 30 * Math.min(2, this.gamespeed));
 
                 var instance = this
                 var interval = setInterval(() => {

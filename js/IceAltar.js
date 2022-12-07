@@ -57,15 +57,8 @@ class IceAltar {
         //get all targets
         let hitplayers = this.getEnemiesInRange(players, 2)
         //hit all the players
-        for (let i = 0; i < hitplayers.length; i++) {
-            if (hitplayers[i].buffs.effects[this.name] == undefined)
-                hitplayers[i].buffs.buffs[this.name] = { "name": this.name, "modifiers": { "aspd": -25 } }
-            else hitplayers[i].buffs.buffs[this.name].modifiers.aspd -= 35
-            hitplayers[i].buffs.effects[this.name] = 10
-            if (hitplayers[i].buffs.effectSprite[this.name] == undefined)
-                hitplayers[i].createDebuffAura(this.name, 9)
-        }
-
+        for (let i = 0; i < hitplayers.length; i++)
+            hitplayers[i].applyCold(10)
     }
 
     getEnemiesInRange(enemies, range) {

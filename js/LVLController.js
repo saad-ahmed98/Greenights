@@ -11,6 +11,8 @@ class LVLController extends LVLAbstract {
         this.enemies = [];
         this.hazards = [];
         this.place = lvl.place;
+        this.snowstorm = lvl.snowstorm || false;
+        console.log(this.snowstorm)
 
         this.enemiesreviving = []
         this.presentHazards = lvl.hazards;
@@ -367,6 +369,7 @@ class LVLController extends LVLAbstract {
             instance.scene.assets[task.name] = task.image
         };
 
+
     }
 
     loadHazards() {
@@ -460,7 +463,7 @@ class LVLController extends LVLAbstract {
             BABYLON.Color3.LerpToRef(BABYLON.Color3.BlackReadOnly, startingColor, t, this.scene.clearColor);
         }
         else {
-            
+
             if (!this.render) {
                 this.createGUIs()
                 this.render = true;
@@ -669,6 +672,18 @@ class LVLController extends LVLAbstract {
         );
         binaryTask.onSuccess = function (task) {
             instance.spriteManagers[task.name] = new BABYLON.SpriteManager("EffectsManager", undefined, 15, { width: 888, height: 605 });
+            instance.spriteManagers[task.name].texture = task.texture
+        };
+
+        binaryTask = assetsManager.addTextureTask(
+            "snow",
+            "images/common/snow-sheet.png",
+            true,
+            false,
+            BABYLON.Texture.TRILINEAR_SAMPLINGMODE
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.spriteManagers[task.name] = new BABYLON.SpriteManager("SnowManager", undefined, 1, { width: 500*0.96, height: 282*0.96 });
             instance.spriteManagers[task.name].texture = task.texture
         };
 
@@ -1130,7 +1145,7 @@ class LVLController extends LVLAbstract {
             player.buffs.effectSprite[keys[i]].dispose()
 
         player.hp = -999;
-        this.currentdp = Math.min(99,this.currentdp+Math.round(player.chara.cost / 2))
+        this.currentdp = Math.min(99, this.currentdp + Math.round(player.chara.cost / 2))
         player.dead = true;
     }
 
@@ -1407,8 +1422,20 @@ class LVLController extends LVLAbstract {
         }
 
         this.createSkybox()
+        if (this.snowstorm) {
+            this.createSnowstorm()
+        }
 
         return this.scene;
+    }
+
+    createSnowstorm() {
+        let snowstorm = new BABYLON.Sprite("", this.spriteManagers["snow"]);
+        snowstorm.position = new BABYLON.Vector3(120, 110, 150);
+        snowstorm.size = 180;
+        snowstorm.width = 300;
+        snowstorm.playAnimation(0, 100, true, 1);
+
     }
 
     createSkybox() {
@@ -1444,7 +1471,7 @@ class LVLController extends LVLAbstract {
             for (let j = 0; j < array[i].length; j++) {
                 var type = array[i][j];
                 line.push(this.getWalkable(array[i][j]));
-                var tile = new Tile(type, i, j, this.scene)
+                var tile = new Tile(type, i, j, this.scene,this.snowstorm)
                 linetiles.push(tile);
                 if (array[i][j] == "blue")
                     this.hpbox.push(new HPBox("", i, j, this.scene))
@@ -1608,7 +1635,7 @@ class LVLController extends LVLAbstract {
         var checks = [];
         for (let i = 0; i < points.length; i++) {
             var grid = new PF.Grid(matrix);
-            var finder =  new PF.AStarFinder({
+            var finder = new PF.AStarFinder({
                 allowDiagonal: true,
                 dontCrossCorners: true
             });

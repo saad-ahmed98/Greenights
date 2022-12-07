@@ -25,7 +25,7 @@ class PlayerController extends CharaController {
         aura.size = 70;
         aura.width = 90;
 
-        aura.position.z -= Math.min(5,this.y);
+        aura.position.z -= Math.min(5, this.y);
         aura.position.x -= this.x;
     }
 
@@ -37,7 +37,7 @@ class PlayerController extends CharaController {
             this.aura.size = 65;
             this.aura.width = 100;
 
-            this.aura.position.z -= Math.min(5,this.y);
+            this.aura.position.z -= Math.min(5, this.y);
             this.aura.position.x -= this.x;
         }
     }
@@ -123,7 +123,7 @@ class PlayerController extends CharaController {
         this.checkDeath()
     }
 
-    updateTooltipStats(){
+    updateTooltipStats() {
         this.lvlcontroller.gui.updatePlayerTooltip(this);
     }
 
@@ -163,20 +163,20 @@ class PlayerController extends CharaController {
         var instance = this
 
         this.sprite.playAnimation(this.chara.drop.start, this.chara.drop.end, false, this.gamespeed * 30);
-        
-        this.mesh.position.z -= Math.min(5,this.y)
+
+        this.mesh.position.z -= Math.min(5, this.y)
         this.mesh.position.x -= this.x;
 
-        this.sprite.position.z -= Math.min(5,this.y);
+        this.sprite.position.z -= Math.min(5, this.y);
         this.sprite.position.x -= this.x;
 
-        this.shadow.position.z -= Math.min(5,this.y);
+        this.shadow.position.z -= Math.min(5, this.y);
         this.shadow.position.x -= this.x;
 
 
-        this.skillready.position.z -= Math.min(5,this.y);
+        this.skillready.position.z -= Math.min(5, this.y);
         this.skillready.position.x -= this.x;
-        
+
 
         this.skillready.isVisible = false
 
@@ -187,6 +187,7 @@ class PlayerController extends CharaController {
         this.activateTalents();
 
         var interval = setInterval(() => {
+
             if (instance.sprite.cellIndex >= instance.chara.drop.start + 2) {
                 if (instance.chara.deploybomb && !instance.deploybomb) {
                     instance.createEffects(instance.lvlcontroller.spriteManagers["effects"])
@@ -348,12 +349,15 @@ class PlayerController extends CharaController {
             var instance = this
 
             var interval = setInterval(() => {
+                if (instance.isfrozen) {
+                    clearInterval(interval)
+                }
                 if (instance.sprite.cellIndex >= contactframe && instance.hp > 0) {
                     if (this.playerSkill.active && this.chara.skillsfx) {
-                        if (this.chara.sfx.skillhit != undefined && this.chara.bullet==undefined)
+                        if (this.chara.sfx.skillhit != undefined && this.chara.bullet == undefined)
                             this.lvlcontroller.playSound(this.chara.name + "-skillhit", this.chara.sfx.skillhit.volume)
                     }
-                    else if (this.chara.sfx.hit != undefined && this.chara.bullet==undefined)
+                    else if (this.chara.sfx.hit != undefined && this.chara.bullet == undefined)
                         this.lvlcontroller.playSound(this.chara.name + "-hit", this.chara.sfx.hit.volume)
 
                     if (dmgtype == "heal") {
@@ -366,7 +370,7 @@ class PlayerController extends CharaController {
                             if (!splash.splash) {
                                 for (let j = 0; j < this.buffs.getAttacks(); j++) {
                                     if (this.chara.skillbullet != undefined && this.playerSkill.active) {
-                                        new Bullet(this, this.scene, enemy[i], this.lvlcontroller,true)
+                                        new Bullet(this, this.scene, enemy[i], this.lvlcontroller, true)
                                     }
                                     else if (this.chara.bullet != undefined) {
                                         new Bullet(this, this.scene, enemy[i], this.lvlcontroller)
@@ -435,7 +439,17 @@ class PlayerController extends CharaController {
 
     move(enemies, players) {
         if (!this.spawning) {
-            if (!this.resuming) {
+            if (this.buffs.isFrozen()) {
+                this.isfrozen = true;
+                this.pause();
+            }
+            else {
+                if (this.isfrozen) {
+                    this.resume();
+                    this.isfrozen = false;
+                }
+            }
+            if (!this.isfrozen) {
                 if (!this.running && !this.sprite.animationStarted) {
                     if (this.playerSkill.active && this.chara.skillidle != undefined)
                         this.sprite.playAnimation(this.chara.skillidle.start, this.chara.skillidle.end, true, this.gamespeed * 30);
@@ -450,6 +464,7 @@ class PlayerController extends CharaController {
                         this.atktimer += 10000
                 }
             }
+
         }
     }
 

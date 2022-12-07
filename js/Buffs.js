@@ -49,7 +49,8 @@ class Buffs {
             attacks: 1,
             physdodge: 0,
             artsdodge: 0,
-            hpregenbuff:1
+            hpregenbuff:1,
+            frozen:false
 
         }
     }
@@ -81,6 +82,12 @@ class Buffs {
         this.initModifiers();
         this.sumBuffs();
         return Math.max(0, Math.round(((atk * this.modifiers.flatmultiatk) * (1 + this.modifiers.atk))));
+    }
+
+    isFrozen(){
+        this.initModifiers();
+        this.sumBuffs();
+        return this.modifiers.frozen;
     }
 
     getAttacks() {

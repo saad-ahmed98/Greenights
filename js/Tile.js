@@ -1,11 +1,12 @@
 class Tile {
-    constructor(type, x, z, scene) {
+    constructor(type, x, z, scene, snow = false) {
         this.type = type;
         this.x = x;
         this.z = z;
         this.mesh;
         this.scene = scene;
         this.player;
+        this.snow = snow;
         this.create();
         this.color;
     }
@@ -21,9 +22,14 @@ class Tile {
                 break;
             case "icealtar":
             case "altar":
+                h = 15;
+                color = new BABYLON.Color3(0.17, 0.17, 0.17)
+                break;
             case "bg":
                 h = 15;
-                color = new BABYLON.Color3(0.17, 0.17, 0.17);
+                if (this.snow)
+                    color = new BABYLON.Color3(0.24, 0.4, 0.49)
+                else color = new BABYLON.Color3(0.17, 0.17, 0.17)
                 break;
             default:
                 h = 3;
@@ -55,20 +61,20 @@ class Tile {
             case "bg":
                 break;
             case "gblk":
-                let box1 =new BABYLON.MeshBuilder.CreateBox("box2", { height: 5, depth: 24, width: 24 }, this.scene)
+                let box1 = new BABYLON.MeshBuilder.CreateBox("box2", { height: 5, depth: 24, width: 24 }, this.scene)
                 let box2 = new BABYLON.MeshBuilder.CreateBox("box3", { height: 5, depth: 30, width: 30 }, this.scene)
                 let hole1 = new BABYLON.CSG.FromMesh(box1);
                 let holePlate = new BABYLON.CSG.FromMesh(box2);
                 let newHolePlate = holePlate.subtract(hole1);
                 let newMeshHolePlate = newHolePlate.toMesh("", null, this.scene);
-                newMeshHolePlate.position.z =this.mesh.position.z;
+                newMeshHolePlate.position.z = this.mesh.position.z;
                 newMeshHolePlate.position.x = this.mesh.position.x;
                 newMeshHolePlate.position.y = 2
                 var holeMat = new BABYLON.StandardMaterial("", this.scene);
                 newMeshHolePlate.material = holeMat
                 box1.dispose()
                 box2.dispose()
-                newMeshHolePlate.material.diffuseColor =  new BABYLON.Color3(0.1, 0.1, 0.1);
+                newMeshHolePlate.material.diffuseColor = new BABYLON.Color3(0.1, 0.1, 0.1);
                 colorMaterial.diffuseTexture = this.scene.assets["g"]
                 break;
             default:
@@ -108,6 +114,6 @@ class Tile {
 
     }
     canBeDeployed(type) {
-        return (this.type == type || (type == "g" && this.type == "magma") || (type == "g" && this.type == "blood")|| (type == "g" && this.type == "gblk"))
+        return (this.type == type || (type == "g" && this.type == "magma") || (type == "g" && this.type == "blood") || (type == "g" && this.type == "gblk"))
     }
 }

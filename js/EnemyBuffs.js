@@ -31,6 +31,8 @@ class EnemyBuffs extends Buffs {
             hpregenbuff:1,
             lifesteal:0,
             attacks: 1,
+            frozenmod: 1,
+
         }
     }
 
@@ -54,5 +56,11 @@ class EnemyBuffs extends Buffs {
         this.initModifiers();
         this.sumBuffs();
         return dmg*this.modifiers.lifesteal
+    }
+
+    getFrozenModifier() {
+        this.initModifiers();
+        this.sumBuffs();
+        return this.modifiers.frozenmod;
     }
 }

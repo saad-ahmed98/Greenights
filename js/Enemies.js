@@ -2164,6 +2164,7 @@ enemylist["Patriot2"] = {
         range: 99,
         initialsp: 5,
         sp: 20,
+        chargetype:"second",
         dmgmodifier: 1.35,
         applyeffects: {
             modifiers: {
@@ -2376,6 +2377,7 @@ enemylist["PatriotEX2"] = {
         target: "farthest",
         range: 99,
         initialsp: 5,
+        chargetype:"second",
         sp: 20,
         dmgmodifier: 1.35,
         applyeffects: {
@@ -2615,6 +2617,7 @@ enemylist["Vicious Training Gloompincer"] = {
     spritesheet: "images/sprites/vicious-training-gloompincer-sheet.webp",
 
     hasskill: false,
+    hasspatk: true,
 
     atkanim: {
         start: 0,
@@ -2642,13 +2645,43 @@ enemylist["Vicious Training Gloompincer"] = {
         duration: 1.5,
 
     },
+    spatk: {
+        start: 0,
+        end: 17,
+        contact: 7,
+        duration: 1.3,
+    },
+
     sfx: {
         hit: {
+            src: "swordsman-hit",
+            volume: 0.1
+        },
+        spatk:{
+            src:"mute",
+            volume: 0.1,
+        },
+        sphit: {
             src: "swordsman-hit",
             volume: 0.1
         }
     },
 
+    spattack: {
+        name: "freeze",
+        target: "allblocking",
+        chargetype:"attack",
+        range: 0,
+        initialsp: 0,
+        sp: 3,
+        dmgmodifier: 1,
+        applyeffects: {
+            modifiers: {
+                cold:5
+            },
+            duration: 1,
+        },
+    }
 }
 
 
@@ -2722,6 +2755,7 @@ enemylist["Tytus Topola"] = {
     spattack: {
         name: "bladehelmdebuff",
         target: "highestatk",
+        chargetype:"second",
         range: 99,
         initialsp: 0,
         sp: 10,
@@ -2815,6 +2849,7 @@ enemylist["Tytus Topola2"] = {
         target: "highestatk",
         range: 99,
         initialsp: 0,
+        chargetype:"second",
         sp: 10,
         applyeffects: {
             modifiers: {
@@ -3570,6 +3605,181 @@ enemylist["Ergate Leader"] = {
     },
 
 }
+
+enemylist["Yeti Operative"] = {
+    name: "Yeti Operative",
+    hp: 3400,
+    atk: 360,
+    def: 100,
+    res: 0,
+    atkinterval: 2,
+    speed: 1.1 * 0.66,
+    blockcount: 1,
+    type: "g",
+    range: 0,
+    hploss: 1,
+    dmgtype: "physical",
+    size: 1,
+    tooltip: "A basic Yeti Squadron\nmelee combatant,\ncapable of dealing increased\ndamage to Frozen units.",
+    targets: 1,
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/yeti-operative-sheet.webp",
+
+    hasskill: true,
+
+    atkanim: {
+        start: 0,
+        end: 14,
+        contact: 6,
+        duration: 1,
+    },
+
+    death: {
+        start: 15,
+        end: 28,
+        duration: 1,
+
+    },
+    idle: {
+        start: 29,
+        end: 43,
+        duration: 1,
+
+    },
+    move: {
+        start: 44,
+        end: 55,
+        duration: 1.1,
+
+    },
+
+    sfx: {
+        atk: {
+            src: "soldier-atk",
+            volume: 0.1
+        },
+        hit: {
+            src: "soldier-hit",
+            volume: 0.1
+        }
+    },
+
+    sfx: {
+        hit: {
+            src: "swordsman-hit",
+            volume: 0.1
+        },
+        spatk:{
+            src:"mute",
+            volume: 0.1,
+        },
+        sphit: {
+            src: "swordsman-hit",
+            volume: 0.1
+        }
+    },
+
+    skill: {
+        name: "frozenhit",
+        triggertype: "on_start",
+        skilltype: "yeti",
+        target: "self",
+        modifiers: {
+            frozenmod: 0.5,
+        },
+        aura: false,
+    },
+}
+
+enemylist["Yeti Operative2"] = {
+    name: "Yeti Operative2",
+    hp: 5000,
+    atk: 380,
+    def: 135,
+    res: 0,
+    atkinterval: 2,
+    speed: 1.1 * 0.66,
+    blockcount: 1,
+    type: "g",
+    range: 0,
+    hploss: 1,
+    dmgtype: "physical",
+    size: 1,
+    tooltip: "A basic Yeti Squadron melee combatant,\ncapable of dealing increased damage to Frozen units.",
+    targets: 1,
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/yeti-operative-sheet.webp",
+
+    hasskill: true,
+
+    atkanim: {
+        start: 0,
+        end: 14,
+        contact: 6,
+        duration: 1,
+    },
+
+    death: {
+        start: 15,
+        end: 28,
+        duration: 1,
+
+    },
+    idle: {
+        start: 29,
+        end: 43,
+        duration: 1,
+
+    },
+    move: {
+        start: 44,
+        end: 55,
+        duration: 1.1,
+
+    },
+
+    sfx: {
+        atk: {
+            src: "soldier-atk",
+            volume: 0.1
+        },
+        hit: {
+            src: "soldier-hit",
+            volume: 0.1
+        }
+    },
+
+    sfx: {
+        hit: {
+            src: "swordsman-hit",
+            volume: 0.1
+        },
+        spatk:{
+            src:"mute",
+            volume: 0.1,
+        },
+        sphit: {
+            src: "swordsman-hit",
+            volume: 0.1
+        }
+    },
+
+    skill: {
+        name: "frozenhit",
+        triggertype: "on_start",
+        skilltype: "yeti",
+        target: "self",
+        modifiers: {
+            frozenmod: 0.5,
+        },
+        aura: false,
+    },
+}
+
 
 
 

@@ -109,7 +109,7 @@ class EnemyController extends CharaController {
         var theta = Math.atan2(dy, dx); // range (-PI, PI]
         theta *= 180 / Math.PI; // rads to degs, range (-180, 180]
         return theta;
-      }
+    }
 
     //move the enemy across the map
     patrol() {
@@ -150,7 +150,7 @@ class EnemyController extends CharaController {
             if (this.stairs)
                 this.unhideInStairs();
 
-            if (this.checkpoints.path.length > 0){
+            if (this.checkpoints.path.length > 0) {
                 this.lastpoint = this.currentpoint;
                 this.currentpoint = this.checkpoints.path.shift();
             }
@@ -164,19 +164,19 @@ class EnemyController extends CharaController {
                 xfound = true;
             if (this.mesh.position.z <= this.currentpoint[0] * 30 + 1 && this.mesh.position.z >= this.currentpoint[0] * 30 - 1)
                 zfound = true;
-            if(!xfound && !zfound){
-                this.speedoffsetZ =2/3
-                this.speedoffsetX = 2/3
+            if (!xfound && !zfound) {
+                this.speedoffsetZ = 2 / 3
+                this.speedoffsetX = 2 / 3
             }
             else {
-                this.speedoffsetX =1
+                this.speedoffsetX = 1
                 this.speedoffsetZ = 1
             }
-            if(!xfound) {
+            if (!xfound) {
                 var dir = 1;
                 if (this.mesh.position.x > this.currentpoint[1] * 30)
                     dir = -1;
-                let distance = ((this.buffs.getFinalSpeed(this.chara.speed*this.speedoffsetX) * dir) / this.gamespeed);
+                let distance = ((this.buffs.getFinalSpeed(this.chara.speed * this.speedoffsetX) * dir) / this.gamespeed);
                 this.mesh.position.x += distance
                 this.sprite.position.x += distance
                 this.shadow.position.x += distance
@@ -191,14 +191,14 @@ class EnemyController extends CharaController {
 
             }
             //if x found then move on the y axis to the current pooint z
-            if(!zfound) {
+            if (!zfound) {
                 var dir = 1;
                 if (this.mesh.position.z > this.currentpoint[0] * 30) {
                     this.sprite.invertU = 1;
                     dir = -1;
                 }
                 else this.sprite.invertU = 0;
-                let distance = ((this.buffs.getFinalSpeed(this.chara.speed*this.speedoffsetZ) * dir) / this.gamespeed);
+                let distance = ((this.buffs.getFinalSpeed(this.chara.speed * this.speedoffsetZ) * dir) / this.gamespeed);
                 this.mesh.position.z += distance
                 this.sprite.position.z += distance
                 this.shadow.position.z += distance
@@ -207,14 +207,14 @@ class EnemyController extends CharaController {
                     this.aura.position.z += distance
                 var keys = Object.keys(this.buffs.effectSprite)
                 for (let i = 0; i < keys.length; i++)
-                    this.buffs.effectSprite[keys[i]].position.z +=distance
+                    this.buffs.effectSprite[keys[i]].position.z += distance
                 if (this.invincibleaura != undefined)
                     this.invincibleaura.position.z += distance
 
             }
             if (zfound && xfound) {
                 //if reached, then get the next point of the checkpoint path
-                if (this.checkpoints.path.length > 0){
+                if (this.checkpoints.path.length > 0) {
                     this.lastpoint = this.currentpoint;
                     this.currentpoint = this.checkpoints.path.shift();
                 }
@@ -435,6 +435,8 @@ class EnemyController extends CharaController {
 
                 var interval1 = setInterval(() => {
                     if (instance.sprite.cellIndex >= instance.chara.atkanim.contact && instance.hp > 0) {
+                        if (this.spattacktimer != undefined && this.chara.spattack.chargetype == "attack")
+                            this.spattacktimer += 1;
                         for (let i = 0; i < player.length; i++) {
                             if (instance.chara.dmgtype == "heal")
                                 player[i].receiveHealing(instance);
@@ -698,6 +700,18 @@ class EnemyController extends CharaController {
                     return 0;
                 });
                 break;
+            case "allblocking":
+                var instance = this;
+                targets.sort(function (x, y) {
+                    if (instance.blockingplayer.chara.name == x.chara.name) {
+                        return 1;
+                    }
+                    if (instance.blockingplayer.chara.name == y.chara.name) {
+                        return -1;
+                    }
+                    return 0;
+                });
+                break;
         }
     }
 
@@ -738,8 +752,9 @@ class EnemyController extends CharaController {
             }, 1);
             players[0].buffs.buffs[this.chara.spattack.name] = { "name": this.name, "modifiers": this.chara.spattack.applyeffects.modifiers }
             players[0].buffs.effects[this.chara.spattack.name] = this.chara.spattack.applyeffects.duration
-            if (players[0].buffs.effectSprite[this.chara.spattack.name] == undefined)
+            if (players[0].buffs.effectSprite[this.chara.spattack.name] == undefined && this.chara.spattack.applyeffects.effecticon != undefined)
                 players[0].createDebuffAura(this.chara.spattack.name, this.chara.spattack.applyeffects.effecticon)
+            this.applySpecialEffect(this.chara.spattack.applyeffects.modifiers, players[0])
 
             if (this.chara.spattack.dmgmodifier != undefined) {
                 var interval2 = setInterval(() => {
@@ -872,7 +887,7 @@ class EnemyController extends CharaController {
         //if the enemy is spawning (doing start animation), don't move
         if (!this.spawning) {
             this.atktimer += 1 / this.gamespeed;
-            if (this.spattacktimer != undefined)
+            if (this.spattacktimer != undefined && this.chara.spattack.chargetype == "second")
                 this.spattacktimer = Math.min(this.chara.spattack.sp, this.spattacktimer + (1 / 30) / this.gamespeed);
             this.hp = Math.min(this.maxhp, this.hp + this.buffs.getFinalHpRegen(this.maxhp) * (1 / 30) / this.gamespeed)
 
@@ -916,7 +931,7 @@ class EnemyController extends CharaController {
             if (!this.skillproc) {
                 //conditions to see if enemy can attack
                 if (this.spattacktimer != undefined) {
-                    if (this.spattacktimer == this.chara.spattack.sp && !this.attacking && !this.stairs)
+                    if (this.spattacktimer == this.chara.spattack.sp && this.chara.spattack.chargetype == "second" && !this.attacking && !this.stairs)
                         this.activateSpSkill(players)
                 }
                 //if enemy has no atk, can't attack
@@ -934,7 +949,12 @@ class EnemyController extends CharaController {
                 if (enter) {
                     if (this.atktimer >= this.buffs.getFinalAtkInterval(this.chara.atkinterval) * 25 && !this.attacking) {
                         this.atktimer = 0;
-                        this.attacking = this.attack(players);
+                        if (this.spattacktimer != undefined) {
+                            if (this.spattacktimer == this.chara.spattack.sp && this.chara.spattack.chargetype == "attack" && !this.stairs)
+                                this.activateSpSkill(players)
+                            else this.attacking = this.attack(players);
+                        }
+                        else this.attacking = this.attack(players);
                     }
                 }
 
