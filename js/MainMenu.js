@@ -688,7 +688,7 @@ class MainMenu extends LVLAbstract {
         select.text = "SELECTED " + selected.length + "/12";
         select.fontSize = "3%";
         select.color = "white";
-        select.top = "32%";
+        select.top = "35%";
         select.left = "30%";
         this.lvlcontroller.addControl(select)
 
@@ -700,13 +700,13 @@ class MainMenu extends LVLAbstract {
         var myScrollViewer = new BABYLON.GUI.ScrollViewer();
         myScrollViewer.width = "70%"
         myScrollViewer.height = "70%";
-        myScrollViewer.left = "-5%";
+        myScrollViewer.left = "-10%";
 
         myScrollViewer.top = "-2%";
         myScrollViewer.color = "transparent"
 
         for (let i = 0; i < keys.length; i++) {
-            if (i % 8 == 0 && i > 0) {
+            if (i % 9 == 0 && i > 0) {
                 j++
                 z = 0
             }
@@ -846,7 +846,7 @@ class MainMenu extends LVLAbstract {
 
     }
 
-    //creates description when clicking on a deployed player
+    //creates description when clicking on a player
     createPlayerTooltip(player) {
 
         this.opcontroller.dispose()
@@ -857,7 +857,7 @@ class MainMenu extends LVLAbstract {
         container.width = "28%";
         container.height = "18%";
         container.left = "0%";
-        container.top = "17%";
+        container.top = "20%";
         container.color = "white";
         container.thickness = 1;
         container.background = "rgba(0, 0, 0, 0.3)";
@@ -931,7 +931,7 @@ class MainMenu extends LVLAbstract {
         container.width = "28%";
         container.height = "18%";
         container.left = "0%";
-        container.top = "34.9%";
+        container.top = "37.8%";
         container.color = "white";
         container.thickness = 1;
         container.background = "rgba(0, 0, 0, 0.3)";
@@ -977,7 +977,7 @@ class MainMenu extends LVLAbstract {
         container.width = "28%";
         container.height = "24%";
         container.left = "0%";
-        container.top = "52.9%";
+        container.top = "55.7%";
         container.color = "white";
         container.thickness = 1;
         container.background = "rgba(0, 0, 0, 0.3)";
@@ -1034,7 +1034,7 @@ class MainMenu extends LVLAbstract {
         container.width = "28%";
         container.height = "59.9%";
         container.left = "0%";
-        container.top = "17%";
+        container.top = "20%";
         container.color = "white";
         container.thickness = 1;
         container.background = "rgba(0, 0, 0, 0.3)";

@@ -71,7 +71,24 @@ class EnemySkill {
         this.durationtimer++;
         if (this.durationtimer >= this.modifiers.stack && target.aura == undefined)
             target.createBuffAura(this.auratype)
-        
+
+    }
+
+    activateSkillBomb(enemy, lvl) {
+        var skillbomb = this.modifiers.skillbomb;
+        var players = [];
+        if (skillbomb == undefined)
+            return;
+        players = enemy.getFirstPlayerInRange(lvl.activePlayers, skillbomb.range, skillbomb.targets)
+
+        if (players.length > 0) {
+            for (let i = 0; i < players.length; i++) {
+                players[i].receiveDamage(enemy, false, skillbomb.dmg)
+                if(skillbomb.cold!=undefined)
+                    players[i].applyCold(skillbomb.cold)   
+            }
+        }
+
     }
 
 

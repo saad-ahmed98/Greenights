@@ -68,7 +68,7 @@ class LVLGUIController {
 
             //on click, activate the skill if enough sp
             image2.onPointerUpObservable.add(function () {
-                if (player.playerSkill.currentsp >= player.playerSkill.totalsp) {
+                if (player.playerSkill.currentsp >= player.playerSkill.totalsp && !player.isfrozen) {
                     player.skillready.isVisible = false;
                     player.lvlcontroller.playSound(player.chara.name + "-skillact", player.chara.sfx.skillact.volume)
                     player.lvlcontroller.playSound(player.chara.name + "-skill", player.lvlcontroller.vcvolume)

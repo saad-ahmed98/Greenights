@@ -601,6 +601,13 @@ class EnemyController extends CharaController {
                 var instance = this
                 let interval = setInterval(() => {
                     if (instance.sprite.cellIndex == instance.chara.death.end) {
+                        if (this.playerSkill != undefined) {
+                            if (this.playerSkill.triggertype == "on_death") {
+                                instance.createEffects(instance.lvlcontroller.spriteManagers["boom"])
+                                instance.lvlcontroller.playSound(instance.chara.name + "-skillbomb", instance.chara.sfx.skillbomb.volume)
+                                instance.playerSkill.activateSkillBomb(instance, instance.lvlcontroller);
+                            }
+                        }
                         instance.shadow.dispose()
                         instance.sprite.dispose()
                         clearInterval(interval);
@@ -703,11 +710,13 @@ class EnemyController extends CharaController {
             case "allblocking":
                 var instance = this;
                 targets.sort(function (x, y) {
-                    if (instance.blockingplayer.chara.name == x.chara.name) {
-                        return 1;
-                    }
-                    if (instance.blockingplayer.chara.name == y.chara.name) {
-                        return -1;
+                    if (instance.blockingplayer != undefined) {
+                        if (instance.blockingplayer.chara.name == x.chara.name) {
+                            return 1;
+                        }
+                        if (instance.blockingplayer.chara.name == y.chara.name) {
+                            return -1;
+                        }
                     }
                     return 0;
                 });
@@ -742,7 +751,17 @@ class EnemyController extends CharaController {
             this.lvlcontroller.playSound(this.chara.name + "-spatk", this.chara.sfx.spatk.volume)
 
             var instance = this;
+            let applied = false;
             var interval = setInterval(() => {
+                if (instance.sprite.cellIndex == instance.chara.spattack.effectcontact && !applied) {
+                    applied= true;
+                    players[0].buffs.buffs[this.chara.spattack.name] = { "name": this.name, "modifiers": this.chara.spattack.applyeffects.modifiers }
+                    players[0].buffs.effects[this.chara.spattack.name] = this.chara.spattack.applyeffects.duration
+                    if (players[0].buffs.effectSprite[this.chara.spattack.name] == undefined && this.chara.spattack.applyeffects.effecticon != undefined)
+                        players[0].createDebuffAura(this.chara.spattack.name, this.chara.spattack.applyeffects.effecticon)
+                    this.applySpecialEffect(this.chara.spattack.applyeffects.modifiers, players[0])
+
+                }
                 if (instance.sprite.cellIndex == instance.chara.spatk.end) {
                     instance.sprite.playAnimation(instance.chara.idle.start, instance.chara.idle.end, true, 30 * this.gamespeed * instance.chara.idle.duration);
                     instance.attacking = false;
@@ -750,11 +769,7 @@ class EnemyController extends CharaController {
                     clearInterval(interval);
                 }
             }, 1);
-            players[0].buffs.buffs[this.chara.spattack.name] = { "name": this.name, "modifiers": this.chara.spattack.applyeffects.modifiers }
-            players[0].buffs.effects[this.chara.spattack.name] = this.chara.spattack.applyeffects.duration
-            if (players[0].buffs.effectSprite[this.chara.spattack.name] == undefined && this.chara.spattack.applyeffects.effecticon != undefined)
-                players[0].createDebuffAura(this.chara.spattack.name, this.chara.spattack.applyeffects.effecticon)
-            this.applySpecialEffect(this.chara.spattack.applyeffects.modifiers, players[0])
+
 
             if (this.chara.spattack.dmgmodifier != undefined) {
                 var interval2 = setInterval(() => {

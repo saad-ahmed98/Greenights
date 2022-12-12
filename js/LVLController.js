@@ -12,7 +12,6 @@ class LVLController extends LVLAbstract {
         this.hazards = [];
         this.place = lvl.place;
         this.snowstorm = lvl.snowstorm || false;
-        console.log(this.snowstorm)
 
         this.enemiesreviving = []
         this.presentHazards = lvl.hazards;
@@ -463,7 +462,7 @@ class LVLController extends LVLAbstract {
             BABYLON.Color3.LerpToRef(BABYLON.Color3.BlackReadOnly, startingColor, t, this.scene.clearColor);
         }
         else {
-
+            
             if (!this.render) {
                 this.createGUIs()
                 this.render = true;
@@ -481,6 +480,7 @@ class LVLController extends LVLAbstract {
                 if (!this.gui.isPaused)
                     this.createLvl();
             }
+            
         }
         this.scene.render();
     }
@@ -669,6 +669,18 @@ class LVLController extends LVLAbstract {
         );
         binaryTask.onSuccess = function (task) {
             instance.spriteManagers[task.name] = new BABYLON.SpriteManager("EffectsManager", undefined, 15, { width: 888, height: 605 });
+            instance.spriteManagers[task.name].texture = task.texture
+        };
+
+        binaryTask = assetsManager.addTextureTask(
+            "boom",
+            "images/common/boom-sheet.png",
+            true,
+            false,
+            BABYLON.Texture.TRILINEAR_SAMPLINGMODE
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.spriteManagers[task.name] = new BABYLON.SpriteManager("BoomManager", undefined, 15, { width: 888, height: 605 });
             instance.spriteManagers[task.name].texture = task.texture
         };
 
@@ -982,9 +994,11 @@ class LVLController extends LVLAbstract {
 
 
     checkPlayerSkill(p) {
-        if (!p.playerSkill.active && p.playerSkill.chargetype == "second") {
+        if (!p.playerSkill.active && (p.playerSkill.chargetype == "second" || p.playerSkill.chargetype == "hit" ) ) {
+            if(p.playerSkill.chargetype == "second"){
             p.playerSkill.currentsp = Math.min(p.playerSkill.currentsp + (1 / 30) / this.gamespeed, p.playerSkill.totalsp);
             p.updateSkillBarCharging()
+            }
             if (p.playerSkill.currentsp >= p.playerSkill.totalsp && p.playerSkill.triggertype == "manual")
                 p.skillready.isVisible = true;
             if (p.playerSkill.triggertype == "auto" && p.playerSkill.currentsp >= p.playerSkill.totalsp && p.playerSkill.duration > 0) {

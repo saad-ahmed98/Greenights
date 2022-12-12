@@ -116,7 +116,7 @@ class CharaController {
 
     applyCold(duration) {
         if (this.buffs.effects["cold"] == undefined && this.buffs.effects["frozen"] == undefined) {
-            this.buffs.buffs["cold"] = { "name": "cold", "modifiers": { "aspd": -25 } }
+            this.buffs.buffs["cold"] = { "name": "cold", "modifiers": { "aspd": -40 } }
             this.buffs.effects["cold"] = duration
             if (this.buffs.effectSprite["cold"] == undefined)
                 this.createDebuffAura("cold", 9)
@@ -129,7 +129,7 @@ class CharaController {
                 if (this.buffs.effectSprite["frozen"] == undefined)
                     this.createDebuffAura("frozen", 15)
             }
-            else this.buffs.effects["frozen"] += duration
+            else this.buffs.effects["frozen"] = Math.max(duration, this.buffs.effects["frozen"])
         }
     }
 
@@ -465,6 +465,17 @@ class CharaController {
         return res;
     }
 
+    createEffects(auraManager) {
+        var aura = new BABYLON.Sprite("", auraManager);
+        aura.playAnimation(0, 13, false, 60);
+        aura.position = new BABYLON.Vector3(5 + this.mesh.position.x, 19, 10 + this.mesh.position.z);
+        aura.size = 60;
+        aura.width = 80;
+
+        aura.position.z -= Math.min(5, this.y);
+        aura.position.x -= this.x;
+    }
+
     //receive damage used by player
     receiveDamage(enemy, hazard = false, mod = 1) {
         var dmg;
@@ -472,10 +483,9 @@ class CharaController {
 
         if (!hazard) {
             dmg = enemy.buffs.getFinalAtk(enemy.chara.atk) * mod
-            if(this.isfrozen)
-                dmg *=enemy.buffs.getFrozenModifier();
+            if (this.isfrozen)
+                dmg *= enemy.buffs.getFrozenModifier();
             dmgtype = enemy.buffs.getDmgType()
-            console.log(dmg)
             if (dmgtype == "")
                 dmgtype = enemy.chara.dmgtype
         }
@@ -508,17 +518,34 @@ class CharaController {
 
 
         }
+        //TODO HARDCODED
+        if(this.chara.name=="Liskarm"){
+            let list = this.lvlcontroller.activePlayers.filter(op => (op.chara.name!="Liskarm" && op.playerSkill.chargetype!="passive" && !op.playerSkill.active))
+            var players = shuffle(this.getFirstPlayerInRange(list,1,4))
+            if(players.length>0){
+                players[0].playerSkill.currentsp = Math.min(players[0].playerSkill.currentsp + 1, players[0].playerSkill.totalsp);
+                players[0].updateSkillBarCharging();
+            }
+            if (!this.playerSkill.active) 
+            this.playerSkill.currentsp = Math.min(this.playerSkill.currentsp + 1, this.playerSkill.totalsp);
+        }
+        if (this.playerSkill.chargetype == "hit" && !this.playerSkill.active) {
+            this.playerSkill.currentsp = Math.min(this.playerSkill.currentsp + 1, this.playerSkill.totalsp);
+            this.updateSkillBarCharging();
+        }
+
+    
 
         //update hp bar after receiving damage
         this.updateHpBar();
         this.checkDeath();
     }
 
-    applySpecialEffect(modifiers,target){
+    applySpecialEffect(modifiers, target) {
         let keys = Object.keys(modifiers);
-        
-        for(let i =0;i<keys.length;i++){
-            switch(keys[i]){
+
+        for (let i = 0; i < keys.length; i++) {
+            switch (keys[i]) {
                 case "cold":
                     target.applyCold(modifiers[keys[i]]);
                     break;

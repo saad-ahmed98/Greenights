@@ -8,7 +8,7 @@ enemylist['Hound'] = {
     def: 0,
     res: 20,
     atkinterval: 1.4,
-    speed: (1.7 + 0.2) * 0.66,
+    speed: (1.7 + 0.2) * 0.6,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -65,7 +65,7 @@ enemylist['Crossbowman'] = {
     def: 150,
     res: 0,
     atkinterval: 2.4,
-    speed: (0.7 + 0.2) * 0.66,
+    speed: (0.7 + 0.2) * 0.6,
     blockcount: 1,
     type: "g",
     range: 1.9,
@@ -125,7 +125,7 @@ enemylist['Sarkaz Grudgebearer'] = {
     def: 250,
     res: 50,
     atkinterval: 5,
-    speed: (0.2 + 0.2) * 0.66,
+    speed: (0.2 + 0.2) * 0.6,
     blockcount: 1,
     type: "g",
     range: 3,
@@ -209,7 +209,7 @@ enemylist['Sarkaz Sentinel'] = {
     def: 100,
     res: 30,
     atkinterval: 1,
-    speed: (0.3 + 0.2) * 0.66,
+    speed: (0.3 + 0.2) * 0.6,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -301,7 +301,7 @@ enemylist['Sarkaz Swordsman'] = {
     def: 100,
     res: 50,
     atkinterval: 2.5,
-    speed: (0.8 + 0.2) * 0.66,
+    speed: (0.8 + 0.2) * 0.6,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -362,7 +362,7 @@ enemylist['Sarkaz Greatswordsman'] = {
     def: 230,
     res: 50,
     atkinterval: 2,
-    speed: (0.65 + 0.2) * 0.66,
+    speed: (0.65 + 0.2) * 0.6,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -420,7 +420,7 @@ enemylist['Sarkaz Crossbowman'] = {
     def: 200,
     res: 50,
     atkinterval: 3,
-    speed: (0.6 + 0.2) * 0.66,
+    speed: (0.6 + 0.2) * 0.6,
     blockcount: 1,
     type: "g",
     range: 2.2,
@@ -479,7 +479,7 @@ enemylist['Sarkaz Bladeweaver'] = {
     def: 200,
     res: 50,
     atkinterval: 2.5,
-    speed: (0.2 + 0.2) * 0.66,
+    speed: (0.2 + 0.2) * 0.6,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -556,7 +556,7 @@ enemylist["Guerrilla Fighter"] = {
     def: 300,
     res: 20,
     atkinterval: 2,
-    speed: (0.9 + 0.2) * 0.66,
+    speed: (0.9 + 0.2) * 0.6,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -631,7 +631,7 @@ enemylist["Guerrilla Fighter Leader"] = {
     def: 350,
     res: 20,
     atkinterval: 2,
-    speed: (0.9 + 0.2) * 0.66,
+    speed: (0.9 + 0.2) * 0.6,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -705,7 +705,7 @@ enemylist["Guerrilla Mortar"] = {
     def: 550,
     res: 20,
     atkinterval: 4.8,
-    speed: 0.6 * 0.66,
+    speed: 0.6 * 0.6,
     blockcount: 1,
     type: "g",
     range: 15,
@@ -782,7 +782,7 @@ enemylist["Guerrilla Mortar Leader"] = {
     def: 550,
     res: 20,
     atkinterval: 4.8,
-    speed: 0.6 * 0.66,
+    speed: 0.6 * 0.6,
     blockcount: 1,
     type: "g",
     range: 15,
@@ -861,7 +861,7 @@ enemylist["Guerrilla Sniper"] = {
     def: 300,
     res: 20,
     atkinterval: 2.5,
-    speed: (0.6 + 0.2) * 0.66,
+    speed: (0.6 + 0.2) * 0.6,
     blockcount: 1,
     type: "g",
     range: 2.2,
@@ -935,7 +935,7 @@ enemylist["Guerrilla Sniper Leader"] = {
     def: 300,
     res: 20,
     atkinterval: 2.7,
-    speed: (0.6 + 0.2) * 0.66,
+    speed: (0.6 + 0.2) * 0.6,
     blockcount: 1,
     type: "g",
     range: 2.2,
@@ -1008,7 +1008,7 @@ enemylist['Guerrilla Hound'] = {
     def: 150,
     res: 20,
     atkinterval: 1.4,
-    speed: (1.6 + 0.2) * 0.66,
+    speed: (1.6 + 0.2) * 0.6,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -1068,7 +1068,7 @@ enemylist['Guerrilla Hound Pro'] = {
     def: 150,
     res: 20,
     atkinterval: 1.4,
-    speed: (1.6 + 0.2) * 0.66,
+    speed: (1.6 + 0.2) * 0.6,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -1127,7 +1127,7 @@ enemylist["Guerrilla Siegebreaker"] = {
     def: 550,
     res: 20,
     atkinterval: 1.9,
-    speed: (0.8 + 0.2) * 0.66,
+    speed: (0.8 + 0.2) * 0.6,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -1208,7 +1208,7 @@ enemylist["Guerrilla Siegebreaker Leader"] = {
     def: 550,
     res: 20,
     atkinterval: 1.9,
-    speed: (0.8 + 0.2) * 0.66,
+    speed: (0.8 + 0.2) * 0.6,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -1290,7 +1290,7 @@ enemylist["Sarkaz Guerrilla Fighter Leader"] = {
     def: 400,
     res: 50,
     atkinterval: 2.5,
-    speed: (0.65 + 0.2) * 0.66,
+    speed: (0.65 + 0.2) * 0.6,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -1367,7 +1367,7 @@ enemylist["Sarkaz Guerrilla Fighter"] = {
     def: 400,
     res: 50,
     atkinterval: 2.5,
-    speed: (0.65 + 0.2) * 0.66,
+    speed: (0.65 + 0.2) * 0.6,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -1444,7 +1444,7 @@ enemylist["Sarkaz Guerrilla Caster"] = {
     def: 400,
     res: 50,
     atkinterval: 5,
-    speed: 0.75 * 0.66,
+    speed: 0.75 * 0.6,
     blockcount: 1,
     type: "g",
     range: 1.5,
@@ -1528,7 +1528,7 @@ enemylist["Sarkaz Guerrilla Caster Leader"] = {
     def: 400,
     res: 50,
     atkinterval: 5,
-    speed: 0.75 * 0.66,
+    speed: 0.75 * 0.6,
     blockcount: 1,
     type: "g",
     range: 1.5,
@@ -1612,7 +1612,7 @@ enemylist["Guerrilla Shieldguard"] = {
     def: 1300,
     res: 60,
     atkinterval: 3.8,
-    speed: (0.5 + 0.2) * 0.66,
+    speed: (0.5 + 0.2) * 0.6,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -1682,7 +1682,7 @@ enemylist["Guerrilla Shieldguard Leader"] = {
     def: 1500,
     res: 60,
     atkinterval: 3.8,
-    speed: (0.5 + 0.2) * 0.66,
+    speed: (0.5 + 0.2) * 0.6,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -1752,7 +1752,7 @@ enemylist["Guerrilla Shieldguard LeaderEX"] = {
     def: 1500,
     res: 60,
     atkinterval: 3.8,
-    speed: 0.4 * 0.66,
+    speed: 0.4 * 0.6,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -1822,7 +1822,7 @@ enemylist["Guerrilla Herald"] = {
     def: 120,
     res: 50,
     atkinterval: 2.7,
-    speed: (0.8 + 0.2) * 0.66,
+    speed: (0.8 + 0.2) * 0.6,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -1895,7 +1895,7 @@ enemylist["Guerrilla Herald Leader"] = {
     def: 120,
     res: 50,
     atkinterval: 2.5,
-    speed: (0.8 + 0.2) * 0.66,
+    speed: (0.8 + 0.2) * 0.6,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -1968,7 +1968,7 @@ enemylist["Patriot"] = {
     def: 1900,
     res: 90,
     atkinterval: 4,
-    speed: 0.4 * 0.66,
+    speed: 0.4 * 0.6,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -2055,7 +2055,7 @@ enemylist["Patriot2"] = {
     def: 500,
     res: 45,
     atkinterval: 3.6,
-    speed: 0.5 * 0.66,
+    speed: 0.5 * 0.6,
     blockcount: 1,
     type: "g",
     range: 0.85,
@@ -2166,6 +2166,7 @@ enemylist["Patriot2"] = {
         sp: 20,
         chargetype:"second",
         dmgmodifier: 1.35,
+        effectcontact: 201,
         applyeffects: {
             modifiers: {
             },
@@ -2182,7 +2183,7 @@ enemylist["PatriotEX"] = {
     def: 1900,
     res: 90,
     atkinterval: 4,
-    speed: 0.4 * 0.66,
+    speed: 0.4 * 0.6,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -2269,7 +2270,7 @@ enemylist["PatriotEX2"] = {
     def: 500,
     res: 45,
     atkinterval: 3.6,
-    speed: 0.5 * 0.66,
+    speed: 0.5 * 0.6,
     blockcount: 1,
     type: "g",
     range: 0.85,
@@ -2380,6 +2381,7 @@ enemylist["PatriotEX2"] = {
         chargetype:"second",
         sp: 20,
         dmgmodifier: 1.35,
+        effectcontact: 201,
         applyeffects: {
             modifiers: {
             },
@@ -2396,7 +2398,7 @@ enemylist["Roar Knightclub Elite"] = {
     def: 100,
     res: 0,
     atkinterval: 2.4,
-    speed: (0.7 + 0.2) * 0.66,
+    speed: (0.7 + 0.2) * 0.6,
     blockcount: 1,
     type: "g",
     range: 2,
@@ -2469,7 +2471,7 @@ enemylist["Bloodboil Knightclub Elite"] = {
     def: 800,
     res: 0,
     atkinterval: 2.3,
-    speed: (0.5 + 0.2) * 0.66,
+    speed: (0.5 + 0.2) * 0.6,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -2544,7 +2546,7 @@ enemylist["Elite Knight Shielder"] = {
     def: 1300,
     res: 0,
     atkinterval: 3,
-    speed: (0.5 + 0.2) * 0.66,
+    speed: (0.5 + 0.2) * 0.6,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -2602,7 +2604,7 @@ enemylist["Vicious Training Gloompincer"] = {
     def: 700,
     res: 50,
     atkinterval: 2.5,
-    speed: (0.8 + 0.2) * 0.66,
+    speed: (0.8 + 0.2) * 0.6,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -2617,7 +2619,6 @@ enemylist["Vicious Training Gloompincer"] = {
     spritesheet: "images/sprites/vicious-training-gloompincer-sheet.webp",
 
     hasskill: false,
-    hasspatk: true,
 
     atkanim: {
         start: 0,
@@ -2645,42 +2646,12 @@ enemylist["Vicious Training Gloompincer"] = {
         duration: 1.5,
 
     },
-    spatk: {
-        start: 0,
-        end: 17,
-        contact: 7,
-        duration: 1.3,
-    },
 
     sfx: {
         hit: {
             src: "swordsman-hit",
             volume: 0.1
-        },
-        spatk:{
-            src:"mute",
-            volume: 0.1,
-        },
-        sphit: {
-            src: "swordsman-hit",
-            volume: 0.1
         }
-    },
-
-    spattack: {
-        name: "freeze",
-        target: "allblocking",
-        chargetype:"attack",
-        range: 0,
-        initialsp: 0,
-        sp: 3,
-        dmgmodifier: 1,
-        applyeffects: {
-            modifiers: {
-                cold:5
-            },
-            duration: 1,
-        },
     }
 }
 
@@ -2692,7 +2663,7 @@ enemylist["Tytus Topola"] = {
     def: 700,
     res: 50,
     atkinterval: 3,
-    speed: (0.55 + 0.2) * 0.66,
+    speed: (0.55 + 0.2) * 0.6,
     blockcount: 1,
     type: "g",
     range: 1.3,
@@ -2759,6 +2730,7 @@ enemylist["Tytus Topola"] = {
         range: 99,
         initialsp: 0,
         sp: 10,
+        effectcontact: 94,
         applyeffects: {
             modifiers: {
                 flatmultiatk: 0.50,
@@ -2776,7 +2748,7 @@ enemylist["Tytus Topola2"] = {
     def: 700,
     res: 50,
     atkinterval: 3,
-    speed: (0.55 + 0.2) * 0.66,
+    speed: (0.55 + 0.2) * 0.6,
     blockcount: 1,
     type: "g",
     range: 1.3,
@@ -2851,6 +2823,7 @@ enemylist["Tytus Topola2"] = {
         initialsp: 0,
         chargetype:"second",
         sp: 10,
+        effectcontact: 94,
         applyeffects: {
             modifiers: {
                 flatmultiatk: 0.50,
@@ -2868,7 +2841,7 @@ enemylist["Possessed Soldier Leader"] = {
     def: 150,
     res: 30,
     atkinterval: 1.8,
-    speed: (0.7 + 0.2) * 0.66,
+    speed: (0.7 + 0.2) * 0.6,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -2941,7 +2914,7 @@ enemylist["Possessed Defender Leader"] = {
     def: 1000,
     res: 0,
     atkinterval: 2.6,
-    speed: (0.55 + 0.2) * 0.66,
+    speed: (0.55 + 0.2) * 0.6,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -3011,7 +2984,7 @@ enemylist["Possessed Veteran Junkman"] = {
     def: 200,
     res: 30,
     atkinterval: 3,
-    speed: (0.45 + 0.2) * 0.66,
+    speed: (0.45 + 0.2) * 0.6,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -3081,7 +3054,7 @@ enemylist["Enraged Possessed Bonethrower"] = {
     def: 220,
     res: 30,
     atkinterval: 2,
-    speed: (0.5 + 0.2) * 0.66,
+    speed: (0.5 + 0.2) * 0.6,
     blockcount: 1,
     type: "g",
     range: 2.6,
@@ -3153,7 +3126,7 @@ enemylist["Enraged Possessed Thrower"] = {
     def: 200,
     res: 30,
     atkinterval: 2.1,
-    speed: (0.5 + 0.2) * 0.66,
+    speed: (0.5 + 0.2) * 0.6,
     blockcount: 1,
     type: "g",
     range: 2.6,
@@ -3224,7 +3197,7 @@ enemylist["Enraged Possessed Leader"] = {
     def: 230,
     res: 30,
     atkinterval: 1.3,
-    speed: 1.2 * 0.66,
+    speed: 1.2 * 0.6,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -3294,7 +3267,7 @@ enemylist["Enraged Possessed Soldier"] = {
     def: 200,
     res: 30,
     atkinterval: 1.3,
-    speed: 1.2 * 0.66,
+    speed: 1.2 * 0.6,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -3364,7 +3337,7 @@ enemylist["Mephisto"] = {
     def: 300,
     res: 60,
     atkinterval: 10,
-    speed: (0.5) * 0.66,
+    speed: (0.5) * 0.6,
     blockcount: 1,
     type: "g",
     range: 99,
@@ -3436,7 +3409,7 @@ enemylist["Sarkaz Centurion Nidus Guard"] = {
     def: 220,
     res: 60,
     atkinterval: 5,
-    speed: 0.8 * 0.66,
+    speed: 0.8 * 0.6,
     blockcount: 1,
     type: "g",
     range: 1.5,
@@ -3507,7 +3480,7 @@ enemylist["Ergate"] = {
     def: 120,
     res: 40,
     atkinterval: 1,
-    speed: 1.2 * 0.66,
+    speed: 1.2 * 0.6,
     blockcount: 99,
     type: "g",
     range: 0,
@@ -3560,7 +3533,7 @@ enemylist["Ergate Leader"] = {
     def: 260,
     res: 45,
     atkinterval: 1,
-    speed: 1.2 * 0.66,
+    speed: 1.2 * 0.6,
     blockcount: 99,
     type: "g",
     range: 0,
@@ -3613,7 +3586,7 @@ enemylist["Yeti Operative"] = {
     def: 100,
     res: 0,
     atkinterval: 2,
-    speed: 1.1 * 0.66,
+    speed: 1.1 * 0.6,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -3651,31 +3624,13 @@ enemylist["Yeti Operative"] = {
     move: {
         start: 44,
         end: 55,
-        duration: 1.5,
+        duration: 1.3,
 
     },
 
-    sfx: {
-        atk: {
-            src: "soldier-atk",
-            volume: 0.1
-        },
-        hit: {
-            src: "soldier-hit",
-            volume: 0.1
-        }
-    },
 
     sfx: {
         hit: {
-            src: "swordsman-hit",
-            volume: 0.1
-        },
-        spatk:{
-            src:"mute",
-            volume: 0.1,
-        },
-        sphit: {
             src: "swordsman-hit",
             volume: 0.1
         }
@@ -3700,14 +3655,14 @@ enemylist["Yeti Operative2"] = {
     def: 135,
     res: 0,
     atkinterval: 2,
-    speed: 1.1 * 0.66,
+    speed: 1.1 * 0.6,
     blockcount: 1,
     type: "g",
     range: 0,
     hploss: 1,
     dmgtype: "physical",
     size: 1,
-    tooltip: "A basic Yeti Squadron melee combatant,\ncapable of dealing increased damage to Frozen units.",
+    tooltip: "A basic Yeti Squadron melee combatant,\ncapable of dealing \nincreased damage to Frozen units.",
     targets: 1,
 
     enemytype: "normal",
@@ -3743,26 +3698,7 @@ enemylist["Yeti Operative2"] = {
     },
 
     sfx: {
-        atk: {
-            src: "soldier-atk",
-            volume: 0.1
-        },
         hit: {
-            src: "soldier-hit",
-            volume: 0.1
-        }
-    },
-
-    sfx: {
-        hit: {
-            src: "swordsman-hit",
-            volume: 0.1
-        },
-        spatk:{
-            src:"mute",
-            volume: 0.1,
-        },
-        sphit: {
             src: "swordsman-hit",
             volume: 0.1
         }
@@ -3778,4 +3714,846 @@ enemylist["Yeti Operative2"] = {
         },
         aura: false,
     },
+}
+
+enemylist['Frostfang'] = {
+    name: "Frostfang",
+    hp: 3150,
+    atk: 350,
+    def: 0,
+    res: 30,
+    atkinterval: 1.4,
+    speed: 1.9 * 0.6,
+    blockcount: 1,
+    type: "g",
+    range: 0,
+    hploss: 1,
+    dmgtype: "physical",
+    size: 1,
+    targets: 1,
+
+    tooltip: "An agile creature controlled \nby the Yeti Squadron\ncapable of dealing \nincreased damage to Frozen units",
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/frostfang-sheet.webp",
+
+    hasskill: true,
+    atkanim: {
+        start: 0,
+        end: 14,
+        contact: 8,
+        duration: 1,
+    },
+
+    death: {
+        start: 15,
+        end: 29,
+        duration: 1,
+
+    },
+
+    idle: {
+        start: 30,
+        end: 44,
+        duration: 1,
+
+    },
+
+    move: {
+        start: 45,
+        end: 61,
+        duration: 1.2,
+
+    },
+
+    sfx: {
+        atk: {
+            src: "dog-atk",
+            volume: 0.05
+        }
+    },
+
+    skill: {
+        name: "frozenhit",
+        triggertype: "on_start",
+        skilltype: "yeti",
+        target: "self",
+        modifiers: {
+            frozenmod: 0.5,
+        },
+        aura: false,
+    }
+
+}
+
+enemylist['Razorfrost'] = {
+    name: "Razorfrost",
+    hp: 4650,
+    atk: 430,
+    def: 0,
+    res: 30,
+    atkinterval: 1.4,
+    speed: 1.9 * 0.6,
+    blockcount: 1,
+    type: "g",
+    range: 0,
+    hploss: 1,
+    dmgtype: "physical",
+    size: 1,
+    targets: 1,
+
+    tooltip: "A dangerous creature controlled \nby the Yeti Squadron\ncapable of dealing \nincreased damage to Frozen units",
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/razorfrost-sheet.webp",
+
+    hasskill: true,
+    atkanim: {
+        start: 0,
+        end: 14,
+        contact: 8,
+        duration: 1,
+    },
+
+    death: {
+        start: 15,
+        end: 29,
+        duration: 1,
+
+    },
+
+    idle: {
+        start: 30,
+        end: 44,
+        duration: 1,
+
+    },
+
+    move: {
+        start: 45,
+        end: 60,
+        duration: 1.2,
+
+    },
+
+    sfx: {
+        atk: {
+            src: "dog-atk",
+            volume: 0.05
+        }
+    },
+
+    skill: {
+        name: "frozenhit",
+        triggertype: "on_start",
+        skilltype: "yeti",
+        target: "self",
+        modifiers: {
+            frozenmod: 0.5,
+        },
+        aura: false,
+    }
+
+}
+
+enemylist["Yeti Sniper"] = {
+    name: "Yeti Sniper",
+    hp: 2500,
+    atk: 290,
+    def: 80,
+    res: 0,
+    atkinterval: 2.4,
+    speed: 0.9 * 0.6,
+    blockcount: 1,
+    type: "g",
+    range: 1.9,
+    hploss: 1,
+    dmgtype: "physical",
+    size: 1,
+    tooltip: "A basic Yeti ranged combatant,\ncapable of dealing \nincreased damage to Frozen units",
+    targets: 1,
+    bullet: { size: { height: 1, depth: 6, width: 0.5 }, arc:false, speed:5, color: new BABYLON.Color3(0.4, 0.4, 0.4)},
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/yeti-sniper-sheet.webp",
+
+    hasskill: true,
+
+    atkanim: {
+        start: 0,
+        end: 14,
+        contact: 6,
+        duration: 1,
+    },
+
+    death: {
+        start: 15,
+        end: 29,
+        duration: 1,
+
+    },
+
+    idle: {
+        start: 30,
+        end: 44,
+        duration: 1,
+
+    },
+
+    move: {
+        start: 45,
+        end: 60,
+        duration: 1.2,
+
+    },
+
+    
+    sfx: {
+        atk: {
+            src: "crossbow-atk",
+            volume: 0.1
+        }
+    },
+
+    skill: {
+        name: "frozenhit",
+        triggertype: "on_start",
+        skilltype: "yeti",
+        target: "self",
+        modifiers: {
+            frozenmod: 0.5,
+        },
+        aura: false,
+    }
+}
+
+enemylist["Yeti Sniper Leader"] = {
+    name: "Yeti Sniper Leader",
+    hp: 3500,
+    atk: 360,
+    def: 100,
+    res: 0,
+    atkinterval: 2.4,
+    speed: 0.9 * 0.6,
+    blockcount: 1,
+    type: "g",
+    range: 1.9,
+    hploss: 1,
+    dmgtype: "physical",
+    size: 1,
+    tooltip: "An elite Yeti ranged combatant,\ncapable of dealing \nincreased damage to Frozen units",
+    targets: 1,
+    bullet: { size: { height: 1, depth: 6, width: 0.5 }, arc:false, speed:5, color: new BABYLON.Color3(0.4, 0.4, 0.4)},
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/yeti-sniper-leader-sheet.webp",
+
+    hasskill: true,
+
+    atkanim: {
+        start: 0,
+        end: 14,
+        contact: 6,
+        duration: 1,
+    },
+
+    death: {
+        start: 15,
+        end: 29,
+        duration: 1,
+
+    },
+
+    idle: {
+        start: 30,
+        end: 44,
+        duration: 1,
+
+    },
+
+    move: {
+        start: 45,
+        end: 60,
+        duration: 1.2,
+
+    },
+
+    
+    sfx: {
+        atk: {
+            src: "crossbow-atk",
+            volume: 0.1
+        }
+    },
+
+    skill: {
+        name: "frozenhit",
+        triggertype: "on_start",
+        skilltype: "yeti",
+        target: "self",
+        modifiers: {
+            frozenmod: 0.5,
+        },
+        aura: false,
+    }
+}
+
+enemylist["Yeti Caster"] = {
+    name: "Yeti Caster",
+    hp: 5000,
+    atk: 320,
+    def: 200,
+    res: 50,
+    atkinterval: 4.5,
+    speed: 0.8 * 0.6,
+    blockcount: 1,
+    type: "g",
+    range: 2.2,
+    hploss: 1,
+    dmgtype: "arts",
+    size: 1,
+    tooltip: "A Yeti Squadron Caster, \ncapable of inflicting Cold upon\ntheir targets after 2 attacks.",
+    targets: 1,
+    bullet: { size: { height: 1, depth: 5, width: 2 }, arc:false, speed:4, color: new BABYLON.Color3(0.88, 0.96, 1)},
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/yeti-caster-sheet.webp",
+
+    hasskill: false,
+    hasspatk: true,
+
+    atkanim: {
+        start: 0,
+        end: 16,
+        contact: 10,
+        duration: 1,
+    },
+
+    death: {
+        start: 17,
+        end: 31,
+        duration: 1,
+
+    },
+
+    idle: {
+        start: 32,
+        end: 46,
+        duration: 1,
+
+    },
+
+    move: {
+        start: 47,
+        end: 65,
+        duration: 1.1,
+
+    },
+    spatk: {
+        start: 0,
+        end: 16,
+        contact: 10,
+        duration: 1,
+    },
+
+    
+    sfx: {
+        atk: {
+            src: "yeticaster-atk",
+            volume: 0.1
+        },
+        hit: {
+            src: "yeticaster-hit",
+            volume: 0.1
+        },
+
+        spatk:{
+            src:"yeticaster-atk",
+            volume: 0.1,
+        },
+        sphit: {
+            src: "yeticaster-hit",
+            volume: 0.1
+        }
+    },
+
+    spattack: {
+        name: "freeze",
+        target: "allblocking",
+        chargetype:"attack",
+        range: 2.2,
+        initialsp: 0,
+        sp: 2,
+        dmgmodifier: 1,
+        effectcontact: 10,
+        applyeffects: {
+            modifiers: {
+                cold:10
+            },
+            duration: 1,
+        },
+    }
+}
+
+enemylist["Yeti Caster Leader"] = {
+    name: "Yeti Caster Leader",
+    hp: 8000,
+    atk: 400,
+    def: 250,
+    res: 50,
+    atkinterval: 4,
+    speed: 0.8 * 0.6,
+    blockcount: 1,
+    type: "g",
+    range: 2.2,
+    hploss: 1,
+    dmgtype: "arts",
+    size: 1,
+    tooltip: "An elite Yeti Squadron Caster, \ncapable of inflicting Cold upon\ntheir targets after 2 attacks.",
+    targets: 1,
+    bullet: { size: { height: 1, depth: 5, width: 2 }, arc:false, speed:4, color: new BABYLON.Color3(0.88, 0.96, 1)},
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/yeti-caster-leader-sheet.webp",
+
+    hasskill: false,
+    hasspatk: true,
+
+    atkanim: {
+        start: 0,
+        end: 16,
+        contact: 10,
+        duration: 1,
+    },
+
+    death: {
+        start: 17,
+        end: 31,
+        duration: 1,
+
+    },
+
+    idle: {
+        start: 32,
+        end: 46,
+        duration: 1,
+
+    },
+
+    move: {
+        start: 47,
+        end: 66,
+        duration: 1.1,
+
+    },
+    spatk: {
+        start: 0,
+        end: 16,
+        contact: 10,
+        duration: 1,
+    },
+
+    
+    sfx: {
+        atk: {
+            src: "yeticaster-atk",
+            volume: 0.1
+        },
+        hit: {
+            src: "yeticaster-hit",
+            volume: 0.1
+        },
+
+        spatk:{
+            src:"yeticaster-atk",
+            volume: 0.1,
+        },
+        sphit: {
+            src: "yeticaster-hit",
+            volume: 0.1
+        }
+    },
+
+    spattack: {
+        name: "freeze",
+        target: "allblocking",
+        chargetype:"attack",
+        range: 2.2,
+        initialsp: 0,
+        sp: 2,
+        dmgmodifier: 1,
+        effectcontact: 10,
+        applyeffects: {
+            modifiers: {
+                cold:10
+            },
+            duration: 1,
+        },
+    }
+}
+
+enemylist['Glacial Spider'] = {
+    name: "Glacial Spider",
+    hp: 3250,
+    atk: 300,
+    def: 0,
+    res: 0,
+    atkinterval: 1.75,
+    speed: 1 * 0.6,
+    blockcount: 1,
+    type: "g",
+    range: 0,
+    hploss: 1,
+    dmgtype: "physical",
+    size: 0.95,
+    targets: 1,
+
+    tooltip: "A creature native \nto colder environments.\n Upon death, they will explode, \ninflicting Cold on nearby Operators.",
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/glacial-spider-sheet.webp",
+
+    hasskill: true,
+
+    atkanim: {
+        start: 0,
+        end: 22,
+        contact: 9,
+        duration: 1,
+    },
+
+    death: {
+        start: 23,
+        end: 37,
+        duration: 1,
+
+    },
+
+    idle: {
+        start: 38,
+        end: 53,
+        duration: 1,
+
+    },
+
+    move: {
+        start: 54,
+        end: 68,
+        duration: 0.5,
+
+    },
+
+    sfx: {
+        hit: {
+            src: "shieldguard-hit",
+            volume: 0.1
+        },
+        skillbomb: {
+            src:"icespider-die",
+            volume: 0.05
+        }
+    },
+
+    skill: {
+        name: "frozenhit",
+        triggertype: "on_death",
+        skilltype: "skillbomb",
+        target: "self",
+        modifiers: {
+            skillbomb:{
+                targets: 99,
+                range:1,
+                dmg:2,
+                cold:10,
+            }
+        },
+        aura: false,
+    }
+
+}
+
+enemylist['Glacial Spider Alpha'] = {
+    name: "Glacial Spider Alpha",
+    hp: 4850,
+    atk: 370,
+    def: 0,
+    res: 0,
+    atkinterval: 1.75,
+    speed: 1 * 0.6,
+    blockcount: 1,
+    type: "g",
+    range: 0,
+    hploss: 1,
+    dmgtype: "physical",
+    size: 0.95,
+    targets: 1,
+
+    tooltip: "A more threatening creature \nnative to colder environments.\n Upon death, they will explode, \ninflicting Cold on nearby Operators.",
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/glacial-spider-alpha-sheet.webp",
+
+    hasskill: true,
+
+    atkanim: {
+        start: 0,
+        end: 22,
+        contact: 9,
+        duration: 1,
+    },
+
+    death: {
+        start: 23,
+        end: 37,
+        duration: 1,
+
+    },
+
+    idle: {
+        start: 38,
+        end: 53,
+        duration: 1,
+
+    },
+
+    move: {
+        start: 54,
+        end: 68,
+        duration: 0.5,
+
+    },
+
+    sfx: {
+        hit: {
+            src: "shieldguard-hit",
+            volume: 0.1
+        },
+        skillbomb: {
+            src:"icespider-die",
+            volume: 0.05
+        }
+    },
+
+    skill: {
+        name: "frozenhit",
+        triggertype: "on_death",
+        skilltype: "skillbomb",
+        target: "self",
+        modifiers: {
+            skillbomb:{
+                targets: 99,
+                range:1,
+                dmg:2,
+                cold:10,
+            }
+        },
+        aura: false,
+    }
+
+}
+
+enemylist["Yeti Icecleaver"] = {
+    name: "Yeti Icecleaver",
+    hp: 16000,
+    atk: 830,
+    def: 500,
+    res: 20,
+    atkinterval: 3,
+    speed: 0.7 * 0.6,
+    blockcount: 1,
+    type: "g",
+    range: 0,
+    hploss: 1,
+    dmgtype: "physical",
+    size: 1.1,
+    tooltip: "A special Yeti Squadron\nmelee combatant,\ncapable of dealing massive\ndamage to Frozen units.",
+    targets: 1,
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/yeti-icecleaver-sheet.webp",
+
+    hasskill: true,
+
+    atkanim: {
+        start: 0,
+        end: 43,
+        contact: 16,
+        duration: 1,
+    },
+
+    death: {
+        start: 44,
+        end: 58,
+        duration: 1,
+
+    },
+    idle: {
+        start: 59,
+        end: 88,
+        duration: 1,
+
+    },
+    move: {
+        start: 89,
+        end: 106,
+        duration: 1.2,
+
+    },
+
+    sfx: {
+        hit: {
+            src: "knightshield-hit",
+            volume: 0.1
+        }
+    },
+
+    skill: {
+        name: "frozenhit",
+        triggertype: "on_start",
+        skilltype: "yeti",
+        target: "self",
+        modifiers: {
+            frozenmod: 1.5,
+        },
+        aura: false,
+    },
+}
+
+enemylist["Yeti Icecleaver Leader"] = {
+    name: "Yeti Icecleaver Leader",
+    hp: 25000,
+    atk: 1100,
+    def: 600,
+    res: 20,
+    atkinterval: 3,
+    speed: 0.7 * 0.6,
+    blockcount: 1,
+    type: "g",
+    range: 0,
+    hploss: 1,
+    dmgtype: "physical",
+    size: 1.1,
+    tooltip: "A special elite Yeti Squadron\nmelee combatant,\ncapable of dealing catastrophic\ndamage to Frozen units.",
+    targets: 1,
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/yeti-icecleaver-leader-sheet.webp",
+
+    hasskill: true,
+
+    atkanim: {
+        start: 0,
+        end: 43,
+        contact: 16,
+        duration: 1,
+    },
+
+    death: {
+        start: 44,
+        end: 58,
+        duration: 1,
+
+    },
+    idle: {
+        start: 59,
+        end: 88,
+        duration: 1,
+
+    },
+    move: {
+        start: 89,
+        end: 106,
+        duration: 1.2,
+
+    },
+
+    sfx: {
+        hit: {
+            src: "knightshield-hit",
+            volume: 0.1
+        }
+    },
+
+    skill: {
+        name: "frozenhit",
+        triggertype: "on_start",
+        skilltype: "yeti",
+        target: "self",
+        modifiers: {
+            frozenmod: 2,
+        },
+        aura: false,
+    },
+}
+
+enemylist["Light-Armored Soldier Leader"] = {
+    name: "Light-Armored Soldier Leader",
+    hp: 3700,
+    atk: 300,
+    def: 500,
+    res: 0,
+    atkinterval: 2,
+    speed: 1 * 0.6,
+    blockcount: 1,
+    type: "g",
+    range: 0,
+    hploss: 1,
+    dmgtype: "physical",
+    size: 1,
+    tooltip: "A more potent Light-Armored Soldier \nthat has fairly high defense.",
+    targets: 1,
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/vicious-training-gloompincer-sheet.webp",
+
+    hasskill: false,
+
+    atkanim: {
+        start: 0,
+        end: 17,
+        contact: 7,
+        duration: 1.3,
+    },
+
+    death: {
+        start: 17,
+        end: 31,
+        duration: 1,
+
+    },
+    idle: {
+        start: 32,
+        end: 51,
+        duration: 1,
+
+    },
+
+    move: {
+        start: 52,
+        end: 66,
+        duration: 1.5,
+
+    },
+
+    sfx: {
+        atk: {
+            src: "soldier-atk",
+            volume: 0.1
+        },
+        hit: {
+            src: "soldier-hit",
+            volume: 0.1
+        }
+    }
 }

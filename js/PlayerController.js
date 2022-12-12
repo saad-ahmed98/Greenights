@@ -18,16 +18,6 @@ class PlayerController extends CharaController {
         this.alivebuffs = [];
 
     }
-    createEffects(auraManager) {
-        var aura = new BABYLON.Sprite("", auraManager);
-        aura.playAnimation(0, 13, false, 30);
-        aura.position = new BABYLON.Vector3(5 + this.x * 30, 19, 10 + this.y * 30);
-        aura.size = 70;
-        aura.width = 90;
-
-        aura.position.z -= Math.min(5, this.y);
-        aura.position.x -= this.x;
-    }
 
     createSkillAura(auraManager) {
         if (this.aura == undefined) {
@@ -457,7 +447,7 @@ class PlayerController extends CharaController {
                     this.running = true;
                 }
                 this.atktimer += 1 / this.gamespeed;
-                if (this.atktimer >= this.buffs.getFinalAtkInterval(this.chara.atkinterval) * 22 && this.buffs.getCanAttack()) {
+                if (this.atktimer >= this.buffs.getFinalAtkInterval(this.chara.atkinterval) * 25 && this.buffs.getCanAttack()) {
                     this.atktimer = 0;
                     var success = this.attack(enemies, players);
                     if (!success)
