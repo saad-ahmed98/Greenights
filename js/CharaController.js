@@ -131,6 +131,11 @@ class CharaController {
             }
             else this.buffs.effects["frozen"] = Math.max(duration, this.buffs.effects["frozen"])
         }
+        if (this.hp <= 0) {
+            var keys = Object.keys(this.buffs.effectSprite)
+            for (let i = 0; i < keys.length; i++)
+                this.buffs.effectSprite[keys[i]].dispose()
+        }
     }
 
 
@@ -519,22 +524,22 @@ class CharaController {
 
         }
         //TODO HARDCODED
-        if(this.chara.name=="Liskarm"){
-            let list = this.lvlcontroller.activePlayers.filter(op => (op.chara.name!="Liskarm" && op.playerSkill.chargetype!="passive" && !op.playerSkill.active))
-            var players = shuffle(this.getFirstPlayerInRange(list,1,4))
-            if(players.length>0){
+        if (this.chara.name == "Liskarm") {
+            let list = this.lvlcontroller.activePlayers.filter(op => (op.chara.name != "Liskarm" && op.playerSkill.chargetype != "passive" && !op.playerSkill.active))
+            var players = shuffle(this.getFirstPlayerInRange(list, 1, 4))
+            if (players.length > 0) {
                 players[0].playerSkill.currentsp = Math.min(players[0].playerSkill.currentsp + 1, players[0].playerSkill.totalsp);
                 players[0].updateSkillBarCharging();
             }
-            if (!this.playerSkill.active) 
-            this.playerSkill.currentsp = Math.min(this.playerSkill.currentsp + 1, this.playerSkill.totalsp);
+            if (!this.playerSkill.active)
+                this.playerSkill.currentsp = Math.min(this.playerSkill.currentsp + 1, this.playerSkill.totalsp);
         }
         if (this.playerSkill.chargetype == "hit" && !this.playerSkill.active) {
             this.playerSkill.currentsp = Math.min(this.playerSkill.currentsp + 1, this.playerSkill.totalsp);
             this.updateSkillBarCharging();
         }
 
-    
+
 
         //update hp bar after receiving damage
         this.updateHpBar();

@@ -575,7 +575,9 @@ class EnemyController extends CharaController {
                     this.lvlcontroller.gui.updatePlayerWheelUI(this.lvlcontroller.currentdp, this.lvlcontroller.squadlimit)
                 }
             }
-
+            var keys = Object.keys(this.buffs.effectSprite)
+                for (let i = 0; i < keys.length; i++)
+                    this.buffs.effectSprite[keys[i]].dispose()
         }
     }
 
@@ -754,7 +756,7 @@ class EnemyController extends CharaController {
             let applied = false;
             var interval = setInterval(() => {
                 if (instance.sprite.cellIndex == instance.chara.spattack.effectcontact && !applied) {
-                    applied= true;
+                    applied = true;
                     players[0].buffs.buffs[this.chara.spattack.name] = { "name": this.name, "modifiers": this.chara.spattack.applyeffects.modifiers }
                     players[0].buffs.effects[this.chara.spattack.name] = this.chara.spattack.applyeffects.duration
                     if (players[0].buffs.effectSprite[this.chara.spattack.name] == undefined && this.chara.spattack.applyeffects.effecticon != undefined)

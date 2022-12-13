@@ -8,6 +8,7 @@ class EnemyBuffs extends Buffs {
             aspd: 0,
             atkinterval: 0,
             atk: 0,
+            inspireatk:0,
             def: 0,
             flatdef: 0,
             range: 0,

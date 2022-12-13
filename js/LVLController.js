@@ -1001,7 +1001,7 @@ class LVLController extends LVLAbstract {
             }
             if (p.playerSkill.currentsp >= p.playerSkill.totalsp && p.playerSkill.triggertype == "manual")
                 p.skillready.isVisible = true;
-            if (p.playerSkill.triggertype == "auto" && p.playerSkill.currentsp >= p.playerSkill.totalsp && p.playerSkill.duration > 0) {
+            if (p.playerSkill.triggertype == "auto" && p.playerSkill.currentsp >= p.playerSkill.totalsp && p.playerSkill.duration > 0 && !p.isfrozen) {
                 this.playSound(p.chara.name + "-skillact", p.chara.sfx.skillact.volume)
                 this.playSound(p.chara.name + "-skill", this.vcvolume)
                 p.playerSkill.activateDurationSkill([p], this)

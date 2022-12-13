@@ -81,7 +81,7 @@ class Buffs {
     getFinalAtk(atk) {
         this.initModifiers();
         this.sumBuffs();
-        return Math.max(0, Math.round(((atk * this.modifiers.flatmultiatk) * (1 + this.modifiers.atk))));
+        return Math.max(0, Math.round(((atk * this.modifiers.flatmultiatk) * (1 + this.modifiers.atk))+this.modifiers.inspireatk));
     }
 
     isFrozen(){
