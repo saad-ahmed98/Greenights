@@ -25,7 +25,7 @@ class CharaController {
         this.y = y;
 
         //timer of atk
-        this.atktimer = 10000;
+        this.atktimer = 99999;
 
         //sprite number when the game is paused
         this.pauseSpriteIndex = 0;

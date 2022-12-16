@@ -12,6 +12,7 @@ class LVLController extends LVLAbstract {
         this.hazards = [];
         this.place = lvl.place;
         this.snowstorm = lvl.snowstorm || false;
+        this.deployall = lvl.deployall || false;
 
         this.enemiesreviving = []
         this.presentHazards = lvl.hazards;
@@ -26,7 +27,8 @@ class LVLController extends LVLAbstract {
         this.hp = lvl.hp
         this.skyboxtext = lvl.skybox
 
-        this.matrix;
+        this.matrix = [];
+        this.flyingmatrix = [];
         this.maptimer = 0;
         this.waves = JSON.parse(JSON.stringify(lvl.waves));
 
@@ -1295,7 +1297,7 @@ class LVLController extends LVLAbstract {
                             var tilex = Math.round(currentMesh.position.x / 30)
                             var tiley = Math.round(currentMesh.position.z / 30)
                             if (tilex >= 0 && tilex < instance.tiles.length && tiley >= 0 && tiley < instance.tiles[0].length && instance.currentdp >= instance.gui.wheelchoice.cost && instance.squadlimit > 0) {
-                                if (instance.tiles[tilex][tiley].player == undefined && instance.tiles[tilex][tiley].canBeDeployed(instance.gui.wheelchoice.type)) {
+                                if (instance.tiles[tilex][tiley].player == undefined && instance.tiles[tilex][tiley].canBeDeployed(instance.gui.wheelchoice.type,instance.deployall)) {
                                     instance.createPlayer(instance.gui.wheelchoice.name, tilex, tiley);
                                     delete instance.playerlist[instance.gui.wheelchoice.name]
                                     instance.currentdp -= instance.gui.wheelchoice.cost
@@ -1330,7 +1332,7 @@ class LVLController extends LVLAbstract {
     displayAvailableTiles(type) {
         for (let i = 0; i < this.tiles.length; i++) {
             for (let j = 0; j < this.tiles[i].length; j++) {
-                if (this.tiles[i][j].canBeDeployed(type))
+                if (this.tiles[i][j].canBeDeployed(type,this.deployall))
                     this.tiles[i][j].displayDeployable()
             }
         }
@@ -1459,13 +1461,14 @@ class LVLController extends LVLAbstract {
 
     createObstacles() {
         let array = this.layout
-        this.matrix = [];
         for (let i = 0; i < array.length; i++) {
             var line = [];
+            var flyingline = [];
             var linetiles = [];
             for (let j = 0; j < array[i].length; j++) {
                 var type = array[i][j];
                 line.push(this.getWalkable(array[i][j]));
+                flyingline.push(0)
                 var tile = new Tile(type, i, j, this.scene,this.snowstorm)
                 linetiles.push(tile);
                 if (array[i][j] == "blue")
@@ -1486,17 +1489,19 @@ class LVLController extends LVLAbstract {
             }
             this.tiles.push(linetiles);
             this.matrix.push(line);
+            this.flyingmatrix.push(flyingline);
+
         }
     }
 
     moveEnemies() {
         for (let i = 0; i < this.enemies.length; i++)
-            this.enemies[i].move(this.tiles, this.activePlayers);
+            this.enemies[i].move(this.tiles, this.activePlayers.slice());
     }
 
     movePlayers() {
         for (let i = 0; i < this.activePlayers.length; i++)
-            this.activePlayers[i].move(this.enemies, this.activePlayers);
+            this.activePlayers[i].move(this.enemies.slice(), this.activePlayers.slice());
     }
 
     getWalkable(tiletype) {
@@ -1515,8 +1520,12 @@ class LVLController extends LVLAbstract {
     }
 
     createEnemy(e, start, checkpoints, id) {
-        var enemy = new EnemyController(this.enemylist[e], this.scene, start[0], start[1], this, id);
-        enemy.createEnemy(this.matrix, checkpoints, this.spriteManagers, this.gui, this.spriteManagers["icons"]);
+        var enemyUse = this.enemylist[e]
+        var matrixUse = this.matrix
+        if(enemyUse.type=="r")
+            matrixUse = this.flyingmatrix
+        var enemy = new EnemyController(enemyUse, this.scene, start[0], start[1], this, id);
+        enemy.createEnemy(matrixUse, checkpoints, this.spriteManagers, this.gui, this.spriteManagers["icons"]);
         enemy.gamespeed = this.gamespeed;
         this.enemies.push(enemy);
     }
@@ -1564,7 +1573,7 @@ class LVLController extends LVLAbstract {
                     }
                 }
                 this.waves[i]["line"] = false;
-                this.drawLine(this.waves[i]["checkpoints"])
+                this.drawLine(this.waves[i]["checkpoints"],this.waves[i]["flying"] || false)
             }
             if (this.waves[i]["time"] * 30 <= this.maptimer) {
                 if (this.waves[i]["tooltip"]) {
@@ -1586,11 +1595,18 @@ class LVLController extends LVLAbstract {
         this.isSpawning = false;
     }
 
-    drawLine(checkpoints) {
+    drawLine(checkpoints,isFLying) {
+        var matrixUse = this.matrix
+        var colorUse = new BABYLON.Color3(1, 0, 0);
+        var y = 20
+        if(isFLying){
+            colorUse = new BABYLON.Color3(1, 1, 0)
+            matrixUse = this.flyingmatrix
+            y = 40
+        }
+        var res = this.createPathfinding(checkpoints, matrixUse)
 
-        var res = this.createPathfinding(checkpoints, this.matrix)
-
-        var myPoints = [new BABYLON.Vector3(res[0][1] * 31, 20, res[0][0] * 30)]
+        var myPoints = [new BABYLON.Vector3(res[0][1] * 31, y, res[0][0] * 30)]
         var i = 1;
         var options = {
             points: myPoints,
@@ -1598,24 +1614,24 @@ class LVLController extends LVLAbstract {
         }
 
         let lines = BABYLON.MeshBuilder.CreateLines("lines", options);
-        lines.color = new BABYLON.Color3(1, 0, 0);
+        lines.color = colorUse
 
         var interval = setInterval(() => {
             lines.dispose();
             if (i < res.length) {
-                options.points.push(new BABYLON.Vector3(res[i][1] * 31, 20, res[i][0] * 30))
+                options.points.push(new BABYLON.Vector3(res[i][1] * 31, y, res[i][0] * 30))
                 if (options.points.length > 10) {
                     options.points.shift()
                 }
                 lines = BABYLON.MeshBuilder.CreateLines("lines", options);
-                lines.color = new BABYLON.Color3(1, 0, 0);
+                lines.color = colorUse
                 i++
             }
             else {
                 if (options.points.length > 1) {
                     options.points.shift()
                     lines = BABYLON.MeshBuilder.CreateLines("lines", options);
-                    lines.color = new BABYLON.Color3(1, 0, 0);
+                    lines.color = colorUse
                 }
 
                 else clearInterval(interval)

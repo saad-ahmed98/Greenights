@@ -118,7 +118,17 @@ class Buffs {
                     return 0;
                 });
                 break;
-            case "":
+            case "flying":
+                //sort by type of enemy
+                enemies.sort(function (x, y) {
+                    if (x.chara.type=="r") {
+                        return -1;
+                    }
+                    if (y.chara.type=="r") {
+                        return 1;
+                    }
+                    return 0;
+                });
                 break;
         }
     }

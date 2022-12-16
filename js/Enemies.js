@@ -4279,8 +4279,8 @@ enemylist['Glacial Spider'] = {
 
 }
 
-enemylist['Glacial Spider Alpha'] = {
-    name: "Glacial Spider Alpha",
+enemylist['Glacial Spider α'] = {
+    name: "Glacial Spider α",
     hp: 4850,
     atk: 370,
     def: 0,
@@ -4496,6 +4496,7 @@ enemylist["Yeti Icecleaver Leader"] = {
     },
 }
 
+//TODO CHANGE
 enemylist["Light-Armored Soldier Leader"] = {
     name: "Light-Armored Soldier Leader",
     hp: 3700,
@@ -4555,5 +4556,210 @@ enemylist["Light-Armored Soldier Leader"] = {
             src: "soldier-hit",
             volume: 0.1
         }
+    }
+}
+
+//TODO CHANGE
+enemylist["Oneiros"] = {
+    name: "Oneiros",
+    hp: 4000,
+    atk: 500,
+    def: 180,
+    res: 0,
+    atkinterval: 999,
+    speed: 0.6 * 0.6,
+    blockcount: 99,
+    type: "r",
+    range: 2.5,
+    hploss: 1,
+    dmgtype: "arts",
+    size: 0.95,
+    tooltip: "Carries a special warhead capable of \ndealing Arts damage in an area and \ninflicting Cold on affected Operators.",
+    targets: 1,
+    splashradius:1,
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/vicious-training-gloompincer-sheet.webp",
+    hasskill: true,
+    bullet: { size: { height: 3, depth: 5, width: 3 }, arc:false, speed:8, color: new BABYLON.Color3(0.09, 0.73, 0.94)},
+
+
+    atkanim: {
+        start: 0,
+        end: 17,
+        contact: 7,
+        duration: 1.3,
+    },
+
+    death: {
+        start: 17,
+        end: 31,
+        duration: 1,
+
+    },
+    idle: {
+        start: 32,
+        end: 51,
+        duration: 1,
+
+    },
+
+    move: {
+        start: 52,
+        end: 66,
+        duration: 1.5,
+
+    },
+    skill: {
+        name: "warhead",
+        triggertype: "on_attack",
+        skilltype: "warhead",
+        target: "self",
+        modifiers: {
+            
+        },
+        aura: false,
+        idle: {
+            start: 32,
+            end: 51,
+            duration: 1,
+    
+        },
+        move: {
+            start: 52,
+            end: 66,
+            duration: 1.5,
+    
+        },
+    },
+
+    sfx: {
+        atk: {
+            src: "soldier-atk",
+            volume: 0.1
+        },
+        hit: {
+            src: "soldier-hit",
+            volume: 0.1
+        }
+    }
+}
+
+//TODO CHANGE
+enemylist["Originium Slug β"] = {
+    name: "Originium Slug β",
+    hp: 1550,
+    atk: 240,
+    def: 0,
+    res: 0,
+    atkinterval: 1.7,
+    speed: 1 * 0.6,
+    blockcount: 1,
+    type: "g",
+    range: 0,
+    hploss: 1,
+    dmgtype: "physical",
+    size: 0.95,
+    tooltip: "An infected wild creature that is more \ndangerous than an Originium Slug α.",
+    targets: 1,
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/vicious-training-gloompincer-sheet.webp",
+
+    hasskill: false,
+
+    atkanim: {
+        start: 0,
+        end: 17,
+        contact: 7,
+        duration: 1.3,
+    },
+
+    death: {
+        start: 17,
+        end: 31,
+        duration: 1,
+
+    },
+    idle: {
+        start: 32,
+        end: 51,
+        duration: 1,
+
+    },
+
+    move: {
+        start: 52,
+        end: 66,
+        duration: 1.5,
+
+    },
+
+    sfx: {
+        atk: {
+            src: "soldier-atk",
+            volume: 0.1
+        },
+        hit: {
+            src: "soldier-hit",
+            volume: 0.1
+        }
+    }
+}
+
+//TODO CHANGE
+enemylist["Monster"] = {
+    name: "Monster",
+    hp: 1870,
+    atk: 0,
+    def: 50,
+    res: 0,
+    atkinterval: 999,
+    speed: 0.9 * 0.6,
+    blockcount: 99,
+    type: "r",
+    range: 0,
+    hploss: 1,
+    dmgtype: "physical",
+    size: 0.95,
+    tooltip: "An unmanned enemy drone \nthat does not attack.",
+    targets: 0,
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/vicious-training-gloompincer-sheet.webp",
+    hasskill: false,
+
+
+    atkanim: {
+        start: 0,
+        end: 17,
+        contact: 7,
+        duration: 1.3,
+    },
+
+    death: {
+        start: 17,
+        end: 31,
+        duration: 1,
+
+    },
+    idle: {
+        start: 32,
+        end: 51,
+        duration: 1,
+
+    },
+
+    move: {
+        start: 52,
+        end: 66,
+        duration: 1.5,
+
+    },
+
+    sfx: {
     }
 }

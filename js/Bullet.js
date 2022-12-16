@@ -28,15 +28,18 @@ class Bullet {
         var dir = 1;
         if (this.source.mesh.position.z <= this.target.mesh.position.z)
             dir = 2
-
+        var offY = 0;
+        if (this.source.chara.type == "r")
+            offY = 50
         var offX = this.source.mesh.position.x / 30 / 8
         var offZ = Math.min(2, this.source.mesh.position.z / 30)
-        this.mesh.position = new BABYLON.Vector3(this.source.mesh.position.x + (5 * offX), 20 + this.source.mesh.position.y, this.source.mesh.position.z + (offZ * dir));
+        this.mesh.position = new BABYLON.Vector3(this.source.mesh.position.x + (5 * offX), 20 + this.source.mesh.position.y+offY, this.source.mesh.position.z + (offZ * dir));
         var colorMaterial = new BABYLON.StandardMaterial("", this.scene);
         colorMaterial.diffuseColor = this.sourcebullet.color;
         this.mesh.material = colorMaterial;
         this.lvl.bullets.push(this)
-        this.mesh.lookAt(new BABYLON.Vector3(this.target.mesh.position.x, this.mesh.position.y - 10, this.target.mesh.position.z));
+
+        this.mesh.lookAt(new BABYLON.Vector3(this.target.mesh.position.x, this.target.mesh.position.y - 10, this.target.mesh.position.z));
         if (this.sourcebullet.arc) {
             this.halfarc = Math.sqrt(Math.abs(this.mesh.position.x - this.target.mesh.position.x) + Math.abs(this.mesh.position.z - this.target.mesh.position.z)) / 2
             this.offsetY = Math.sqrt(Math.abs(this.mesh.position.x - this.target.mesh.position.x) + Math.abs(this.mesh.position.z - this.target.mesh.position.z)) * 2
@@ -81,6 +84,13 @@ class Bullet {
             this.mesh.position.z += this.offsetZ * dir / gamespeed;
         }
 
+        if (!(this.mesh.position.y <= this.target.mesh.position.y && this.mesh.position.y >= this.target.mesh.position.y )) {
+            var dir = 1;
+            if (this.mesh.position.y > this.target.mesh.position.y)
+                dir = -1;
+            this.mesh.position.y +=  dir / gamespeed;
+        }
+
         if (!this.done && xfound && zfound) {
             this.done = true;
             if (this.source.playerSkill != undefined) {
@@ -93,13 +103,23 @@ class Bullet {
             }
             else if (this.source.chara.sfx.hit != undefined)
                 this.lvl.playSound(this.source.chara.name + "-hit", this.source.chara.sfx.hit.volume)
-                
+
             if (this.splashradius != undefined) {
                 let splashenemies = this.source.getSplashEnemiesInRange(this.lvl.activePlayers, this.target, this.splashradius)
-                for (let j = 0; j < splashenemies.length; j++)
+                for (let j = 0; j < splashenemies.length; j++) {
+                    //TODO CHANGE HARD CODED
+                    if (this.source.chara.name == "Oneiros")
+                        splashenemies[j].applyCold(10)
                     splashenemies[j].receiveDamage(this.source)
+
+                }
             }
-            else this.target.receiveDamage(this.source)
+            else {
+                //TODO CHANGE HARD CODED
+                if (this.source.chara.name == "Frostnova")
+                    this.target.applyCold(10)
+                this.target.receiveDamage(this.source)
+            }
         }
     }
 }

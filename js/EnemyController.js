@@ -965,13 +965,15 @@ class EnemyController extends CharaController {
                 //if no not attack condition met, attack if atk timer is over
                 if (enter) {
                     if (this.atktimer >= this.buffs.getFinalAtkInterval(this.chara.atkinterval) * 25 && !this.attacking) {
-                        this.atktimer = 0;
                         if (this.spattacktimer != undefined) {
                             if (this.spattacktimer == this.chara.spattack.sp && this.chara.spattack.chargetype == "attack" && !this.stairs)
                                 this.activateSpSkill(players)
                             else this.attacking = this.attack(players);
                         }
                         else this.attacking = this.attack(players);
+
+                        if(this.attacking)
+                            this.atktimer = 0
                     }
                 }
 

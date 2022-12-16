@@ -32,6 +32,10 @@ class PlayerController extends CharaController {
         }
     }
 
+    canHitFlying(){
+        return (this.chara.type=="r" || this.chara.subclass=="Lord" || this.chara.subclass=="Sentinel")
+    }
+
     checkBlocking() {
 
         if (this.blockedenemies.length > this.buffs.getFinalBlock(this.chara.blockcount) && this.blockedenemies.length > 0) {
@@ -302,6 +306,8 @@ class PlayerController extends CharaController {
 
     attack(enemies, players) {
         var enemy;
+        if(!this.canHitFlying())
+            enemies = enemies.filter(e =>(e.chara.type=="g"))
         var dmgtype = this.buffs.getDmgType()
         if (dmgtype == "")
             dmgtype = this.chara.dmgtype

@@ -113,7 +113,9 @@ class Tile {
         this.mesh.outlineWidth = 0.1;
 
     }
-    canBeDeployed(type) {
-        return (this.type == type || (type == "g" && this.type == "magma") || (type == "g" && this.type == "blood") || (type == "g" && this.type == "gblk"))
+    canBeDeployed(type, deployall) {
+        if (!deployall)
+            return (this.type == type || (type == "g" && this.type == "magma") || (type == "g" && this.type == "blood") || (type == "g" && this.type == "gblk"))
+        return this.type == "g" || this.type == "magma" || this.type == "blood" || this.type == "gblk"
     }
 }

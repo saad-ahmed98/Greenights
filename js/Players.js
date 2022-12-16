@@ -656,6 +656,15 @@ playerlist["Exusiai"] = {
             apply: "selfplus",
             effecticon: 10
         },
+        {
+            name: "Trait",
+            description: "Prioritizes flying enemies",
+            modifiers: {
+                priority: "flying",
+            },
+            apply: "self",
+        } 
+
     ],
     sfx: {
         atk: {
@@ -1729,7 +1738,7 @@ playerlist["Liskarm"] = {
         }
         ,{
             name: "Trait",
-            description: "Has extended range",
+            description: "Has extended range and does ranged attacks.",
             modifiers: {
             },
             apply: "self",
@@ -2502,6 +2511,14 @@ playerlist["Meteor"] = {
             },
             apply: "self",
         },
+        {
+            name: "Trait",
+            description: "Prioritizes flying enemies",
+            modifiers: {
+                priority: "flying",
+            },
+            apply: "self",
+        } 
     ],
     sfx: {
         atk: {
@@ -3278,7 +3295,16 @@ playerlist["Adnachiel"] = {
             aspd: 8,
         },
         apply: "self",
-    }],
+    },
+    {
+        name: "Trait",
+        description: "Prioritizes flying enemies",
+        modifiers: {
+            priority: "flying",
+        },
+        apply: "self",
+    } 
+],
     sfx: {
         atk: {
             src: "adnachiel-atk",
@@ -3396,7 +3422,6 @@ playerlist["Midnight"] = {
     blockcount: 2,
     rarity: "rgb(58, 132, 255)",
 
-
     rdtimer: 66,
     rdcounter: 0,
 
@@ -3467,7 +3492,15 @@ playerlist["Midnight"] = {
             critdmg: 1.6,
         },
         apply: "self",
-    }],
+    }
+    ,{
+        name: "Trait",
+        description: "Can do ranged attacks to unblocked enemies in range for 80% of own attack.",
+        modifiers: {
+        },
+        apply: "self",
+    }
+],
     sfx: {
         atk: {
             src: "midnight-atk",
