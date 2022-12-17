@@ -16,6 +16,7 @@ class Bullet {
         this.offsetY;
         this.friction = 0;
         this.splashradius;
+        this.isplayer = this.source.chara.class != undefined
         this.createBullet();
 
 
@@ -29,11 +30,11 @@ class Bullet {
         if (this.source.mesh.position.z <= this.target.mesh.position.z)
             dir = 2
         var offY = 0;
-        if (this.source.chara.type == "r")
-            offY = 50
+        if (this.source.chara.type == "r" && !this.isplayer)
+            offY = 30
         var offX = this.source.mesh.position.x / 30 / 8
         var offZ = Math.min(2, this.source.mesh.position.z / 30)
-        this.mesh.position = new BABYLON.Vector3(this.source.mesh.position.x + (5 * offX), 20 + this.source.mesh.position.y+offY, this.source.mesh.position.z + (offZ * dir));
+        this.mesh.position = new BABYLON.Vector3(this.source.mesh.position.x + (5 * offX), 20 + this.source.mesh.position.y + offY, this.source.mesh.position.z + (offZ * dir));
         var colorMaterial = new BABYLON.StandardMaterial("", this.scene);
         colorMaterial.diffuseColor = this.sourcebullet.color;
         this.mesh.material = colorMaterial;
@@ -84,11 +85,13 @@ class Bullet {
             this.mesh.position.z += this.offsetZ * dir / gamespeed;
         }
 
-        if (!(this.mesh.position.y <= this.target.mesh.position.y && this.mesh.position.y >= this.target.mesh.position.y )) {
-            var dir = 1;
-            if (this.mesh.position.y > this.target.mesh.position.y)
-                dir = -1;
-            this.mesh.position.y +=  dir / gamespeed;
+        if (this.source.chara.type == "r") {
+            if (!(this.mesh.position.y <= this.target.mesh.position.y + 1 && this.mesh.position.y >= this.target.mesh.position.y - 1)) {
+                var dir = 1;
+                if (this.mesh.position.y > this.target.mesh.position.y)
+                    dir = -1;
+                this.mesh.position.y += dir / gamespeed;
+            }
         }
 
         if (!this.done && xfound && zfound) {
@@ -116,8 +119,8 @@ class Bullet {
             }
             else {
                 //TODO CHANGE HARD CODED
-                if (this.source.chara.name == "Frostnova")
-                    this.target.applyCold(10)
+                if (this.source.chara.name == "Frostnova" || this.source.chara.name == "Frostnova2")
+                    this.target.applyCold(5)
                 this.target.receiveDamage(this.source)
             }
         }

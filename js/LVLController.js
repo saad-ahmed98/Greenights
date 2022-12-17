@@ -694,7 +694,7 @@ class LVLController extends LVLAbstract {
             BABYLON.Texture.TRILINEAR_SAMPLINGMODE
         );
         binaryTask.onSuccess = function (task) {
-            instance.spriteManagers[task.name] = new BABYLON.SpriteManager("SnowManager", undefined, 1, { width: 500*0.96, height: 282*0.96 });
+            instance.spriteManagers[task.name] = new BABYLON.SpriteManager("SnowManager", undefined, 1, { width: 500 * 0.96, height: 282 * 0.96 });
             instance.spriteManagers[task.name].texture = task.texture
         };
 
@@ -996,10 +996,10 @@ class LVLController extends LVLAbstract {
 
 
     checkPlayerSkill(p) {
-        if (!p.playerSkill.active && (p.playerSkill.chargetype == "second" || p.playerSkill.chargetype == "hit" ) ) {
-            if(p.playerSkill.chargetype == "second"){
-            p.playerSkill.currentsp = Math.min(p.playerSkill.currentsp + (1 / 30) / this.gamespeed, p.playerSkill.totalsp);
-            p.updateSkillBarCharging()
+        if (!p.playerSkill.active && (p.playerSkill.chargetype == "second" || p.playerSkill.chargetype == "hit")) {
+            if (p.playerSkill.chargetype == "second") {
+                p.playerSkill.currentsp = Math.min(p.playerSkill.currentsp + (1 / 30) / this.gamespeed, p.playerSkill.totalsp);
+                p.updateSkillBarCharging()
             }
             if (p.playerSkill.currentsp >= p.playerSkill.totalsp && p.playerSkill.triggertype == "manual")
                 p.skillready.isVisible = true;
@@ -1297,7 +1297,7 @@ class LVLController extends LVLAbstract {
                             var tilex = Math.round(currentMesh.position.x / 30)
                             var tiley = Math.round(currentMesh.position.z / 30)
                             if (tilex >= 0 && tilex < instance.tiles.length && tiley >= 0 && tiley < instance.tiles[0].length && instance.currentdp >= instance.gui.wheelchoice.cost && instance.squadlimit > 0) {
-                                if (instance.tiles[tilex][tiley].player == undefined && instance.tiles[tilex][tiley].canBeDeployed(instance.gui.wheelchoice.type,instance.deployall)) {
+                                if (instance.tiles[tilex][tiley].player == undefined && instance.tiles[tilex][tiley].canBeDeployed(instance.gui.wheelchoice.type, instance.deployall)) {
                                     instance.createPlayer(instance.gui.wheelchoice.name, tilex, tiley);
                                     delete instance.playerlist[instance.gui.wheelchoice.name]
                                     instance.currentdp -= instance.gui.wheelchoice.cost
@@ -1332,7 +1332,7 @@ class LVLController extends LVLAbstract {
     displayAvailableTiles(type) {
         for (let i = 0; i < this.tiles.length; i++) {
             for (let j = 0; j < this.tiles[i].length; j++) {
-                if (this.tiles[i][j].canBeDeployed(type,this.deployall))
+                if (this.tiles[i][j].canBeDeployed(type, this.deployall))
                     this.tiles[i][j].displayDeployable()
             }
         }
@@ -1469,7 +1469,7 @@ class LVLController extends LVLAbstract {
                 var type = array[i][j];
                 line.push(this.getWalkable(array[i][j]));
                 flyingline.push(0)
-                var tile = new Tile(type, i, j, this.scene,this.snowstorm)
+                var tile = new Tile(type, i, j, this.scene, this.snowstorm)
                 linetiles.push(tile);
                 if (array[i][j] == "blue")
                     this.hpbox.push(new HPBox("", i, j, this.scene))
@@ -1481,6 +1481,8 @@ class LVLController extends LVLAbstract {
                     this.hazards.push(new FireAltar(i, j, this))
                 if (array[i][j] == "icealtar")
                     this.hazards.push(new IceAltar(i, j, this))
+                if (array[i][j] == "inactivealtar")
+                    this.hazards.push(new InactiveIceAltar(i, j, this))
                 if (array[i][j] == "magma")
                     this.hazards.push(new MagmaTile(tile, this))
                 if (array[i][j] == "blood" || array[i][j] == "bloodblk")
@@ -1508,6 +1510,7 @@ class LVLController extends LVLAbstract {
         switch (tiletype) {
             case "bg":
             case "blkr":
+            case "inactivealtar":
             case "icealtar":
             case "altar":
             case "r":
@@ -1522,7 +1525,7 @@ class LVLController extends LVLAbstract {
     createEnemy(e, start, checkpoints, id) {
         var enemyUse = this.enemylist[e]
         var matrixUse = this.matrix
-        if(enemyUse.type=="r")
+        if (enemyUse.type == "r")
             matrixUse = this.flyingmatrix
         var enemy = new EnemyController(enemyUse, this.scene, start[0], start[1], this, id);
         enemy.createEnemy(matrixUse, checkpoints, this.spriteManagers, this.gui, this.spriteManagers["icons"]);
@@ -1573,7 +1576,7 @@ class LVLController extends LVLAbstract {
                     }
                 }
                 this.waves[i]["line"] = false;
-                this.drawLine(this.waves[i]["checkpoints"],this.waves[i]["flying"] || false)
+                this.drawLine(this.waves[i]["checkpoints"], this.waves[i]["flying"] || false)
             }
             if (this.waves[i]["time"] * 30 <= this.maptimer) {
                 if (this.waves[i]["tooltip"]) {
@@ -1595,11 +1598,11 @@ class LVLController extends LVLAbstract {
         this.isSpawning = false;
     }
 
-    drawLine(checkpoints,isFLying) {
+    drawLine(checkpoints, isFLying) {
         var matrixUse = this.matrix
         var colorUse = new BABYLON.Color3(1, 0, 0);
         var y = 20
-        if(isFLying){
+        if (isFLying) {
             colorUse = new BABYLON.Color3(1, 1, 0)
             matrixUse = this.flyingmatrix
             y = 40

@@ -20,6 +20,7 @@ class Tile {
                 h = 10;
                 color = new BABYLON.Color3(0.81, 0.8, 0.8)
                 break;
+            case "inactivealtar":
             case "icealtar":
             case "altar":
                 h = 15;
@@ -55,6 +56,7 @@ class Tile {
     colorMesh() {
         var colorMaterial = new BABYLON.StandardMaterial("", this.scene);
         switch (this.type) {
+            case "inactivealtar":
             case "icealtar":
             case "altar":
                 break;

@@ -279,9 +279,14 @@ class EnemyController extends CharaController {
 
         this.shadow = new BABYLON.Sprite(this.id + "shadow", iconsmanager);
         this.shadow.size = 65 * this.chara.size;
+
         this.shadow.width = 90 * this.chara.size;
 
         this.shadow.position = new BABYLON.Vector3((-15 * this.chara.size) + this.x * 30, 19, this.y * 30);
+        if (this.chara.name == "Originium Slug β") {
+            this.shadow.size = 70
+            this.shadow.position.x = -16 + this.x * 30
+        }
 
         var player0 = new BABYLON.Sprite(this.id, spriteManager[this.chara.spritesheet]);
         player0.position = new BABYLON.Vector3((-15 * this.chara.size) + this.x * 30, 20, this.y * 30);
@@ -398,6 +403,13 @@ class EnemyController extends CharaController {
         }
         //if player found
         if (player.length > 0) {
+            if (this.playerSkill != undefined) {
+                if (this.playerSkill.triggertype == "on_attack") {
+                    this.playerSkill.activateSkill([this])
+                    this.activateSkillAnims()
+
+                }
+            }
             //turn towards the player to hit
             if (player[0].mesh.position.z <= this.mesh.position.z)
                 this.sprite.invertU = 1
@@ -576,8 +588,8 @@ class EnemyController extends CharaController {
                 }
             }
             var keys = Object.keys(this.buffs.effectSprite)
-                for (let i = 0; i < keys.length; i++)
-                    this.buffs.effectSprite[keys[i]].dispose()
+            for (let i = 0; i < keys.length; i++)
+                this.buffs.effectSprite[keys[i]].dispose()
         }
     }
 
@@ -680,6 +692,9 @@ class EnemyController extends CharaController {
         this.healthBar.isVisible = true
         this.healthBarBackground.isVisible = true
 
+        if (this.spattacktimer != undefined)
+            this.skillBar.isVisible = true
+
     }
 
     sortBySpAtkPriority(targets) {
@@ -735,7 +750,7 @@ class EnemyController extends CharaController {
         if (this.chara.spattack.target == "farthest")
             targets = targets.filter(player => player.chara.type == "r");
 
-        var players = this.getFirstPlayerInRange(targets, this.chara.spattack.range, this.chara.targets + this.buffs.getTargets())
+        var players = this.getFirstPlayerInRange(targets, this.chara.spattack.range, this.chara.spattack.targets || this.chara.targets + this.buffs.getTargets())
         for (let i = 0; i < players.length; i++) {
             if (players[i].buffs.effects[this.chara.spattack.name] != undefined) {
                 players.splice(i, 1)
@@ -757,12 +772,13 @@ class EnemyController extends CharaController {
             var interval = setInterval(() => {
                 if (instance.sprite.cellIndex == instance.chara.spattack.effectcontact && !applied) {
                     applied = true;
-                    players[0].buffs.buffs[this.chara.spattack.name] = { "name": this.name, "modifiers": this.chara.spattack.applyeffects.modifiers }
-                    players[0].buffs.effects[this.chara.spattack.name] = this.chara.spattack.applyeffects.duration
-                    if (players[0].buffs.effectSprite[this.chara.spattack.name] == undefined && this.chara.spattack.applyeffects.effecticon != undefined)
-                        players[0].createDebuffAura(this.chara.spattack.name, this.chara.spattack.applyeffects.effecticon)
-                    this.applySpecialEffect(this.chara.spattack.applyeffects.modifiers, players[0])
-
+                    for (let i = 0; i < players.length; i++) {
+                        players[i].buffs.buffs[this.chara.spattack.name] = { "name": this.name, "modifiers": this.chara.spattack.applyeffects.modifiers }
+                        players[i].buffs.effects[this.chara.spattack.name] = this.chara.spattack.applyeffects.duration
+                        if (players[i].buffs.effectSprite[this.chara.spattack.name] == undefined && this.chara.spattack.applyeffects.effecticon != undefined)
+                            players[i].createDebuffAura(this.chara.spattack.name, this.chara.spattack.applyeffects.effecticon)
+                        this.applySpecialEffect(this.chara.spattack.applyeffects.modifiers, players[i])
+                    }
                 }
                 if (instance.sprite.cellIndex == instance.chara.spatk.end) {
                     instance.sprite.playAnimation(instance.chara.idle.start, instance.chara.idle.end, true, 30 * this.gamespeed * instance.chara.idle.duration);
@@ -776,7 +792,9 @@ class EnemyController extends CharaController {
             if (this.chara.spattack.dmgmodifier != undefined) {
                 var interval2 = setInterval(() => {
                     if (instance.sprite.cellIndex >= instance.chara.spatk.contact && instance.hp > 0) {
-                        players[0].receiveDamage(instance, false, instance.chara.spattack.dmgmodifier)
+                        for (let i = 0; i < players.length; i++)
+                            players[i].receiveDamage(instance, false, instance.chara.spattack.dmgmodifier)
+
                         instance.lvlcontroller.playSound(instance.chara.name + "-sphit", instance.chara.sfx.sphit.volume)
                         clearInterval(interval2);
                     }
@@ -972,7 +990,7 @@ class EnemyController extends CharaController {
                         }
                         else this.attacking = this.attack(players);
 
-                        if(this.attacking)
+                        if (this.attacking)
                             this.atktimer = 0
                     }
                 }

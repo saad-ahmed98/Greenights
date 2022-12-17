@@ -4252,8 +4252,8 @@ enemylist['Glacial Spider'] = {
 
     sfx: {
         hit: {
-            src: "shieldguard-hit",
-            volume: 0.1
+            src: "slug-hit",
+            volume: 0.05
         },
         skillbomb: {
             src:"icespider-die",
@@ -4333,8 +4333,8 @@ enemylist['Glacial Spider α'] = {
 
     sfx: {
         hit: {
-            src: "shieldguard-hit",
-            volume: 0.1
+            src: "slug-hit",
+            volume: 0.05
         },
         skillbomb: {
             src:"icespider-die",
@@ -4496,7 +4496,6 @@ enemylist["Yeti Icecleaver Leader"] = {
     },
 }
 
-//TODO CHANGE
 enemylist["Light-Armored Soldier Leader"] = {
     name: "Light-Armored Soldier Leader",
     hp: 3700,
@@ -4516,34 +4515,34 @@ enemylist["Light-Armored Soldier Leader"] = {
 
     enemytype: "normal",
 
-    spritesheet: "images/sprites/vicious-training-gloompincer-sheet.webp",
+    spritesheet: "images/sprites/light-armored-soldier-leader-sheet.webp",
 
     hasskill: false,
 
     atkanim: {
         start: 0,
-        end: 17,
-        contact: 7,
+        end: 14,
+        contact: 6,
         duration: 1.3,
     },
 
     death: {
-        start: 17,
-        end: 31,
+        start: 15,
+        end: 29,
         duration: 1,
 
     },
     idle: {
-        start: 32,
-        end: 51,
+        start: 30,
+        end: 59,
         duration: 1,
 
     },
 
     move: {
-        start: 52,
-        end: 66,
-        duration: 1.5,
+        start: 60,
+        end: 83,
+        duration: 1.2,
 
     },
 
@@ -4559,7 +4558,7 @@ enemylist["Light-Armored Soldier Leader"] = {
     }
 }
 
-//TODO CHANGE
+
 enemylist["Oneiros"] = {
     name: "Oneiros",
     hp: 4000,
@@ -4580,35 +4579,35 @@ enemylist["Oneiros"] = {
 
     enemytype: "normal",
 
-    spritesheet: "images/sprites/vicious-training-gloompincer-sheet.webp",
+    spritesheet: "images/sprites/oneiros-sheet.webp",
     hasskill: true,
-    bullet: { size: { height: 3, depth: 5, width: 3 }, arc:false, speed:8, color: new BABYLON.Color3(0.09, 0.73, 0.94)},
+    bullet: { size: { height: 3, depth: 5, width: 3 }, arc:false, speed:20, color: new BABYLON.Color3(0.09, 0.73, 0.94)},
 
 
     atkanim: {
         start: 0,
-        end: 17,
-        contact: 7,
+        end: 14,
+        contact: 5,
         duration: 1.3,
     },
 
     death: {
-        start: 17,
-        end: 31,
+        start: 15,
+        end: 28,
         duration: 1,
 
     },
     idle: {
-        start: 32,
-        end: 51,
+        start: 29,
+        end: 58,
         duration: 1,
 
     },
 
     move: {
-        start: 52,
-        end: 66,
-        duration: 1.5,
+        start: 59,
+        end: 88,
+        duration: 1,
 
     },
     skill: {
@@ -4621,32 +4620,31 @@ enemylist["Oneiros"] = {
         },
         aura: false,
         idle: {
-            start: 32,
-            end: 51,
+            start: 89,
+            end: 118,
             duration: 1,
     
         },
         move: {
-            start: 52,
-            end: 66,
-            duration: 1.5,
+            start: 119,
+            end: 148,
+            duration: 1,
     
         },
     },
 
     sfx: {
         atk: {
-            src: "soldier-atk",
+            src: "oneiros-atk",
             volume: 0.1
         },
         hit: {
-            src: "soldier-hit",
+            src: "oneiros-hit",
             volume: 0.1
         }
     }
 }
 
-//TODO CHANGE
 enemylist["Originium Slug β"] = {
     name: "Originium Slug β",
     hp: 1550,
@@ -4660,56 +4658,51 @@ enemylist["Originium Slug β"] = {
     range: 0,
     hploss: 1,
     dmgtype: "physical",
-    size: 0.95,
+    size: 1.1,
     tooltip: "An infected wild creature that is more \ndangerous than an Originium Slug α.",
     targets: 1,
 
     enemytype: "normal",
 
-    spritesheet: "images/sprites/vicious-training-gloompincer-sheet.webp",
+    spritesheet: "images/sprites/originium-slug-beta-sheet.webp",
 
     hasskill: false,
 
     atkanim: {
         start: 0,
-        end: 17,
-        contact: 7,
+        end: 11,
+        contact: 4,
         duration: 1.3,
     },
 
     death: {
-        start: 17,
-        end: 31,
+        start: 12,
+        end: 26,
         duration: 1,
 
     },
     idle: {
-        start: 32,
-        end: 51,
+        start: 27,
+        end: 56,
         duration: 1,
 
     },
 
     move: {
-        start: 52,
-        end: 66,
-        duration: 1.5,
+        start: 57,
+        end: 86,
+        duration: 1,
 
     },
 
     sfx: {
-        atk: {
-            src: "soldier-atk",
-            volume: 0.1
-        },
         hit: {
-            src: "soldier-hit",
-            volume: 0.1
+            src: "slug-hit",
+            volume: 0.01
         }
     }
 }
 
-//TODO CHANGE
 enemylist["Monster"] = {
     name: "Monster",
     hp: 1870,
@@ -4729,37 +4722,315 @@ enemylist["Monster"] = {
 
     enemytype: "normal",
 
-    spritesheet: "images/sprites/vicious-training-gloompincer-sheet.webp",
+    spritesheet: "images/sprites/monster-sheet.webp",
     hasskill: false,
 
 
     atkanim: {
-        start: 0,
-        end: 17,
+        start: 9999,
+        end: 9999,
         contact: 7,
         duration: 1.3,
     },
 
     death: {
-        start: 17,
-        end: 31,
+        start: 0,
+        end: 14,
         duration: 1,
 
     },
     idle: {
-        start: 32,
-        end: 51,
+        start: 15,
+        end: 44,
         duration: 1,
 
     },
 
     move: {
-        start: 52,
-        end: 66,
+        start: 45,
+        end: 75,
+        duration: 1,
+
+    },
+
+    sfx: {
+    }
+}
+
+enemylist["Heavy Defender Leader"] = {
+    name: "Heavy Defender Leader",
+    hp: 10000,
+    atk: 600,
+    def: 1000,
+    res: 0,
+    atkinterval: 2.6,
+    speed: 0.75 * 0.6,
+    blockcount: 1,
+    type: "g",
+    range: 0,
+    hploss: 1,
+    dmgtype: "physical",
+    size: 1.2,
+    tooltip: "Has very high defense and \nis difficult to take down.",
+    targets: 1,
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/heavy-defender-leader-sheet.webp",
+    hasskill: false,
+
+
+    atkanim: {
+        start: 0,
+        end: 13,
+        contact: 7,
+        duration: 1.3,
+    },
+
+    death: {
+        start: 14,
+        end: 28,
+        duration: 1,
+
+    },
+    idle: {
+        start: 29,
+        end: 44,
+        duration: 1,
+
+    },
+    move: {
+        start: 45,
+        end: 62,
         duration: 1.5,
 
     },
 
     sfx: {
+        hit: {
+            src: "shieldguard-hit",
+            volume: 0.1
+        }
+    },
+
+}
+
+enemylist["Frostnova"] = {
+    name: "Frostnova",
+    hp: 30000,
+    atk: 440,
+    def: 380,
+    res: 50,
+    atkinterval: 3.7,
+    speed: 0.5 * 0.6,
+    blockcount: 1,
+    type: "g",
+    range: 2,
+    hploss: 2,
+    dmgtype: "arts",
+    size: 1,
+    tooltip: "Every attack inflicts cold.\n Deals increased damage\n against frozen allies.\nPeriodically releases an\nice nova damaging \nall allies in range.",
+    revive: true,
+    revivetimer: 0,
+    revivemax: 0,
+    targets: 1,
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/frostnova-sheet.webp",
+    bullet: { size: { height: 1, depth: 5, width: 2 }, arc:false, speed:4, color: new BABYLON.Color3(0.88, 0.96, 1)},
+
+    hasskill: true,
+    hasspatk: true,
+
+    atkanim: {
+        start: 0,
+        end: 23,
+        contact: 15,
+        duration: 1.2,
+    },
+
+
+    idle: {
+        start: 24,
+        end: 84,
+        duration: 1,
+
+    },
+    move: {
+        start: 85,
+        end: 108,
+        duration: 1.2,
+
+    },
+    spatk: {
+        start: 8,
+        end: 23,
+        contact: 15,
+        duration: 1.2,
+    },
+
+    sfx: {
+        hit: {
+            src: "frostnova-hit",
+            volume: 0.1
+        },
+        sphit: {
+            src: "mute",
+            volume: 0.1
+        },
+        spatk: {
+            src: "frostnova-spatk",
+            volume: 0.3
+        }
+    },
+    skill: {
+        name: "frozenhit",
+        triggertype: "on_start",
+        skilltype: "yeti",
+        target: "self",
+        modifiers: {
+            frozenmod: 0.5,
+        },
+        aura: false,
+    },
+    spattack: {
+        name: "icenova",
+        target: "allblocking",
+        chargetype:"second",
+        range: 2,
+        initialsp: 0,
+        sp: 10.5,
+        targets:99,
+        effectcontact: 18,
+        dmgmodifier: 1.5,
+        applyeffects: {
+            modifiers: {
+                cold:5
+            },
+            duration: 1,
+        },
+    }
+}
+
+enemylist["Frostnova2"] = {
+    name: "Frostnova2",
+    hp: 30000,
+    atk: 660,
+    def: 380,
+    res: 50,
+    atkinterval: 3.7,
+    speed: 0.5 * 0.6,
+    blockcount: 1,
+    type: "g",
+    range: 2,
+    hploss: 2,
+    dmgtype: "arts",
+    size: 1,
+    tooltip: "Every attack inflicts cold.\n Deals increased damage\n against frozen allies.\nPeriodically releases an\nice nova damaging \nall allies in range.",
+    targets: 1,
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/frostnova2-sheet.webp",
+    bullet: { size: { height: 1, depth: 5, width: 2 }, arc:false, speed:4, color: new BABYLON.Color3(0.88, 0.96, 1)},
+
+    hasskill: true,
+    hasspatk: true,
+    invincible: 20,
+
+    atkanim: {
+        start: 0,
+        end: 23,
+        contact: 15,
+        duration: 1,
+    },
+
+    death: {
+        start: 24,
+        end: 102,
+        duration: 1,
+    },
+
+    idle: {
+        start: 103,
+        end: 163,
+        duration: 1,
+
+    },
+    move: {
+        start: 164,
+        end: 187,
+        duration: 1.2,
+
+    },
+    start: {
+        start: 188,
+        end: 294,
+        duration: 1.2,
+    },
+    spatk: {
+        start: 295,
+        end: 349,
+        contact: 342,
+        duration: 1.3,
+    },
+
+    sfx: {
+        start: {
+            src: "mute",
+            volume: 0.3
+        },
+        start2: {
+            src: "frostnova2-start1",
+            volume: 0.3,
+            sprite: (188+27),
+            playing: false
+        },
+        start3: {
+            src: "frostnova2-start2",
+            volume: 0.3,
+            sprite: 293,
+            playing: false
+        },
+        
+        hit: {
+            src: "frostnova-hit",
+            volume: 0.1
+        },
+        spatk: {
+            src: "frostnova2-spatk",
+            volume: 0.5
+        },
+        sphit: {
+            src: "frostnova2-sphit",
+            volume: 0.5
+        }
+    },
+    skill: {
+        name: "frozenhit",
+        triggertype: "on_start",
+        skilltype: "yeti",
+        target: "self",
+        modifiers: {
+            frozenmod: 0.5,
+        },
+        aura: false,
+    },
+    spattack: {
+        name: "icenova",
+        target: "allblocking",
+        chargetype:"second",
+        range: 3,
+        initialsp: 0,
+        sp: 10.5,
+        targets:99,
+        effectcontact: 342,
+        dmgmodifier: 1.5,
+        applyeffects: {
+            modifiers: {
+                cold:5
+            },
+            duration: 1,
+        },
     }
 }
