@@ -4016,7 +4016,7 @@ enemylist["Yeti Caster"] = {
     hploss: 1,
     dmgtype: "arts",
     size: 1,
-    tooltip: "A Yeti Squadron Caster, \ncapable of inflicting Cold upon\ntheir targets after 2 attacks.",
+    tooltip: "A Yeti Squadron Caster, \ncapable of inflicting Cold upon\ntheir targets after 3 attacks.",
     targets: 1,
     bullet: { size: { height: 1, depth: 5, width: 2 }, arc:false, speed:4, color: new BABYLON.Color3(0.88, 0.96, 1)},
 
@@ -4088,7 +4088,7 @@ enemylist["Yeti Caster"] = {
         chargetype:"attack",
         range: 2.2,
         initialsp: 0,
-        sp: 2,
+        sp: 3,
         dmgmodifier: 1,
         effectcontact: 10,
         applyeffects: {
@@ -4114,7 +4114,7 @@ enemylist["Yeti Caster Leader"] = {
     hploss: 1,
     dmgtype: "arts",
     size: 1,
-    tooltip: "An elite Yeti Squadron Caster, \ncapable of inflicting Cold upon\ntheir targets after 2 attacks.",
+    tooltip: "An elite Yeti Squadron Caster, \ncapable of inflicting Cold upon\ntheir targets after 3 attacks.",
     targets: 1,
     bullet: { size: { height: 1, depth: 5, width: 2 }, arc:false, speed:4, color: new BABYLON.Color3(0.88, 0.96, 1)},
 
@@ -4186,7 +4186,7 @@ enemylist["Yeti Caster Leader"] = {
         chargetype:"attack",
         range: 2.2,
         initialsp: 0,
-        sp: 2,
+        sp: 3,
         dmgmodifier: 1,
         effectcontact: 10,
         applyeffects: {
@@ -4573,7 +4573,7 @@ enemylist["Oneiros"] = {
     hploss: 1,
     dmgtype: "arts",
     size: 0.95,
-    tooltip: "Carries a special warhead capable of \ndealing Arts damage in an area and \ninflicting Cold on affected Operators.",
+    tooltip: "Carries a special warhead\ncapable of dealing Arts damage \nin a radius and inflicting \nCold on affected units.",
     targets: 1,
     splashradius:1,
 
@@ -4748,7 +4748,7 @@ enemylist["Monster"] = {
 
     move: {
         start: 45,
-        end: 75,
+        end: 74,
         duration: 1,
 
     },
@@ -4829,7 +4829,7 @@ enemylist["Frostnova"] = {
     hploss: 2,
     dmgtype: "arts",
     size: 1,
-    tooltip: "Every attack inflicts cold.\n Deals increased damage\n against frozen allies.\nPeriodically releases an\nice nova damaging \nall allies in range.",
+    tooltip: "Every attack inflicts cold.\n Deals massive damage\n against frozen allies.\nPeriodically releases an\nice nova damaging \nall allies in range.",
     revive: true,
     revivetimer: 0,
     revivemax: 0,
@@ -4847,7 +4847,7 @@ enemylist["Frostnova"] = {
         start: 0,
         end: 23,
         contact: 15,
-        duration: 1.2,
+        duration: 1.1,
     },
 
 
@@ -4867,7 +4867,7 @@ enemylist["Frostnova"] = {
         start: 8,
         end: 23,
         contact: 15,
-        duration: 1.2,
+        duration: 1.1,
     },
 
     sfx: {
@@ -4890,7 +4890,7 @@ enemylist["Frostnova"] = {
         skilltype: "yeti",
         target: "self",
         modifiers: {
-            frozenmod: 0.5,
+            frozenmod: 2,
         },
         aura: false,
     },
@@ -4966,13 +4966,13 @@ enemylist["Frostnova2"] = {
     start: {
         start: 188,
         end: 294,
-        duration: 1.2,
+        duration: 1.1,
     },
     spatk: {
         start: 295,
         end: 349,
         contact: 342,
-        duration: 1.3,
+        duration: 1.2,
     },
 
     sfx: {

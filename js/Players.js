@@ -2765,9 +2765,9 @@ playerlist["Scavenger"] = {
 
     atkanim: {
         start: 8,
-        end: 28,
+        end: 24,
         contact: 15,
-        duration: 0.5,
+        duration: 1,
     },
 
     death: {

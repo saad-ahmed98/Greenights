@@ -55,6 +55,7 @@ class InactiveIceAltar {
     activateAltar(){
         this.currentsp = 0
         this.totalsp = 15
+        this.inactive = false;
         this.createHazard()
         
     }

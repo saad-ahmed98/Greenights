@@ -890,6 +890,22 @@ class LVLController extends LVLAbstract {
         };
 
         binaryTask = assetsManager.addBinaryFileTask(
+            "token",
+            "sounds/ui/token.wav"
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets.token = new BABYLON.Sound(
+                "token",
+                task.data,
+                this.scene,
+                null,
+                {
+                    loop: false,
+                }
+            );
+        };
+
+        binaryTask = assetsManager.addBinaryFileTask(
             "retreat",
             "sounds/ui/retreat.wav"
         );
@@ -922,6 +938,13 @@ class LVLController extends LVLAbstract {
 
     }
 
+    activateAltars(){
+        this.playSound("token", 0.3)
+        for(let i = 0;i<this.hazards.length;i++){
+            if(this.hazards[i].activateAltar!=undefined)
+                this.hazards[i].activateAltar()
+        }
+    }
 
     checkEnemies() {
         for (let i = 0; i < this.enemies.length; i++) {

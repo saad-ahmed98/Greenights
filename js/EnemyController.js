@@ -350,6 +350,10 @@ class EnemyController extends CharaController {
                     }
                 }
                 if (instance.sprite.cellIndex == instance.chara.start.end) {
+                    if(instance.chara.name == "Frostnova2"){
+                        instance.lvlcontroller.activateAltars()
+                    }
+            
                     instance.spawning = false;
                     if (instance.chara.invincible != undefined) {
                         instance.startInvincibility()
@@ -844,9 +848,12 @@ class EnemyController extends CharaController {
 
     //create sp bar
     addHPBar(gui) {
-        this.healthBarBackground = gui.addBackgroundBar(this.mesh, "rgb(255, 153, 153)", 10, "3%");
+        var offsetY = 10
+        if(this.chara.type=="r")
+            offsetY = -150
+        this.healthBarBackground = gui.addBackgroundBar(this.mesh, "rgb(255, 153, 153)", offsetY, "3%");
         this.healthBarBackground.isVisible = false
-        this.healthBar = gui.addHPBar(this.mesh, "red", 10, "3%");
+        this.healthBar = gui.addHPBar(this.mesh, "red", offsetY, "3%");
         this.healthBar.isVisible = false;
         if (this.spattacktimer != undefined) {
             this.addSPBar(gui)
@@ -898,7 +905,6 @@ class EnemyController extends CharaController {
         enemy.updateHpBar();
 
         this.lvlcontroller.enemies.push(enemy)
-
     }
 
     //distance from player, player prioritizes closer enemies

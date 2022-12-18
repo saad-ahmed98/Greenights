@@ -278,6 +278,7 @@ class CharaController {
         }
 
 
+
         if (range > 0 && targets > 1) {
             var squarerange = [[this.x * 30 - 15 - 30 * range, this.x * 30 + 15 + 30 * range], [this.y * 30 - 15 - 30 * range, this.y * 30 + 15 + 30 * range]];
             for (let i = enemies.length - 1; i >= 0; i--) {
@@ -287,7 +288,6 @@ class CharaController {
                     var z = Math.round(enemies[i].mesh.position.z / 30)
                     if (Math.abs(z - this.y) <= counter + rangeexpand) {
                         var found = false;
-
                         //check if enemy is not already a target
                         for (let j = 0; j < res.length; j++) {
                             if (res[j].id == enemies[i].id)
