@@ -42,14 +42,16 @@ class PlayerSkill {
 
     activateSkillBomb(player, lvl) {
         var skillbomb = this.modifiers.skillbomb;
+        var enemies = lvl.enemies
         var enemy = [];
+        if(!player.canHitFlying())
+            enemies = enemies.filter(e =>(e.chara.type=="g"))
         if (skillbomb == undefined)
             return;
         if (skillbomb.dmgtype == "heal")
             enemy = player.getLowestHpPlayerInRange(lvl.activePlayers, skillbomb.range, skillbomb.targets);
         else {
-            enemy = player.getFirstEnemyInRange(lvl.enemies, skillbomb.range, skillbomb.targets);
-
+            enemy = player.getFirstEnemyInRange(enemies, skillbomb.range, skillbomb.targets);
         }
         if (enemy.length > 0) {
             if (skillbomb.dmgtype == "heal") {

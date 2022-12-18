@@ -119,7 +119,7 @@ class Bullet {
             }
             else {
                 //TODO CHANGE HARD CODED
-                if (this.source.chara.name == "Frostnova" || this.source.chara.name == "Frostnova2")
+                if (this.source.chara.name == "Frostnova" || this.source.chara.name == "Frostnova2" || this.source.chara.name == "FrostnovaEX" || this.source.chara.name == "FrostnovaEX2")
                     this.target.applyCold(5)
                 this.target.receiveDamage(this.source)
             }

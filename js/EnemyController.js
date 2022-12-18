@@ -350,7 +350,7 @@ class EnemyController extends CharaController {
                     }
                 }
                 if (instance.sprite.cellIndex == instance.chara.start.end) {
-                    if(instance.chara.name == "Frostnova2"){
+                    if(instance.chara.name == "Frostnova2" || instance.chara.name == "FrostnovaEX2"){
                         instance.lvlcontroller.activateAltars()
                     }
             

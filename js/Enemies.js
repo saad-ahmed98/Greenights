@@ -5034,3 +5034,289 @@ enemylist["Frostnova2"] = {
         },
     }
 }
+
+enemylist["FrostnovaEX"] = {
+    name: "FrostnovaEX",
+    hp: 45000,
+    atk: 530,
+    def: 440,
+    res: 50,
+    atkinterval: 3.7,
+    speed: 0.5 * 0.6,
+    blockcount: 1,
+    type: "g",
+    range: 2,
+    hploss: 2,
+    dmgtype: "arts",
+    size: 1,
+    tooltip: "Every attack inflicts cold.\n Deals massive damage\n against frozen allies.\nPeriodically releases an\nice nova damaging \nall allies in range.",
+    revive: true,
+    revivetimer: 0,
+    revivemax: 0,
+    targets: 1,
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/frostnova-sheet.webp",
+    bullet: { size: { height: 1, depth: 5, width: 2 }, arc:false, speed:4, color: new BABYLON.Color3(0.88, 0.96, 1)},
+
+    hasskill: true,
+    hasspatk: true,
+
+    atkanim: {
+        start: 0,
+        end: 23,
+        contact: 15,
+        duration: 1.1,
+    },
+
+
+    idle: {
+        start: 24,
+        end: 84,
+        duration: 1,
+
+    },
+    move: {
+        start: 85,
+        end: 108,
+        duration: 1.2,
+
+    },
+    spatk: {
+        start: 8,
+        end: 23,
+        contact: 15,
+        duration: 1.1,
+    },
+
+    sfx: {
+        hit: {
+            src: "frostnova-hit",
+            volume: 0.1
+        },
+        sphit: {
+            src: "mute",
+            volume: 0.1
+        },
+        spatk: {
+            src: "frostnova-spatk",
+            volume: 0.3
+        }
+    },
+    skill: {
+        name: "frozenhit",
+        triggertype: "on_start",
+        skilltype: "yeti",
+        target: "self",
+        modifiers: {
+            frozenmod: 2,
+        },
+        aura: false,
+    },
+    spattack: {
+        name: "icenova",
+        target: "allblocking",
+        chargetype:"second",
+        range: 2,
+        initialsp: 0,
+        sp: 10.5,
+        targets:99,
+        effectcontact: 18,
+        dmgmodifier: 1.5,
+        applyeffects: {
+            modifiers: {
+                cold:5
+            },
+            duration: 1,
+        },
+    }
+}
+
+enemylist["FrostnovaEX2"] = {
+    name: "FrostnovaEX2",
+    hp: 45000,
+    atk: 795,
+    def: 440,
+    res: 50,
+    atkinterval: 3.7,
+    speed: 0.5 * 0.6,
+    blockcount: 1,
+    type: "g",
+    range: 2,
+    hploss: 2,
+    dmgtype: "arts",
+    size: 1,
+    tooltip: "Every attack inflicts cold.\n Deals increased damage\n against frozen allies.\nPeriodically releases an\nice nova damaging \nall allies in range.",
+    targets: 1,
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/frostnova2-sheet.webp",
+    bullet: { size: { height: 1, depth: 5, width: 2 }, arc:false, speed:4, color: new BABYLON.Color3(0.88, 0.96, 1)},
+
+    hasskill: true,
+    hasspatk: true,
+    invincible: 25,
+
+    atkanim: {
+        start: 0,
+        end: 23,
+        contact: 15,
+        duration: 1,
+    },
+
+    death: {
+        start: 24,
+        end: 102,
+        duration: 1,
+    },
+
+    idle: {
+        start: 103,
+        end: 163,
+        duration: 1,
+
+    },
+    move: {
+        start: 164,
+        end: 187,
+        duration: 1.2,
+
+    },
+    start: {
+        start: 188,
+        end: 294,
+        duration: 1.1,
+    },
+    spatk: {
+        start: 295,
+        end: 349,
+        contact: 342,
+        duration: 1.2,
+    },
+
+    sfx: {
+        start: {
+            src: "mute",
+            volume: 0.3
+        },
+        start2: {
+            src: "frostnova2-start1",
+            volume: 0.3,
+            sprite: (188+27),
+            playing: false
+        },
+        start3: {
+            src: "frostnova2-start2",
+            volume: 0.3,
+            sprite: 293,
+            playing: false
+        },
+        
+        hit: {
+            src: "frostnova-hit",
+            volume: 0.1
+        },
+        spatk: {
+            src: "frostnova2-spatk",
+            volume: 0.5
+        },
+        sphit: {
+            src: "frostnova2-sphit",
+            volume: 0.5
+        }
+    },
+    skill: {
+        name: "frozenhit",
+        triggertype: "on_start",
+        skilltype: "yeti",
+        target: "self",
+        modifiers: {
+            frozenmod: 0.5,
+        },
+        aura: false,
+    },
+    spattack: {
+        name: "icenova",
+        target: "allblocking",
+        chargetype:"second",
+        range: 3,
+        initialsp: 0,
+        sp: 10.5,
+        targets:99,
+        effectcontact: 342,
+        dmgmodifier: 1.5,
+        applyeffects: {
+            modifiers: {
+                cold:5
+            },
+            duration: 1,
+        },
+    }
+}
+
+//TODO CHANGE
+enemylist["Mortar Gunner Leader"] = {
+    name: "Mortar Gunner Leader",
+    hp: 5000,
+    atk: 550,
+    def: 150,
+    res: 0,
+    atkinterval: 4.5,
+    speed: 0.8 * 0.6,
+    blockcount: 1,
+    type: "g",
+    range: 7,
+    hploss: 1,
+    dmgtype: "physical",
+    size: 1,
+    tooltip: "A more dangerous Mortar Gunner \nthat can launch very \nlong-ranged AoE attacks.",
+    targets: 1,
+    splashradius:1,
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/guerrilla-mortar-sheet.webp",
+    bullet: { size: { height: 3, depth: 3, width: 3 }, arc:true, speed:10, color: new BABYLON.Color3(0.95, 0, 0)},
+
+    hasskill: false,
+
+    atkanim: {
+        start: 0,
+        end: 17,
+        contact: 9,
+        duration: 1,
+    },
+
+    death: {
+        start: 18,
+        end: 31,
+        duration: 1,
+
+    },
+
+    idle: {
+        start: 32,
+        end: 46,
+        duration: 1,
+
+    },
+
+    move: {
+        start: 47,
+        end: 61,
+        duration: 1.2,
+
+    },
+
+    sfx: {
+        hit: {
+            src: "mortar-hit",
+            volume: 0.1
+        },
+        atk: {
+            src: "mortar-atk",
+            volume: 0.1
+        }
+    },
+}

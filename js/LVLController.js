@@ -21,11 +21,12 @@ class LVLController extends LVLAbstract {
         this.gui = new LVLGUIController(this.scene, this.gameconfig);
 
         this.layout = lvl.layout
-
+        this.bgmchanged = false;
         this.bgm = lvl.bgm
         this.maxhp = lvl.hp
         this.hp = lvl.hp
         this.skyboxtext = lvl.skybox
+        this.bgm2 = lvl.bgm2
 
         this.matrix = [];
         this.flyingmatrix = [];
@@ -393,7 +394,7 @@ class LVLController extends LVLAbstract {
             );
             binaryTask.onSuccess = function (task) {
                 instance.scene.assets[task.name] = new BABYLON.Sound(
-                    "bgm",
+                    "ss",
                     task.data,
                     this.scene,
                     null,
@@ -410,7 +411,7 @@ class LVLController extends LVLAbstract {
     playBGM(volume) {
         var intro = this.scene.assets.bgmintro
         var loop = this.scene.assets.bgmloop
-        if (!intro.isPlaying && !loop.isPlaying && !this.gui.showinggui) {
+        if (!intro.isPlaying && !loop.isPlaying && !this.gui.showinggui && !this.bgmchanged) {
             intro.setVolume(volume)
             intro.play()
             intro._outputAudioNode.context.addEventListener('statechange', function () {
@@ -432,11 +433,42 @@ class LVLController extends LVLAbstract {
 
     }
 
+    playBGM2(volume) {
+        var intro = this.scene.assets.bgm2intro
+        var loop = this.scene.assets.bgm2loop
+        this.bgmchanged = true
+        this.scene.assets.bgmintro.stop()
+        this.scene.assets.bgmloop.stop()
+        setTimeout(() => {
+            if (!intro.isPlaying && !loop.isPlaying && !this.gui.showinggui) {
+
+                intro.setVolume(volume)
+                intro.play()
+                intro._outputAudioNode.context.addEventListener('statechange', function () {
+                    if (intro._outputAudioNode.context.state == "running")
+                        intro.play()
+
+                });
+                intro.onended = function () {
+                    loop.setVolume(volume);
+                    loop.play()
+                }
+            }
+
+        },1000)
+
+
+    }
+
 
     playMissionClear() {
         this.scene.assets.bgmintro.stop()
         this.scene.assets.bgmloop.stop()
 
+        if (this.bgm2 != undefined) {
+            this.scene.assets.bgm2intro.stop()
+            this.scene.assets.bgm2loop.stop()
+        }
         var sound = this.scene.assets["winvoice"]
         sound.setVolume(0.3)
         sound.play()
@@ -464,7 +496,7 @@ class LVLController extends LVLAbstract {
             BABYLON.Color3.LerpToRef(BABYLON.Color3.BlackReadOnly, startingColor, t, this.scene.clearColor);
         }
         else {
-            
+
             if (!this.render) {
                 this.createGUIs()
                 this.render = true;
@@ -482,7 +514,7 @@ class LVLController extends LVLAbstract {
                 if (!this.gui.isPaused)
                     this.createLvl();
             }
-            
+
         }
         this.scene.render();
     }
@@ -491,6 +523,10 @@ class LVLController extends LVLAbstract {
     playMissionFailed() {
         this.scene.assets.bgmintro.stop()
         this.scene.assets.bgmloop.stop()
+        if (this.bgm2 != undefined) {
+            this.scene.assets.bgm2intro.stop()
+            this.scene.assets.bgm2loop.stop()
+        }
 
         var intro = this.scene.assets.loseintro
         var loop = this.scene.assets.loseloop
@@ -658,7 +694,7 @@ class LVLController extends LVLAbstract {
             BABYLON.Texture.TRILINEAR_SAMPLINGMODE
         );
         binaryTask.onSuccess = function (task) {
-            instance.spriteManagers[task.name] = new BABYLON.SpriteManager("AuraManager", undefined, 15, { width: 886, height: 604 });
+            instance.spriteManagers[task.name] = new BABYLON.SpriteManager("AuraManager", undefined, 50, { width: 886, height: 604 });
             instance.spriteManagers[task.name].texture = task.texture
         };
 
@@ -670,7 +706,7 @@ class LVLController extends LVLAbstract {
             BABYLON.Texture.TRILINEAR_SAMPLINGMODE
         );
         binaryTask.onSuccess = function (task) {
-            instance.spriteManagers[task.name] = new BABYLON.SpriteManager("EffectsManager", undefined, 15, { width: 888, height: 605 });
+            instance.spriteManagers[task.name] = new BABYLON.SpriteManager("EffectsManager", undefined, 50, { width: 888, height: 605 });
             instance.spriteManagers[task.name].texture = task.texture
         };
 
@@ -682,7 +718,7 @@ class LVLController extends LVLAbstract {
             BABYLON.Texture.TRILINEAR_SAMPLINGMODE
         );
         binaryTask.onSuccess = function (task) {
-            instance.spriteManagers[task.name] = new BABYLON.SpriteManager("BoomManager", undefined, 15, { width: 888, height: 605 });
+            instance.spriteManagers[task.name] = new BABYLON.SpriteManager("BoomManager", undefined, 50, { width: 888, height: 605 });
             instance.spriteManagers[task.name].texture = task.texture
         };
 
@@ -741,6 +777,40 @@ class LVLController extends LVLAbstract {
                 }
             );
         };
+        if (this.bgm2 != undefined) {
+
+            binaryTask = assetsManager.addBinaryFileTask(
+                "bgm",
+                "sounds/bgm/" + this.bgm2 + "_intro.mp3"
+            );
+            binaryTask.onSuccess = function (task) {
+                instance.scene.assets.bgm2intro = new BABYLON.Sound(
+                    "bgm",
+                    task.data,
+                    this.scene,
+                    null,
+                    {
+                        loop: false,
+                    }
+                );
+            };
+
+            binaryTask = assetsManager.addBinaryFileTask(
+                "bgm",
+                "sounds/bgm/" + this.bgm2 + "_loop.mp3"
+            );
+            binaryTask.onSuccess = function (task) {
+                instance.scene.assets.bgm2loop = new BABYLON.Sound(
+                    "bgm",
+                    task.data,
+                    this.scene,
+                    null,
+                    {
+                        loop: true,
+                    }
+                );
+            };
+        }
 
         binaryTask = assetsManager.addBinaryFileTask(
             "alarmenter",
@@ -938,10 +1008,10 @@ class LVLController extends LVLAbstract {
 
     }
 
-    activateAltars(){
+    activateAltars() {
         this.playSound("token", 0.3)
-        for(let i = 0;i<this.hazards.length;i++){
-            if(this.hazards[i].activateAltar!=undefined)
+        for (let i = 0; i < this.hazards.length; i++) {
+            if (this.hazards[i].activateAltar != undefined)
                 this.hazards[i].activateAltar()
         }
     }
@@ -1598,6 +1668,9 @@ class LVLController extends LVLAbstract {
                         }
                     }
                 }
+                if (this.waves[i]["music"] == true)
+                    this.playBGM2(0.2)
+
                 this.waves[i]["line"] = false;
                 this.drawLine(this.waves[i]["checkpoints"], this.waves[i]["flying"] || false)
             }
