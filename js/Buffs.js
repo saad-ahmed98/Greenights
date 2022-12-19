@@ -50,6 +50,7 @@ class Buffs {
             physdodge: 0,
             artsdodge: 0,
             hpregenbuff:1,
+            statusres:1,
             frozen:false
 
         }
@@ -89,6 +90,13 @@ class Buffs {
         this.sumBuffs();
         return this.modifiers.frozen;
     }
+
+    getStatusRes(){
+        this.initModifiers();
+        this.sumBuffs();
+        return this.modifiers.statusres;
+    }
+
 
     getAttacks() {
         this.initModifiers();

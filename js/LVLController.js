@@ -1089,7 +1089,7 @@ class LVLController extends LVLAbstract {
 
 
     checkPlayerSkill(p) {
-        if (!p.playerSkill.active && (p.playerSkill.chargetype == "second" || p.playerSkill.chargetype == "hit")) {
+        if (!p.playerSkill.active) {
             if (p.playerSkill.chargetype == "second") {
                 p.playerSkill.currentsp = Math.min(p.playerSkill.currentsp + (1 / 30) / this.gamespeed, p.playerSkill.totalsp);
                 p.updateSkillBarCharging()
@@ -1167,7 +1167,6 @@ class LVLController extends LVLAbstract {
             }
             else this.bullets[i].move(this.gamespeed);
         }
-
     }
 
 
@@ -1200,6 +1199,7 @@ class LVLController extends LVLAbstract {
             this.activePlayers[i].updateHP()
             this.activePlayers[i].checkAliveBuffs()
             this.activePlayers[i].checkBlocking()
+
             if (this.activePlayers[i].hp <= 0) {
                 this.tiles[this.activePlayers[i].x][this.activePlayers[i].y].player = undefined;
                 this.activePlayers[i].removeAllBlocking()

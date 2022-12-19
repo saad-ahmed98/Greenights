@@ -18,8 +18,6 @@ class Bullet {
         this.splashradius;
         this.isplayer = this.source.chara.class != undefined
         this.createBullet();
-
-
     }
 
     createBullet() {
@@ -85,7 +83,7 @@ class Bullet {
             this.mesh.position.z += this.offsetZ * dir / gamespeed;
         }
 
-        if (this.source.chara.type == "r") {
+        if (this.source.chara.type == "r" && !this.isplayer) {
             if (!(this.mesh.position.y <= this.target.mesh.position.y + 1 && this.mesh.position.y >= this.target.mesh.position.y - 1)) {
                 var dir = 1;
                 if (this.mesh.position.y > this.target.mesh.position.y)

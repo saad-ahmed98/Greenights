@@ -31,11 +31,9 @@ BABYLON.DefaultLoadingScreen.prototype.displayLoadingUI = function () {
     this._loadingTextDiv.style.textAlign = "center";
     this._loadingTextDiv.style.zIndex = "1";
     this._loadingTextDiv.innerHTML = "Loading";
+    
 
     this._loadingDiv.appendChild(this._loadingTextDiv);
-
-    //set the predefined text
-    this._loadingTextDiv.innerHTML = this._loadingText;
 
     // Generating keyframes
     this._style = document.createElement("style");
@@ -103,6 +101,22 @@ BABYLON.DefaultLoadingScreen.prototype.displayLoadingUI = function () {
     imgLoad.style.position = "absolute";
     imgLoad.innerHTML = "Loading...";
     this._loadingDiv.appendChild(imgLoad);
+
+    var imgLoad = document.createElement("div");
+    imgLoad.style.width = "100%";
+    imgLoad.style.gridColumn = "0";
+    imgLoad.style.gridRow = "0";
+    imgLoad.style.top = "90%";
+    imgLoad.style.left = "0%";
+    imgLoad.style.fontWeight = "bold";
+    imgLoad.style.fontFamily = "Arial";
+    imgLoad.style.fontSize = "110%";
+    imgLoad.style.color = "white";
+    imgLoad.style.textAlign = "center";
+    imgLoad.style.position = "absolute";
+    imgLoad.innerHTML = tipslist[tipslist.length * Math.random() | 0];
+    this._loadingDiv.appendChild(imgLoad);
+
 
     this._resizeLoadingUI();
 

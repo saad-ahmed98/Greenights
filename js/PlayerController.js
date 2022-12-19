@@ -32,12 +32,12 @@ class PlayerController extends CharaController {
         }
     }
 
-    canHitFlying(){
-        return (this.chara.type=="r" || this.chara.subclass=="Lord" || this.chara.subclass=="Sentinel")
+    canHitFlying() {
+        return (this.chara.type == "r" || this.chara.subclass == "Lord" || this.chara.subclass == "Sentinel")
     }
 
-    checkBlocking() {
 
+    checkBlocking() {
         if (this.blockedenemies.length > this.buffs.getFinalBlock(this.chara.blockcount) && this.blockedenemies.length > 0) {
             this.blockedenemies[this.blockedenemies.length - 1].unblock()
             this.blockedenemies.splice(this.blockedenemies.length - 1, 1)
@@ -85,9 +85,7 @@ class PlayerController extends CharaController {
         if (this.sprite.cellIndex >= this.chara.drop.start && this.sprite.cellIndex <= this.chara.drop.end) {
             this.sprite.playAnimation(this.sprite.cellIndex, this.chara.drop.end, false, 30 * this.gamespeed);
         }
-        if (this.sprite.cellIndex >= this.chara.death.start && this.sprite.cellIndex <= this.chara.death.end) {
-            this.sprite.playAnimation(this.sprite.cellIndex, this.chara.death.end, false, 30 * this.gamespeed);
-        }
+
         if (this.chara.skillatkanim != undefined) {
             if (this.sprite.cellIndex >= this.chara.skillatkanim.start && this.sprite.cellIndex <= this.chara.skillatkanim.end) {
                 this.sprite.playAnimation(this.sprite.cellIndex, this.chara.skillatkanim.end, false, 30 * this.gamespeed * this.buffs.getFinalAtkInterval(this.chara.atkanim.duration, true));
@@ -306,8 +304,8 @@ class PlayerController extends CharaController {
 
     attack(enemies, players) {
         var enemy;
-        if(!this.canHitFlying())
-            enemies = enemies.filter(e =>(e.chara.type=="g"))
+        if (!this.canHitFlying())
+            enemies = enemies.filter(e => (e.chara.type == "g"))
         var dmgtype = this.buffs.getDmgType()
         if (dmgtype == "")
             dmgtype = this.chara.dmgtype
@@ -327,80 +325,117 @@ class PlayerController extends CharaController {
             if (enemy[0].mesh.position.z <= this.mesh.position.z)
                 this.sprite.invertU = 1
             else this.sprite.invertU = 0;
-
-            var contactframe = this.chara.atkanim.contact
-            if (this.playerSkill.active && this.chara.skillatkanim != undefined) {
-                contactframe = this.chara.skillatkanim.contact
-                this.sprite.playAnimation(this.chara.skillatkanim.start, this.chara.skillatkanim.end, false, this.buffs.getFinalAtkInterval(this.chara.atkanim.duration, true) * 30 * this.gamespeed);
-            }
-            else this.sprite.playAnimation(this.chara.atkanim.start, this.chara.atkanim.end, false, this.buffs.getFinalAtkInterval(this.chara.atkanim.duration, true) * 30 * this.gamespeed);
-
-            if (this.playerSkill.active && this.chara.skillsfx) {
-                if (this.chara.sfx.skillatk != undefined)
-                    this.lvlcontroller.playSound(this.chara.name + "-skillatk", this.chara.sfx.skillatk.volume)
-            }
-            else if (this.chara.sfx.atk != undefined)
-                this.lvlcontroller.playSound(this.chara.name + "-atk", this.chara.sfx.atk.volume)
-
-            var instance = this
-
-            var interval = setInterval(() => {
-                if (instance.isfrozen) {
-                    clearInterval(interval)
+            if (this.chara.atkanim.exists!=false) {
+                var contactframe = this.chara.atkanim.contact
+                if (this.playerSkill.active && this.chara.skillatkanim != undefined) {
+                    contactframe = this.chara.skillatkanim.contact
+                    this.sprite.playAnimation(this.chara.skillatkanim.start, this.chara.skillatkanim.end, false, this.buffs.getFinalAtkInterval(this.chara.atkanim.duration, true) * 30 * this.gamespeed);
                 }
-                if (instance.sprite.cellIndex >= contactframe && instance.hp > 0) {
-                    if (this.playerSkill.active && this.chara.skillsfx) {
-                        if (this.chara.sfx.skillhit != undefined && this.chara.bullet == undefined)
-                            this.lvlcontroller.playSound(this.chara.name + "-skillhit", this.chara.sfx.skillhit.volume)
-                    }
-                    else if (this.chara.sfx.hit != undefined && this.chara.bullet == undefined)
-                        this.lvlcontroller.playSound(this.chara.name + "-hit", this.chara.sfx.hit.volume)
+                else this.sprite.playAnimation(this.chara.atkanim.start, this.chara.atkanim.end, false, this.buffs.getFinalAtkInterval(this.chara.atkanim.duration, true) * 30 * this.gamespeed);
 
-                    if (dmgtype == "heal") {
-                        for (let i = 0; i < enemy.length; i++)
-                            enemy[i].receiveHealing(instance);
+                if (this.playerSkill.active && this.chara.skillsfx) {
+                    if (this.chara.sfx.skillatk != undefined)
+                        this.lvlcontroller.playSound(this.chara.name + "-skillatk", this.chara.sfx.skillatk.volume)
+                }
+                else if (this.chara.sfx.atk != undefined)
+                    this.lvlcontroller.playSound(this.chara.name + "-atk", this.chara.sfx.atk.volume)
+
+                var instance = this
+
+                var interval = setInterval(() => {
+                    if (instance.isfrozen) {
+                        clearInterval(interval)
                     }
-                    else {
-                        for (let i = 0; i < enemy.length; i++) {
-                            let splash = this.buffs.getSplash()
-                            if (!splash.splash) {
-                                for (let j = 0; j < this.buffs.getAttacks(); j++) {
-                                    if (this.chara.skillbullet != undefined && this.playerSkill.active) {
-                                        new Bullet(this, this.scene, enemy[i], this.lvlcontroller, true)
+                    if (instance.sprite.cellIndex >= contactframe && instance.hp > 0) {
+                        if (this.playerSkill.active && this.chara.skillsfx) {
+                            if (this.chara.sfx.skillhit != undefined && this.chara.bullet == undefined)
+                                this.lvlcontroller.playSound(this.chara.name + "-skillhit", this.chara.sfx.skillhit.volume)
+                        }
+                        else if (this.chara.sfx.hit != undefined && this.chara.bullet == undefined)
+                            this.lvlcontroller.playSound(this.chara.name + "-hit", this.chara.sfx.hit.volume)
+
+                        if (dmgtype == "heal") {
+                            for (let i = 0; i < enemy.length; i++)
+                                enemy[i].receiveHealing(instance);
+                        }
+                        else {
+                            for (let i = 0; i < enemy.length; i++) {
+                                let splash = this.buffs.getSplash()
+                                if (!splash.splash) {
+                                    for (let j = 0; j < this.buffs.getAttacks(); j++) {
+                                        if (this.chara.skillbullet != undefined && this.playerSkill.active) {
+                                            new Bullet(this, this.scene, enemy[i], this.lvlcontroller, true)
+                                        }
+                                        else if (this.chara.bullet != undefined) {
+                                            new Bullet(this, this.scene, enemy[i], this.lvlcontroller)
+                                        }
+                                        else enemy[i].receiveDamage(instance)
                                     }
-                                    else if (this.chara.bullet != undefined) {
-                                        new Bullet(this, this.scene, enemy[i], this.lvlcontroller)
-                                    }
-                                    else enemy[i].receiveDamage(instance)
+                                }
+                                else {
+                                    let splashenemies = this.getSplashEnemiesInRange(enemies, enemy[i], splash.radius)
+                                    for (let j = 0; j < splashenemies.length; j++)
+                                        splashenemies[j].receiveDamage(instance)
                                 }
                             }
-                            else {
-                                let splashenemies = this.getSplashEnemiesInRange(enemies, enemy[i], splash.radius)
-                                for (let j = 0; j < splashenemies.length; j++)
-                                    splashenemies[j].receiveDamage(instance)
+                        }
+                        if (instance.playerSkill.chargetype == "attack" && instance.playerSkill.triggertype == "auto" && instance.playerSkill.duration==0 && instance.playerSkill.currentsp >= instance.playerSkill.totalsp) {
+                            
+                            if (Math.random() < 0.30)
+                                this.lvlcontroller.playSound(instance.chara.name + "-skill", this.lvlcontroller.vcvolume)
+                            if (instance.chara.skillsfx) {
+                                if (instance.chara.sfx.skillhit != undefined)
+                                    this.lvlcontroller.playSound(instance.chara.name + "-skillhit", instance.chara.sfx.skillhit.volume)
+                            }
+                            instance.playerSkill.currentsp = -1
+                        }
+
+                        if (instance.playerSkill.chargetype == "attack" && !instance.playerSkill.active) {
+                            instance.playerSkill.currentsp = Math.min(instance.playerSkill.currentsp + 1, instance.playerSkill.totalsp);
+                            instance.updateSkillBarCharging();
+                        }
+                        clearInterval(interval);
+                        if (this.buffs.getDoubleHitChance())
+                            instance.atktimer += 200000
+                    }
+                }, 1);
+                return true;
+            }
+            else{
+                if (this.playerSkill.active && this.chara.skillsfx) {
+                    if (this.chara.sfx.skillhit != undefined && this.chara.bullet == undefined)
+                        this.lvlcontroller.playSound(this.chara.name + "-skillhit", this.chara.sfx.skillhit.volume)
+                }
+                else if (this.chara.sfx.hit != undefined && this.chara.bullet == undefined)
+                    this.lvlcontroller.playSound(this.chara.name + "-hit", this.chara.sfx.hit.volume)
+
+                if (dmgtype == "heal") {
+                    for (let i = 0; i < enemy.length; i++)
+                        enemy[i].receiveHealing(instance);
+                }
+                else {
+                    for (let i = 0; i < enemy.length; i++) {
+                        let splash = this.buffs.getSplash()
+                        if (!splash.splash) {
+                            for (let j = 0; j < this.buffs.getAttacks(); j++) {
+                                if (this.chara.skillbullet != undefined && this.playerSkill.active) {
+                                    new Bullet(this, this.scene, enemy[i], this.lvlcontroller, true)
+                                }
+                                else if (this.chara.bullet != undefined) {
+                                    new Bullet(this, this.scene, enemy[i], this.lvlcontroller)
+                                }
+                                else enemy[i].receiveDamage(instance)
                             }
                         }
-                    };
-                    if (instance.playerSkill.chargetype == "attack" && instance.playerSkill.triggertype == "auto" && instance.playerSkill.currentsp >= instance.playerSkill.totalsp) {
-                        if (Math.random() < 0.30)
-                            this.lvlcontroller.playSound(instance.chara.name + "-skill", this.lvlcontroller.vcvolume)
-                        if (instance.chara.skillsfx) {
-                            if (instance.chara.sfx.skillhit != undefined)
-                                this.lvlcontroller.playSound(instance.chara.name + "-skillhit", instance.chara.sfx.skillhit.volume)
+                        else {
+                            let splashenemies = this.getSplashEnemiesInRange(enemies, enemy[i], splash.radius)
+                            for (let j = 0; j < splashenemies.length; j++)
+                                splashenemies[j].receiveDamage(instance)
                         }
-                        instance.playerSkill.currentsp = -1
                     }
-
-                    if (instance.playerSkill.chargetype == "attack" && !instance.playerSkill.active) {
-                        instance.playerSkill.currentsp = Math.min(instance.playerSkill.currentsp + 1, instance.playerSkill.totalsp);
-                        instance.updateSkillBarCharging();
-                    }
-                    clearInterval(interval);
-                    if (this.buffs.getDoubleHitChance())
-                        instance.atktimer += 200000
                 }
-            }, 1);
-            return true;
+                return true;
+            }
         }
         return false;
     }

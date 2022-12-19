@@ -177,7 +177,7 @@ class LVLGUIController {
         setTimeout(() => {
             if (instance.showinggui)
                 instance.timerPause = true
-        }, 500)
+        }, 100)
     }
 
     //gives the possibility of reactivating the pause screen only after a short delay from clicking esc
@@ -185,7 +185,7 @@ class LVLGUIController {
         var instance = this
         setTimeout(() => {
             instance.canPause = true
-        }, 500)
+        }, 100)
     }
 
     //shows the level clear screen, considered as a pause menu so everything else is disabled
@@ -887,7 +887,10 @@ class LVLGUIController {
 
 
         var textSP = new BABYLON.GUI.TextBlock();
-        textSP.text = player.chara.skill.sp + " 🗲\t\t\t\t" + player.chara.skill.duration + " ◷"
+        let duration = player.chara.skill.duration
+        if(duration==9999)
+            duration = "∞"
+        textSP.text = player.chara.skill.sp + " 🗲\t\t\t\t" + duration + " ◷"
         textSP.fontSize = "10%";
         textSP.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT
 

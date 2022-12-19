@@ -1011,7 +1011,7 @@ levels["6-H4"] = {
     squadlimit: 9,
     hp: 2,
     background: "loading_LM_frost",
-    description: "The fully empowered FrostNova has returned to the battlefield.\nUse your tactical acumen to endure the blizzard!\n<Ice Crystal> Periodically releases a frigid wave \nthat will inflict Cold to affected allied units.",
+    description: "The fully empowered FrostNova has returned to the battlefield.\nUse your tactical acumen to endure the blizzard!\n\n<Ice Crystal> Periodically releases a frigid wave \nthat will inflict Cold to affected allied units.",
     place: "Frozen",
     offsetX: -45,
     offsetY: -60,
@@ -1076,7 +1076,7 @@ levels["6-H4"] = {
             { "start": [4, 9], "end": [3, 10], "pause": 10 },
             { "start": [3, 10], "end": [4, 11], "pause": 0 },
             { "start": [4, 11], "end": [3, 12], "pause": 0 }
-        ] },
+        ]},
         { "number": 45, "time": 256.5, "gap": 15, "enemies": "Mortar Gunner Leader", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [0, 3], "checkpoints": [{ "start": [0, 3], "end": [1, 3], "pause": 20 },{ "start": [1, 3], "end": [4, 3], "pause": 0 },{ "start": [4, 3], "end": [4, 12], "pause": 0 }] },
         { "number": 46, "time": 256.5, "gap": 15, "enemies": "Yeti Caster Leader", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [0, 7], "checkpoints": [{ "start": [0, 7], "end": [1, 7], "pause": 5 },{ "start": [1, 7], "end": [3, 7], "pause": 0 },{ "start": [3, 7], "end": [3, 12], "pause": 0 }] },
         { "number": 47, "time": 256.5, "gap": 1, "enemies": "Yeti Icecleaver Leader", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 12], "pause": 0 }] },
@@ -1144,13 +1144,11 @@ levels["7-1"] = {
     { "number": 7, "time": 2, "gap": 5, "enemies": "Guerrilla Fighter", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [5, 11], "checkpoints": [{ "start": [5, 11], "end": [5, 10], "pause": 165 }, { "start": [5, 10], "end": [4, 7], "pause": 0 }, { "start": [4, 7], "end": [4, 1], "pause": 0 }] },
     { "number": 8, "time": 2, "gap": 5, "enemies": "Guerrilla Fighter", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [6, 11], "checkpoints": [{ "start": [6, 11], "end": [6, 10], "pause": 164 }, { "start": [6, 9], "end": [5, 1], "pause": 0 }] },
     { "number": 9, "time": 2, "gap": 5, "enemies": "Guerrilla Fighter", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [2, 11], "checkpoints": [{ "start": [2, 11], "end": [2, 10], "pause": 166 }, { "start": [2, 9], "end": [3, 1], "pause": 0 }] },
-
     { "number": 10, "time": 6, "gap": 5, "enemies": "Guerrilla Hound", "line": true, "tooltip": true, "count": 1, "taunt": true, "start": [4, 11], "checkpoints": [{ "start": [4, 11], "end": [4, 1], "pause": 0 }] },
     { "number": 11, "time": 9, "gap": 5, "enemies": "Guerrilla Hound", "line": true, "tooltip": false, "count": 1, "taunt": false, "start": [5, 11], "checkpoints": [{ "start": [5, 11], "end": [4, 7], "pause": 0 }, { "start": [4, 7], "end": [4, 1], "pause": 0 }] },
     { "number": 12, "time": 14, "gap": 5, "enemies": "Guerrilla Hound", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [4, 11], "checkpoints": [{ "start": [4, 11], "end": [4, 1], "pause": 0 }] },
     { "number": 13, "time": 17, "gap": 4, "enemies": "Guerrilla Hound", "line": true, "tooltip": false, "count": 2, "taunt": false, "start": [2, 11], "checkpoints": [{ "start": [2, 11], "end": [3, 1], "pause": 0 }] },
     { "number": 14, "time": 26, "gap": 4, "enemies": "Guerrilla Hound", "line": true, "tooltip": false, "count": 2, "taunt": false, "start": [6, 11], "checkpoints": [{ "start": [6, 11], "end": [5, 1], "pause": 0 }] },
-
     { "number": 15, "time": 29, "gap": 5, "enemies": "Guerrilla Hound", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [4, 11], "checkpoints": [{ "start": [4, 11], "end": [4, 1], "pause": 0 }] },
     { "number": 16, "time": 29, "gap": 4, "enemies": "Guerrilla Hound", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [2, 11], "checkpoints": [{ "start": [2, 11], "end": [3, 1], "pause": 0 }] },
     { "number": 17, "time": 34, "gap": 4, "enemies": "Guerrilla Hound", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [6, 11], "checkpoints": [{ "start": [6, 11], "end": [5, 1], "pause": 0 }] },
@@ -2324,35 +2322,35 @@ levels["7-H4"] = {
         },
 
         {
-            "number": 4, "time": 4.05, "gap": 5, "enemies": "Guerrilla Shieldguard LeaderEX", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [4, 13], "checkpoints": [{ "start": [4, 13], "end": [4, 11], "pause": 42 }, { "start": [4, 11], "end": [4, 10], "pause": 30 },
+            "number": 4, "time": 5, "gap": 5, "enemies": "Guerrilla Shieldguard LeaderEX", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [4, 13], "checkpoints": [{ "start": [4, 13], "end": [4, 11], "pause": 42 }, { "start": [4, 11], "end": [4, 10], "pause": 30 },
             { "start": [4, 10], "end": [4, 9], "pause": 30 }, { "start": [4, 9], "end": [4, 8], "pause": 30 }, { "start": [4, 8], "end": [4, 7], "pause": 29 }, { "start": [4, 7], "end": [4, 6], "pause": 28 }, { "start": [4, 6], "end": [4, 5], "pause": 27 },
             { "start": [4, 5], "end": [4, 4], "pause": 26 }, { "start": [4, 4], "end": [4, 2], "pause": 20 }, { "start": [4, 2], "end": [4, 1], "pause": 0 }]
         },
         {
-            "number": 5, "time": 4.05, "gap": 5, "enemies": "Guerrilla Shieldguard LeaderEX", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [3, 13], "checkpoints": [{ "start": [3, 13], "end": [3, 11], "pause": 42 }, { "start": [3, 11], "end": [3, 10], "pause": 30 },
+            "number": 5, "time": 5, "gap": 5, "enemies": "Guerrilla Shieldguard LeaderEX", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [3, 13], "checkpoints": [{ "start": [3, 13], "end": [3, 11], "pause": 42 }, { "start": [3, 11], "end": [3, 10], "pause": 30 },
             { "start": [3, 10], "end": [3, 9], "pause": 30 }, { "start": [3, 9], "end": [3, 8], "pause": 30 }, { "start": [3, 8], "end": [3, 7], "pause": 29 }, { "start": [3, 7], "end": [3, 6], "pause": 28 }, { "start": [3, 6], "end": [3, 5], "pause": 27 },
             { "start": [3, 5], "end": [3, 4], "pause": 26 }, { "start": [3, 4], "end": [3, 2], "pause": 20 }, { "start": [3, 2], "end": [3, 1], "pause": 0 }]
         },
         {
-            "number": 6, "time": 4.05, "gap": 5, "enemies": "Guerrilla Shieldguard LeaderEX", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [2, 13], "checkpoints": [{ "start": [2, 13], "end": [2, 11], "pause": 42 }, { "start": [2, 11], "end": [2, 10], "pause": 30 },
+            "number": 6, "time": 5, "gap": 5, "enemies": "Guerrilla Shieldguard LeaderEX", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [2, 13], "checkpoints": [{ "start": [2, 13], "end": [2, 11], "pause": 42 }, { "start": [2, 11], "end": [2, 10], "pause": 30 },
             { "start": [2, 10], "end": [2, 9], "pause": 30 }, { "start": [2, 9], "end": [2, 8], "pause": 30 }, { "start": [2, 8], "end": [2, 7], "pause": 29 }, { "start": [2, 7], "end": [2, 6], "pause": 28 }, { "start": [2, 6], "end": [2, 5], "pause": 27 },
             { "start": [2, 5], "end": [2, 4], "pause": 26 }, { "start": [2, 4], "end": [2, 2], "pause": 20 }, { "start": [2, 2], "end": [2, 1], "pause": 0 }]
         },
 
         {
-            "number": 7, "time": 8.1, "gap": 5, "enemies": "Guerrilla Shieldguard LeaderEX", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [4, 13], "checkpoints": [{ "start": [4, 13], "end": [4, 12], "pause": 42 }, { "start": [4, 12], "end": [4, 11], "pause": 30 },
+            "number": 7, "time": 10, "gap": 5, "enemies": "Guerrilla Shieldguard LeaderEX", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [4, 13], "checkpoints": [{ "start": [4, 13], "end": [4, 12], "pause": 42 }, { "start": [4, 12], "end": [4, 11], "pause": 30 },
             { "start": [4, 11], "end": [4, 10], "pause": 30 }, { "start": [4, 10], "end": [4, 9], "pause": 30 }, { "start": [4, 9], "end": [4, 8], "pause": 29 }, { "start": [4, 8], "end": [4, 7], "pause": 28 }, { "start": [4, 7], "end": [4, 6], "pause": 27 },
             { "start": [4, 6], "end": [4, 5], "pause": 26 }, { "start": [4, 5], "end": [4, 4], "pause": 25 }, { "start": [4, 4], "end": [4, 2], "pause": 20 }, { "start": [4, 2], "end": [4, 1], "pause": 0 }]
         },
 
         {
-            "number": 8, "time": 8.1, "gap": 5, "enemies": "Guerrilla Shieldguard LeaderEX", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [3, 13], "checkpoints": [{ "start": [3, 13], "end": [3, 12], "pause": 42 }, { "start": [3, 12], "end": [3, 11], "pause": 30 },
+            "number": 8, "time": 10, "gap": 5, "enemies": "Guerrilla Shieldguard LeaderEX", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [3, 13], "checkpoints": [{ "start": [3, 13], "end": [3, 12], "pause": 42 }, { "start": [3, 12], "end": [3, 11], "pause": 30 },
             { "start": [3, 11], "end": [3, 10], "pause": 30 }, { "start": [3, 10], "end": [3, 9], "pause": 30 }, { "start": [3, 9], "end": [3, 8], "pause": 29 }, { "start": [3, 8], "end": [3, 7], "pause": 28 }, { "start": [3, 7], "end": [3, 6], "pause": 27 },
             { "start": [3, 6], "end": [3, 5], "pause": 26 }, { "start": [3, 5], "end": [3, 4], "pause": 25 }, { "start": [3, 4], "end": [3, 2], "pause": 20 }, { "start": [3, 2], "end": [3, 1], "pause": 0 }]
         },
 
         {
-            "number": 9, "time": 8.1, "gap": 5, "enemies": "Guerrilla Shieldguard LeaderEX", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [2, 13], "checkpoints": [{ "start": [2, 13], "end": [2, 12], "pause": 42 }, { "start": [2, 12], "end": [2, 11], "pause": 30 },
+            "number": 9, "time": 10, "gap": 5, "enemies": "Guerrilla Shieldguard LeaderEX", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [2, 13], "checkpoints": [{ "start": [2, 13], "end": [2, 12], "pause": 42 }, { "start": [2, 12], "end": [2, 11], "pause": 30 },
             { "start": [2, 11], "end": [2, 10], "pause": 30 }, { "start": [2, 10], "end": [2, 9], "pause": 30 }, { "start": [2, 9], "end": [2, 8], "pause": 29 }, { "start": [2, 8], "end": [2, 7], "pause": 28 }, { "start": [2, 7], "end": [2, 6], "pause": 27 },
             { "start": [2, 6], "end": [2, 5], "pause": 26 }, { "start": [2, 5], "end": [2, 4], "pause": 25 }, { "start": [2, 4], "end": [2, 2], "pause": 20 }, { "start": [2, 2], "end": [2, 1], "pause": 0 }]
         },

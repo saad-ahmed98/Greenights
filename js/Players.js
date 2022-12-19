@@ -1,5 +1,147 @@
 let playerlist = {};
 
+playerlist["Angelina"] = {
+    name: "Angelina",
+    hp: 1385,
+    atk: 642,
+    def: 120,
+    res: 25,
+    atkinterval: 1.9,
+    blockcount: 1,
+    rarity: "rgb(255, 115, 0)",
+
+    rdtimer: 70,
+    rdcounter: 0,
+
+    type: "r",
+    class: "supporter",
+    subclass: "Decel Bender",
+
+
+    cost: 14,
+    basecost: 14,
+
+    range: 2,
+    targets: 1,
+
+    dmgtype: "arts",
+
+    classicon: "images/classicons/decel.png",
+
+    opicon: "images/opicons/angelina.webp",
+
+    spritesheet: "images/sprites/angelina-sheet.webp",
+
+    skillsfx: false,
+    bullet: { size: { height: 1, depth: 5, width: 2 }, arc: false, speed: 4, color: new BABYLON.Color3(0.87, 0.18, 0.89) },
+    atkanim: {
+        start: 999,
+        end: 999,
+        exists:false
+    },
+    death: {
+        start: 0,
+        end: 14,
+    },
+
+    idle: {
+        start: 15,
+        end: 44
+    },
+
+    drop: {
+        start: 45,
+        end: 59
+    },
+
+    skillidle: {
+        start: 60,
+        end: 66,
+    },
+
+    skill: {
+        name: "Arcane Staff - Anti-Gravity Mode",
+        description: "Range +1; ATK +150%\nTargets 4 enemies at once",
+        duration: 25,
+        sp: 25,
+        initialsp: 10,
+        chargetype: "second",
+        triggertype: "manual",
+        modifiers: {
+            range: 1,
+            atk: 1.5,
+            targets: 3,
+            canattack: true,
+        },
+        apply: "self",
+        skillimage: "images/opicons/angelinaskill.webp"
+
+    },
+    talents: [
+        {
+            name: "Accelerator Field",
+            description: "All allies' ASPD +8.",
+            modifiers: {
+            },
+            applyeffects:
+            {
+                name: "Accelerator Field effect",
+                apply: "aliveallies",
+                range: 99,
+                modifiers: {
+                    aspd:8
+                },
+                duration: 0.5,
+                targets: 99,
+            },
+            apply: "self",
+        },
+        {
+            name: "Part-time Job",
+            description: "Cannot attack while skill is inactive.\nAll allies restore 25 HP every second.",
+            modifiers: {
+                canattack:false,
+            },
+            applyeffects:
+            {
+                name: "Part-time Job effect",
+                apply: "aliveallies",
+                range: 99,
+                modifiers: {
+                    flathpregen:25
+                },
+                duration: 0.5,
+                targets: 99,
+            },
+            apply: "self",
+        },
+        {
+            name: "Trait",
+            description: "Each attack lowers the movement speed\nby 80% for 1sec",
+            modifiers: {
+            },
+            applyeffects: {
+                apply: "hit",
+                modifiers: {
+                    speedpercent: 0.20,
+                },
+                duration: 1
+            },
+            apply: "self",
+        }
+    ],
+    sfx: {
+        hit: {
+            src: "angelina-hit",
+            volume: 0.1
+        },
+        skillact: {
+            src: "angelina-skill",
+            volume: 0.3
+        }
+    }
+}
+
 playerlist["Saileach"] = {
     name: "Saileach",
     hp: 1835,
@@ -55,7 +197,7 @@ playerlist["Saileach"] = {
         start: 70,
         end: 84
     },
-    skillidle:{
+    skillidle: {
         start: 85,
         end: 124
     },
@@ -69,27 +211,27 @@ playerlist["Saileach"] = {
         chargetype: "second",
         triggertype: "manual",
         modifiers: {
-            instantdp:20,
-            canattack:false,
-            range:1,
-            block:-99,
+            instantdp: 20,
+            canattack: false,
+            range: 1,
+            block: -99,
         },
         applyeffects:
         {
             name: "Faith effect",
             apply: "aliveallies",
-            range:2,
+            range: 2,
             modifiers: {
                 def: 0.5,
-                flathpregen:{
-                    stat:"atk",
-                    percent:0.5
+                flathpregen: {
+                    stat: "atk",
+                    percent: 0.5
                 }
             },
             duration: 0.1,
-            targets:1,
-            effecticon:13,
-            targetselected:[],
+            targets: 1,
+            effecticon: 13,
+            targetselected: [],
         },
         apply: "self",
         skillimage: "images/opicons/saileachskill.webp"
@@ -101,22 +243,22 @@ playerlist["Saileach"] = {
         modifiers: {
         },
         apply: "self",
-    },{
+    }, {
         name: "Unwavering Banner",
         description: "Allied units within the surrounding 8 tiles of Saileach\nhave ASPD +12 and regenerate 1.5% of their own Max HP.",
         modifiers: {
         },
         applyeffects:
         {
-            name:"Unwavering Banner effect",
+            name: "Unwavering Banner effect",
             apply: "aliveallies",
-            range:1.5,
+            range: 1.5,
             modifiers: {
                 aspd: 12,
                 hpregenpercent: 0.015,
             },
             duration: 0.5,
-            targets:99,
+            targets: 99,
         },
         apply: "self",
     },
@@ -128,7 +270,7 @@ playerlist["Saileach"] = {
         },
         apply: "self",
     },
-],
+    ],
     sfx: {
         hit: {
             src: "saileach-hit",
@@ -242,7 +384,7 @@ playerlist["Texas"] = {
             },
             dmgtype: "arts",
             atk: 0.55,
-            flatmultiatk:1.20,
+            flatmultiatk: 1.20,
             attacks: 1
         },
         apply: "self",
@@ -371,12 +513,12 @@ playerlist["Shining"] = {
         {
             name: "Creed Field effect",
             apply: "aliveallies",
-            range:3,
+            range: 3,
             modifiers: {
                 def: 1,
             },
             duration: 0.5,
-            targets:99,
+            targets: 99,
         },
         apply: "self",
         skillimage: "images/opicons/shiningskill.webp"
@@ -390,25 +532,25 @@ playerlist["Shining"] = {
             aspd: 13,
         },
         apply: "self",
-    },{
+    }, {
         name: "Black Fiend's Protection",
         description: "DEF of allies within range +65",
         modifiers: {
         },
         applyeffects:
         {
-            name:"Black Fiend's Protection effect",
+            name: "Black Fiend's Protection effect",
             apply: "aliveallies",
-            range:3,
+            range: 3,
             modifiers: {
                 flatdef: 65,
             },
             duration: 0.5,
-            targets:99,
+            targets: 99,
         },
         apply: "self",
     }
-],
+    ],
     sfx: {
         atk: {
             src: "hibiscus-atk",
@@ -419,7 +561,6 @@ playerlist["Shining"] = {
             volume: 0.3
         }
     }
-
 }
 
 playerlist["Saga"] = {
@@ -590,8 +731,8 @@ playerlist["Exusiai"] = {
     opicon: "images/opicons/exusiai.webp",
 
     spritesheet: "images/sprites/exusiai-sheet.webp",
-    bullet: { size: { height: 1, depth: 4, width: 0.5 }, arc:false, speed:4, color: new BABYLON.Color3(1, 0.78, 0.08)},
-    
+    bullet: { size: { height: 1, depth: 4, width: 0.5 }, arc: false, speed: 4, color: new BABYLON.Color3(1, 0.78, 0.08) },
+
 
     skillsfx: true,
 
@@ -663,7 +804,7 @@ playerlist["Exusiai"] = {
                 priority: "flying",
             },
             apply: "self",
-        } 
+        }
 
     ],
     sfx: {
@@ -718,8 +859,8 @@ playerlist["Schwarz"] = {
 
 
     skillsfx: true,
-    bullet: { size: { height: 1, depth: 8, width: 0.5 }, arc:false, speed:4, color: new BABYLON.Color3(0.4, 0.4, 0.4)},
-    skillbullet: { size: { height: 1, depth: 8, width: 1.5 }, arc:false, speed:4, color: new BABYLON.Color3(0.93, 0.36, 0.6)},
+    bullet: { size: { height: 1, depth: 8, width: 0.5 }, arc: false, speed: 4, color: new BABYLON.Color3(0.4, 0.4, 0.4) },
+    skillbullet: { size: { height: 1, depth: 8, width: 1.5 }, arc: false, speed: 4, color: new BABYLON.Color3(0.93, 0.36, 0.6) },
 
     atkanim: {
         start: 0,
@@ -788,7 +929,7 @@ playerlist["Schwarz"] = {
                 modifiers: {
                     flatmultidef: 0.8,
                 },
-                effecticon:6,
+                effecticon: 6,
                 duration: 5
             },
             apply: "self",
@@ -859,8 +1000,8 @@ playerlist["Ceobe"] = {
     spritesheet: "images/sprites/ceobe-sheet.webp",
 
     skillsfx: true,
-    bullet: { size: { height: 1, depth: 5, width: 2 }, arc:false, speed:4, color: new BABYLON.Color3(0.87, 0.18, 0.89)},
-    skillbullet: { size: { height: 1, depth: 6, width: 1.5 }, arc:false, speed:4, color: new BABYLON.Color3(1, 0.4, 0)},
+    bullet: { size: { height: 1, depth: 5, width: 2 }, arc: false, speed: 4, color: new BABYLON.Color3(0.87, 0.18, 0.89) },
+    skillbullet: { size: { height: 1, depth: 6, width: 1.5 }, arc: false, speed: 4, color: new BABYLON.Color3(1, 0.4, 0) },
 
     atkanim: {
         start: 0,
@@ -1195,7 +1336,7 @@ playerlist["Istina"] = {
 
     type: "r",
     class: "supporter",
-    subclass: "Decel bender",
+    subclass: "Decel Bender",
 
 
     cost: 13,
@@ -1213,7 +1354,7 @@ playerlist["Istina"] = {
     spritesheet: "images/sprites/istina-sheet.webp",
 
     skillsfx: false,
-    bullet: { size: { height: 1, depth: 5, width: 2 }, arc:false, speed:4, color: new BABYLON.Color3(1, 1, 1)},
+    bullet: { size: { height: 1, depth: 5, width: 2 }, arc: false, speed: 4, color: new BABYLON.Color3(1, 1, 1) },
 
 
     atkanim: {
@@ -1423,6 +1564,237 @@ playerlist["Nearl"] = {
     }
 }
 
+playerlist["Lappland"] = {
+    name: "Lappland",
+    hp: 2350,
+    atk: 785,
+    def: 365,
+    res: 15,
+    atkinterval: 1.3,
+    blockcount: 2,
+    rarity: "rgb(255, 221, 26)",
+
+    rdtimer: 66,
+    rdcounter: 0,
+
+    type: "g",
+    class: "guard",
+    subclass: "Lord",
+
+    cost: 17,
+    basecost: 17,
+
+    range: 2,
+    targets: 1,
+
+    dmgtype: "physical",
+
+    classicon: "images/classicons/lord.png",
+
+    opicon: "images/opicons/lappland.webp",
+
+    spritesheet: "images/sprites/lappland-sheet.webp",
+    skillsfx: true,
+
+    atkanim: {
+        start: 0,
+        end: 20,
+        contact: 10,
+        duration: 1.1,
+    },
+
+    death: {
+        start: 21,
+        end: 35,
+    },
+
+    idle: {
+        start: 36,
+        end: 65,
+        duration: 1,
+    },
+
+    drop: {
+        start: 66,
+        end: 77
+    },
+    skillatkanim: {
+        start: 78,
+        end: 94,
+        contact: 86,
+
+    },
+
+    skill: {
+        name: "Wolf Spirit",
+        description: "ATK +120%\nDamage turns into ARTS;\nAttacks 1 extra target.",
+        duration: 20,
+        sp: 17,
+        initialsp: 0,
+        chargetype: "attack",
+        triggertype: "auto",
+        modifiers: {
+            atk: 1.2,
+            targets:1,
+            dmgtype: "arts",
+        },
+        apply: "self",
+        skillimage: "images/opicons/lapplandskill.webp"
+
+    },
+    talents: [{
+        name: "Targeting - Primary",
+        description: "Has a 20% chance of increasing \nthe next atk damage to 160%(will change later)",
+        modifiers: {
+            critchance: 0.20,
+            critdmg: 1.6,
+        },
+        apply: "self",
+    }
+        , {
+        name: "Trait",
+        description: "Can do ranged attacks to unblocked enemies\nin range for 80% of own attack.",
+        modifiers: {
+        },
+        apply: "self",
+    }
+    ],
+    sfx: {
+        atk: {
+            src: "melantha-atk",
+            volume: 0.1
+        },
+        hit: {
+            src: "lappland-atk",
+            volume: 0.1
+        },
+        skillatk: {
+            src: "lappland-skillatk",
+            volume: 0.1
+        },
+        skillact: {
+            src: "lappland-skill",
+            volume: 0.3
+        }
+    }
+}
+
+playerlist["Ceylon"] = {
+    name: "Ceylon",
+    hp: 1655,
+    atk: 508,
+    def: 123,
+    res: 10,
+    atkinterval: 2.85,
+    blockcount: 1,
+
+    rdtimer: 60,
+    rdcounter: 0,
+
+    type: "r",
+    class: "medic",
+    subclass: "Doctor",
+    rarity: "rgb(255, 221, 26)",
+
+
+    cost: 19,
+    basecost: 19,
+
+    range: 3,
+    targets: 1,
+
+    dmgtype: "heal",
+
+    classicon: "images/classicons/doctor.png",
+
+    opicon: "images/opicons/ceylon.webp",
+
+    spritesheet: "images/sprites/ceylon-sheet.webp",
+    skillsfx: false,
+
+    atkanim: {
+        start: 0,
+        end: 21,
+        contact: 8,
+        duration: 1.1,
+    },
+
+    death: {
+        start: 22,
+        end: 36,
+    },
+    idle: {
+        start: 37,
+        end: 76,
+        duration: 1,
+    },
+
+    drop: {
+        start: 77,
+        end: 91
+    },
+
+    skill: {
+        name: "Water Blessing",
+        description: "ATK +60%;\nTargets healed +1;\nAllies within range have the duration\n of negative cold, frozen or stuns halved.\nInfinite duration",
+        duration: 9999,
+        sp: 80,
+        initialsp: 0,
+        chargetype: "second",
+        triggertype: "auto",
+        modifiers: {
+            targets:1,
+            atk: 0.60,
+        },
+        applyeffects:
+        {
+            name: "Water Blessing effect",
+            apply: "aliveallies",
+            range: 3,
+            modifiers: {
+                statusres: -0.5,
+            },
+            duration: 0.5,
+            targets: 99,
+        },
+        apply: "self",
+        skillimage: "images/opicons/ceylonskill.webp"
+
+
+    },
+    talents: [
+        {
+        name: "Lake Walker",
+        description: "ATK +12%; Allies in the 4 adjacent tiles\nto Ceylon gain the same effect.",
+        modifiers: {
+        },
+        applyeffects:
+        {
+            name: "Lake Walker effect",
+            apply: "aliveallies",
+            range: 1,
+            modifiers: {
+                atk:0.12
+            },
+            duration: 0.5,
+            targets: 99,
+        },
+        apply: "self",
+    }
+    ],
+    sfx: {
+        atk: {
+            src: "hibiscus-atk",
+            volume: 0.1
+        },
+        skillact: {
+            src: "skill-heal",
+            volume: 0.3
+        }
+    }
+
+}
+
 
 playerlist["Breeze"] = {
     //hasmodule
@@ -1564,7 +1936,7 @@ playerlist["Beeswax"] = {
     spritesheet: "images/sprites/beeswax-sheet.webp",
 
     skillsfx: false,
-    bullet: { size: { height: 1, depth: 5, width: 2 }, arc:false, speed:4, color: new BABYLON.Color3(1, 0.78, 0.08)},
+    bullet: { size: { height: 1, depth: 5, width: 2 }, arc: false, speed: 4, color: new BABYLON.Color3(1, 0.78, 0.08) },
 
 
     atkanim: {
@@ -1734,9 +2106,9 @@ playerlist["Liskarm"] = {
             description: "Restores 1 Skill Point to this Operator and \na random ally in the surrounding grids when attacked",
             modifiers: {
             },
-            apply: "self", 
+            apply: "self",
         }
-        ,{
+        , {
             name: "Trait",
             description: "Has extended range and does ranged attacks.",
             modifiers: {
@@ -1877,7 +2249,7 @@ playerlist["Franka"] = {
 
 playerlist["Matterhorn"] = {
     name: "Matterhorn",
-    hp: 4250-380,
+    hp: 4250 - 380,
     atk: 375,
     def: 670,
     res: 5,
@@ -1977,6 +2349,109 @@ playerlist["Matterhorn"] = {
     }
 }
 
+playerlist["Gravel"] = {
+    name: "Gravel",
+    hp: 1880,
+    atk: 452,
+    def: 335,
+    res: 0,
+    atkinterval: 0.93,
+    blockcount: 1,
+    rarity: "rgb(216, 132, 255)",
+
+    rdtimer: 16,
+    rdcounter: 0,
+
+    type: "g",
+    class: "specialist",
+    subclass: "Executor",
+
+
+    cost: 5,
+    basecost: 6,
+
+    range: 1,
+    targets: 1,
+
+
+    dmgtype: "physical",
+
+    classicon: "images/classicons/executor.webp",
+
+    opicon: "images/opicons/gravel.webp",
+
+    spritesheet: "images/sprites/gravel-sheet.webp",
+
+    skillsfx: false,
+
+    atkanim: {
+        start: 0,
+        end: 14,
+        contact: 4,
+        duration: 1.1,
+    },
+
+    death: {
+        start: 15,
+        end: 28,
+    },
+
+    idle: {
+        start: 29,
+        end: 58
+    },
+
+    drop: {
+        start: 59,
+        end: 73
+    },
+
+    skill: {
+        name: "Rat Swarm",
+        description: "Max HP +250% for 10 seconds\nafter deployment.",
+        duration: 10,
+        sp: 0,
+        initialsp: 0,
+        chargetype: "passive",
+        triggertype: "",
+
+        modifiers: {
+            maxhp: 2.5,
+        },
+        apply: "self",
+        skillimage: "images/opicons/gravelskill.webp"
+
+    },
+
+    talents: [
+        {
+            name: "Support of the Little",
+            description: "DP Cost -1; DEF +16%",
+            modifiers: {
+                def: 0.16,
+            },
+            apply: "self",
+        },
+        {
+            name: "Trait",
+            description: "Has significantly reduced redeployment time.",
+            modifiers: {
+
+            },
+            apply: "self",
+        },
+    ],
+    sfx: {
+        hit: {
+            src: "gravel-hit",
+            volume: 0.1
+        },
+        skillact: {
+            src: "skill-def",
+            volume: 0.3
+        }
+    }
+}
 
 
 
@@ -2061,17 +2536,17 @@ playerlist["Perfumer"] = {
             },
             applyeffects:
             {
-                name:"Lavender's Fragrance effect",
+                name: "Lavender's Fragrance effect",
                 apply: "aliveallies",
-                range:99,
+                range: 99,
                 modifiers: {
-                    flathpregen:{
-                        stat:"atk",
-                        percent:0.055
+                    flathpregen: {
+                        stat: "atk",
+                        percent: 0.055
                     }
                 },
                 duration: 0.5,
-                targets:99,
+                targets: 99,
             },
             apply: "self",
         },
@@ -2232,7 +2707,7 @@ playerlist["Gitano"] = {
 
     skillsfx: true,
 
-    skillbullet: { size: { height: 1, depth: 5, width: 2 }, arc:false, speed:4, color: new BABYLON.Color3(0.87, 0.18, 0.89)},
+    skillbullet: { size: { height: 1, depth: 5, width: 2 }, arc: false, speed: 4, color: new BABYLON.Color3(0.87, 0.18, 0.89) },
 
     idle: {
         start: 28,
@@ -2391,7 +2866,7 @@ playerlist["Mousse"] = {
                 flatmultiatk: 0.60,
             },
             duration: 5,
-            effecticon:4
+            effecticon: 4
         },
         apply: "self",
         skillimage: "images/opicons/mousseskill.png"
@@ -2452,7 +2927,7 @@ playerlist["Meteor"] = {
     opicon: "images/opicons/meteor.png",
 
     spritesheet: "images/sprites/meteor-sheet.webp",
-    bullet: { size: { height: 1, depth: 8, width: 0.5 }, arc:false, speed:4, color: new BABYLON.Color3(0.4, 0.4, 0.4)},
+    bullet: { size: { height: 1, depth: 8, width: 0.5 }, arc: false, speed: 4, color: new BABYLON.Color3(0.4, 0.4, 0.4) },
 
     skillsfx: true,
 
@@ -2495,7 +2970,7 @@ playerlist["Meteor"] = {
                 flatmultidef: 0.65,
             },
             duration: 5,
-            effecticon:6
+            effecticon: 6
         },
         apply: "self",
         skillimage: "images/opicons/meteorskill.png"
@@ -2518,7 +2993,7 @@ playerlist["Meteor"] = {
                 priority: "flying",
             },
             apply: "self",
-        } 
+        }
     ],
     sfx: {
         atk: {
@@ -2569,7 +3044,7 @@ playerlist["Haze"] = {
     spritesheet: "images/sprites/haze-sheet.webp",
 
     skillsfx: false,
-    bullet: { size: { height: 1, depth: 5, width: 2 }, arc:false, speed:4, color: new BABYLON.Color3(0.87, 0.18, 0.89)},
+    bullet: { size: { height: 1, depth: 5, width: 2 }, arc: false, speed: 4, color: new BABYLON.Color3(0.87, 0.18, 0.89) },
 
     atkanim: {
         start: 0,
@@ -3249,7 +3724,7 @@ playerlist["Adnachiel"] = {
 
     spritesheet: "images/sprites/adnachiel-sheet.webp",
     skillsfx: false,
-    bullet: { size: { height: 1, depth: 8, width: 0.5 }, arc:false, speed:4, color: new BABYLON.Color3(0.4, 0.4, 0.4)},
+    bullet: { size: { height: 1, depth: 8, width: 0.5 }, arc: false, speed: 4, color: new BABYLON.Color3(0.4, 0.4, 0.4) },
 
     idle: {
         start: 30,
@@ -3303,8 +3778,8 @@ playerlist["Adnachiel"] = {
             priority: "flying",
         },
         apply: "self",
-    } 
-],
+    }
+    ],
     sfx: {
         atk: {
             src: "adnachiel-atk",
@@ -3493,14 +3968,14 @@ playerlist["Midnight"] = {
         },
         apply: "self",
     }
-    ,{
+        , {
         name: "Trait",
-        description: "Can do ranged attacks to unblocked enemies in range for 80% of own attack.",
+        description: "Can do ranged attacks to \nunblocked enemies in range for 80% of own attack.",
         modifiers: {
         },
         apply: "self",
     }
-],
+    ],
     sfx: {
         atk: {
             src: "midnight-atk",
@@ -3646,7 +4121,7 @@ playerlist["Durin"] = {
     spritesheet: "images/sprites/durin-sheet.webp",
 
     skillsfx: false,
-    bullet: { size: { height: 1, depth: 5, width: 2 }, arc:false, speed:4, color: new BABYLON.Color3(0.87, 0.18, 0.89)},
+    bullet: { size: { height: 1, depth: 5, width: 2 }, arc: false, speed: 4, color: new BABYLON.Color3(0.87, 0.18, 0.89) },
 
     idle: {
         start: 38,
@@ -3719,7 +4194,7 @@ playerlist["Orchid"] = {
 
     type: "r",
     class: "supporter",
-    subclass: "Decel bender",
+    subclass: "Decel Bender",
 
 
     cost: 10,
@@ -3737,7 +4212,7 @@ playerlist["Orchid"] = {
     spritesheet: "images/sprites/orchid-sheet.webp",
 
     skillsfx: false,
-    bullet: { size: { height: 1, depth: 5, width: 1 }, arc:false, speed:4, color: new BABYLON.Color3(0.87, 0.18, 0.89)},
+    bullet: { size: { height: 1, depth: 5, width: 1 }, arc: false, speed: 4, color: new BABYLON.Color3(0.87, 0.18, 0.89) },
 
     idle: {
         start: 30,

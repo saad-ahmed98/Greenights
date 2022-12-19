@@ -115,8 +115,10 @@ class CharaController {
         */
 
     applyCold(duration) {
+        var statusres = this.buffs.getStatusRes();
+        duration*=statusres
         if (this.buffs.effects["cold"] == undefined && this.buffs.effects["frozen"] == undefined) {
-            this.buffs.buffs["cold"] = { "name": "cold", "modifiers": { "aspd": -40 } }
+            this.buffs.buffs["cold"] = { "name": "cold", "modifiers": { "aspd": -30 } }
             this.buffs.effects["cold"] = duration
             if (this.buffs.effectSprite["cold"] == undefined)
                 this.createDebuffAura("cold", 9)
@@ -590,10 +592,14 @@ class CharaController {
                     this.buffs.effectSprite[keys[i]].dispose()
 
                 //play death animation
+                var darkening = 1/(this.chara.death.end - this.chara.death.start)/2.5
                 this.sprite.playAnimation(this.chara.death.start, this.chara.death.end, false, 30 * Math.min(2, this.gamespeed));
 
                 var instance = this
                 var interval = setInterval(() => {
+                    this.sprite.color.r -= darkening/this.gamespeed
+                    this.sprite.color.g -= darkening/this.gamespeed
+                    this.sprite.color.b -= darkening/this.gamespeed
                     if (instance.sprite.cellIndex == instance.chara.death.end) {
                         //after death animation is over, remove the sprite
                         instance.sprite.dispose()

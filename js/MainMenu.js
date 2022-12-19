@@ -324,25 +324,36 @@ class MainMenu extends LVLAbstract {
         label.left = "10%";
         label.fontFamily = "Butler Stencil";
         this.lvlcontroller.addControl(label)
+        var j = 0
+        var z =0
         for (let i = 0; i < keys.length; i++) {
+            if (i % 4 == 0 && i>0) {
+                j++
+                z = 0
+            }
             let title = new BABYLON.GUI.TextBlock();
             title.text = chapters[keys[i]].title;
-            title.fontSize = "5%";
+            title.fontSize = "3%";
             title.color = "white";
-            title.top = "35%";
-            title.left = (0 + (i - 1) * 30) + "%";
+            title.top = (7 + j * 40)+"%";
+            title.left = (-10 + (z - 1) * 20) + "%";
             title.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
             title.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
             this.lvlcontroller.addControl(title)
+            z++
         }
-
+        var z=0
+        j = 0
         for (let i = 0; i < keys.length; i++) {
-
+            if (i % 4 == 0 && i>0) {
+                j++
+                z = 0
+            }
             const button = BABYLON.GUI.Button.CreateImageOnlyButton("but", "images/menu/chapters/" + chapters[keys[i]].select);
-            button.width = "28%";
-            button.height = "50%";
-            button.top = "30%";
-            button.left = (6 + i * 30) + "%";
+            button.width = (28 * 0.7) + "%";
+            button.height = (50 * 0.7) + "%";
+            button.top = (20 + j * 40)+"%";
+            button.left = (10 + z * 20) + "%";
 
             button.color = "transparent";
             button.background = "transparent";
@@ -360,7 +371,7 @@ class MainMenu extends LVLAbstract {
                 instance.playSound("chapter", 0.3)
                 instance.createLVLSelect(chapters[keys[i]].label)
             });
-
+            z++
         }
 
 
@@ -460,9 +471,7 @@ class MainMenu extends LVLAbstract {
             button.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
 
             if (i < chapterlvl.length - 1 && !stop) {
-                if (!chapterlvl[i].level.includes("H") && chapterlvl[i + 1].level.includes("H"))
-                    console.log("off")
-                else {
+                if (!(!chapterlvl[i].level.includes("H") && chapterlvl[i + 1].level.includes("H")))
                     if ((i - offs) % 5 == 0 && i > 0 && !(i % 6 == 0)) {
                         var line = new BABYLON.GUI.Image("tooltip", "images/menu/linehorizontal.png");
                         line.width = "6.5%"
@@ -486,7 +495,6 @@ class MainMenu extends LVLAbstract {
                         line.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
                         this.lvlcontroller.addControl(line);
                     }
-                }
             }
 
 
@@ -682,7 +690,7 @@ class MainMenu extends LVLAbstract {
             selected = JSON.parse(storage)
 
 
-        let lastavailable= [1,2,3,4,5,6,7,8,9,10,11,12];
+        let lastavailable = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
         let select = new BABYLON.GUI.TextBlock();
         select.text = "SELECTED " + selected.length + "/12";
@@ -698,7 +706,7 @@ class MainMenu extends LVLAbstract {
         var j = 0;
         var z = 0;
         var myScrollViewer = new BABYLON.GUI.ScrollViewer();
-        myScrollViewer.width = "70%"
+        myScrollViewer.width = "63%"
         myScrollViewer.height = "70%";
         myScrollViewer.left = "-10%";
 
@@ -716,10 +724,10 @@ class MainMenu extends LVLAbstract {
 
 
             let button = BABYLON.GUI.Button.CreateSimpleButton("but", "");
-            button.width = "20.5%";
+            button.width = "22.5%";
             button.height = "9.5%";
             button.top = (10 + z * 10) + "%";
-            button.left = (0 + j * 21.5) + "%";
+            button.left = (0 + j * 23.5) + "%";
             button.color = "white";
             button.hoverCursor = "pointer";
 
@@ -920,7 +928,10 @@ class MainMenu extends LVLAbstract {
 
 
         var textSP = new BABYLON.GUI.TextBlock();
-        textSP.text = player.skill.sp + " 🗲\t\t\t\t" + player.skill.duration + " ◷"
+        let duration = player.skill.duration
+        if(duration==9999)
+            duration = "∞"
+        textSP.text = player.skill.sp + " 🗲\t\t\t\t" + duration + " ◷"
         textSP.fontSize = "10%";
         textSP.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT
 

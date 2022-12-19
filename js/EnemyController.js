@@ -278,6 +278,9 @@ class EnemyController extends CharaController {
 
 
         this.shadow = new BABYLON.Sprite(this.id + "shadow", iconsmanager);
+        this.shadow.isVisible = false;
+        setTimeout(() => this.shadow.isVisible = true, 10)
+
         this.shadow.size = 65 * this.chara.size;
 
         this.shadow.width = 90 * this.chara.size;
@@ -289,6 +292,8 @@ class EnemyController extends CharaController {
         }
 
         var player0 = new BABYLON.Sprite(this.id, spriteManager[this.chara.spritesheet]);
+        player0.isVisible = false
+        setTimeout(() => player0.isVisible = true, 10)
         player0.position = new BABYLON.Vector3((-15 * this.chara.size) + this.x * 30, 20, this.y * 30);
         player0.size = 65 * this.chara.size;
         player0.width = 90 * this.chara.size;
@@ -350,10 +355,10 @@ class EnemyController extends CharaController {
                     }
                 }
                 if (instance.sprite.cellIndex == instance.chara.start.end) {
-                    if(instance.chara.name == "Frostnova2" || instance.chara.name == "FrostnovaEX2"){
+                    if (instance.chara.name == "Frostnova2" || instance.chara.name == "FrostnovaEX2") {
                         instance.lvlcontroller.activateAltars()
                     }
-            
+
                     instance.spawning = false;
                     if (instance.chara.invincible != undefined) {
                         instance.startInvincibility()
@@ -564,6 +569,19 @@ class EnemyController extends CharaController {
                 break;
         }
         this.hp -= dmgreceived
+        this.sprite.color.r = 10
+        this.sprite.color.g = 0
+        this.sprite.color.b = 0
+
+        setTimeout(() => {
+            if(!this.dead){
+                this.sprite.color.r = 1
+                this.sprite.color.g = 1
+                this.sprite.color.b = 1
+            }
+            
+        }
+        , 100)
 
         //update hp bar after receiving damage
         this.updateHpBar();
@@ -615,9 +633,17 @@ class EnemyController extends CharaController {
                 if (this.skillBar != undefined)
                     this.skillBar.dispose();
                 this.sprite.stopAnimation();
+                this.sprite.color.r = 1
+                this.sprite.color.g = 1
+                this.sprite.color.b = 1
+
+                var darkening = 1/(this.chara.death.end - this.chara.death.start)/2.5
                 this.sprite.playAnimation(this.chara.death.start, this.chara.death.end, false, 30 * Math.min(2, this.gamespeed) * (this.chara.death.duration));
                 var instance = this
                 let interval = setInterval(() => {
+                    this.sprite.color.r -= darkening/this.gamespeed
+                    this.sprite.color.g -= darkening/this.gamespeed
+                    this.sprite.color.b -= darkening/this.gamespeed
                     if (instance.sprite.cellIndex == instance.chara.death.end) {
                         if (this.playerSkill != undefined) {
                             if (this.playerSkill.triggertype == "on_death") {
@@ -658,6 +684,7 @@ class EnemyController extends CharaController {
         }
     }
 
+    //if in a stairs tile, render the enemy invisible
     hideInStairs() {
         this.sprite.isVisible = false
         this.shadow.isVisible = false
@@ -679,6 +706,7 @@ class EnemyController extends CharaController {
             this.skillBar.isVisible = false
     }
 
+    //if it's time to reappear from stairs, render the enemy visible again
     unhideInStairs() {
         this.sprite.isVisible = true
         this.shadow.isVisible = true
@@ -701,8 +729,8 @@ class EnemyController extends CharaController {
 
     }
 
+    //sort the targets list to fit the special atk targeting priorities
     sortBySpAtkPriority(targets) {
-
         switch (this.chara.spattack.target) {
             case "highestatk":
                 //sort by highest ATK
@@ -849,7 +877,7 @@ class EnemyController extends CharaController {
     //create sp bar
     addHPBar(gui) {
         var offsetY = 10
-        if(this.chara.type=="r")
+        if (this.chara.type == "r")
             offsetY = -150
         this.healthBarBackground = gui.addBackgroundBar(this.mesh, "rgb(255, 153, 153)", offsetY, "3%");
         this.healthBarBackground.isVisible = false
