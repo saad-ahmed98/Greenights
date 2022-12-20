@@ -116,7 +116,7 @@ class CharaController {
 
     applyCold(duration) {
         var statusres = this.buffs.getStatusRes();
-        duration*=statusres
+        duration *= statusres
         if (this.buffs.effects["cold"] == undefined && this.buffs.effects["frozen"] == undefined) {
             this.buffs.buffs["cold"] = { "name": "cold", "modifiers": { "aspd": -30 } }
             this.buffs.effects["cold"] = duration
@@ -138,6 +138,13 @@ class CharaController {
             for (let i = 0; i < keys.length; i++)
                 this.buffs.effectSprite[keys[i]].dispose()
         }
+    }
+
+    applySilence(duration) {
+        this.buffs.buffs["silence"] = { "name": "silence", "modifiers": { "silence": true } }
+        this.buffs.effects["silence"] = duration
+        if (this.buffs.effectSprite["silence"] == undefined)
+            this.createDebuffAura("silence", 16)
     }
 
 
@@ -550,11 +557,14 @@ class CharaController {
 
     applySpecialEffect(modifiers, target) {
         let keys = Object.keys(modifiers);
-
+        console.log(keys)
         for (let i = 0; i < keys.length; i++) {
             switch (keys[i]) {
                 case "cold":
                     target.applyCold(modifiers[keys[i]]);
+                    break;
+                case "silence":
+                    target.applySilence(modifiers[keys[i]])
                     break;
             }
         }
@@ -592,14 +602,14 @@ class CharaController {
                     this.buffs.effectSprite[keys[i]].dispose()
 
                 //play death animation
-                var darkening = 1/(this.chara.death.end - this.chara.death.start)/2.5
+                var darkening = 1 / (this.chara.death.end - this.chara.death.start) / 2.5
                 this.sprite.playAnimation(this.chara.death.start, this.chara.death.end, false, 30 * Math.min(2, this.gamespeed));
 
                 var instance = this
                 var interval = setInterval(() => {
-                    this.sprite.color.r -= darkening/this.gamespeed
-                    this.sprite.color.g -= darkening/this.gamespeed
-                    this.sprite.color.b -= darkening/this.gamespeed
+                    this.sprite.color.r -= darkening / this.gamespeed
+                    this.sprite.color.g -= darkening / this.gamespeed
+                    this.sprite.color.b -= darkening / this.gamespeed
                     if (instance.sprite.cellIndex == instance.chara.death.end) {
                         //after death animation is over, remove the sprite
                         instance.sprite.dispose()

@@ -1643,11 +1643,16 @@ playerlist["Lappland"] = {
 
     },
     talents: [{
-        name: "Targeting - Primary",
-        description: "Has a 20% chance of increasing \nthe next atk damage to 160%(will change later)",
+        name: "Spiritual Destruction",
+        description: "Disables the target's special ability when attacking, \nlasting 3 seconds",
         modifiers: {
-            critchance: 0.20,
-            critdmg: 1.6,
+        },
+        applyeffects: {
+            apply: "hit",
+            modifiers: {
+                silence:3,
+            },
+            duration: 1
         },
         apply: "self",
     }

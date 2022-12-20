@@ -509,7 +509,7 @@ class EnemyController extends CharaController {
                     this.buffs.buffs[keys[i]] = { "name": keys[i], "modifiers": ef[keys[i]].modifiers }
                     if (ef[keys[i]].effecticon != undefined && this.buffs.effectSprite[keys[i]] == undefined)
                         this.createDebuffAura(keys[i], ef[keys[i]].effecticon)
-
+                    this.applySpecialEffect(ef[keys[i]].modifiers, this)
                 }
             }
             var dmgmodifier = mod;
@@ -646,7 +646,7 @@ class EnemyController extends CharaController {
                     this.sprite.color.b -= darkening/this.gamespeed
                     if (instance.sprite.cellIndex == instance.chara.death.end) {
                         if (this.playerSkill != undefined) {
-                            if (this.playerSkill.triggertype == "on_death") {
+                            if (this.playerSkill.triggertype == "on_death" && !this.buffs.isSilenced()) {
                                 instance.createEffects(instance.lvlcontroller.spriteManagers["boom"])
                                 instance.lvlcontroller.playSound(instance.chara.name + "-skillbomb", instance.chara.sfx.skillbomb.volume)
                                 instance.playerSkill.activateSkillBomb(instance, instance.lvlcontroller);
@@ -1000,7 +1000,7 @@ class EnemyController extends CharaController {
             if (!this.skillproc) {
                 //conditions to see if enemy can attack
                 if (this.spattacktimer != undefined) {
-                    if (this.spattacktimer == this.chara.spattack.sp && this.chara.spattack.chargetype == "second" && !this.attacking && !this.stairs)
+                    if (this.spattacktimer == this.chara.spattack.sp && this.chara.spattack.chargetype == "second" && !this.attacking && !this.stairs && !this.buffs.isSilenced())
                         this.activateSpSkill(players)
                 }
                 //if enemy has no atk, can't attack

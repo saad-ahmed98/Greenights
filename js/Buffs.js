@@ -51,7 +51,8 @@ class Buffs {
             artsdodge: 0,
             hpregenbuff:1,
             statusres:1,
-            frozen:false
+            frozen:false,
+            silence:false,
 
         }
     }
@@ -89,6 +90,12 @@ class Buffs {
         this.initModifiers();
         this.sumBuffs();
         return this.modifiers.frozen;
+    }
+
+    isSilenced(){
+        this.initModifiers();
+        this.sumBuffs();
+        return this.modifiers.silence;
     }
 
     getStatusRes(){

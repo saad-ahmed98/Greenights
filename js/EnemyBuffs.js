@@ -33,6 +33,7 @@ class EnemyBuffs extends Buffs {
             lifesteal:0,
             attacks: 1,
             frozenmod: 1,
+            silence:false,
 
         }
     }
