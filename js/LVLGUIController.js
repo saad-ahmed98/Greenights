@@ -369,6 +369,24 @@ class LVLGUIController {
         this.mapstats["hp"] = label;
         this.statscontroller.addControl(label);
 
+        if(lvlcontroller.poison!=undefined){
+            image = new BABYLON.GUI.Image("",);
+            image.domImage = this.scene.assets["poison"]
+            image.width = "8%";
+            image.height = "14%";
+            image.top = "-46%"
+            image.left = "18%"    
+            this.statscontroller.addControl(image);
+
+            image = new BABYLON.GUI.Image("",);
+            image.domImage = this.scene.assets["poison"]
+            image.width = "8%";
+            image.height = "14%";
+            image.top = "-46%"
+            image.left = "-18%"    
+            this.statscontroller.addControl(image);
+        }
+
         image = new BABYLON.GUI.Image("",);
         image.domImage = this.scene.assets["losshp"]
         image.width = "6%";

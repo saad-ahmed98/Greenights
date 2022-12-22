@@ -1,17 +1,26 @@
 class Tile {
-    constructor(type, x, z, scene, snow = false) {
+    constructor(type, x, z, scene, place) {
         this.type = type;
         this.x = x;
         this.z = z;
         this.mesh;
         this.scene = scene;
         this.player;
-        this.snow = snow;
+        this.place = place;
         this.create();
         this.color;
     }
 
-
+    getBgColor(){
+        switch(this.place){
+            case "Frozen":
+                return new BABYLON.Color3(0.24, 0.4, 0.49)
+            case "Long":
+                return BABYLON.Color3.FromHexString("#202D37");
+            default:
+                return new BABYLON.Color3(0.17, 0.17, 0.17)
+        }
+    }
     create() {
         var h;
         var color;
@@ -28,9 +37,7 @@ class Tile {
                 break;
             case "bg":
                 h = 15;
-                if (this.snow)
-                    color = new BABYLON.Color3(0.24, 0.4, 0.49)
-                else color = new BABYLON.Color3(0.17, 0.17, 0.17)
+                color = this.getBgColor()
                 break;
             default:
                 h = 3;

@@ -64,6 +64,9 @@ class LVLController extends LVLAbstract {
 
         this.activate = false;
 
+        if(lvl.poison!=undefined)
+            this.poison = lvl.poison
+
         this.configureAssetManager();
         this.loadAssets();
         this.scene.assetsManager.load();
@@ -98,10 +101,8 @@ class LVLController extends LVLAbstract {
 
     createGUIs() {
         this.gui.createStatsUI(this.enemycount + "/" + this.enemytot, this.hp, this);
-
         this.gui.createPlayerWheelUI(this.playerlist, this);
     }
-
 
     createLvl() {
         //this.gameconfig.divFps.innerHTML = this.gameconfig.engine.getFps().toFixed() + " fps";
@@ -371,6 +372,14 @@ class LVLController extends LVLAbstract {
             instance.scene.assets[task.name] = task.image
         };
 
+        binaryTask = assetsManager.addImageTask(
+            "poison",
+            "images/common/poison.png",
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets[task.name] = task.image
+        };
+
 
     }
 
@@ -496,7 +505,7 @@ class LVLController extends LVLAbstract {
             BABYLON.Color3.LerpToRef(BABYLON.Color3.BlackReadOnly, startingColor, t, this.scene.clearColor);
         }
         else {
-
+            
             if (!this.render) {
                 this.createGUIs()
                 this.render = true;
@@ -514,7 +523,6 @@ class LVLController extends LVLAbstract {
                 if (!this.gui.isPaused)
                     this.createLvl();
             }
-
         }
         this.scene.render();
     }
@@ -1562,7 +1570,7 @@ class LVLController extends LVLAbstract {
                 var type = array[i][j];
                 line.push(this.getWalkable(array[i][j]));
                 flyingline.push(0)
-                var tile = new Tile(type, i, j, this.scene, this.snowstorm)
+                var tile = new Tile(type, i, j, this.scene, this.place)
                 linetiles.push(tile);
                 if (array[i][j] == "blue")
                     this.hpbox.push(new HPBox("", i, j, this.scene))

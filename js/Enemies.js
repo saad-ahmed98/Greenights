@@ -3,8 +3,8 @@ let enemylist = {};
 
 enemylist['Hound'] = {
     name: "Hound",
-    hp: 1700,
-    atk: 260,
+    hp: 3000,
+    atk: 370,
     def: 0,
     res: 20,
     atkinterval: 1.4,
@@ -32,7 +32,7 @@ enemylist['Hound'] = {
     move: {
         start: 15,
         end: 22,
-        duration: 0.66,
+        duration: 1.2,
 
     },
 
@@ -2834,6 +2834,297 @@ enemylist["Tytus Topola2"] = {
     }
 }
 
+enemylist["Junkman"] = {
+    name: "Junkman",
+    hp: 5000,
+    atk: 500,
+    def: 50,
+    res: 20,
+    atkinterval: 3,
+    speed: 0.8* 0.49,
+    blockcount: 1,
+    type: "g",
+    range: 0,
+    hploss: 1,
+    dmgtype: "physical",
+    size: 1.1,
+    tooltip: "A ragged-looking \nenemy combatant.",
+    targets: 1,
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/junkman-sheet.webp",
+
+    hasskill: false,
+
+    atkanim: {
+        start: 0,
+        end: 14,
+        contact: 10,
+        duration: 1,
+    },
+
+    death: {
+        start: 16,
+        end: 29,
+        duration: 1,
+
+    },
+    idle: {
+        start: 30,
+        end: 44,
+        duration: 1,
+
+    },
+    move: {
+        start: 45,
+        end: 60,
+        duration: 1.2,
+    },
+
+    sfx: {
+
+        hit: {
+            src: "junkman-hit",
+            volume: 0.1
+        }
+    },
+}
+
+enemylist["Veteran Junkman"] = {
+    name: "Veteran Junkman",
+    hp: 7500,
+    atk: 600,
+    def: 70,
+    res: 20,
+    atkinterval: 3,
+    speed: 0.8* 0.49,
+    blockcount: 1,
+    type: "g",
+    range: 0,
+    hploss: 1,
+    dmgtype: "physical",
+    size: 1.1,
+    tooltip: "A ragged-looking enemy.\nMore dangerous than a Junkman.",
+    targets: 1,
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/veteran-junkman-sheet.webp",
+
+    hasskill: false,
+
+    atkanim: {
+        start: 0,
+        end: 14,
+        contact: 10,
+        duration: 1,
+    },
+
+    death: {
+        start: 16,
+        end: 29,
+        duration: 1,
+
+    },
+    idle: {
+        start: 30,
+        end: 44,
+        duration: 1,
+
+    },
+    move: {
+        start: 45,
+        end: 60,
+        duration: 1.2,
+    },
+
+    sfx: {
+
+        hit: {
+            src: "junkman-hit",
+            volume: 0.1
+        }
+    },
+}
+
+enemylist["Soldier"] = {
+    name: "Soldier",
+    hp: 3200,
+    atk: 350,
+    def: 50,
+    res: 0,
+    atkinterval: 2,
+    speed: 1.1* 0.49,
+    blockcount: 1,
+    type: "g",
+    range: 0,
+    hploss: 1,
+    dmgtype: "physical",
+    size: 1,
+    tooltip: "A basic melee soldier.",
+    targets: 1,
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/soldier-sheet.webp",
+
+    hasskill: false,
+
+    atkanim: {
+        start: 0,
+        end: 14,
+        contact: 6,
+        duration: 1,
+    },
+
+    death: {
+        start: 15,
+        end: 29,
+        duration: 1,
+
+    },
+    idle: {
+        start: 30,
+        end: 59,
+        duration: 1,
+
+    },
+    move: {
+        start: 60,
+        end: 83,
+        duration: 1.1,
+
+    },
+
+    sfx: {
+        atk: {
+            src: "soldier-atk",
+            volume: 0.1
+        },
+        hit: {
+            src: "soldier-hit",
+            volume: 0.1
+        }
+    },
+}
+
+enemylist["Breaker"] = {
+    name: "Breaker",
+    hp: 3500,
+    atk: 410,
+    def: 50,
+    res: 25,
+    atkinterval: 1.4,
+    speed: 1.9* 0.49,
+    blockcount: 1,
+    type: "g",
+    range: 0,
+    hploss: 1,
+    dmgtype: "physical",
+    size: 1,
+    tooltip: "A well-trained rushing unit \nwith high movement speed \nand above average ATK.",
+    targets: 1,
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/breaker-sheet.webp",
+
+    hasskill: false,
+
+    atkanim: {
+        start: 0,
+        end: 14,
+        contact: 6,
+        duration: 1,
+    },
+
+    death: {
+        start: 15,
+        end: 29,
+        duration: 1,
+
+    },
+    idle: {
+        start: 30,
+        end: 44,
+        duration: 1,
+
+    },
+    move: {
+        start: 45,
+        end: 58,
+        duration: 0.7,
+
+    },
+
+    sfx: {
+        hit: {
+            src: "soldier-hit",
+            volume: 0.1
+        }
+    },
+}
+
+enemylist["Breaker Leader"] = {
+    name: "Breaker Leader",
+    hp: 5000,
+    atk: 500,
+    def: 80,
+    res: 25,
+    atkinterval: 1.4,
+    speed: 1.9* 0.49,
+    blockcount: 1,
+    type: "g",
+    range: 0,
+    hploss: 1,
+    dmgtype: "physical",
+    size: 1,
+    tooltip: "A more dangerous Breaker\nwith high movement speed \nand above average ATK.",
+    targets: 1,
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/breaker-leader-sheet.webp",
+
+    hasskill: false,
+
+    atkanim: {
+        start: 0,
+        end: 14,
+        contact: 6,
+        duration: 1,
+    },
+
+    death: {
+        start: 15,
+        end: 29,
+        duration: 1,
+
+    },
+    idle: {
+        start: 30,
+        end: 44,
+        duration: 1,
+
+    },
+    move: {
+        start: 45,
+        end: 58,
+        duration: 0.7,
+
+    },
+
+    sfx: {
+        hit: {
+            src: "soldier-hit",
+            volume: 0.1
+        }
+    },
+}
+
+
+
 enemylist["Possessed Soldier Leader"] = {
     name: "Possessed Soldier Leader",
     hp: 4000,
@@ -2848,7 +3139,7 @@ enemylist["Possessed Soldier Leader"] = {
     hploss: 1,
     dmgtype: "physical",
     size: 1,
-    tooltip: "Regenerates HP rapidly.",
+    tooltip: "A stronger Soldier.\nRegenerates HP rapidly.",
     targets: 1,
 
     enemytype: "normal",
@@ -2907,7 +3198,6 @@ enemylist["Possessed Soldier Leader"] = {
     },
 }
 
-//TODO CHANGE
 enemylist["Possessed Soldier"] = {
     name: "Possessed Soldier",
     hp: 2500,
@@ -2927,7 +3217,7 @@ enemylist["Possessed Soldier"] = {
 
     enemytype: "normal",
 
-    spritesheet: "images/sprites/possessed-soldier-leader-sheet.webp",
+    spritesheet: "images/sprites/possessed-soldier-sheet.webp",
 
     hasskill: true,
 
@@ -2981,7 +3271,6 @@ enemylist["Possessed Soldier"] = {
     },
 }
 
-//TODO CHANGE
 enemylist["Possessed Defender"] = {
     name: "Possessed Defender",
     hp: 10000,
@@ -3001,7 +3290,7 @@ enemylist["Possessed Defender"] = {
 
     enemytype: "normal",
 
-    spritesheet: "images/sprites/possessed-heavy-defender-leader-sheet.webp",
+    spritesheet: "images/sprites/possessed-heavy-defender-sheet.webp",
 
     hasskill: true,
 
@@ -3052,7 +3341,6 @@ enemylist["Possessed Defender"] = {
     },
 }
 
-//TODO CHANGE
 enemylist["Possessed Junkman"] = {
     name: "Possessed Junkman",
     hp: 6000,
@@ -3072,7 +3360,7 @@ enemylist["Possessed Junkman"] = {
 
     enemytype: "normal",
 
-    spritesheet: "images/sprites/possessed-veteran-junkman-sheet.webp",
+    spritesheet: "images/sprites/possessed-junkman-sheet.webp",
 
     hasskill: true,
 
@@ -3138,7 +3426,7 @@ enemylist["Possessed Defender Leader"] = {
     hploss: 1,
     dmgtype: "physical",
     size: 1.2,
-    tooltip: "Possesses high defense.\nRegenerates HP rapidly.",
+    tooltip: "A more dangerous Defender.\nRegenerates HP rapidly.",
     targets: 1,
 
     enemytype: "normal",
@@ -3208,7 +3496,7 @@ enemylist["Possessed Veteran Junkman"] = {
     hploss: 1,
     dmgtype: "physical",
     size: 1.1,
-    tooltip: "Regenerates HP rapidly.",
+    tooltip: "A more dangerous Junkman.\nRegenerates HP rapidly.",
     targets: 1,
 
     enemytype: "normal",
@@ -4218,6 +4506,257 @@ enemylist["Yeti Sniper Leader"] = {
         aura: false,
     }
 }
+
+enemylist["Butcher"] = {
+    name: "Butcher",
+    hp: 9000,
+    atk: 850,
+    def: 230,
+    res: 30,
+    atkinterval: 3.5,
+    speed: (0.5 + 0.2)* 0.49,
+    blockcount: 1,
+    type: "g",
+    range: 0,
+    hploss: 1,
+    dmgtype: "physical",
+    size: 1.2,
+    tooltip: "An enemy with relatively\nhigh ATK and defense.",
+    targets: 1,
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/butcher-sheet.webp",
+
+    hasskill: false,
+
+    atkanim: {
+        start: 0,
+        end: 28,
+        contact: 14,
+        duration: 1,
+    },
+
+    death: {
+        start: 29,
+        end: 43,
+        duration: 1,
+
+    },
+    idle: {
+        start: 44,
+        end: 58,
+        duration: 1,
+
+    },
+
+    move: {
+        start: 59,
+        end: 74,
+        duration: 1.2,
+
+    },
+    sfx: {
+        atk: {
+            src: "bloodboil-atk",
+            volume: 0.1
+        },
+        hit: {
+            src: "bloodboil-hit",
+            volume: 0.1
+        }
+    }
+}
+
+enemylist["Veteran Butcher"] = {
+    name: "Veteran Butcher",
+    hp: 14000,
+    atk: 950,
+    def: 270,
+    res: 30,
+    atkinterval: 3.5,
+    speed: (0.5 + 0.2)* 0.49,
+    blockcount: 1,
+    type: "g",
+    range: 0,
+    hploss: 1,
+    dmgtype: "physical",
+    size: 1.2,
+    tooltip: "A more dangerous Butcher with\nhigh ATK and defense.",
+    targets: 1,
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/veteran-butcher-sheet.webp",
+
+    hasskill: false,
+
+    atkanim: {
+        start: 0,
+        end: 28,
+        contact: 14,
+        duration: 1,
+    },
+
+    death: {
+        start: 29,
+        end: 43,
+        duration: 1,
+
+    },
+    idle: {
+        start: 44,
+        end: 58,
+        duration: 1,
+
+    },
+
+    move: {
+        start: 59,
+        end: 74,
+        duration: 1.2,
+
+    },
+    sfx: {
+        atk: {
+            src: "bloodboil-atk",
+            volume: 0.1
+        },
+        hit: {
+            src: "bloodboil-hit",
+            volume: 0.1
+        }
+    }
+}
+
+enemylist["Caster"] = {
+    name: "Caster",
+    hp: 4000,
+    atk: 400,
+    def: 250,
+    res: 50,
+    atkinterval: 4,
+    speed: 0.8* 0.49,
+    blockcount: 1,
+    type: "g",
+    range: 2,
+    hploss: 1,
+    dmgtype: "arts",
+    size: 1,
+    tooltip: "A basic caster,capable of attacking using\nlong-ranged Arts.",
+    targets: 1,
+    bullet: { size: { height: 1, depth: 5, width: 2 }, arc:false, speed:4, color: new BABYLON.Color3(0.69, 0.21, 0.67)},
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/caster-sheet.webp",
+
+    hasskill: false,
+
+    atkanim: {
+        start: 0,
+        end: 17,
+        contact: 11,
+        duration: 1,
+    },
+
+    death: {
+        start: 18,
+        end: 32,
+        duration: 1,
+
+    },
+
+    idle: {
+        start: 33,
+        end: 47,
+        duration: 1,
+
+    },
+
+    move: {
+        start: 48,
+        end: 68,
+        duration: 1.1,
+
+    },
+    
+    sfx: {
+        atk: {
+            src: "caster-atk",
+            volume: 0.1
+        },
+        hit: {
+            src: "caster-hit",
+            volume: 0.1
+        }
+    }
+}
+
+enemylist["Caster Leader"] = {
+    name: "Caster Leader",
+    hp: 6000,
+    atk: 450,
+    def: 300,
+    res: 50,
+    atkinterval: 4,
+    speed: 0.8* 0.49,
+    blockcount: 1,
+    type: "g",
+    range: 2.4,
+    hploss: 1,
+    dmgtype: "arts",
+    size: 1,
+    tooltip: "A more dangerous caster,capable of attacking\n2 targets at once with\nlong-ranged Arts.",
+    targets: 2,
+    bullet: { size: { height: 1, depth: 5, width: 2 }, arc:false, speed:4, color: new BABYLON.Color3(0.69, 0.21, 0.67)},
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/caster-leader-sheet.webp",
+
+    hasskill: false,
+
+    atkanim: {
+        start: 0,
+        end: 17,
+        contact: 11,
+        duration: 1,
+    },
+
+    death: {
+        start: 18,
+        end: 32,
+        duration: 1,
+
+    },
+
+    idle: {
+        start: 33,
+        end: 47,
+        duration: 1,
+
+    },
+
+    move: {
+        start: 48,
+        end: 67,
+        duration: 1.1,
+
+    },
+    
+    sfx: {
+        atk: {
+            src: "caster-atk",
+            volume: 0.1
+        },
+        hit: {
+            src: "caster-hit",
+            volume: 0.1
+        }
+    }
+}
+
 
 enemylist["Yeti Caster"] = {
     name: "Yeti Caster",
@@ -5472,9 +6011,8 @@ enemylist["FrostnovaEX2"] = {
     }
 }
 
-//TODO CHANGE
-enemylist["Mortar Gunner Leader"] = {
-    name: "Mortar Gunner Leader",
+enemylist["Mortar Gunner"] = {
+    name: "Mortar Gunner",
     hp: 5000,
     atk: 550,
     def: 150,
@@ -5487,13 +6025,13 @@ enemylist["Mortar Gunner Leader"] = {
     hploss: 1,
     dmgtype: "physical",
     size: 1,
-    tooltip: "A more dangerous Mortar Gunner \nthat can launch very \nlong-ranged AoE attacks.",
+    tooltip: "A dangerous foe \nthat can launch very \nlong-ranged AoE attacks.",
     targets: 1,
     splashradius:1,
 
     enemytype: "normal",
 
-    spritesheet: "images/sprites/guerrilla-mortar-sheet.webp",
+    spritesheet: "images/sprites/mortar-gunner-sheet.webp",
     bullet: { size: { height: 3, depth: 3, width: 3 }, arc:true, speed:10, color: new BABYLON.Color3(0.95, 0, 0)},
 
     hasskill: false,
@@ -5507,21 +6045,21 @@ enemylist["Mortar Gunner Leader"] = {
 
     death: {
         start: 18,
-        end: 31,
+        end: 32,
         duration: 1,
 
     },
 
     idle: {
-        start: 32,
-        end: 46,
+        start: 33,
+        end: 47,
         duration: 1,
 
     },
 
     move: {
-        start: 47,
-        end: 61,
+        start: 48,
+        end: 62,
         duration: 1.2,
 
     },

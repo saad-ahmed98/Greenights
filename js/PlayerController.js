@@ -123,7 +123,6 @@ class PlayerController extends CharaController {
     createPlayer(id, spriteManager, gui, iconsManager) {
         this.mesh = this.scene.assets.meshchara.createInstance(id)
 
-
         this.mesh.position.z = 0 + this.y * 30;
         this.mesh.position.x = 0 + this.x * 30;
         this.mesh.position.y = 10;
@@ -200,7 +199,8 @@ class PlayerController extends CharaController {
             }
         }, 1);
 
-
+        if(this.lvlcontroller.poison!=undefined)
+            this.buffs.buffs["poison"] = { "name": "poison", "modifiers": {"flathpregen":-(this.lvlcontroller.poison)} }
     }
     updateSkillBarCharging() {
 
@@ -239,7 +239,6 @@ class PlayerController extends CharaController {
             if (talents[i].condtalent != undefined)
                 this.condtalent = talents[i];
             else {
-
                 var targets = [];
                 targets = this.getApplyTargets(talents[i].apply, this.lvlcontroller.activePlayers)
                 for (let j = 0; j < targets.length; j++) {
