@@ -3043,7 +3043,6 @@ enemylist["Breaker"] = {
         start: 15,
         end: 29,
         duration: 1,
-
     },
     idle: {
         start: 30,
@@ -3290,7 +3289,7 @@ enemylist["Possessed Defender"] = {
 
     enemytype: "normal",
 
-    spritesheet: "images/sprites/possessed-heavy-defender-sheet.webp",
+    spritesheet: "images/sprites/possessed-defender-sheet.webp",
 
     hasskill: true,
 
@@ -3431,7 +3430,7 @@ enemylist["Possessed Defender Leader"] = {
 
     enemytype: "normal",
 
-    spritesheet: "images/sprites/possessed-heavy-defender-leader-sheet.webp",
+    spritesheet: "images/sprites/possessed-defender-leader-sheet.webp",
 
     hasskill: true,
 
@@ -3566,7 +3565,7 @@ enemylist["Enraged Possessed Bonethrower"] = {
     hploss: 1,
     dmgtype: "physical",
     size: 1.05,
-    tooltip: "Has extremely ATK.\nLoses HP over time.",
+    tooltip: "A possessed ranged combatant that\nhas completely given in to madness,\nhaving extremely high ATK.\nLoses HP over time.",
     targets: 1,
     bullet: { size: { height: 1, depth: 12, width: 1.2 }, arc:false, speed:5, color: new BABYLON.Color3(0, 0, 0) },
 
@@ -3638,7 +3637,7 @@ enemylist["Enraged Possessed Thrower"] = {
     hploss: 1,
     dmgtype: "physical",
     size: 1.05,
-    tooltip: "Has high ATK.\nLoses HP over time.",
+    tooltip: "A possessed ranged combatant\nthat has descended into madness,\nhaving extremely high ATK.\nLoses HP over time.",
     targets: 1,
     bullet: { size: { height: 1, depth: 12, width: 1.2 }, arc:false, speed:5, color: new BABYLON.Color3(0, 0, 0) },
 
@@ -3709,7 +3708,7 @@ enemylist["Enraged Possessed Leader"] = {
     hploss: 1,
     dmgtype: "physical",
     size: 1.05,
-    tooltip: "Has massive ATK.\nLoses HP over time.",
+    tooltip: "A possessed enemy combatant that\nhas completely given in to madness,\nhaving extremely high ATK.\nLoses HP over time.",
     targets: 1,
 
     enemytype: "normal",
@@ -3779,7 +3778,7 @@ enemylist["Enraged Possessed Soldier"] = {
     hploss: 1,
     dmgtype: "physical",
     size: 1.05,
-    tooltip: "Has extremely high ATK.\nLoses HP over time.",
+    tooltip: "A possessed enemy combatant that \nhas descended into madness,\nhaving extremely high ATK.\nLoses HP over time.",
     targets: 1,
 
     enemytype: "normal",
