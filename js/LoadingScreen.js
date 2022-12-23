@@ -30,7 +30,7 @@ BABYLON.DefaultLoadingScreen.prototype.displayLoadingUI = function () {
     this._loadingTextDiv.style.color = "white";
     this._loadingTextDiv.style.textAlign = "center";
     this._loadingTextDiv.style.zIndex = "1";
-    this._loadingTextDiv.innerHTML = "Loading";
+    this._loadingTextDiv.innerHTML = "";
     
 
     this._loadingDiv.appendChild(this._loadingTextDiv);

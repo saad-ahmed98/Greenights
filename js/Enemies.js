@@ -3836,7 +3836,7 @@ enemylist["Enraged Possessed Soldier"] = {
 
 enemylist["Mephisto"] = {
     name: "Mephisto",
-    hp: 28000,
+    hp: 35000,
     atk: 600,
     def: 200,
     res: 60,
@@ -4049,7 +4049,6 @@ enemylist["Sarkaz Centurion Nidus Guard"] = {
     },
 }
 
-//TODO CHANGE
 enemylist["Sarkaz Centurion Host"] = {
     name: "Sarkaz Centurion Host",
     hp: 10000,
@@ -4071,7 +4070,7 @@ enemylist["Sarkaz Centurion Host"] = {
 
     enemytype: "normal",
 
-    spritesheet: "images/sprites/sarkaz-centurion-nidus-guard-sheet.webp",
+    spritesheet: "images/sprites/sarkaz-centurion-host-sheet.webp",
 
     hasskill: true,
 
