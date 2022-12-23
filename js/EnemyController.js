@@ -273,9 +273,8 @@ class EnemyController extends CharaController {
     //spritemanager contains the sprites of the enemy,
     //gui is the gui of the level,
     //iconsmanager contains the icon sprites
-    createEnemy(matrix, points, spriteManager, gui, iconsmanager) {
+    createEnemy(matrix, points, spriteManager, gui, iconsmanager,invertU) {
         this.mesh = this.scene.assets.meshchara.createInstance(this.id)
-
 
         this.shadow = new BABYLON.Sprite(this.id + "shadow", iconsmanager);
         this.shadow.isVisible = false;
@@ -298,6 +297,8 @@ class EnemyController extends CharaController {
         player0.size = 65 * this.chara.size;
         player0.width = 90 * this.chara.size;
         this.sprite = player0;
+
+        this.sprite.invertU = invertU;
 
         this.mesh.position.z = 0 + this.y * 30;
         this.mesh.position.x = 0 + this.x * 30;
@@ -322,7 +323,7 @@ class EnemyController extends CharaController {
         if (this.chara.name == "Patriot" || this.chara.name == "PatriotEX") {
             this.buffs.buffs["patriottaunt"] = { "name": "patriottaunt", "modifiers": { "taunt": 2, "attacks": 3 } }
         }
-        if (this.chara.name == "Mephisto") {
+        if (this.chara.name == "Mephisto" || this.chara.name == "MephistoEX") {
             this.buffs.buffs["mephistotaunt"] = { "name": "mephistotaunt", "modifiers": { "taunt": -1 } }
         }
     }

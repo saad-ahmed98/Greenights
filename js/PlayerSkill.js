@@ -21,11 +21,15 @@ class PlayerSkill {
 
         var keys = Object.keys(this.modifiers)
         if (keys.includes("instantdp")) {
-            lvl.currentdp = Math.min(99,lvl.currentdp+this.modifiers.instantdp)
+            lvl.currentdp = Math.min(99, lvl.currentdp + this.modifiers.instantdp)
             lvl.gui.updatePlayerWheelUI(lvl.currentdp, lvl.squadlimit)
         }
 
         for (let i = 0; i < targets.length; i++) {
+            if (this.modifiers.instantheal != undefined) {
+                targets[i].hp = Math.min(targets[i].maxhp, targets[i].hp + targets[i].maxhp * this.modifiers.instantheal)
+                targets[i].updateHpBar()
+            }
 
             targets[i].buffs.buffs[this.name] = { "name": this.name, "modifiers": this.modifiers }
             if (this.applyeffects != undefined) {
@@ -44,8 +48,8 @@ class PlayerSkill {
         var skillbomb = this.modifiers.skillbomb;
         var enemies = lvl.enemies
         var enemy = [];
-        if(!player.canHitFlying())
-            enemies = enemies.filter(e =>(e.chara.type=="g"))
+        if (!player.canHitFlying())
+            enemies = enemies.filter(e => (e.chara.type == "g"))
         if (skillbomb == undefined)
             return;
         if (skillbomb.dmgtype == "heal")
@@ -92,7 +96,7 @@ class PlayerSkill {
             }
         }
     }
-    applyHitEffects(b,enemy) {
+    applyHitEffects(b, enemy) {
         var ef = this.applyeffects
         if (ef != undefined) {
             if (ef.apply == "hit") {

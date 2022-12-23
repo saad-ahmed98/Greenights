@@ -2421,6 +2421,7 @@ playerlist["Gravel"] = {
         triggertype: "",
 
         modifiers: {
+            instantheal: 1,
             maxhp: 2.5,
         },
         apply: "self",

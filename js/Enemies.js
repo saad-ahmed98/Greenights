@@ -2847,7 +2847,7 @@ enemylist["Junkman"] = {
     range: 0,
     hploss: 1,
     dmgtype: "physical",
-    size: 1.1,
+    size: 1.2,
     tooltip: "A ragged-looking \nenemy combatant.",
     targets: 1,
 
@@ -2904,7 +2904,7 @@ enemylist["Veteran Junkman"] = {
     range: 0,
     hploss: 1,
     dmgtype: "physical",
-    size: 1.1,
+    size: 1.2,
     tooltip: "A ragged-looking enemy.\nMore dangerous than a Junkman.",
     targets: 1,
 
@@ -3353,7 +3353,7 @@ enemylist["Possessed Junkman"] = {
     range: 0,
     hploss: 1,
     dmgtype: "physical",
-    size: 1.1,
+    size: 1.2,
     tooltip: "A Junkman that has been controlled\nby an unknown entity and is \ncapable of regenerating rapidly.",
     targets: 1,
 
@@ -3494,7 +3494,7 @@ enemylist["Possessed Veteran Junkman"] = {
     range: 0,
     hploss: 1,
     dmgtype: "physical",
-    size: 1.1,
+    size: 1.2,
     tooltip: "A more dangerous Junkman.\nRegenerates HP rapidly.",
     targets: 1,
 
@@ -3561,7 +3561,7 @@ enemylist["Enraged Possessed Bonethrower"] = {
     speed: (0.5 + 0.2)* 0.49,
     blockcount: 1,
     type: "g",
-    range: 2.6,
+    range: 2.3,
     hploss: 1,
     dmgtype: "physical",
     size: 1.05,
@@ -3633,7 +3633,7 @@ enemylist["Enraged Possessed Thrower"] = {
     speed: (0.5 + 0.2)* 0.49,
     blockcount: 1,
     type: "g",
-    range: 2.6,
+    range: 2.3,
     hploss: 1,
     dmgtype: "physical",
     size: 1.05,
@@ -3836,6 +3836,78 @@ enemylist["Enraged Possessed Soldier"] = {
 
 enemylist["Mephisto"] = {
     name: "Mephisto",
+    hp: 28000,
+    atk: 600,
+    def: 200,
+    res: 60,
+    atkinterval: 10,
+    speed: 0.5* 0.49,
+    blockcount: 1,
+    type: "g",
+    range: 99,
+    hploss: 2,
+    dmgtype: "heal",
+    size: 1.05,
+    tooltip: "Less likely to be attacked.\nAttacks heal up to 3 enemies.\nWhile on the battlefield,\nincrease all enemies'\nATK and ASPD.",
+    targets: 3,
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/mephisto-sheet.webp",
+
+    hasskill: true,
+
+    atkanim: {
+        start: 0,
+        end: 47,
+        contact: 20,
+        duration: 1,
+    },
+
+    death: {
+        start: 48,
+        end: 61,
+        duration: 1,
+
+    },
+    idle: {
+        start: 62,
+        end: 82,
+        duration: 1,
+
+    },
+    move: {
+        start: 83,
+        end: 102,
+        duration: 1.2,
+
+    },
+
+    sfx: {
+        hit: {
+            src: "mephisto-hit",
+            volume: 0.2
+        }
+    },
+
+
+    skill: {
+        name: "inspireguerrilla",
+        triggertype: "on_start",
+        skilltype: "alive",
+        target: "all",
+        modifiers: {
+            atk: 0.1,
+            aspd: 10*1.3,
+            hpregenbuff: 2
+        },
+        aura: false,
+        auratype: 2
+    },
+}
+
+enemylist["MephistoEX"] = {
+    name: "MephistoEX",
     hp: 60000,
     atk: 1000,
     def: 300,
@@ -3911,6 +3983,78 @@ enemylist["Sarkaz Centurion Nidus Guard"] = {
     hp: 14000,
     atk: 700,
     def: 220,
+    res: 60,
+    atkinterval: 5,
+    speed: 0.8* 0.49,
+    blockcount: 1,
+    type: "g",
+    range: 1.5,
+    hploss: 1,
+    dmgtype: "arts",
+    size: 1.1,
+    tooltip: "A stronger Centurion Host.\nAttacks 3 targets at once;\neach attack restores\nsome of this unit's HP.",
+    targets: 3,
+    bullet: { size: { height: 1, depth: 5, width: 3 }, arc:false, speed:5, color: new BABYLON.Color3(0.69, 0.21, 0.67)},
+
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/sarkaz-centurion-nidus-guard-sheet.webp",
+
+    hasskill: true,
+
+    atkanim: {
+        start: 0,
+        end: 51,
+        contact: 16,
+        duration: 1,
+    },
+
+    death: {
+        start: 52,
+        end: 66,
+        duration: 1,
+
+    },
+    idle: {
+        start: 67,
+        end: 81,
+        duration: 1,
+
+    },
+    move: {
+        start: 82,
+        end: 106,
+        duration: 1.2,
+    },
+
+    sfx: {
+
+        hit: {
+            src: "centurion-hit",
+            volume: 0.1
+        }
+    },
+
+
+    skill: {
+        name: "possessedsoldier",
+        triggertype: "on_start",
+        skilltype: "possess",
+        target: "self",
+        modifiers: {
+            lifesteal: 1.5,
+        },
+        aura: false,
+    },
+}
+
+//TODO CHANGE
+enemylist["Sarkaz Centurion Host"] = {
+    name: "Sarkaz Centurion Host",
+    hp: 10000,
+    atk: 600,
+    def: 200,
     res: 60,
     atkinterval: 5,
     speed: 0.8* 0.49,

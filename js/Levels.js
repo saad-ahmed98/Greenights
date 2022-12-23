@@ -442,7 +442,7 @@ levels["5-7"] = {
     background: "loading_LM_day",
     description: "The ranks of these aggressive hosts continue to grow,\nand they will soon apply heavy pressure to our formation.\nHowever, their lives seem to also be quickly burning out...",
     place: "Long",
-    offsetX: -30,
+    offsetX: -40,
     offsetY: -70,
     offsetZ: 0,
     type: "normal",
@@ -540,6 +540,285 @@ levels["5-8"] = {
         ["bg", "bg", "bg", "r", "r", "blk", "r", "r", "gblk", "g", "bg"],
         ["bg", "blue", "blk", "g", "g", "g", "g", "g", "g", "g", "bg"],
         ["bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg"],
+    ],
+}
+
+levels["5-9"] = {
+    level: "5-9",
+    name: "Who to Kill?",
+    bgm: "ep5_2",
+    initialdp: 5,
+    squadlimit: 8,
+    hp: 3,
+    background: "loading_LM_night",
+    description: "A large number of both melee and ranged \nPossessed Soldiers have appeared.\nPerhaps a well-planned defense can halt their onslaught...\n\n<Poison Haze> Allied units lose HP constantly.",
+    place: "Long",
+    offsetX: -60,
+    offsetY: -90,
+    offsetZ: -15,
+    type: "hard",
+    skybox: "bluebg.png",
+    poison:50,
+
+    waves: [
+        { "number": 1, "time": 3, "gap": 8, "enemies": "Enraged Possessed Thrower", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 2], "pause": 8 },{ "start": [1, 2], "end": [0, 6], "pause": 0 }] },     
+        { "number": 2, "time": 11, "gap": 8, "enemies": "Possessed Soldier Leader", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [4, 5], "pause": 0 },{ "start": [4, 5], "end": [4, 10], "pause": 0 }] },     
+        { "number": 3, "time": 16, "gap": 13, "enemies": "Possessed Soldier Leader", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [4, 5], "pause": 0 },{ "start": [4, 5], "end": [4, 10], "pause": 0 }] },     
+        { "number": 4, "time": 21, "gap": 11, "enemies": "Possessed Soldier Leader", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [4, 5], "pause": 0 },{ "start": [4, 5], "end": [4, 10], "pause": 0 }] },     
+        { "number": 5, "time": 59, "gap": 8, "enemies": "Possessed Defender Leader", "line": true, "tooltip": true, "taunt": false, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 2], "pause": 5 },{ "start": [5, 2], "end": [5, 6], "pause": 0 },{ "start": [5, 6], "end": [4, 10], "pause": 0 }] },     
+        { "number": 6, "time": 64, "gap": 10, "enemies": "Possessed Soldier Leader", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [4, 5], "pause": 0 },{ "start": [4, 5], "end": [4, 10], "pause": 0 }] },     
+        { "number": 7, "time": 64, "gap": 8, "enemies": "Enraged Possessed Thrower", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 2], "pause": 3 },{ "start": [1, 2], "end": [0, 6], "pause": 0 }] },     
+        { "number": 8, "time": 71, "gap": 8, "enemies": "Possessed Soldier Leader", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [4, 5], "pause": 0 },{ "start": [4, 5], "end": [4, 10], "pause": 0 }] },     
+        { "number": 9, "time": 86, "gap": 8, "enemies": "Possessed Defender Leader", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 6], "pause": 0 },{ "start": [5, 6], "end": [4, 10], "pause": 0 }] },     
+        { "number": 10, "time": 106, "gap": 8, "enemies": "Enraged Possessed Soldier", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 2], "pause": 10 },{ "start": [3, 2], "end": [4, 5], "pause": 0 },{ "start": [4, 5], "end": [4, 10], "pause": 0 }] },     
+        { "number": 11, "time": 106, "gap": 8, "enemies": "Enraged Possessed Thrower", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 2], "pause": 0 },{ "start": [1, 2], "end": [0, 6], "pause": 0 }] },     
+        { "number": 12, "time": 115, "gap": 8, "enemies": "Possessed Defender Leader", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 6], "pause": 0 },{ "start": [5, 6], "end": [4, 10], "pause": 0 }] },     
+        { "number": 13, "time": 118, "gap": 8, "enemies": "Possessed Soldier Leader", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [4, 5], "pause": 0 },{ "start": [4, 5], "end": [4, 10], "pause": 0 }] },     
+        { "number": 14, "time": 133, "gap": 8, "enemies": "Enraged Possessed Thrower", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [1, 10], "checkpoints": [{ "start": [1, 10], "end": [1, 9], "pause": 0 },{ "start": [1, 9], "end": [0, 6], "pause": 0 }] },     
+        { "number": 15, "time": 143, "gap": 8, "enemies": "Enraged Possessed Soldier", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 2], "pause": 10 },{ "start": [3, 2], "end": [4, 5], "pause": 0 },{ "start": [4, 5], "end": [4, 10], "pause": 0 }] },     
+        { "number": 16, "time": 166, "gap": 10, "enemies": "Possessed Soldier Leader", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [4, 5], "pause": 0 },{ "start": [4, 5], "end": [4, 10], "pause": 0 }] },     
+        { "number": 17, "time": 168, "gap": 8, "enemies": "Enraged Possessed Thrower", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 2], "pause": 10 },{ "start": [1, 2], "end": [0, 6], "pause": 0 }] },     
+        { "number": 18, "time": 168, "gap": 8, "enemies": "Enraged Possessed Thrower", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 10], "checkpoints": [{ "start": [1, 10], "end": [1, 9], "pause": 5 },{ "start": [1, 9], "end": [0, 6], "pause": 0 }] },     
+        { "number": 19, "time": 173, "gap": 8, "enemies": "Enraged Possessed Soldier", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 2], "pause": 10 },{ "start": [3, 2], "end": [4, 5], "pause": 0 },{ "start": [4, 5], "end": [4, 10], "pause": 0 }] },     
+        { "number": 20, "time": 175, "gap": 8, "enemies": "Possessed Defender Leader", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 6], "pause": 0 },{ "start": [5, 6], "end": [4, 10], "pause": 0 }] },     
+        { "number": 21, "time": 198, "gap": 8, "enemies": "Enraged Possessed Bonethrower", "line": false, "tooltip": true, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 2], "pause": 10 },{ "start": [1, 2], "end": [0, 6], "pause": 0 }] },     
+        { "number": 22, "time": 198, "gap": 8, "enemies": "Enraged Possessed Thrower", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 10], "checkpoints": [{ "start": [1, 10], "end": [1, 9], "pause": 5 },{ "start": [1, 9], "end": [0, 6], "pause": 0 }] },     
+        { "number": 23, "time": 211, "gap": 8, "enemies": "Enraged Possessed Leader", "line": false, "tooltip": true, "taunt": false, "count": 1, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 2], "pause": 10 },{ "start": [3, 2], "end": [4, 5], "pause": 0 },{ "start": [4, 5], "end": [4, 10], "pause": 0 }] },     
+        { "number": 24, "time": 213, "gap": 1.5, "enemies": "Possessed Soldier Leader", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [4, 5], "pause": 0 },{ "start": [4, 5], "end": [4, 10], "pause": 0 }] },     
+        { "number": 25, "time": 220, "gap": 8, "enemies": "Possessed Defender Leader", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 6], "pause": 0 },{ "start": [5, 6], "end": [4, 10], "pause": 0 }] },     
+        { "number": 26, "time": 226, "gap": 1.5, "enemies": "Possessed Soldier Leader", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [4, 5], "pause": 0 },{ "start": [4, 5], "end": [4, 10], "pause": 0 }] },     
+        { "number": 27, "time": 241, "gap": 8, "enemies": "Enraged Possessed Leader", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 2], "pause": 0 },{ "start": [3, 2], "end": [4, 5], "pause": 0 },{ "start": [4, 5], "end": [4, 10], "pause": 0 }] },     
+    ],
+
+    enemies: ["Possessed Soldier Leader","Possessed Defender Leader","Enraged Possessed Bonethrower","Enraged Possessed Thrower","Enraged Possessed Leader","Enraged Possessed Soldier"],
+    tooltips: ["Possessed Defender Leader","Enraged Possessed Bonethrower","Enraged Possessed Leader"],
+    hazards: [],
+
+    layout: [
+        ["e", "bg", "bg", "bg", "bg", "bg", "blue", "bg", "bg", "bg", "bg"],
+        ["e", "red", "blk", "blk", "blk", "blk", "blk", "blk", "blk", "blk", "red"],
+        ["e", "bg", "bg", "r", "r", "bg", "r", "r", "bg", "r", "bg"],
+        ["e", "red", "blk", "g", "bg", "g", "g", "g", "g", "g", "bg"],
+        ["e", "bg", "gblk", "g", "bg", "g", "g", "r", "g", "g", "blue"],
+        ["e", "red", "g", "g", "g", "g", "g", "bg", "gblk", "gblk", "bg"],
+        ["e", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg"],
+    ],
+}
+
+levels["5-10"] = {
+    level: "5-10",
+    name: "Malediction",
+    bgm: "ep5_2",
+    initialdp: 10,
+    squadlimit: 9,
+    hp: 3,
+    background: "loading_LM_night",
+    description: "The poison is getting unberable, we must be near its source.\n Like guardians, Sarkaz Centurions seem to be waiting for us ahead.\nHowever be wary, they too have been driven to madness...\n\n<Poison Haze> Allied units lose HP constantly.",
+    place: "Long",
+    offsetX: -25,
+    offsetY: -50,
+    offsetZ: 0,
+    type: "normal",
+    skybox: "bluebg.png",
+    poison:50,
+
+    waves: [
+        { "number": 0, "time": 3, "gap": 8, "enemies": "Sarkaz Centurion Host", "line": false, "tooltip": true, "taunt": false, "count": 1, "start": [1, 9], "checkpoints": [
+            { "start": [1, 9], "end": [1, 10], "pause": 25 },
+            { "start": [1, 10], "end": [6, 10], "pause": 25 },
+            { "start": [6, 10], "end": [6, 9], "pause": 10 },
+            { "start": [5, 1], "end": [4, 5], "pause": 0 },
+            { "start": [4, 5], "end": [3, 5], "pause": 0 },
+            { "start": [3, 5], "end": [1, 3], "pause": 0 }
+        ] }, 
+        { "number": 1, "time": 6, "gap": 8, "enemies": "Possessed Soldier", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [1, 9], "checkpoints": [{ "start": [1, 9], "end": [1, 8], "pause": 3 },{ "start": [1, 8], "end": [1, 3], "pause": 0 }] },     
+        { "number": 2, "time": 7, "gap": 8, "enemies": "Possessed Soldier", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [1, 9], "checkpoints": [{ "start": [1, 9], "end": [2, 8], "pause": 3 },{ "start": [2, 8], "end": [6, 3], "pause": 0 }] },     
+        { "number": 3, "time": 11, "gap": 8, "enemies": "Possessed Soldier", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 9], "checkpoints": [{ "start": [1, 9], "end": [1, 8], "pause": 0 },{ "start": [1, 8], "end": [1, 3], "pause": 0 }] },     
+        { "number": 4, "time": 12, "gap": 8, "enemies": "Possessed Soldier", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 9], "checkpoints": [{ "start": [1, 9], "end": [2, 8], "pause": 0 },{ "start": [2, 8], "end": [6, 3], "pause": 0 }] },     
+        { "number": 5, "time": 16, "gap": 10, "enemies": "Possessed Soldier", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [1, 9], "checkpoints": [{ "start": [1, 9], "end": [1, 8], "pause": 0 },{ "start": [1, 8], "end": [1, 3], "pause": 0 }] },     
+        { "number": 6, "time": 17, "gap": 10, "enemies": "Possessed Soldier", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [1, 9], "checkpoints": [{ "start": [1, 9], "end": [2, 8], "pause": 0 },{ "start": [2, 8], "end": [6, 3], "pause": 0 }] },     
+        { "number": 7, "time": 38, "gap": 8, "enemies": "Possessed Junkman", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 9], "checkpoints": [{ "start": [1, 9], "end": [1, 8], "pause": 0 },{ "start": [1, 8], "end": [1, 3], "pause": 0 }] },     
+        { "number": 8, "time": 38, "gap": 8, "enemies": "Possessed Junkman", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 9], "checkpoints": [{ "start": [1, 9], "end": [2, 8], "pause": 0 },{ "start": [2, 8], "end": [6, 3], "pause": 0 }] },     
+        { "number": 9, "time": 56, "gap": 15, "enemies": "Possessed Junkman", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [1, 9], "checkpoints": [{ "start": [1, 9], "end": [1, 8], "pause": 3 },{ "start": [1, 8], "end": [1, 3], "pause": 0 }] },     
+        { "number": 10, "time": 57, "gap": 15, "enemies": "Possessed Junkman", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [1, 9], "checkpoints": [{ "start": [1, 9], "end": [2, 8], "pause": 3 },{ "start": [2, 8], "end": [6, 3], "pause": 0 }] },     
+        { "number": 11, "time": 61, "gap": 10, "enemies": "Possessed Soldier", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 9], "checkpoints": [{ "start": [1, 9], "end": [1, 8], "pause": 0 },{ "start": [1, 8], "end": [1, 3], "pause": 0 }] },     
+        { "number": 12, "time": 62, "gap": 10, "enemies": "Possessed Defender", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 9], "checkpoints": [{ "start": [1, 9], "end": [2, 8], "pause": 0 },{ "start": [2, 8], "end": [6, 3], "pause": 0 }] },     
+        { "number": 13, "time": 63, "gap": 10, "enemies": "Possessed Soldier", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 9], "checkpoints": [{ "start": [1, 9], "end": [2, 8], "pause": 0 },{ "start": [2, 8], "end": [6, 3], "pause": 0 }] },     
+        { "number": 14, "time": 66, "gap": 10, "enemies": "Possessed Soldier", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [1, 9], "checkpoints": [{ "start": [1, 9], "end": [1, 8], "pause": 0 },{ "start": [1, 8], "end": [1, 3], "pause": 0 }] },     
+        { "number": 15, "time": 67, "gap": 10, "enemies": "Possessed Soldier", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [1, 9], "checkpoints": [{ "start": [1, 9], "end": [2, 8], "pause": 0 },{ "start": [2, 8], "end": [6, 3], "pause": 0 }] },     
+        { "number": 16, "time": 88, "gap": 3, "enemies": "Possessed Junkman", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [1, 9], "checkpoints": [{ "start": [1, 9], "end": [1, 8], "pause": 0 },{ "start": [1, 8], "end": [1, 3], "pause": 0 }] },     
+        { "number": 17, "time": 88, "gap": 10, "enemies": "Possessed Defender", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 9], "checkpoints": [{ "start": [1, 9], "end": [2, 8], "pause": 0 },{ "start": [2, 8], "end": [6, 3], "pause": 0 }] },     
+        { "number": 18, "time": 104, "gap": 8, "enemies": "Sarkaz Centurion Host", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 9], "checkpoints": [
+            { "start": [1, 9], "end": [1, 10], "pause": 5 },
+            { "start": [1, 10], "end": [6, 9], "pause": 10 },
+            { "start": [5, 1], "end": [4, 5], "pause": 0 },
+            { "start": [4, 5], "end": [3, 5], "pause": 0 },
+            { "start": [3, 5], "end": [1, 3], "pause": 0 }
+        ] }, 
+        { "number": 19, "time": 105, "gap": 8, "enemies": "Sarkaz Centurion Host", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 9], "checkpoints": [
+            { "start": [1, 9], "end": [2, 10], "pause": 45 },
+            { "start": [2, 10], "end": [6, 9], "pause": 10 },
+            { "start": [5, 1], "end": [4, 5], "pause": 0 },
+            { "start": [4, 5], "end": [3, 5], "pause": 0 },
+            { "start": [3, 5], "end": [1, 3], "pause": 0 }
+        ] }, 
+        { "number": 20, "time": 123, "gap": 15, "enemies": "Possessed Junkman", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [1, 9], "checkpoints": [{ "start": [1, 9], "end": [1, 8], "pause": 3 },{ "start": [1, 8], "end": [1, 3], "pause": 0 }] },     
+        { "number": 21, "time": 124, "gap": 15, "enemies": "Possessed Defender", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [1, 9], "checkpoints": [{ "start": [1, 9], "end": [2, 8], "pause": 3 },{ "start": [2, 8], "end": [6, 3], "pause": 0 }] },     
+        { "number": 22, "time": 128, "gap": 1, "enemies": "Possessed Junkman", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [1, 9], "checkpoints": [{ "start": [1, 9], "end": [1, 8], "pause": 0 },{ "start": [1, 8], "end": [1, 3], "pause": 0 }] },     
+        { "number": 23, "time": 129, "gap": 1, "enemies": "Possessed Defender", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [1, 9], "checkpoints": [{ "start": [1, 9], "end": [2, 8], "pause": 0 },{ "start": [2, 8], "end": [6, 3], "pause": 0 }] },     
+        { "number": 24, "time": 133, "gap": 10, "enemies": "Possessed Soldier", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [1, 9], "checkpoints": [{ "start": [1, 9], "end": [1, 8], "pause": 0 },{ "start": [1, 8], "end": [1, 3], "pause": 0 }] },     
+        { "number": 25, "time": 134, "gap": 10, "enemies": "Possessed Soldier", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [1, 9], "checkpoints": [{ "start": [1, 9], "end": [2, 8], "pause": 0 },{ "start": [2, 8], "end": [6, 3], "pause": 0 }] },     
+        { "number": 26, "time": 154, "gap": 3, "enemies": "Possessed Junkman", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [1, 9], "checkpoints": [{ "start": [1, 9], "end": [1, 8], "pause": 0 },{ "start": [1, 8], "end": [1, 3], "pause": 0 }] },     
+        { "number": 27, "time": 155, "gap": 3, "enemies": "Possessed Junkman", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 9], "checkpoints": [{ "start": [1, 9], "end": [1, 8], "pause": 0 },{ "start": [1, 8], "end": [1, 3], "pause": 0 }] },     
+
+ ],
+
+    enemies: ["Possessed Defender", "Possessed Soldier","Possessed Junkman","Sarkaz Centurion Host"],
+    tooltips: ["Sarkaz Centurion Host"],
+    hazards: [],
+
+    layout: [
+        ["e", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg"],
+        ["e", "bg", "g", "blue", "g", "g", "g", "g", "blk", "red", "blk", "bg"],
+        ["e", "bg", "g", "r", "r", "r", "bg", "bg", "g", "bg", "blk", "bg"],
+        ["e", "bg", "g", "g", "g", "g", "r", "bg", "g", "bg", "blk", "bg"],
+        ["e", "bg", "blk", "blk", "g", "g", "r", "g", "g", "bg", "blk", "bg"],
+        ["e", "enterleft", "blk", "bg", "r", "r", "r", "g", "bg", "r", "g", "bg"],
+        ["e", "bg", "bg", "blue", "g", "g", "g", "g", "bg", "enterright", "g", "bg"],
+        ["e", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg"]
+    ],
+}
+
+levels["5-11"] = {
+    level: "5-11",
+    name: "The Herald",
+    bgm: "mephi",
+    initialdp: 10,
+    squadlimit: 9,
+    hp: 3,
+    background: "loading_LM_night",
+    description: "We are deep behind enemy lines,\nand the source of the poisonous mist stands before us.\nThe kid commanding the possessed calls himself Mephisto.\nDo not underestimate him,\nbehind his childish looks lies a wicked demon.\n\n<Poison Haze> Allied units lose HP constantly.",
+    place: "Long",
+    offsetX: 0,
+    offsetY: -30,
+    offsetZ: 0,
+    type: "boss",
+    skybox: "bluebg.png",
+    poison:50,
+
+    waves: [
+        { "number": 1, "time": 0, "gap": 8, "enemies": "Possessed Defender","invertU":1, "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 8], "checkpoints": [{ "start": [3, 8], "end": [3, 8], "pause": 85 },{ "start": [3, 8], "end": [3, 1], "pause": 0 }] },     
+        { "number": 2, "time": 0, "gap": 8, "enemies": "Mephisto", "line": false,"invertU":1, "tooltip": true, "taunt": false, "count": 1, "start": [4, 8], "checkpoints": [{ "start": [4, 8], "end": [4, 8], "pause": 200 },{ "start": [4, 8], "end": [4, 1], "pause": 0 }] },     
+        { "number": 3, "time": 0, "gap": 8, "enemies": "Possessed Defender","invertU":1, "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [5, 8], "checkpoints": [{ "start": [5, 8], "end": [5, 8], "pause": 140 },{ "start": [5, 8], "end": [5, 1], "pause": 0 }] },     
+        { "number": 4, "time": 0, "gap": 8, "enemies": "Caster","invertU":1, "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 9], "checkpoints": [{ "start": [3, 9], "end": [3, 9], "pause": 140 },{ "start": [3, 9], "end": [3, 1], "pause": 0 }] },     
+        { "number": 5, "time": 0, "gap": 8, "enemies": "Caster","invertU":1, "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [5, 9], "checkpoints": [{ "start": [5, 9], "end": [5, 9], "pause": 140 },{ "start": [5, 9], "end": [5, 1], "pause": 0 }] },     
+        { "number": 6, "time": 0, "gap": 8, "enemies": "Possessed Defender","invertU":1, "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [4, 9], "checkpoints": [{ "start": [4, 9], "end": [4, 9], "pause": 185 },{ "start": [4, 9], "end": [3, 1], "pause": 0 }] },     
+        { "number": 7, "time": 0, "gap": 8, "enemies": "Possessed Veteran Junkman","invertU":1, "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 10], "checkpoints": [{ "start": [3, 10], "end": [3, 10], "pause": 190 },{ "start": [3, 10], "end": [3, 1], "pause": 0 }] },     
+        { "number": 8, "time": 0, "gap": 8, "enemies": "Possessed Veteran Junkman","invertU":1, "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [5, 10], "checkpoints": [{ "start": [5, 10], "end": [5, 10], "pause": 210 },{ "start": [5, 10], "end": [5, 1], "pause": 0 }] },     
+        { "number": 9, "time": 0, "gap": 8, "enemies": "Sarkaz Centurion Host","invertU":1, "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [4, 10], "checkpoints": [{ "start": [4, 10], "end": [4, 10], "pause": 230 },{ "start": [4, 10], "end": [5, 1], "pause": 0 }] },     
+        { "number": 0, "time": 5, "gap": 8, "enemies": "Possessed Soldier","invertU":1, "line": true, "tooltip": false, "taunt": true, "count": 1, "start": [1, 11], "checkpoints": [{ "start": [1, 11], "end": [1, 7], "pause": 0 },{ "start": [1, 7], "end": [3, 1], "pause": 0 }] },     
+        { "number": 11, "time": 7, "gap": 8, "enemies": "Possessed Soldier","invertU":1, "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 11], "checkpoints": [{ "start": [1, 11], "end": [1, 7], "pause": 0 },{ "start": [1, 7], "end": [3, 1], "pause": 0 }] },     
+        { "number": 12, "time": 16, "gap": 5, "enemies": "Possessed Soldier","invertU":1, "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [1, 11], "checkpoints": [{ "start": [1, 11], "end": [1, 7], "pause": 0 },{ "start": [1, 7], "end": [3, 1], "pause": 0 }] },     
+        { "number": 13, "time": 40, "gap": 3, "enemies": "Possessed Soldier","invertU":1, "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [1, 11], "checkpoints": [{ "start": [1, 11], "end": [1, 7], "pause": 0 },{ "start": [1, 7], "end": [3, 1], "pause": 0 }] },     
+        { "number": 14, "time": 20, "gap": 8, "enemies": "Possessed Soldier","invertU":1, "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [7, 6], "checkpoints": [{ "start": [7, 6], "end": [7, 6], "pause": 0 },{ "start": [7, 6], "end": [5, 1], "pause": 0 }] },     
+        { "number": 15, "time": 37, "gap": 1, "enemies": "Possessed Soldier","invertU":1, "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [7, 6], "checkpoints": [{ "start": [7, 6], "end": [7, 6], "pause": 0 },{ "start": [7, 6], "end": [5, 1], "pause": 0 }] },     
+        { "number": 27, "time": 90, "gap": 3, "enemies": "Possessed Soldier","invertU":1, "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [1, 11], "checkpoints": [{ "start": [1, 11], "end": [1, 7], "pause": 0 },{ "start": [1, 7], "end": [3, 1], "pause": 0 }] },     
+        { "number": 17, "time": 61, "gap": 60, "enemies": "Possessed Junkman","invertU":1, "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [7, 6], "checkpoints": [{ "start": [7, 6], "end": [7, 6], "pause": 0 },{ "start": [7, 6], "end": [5, 1], "pause": 0 }] },     
+        { "number": 18, "time": 63, "gap": 1, "enemies": "Possessed Soldier","invertU":1, "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [7, 6], "checkpoints": [{ "start": [7, 6], "end": [7, 6], "pause": 0 },{ "start": [7, 6], "end": [5, 1], "pause": 0 }] },     
+        { "number": 19, "time": 72, "gap": 16, "enemies": "Possessed Soldier","invertU":1, "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [1, 11], "checkpoints": [{ "start": [1, 11], "end": [1, 7], "pause": 0 },{ "start": [1, 7], "end": [3, 1], "pause": 0 }] },     
+        { "number": 20, "time": 76, "gap": 15, "enemies": "Possessed Soldier","invertU":1, "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [7, 6], "checkpoints": [{ "start": [7, 6], "end": [7, 6], "pause": 0 },{ "start": [7, 6], "end": [5, 1], "pause": 0 }] },     
+        { "number": 21, "time": 93, "gap": 12, "enemies": "Possessed Junkman","invertU":1, "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [7, 6], "checkpoints": [{ "start": [7, 6], "end": [7, 6], "pause": 0 },{ "start": [7, 6], "end": [5, 1], "pause": 0 }] },     
+        { "number": 24, "time": 130, "gap": 40, "enemies": "Enraged Possessed Soldier","invertU":1, "line": true, "tooltip": false, "taunt": true, "count": 1, "start": [0, 7], "checkpoints": [{ "start": [0, 7], "end": [1, 7], "pause": 10 },{ "start": [1, 7], "end": [1, 10], "pause": 0 },{ "start": [1, 10], "end": [2, 10], "pause": 10 },{ "start": [2, 10], "end": [3, 1], "pause": 0 }] },     
+        { "number": 37, "time": 170, "gap": 5, "enemies": "Possessed Soldier","invertU":1, "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [1, 11], "checkpoints": [{ "start": [1, 11], "end": [1, 7], "pause": 0 },{ "start": [1, 7], "end": [3, 1], "pause": 0 }] },     
+        { "number": 28, "time": 160, "gap": 30, "enemies": "Possessed Junkman","invertU":1, "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 11], "checkpoints": [{ "start": [1, 11], "end": [1, 7], "pause": 0 },{ "start": [1, 7], "end": [3, 1], "pause": 0 }] },     
+        { "number": 29, "time": 160, "gap": 30, "enemies": "Possessed Junkman","invertU":1, "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [7, 6], "checkpoints": [{ "start": [7, 6], "end": [7, 6], "pause": 0 },{ "start": [7, 6], "end": [5, 1], "pause": 0 }] },     
+        { "number": 30, "time": 210, "gap": 50, "enemies": "Enraged Possessed Soldier","invertU":1, "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [7, 6], "checkpoints": [{ "start": [7, 6], "end": [7, 10], "pause": 0 },{ "start": [7, 10], "end": [6, 10], "pause": 0 },{ "start": [6, 10], "end": [5, 1], "pause": 0 }] },     
+        
+    ],
+
+    enemies: ["Possessed Defender","Mephisto","Possessed Veteran Junkman","Enraged Possessed Soldier","Caster","Possessed Soldier","Possessed Junkman","Sarkaz Centurion Host"],
+    tooltips: ["Mephisto"],
+    hazards: [],
+
+    layout: [
+        ["bg", "bg", "bg", "bg", "bg", "bg", "bg", "red", "bg", "bg", "bg", "bg", "bg"],
+        ["bg", "bg", "r", "r", "g", "r", "g", "blk", "blk", "blk", "blk", "red", "bg"],
+        ["bg", "bg", "g", "g", "g", "g", "g", "g", "g", "g", "g", "bg", "bg"],
+        ["bg", "blue", "g", "g", "r", "r", "g", "g", "blk", "blk", "blk", "bg", "bg"],
+        ["bg", "blue", "g", "g", "r", "r", "g", "g", "blk", "blk", "blk", "bg", "bg"],
+        ["bg", "blue", "g", "g", "r", "r", "g", "g", "blk", "blk", "blk", "bg", "bg"],
+        ["bg", "bg", "g", "g", "g", "g", "g", "g", "g", "g", "g", "bg", "bg"],
+        ["bg", "bg", "r", "r", "r", "r", "red", "blk", "blk", "blk", "blk", "bg", "bg"],
+        ["bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg"]
+    ],
+}
+
+
+levels["5-H4"] = {
+    level: "5-H4",
+    name: "Operation Inferno-4",
+    bgm: "mephi",
+    initialdp: 0,
+    squadlimit: 9,
+    hp: 3,
+    background: "loading_LM_night",
+    description: "We are once again face to face with \nMephisto and his powered up herd.\nPlan carefully your deployments and \nrepell his ferocious attack!\n\n" +
+        "<Poison Haze> Allied units lose HP constantly.\n<Bloodrush Tile> Allies deployed on it and enemies who have passed it\nwill take constant damage,\nbut their ATK and Attack Speed will be increased significantly.",
+    place: "Long",
+    offsetX: -15,
+    offsetY: -55,
+    offsetZ: 0,
+    type: "hellboss",
+    skybox: "bluebg.png",
+    poison:30,
+
+    waves: [
+        { "number": 1, "time": 0, "gap": 15, "enemies": "Sarkaz Centurion Nidus Guard", "line": false, "tooltip": true, "taunt": false, "count": 1, "start": [1, 2], "checkpoints": [{ "start": [1, 2], "end": [1, 2], "pause": 120 }, { "start": [1, 2], "end": [6, 2], "pause": 10 }, { "start": [6, 2], "end": [3, 0], "pause": 0 }] },
+        { "number": 2, "time": 0, "gap": 15, "enemies": "Sarkaz Centurion Nidus Guard", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 3], "checkpoints": [{ "start": [1, 3], "end": [1, 3], "pause": 180 }, { "start": [1, 3], "end": [6, 2], "pause": 10 }, { "start": [6, 2], "end": [3, 0], "pause": 0 }] },
+        { "number": 3, "time": 0, "gap": 15, "enemies": "Sarkaz Centurion Nidus Guard", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 7], "checkpoints": [{ "start": [1, 7], "end": [1, 7], "pause": 180 }, { "start": [1, 7], "end": [6, 8], "pause": 0 }, { "start": [6, 8], "end": [6, 2], "pause": 0 }, { "start": [6, 2], "end": [4, 0], "pause": 0 }] },
+        { "number": 4, "time": 10, "gap": 12, "enemies": "Possessed Soldier Leader", "line": true, "tooltip": false, "taunt": true, "count": 3, "start": [2, 12], "checkpoints": [{ "start": [2, 12], "end": [2, 8], "pause": 0 }, { "start": [2, 8], "end": [6, 8], "pause": 0 }, { "start": [6, 8], "end": [6, 2], "pause": 0 }, { "start": [6, 2], "end": [4, 0], "pause": 0 }] },
+        { "number": 5, "time": 11, "gap": 12, "enemies": "Possessed Soldier Leader", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [2, 12], "checkpoints": [{ "start": [2, 12], "end": [2, 8], "pause": 0 }, { "start": [2, 8], "end": [6, 8], "pause": 0 }, { "start": [6, 8], "end": [6, 2], "pause": 0 }, { "start": [6, 2], "end": [4, 0], "pause": 0 }] },
+        { "number": 6, "time": 17, "gap": 12, "enemies": "Possessed Soldier Leader", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [2, 12], "checkpoints": [{ "start": [2, 12], "end": [2, 8], "pause": 0 }, { "start": [2, 8], "end": [6, 8], "pause": 0 }, { "start": [6, 8], "end": [6, 2], "pause": 0 }, { "start": [6, 2], "end": [4, 0], "pause": 0 }] },
+        { "number": 7, "time": 13, "gap": 12, "enemies": "Possessed Soldier Leader", "line": true, "tooltip": false, "taunt": false, "count": 3, "start": [4, 12], "checkpoints": [{ "start": [4, 12], "end": [4, 8], "pause": 0 }, { "start": [4, 8], "end": [3, 2], "pause": 0 }, { "start": [3, 2], "end": [3, 0], "pause": 0 }] },
+        { "number": 8, "time": 14, "gap": 12, "enemies": "Possessed Soldier Leader", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [4, 12], "checkpoints": [{ "start": [4, 12], "end": [4, 8], "pause": 0 }, { "start": [4, 8], "end": [3, 2], "pause": 0 }, { "start": [3, 2], "end": [3, 0], "pause": 0 }] },
+        { "number": 9, "time": 20, "gap": 12, "enemies": "Possessed Soldier Leader", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [4, 12], "checkpoints": [{ "start": [4, 12], "end": [4, 8], "pause": 0 }, { "start": [4, 8], "end": [3, 2], "pause": 0 }, { "start": [3, 2], "end": [3, 0], "pause": 0 }] },
+        { "number": 10, "time": 20, "gap": 10, "enemies": "Possessed Veteran Junkman", "line": true, "tooltip": false, "taunt": false, "count": 3, "start": [3, 12], "checkpoints": [{ "start": [3, 12], "end": [3, 8], "pause": 0 }, { "start": [3, 8], "end": [3, 0], "pause": 0 }] },
+        { "number": 11, "time": 50, "gap": 6, "enemies": "Enraged Possessed Soldier", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [2, 12], "checkpoints": [{ "start": [2, 12], "end": [2, 11], "pause": 5 }, { "start": [2, 11], "end": [2, 8], "pause": 0 }, { "start": [2, 8], "end": [6, 8], "pause": 0 }, { "start": [6, 8], "end": [6, 2], "pause": 0 }, { "start": [6, 2], "end": [4, 0], "pause": 0 }] },
+        { "number": 12, "time": 50, "gap": 6, "enemies": "Enraged Possessed Soldier", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 12], "checkpoints": [{ "start": [3, 12], "end": [3, 11], "pause": 5 }, { "start": [3, 11], "end": [3, 8], "pause": 0 }, { "start": [3, 8], "end": [3, 0], "pause": 0 }] },
+        { "number": 13, "time": 50, "gap": 6, "enemies": "Enraged Possessed Soldier", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [4, 12], "checkpoints": [{ "start": [4, 12], "end": [4, 11], "pause": 5 }, { "start": [4, 11], "end": [4, 8], "pause": 0 }, { "start": [4, 8], "end": [3, 2], "pause": 0 }, { "start": [3, 2], "end": [3, 0], "pause": 0 }] },
+        { "number": 14, "time": 55, "gap": 30, "enemies": "Enraged Possessed Thrower", "line": true, "tooltip": false, "taunt": false, "count": 3, "start": [1, 11], "checkpoints": [{ "start": [1, 11], "end": [1, 8], "pause": 0 }, { "start": [1, 8], "end": [6, 8], "pause": 0 }, { "start": [6, 8], "end": [6, 2], "pause": 0 }, { "start": [6, 2], "end": [4, 0], "pause": 0 }] },
+        { "number": 15, "time": 65, "gap": 6, "enemies": "Possessed Defender Leader", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [2, 12], "checkpoints": [{ "start": [2, 12], "end": [2, 9], "pause": 15 }, { "start": [2, 9], "end": [2, 8], "pause": 0 }, { "start": [2, 8], "end": [6, 8], "pause": 0 }, { "start": [6, 8], "end": [6, 2], "pause": 0 }, { "start": [6, 2], "end": [4, 0], "pause": 0 }] },
+        { "number": 16, "time": 65, "gap": 6, "enemies": "Possessed Defender Leader", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [4, 12], "checkpoints": [{ "start": [4, 12], "end": [4, 9], "pause": 55 }, { "start": [4, 9], "end": [4, 8], "pause": 0 }, { "start": [4, 8], "end": [3, 2], "pause": 0 }, { "start": [3, 2], "end": [3, 0], "pause": 0 }] },
+        { "number": 17, "time": 67, "gap": 6, "enemies": "Possessed Defender Leader", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [2, 12], "checkpoints": [{ "start": [2, 12], "end": [2, 10], "pause": 95 }, { "start": [2, 10], "end": [2, 8], "pause": 0 }, { "start": [2, 8], "end": [6, 8], "pause": 0 }, { "start": [6, 8], "end": [6, 2], "pause": 0 }, { "start": [6, 2], "end": [4, 0], "pause": 0 }] },
+        { "number": 18, "time": 67, "gap": 6, "enemies": "Possessed Defender Leader", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [4, 12], "checkpoints": [{ "start": [4, 12], "end": [4, 10], "pause": 115 }, { "start": [4, 10], "end": [4, 8], "pause": 0 }, { "start": [4, 8], "end": [3, 2], "pause": 0 }, { "start": [3, 2], "end": [3, 0], "pause": 0 }] },
+        { "number": 19, "time": 72, "gap": 6, "enemies": "MephistoEX", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [3, 12], "checkpoints": [{ "start": [3, 12], "end": [3, 11], "pause": 40 }, { "start": [3, 11], "end": [5, 11], "pause": 5 }, { "start": [5, 11], "end": [3, 0], "pause": 0 }] },
+        { "number": 20, "time": 90, "gap": 30, "enemies": "Possessed Soldier Leader", "line": false, "tooltip": false, "taunt": true, "count": 2, "start": [2, 12], "checkpoints": [{ "start": [2, 12], "end": [2, 8], "pause": 0 }, { "start": [2, 8], "end": [6, 8], "pause": 0 }, { "start": [6, 8], "end": [6, 2], "pause": 0 }, { "start": [6, 2], "end": [4, 0], "pause": 0 }] },
+        { "number": 21, "time": 91, "gap": 30, "enemies": "Possessed Soldier Leader", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [2, 12], "checkpoints": [{ "start": [2, 12], "end": [2, 8], "pause": 0 }, { "start": [2, 8], "end": [6, 8], "pause": 0 }, { "start": [6, 8], "end": [6, 2], "pause": 0 }, { "start": [6, 2], "end": [4, 0], "pause": 0 }] },
+        { "number": 22, "time": 106, "gap": 30, "enemies": "Possessed Soldier Leader", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [2, 12], "checkpoints": [{ "start": [2, 12], "end": [2, 8], "pause": 0 }, { "start": [2, 8], "end": [6, 8], "pause": 0 }, { "start": [6, 8], "end": [6, 2], "pause": 0 }, { "start": [6, 2], "end": [4, 0], "pause": 0 }] },
+        { "number": 23, "time": 93, "gap": 30, "enemies": "Possessed Soldier Leader", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [4, 12], "checkpoints": [{ "start": [4, 12], "end": [4, 8], "pause": 0 }, { "start": [4, 8], "end": [3, 2], "pause": 0 }, { "start": [3, 2], "end": [3, 0], "pause": 0 }] },
+        { "number": 24, "time": 94, "gap": 30, "enemies": "Possessed Soldier Leader", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [4, 12], "checkpoints": [{ "start": [4, 12], "end": [4, 8], "pause": 0 }, { "start": [4, 8], "end": [3, 2], "pause": 0 }, { "start": [3, 2], "end": [3, 0], "pause": 0 }] },
+        { "number": 25, "time": 109, "gap": 30, "enemies": "Possessed Soldier Leader", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [4, 12], "checkpoints": [{ "start": [4, 12], "end": [4, 8], "pause": 0 }, { "start": [4, 8], "end": [3, 2], "pause": 0 }, { "start": [3, 2], "end": [3, 0], "pause": 0 }] },
+        { "number": 26, "time": 100, "gap": 21, "enemies": "Possessed Veteran Junkman", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 12], "checkpoints": [{ "start": [3, 12], "end": [3, 8], "pause": 0 }, { "start": [3, 8], "end": [3, 0], "pause": 0 }] },
+        { "number": 27, "time": 120, "gap": 15, "enemies": "Enraged Possessed Leader", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [6, 12], "checkpoints": [{ "start": [6, 12], "end": [6, 11], "pause": 30 }, { "start": [6, 11], "end": [3, 0], "pause": 0 }] },
+        { "number": 28, "time": 130, "gap": 50, "enemies": "Enraged Possessed Bonethrower", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 11], "checkpoints": [{ "start": [1, 11], "end": [1, 8], "pause": 0 }, { "start": [1, 8], "end": [6, 8], "pause": 0 }, { "start": [6, 8], "end": [6, 2], "pause": 0 }, { "start": [6, 2], "end": [4, 0], "pause": 0 }] },
+        { "number": 29, "time": 160, "gap": 21, "enemies": "Possessed Veteran Junkman", "line": false, "tooltip": false, "taunt": true, "count": 3, "start": [2, 12], "checkpoints": [{ "start": [2, 12], "end": [2, 8], "pause": 0 }, { "start": [2, 8], "end": [6, 8], "pause": 0 }, { "start": [6, 8], "end": [6, 2], "pause": 0 }, { "start": [6, 2], "end": [4, 0], "pause": 0 }] },
+        { "number": 30, "time": 163, "gap": 21, "enemies": "Possessed Veteran Junkman", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [4, 12], "checkpoints": [{ "start": [4, 12], "end": [4, 8], "pause": 0 }, { "start": [4, 8], "end": [3, 2], "pause": 0 }, { "start": [3, 2], "end": [3, 0], "pause": 0 }] },
+        { "number": 31, "time": 170, "gap": 21, "enemies": "Possessed Veteran Junkman", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [3, 12], "checkpoints": [{ "start": [3, 12], "end": [3, 8], "pause": 0 }, { "start": [3, 8], "end": [3, 0], "pause": 0 }] },
+        { "number": 32, "time": 200, "gap": 15, "enemies": "Enraged Possessed Leader", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [6, 12], "checkpoints": [{ "start": [6, 12], "end": [6, 11], "pause": 0 }, { "start": [6, 11], "end": [3, 0], "pause": 0 }] },
+    ],
+
+    enemies: ["Enraged Possessed Thrower", "Possessed Soldier Leader", "Possessed Defender Leader", "Possessed Veteran Junkman", "Enraged Possessed Bonethrower", "Enraged Possessed Soldier", "Enraged Possessed Leader", "MephistoEX", "Sarkaz Centurion Nidus Guard"],
+    tooltips: ["Sarkaz Centurion Nidus Guard"],
+    hazards: [],
+
+    layout: [["bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg"],
+    ["bg", "bg", "blk", "blk", "r", "r", "r", "blk", "blk", "blk", "blk", "red", "bg"],
+    ["bg", "bg", "blk", "bg", "bg", "bg", "r", "r", "g", "blk", "blk", "blk", "red"],
+    ["blue", "blk", "g", "bg", "bg", "bg", "r", "r", "g", "blk", "blk", "blk", "red"],
+    ["blue", "blk", "g", "g", "r", "r", "r", "r", "g", "blk", "blk", "blk", "red"],
+    ["bg", "bg", "g", "g", "r", "g", "r", "g", "blood", "r", "r", "blk", "bg"],
+    ["bg", "bg", "g", "blk", "blk", "g", "blk", "blk", "g", "g", "blk", "blk", "red"],
+    ["bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg"]
     ],
 }
 
@@ -3317,137 +3596,4 @@ levels["T-MN"] = {
         ["bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg",],
     ],
 }
-
-levels["T-5"] = {
-    level: "T-5",
-    name: "Rage",
-    bgm: "epm8_1",
-    initialdp: 0,
-    squadlimit: 9,
-    hp: 3,
-    background: "loading_graduate",
-    description: "Put them out of their misery.\n\n" +
-        "<Bloodrush Tile> Allies deployed on it and enemies who have passed it\nwill take constant damage,\nbut their ATK and Attack Speed will be increased significantly.",
-    place: "Plain",
-    offsetX: -15,
-    offsetY: -55,
-    offsetZ: 0,
-    type: "boss",
-    skybox: "cityruin.png",
-
-    waves: [
-        //{ "number":1,"time": 0, "gap": 15, "enemies": "Mephisto", "line": true, "tooltip": true, "taunt": false, "count": 1, "start": [3, 12], "checkpoints": [{ "start": [3, 12], "end": [3, 11], "pause": 100 },{ "start": [3, 11], "end": [3, 0], "pause": 0 }] },
-        { "number": 1, "time": 0, "gap": 15, "enemies": "Sarkaz Centurion Nidus Guard", "line": false, "tooltip": true, "taunt": false, "count": 1, "start": [1, 2], "checkpoints": [{ "start": [1, 2], "end": [1, 2], "pause": 120 }, { "start": [1, 2], "end": [6, 2], "pause": 10 }, { "start": [6, 2], "end": [3, 0], "pause": 0 }] },
-        { "number": 2, "time": 0, "gap": 15, "enemies": "Sarkaz Centurion Nidus Guard", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 3], "checkpoints": [{ "start": [1, 3], "end": [1, 3], "pause": 180 }, { "start": [1, 3], "end": [6, 2], "pause": 10 }, { "start": [6, 2], "end": [3, 0], "pause": 0 }] },
-        { "number": 3, "time": 0, "gap": 15, "enemies": "Sarkaz Centurion Nidus Guard", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 7], "checkpoints": [{ "start": [1, 7], "end": [1, 7], "pause": 180 }, { "start": [1, 7], "end": [6, 8], "pause": 0 }, { "start": [6, 8], "end": [6, 2], "pause": 0 }, { "start": [6, 2], "end": [4, 0], "pause": 0 }] },
-
-        { "number": 4, "time": 10, "gap": 12, "enemies": "Possessed Soldier Leader", "line": true, "tooltip": true, "taunt": true, "count": 3, "start": [2, 12], "checkpoints": [{ "start": [2, 12], "end": [2, 8], "pause": 0 }, { "start": [2, 8], "end": [6, 8], "pause": 0 }, { "start": [6, 8], "end": [6, 2], "pause": 0 }, { "start": [6, 2], "end": [4, 0], "pause": 0 }] },
-        { "number": 5, "time": 11, "gap": 12, "enemies": "Possessed Soldier Leader", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [2, 12], "checkpoints": [{ "start": [2, 12], "end": [2, 8], "pause": 0 }, { "start": [2, 8], "end": [6, 8], "pause": 0 }, { "start": [6, 8], "end": [6, 2], "pause": 0 }, { "start": [6, 2], "end": [4, 0], "pause": 0 }] },
-
-        { "number": 6, "time": 17, "gap": 12, "enemies": "Possessed Soldier Leader", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [2, 12], "checkpoints": [{ "start": [2, 12], "end": [2, 8], "pause": 0 }, { "start": [2, 8], "end": [6, 8], "pause": 0 }, { "start": [6, 8], "end": [6, 2], "pause": 0 }, { "start": [6, 2], "end": [4, 0], "pause": 0 }] },
-
-
-        { "number": 7, "time": 13, "gap": 12, "enemies": "Possessed Soldier Leader", "line": true, "tooltip": false, "taunt": false, "count": 3, "start": [4, 12], "checkpoints": [{ "start": [4, 12], "end": [4, 8], "pause": 0 }, { "start": [4, 8], "end": [3, 2], "pause": 0 }, { "start": [3, 2], "end": [3, 0], "pause": 0 }] },
-        { "number": 8, "time": 14, "gap": 12, "enemies": "Possessed Soldier Leader", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [4, 12], "checkpoints": [{ "start": [4, 12], "end": [4, 8], "pause": 0 }, { "start": [4, 8], "end": [3, 2], "pause": 0 }, { "start": [3, 2], "end": [3, 0], "pause": 0 }] },
-
-        { "number": 9, "time": 20, "gap": 12, "enemies": "Possessed Soldier Leader", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [4, 12], "checkpoints": [{ "start": [4, 12], "end": [4, 8], "pause": 0 }, { "start": [4, 8], "end": [3, 2], "pause": 0 }, { "start": [3, 2], "end": [3, 0], "pause": 0 }] },
-
-
-        { "number": 10, "time": 20, "gap": 10, "enemies": "Possessed Veteran Junkman", "line": true, "tooltip": true, "taunt": false, "count": 3, "start": [3, 12], "checkpoints": [{ "start": [3, 12], "end": [3, 8], "pause": 0 }, { "start": [3, 8], "end": [3, 0], "pause": 0 }] },
-
-
-        { "number": 11, "time": 50, "gap": 6, "enemies": "Enraged Possessed Soldier", "line": false, "tooltip": true, "taunt": false, "count": 1, "start": [2, 12], "checkpoints": [{ "start": [2, 12], "end": [2, 11], "pause": 5 }, { "start": [2, 11], "end": [2, 8], "pause": 0 }, { "start": [2, 8], "end": [6, 8], "pause": 0 }, { "start": [6, 8], "end": [6, 2], "pause": 0 }, { "start": [6, 2], "end": [4, 0], "pause": 0 }] },
-        { "number": 12, "time": 50, "gap": 6, "enemies": "Enraged Possessed Soldier", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 12], "checkpoints": [{ "start": [3, 12], "end": [3, 11], "pause": 5 }, { "start": [3, 11], "end": [3, 8], "pause": 0 }, { "start": [3, 8], "end": [3, 0], "pause": 0 }] },
-        { "number": 13, "time": 50, "gap": 6, "enemies": "Enraged Possessed Soldier", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [4, 12], "checkpoints": [{ "start": [4, 12], "end": [4, 11], "pause": 5 }, { "start": [4, 11], "end": [4, 8], "pause": 0 }, { "start": [4, 8], "end": [3, 2], "pause": 0 }, { "start": [3, 2], "end": [3, 0], "pause": 0 }] },
-
-        { "number": 14, "time": 55, "gap": 30, "enemies": "Enraged Possessed Thrower", "line": true, "tooltip": true, "taunt": false, "count": 3, "start": [1, 11], "checkpoints": [{ "start": [1, 11], "end": [1, 8], "pause": 0 }, { "start": [1, 8], "end": [6, 8], "pause": 0 }, { "start": [6, 8], "end": [6, 2], "pause": 0 }, { "start": [6, 2], "end": [4, 0], "pause": 0 }] },
-
-        { "number": 15, "time": 65, "gap": 6, "enemies": "Possessed Defender Leader", "line": false, "tooltip": true, "taunt": false, "count": 1, "start": [2, 12], "checkpoints": [{ "start": [2, 12], "end": [2, 9], "pause": 15 }, { "start": [2, 9], "end": [2, 8], "pause": 0 }, { "start": [2, 8], "end": [6, 8], "pause": 0 }, { "start": [6, 8], "end": [6, 2], "pause": 0 }, { "start": [6, 2], "end": [4, 0], "pause": 0 }] },
-        { "number": 16, "time": 65, "gap": 6, "enemies": "Possessed Defender Leader", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [4, 12], "checkpoints": [{ "start": [4, 12], "end": [4, 9], "pause": 55 }, { "start": [4, 9], "end": [4, 8], "pause": 0 }, { "start": [4, 8], "end": [3, 2], "pause": 0 }, { "start": [3, 2], "end": [3, 0], "pause": 0 }] },
-
-        { "number": 17, "time": 67, "gap": 6, "enemies": "Possessed Defender Leader", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [2, 12], "checkpoints": [{ "start": [2, 12], "end": [2, 10], "pause": 95 }, { "start": [2, 10], "end": [2, 8], "pause": 0 }, { "start": [2, 8], "end": [6, 8], "pause": 0 }, { "start": [6, 8], "end": [6, 2], "pause": 0 }, { "start": [6, 2], "end": [4, 0], "pause": 0 }] },
-        { "number": 18, "time": 67, "gap": 6, "enemies": "Possessed Defender Leader", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [4, 12], "checkpoints": [{ "start": [4, 12], "end": [4, 10], "pause": 115 }, { "start": [4, 10], "end": [4, 8], "pause": 0 }, { "start": [4, 8], "end": [3, 2], "pause": 0 }, { "start": [3, 2], "end": [3, 0], "pause": 0 }] },
-
-        { "number": 19, "time": 72, "gap": 6, "enemies": "Mephisto", "line": true, "tooltip": true, "taunt": false, "count": 1, "start": [3, 12], "checkpoints": [{ "start": [3, 12], "end": [3, 11], "pause": 40 }, { "start": [3, 11], "end": [5, 11], "pause": 5 }, { "start": [5, 11], "end": [3, 0], "pause": 0 }] },
-
-        //part 2
-        { "number": 20, "time": 90, "gap": 30, "enemies": "Possessed Soldier Leader", "line": false, "tooltip": false, "taunt": true, "count": 2, "start": [2, 12], "checkpoints": [{ "start": [2, 12], "end": [2, 8], "pause": 0 }, { "start": [2, 8], "end": [6, 8], "pause": 0 }, { "start": [6, 8], "end": [6, 2], "pause": 0 }, { "start": [6, 2], "end": [4, 0], "pause": 0 }] },
-        { "number": 21, "time": 91, "gap": 30, "enemies": "Possessed Soldier Leader", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [2, 12], "checkpoints": [{ "start": [2, 12], "end": [2, 8], "pause": 0 }, { "start": [2, 8], "end": [6, 8], "pause": 0 }, { "start": [6, 8], "end": [6, 2], "pause": 0 }, { "start": [6, 2], "end": [4, 0], "pause": 0 }] },
-
-        { "number": 22, "time": 106, "gap": 30, "enemies": "Possessed Soldier Leader", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [2, 12], "checkpoints": [{ "start": [2, 12], "end": [2, 8], "pause": 0 }, { "start": [2, 8], "end": [6, 8], "pause": 0 }, { "start": [6, 8], "end": [6, 2], "pause": 0 }, { "start": [6, 2], "end": [4, 0], "pause": 0 }] },
-
-        { "number": 23, "time": 93, "gap": 30, "enemies": "Possessed Soldier Leader", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [4, 12], "checkpoints": [{ "start": [4, 12], "end": [4, 8], "pause": 0 }, { "start": [4, 8], "end": [3, 2], "pause": 0 }, { "start": [3, 2], "end": [3, 0], "pause": 0 }] },
-        { "number": 24, "time": 94, "gap": 30, "enemies": "Possessed Soldier Leader", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [4, 12], "checkpoints": [{ "start": [4, 12], "end": [4, 8], "pause": 0 }, { "start": [4, 8], "end": [3, 2], "pause": 0 }, { "start": [3, 2], "end": [3, 0], "pause": 0 }] },
-
-        { "number": 25, "time": 109, "gap": 30, "enemies": "Possessed Soldier Leader", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [4, 12], "checkpoints": [{ "start": [4, 12], "end": [4, 8], "pause": 0 }, { "start": [4, 8], "end": [3, 2], "pause": 0 }, { "start": [3, 2], "end": [3, 0], "pause": 0 }] },
-
-        { "number": 26, "time": 100, "gap": 21, "enemies": "Possessed Veteran Junkman", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 12], "checkpoints": [{ "start": [3, 12], "end": [3, 8], "pause": 0 }, { "start": [3, 8], "end": [3, 0], "pause": 0 }] },
-
-        { "number": 27, "time": 120, "gap": 15, "enemies": "Enraged Possessed Leader", "line": true, "tooltip": true, "taunt": false, "count": 1, "start": [6, 12], "checkpoints": [{ "start": [6, 12], "end": [6, 11], "pause": 30 }, { "start": [6, 11], "end": [3, 0], "pause": 0 }] },
-
-        { "number": 28, "time": 130, "gap": 50, "enemies": "Enraged Possessed Bonethrower", "line": false, "tooltip": true, "taunt": false, "count": 1, "start": [1, 11], "checkpoints": [{ "start": [1, 11], "end": [1, 8], "pause": 0 }, { "start": [1, 8], "end": [6, 8], "pause": 0 }, { "start": [6, 8], "end": [6, 2], "pause": 0 }, { "start": [6, 2], "end": [4, 0], "pause": 0 }] },
-
-        { "number": 29, "time": 160, "gap": 21, "enemies": "Possessed Veteran Junkman", "line": false, "tooltip": false, "taunt": true, "count": 3, "start": [2, 12], "checkpoints": [{ "start": [2, 12], "end": [2, 8], "pause": 0 }, { "start": [2, 8], "end": [6, 8], "pause": 0 }, { "start": [6, 8], "end": [6, 2], "pause": 0 }, { "start": [6, 2], "end": [4, 0], "pause": 0 }] },
-
-        { "number": 30, "time": 163, "gap": 21, "enemies": "Possessed Veteran Junkman", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [4, 12], "checkpoints": [{ "start": [4, 12], "end": [4, 8], "pause": 0 }, { "start": [4, 8], "end": [3, 2], "pause": 0 }, { "start": [3, 2], "end": [3, 0], "pause": 0 }] },
-
-        { "number": 31, "time": 170, "gap": 21, "enemies": "Possessed Veteran Junkman", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [3, 12], "checkpoints": [{ "start": [3, 12], "end": [3, 8], "pause": 0 }, { "start": [3, 8], "end": [3, 0], "pause": 0 }] },
-
-        { "number": 32, "time": 200, "gap": 15, "enemies": "Enraged Possessed Leader", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [6, 12], "checkpoints": [{ "start": [6, 12], "end": [6, 11], "pause": 0 }, { "start": [6, 11], "end": [3, 0], "pause": 0 }] },
-    ],
-
-    enemies: ["Enraged Possessed Thrower", "Possessed Soldier Leader", "Possessed Defender Leader", "Possessed Veteran Junkman", "Enraged Possessed Bonethrower", "Enraged Possessed Soldier", "Enraged Possessed Leader", "Mephisto", "Sarkaz Centurion Nidus Guard"],
-    tooltips: ["Enraged Possessed Thrower", "Possessed Soldier Leader", "Possessed Defender Leader", "Possessed Veteran Junkman", "Enraged Possessed Bonethrower", "Enraged Possessed Soldier", "Enraged Possessed Leader", "Mephisto", "Sarkaz Centurion Nidus Guard"],
-    hazards: [],
-
-    layout: [["bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg"],
-    ["bg", "bg", "blk", "blk", "r", "r", "r", "blk", "blk", "blk", "blk", "red", "bg"],
-    ["bg", "bg", "blk", "bg", "bg", "bg", "r", "r", "g", "blk", "blk", "blk", "red"],
-    ["blue", "blk", "g", "bg", "bg", "bg", "r", "r", "g", "blk", "blk", "blk", "red"],
-    ["blue", "blk", "g", "g", "r", "r", "r", "r", "g", "blk", "blk", "blk", "red"],
-    ["bg", "bg", "g", "g", "r", "g", "r", "g", "blood", "r", "r", "blk", "bg"],
-    ["bg", "bg", "g", "blk", "blk", "g", "blk", "blk", "g", "g", "blk", "blk", "red"],
-    ["bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg"]
-    ],
-}
-
-/*
-levels["TEST"] = {
-    level: "TEST",
-    name: "Title",
-    bgm: "ep7_2",
-    initialdp: 40,
-    squadlimit: 9,
-    hp: 3,
-    background: "loading_CB_under",
-    description: "Sussy",
-    place: "Plain",
-    offsetX: 10,
-    offsetY: -10,
-    offsetZ: 0,
-    type: "normal",
-
-    waves: [
-        //{"number":0, "time": 0, "gap": 5, "enemies": "Sarkaz Guerrilla Fighter Leader", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [4, 4], "checkpoints": [{ "start": [4, 4], "end": [4, 4], "pause": 300 }]},
-        //{ "number":4,"time": 30, "gap": 5, "enemies": "Guerrilla Siegebreaker Leader", "line": false, "tooltip": true, "taunt": false, "count": 1, "start": [7, 12], "checkpoints": [{ "start": [7, 12], "end": [7, 11], "pause": 200 }, { "start": [7, 11], "end": [7, 0], "pause": 0 }] },
-
-        { "number": 3, "time": 2, "gap": 5, "enemies": "Guerrilla Fighter Leader", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [7, 12], "checkpoints": [{ "start": [7, 12], "end": [7, 1], "pause": 10 }, { "start": [0, 11], "end": [1, 0], "pause": 0 }] },
-        //{"number":2, "time": 0, "gap": 5, "enemies": "Patriot", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [7, 10], "checkpoints": [{ "start": [7, 10], "end": [7, 2], "pause": 300 }, { "start": [7, 2], "end": [7, 10], "pause": 5 }, { "start": [7, 10], "end": [7, 2], "pause": 5 }, { "start": [7, 2], "end": [7, 10], "pause": 300 }, { "start": [7, 10], "end": [7, 0], "pause": 0 }] },
-
-    ],
-
-    enemies: ["Patriot", "Patriot2", "Guerrilla Siegebreaker Leader", "Sarkaz Guerrilla Fighter Leader"],
-    tooltips: ["Patriot", "Guerrilla Siegebreaker Leader"],
-    hazards: ["altar"],
-
-    layout: [["bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "entertop", "bg"], ["blue", "g", "g", "g", "g", "g", "g", "g", "g", "g", "g", "blk", "red"],
-    ["bg", "bg", "bg", "bg", "r", "r", "bg", "bg", "r", "r", "bg", "bg", "bg"],
-    ["bg", "bg", "bg", "bg", "bg", "g", "g", "g", "g", "bg", "bg", "bg", "bg"],
-    ["red", "blk", "g", "bg", "g", "g", "g", "r", "g", "g", "bg", "bg", "bg"],
-    ["bg", "bg", "g", "g", "g", "r", "altar", "bg", "r", "g", "g", "g", "blue"],
-    ["bg", "bg", "r", "r", "r", "bg", "bg", "bg", "bg", "r", "r", "bg", "bg"],
-    ["blue", "enterright", "g", "blood", "g", "g", "g", "g", "g", "g", "g", "blk", "red"]
-    ],
-}
-*/
 

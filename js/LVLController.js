@@ -252,7 +252,7 @@ class LVLController extends LVLAbstract {
 
         binaryTask = assetsManager.addTextureTask(
             "blood",
-            "images/textures/blood.jpg",
+            "images/textures/"+instance.place+"/blood.jpg",
         );
         binaryTask.onSuccess = function (task) {
             instance.scene.assets[task.name] = task.texture
@@ -523,6 +523,7 @@ class LVLController extends LVLAbstract {
                 if (!this.gui.isPaused)
                     this.createLvl();
             }
+            
         }
         this.scene.render();
     }
@@ -1623,13 +1624,13 @@ class LVLController extends LVLAbstract {
         }
     }
 
-    createEnemy(e, start, checkpoints, id) {
+    createEnemy(e, start, checkpoints, id,invertU) {
         var enemyUse = this.enemylist[e]
         var matrixUse = this.matrix
         if (enemyUse.type == "r")
             matrixUse = this.flyingmatrix
         var enemy = new EnemyController(enemyUse, this.scene, start[0], start[1], this, id);
-        enemy.createEnemy(matrixUse, checkpoints, this.spriteManagers, this.gui, this.spriteManagers["icons"]);
+        enemy.createEnemy(matrixUse, checkpoints, this.spriteManagers, this.gui, this.spriteManagers["icons"],invertU);
         enemy.gamespeed = this.gamespeed;
         this.enemies.push(enemy);
     }
@@ -1691,7 +1692,7 @@ class LVLController extends LVLAbstract {
 
                 this.waves[i]["time"] += this.waves[i]["gap"];
 
-                this.createEnemy(this.waves[i]["enemies"], this.waves[i]["start"], this.waves[i]["checkpoints"], "wave" + this.waves[i]["number"] + this.waves[i]["count"]);
+                this.createEnemy(this.waves[i]["enemies"], this.waves[i]["start"], this.waves[i]["checkpoints"], "wave" + this.waves[i]["number"] + this.waves[i]["count"],this.waves[i]["invertU"] || 0);
                 this.waves[i]["count"]--;
                 if (this.waves[i]["count"] <= 0) {
                     this.waves.splice(i, 1)
