@@ -273,7 +273,7 @@ class EnemyController extends CharaController {
     //spritemanager contains the sprites of the enemy,
     //gui is the gui of the level,
     //iconsmanager contains the icon sprites
-    createEnemy(matrix, points, spriteManager, gui, iconsmanager,invertU) {
+    createEnemy(matrix, points, spriteManager, gui, iconsmanager, invertU) {
         this.mesh = this.scene.assets.meshchara.createInstance(this.id)
 
         this.shadow = new BABYLON.Sprite(this.id + "shadow", iconsmanager);
@@ -463,11 +463,20 @@ class EnemyController extends CharaController {
                             if (instance.chara.dmgtype == "heal")
                                 player[i].receiveHealing(instance);
                             else {
-                                for (let j = 0; j < this.buffs.getAttacks(); j++) {
-                                    if (this.chara.bullet != undefined) {
-                                        new Bullet(this, this.scene, player[i], this.lvlcontroller)
+                                if (this.chara.splash == undefined) {
+                                    for (let j = 0; j < this.buffs.getAttacks(); j++) {
+                                        if (this.chara.bullet != undefined) {
+                                            new Bullet(this, this.scene, player[i], this.lvlcontroller)
+                                        }
+                                        else player[i].receiveDamage(instance)
                                     }
-                                    else player[i].receiveDamage(instance)
+                                }
+                                else {
+                                    let splashenemies = this.getSplashPlayersInRange(players, player[i], this.chara.splash)
+                                    for (let j = 0; j < splashenemies.length; j++){
+                                        splashenemies[j].receiveDamage(instance,false,this.chara.splashdmg)
+                                    }
+                                    player[i].receiveDamage(instance)
                                 }
                             }
                         }
@@ -575,14 +584,14 @@ class EnemyController extends CharaController {
         this.sprite.color.b = 0
 
         setTimeout(() => {
-            if(!this.dead){
+            if (!this.dead) {
                 this.sprite.color.r = 1
                 this.sprite.color.g = 1
                 this.sprite.color.b = 1
             }
-            
+
         }
-        , 100)
+            , 100)
 
         //update hp bar after receiving damage
         this.updateHpBar();
@@ -638,13 +647,13 @@ class EnemyController extends CharaController {
                 this.sprite.color.g = 1
                 this.sprite.color.b = 1
 
-                var darkening = 1/(this.chara.death.end - this.chara.death.start)/2.5
+                var darkening = 1 / (this.chara.death.end - this.chara.death.start) / 2.5
                 this.sprite.playAnimation(this.chara.death.start, this.chara.death.end, false, 30 * Math.min(2, this.gamespeed) * (this.chara.death.duration));
                 var instance = this
                 let interval = setInterval(() => {
-                    this.sprite.color.r -= darkening/this.gamespeed
-                    this.sprite.color.g -= darkening/this.gamespeed
-                    this.sprite.color.b -= darkening/this.gamespeed
+                    this.sprite.color.r -= darkening / this.gamespeed
+                    this.sprite.color.g -= darkening / this.gamespeed
+                    this.sprite.color.b -= darkening / this.gamespeed
                     if (instance.sprite.cellIndex == instance.chara.death.end) {
                         if (this.playerSkill != undefined) {
                             if (this.playerSkill.triggertype == "on_death" && !this.buffs.isSilenced()) {

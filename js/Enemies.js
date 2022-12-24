@@ -5655,6 +5655,133 @@ enemylist["Monster"] = {
     }
 }
 
+enemylist["Demolitionist"] = {
+    name: "Demolitionist",
+    hp: 15000,
+    atk: 1700,
+    def: 800,
+    res: 0,
+    atkinterval: 5,
+    speed: 0.6* 0.49,
+    blockcount: 1,
+    type: "g",
+    range: 0,
+    hploss: 1,
+    dmgtype: "physical",
+    size: 1.2,
+    tooltip: "Elite enemy whose \nattacks cause explosions,\n dealing Splash damage to units\non the 4 tiles\n surrounding the primary target.",
+    targets: 1,
+    splash:1,
+    splashdmg:0.5,
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/demolitionist-leader-sheet.webp",
+    hasskill: false,
+
+
+    atkanim: {
+        start: 0,
+        end: 28,
+        contact: 16,
+        duration: 1.1,
+    },
+
+    death: {
+        start: 29,
+        end: 43,
+        duration: 1,
+
+    },
+    idle: {
+        start: 44,
+        end: 73,
+        duration: 1,
+
+    },
+    move: {
+        start: 74,
+        end: 89,
+        duration: 1.5,
+
+    },
+
+    sfx: {
+        hit: {
+            src: "demolitionist-atk",
+            volume: 0.1
+        },
+        hit: {
+            src: "demolitionist-hit",
+            volume: 0.1
+        }
+    },
+
+}
+
+enemylist["Demolitionist Leader"] = {
+    name: "Demolitionist Leader",
+    hp: 25000,
+    atk: 2200,
+    def: 1000,
+    res: 0,
+    atkinterval: 5,
+    speed: 0.6* 0.49,
+    blockcount: 1,
+    type: "g",
+    range: 0,
+    hploss: 1,
+    dmgtype: "physical",
+    size: 1.2,
+    tooltip: "Elite enemy whose \nattacks cause explosions,\ndealing Splash damage to units\non the 4 tiles\nsurrounding the primary target.",
+    targets: 1,
+    splash:1,
+    splashdmg:0.5,
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/demolitionist-leader-sheet.webp",
+    hasskill: false,
+
+
+    atkanim: {
+        start: 0,
+        end: 38,
+        contact: 24,
+        duration: 1.1,
+    },
+
+    death: {
+        start: 39,
+        end: 53,
+        duration: 1,
+
+    },
+    idle: {
+        start: 54,
+        end: 83,
+        duration: 1,
+
+    },
+    move: {
+        start: 84,
+        end: 99,
+        duration: 1.5,
+
+    },
+
+    sfx: {
+        hit: {
+            src: "demolitionist-atk",
+            volume: 0.1
+        },
+        hit: {
+            src: "demolitionist-hit",
+            volume: 0.1
+        }
+    },
+}
+
 enemylist["Heavy Defender Leader"] = {
     name: "Heavy Defender Leader",
     hp: 10000,

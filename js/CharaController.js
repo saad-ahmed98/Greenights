@@ -331,7 +331,7 @@ class CharaController {
         var res = [];
         for (let i = 0; i < players.length; i++) {
             var counter = Math.abs(Math.abs(Math.round(players[i].mesh.position.x / 30) - this.x) - range);
-            if (this.between(players[i].x * 30, squarerange[0]) && this.between(players[i].y * 30, squarerange[1]) && players[i].hp < players[i].chara.hp) {
+            if (this.between(players[i].x * 30, squarerange[0]) && this.between(players[i].y * 30, squarerange[1]) && players[i].hp < players[i].maxhp) {
                 if (Math.abs(Math.round(players[i].mesh.position.z / 30) - this.y) <= counter + rangeexpand) {
                     if (res.length < targetcount)
                         res.push(players[i])
@@ -461,6 +461,21 @@ class CharaController {
                     if (targetcount <= 0)
                         return res;
                 }
+            }
+        }
+        return res;
+    }
+
+    getSplashPlayersInRange(enemies,center, range) {
+
+        var squarerange = [[center.mesh.position.x - 15 - 30 * range, center.mesh.position.x + 15 + 30 * range], [center.mesh.position.z - 15 - 30 * range,center.mesh.position.z + 15 + 30 * range]];
+        var res = [];
+        for (let i = 0; i < enemies.length; i++) {
+            var counter = Math.abs(Math.abs(Math.round(enemies[i].mesh.position.x / 30) -Math.abs(Math.round(center.mesh.position.x/30))) - range);
+            if (this.between(enemies[i].mesh.position.x, squarerange[0]) && this.between(enemies[i].mesh.position.z, squarerange[1])) {
+                var z = Math.round(enemies[i].mesh.position.z / 30)
+                if (Math.abs(z - Math.abs(Math.round(center.mesh.position.z/30))) <= counter && enemies[i].chara.name!=center.chara.name)
+                    res.push(enemies[i])
             }
         }
         return res;

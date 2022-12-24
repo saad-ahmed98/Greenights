@@ -505,7 +505,7 @@ class LVLController extends LVLAbstract {
             BABYLON.Color3.LerpToRef(BABYLON.Color3.BlackReadOnly, startingColor, t, this.scene.clearColor);
         }
         else {
-            
+            /*
             if (!this.render) {
                 this.createGUIs()
                 this.render = true;
@@ -523,6 +523,7 @@ class LVLController extends LVLAbstract {
                 if (!this.gui.isPaused)
                     this.createLvl();
             }
+            */
             
         }
         this.scene.render();

@@ -468,8 +468,6 @@ class PlayerController extends CharaController {
     }
 
     move(enemies, players) {
-        if(this.chara.name=="Lappland")
-            console.log(this.blockedenemies)
         if (!this.spawning) {
             if (this.buffs.isFrozen()) {
                 this.isfrozen = true;
