@@ -327,9 +327,13 @@ class MainMenu extends LVLAbstract {
         var j = 0
         var z =0
         for (let i = 0; i < keys.length; i++) {
-            if (i % 4 == 0 && i>0) {
+            if (i % 3 == 0 && i>0) {
                 j++
                 z = 0
+            }
+            if(i==6){
+                j=0.5
+                z=3.2
             }
             let title = new BABYLON.GUI.TextBlock();
             title.text = chapters[keys[i]].title;
@@ -345,9 +349,13 @@ class MainMenu extends LVLAbstract {
         var z=0
         j = 0
         for (let i = 0; i < keys.length; i++) {
-            if (i % 4 == 0 && i>0) {
+            if (i % 3 == 0 && i>0) {
                 j++
                 z = 0
+            }
+            if(i==6){
+                j=0.5
+                z=3.2
             }
             const button = BABYLON.GUI.Button.CreateImageOnlyButton("but", "images/menu/chapters/" + chapters[keys[i]].select);
             button.width = (28 * 0.7) + "%";
@@ -754,8 +762,6 @@ class MainMenu extends LVLAbstract {
 
 
             button.background = playerlist[keys[i]].rarity;
-
-
 
             var msg = new BABYLON.GUI.TextBlock();
             msg.text = playerlist[keys[i]].name;
