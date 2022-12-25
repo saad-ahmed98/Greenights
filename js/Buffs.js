@@ -48,7 +48,7 @@ class Buffs {
             ignoreaniminterval: false,
             attacks: 1,
             physdodge: 0,
-            artsdodge: 0,
+            magicdodge: 0,
             hpregenbuff:1,
             statusres:1,
             frozen:false,
@@ -263,8 +263,8 @@ class Buffs {
         this.initModifiers();
         this.sumBuffs();
         switch (dmgtype) {
-            case "arts":
-                if (Math.random() <= this.modifiers.artsdodge && this.modifiers.artsdodge > 0)
+            case "magic":
+                if (Math.random() <= this.modifiers.magicdodge && this.modifiers.magicdodge > 0)
                     return false
                     break;
             case "physical":

@@ -1,8 +1,577 @@
 var levels = {}
-levels["5-1"] = {
-    level: "5-1",
+
+levels["1-1"] = {
+    level: "1-1",
+    name: "Collapse",
+    bgm: "ep6_1",
+    initialdp: 10,
+    squadlimit: 8,
+    hp: 5,
+    background: "loading_CB_center",
+    description: "The enemy's vanguard has appeared to your three o'clock.\nDeploy your units to stop them.",
+    place: "Plain",
+    offsetX: -90,
+    offsetY: -110,
+    offsetZ: -30,
+    unlock:"Adnachiel",
+    type: "normal",
+    skybox: "cityruin.png",
+
+    waves: [
+        { "number": 0, "time": 5, "gap": 5, "enemies": "Originium Slug", "line": true, "tooltip": true, "taunt": true, "count": 1, "start": [3, 9], "checkpoints": [{ "start": [3, 9],  "end": [2, 1], "pause": 0 }] },
+        { "number": 1, "time": 16, "gap": 2, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 9], "checkpoints": [{ "start": [3, 9],  "end": [2, 1], "pause": 0 }] },
+        { "number": 2, "time": 29, "gap": 0.7, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 9], "checkpoints": [{ "start": [3, 9],  "end": [2, 1], "pause": 0 }] },
+        { "number": 3, "time": 34, "gap": 0.7, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 9], "checkpoints": [{ "start": [3, 9],  "end": [2, 1], "pause": 0 }] },
+        { "number": 4, "time": 45, "gap": 0.7, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start":[3, 9], "checkpoints": [{ "start": [3, 9],  "end": [2, 1], "pause": 0 }] },
+        { "number": 5, "time": 52, "gap": 0.7, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 9], "checkpoints": [{ "start": [3, 9],  "end": [2, 1], "pause": 0 }] },
+        { "number": 6, "time": 63.7, "gap": 4, "enemies": "Soldier", "line": true, "tooltip": true, "taunt": false, "count": 2, "start": [3, 9], "checkpoints": [{ "start": [3, 9],  "end": [3, 8], "pause": 3 },{ "start": [3, 8],  "end": [2, 1], "pause": 0 }] },
+
+    ],
+
+    enemies: ["Originium Slug", "Soldier"],
+    tooltips: ["Originium Slug", "Soldier"],
+
+    hazards: [],
+
+
+    layout: [
+        ["e", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg"],
+        ["e", "bg", "r", "r", "r", "r", "r", "r", "r", "bg"],
+        ["e", "blue", "g", "r", "g", "g", "g", "g", "g", "bg"],
+        ["e", "bg", "g", "g", "g", "r", "g", "g", "g", "red"],
+        ["e", "bg", "r", "r", "r", "r", "r", "r", "r", "bg"],
+        ["e", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg"]
+        ],
+}
+
+levels["1-2"] = {
+    level: "1-2",
+    name: "Pursuit",
+    bgm: "ep6_1",
+    initialdp: 10,
+    squadlimit: 8,
+    hp: 5,
+    background: "loading_CB_center",
+    description: "Enemy unmanned drones have entered the battlefield.\nThey are flying enemies that cannot be blocked.\nPlease deploy your Sniper units to deal with them.",
+    place: "Plain",
+    offsetX: -70,
+    offsetY: -90,
+    offsetZ: -15,
+    unlock:"Hibiscus",
+    type: "normal",
+    skybox: "cityruin.png",
+
+    waves: [
+        { "number": 0, "time": 3, "gap": 1.2, "enemies": "Originium Slug", "line": true, "tooltip": false, "taunt": true, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1],  "end": [5, 9], "pause": 0 }] },
+        { "number": 1, "time": 9, "gap": 1.2, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1],  "end": [5, 9], "pause": 0 }] },
+        { "number": 2, "time": 15, "gap": 1.2, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1],  "end": [5, 9], "pause": 0 }] },
+        { "number": 3, "time": 32, "gap": 1.2, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1],  "end": [5, 9], "pause": 0 }] },
+        { "number": 4, "time": 30, "gap": 1.2, "enemies": "Soldier", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1],  "end": [5, 9], "pause": 0 }] },
+        { "number": 5, "time": 39, "gap": 1.2, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1],  "end": [5, 9], "pause": 0 }] },
+        { "number": 6, "time": 45.2, "gap": 1.2, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1],  "end": [5, 9], "pause": 0 }] },
+        { "number": 7, "time": 50.4, "gap": 1.2, "enemies": "Monster","flying":true, "line": true, "tooltip": true, "taunt": true, "count": 1, "start": [2, 1], "checkpoints": [{ "start": [2, 1],  "end": [2, 5], "pause": 5 },{ "start": [2, 5],  "end": [5, 9], "pause": 0 }] },
+        { "number": 8, "time": 61, "gap": 3, "enemies": "Soldier", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1],  "end": [5, 9], "pause": 0 }] },
+        { "number": 9, "time": 71, "gap": 1.2, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1],  "end": [5, 9], "pause": 0 }] },
+        { "number": 10, "time": 72, "gap": 3, "enemies": "Soldier", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 1], "checkpoints": [{ "start": [3, 1],  "end": [5, 9], "pause": 0 }] },
+        { "number": 11, "time": 77, "gap": 1.2, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1],  "end": [5, 9], "pause": 0 }] },
+        { "number": 12, "time": 78.8, "gap": 1.2, "enemies": "Monster","flying":true, "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [2, 1], "checkpoints": [{ "start": [2, 1],  "end": [2, 5], "pause": 5 },{ "start": [2, 5],  "end": [5, 9], "pause": 0 }] },
+
+    ],
+
+    enemies: ["Monster", "Soldier","Originium Slug"],
+    tooltips: ["Monster"],
+
+    hazards: [],
+
+
+    layout: [
+        ["e", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg","bg"],
+        ["e", "bg", "r", "r", "r", "r", "r", "r", "r","r","bg"],
+        ["e", "red", "r", "g", "g", "r", "g", "g", "g","g","bg"],
+        ["e", "red", "g", "g", "g", "g", "g", "r", "r","g","bg"],
+        ["e", "bg", "r", "r", "r", "r", "r", "r", "r","g","bg"],
+        ["e", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "blue","bg"],
+        ["e", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg","bg"],
+
+    ],
+}
+
+levels["1-3"] = {
+    level: "1-3",
+    name: "Protection",
+    bgm: "ep6_1",
+    initialdp: 10,
+    squadlimit: 8,
+    hp: 5,
+    background: "loading_CB_center",
+    description: "The enemy has sent more dangerous troops.\nPlease make sure you have a Medic unit in the squad for healing.",
+    place: "Plain",
+    offsetX: -50,
+    offsetY: -80,
+    offsetZ: -15,
+    unlock:"Plume",
+    type: "normal",
+    skybox: "cityruin.png",
+
+    waves: [
+        { "number": 0, "time": 5, "gap": 1.2, "enemies": "Soldier", "line": true, "tooltip": false, "taunt": true, "count": 1, "start": [4, 1], "checkpoints": [{ "start": [4, 1],  "end": [4, 10], "pause": 0 }] },
+        { "number": 1, "time": 11, "gap": 1, "enemies": "Soldier", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [4, 1], "checkpoints": [{ "start": [4, 1],  "end": [4, 10], "pause": 0 }] },
+        { "number": 2, "time": 15, "gap": 1, "enemies": "Soldier", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [4, 1], "checkpoints": [{ "start": [4, 1],  "end": [4, 10], "pause": 0 }] },
+        { "number": 3, "time": 30, "gap": 1, "enemies": "Soldier", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [4, 1], "checkpoints": [{ "start": [4, 1],  "end": [4, 10], "pause": 0 }] },
+        { "number": 4, "time": 30, "gap": 1.2, "enemies": "Junkman", "line": true, "tooltip": true, "taunt": true, "count": 1, "start": [4, 1], "checkpoints": [{ "start": [4, 1],  "end": [4, 3], "pause": 15 },{ "start": [4, 3],  "end": [4, 10], "pause": 0 }] },
+        { "number": 5, "time": 40, "gap": 1, "enemies": "Soldier", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [4, 1], "checkpoints": [{ "start": [4, 1],  "end": [4, 10], "pause": 0 }] },
+        { "number": 6, "time": 48.8, "gap": 1.2, "enemies": "Monster","flying":true, "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1],  "end": [1, 3], "pause": 5 },{ "start": [1, 3],  "end": [4, 10], "pause": 0 }] },
+        { "number": 7, "time": 64.8, "gap": 1, "enemies": "Soldier", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [4, 1], "checkpoints": [{ "start": [4, 1],  "end": [4, 10], "pause": 0 }] },
+        { "number": 8, "time": 73.8, "gap": 1, "enemies": "Junkman", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [4, 1], "checkpoints": [{ "start": [4, 1],  "end": [4, 10], "pause": 0 }] },
+        { "number": 9, "time": 76.8, "gap": 1.2, "enemies": "Monster","flying":true, "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1],  "end": [4, 4], "pause": 5 },{ "start": [4, 4],  "end": [4, 10], "pause": 0 }] },
+        { "number": 10, "time": 80.8, "gap": 1, "enemies": "Soldier", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [4, 1], "checkpoints": [{ "start": [4, 1],  "end": [4, 10], "pause": 0 }] },
+        { "number": 11, "time": 102.8, "gap": 1.2, "enemies": "Monster","flying":true, "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1],  "end": [1, 3], "pause": 0 },{ "start": [1, 3],  "end": [4, 10], "pause": 0 }] },
+        { "number": 12, "time": 105.8, "gap": 1, "enemies": "Soldier", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [4, 1], "checkpoints": [{ "start": [4, 1],  "end": [4, 10], "pause": 0 }] },
+        { "number": 13, "time": 117.6, "gap": 1.2, "enemies": "Monster","flying":true, "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1],  "end": [1, 3], "pause": 0 },{ "start": [1, 3],  "end": [4, 10], "pause": 0 }] },
+        { "number": 14, "time": 118.6, "gap": 1, "enemies": "Soldier", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [4, 1], "checkpoints": [{ "start": [4, 1],  "end": [4, 10], "pause": 0 }] },
+        { "number": 15, "time": 122.6, "gap": 1.2, "enemies": "Monster","flying":true, "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1],  "end": [4, 4], "pause": 5 },{ "start": [4, 4],  "end": [4, 10], "pause": 0 }] },
+        { "number": 16, "time": 126.8, "gap": 1, "enemies": "Junkman", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [4, 1], "checkpoints": [{ "start": [4, 1],  "end": [4, 10], "pause": 0 }] },
+
+    ],
+
+    enemies: ["Monster", "Soldier","Junkman"],
+    tooltips: ["Junkman"],
+
+    hazards: [],
+
+
+    layout: [
+        ["e", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg","bg"],
+        ["e", "red", "bg", "r", "r", "r", "r", "r", "r","r","bg"],
+        ["e", "bg", "bg", "g", "g", "g", "g", "g", "g","r","bg"],
+        ["e", "bg", "g", "g", "g", "r", "r", "g", "g","g","bg"],
+        ["e", "red", "g", "g", "r", "r", "r", "r", "g","g","blue"],
+        ["e", "bg", "bg", "r", "r", "r", "r", "r", "r","r","bg"],
+        ["e", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg","bg"],
+    ],
+}
+
+levels["1-4"] = {
+    level: "1-4",
+    name: "Assault",
+    bgm: "ep6_1",
+    initialdp: 8,
+    squadlimit: 8,
+    hp: 5,
+    background: "loading_CB_center",
+    description: "Fast enemies are approaching.\nPlease use multiple Melee units to defend all entry points.",
+    place: "Plain",
+    offsetX: -50,
+    offsetY: -80,
+    offsetZ: -15,
+    unlock:"Durin",
+    type: "normal",
+    skybox: "cityruin.png",
+
+    waves: [
+        { "number": 0, "time": 3, "gap": 1.2, "enemies": "Hound", "line": true, "tooltip": true, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1],  "end": [1, 2], "pause": 1 },{ "start": [1, 2],  "end": [2, 10], "pause": 0 }] },
+        { "number": 1, "time": 4, "gap": 1.2, "enemies": "Hound", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1],  "end": [5, 2], "pause": 1 },{ "start": [5, 2],  "end": [4, 10], "pause": 0 }] },
+        { "number": 2, "time": 15, "gap": 9, "enemies": "Hound", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [1, 1], "checkpoints": [{ "start": [1, 1],  "end": [1, 2], "pause": 1 },{ "start": [1, 2],  "end": [2, 10], "pause": 0 }] },
+        { "number": 3, "time": 16, "gap": 9, "enemies": "Hound", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [5, 1], "checkpoints": [{ "start": [5, 1],  "end": [5, 2], "pause": 1 },{ "start": [5, 2],  "end": [4, 10], "pause": 0 }] },
+        { "number": 4, "time": 30, "gap": 0.8, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [1, 1], "checkpoints": [{ "start": [1, 1],  "end": [1, 2], "pause": 0 },{ "start": [1, 2],  "end": [2, 10], "pause": 0 }] },
+        { "number": 5, "time": 31, "gap": 0.8, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [5, 1], "checkpoints": [{ "start": [5, 1],  "end": [5, 2], "pause": 0 },{ "start": [5, 2],  "end": [4, 10], "pause": 0 }] },
+        { "number": 6, "time": 44.8, "gap": 24, "enemies": "Junkman", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [1, 1], "checkpoints": [{ "start": [1, 1],  "end": [1, 2], "pause": 1 },{ "start": [1, 2],  "end": [2, 10], "pause": 0 }] },
+        { "number": 7, "time": 44.8, "gap": 24, "enemies": "Junkman", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [5, 1], "checkpoints": [{ "start": [5, 1],  "end": [5, 2], "pause": 1 },{ "start": [5, 2],  "end": [4, 10], "pause": 0 }] },
+        { "number": 8, "time": 47.8, "gap": 24, "enemies": "Hound", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [1, 1], "checkpoints": [{ "start": [1, 1],  "end": [1, 2], "pause": 1 },{ "start": [1, 2],  "end": [2, 10], "pause": 0 }] },
+        { "number": 9, "time": 47.8, "gap": 24, "enemies": "Hound", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [5, 1], "checkpoints": [{ "start": [5, 1],  "end": [5, 2], "pause": 1 },{ "start": [5, 2],  "end": [4, 10], "pause": 0 }] },
+        { "number": 10, "time": 50.8, "gap": 19, "enemies": "Monster","flying":true, "line": true, "tooltip": false, "taunt": false, "count": 3, "start": [3, 1], "checkpoints": [{ "start": [3, 1],  "end": [3, 6], "pause": 0 },{ "start": [3, 6],  "end": [5, 10], "pause": 0 }] },
+        { "number": 11, "time": 81.8, "gap": 0.8, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [1, 1], "checkpoints": [{ "start": [1, 1],  "end": [1, 2], "pause": 0 },{ "start": [1, 2],  "end": [2, 10], "pause": 0 }] },
+        { "number": 12, "time": 83.8, "gap": 0.8, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [5, 1], "checkpoints": [{ "start": [5, 1],  "end": [5, 2], "pause": 0 },{ "start": [5, 2],  "end": [4, 10], "pause": 0 }] },
+        { "number": 13, "time": 101.8, "gap": 24, "enemies": "Junkman", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1],  "end": [1, 2], "pause": 1 },{ "start": [1, 2],  "end": [2, 10], "pause": 0 }] },
+        { "number": 14, "time": 101.8, "gap": 24, "enemies": "Junkman", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1],  "end": [5, 2], "pause": 1 },{ "start": [5, 2],  "end": [4, 10], "pause": 0 }] },
+    ],
+
+    enemies: ["Monster", "Originium Slug","Junkman","Hound"],
+    tooltips: ["Hound"],
+
+    hazards: [],
+
+
+    layout: [
+        ["e", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg","bg"],
+        ["e", "red", "g", "g", "g", "g", "r", "r", "r","r","bg"],
+        ["e", "bg", "bg", "bg", "r", "g", "g", "g", "g","g","blue"],
+        ["e", "red", "bg", "bg", "r", "r", "r", "r", "g","g","bg"],
+        ["e", "bg", "bg", "bg", "r", "r", "g", "g", "g","g","blue"],
+        ["e", "red", "g", "g", "g", "g", "g", "r", "r","r","bg"],
+        ["e", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg","bg"],
+    ],
+}
+
+levels["1-5"] = {
+    level: "1-5",
+    name: "Magic",
+    bgm: "ep6_1",
+    initialdp: 10,
+    squadlimit: 8,
+    hp: 5,
+    background: "loading_CB_center",
+    description: "Enemy units equipped with shields have high physical defense.\nPhysical defense can be bypassed by magic attacks.\nPlease deploy Caster units to deal with high defense.",
+    place: "Plain",
+    offsetX: -50,
+    offsetY: -80,
+    offsetZ: -15,
+    unlock:"Popukar",
+    type: "normal",
+    skybox: "cityruin.png",
+
+    waves: [
+        { "number": 0, "time": 2, "gap": 1.2, "enemies": "Light-Armored Soldier", "line": true, "tooltip": true, "taunt": false, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1],  "end": [5, 3], "pause": 64 },{ "start": [5, 3],  "end": [3, 1], "pause": 0 }] },
+        { "number": 1, "time": 5, "gap": 1.2, "enemies": "Soldier", "line": true, "tooltip": false, "taunt": true, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [3, 1], "pause": 0 }] },
+        { "number": 2, "time": 10, "gap": 3, "enemies": "Soldier", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [3, 1], "pause": 0 }] },
+        { "number": 3, "time": 23, "gap": 2, "enemies": "Soldier", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [3, 1], "pause": 0 }] },
+        { "number": 4, "time": 28, "gap": 2, "enemies": "Soldier", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [3, 1], "pause": 0 }] },
+        { "number": 5, "time": 41, "gap": 5, "enemies": "Junkman", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [3, 1], "pause": 0 }] },
+        { "number": 6, "time": 59, "gap": 1, "enemies": "Soldier", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [3, 1], "pause": 0 }] },
+        { "number": 7, "time": 62, "gap": 2, "enemies": "Soldier", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [3, 1], "pause": 0 }] },
+        { "number": 8, "time": 76, "gap": 5, "enemies": "Junkman", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [3, 1], "pause": 0 }] },
+        { "number": 9, "time": 77, "gap": 5, "enemies": "Soldier", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [3, 1], "pause": 0 }] },
+        { "number": 10, "time": 79, "gap": 1, "enemies": "Soldier", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [3, 1], "pause": 0 }] },
+        { "number": 11, "time": 88, "gap": 4, "enemies": "Light-Armored Soldier", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [3, 1], "pause": 0 }] },
+
+    ],
+
+    enemies: ["Light-Armored Soldier", "Junkman","Soldier"],
+    tooltips: ["Light-Armored Soldier"],
+
+    hazards: [],
+
+
+    layout: [
+        ["e", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg","bg"],
+        ["e", "red", "blk", "g", "g", "g", "g", "g", "g","bg","bg"],
+        ["e", "bg", "bg", "bg", "r", "r", "r", "g", "g","bg","bg"],
+        ["e", "blue", "blk", "g", "g", "g", "g", "g", "g","bg","bg"],
+        ["e", "bg", "bg", "bg", "r", "r", "bg", "g", "g","bg","bg"],
+        ["e", "red", "blk", "blk", "g", "g", "g", "g", "g","bg","bg"],
+        ["e", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg","bg"],
+    ],
+}
+
+levels["1-6"] = {
+    level: "1-6",
+    name: "Hunting",
+    bgm: "ep6_1",
+    initialdp: 10,
+    squadlimit: 8,
+    hp: 5,
+    background: "loading_CB_center",
+    description: "A large quantity of Originium Slugs and\nshielded soldiers have arrived on the battlefield.\nUse properly your Melee and Ranged units to suppress them.",
+    place: "Plain",
+    offsetX: -55,
+    offsetY: -80,
+    offsetZ: -45,
+    unlock:"Beagle",
+    type: "hard",
+    skybox: "cityruin.png",
+
+    waves: [
+        { "number": 0, "time": 5, "gap": 1.2, "enemies": "Originium Slug", "line": true, "tooltip": false, "taunt": true, "count": 1, "start": [4, 1], "checkpoints": [{ "start": [4, 1],  "end": [3, 8], "pause": 0 }] },
+        { "number": 0, "time": 5, "gap": 1.2, "enemies": "Originium Slug", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [2, 1], "checkpoints": [{ "start": [2, 1],  "end": [3, 8], "pause": 0 }] },
+        { "number": 0, "time": 12, "gap": 5, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 5, "start": [4, 1], "checkpoints": [{ "start": [4, 1],  "end": [3, 8], "pause": 0 }] },
+        { "number": 0, "time": 12, "gap": 5, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 5, "start": [2, 1], "checkpoints": [{ "start": [2, 1],  "end": [3, 8], "pause": 0 }] },
+        { "number": 0, "time": 20.5, "gap": 4, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 6, "start": [4, 1], "checkpoints": [{ "start": [4, 1],  "end": [3, 8], "pause": 0 }] },
+        { "number": 0, "time": 25.5, "gap": 4, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [2, 1], "checkpoints": [{ "start": [2, 1],  "end": [3, 8], "pause": 0 }] },
+        { "number": 0, "time": 35, "gap": 9, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [4, 1], "checkpoints": [{ "start": [4, 1],  "end": [3, 8], "pause": 0 }] },
+        { "number": 0, "time": 34, "gap": 6, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [2, 1], "checkpoints": [{ "start": [2, 1],  "end": [3, 8], "pause": 0 }] },
+        { "number": 0, "time": 39, "gap": 2, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [4, 1], "checkpoints": [{ "start": [4, 1],  "end": [3, 8], "pause": 0 }] },
+        { "number": 0, "time": 42, "gap": 6, "enemies": "Light-Armored Soldier", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [2, 1], "checkpoints": [{ "start": [2, 1],  "end": [3, 8], "pause": 0 }] },
+        { "number": 0, "time": 43, "gap": 1, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [2, 1], "checkpoints": [{ "start": [2, 1],  "end": [3, 8], "pause": 0 }] },
+        { "number": 0, "time": 56, "gap": 2, "enemies": "Light-Armored Soldier", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [4, 1], "checkpoints": [{ "start": [4, 1],  "end": [3, 8], "pause": 0 }] },
+        { "number": 0, "time": 56, "gap": 6, "enemies": "Light-Armored Soldier", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [2, 1], "checkpoints": [{ "start": [2, 1],  "end": [3, 8], "pause": 0 }] },
+        { "number": 0, "time": 63, "gap": 10, "enemies": "Junkman", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [4, 1], "checkpoints": [{ "start": [4, 1],  "end": [3, 8], "pause": 0 }] },
+        { "number": 0, "time": 67, "gap": 8.5, "enemies": "Junkman", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [2, 1], "checkpoints": [{ "start": [2, 1],  "end": [3, 8], "pause": 0 }] },
+        { "number": 0, "time": 77, "gap": 2.3, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [4, 1], "checkpoints": [{ "start": [4, 1],  "end": [3, 8], "pause": 0 }] },
+        { "number": 0, "time": 77, "gap": 4.7, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 6, "start": [2, 1], "checkpoints": [{ "start": [2, 1],  "end": [3, 8], "pause": 0 }] },
+        { "number": 0, "time": 79, "gap": 4, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [4, 1], "checkpoints": [{ "start": [4, 1],  "end": [3, 8], "pause": 0 }] },
+        { "number": 0, "time": 79, "gap": 1.7, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 7, "start": [2, 1], "checkpoints": [{ "start": [2, 1],  "end": [3, 8], "pause": 0 }] },
+        { "number": 0, "time": 86, "gap": 10, "enemies": "Light-Armored Soldier", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [4, 1], "checkpoints": [{ "start": [4, 1],  "end": [3, 8], "pause": 0 }] },
+        { "number": 0, "time": 93, "gap": 9, "enemies": "Light-Armored Soldier", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [2, 1], "checkpoints": [{ "start": [2, 1],  "end": [3, 8], "pause": 0 }] },
+        { "number": 0, "time": 96, "gap": 1.7, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [2, 1], "checkpoints": [{ "start": [2, 1],  "end": [3, 8], "pause": 0 }] },
+    ],
+
+    enemies: ["Light-Armored Soldier", "Junkman","Originium Slug"],
+    tooltips: [],
+
+    hazards: [],
+
+    layout: [
+        ["e", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg"],
+        ["e", "bg", "r", "g", "g", "g", "r", "r", "bg"],
+        ["e", "red", "g", "g", "g", "g", "g", "r", "bg"],
+        ["e", "red", "g", "g", "g", "r", "g", "g", "blue"],
+        ["e", "red", "g", "g", "g", "g", "g", "r", "bg"],
+        ["e", "bg", "r", "g", "g", "g", "r", "r", "bg"],
+        ["e", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg"],
+        ],
+}
+
+levels["1-7"] = {
+    level: "1-7",
+    name: "Dilemma",
+    bgm: "ep6_1",
+    initialdp: 10,
+    squadlimit: 8,
+    hp: 5,
+    background: "loading_CB_center",
+    description: "Enemy Butchers appeared, and they have high HP and ATK.\nPlease deploy Defender units to block them,\nand deploy high-damage units to defeat them.",
+    place: "Plain",
+    offsetX: -40,
+    offsetY: -60,
+    offsetZ: 0,
+    unlock:"Midnight",
+    type: "normal",
+    skybox: "cityruin.png",
+
+    waves: [
+        { "number": 0, "time": 3, "gap": 14, "enemies": "Hound", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 11], "pause": 0 }] },
+        { "number": 1, "time": 9, "gap": 2, "enemies": "Hound", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 11], "pause": 0 }] },
+        { "number": 2, "time": 14, "gap": 1, "enemies": "Hound", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 11], "pause": 0 }] },
+        { "number": 3, "time": 20, "gap": 2, "enemies": "Hound", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 11], "pause": 0 }] },
+        { "number": 4, "time": 27, "gap": 2, "enemies": "Hound", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 11], "pause": 0 }] },
+        { "number": 5, "time": 33, "gap": 2, "enemies": "Hound", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 11], "pause": 0 }] },
+        { "number": 6, "time": 48, "gap": 2, "enemies": "Hound", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 11], "pause": 0 }] },
+        { "number": 7, "time": 49, "gap": 2, "enemies": "Butcher", "line": true, "tooltip": true, "taunt": false, "count": 1, "start": [6, 2], "checkpoints": [{ "start": [6, 2], "end": [5, 2], "pause": 15 },{ "start": [5, 2], "end": [5, 6], "pause": 0 },{ "start": [5, 6], "end": [3, 11], "pause": 0 }] },
+        { "number": 8, "time": 55, "gap": 2, "enemies": "Hound", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 11], "pause": 0 }] },
+        { "number": 9, "time": 63, "gap": 2, "enemies": "Junkman", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 11], "pause": 0 }] },
+        { "number": 10, "time": 80, "gap": 1, "enemies": "Soldier", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 11], "pause": 0 }] },
+        { "number": 11, "time": 85, "gap": 14, "enemies": "Monster","flying":true, "line": true, "tooltip": false, "taunt": false, "count": 2, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [2, 5], "pause": 0 },{ "start": [2, 5], "end": [3, 8], "pause": 0 },{ "start": [3, 8], "end": [3, 11], "pause": 0 }] },
+        { "number": 12, "time": 86, "gap": 10, "enemies": "Junkman", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 11], "pause": 0 }] },
+        { "number": 13, "time": 87, "gap": 2, "enemies": "Butcher", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [6, 2], "checkpoints": [{ "start": [6, 2], "end": [5, 2], "pause": 12 },{ "start": [5, 2], "end": [5, 6], "pause": 0 },{ "start": [5, 6], "end": [3, 11], "pause": 0 }] },
+        { "number": 14, "time": 92, "gap": 1, "enemies": "Soldier", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 11], "pause": 0 }] },
+        { "number": 15, "time": 102, "gap": 1, "enemies": "Soldier", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 11], "pause": 0 }] },
+        { "number": 16, "time": 112, "gap": 1, "enemies": "Soldier", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 11], "pause": 0 }] },
+    ],
+
+    enemies: ["Junkman", "Butcher", "Monster", "Hound", "Soldier"],
+    tooltips: ["Butcher"],
+    hazards: [],
+
+    layout: [
+        ["e", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg"],
+        ["e", "red", "r", "r", "r", "r", "bg", "bg", "bg", "bg", "bg", "bg"],
+        ["e", "bg", "g", "g", "g", "r", "bg", "bg", "r", "r", "r", "bg"],
+        ["e","red", "g", "g", "g", "g", "g", "g", "g", "r", "g", "blue"],
+        ["e", "bg", "g", "g", "r", "r", "g", "bg", "g", "g", "g", "bg"],
+        ["e", "bg", "g", "g", "g", "g", "g", "bg", "bg", "bg", "bg", "bg"],
+        ["e", "bg", "red", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg"],
+    ],
+}
+
+levels["1-8"] = {
+    level: "1-8",
+    name: "Remnants",
+    bgm: "ep6_1",
+    initialdp: 10,
+    squadlimit: 10,
+    hp: 5,
+    background: "loading_CB_center",
+    description: "The enemy assault is getting more ferocious.\nHang in there and victory will be ours.\nPlease pay attention to enemy crossbowmen.\nThey have long ranged attacks that can reach ranged units.\nMake sure to protect your more vulnerable units.",
+    place: "Plain",
+    offsetX: -10,
+    offsetY: -30,
+    offsetZ: -15,
+    unlock:"Orchid",
+    type: "normal",
+    skybox: "cityruin.png",
+
+    waves: [
+        { "number": 0, "time": 3, "gap": 1.2, "enemies": "Soldier", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [3, 1], "checkpoints": [{ "start": [3, 1],  "end": [3, 8], "pause": 0 },{ "start": [3, 8],  "end": [6, 10], "pause": 0 }] },
+        { "number": 1, "time": 9, "gap": 3, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [3, 1], "checkpoints": [{ "start": [3, 1],  "end": [3, 8], "pause": 0 },{ "start": [3, 8],  "end": [6, 10], "pause": 0 }] },
+        { "number": 2, "time": 13, "gap": 3, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1],  "end": [3, 8], "pause": 0 },{ "start": [3, 8],  "end": [6, 10], "pause": 0 }] },
+        { "number": 3, "time": 15.5, "gap": 3, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1],  "end": [3, 8], "pause": 0 },{ "start": [3, 8],  "end": [6, 10], "pause": 0 }] },
+        { "number": 4, "time": 24, "gap": 6, "enemies": "Crossbowman", "line": true, "tooltip": true, "taunt": false, "count": 2, "start": [7, 2], "checkpoints": [{ "start": [7, 2],  "end": [6, 5], "pause": 0 },{ "start": [6, 5],  "end": [6, 10], "pause": 0 }] },
+        { "number": 5, "time": 30, "gap": 2, "enemies": "Soldier", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1],  "end": [3, 8], "pause": 0 },{ "start": [3, 8],  "end": [6, 10], "pause": 0 }] },
+        { "number": 6, "time": 31, "gap": 2, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [7, 2], "checkpoints": [{ "start": [7, 2],  "end": [6, 5], "pause": 0 },{ "start": [6, 5],  "end": [6, 10], "pause": 0 }] },
+        { "number": 7, "time": 32, "gap": 4, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [7, 2], "checkpoints": [{ "start": [7, 2],  "end": [6, 5], "pause": 0 },{ "start": [6, 5],  "end": [6, 10], "pause": 0 }] },
+        { "number": 8, "time": 36, "gap": 2, "enemies": "Soldier", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 1], "checkpoints": [{ "start": [3, 1],  "end": [3, 8], "pause": 0 },{ "start": [3, 8],  "end": [6, 10], "pause": 0 }] },
+        { "number": 9, "time": 48, "gap": 2, "enemies": "Hound", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [3, 1], "checkpoints": [{ "start": [3, 1],  "end": [1, 10], "pause": 0 }] },
+        { "number": 10, "time": 58, "gap": 2, "enemies": "Light-Armored Soldier", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 1], "checkpoints": [{ "start": [3, 1],  "end": [3, 8], "pause": 0 },{ "start": [3, 8],  "end": [6, 10], "pause": 0 }] },
+        { "number": 11, "time": 61, "gap": 3, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 6, "start": [3, 1], "checkpoints": [{ "start": [3, 1],  "end": [3, 8], "pause": 0 },{ "start": [3, 8],  "end": [6, 10], "pause": 0 }] },
+        { "number": 12, "time": 61, "gap": 4, "enemies": "Crossbowman", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [7, 2], "checkpoints": [{ "start": [7, 2],  "end": [6, 5], "pause": 0 },{ "start": [6, 5],  "end": [6, 10], "pause": 0 }] },
+        { "number": 13, "time": 64.5, "gap": 6, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [3, 1], "checkpoints": [{ "start": [3, 1],  "end": [3, 8], "pause": 0 },{ "start": [3, 8],  "end": [6, 10], "pause": 0 }] },
+        { "number": 14, "time": 66, "gap": 4, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1],  "end": [3, 8], "pause": 0 },{ "start": [3, 8],  "end": [6, 10], "pause": 0 }] },
+        { "number": 15, "time": 74, "gap": 4, "enemies": "Soldier", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [7, 2], "checkpoints": [{ "start": [7, 2],  "end": [6, 5], "pause": 0 },{ "start": [6, 5],  "end": [6, 10], "pause": 0 }] },
+        { "number": 16, "time": 76, "gap": 6, "enemies": "Crossbowman", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [7, 2], "checkpoints": [{ "start": [7, 2],  "end": [6, 5], "pause": 0 },{ "start": [6, 5],  "end": [6, 10], "pause": 0 }] },
+        { "number": 17, "time": 82, "gap": 3, "enemies": "Hound", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1],  "end": [1, 10], "pause": 0 }] },
+        { "number": 18, "time": 85, "gap": 4, "enemies": "Soldier", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [7, 2], "checkpoints": [{ "start": [7, 2],  "end": [6, 5], "pause": 0 },{ "start": [6, 5],  "end": [6, 10], "pause": 0 }] },
+        { "number": 19, "time": 86, "gap": 3, "enemies": "Crossbowman", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 1], "checkpoints": [{ "start": [3, 1],  "end": [1, 10], "pause": 0 }] },
+        { "number": 20, "time": 105, "gap": 3, "enemies": "Crossbowman", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 1], "checkpoints": [{ "start": [3, 1],  "end": [1, 10], "pause": 0 }] },
+        { "number": 21, "time": 110, "gap": 2, "enemies": "Soldier", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1],  "end": [3, 8], "pause": 0 },{ "start": [3, 8],  "end": [6, 10], "pause": 0 }] },
+        { "number": 22, "time": 110, "gap": 1, "enemies": "Soldier", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [7, 2], "checkpoints": [{ "start": [7, 2],  "end": [6, 5], "pause": 0 },{ "start": [6, 5],  "end": [6, 10], "pause": 0 }] },
+        { "number": 23, "time": 113, "gap": 1, "enemies": "Butcher", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [7, 2], "checkpoints": [{ "start": [7, 2],  "end": [6, 5], "pause": 0 },{ "start": [6, 5],  "end": [6, 10], "pause": 0 }] },
+        { "number": 24, "time": 114, "gap": 2, "enemies": "Crossbowman", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 1], "checkpoints": [{ "start": [3, 1],  "end": [3, 8], "pause": 0 },{ "start": [3, 8],  "end": [6, 10], "pause": 0 }] },
+        { "number": 25, "time": 115, "gap": 2, "enemies": "Butcher", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 1], "checkpoints": [{ "start": [3, 1],  "end": [3, 8], "pause": 0 },{ "start": [3, 8],  "end": [6, 10], "pause": 0 }] },
+        { "number": 26, "time": 118, "gap": 2, "enemies": "Crossbowman", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [7, 2], "checkpoints": [{ "start": [7, 2],  "end": [6, 5], "pause": 0 },{ "start": [6, 5],  "end": [6, 10], "pause": 0 }] },
+
+    ],
+
+    enemies: ["Light-Armored Soldier", "Originium Slug","Hound","Crossbowman","Soldier","Butcher"],
+    tooltips: ["Crossbowman"],
+
+    hazards: [],
+
+
+    layout: [
+        ["e", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg","bg"],
+        ["e", "bg", "r", "r", "r", "g", "g", "g", "g","g","blue"],
+        ["e", "bg", "bg", "bg", "bg", "g", "bg", "r", "r","r","bg"],
+        ["e", "red", "g", "g", "g", "g", "g", "g", "g","r","bg"],
+        ["e", "bg", "g", "g", "g", "g", "g", "g", "g","r","bg"],
+        ["e", "bg", "g", "r", "r", "g", "r", "r", "g","r","bg"],
+        ["e", "bg", "g", "g", "g", "g", "r", "r", "g","g","blue"],
+        ["e", "bg", "red", "bg", "bg", "bg", "bg", "bg", "bg", "bg","bg"],
+    ],
+}
+
+levels["1-9"] = {
+    level: "1-9",
+    name: "Slow",
+    bgm: "ep6_1",
+    initialdp: 5,
+    squadlimit: 8,
+    hp: 5,
+    background: "loading_CB_center",
+    description: "Heavy Defenders have been spotted.\nThese extremely dangerous enemies have high defense.\nConsider using your Decel benders and casters to slow their advance,\nand reduce their combat power significantly.",
+    place: "Plain",
+    offsetX: -40,
+    offsetY: -70,
+    offsetZ: 0,
+    unlock:"Haze",
+    type: "normal",
+    skybox: "cityruin.png",
+
+    waves: [
+        { "number": 0, "time": 3, "gap": 1.2, "enemies": "Heavy Defender", "line": true, "tooltip": true, "taunt": false, "count": 1, "start": [3, 4], "checkpoints": [{ "start": [3, 4],  "end": [3, 5], "pause": 25 },{ "start": [3, 5],  "end": [3, 6], "pause": 0 },{ "start": [3, 6],  "end": [3, 8], "pause": 0 },{ "start": [3, 8],  "end": [3, 11], "pause": 0 }] },
+        { "number": 1, "time": 3, "gap": 1.2, "enemies": "Hound", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [3, 9], "pause": 0 },{ "start": [3, 9],  "end": [3, 11], "pause": 0 }] },
+        { "number": 2, "time": 5, "gap": 1.2, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [3, 9], "pause": 0 },{ "start": [3, 9],  "end": [3, 11], "pause": 0 }] },
+        { "number": 3, "time": 12, "gap": 1.2, "enemies": "Originium Slug", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [6, 8], "checkpoints": [{ "start": [6, 8],  "end": [3, 11], "pause": 0 }] },
+        { "number": 4, "time": 15, "gap": 1.2, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [3, 9], "pause": 0 },{ "start": [3, 9],  "end": [3, 11], "pause": 0 }] },
+        { "number": 5, "time": 25, "gap": 1.2, "enemies": "Hound", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [3, 9], "pause": 0 },{ "start": [3, 9],  "end": [3, 11], "pause": 0 }] },
+        { "number": 6, "time": 27, "gap": 1.2, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [6, 8], "checkpoints": [{ "start": [6, 8],  "end": [3, 11], "pause": 0 }] },
+        { "number": 7, "time": 33, "gap": 1.2, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [3, 9], "pause": 0 },{ "start": [3, 9],  "end": [3, 11], "pause": 0 }] },
+        { "number": 8, "time": 40, "gap": 1.2, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [6, 8], "checkpoints": [{ "start": [6, 8],  "end": [3, 11], "pause": 0 }] },
+        { "number": 9, "time": 50, "gap": 0.7, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [6, 8], "checkpoints": [{ "start": [6, 8],  "end": [3, 11], "pause": 0 }] },
+        { "number": 10, "time": 60.7, "gap": 0.7, "enemies": "Soldier", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 3], "pause": 3 },{ "start": [1, 3], "end": [3, 9], "pause": 0 },{ "start": [3, 9],  "end": [3, 11], "pause": 0 }] },
+        { "number": 11, "time": 65.7, "gap": 35, "enemies": "Heavy Defender", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 4], "checkpoints": [{ "start": [3, 4],  "end": [3, 5], "pause": 5 },{ "start": [3, 5],  "end": [3, 6], "pause": 0 },{ "start": [3, 6],  "end": [3, 8], "pause": 0 },{ "start": [3, 8],  "end": [3, 11], "pause": 0 }] },
+        { "number": 12, "time": 65.7, "gap": 8, "enemies": "Junkman", "line": false, "tooltip": false, "taunt": false, "count": 8, "start": [6, 8], "checkpoints": [{ "start": [6, 8],  "end": [3, 11], "pause": 0 }] },
+        { "number": 13, "time": 78.7, "gap": 0.7, "enemies": "Soldier", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 3], "pause": 0 },{ "start": [1, 3], "end": [3, 9], "pause": 0 },{ "start": [3, 9],  "end": [3, 11], "pause": 0 }] },
+        { "number": 14, "time": 88.7, "gap": 2, "enemies": "Crossbowman", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 3], "pause": 0 },{ "start": [1, 3], "end": [3, 9], "pause": 0 },{ "start": [3, 9],  "end": [3, 11], "pause": 0 }] },
+        { "number": 15, "time": 98.7, "gap": 2, "enemies": "Soldier", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 3], "pause": 0 },{ "start": [1, 3], "end": [3, 9], "pause": 0 },{ "start": [3, 9],  "end": [3, 11], "pause": 0 }] },
+        { "number": 16, "time": 110.7, "gap": 0.7, "enemies": "Soldier", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 3], "pause": 0 },{ "start": [1, 3], "end": [3, 9], "pause": 0 },{ "start": [3, 9],  "end": [3, 11], "pause": 0 }] },
+        { "number": 17, "time": 129.7, "gap": 35, "enemies": "Heavy Defender", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 4], "checkpoints": [{ "start": [3, 4],  "end": [3, 5], "pause": 5 },{ "start": [3, 5],  "end": [3, 6], "pause": 0 },{ "start": [3, 6],  "end": [3, 8], "pause": 0 },{ "start": [3, 8],  "end": [3, 11], "pause": 0 }] },
+        { "number": 18, "time": 129.7, "gap": 8, "enemies": "Soldier", "line": false, "tooltip": false, "taunt": false, "count": 5, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 3], "pause": 0 },{ "start": [1, 3], "end": [3, 9], "pause": 0 },{ "start": [3, 9],  "end": [3, 11], "pause": 0 }] },
+        { "number": 19, "time": 130.7, "gap": 8, "enemies": "Junkman", "line": false, "tooltip": false, "taunt": false, "count": 5, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 3], "pause": 0 },{ "start": [1, 3], "end": [3, 9], "pause": 0 },{ "start": [3, 9],  "end": [3, 11], "pause": 0 }] },
+        { "number": 20, "time": 134.7, "gap": 18, "enemies": "Light-Armored Soldier", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 4], "checkpoints": [{ "start": [3, 4],  "end": [3, 8], "pause": 0 },{ "start": [3, 8],  "end": [3, 11], "pause": 0 }] },
+        { "number": 21, "time": 134.7, "gap": 9, "enemies": "Crossbowman", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [6, 8], "checkpoints": [{ "start": [6, 8],  "end": [3, 11], "pause": 0 }] },
+        { "number": 22, "time": 159.7, "gap": 2, "enemies": "Crossbowman", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 3], "pause": 0 },{ "start": [1, 3], "end": [3, 9], "pause": 0 },{ "start": [3, 9],  "end": [3, 11], "pause": 0 }] },
+        { "number": 23, "time": 164.7, "gap": 2, "enemies": "Crossbowman", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [6, 8], "checkpoints": [{ "start": [6, 8],  "end": [3, 11], "pause": 0 }] },
+
+    ],
+
+    enemies: ["Light-Armored Soldier","Heavy Defender","Originium Slug","Hound","Crossbowman","Soldier","Junkman"],
+    tooltips: ["Heavy Defender"],
+
+    hazards: [],
+
+
+    layout: [
+        ["e", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg","bg","bg"],
+        ["e", "red", "g", "g", "g", "g", "g", "g", "g", "r","r","bg"],
+        ["e", "bg", "g", "r", "r", "r", "r", "g", "g", "g","blk","bg"],
+        ["e", "bg", "g", "r", "red", "g", "g", "r", "g", "g","g","blue"],
+        ["e", "bg", "g", "r", "r", "g", "g", "r", "g", "g","r","bg"],
+        ["e", "bg", "g", "g", "g", "g", "g", "r", "g", "bg","bg","bg"],
+        ["e", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "red", "bg","bg","bg"],
+    ],
+}
+
+levels["1-10"] = {
+    level: "1-10",
+    name: "Bib Bob",
+    bgm: "ep6_1",
+    initialdp: 10,
+    squadlimit: 9,
+    hp: 5,
+    background: "loading_CB_center",
+    description: "We are finally face to face with the enemy main force.\nThey are led by one of Reunion squad leaders, Bib Bob.\nUse everything you learned so far and seize victory!",
+    place: "Plain",
+    offsetX: -10,
+    offsetY: -40,
+    offsetZ: 0,
+    unlock:"Meteor",
+    type: "boss",
+    skybox: "cityruin.png",
+
+    waves: [
+        { "number": 0, "time": 5, "gap": 1.2, "enemies": "Heavy Defender", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [4, 1], "checkpoints": [{ "start": [4, 1],  "end": [4, 2], "pause": 160 },{ "start": [4, 2],  "end": [5, 3], "pause": 0 },{ "start": [5, 3],  "end": [3, 10], "pause": 0 },{ "start": [3, 10],  "end": [3, 11], "pause": 0 }] },
+        { "number": 1, "time": 4, "gap": 1.2, "enemies": "Heavy Defender", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [4, 1], "checkpoints": [{ "start": [4, 1],  "end": [4, 3], "pause": 174 },{ "start": [4, 3],  "end": [5, 3], "pause": 0 },{ "start": [5, 3],  "end": [3, 10], "pause": 0 },{ "start": [3, 10],  "end": [3, 11], "pause": 0 }] },
+        { "number": 2, "time": 6, "gap": 1, "enemies": "Hound", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [4, 1], "checkpoints": [{ "start": [4, 1],  "end": [4, 3], "pause": 0 },{ "start": [4, 3],  "end": [5, 4], "pause": 0 },{ "start": [5, 4], "end": [4, 11], "pause": 0 }] },
+        { "number": 3, "time": 16, "gap": 1, "enemies": "Hound", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [4, 1], "checkpoints": [{ "start": [4, 1],  "end": [4, 3], "pause": 0 },{ "start": [4, 3],  "end": [5, 4], "pause": 0 },{ "start": [5, 4], "end": [4, 11], "pause": 0 }] },
+        { "number": 4, "time": 21, "gap": 1.2, "enemies": "Soldier", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [6, 1], "checkpoints": [{ "start": [6, 1],  "end": [6, 2], "pause": 7 },{ "start": [6, 2],  "end": [4, 11], "pause": 0 }] },
+        { "number": 5, "time": 24, "gap": 1.2, "enemies": "Soldier", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [6, 1], "checkpoints": [{ "start": [6, 1],  "end": [6, 3], "pause": 8 },{ "start": [6, 3],  "end": [4, 11], "pause": 0 }] },
+        { "number": 6, "time": 31, "gap": 1.2, "enemies": "Soldier", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [6, 1], "checkpoints": [{ "start": [6, 1],  "end": [6, 2], "pause": 0 },{ "start": [6, 2],  "end": [4, 11], "pause": 0 }] },
+        { "number": 7, "time": 30, "gap": 1.2, "enemies": "Big Bob", "line": true, "tooltip": true, "taunt": true, "count": 1, "start": [3, 1], "checkpoints": [{ "start": [3, 1],  "end": [3, 2], "pause": 150 },{ "start": [3, 2],  "end": [4, 3], "pause": 20 },{ "start": [4, 3],  "end": [5, 4], "pause": 0 },{ "start": [5, 4],  "end": [3, 10], "pause": 0 },{ "start": [3, 10],  "end": [3, 11], "pause": 0 }] },
+        { "number": 8, "time": 43, "gap": 1.2, "enemies": "Junkman", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [3, 1], "checkpoints": [{ "start": [3, 1],  "end": [3, 3], "pause": 5 },{ "start": [3, 3], "end": [3, 10], "pause": 0 },{ "start": [3, 10],  "end": [4, 11], "pause": 0 }] },
+        { "number": 9, "time": 49, "gap": 1.2, "enemies": "Junkman", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 1], "checkpoints": [{ "start": [3, 1],  "end": [3, 3], "pause": 5 },{ "start": [3, 3], "end": [3, 10], "pause": 0 },{ "start": [3, 10],  "end": [4, 11], "pause": 0 }] },
+        { "number": 10, "time": 57, "gap": 2, "enemies": "Hound", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [4, 1], "checkpoints": [{ "start": [4, 1],  "end": [4, 3], "pause": 0 },{ "start": [4, 3],  "end": [5, 4], "pause": 0 },{ "start": [5, 4], "end": [4, 11], "pause": 0 }] },
+        { "number": 11, "time": 59, "gap": 1.2, "enemies": "Soldier", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [6, 1], "checkpoints": [{ "start": [6, 1],  "end": [3, 4], "pause": 0 },{ "start": [3, 4],  "end": [3, 11], "pause": 0 }] },
+        { "number": 12, "time": 64, "gap": 1.2, "enemies": "Soldier", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [6, 1], "checkpoints": [{ "start": [6, 1],  "end": [3, 4], "pause": 0 },{ "start": [3, 4],  "end": [3, 11], "pause": 0 }] },
+        { "number": 13, "time": 68, "gap": 1, "enemies": "Hound", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [4, 1], "checkpoints": [{ "start": [4, 1],  "end": [4, 3], "pause": 0 },{ "start": [4, 3],  "end": [5, 4], "pause": 0 },{ "start": [5, 4], "end": [4, 11], "pause": 0 }] },
+        { "number": 15, "time": 75, "gap": 1, "enemies": "Hound", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [4, 1], "checkpoints": [{ "start": [4, 1],  "end": [4, 3], "pause": 0 },{ "start": [4, 3],  "end": [5, 4], "pause": 0 },{ "start": [5, 4], "end": [4, 11], "pause": 0 }] },
+        { "number": 16, "time": 74, "gap": 1.2, "enemies": "Butcher", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1],  "end": [1, 2], "pause": 10 },{ "start": [1, 2],  "end": [3, 11], "pause": 0 }] },
+        { "number": 17, "time": 85, "gap": 1, "enemies": "Hound", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [4, 1], "checkpoints": [{ "start": [4, 1],  "end": [4, 3], "pause": 0 },{ "start": [4, 3],  "end": [5, 4], "pause": 0 },{ "start": [5, 4], "end": [4, 11], "pause": 0 }] },
+        { "number": 18, "time": 85, "gap": 1.2, "enemies": "Junkman", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 1], "checkpoints": [{ "start": [3, 1],  "end": [3, 3], "pause": 0 },{ "start": [3, 3], "end": [3, 10], "pause": 0 },{ "start": [3, 10],  "end": [4, 11], "pause": 0 }] },
+        { "number": 19, "time": 85, "gap": 3, "enemies": "Light-Armored Soldier", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [4, 11], "pause": 0 }] },
+        { "number": 20, "time": 90, "gap": 1.2, "enemies": "Junkman", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 1], "checkpoints": [{ "start": [3, 1],  "end": [3, 3], "pause": 0 },{ "start": [3, 3], "end": [3, 10], "pause": 0 },{ "start": [3, 10],  "end": [4, 11], "pause": 0 }] },
+        { "number": 21, "time": 98, "gap": 3, "enemies": "Light-Armored Soldier", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [4, 11], "pause": 0 }] },
+        { "number": 22, "time": 115, "gap": 1.2, "enemies": "Crossbowman", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1],  "end": [1, 3], "pause": 15 },{ "start": [1, 3],  "end": [3, 11], "pause": 0 }] },
+        { "number": 23, "time": 116, "gap": 7, "enemies": "Soldier", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [6, 1], "checkpoints": [{ "start": [6, 1],  "end": [3, 4], "pause": 0 },{ "start": [3, 4],  "end": [3, 11], "pause": 0 }] },
+        { "number": 24, "time": 131, "gap": 2, "enemies": "Hound", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [4, 1], "checkpoints": [{ "start": [4, 1],  "end": [4, 3], "pause": 0 },{ "start": [4, 3],  "end": [5, 4], "pause": 0 },{ "start": [5, 4], "end": [4, 11], "pause": 0 }] },
+        { "number": 25, "time": 133, "gap": 9, "enemies": "Crossbowman", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [1, 1], "checkpoints": [{ "start": [1, 1],  "end": [1, 3], "pause": 0 },{ "start": [1, 3],  "end": [3, 11], "pause": 0 }] },
+        { "number": 26, "time": 131, "gap": 1.2, "enemies": "Light-Armored Soldier", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [6, 1], "checkpoints": [{ "start": [6, 1],  "end": [6, 2], "pause": 5 },{ "start": [6, 2],  "end": [4, 11], "pause": 0 }] },
+        { "number": 27, "time": 137, "gap": 1, "enemies": "Light-Armored Soldier", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [4, 11], "pause": 0 }] },
+        { "number": 28, "time": 144, "gap": 1, "enemies": "Hound", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [4, 1], "checkpoints": [{ "start": [4, 1],  "end": [4, 3], "pause": 0 },{ "start": [4, 3],  "end": [5, 4], "pause": 0 },{ "start": [5, 4], "end": [4, 11], "pause": 0 }] },
+        { "number": 29, "time": 144, "gap": 1.2, "enemies": "Butcher", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 1], "checkpoints": [{ "start": [3, 1],  "end": [3, 3], "pause": 5 },{ "start": [3, 3], "end": [3, 10], "pause": 0 },{ "start": [3, 10],  "end": [4, 11], "pause": 0 }] },
+        { "number": 30, "time": 152, "gap": 1, "enemies": "Hound", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [4, 1], "checkpoints": [{ "start": [4, 1],  "end": [4, 3], "pause": 0 },{ "start": [4, 3],  "end": [5, 4], "pause": 0 },{ "start": [5, 4], "end": [4, 11], "pause": 0 }] },
+        { "number": 31, "time": 154, "gap": 1.2, "enemies": "Junkman", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 1], "checkpoints": [{ "start": [3, 1],  "end": [3, 3], "pause": 0 },{ "start": [3, 3], "end": [3, 10], "pause": 0 },{ "start": [3, 10],  "end": [4, 11], "pause": 0 }] },
+        { "number": 32, "time": 156, "gap": 1.2, "enemies": "Butcher", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 1], "checkpoints": [{ "start": [3, 1],  "end": [3, 3], "pause": 5 },{ "start": [3, 3], "end": [3, 10], "pause": 0 },{ "start": [3, 10],  "end": [4, 11], "pause": 0 }] },
+        { "number": 34, "time": 166, "gap": 2, "enemies": "Crossbowman", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [1, 1], "checkpoints": [{ "start": [1, 1],  "end": [1, 3], "pause": 10 },{ "start": [1, 3],  "end": [5, 5], "pause": 15 },{ "start": [5, 5],  "end": [3, 11], "pause": 0 }] },
+        { "number": 35, "time": 166, "gap": 1.2, "enemies": "Light-Armored Soldier", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [6, 1], "checkpoints": [{ "start": [6, 1],  "end": [6, 2], "pause": 7 },{ "start": [6, 2],  "end": [4, 11], "pause": 0 }] },
+        { "number": 36, "time": 166, "gap": 1.2, "enemies": "Light-Armored Soldier", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [6, 1], "checkpoints": [{ "start": [6, 1],  "end": [6, 3], "pause": 4 },{ "start": [6, 3],  "end": [4, 11], "pause": 0 }] },
+        { "number": 37, "time": 169, "gap": 1.2, "enemies": "Butcher", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 1], "checkpoints": [{ "start": [3, 1],  "end": [3, 3], "pause": 15 },{ "start": [3, 3], "end": [3, 10], "pause": 0 },{ "start": [3, 10],  "end": [4, 11], "pause": 0 }] },
+        { "number": 38, "time": 194, "gap": 10, "enemies": "Crossbowman", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [1, 1], "checkpoints": [{ "start": [1, 1],  "end": [1, 3], "pause": 10 },{ "start": [1, 3],  "end": [5, 5], "pause": 10 },{ "start": [5, 5],  "end": [3, 11], "pause": 0 }] },
+    ],
+
+    enemies: ["Light-Armored Soldier","Heavy Defender","Big Bob","Hound","Crossbowman","Soldier","Butcher","Junkman"],
+    tooltips: ["Big Bob"],
+
+    hazards: [],
+
+
+    layout: [
+        ["e", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg","bg","bg"],
+        ["e", "red", "g", "g", "r", "r", "g", "bg", "g", "r","bg","bg"],
+        ["e", "bg", "bg", "blk", "r", "g", "g", "g", "g", "g","g","bg"],
+        ["e", "red", "blk", "blk", "g", "g", "r", "r", "bg", "g","g","blue"],
+        ["e", "red", "blk", "blk", "g", "r", "r", "r", "g", "g","g","blue"],
+        ["e", "bg", "blk", "blk", "g", "g", "g", "g", "g", "g","r","bg"],
+        ["e", "red", "g", "g", "bg", "r", "r", "g", "g", "r","bg","bg"],
+        ["e", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg","bg","bg"],
+    ],
+}
+
+
+
+levels["4-1"] = {
+    level: "4-1",
     name: "Inexpressible",
-    bgm: "ep5_1",
+    bgm: "ep4_1",
     initialdp: 10,
     squadlimit: 8,
     hp: 3,
@@ -73,10 +642,10 @@ levels["5-1"] = {
     ],
 }
 
-levels["5-2"] = {
-    level: "5-2",
+levels["4-2"] = {
+    level: "4-2",
     name: "Intimate Knowledge",
-    bgm: "ep5_2",
+    bgm: "ep4_2",
     initialdp: 10,
     squadlimit: 8,
     hp: 3,
@@ -147,10 +716,10 @@ levels["5-2"] = {
     ],
 }
 
-levels["5-3"] = {
-    level: "5-3",
+levels["4-3"] = {
+    level: "4-3",
     name: "The Devil",
-    bgm: "ep5_2",
+    bgm: "ep4_2",
     initialdp: 10,
     squadlimit: 8,
     hp: 3,
@@ -217,10 +786,10 @@ levels["5-3"] = {
     ],
 }
 
-levels["5-4"] = {
-    level: "5-4",
+levels["4-4"] = {
+    level: "4-4",
     name: "Panic",
-    bgm: "ep5_2",
+    bgm: "ep4_2",
     initialdp: 10,
     squadlimit: 8,
     hp: 3,
@@ -290,10 +859,10 @@ levels["5-4"] = {
     ],
 }
 
-levels["5-5"] = {
-    level: "5-5",
+levels["4-5"] = {
+    level: "4-5",
     name: "Abnormality",
-    bgm: "ep5_2",
+    bgm: "ep4_2",
     initialdp: 12,
     squadlimit: 8,
     hp: 3,
@@ -358,10 +927,10 @@ levels["5-5"] = {
     ],
 }
 
-levels["5-6"] = {
-    level: "5-6",
+levels["4-6"] = {
+    level: "4-6",
     name: "Misunderstandings",
-    bgm: "ep5_1",
+    bgm: "ep4_1",
     initialdp: 10,
     squadlimit: 8,
     hp: 3,
@@ -432,10 +1001,10 @@ levels["5-6"] = {
     ],
 }
 
-levels["5-7"] = {
-    level: "5-7",
+levels["4-7"] = {
+    level: "4-7",
     name: "Lost at Once",
-    bgm: "ep5_1",
+    bgm: "ep4_1",
     initialdp: 5,
     squadlimit: 8,
     hp: 3,
@@ -483,10 +1052,10 @@ levels["5-7"] = {
     ],
 }
 
-levels["5-8"] = {
-    level: "5-8",
+levels["4-8"] = {
+    level: "4-8",
     name: "Festering Scars",
-    bgm: "ep5_1",
+    bgm: "ep4_1",
     initialdp: 10,
     squadlimit: 8,
     hp: 3,
@@ -500,10 +1069,10 @@ levels["5-8"] = {
     skybox: "city.png",
 
     waves: [
-        { "number": 0, "time": 3, "gap": 8, "enemies": "Originium Slug β", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [0, 8], "checkpoints": [{ "start": [0, 8], "end": [1, 8], "pause": 2 },{ "start": [1, 8], "end": [3, 5], "pause": 0 },{ "start": [3, 5], "end": [6, 1], "pause": 0 }] },     
-        { "number": 1, "time": 11, "gap": 8, "enemies": "Originium Slug β", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [0, 8], "checkpoints": [{ "start": [0, 8], "end": [1, 8], "pause": 0 },{ "start": [1, 8], "end": [3, 5], "pause": 0 },{ "start": [3, 5], "end": [6, 1], "pause": 0 }] },     
+        { "number": 0, "time": 3, "gap": 8, "enemies": "Originium Slug", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [0, 8], "checkpoints": [{ "start": [0, 8], "end": [1, 8], "pause": 2 },{ "start": [1, 8], "end": [3, 5], "pause": 0 },{ "start": [3, 5], "end": [6, 1], "pause": 0 }] },     
+        { "number": 1, "time": 11, "gap": 8, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [0, 8], "checkpoints": [{ "start": [0, 8], "end": [1, 8], "pause": 0 },{ "start": [1, 8], "end": [3, 5], "pause": 0 },{ "start": [3, 5], "end": [6, 1], "pause": 0 }] },     
         { "number": 2, "time": 14, "gap": 8, "enemies": "Hound", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [0, 9], "checkpoints": [{ "start": [0, 9], "end": [1, 9], "pause": 2 },{ "start": [1, 9], "end": [6, 9], "pause": 0 },{ "start": [6, 9], "end": [6, 1], "pause": 0 }] },     
-        { "number": 3, "time": 17, "gap": 4, "enemies": "Originium Slug β", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [0, 8], "checkpoints": [{ "start": [0, 8], "end": [1, 8], "pause": 0 },{ "start": [1, 8], "end": [3, 5], "pause": 0 },{ "start": [3, 5], "end": [6, 1], "pause": 0 }] },     
+        { "number": 3, "time": 17, "gap": 4, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [0, 8], "checkpoints": [{ "start": [0, 8], "end": [1, 8], "pause": 0 },{ "start": [1, 8], "end": [3, 5], "pause": 0 },{ "start": [3, 5], "end": [6, 1], "pause": 0 }] },     
         { "number": 4, "time": 20, "gap": 8, "enemies": "Hound", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [0, 9], "checkpoints": [{ "start": [0, 9], "end": [1, 9], "pause": 0 },{ "start": [1, 9], "end": [6, 9], "pause": 0 },{ "start": [6, 9], "end": [6, 1], "pause": 0 }] },     
         { "number": 5, "time": 28, "gap": 8, "enemies": "Enraged Possessed Thrower", "line": false, "tooltip": true, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 2], "pause": 9 },{ "start": [1, 2], "end": [0, 5], "pause": 5 },{ "start": [3, 1], "end": [6, 1], "pause": 0 }] },     
         { "number": 6, "time": 31, "gap": 10, "enemies": "Possessed Soldier Leader", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [0, 8], "checkpoints": [{ "start": [0, 8], "end": [1, 8], "pause": 0 },{ "start": [1, 8], "end": [3, 5], "pause": 0 },{ "start": [3, 5], "end": [6, 1], "pause": 0 }] },     
@@ -521,13 +1090,13 @@ levels["5-8"] = {
         { "number": 18, "time": 117, "gap": 8, "enemies": "Enraged Possessed Thrower", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 2], "pause": 5 },{ "start": [1, 2], "end": [0, 5], "pause": 5 },{ "start": [3, 1], "end": [6, 1], "pause": 0 }] },     
         { "number": 19, "time": 125, "gap": 15, "enemies": "Possessed Defender", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [0, 9], "checkpoints": [{ "start": [0, 9], "end": [1, 9], "pause": 3 },{ "start": [1, 9], "end": [6, 9], "pause": 0 },{ "start": [6, 9], "end": [6, 1], "pause": 0 }] },     
         { "number": 20, "time": 135, "gap": 9, "enemies": "Possessed Veteran Junkman", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [0, 8], "checkpoints": [{ "start": [0, 8], "end": [1, 8], "pause": 0 },{ "start": [1, 8], "end": [3, 5], "pause": 0 },{ "start": [3, 5], "end": [6, 1], "pause": 0 }] },     
-        { "number": 21, "time": 137, "gap": 2, "enemies": "Originium Slug β", "line": false, "tooltip": false, "taunt": false, "count": 6, "start": [0, 9], "checkpoints": [{ "start": [0, 9], "end": [1, 9], "pause": 0 },{ "start": [1, 9], "end": [6, 9], "pause": 0 },{ "start": [6, 9], "end": [6, 1], "pause": 0 }] },     
-        { "number": 22, "time": 141, "gap": 3, "enemies": "Originium Slug β", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [0, 9], "checkpoints": [{ "start": [0, 9], "end": [1, 9], "pause": 0 },{ "start": [1, 9], "end": [6, 9], "pause": 0 },{ "start": [6, 9], "end": [6, 1], "pause": 0 }] },     
-        { "number": 23, "time": 146, "gap": 3, "enemies": "Originium Slug β", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [0, 8], "checkpoints": [{ "start": [0, 8], "end": [1, 8], "pause": 0 },{ "start": [1, 8], "end": [3, 5], "pause": 0 },{ "start": [3, 5], "end": [6, 1], "pause": 0 }] },     
-        { "number": 24, "time": 148, "gap": 2, "enemies": "Originium Slug β", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [0, 8], "checkpoints": [{ "start": [0, 8], "end": [1, 8], "pause": 0 },{ "start": [1, 8], "end": [3, 5], "pause": 0 },{ "start": [3, 5], "end": [6, 1], "pause": 0 }] },     
+        { "number": 21, "time": 137, "gap": 2, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 6, "start": [0, 9], "checkpoints": [{ "start": [0, 9], "end": [1, 9], "pause": 0 },{ "start": [1, 9], "end": [6, 9], "pause": 0 },{ "start": [6, 9], "end": [6, 1], "pause": 0 }] },     
+        { "number": 22, "time": 141, "gap": 3, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [0, 9], "checkpoints": [{ "start": [0, 9], "end": [1, 9], "pause": 0 },{ "start": [1, 9], "end": [6, 9], "pause": 0 },{ "start": [6, 9], "end": [6, 1], "pause": 0 }] },     
+        { "number": 23, "time": 146, "gap": 3, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [0, 8], "checkpoints": [{ "start": [0, 8], "end": [1, 8], "pause": 0 },{ "start": [1, 8], "end": [3, 5], "pause": 0 },{ "start": [3, 5], "end": [6, 1], "pause": 0 }] },     
+        { "number": 24, "time": 148, "gap": 2, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [0, 8], "checkpoints": [{ "start": [0, 8], "end": [1, 8], "pause": 0 },{ "start": [1, 8], "end": [3, 5], "pause": 0 },{ "start": [3, 5], "end": [6, 1], "pause": 0 }] },     
     ],
 
-    enemies: ["Possessed Soldier Leader","Possessed Defender","Originium Slug β","Enraged Possessed Thrower","Possessed Veteran Junkman","Hound"],
+    enemies: ["Possessed Soldier Leader","Possessed Defender","Originium Slug","Enraged Possessed Thrower","Possessed Veteran Junkman","Hound"],
     tooltips: ["Possessed Defender","Enraged Possessed Thrower"],
     hazards: [],
 
@@ -543,10 +1112,10 @@ levels["5-8"] = {
     ],
 }
 
-levels["5-9"] = {
-    level: "5-9",
+levels["4-9"] = {
+    level: "4-9",
     name: "Who to Kill?",
-    bgm: "ep5_2",
+    bgm: "ep4_2",
     initialdp: 5,
     squadlimit: 8,
     hp: 3,
@@ -605,10 +1174,10 @@ levels["5-9"] = {
     ],
 }
 
-levels["5-10"] = {
-    level: "5-10",
+levels["4-10"] = {
+    level: "4-10",
     name: "Malediction",
-    bgm: "ep5_2",
+    bgm: "ep4_2",
     initialdp: 10,
     squadlimit: 9,
     hp: 3,
@@ -689,8 +1258,8 @@ levels["5-10"] = {
     ],
 }
 
-levels["5-11"] = {
-    level: "5-11",
+levels["4-11"] = {
+    level: "4-11",
     name: "The Herald",
     bgm: "mephi",
     initialdp: 10,
@@ -731,10 +1300,8 @@ levels["5-11"] = {
         { "number": 24, "time": 130, "gap": 40, "enemies": "Enraged Possessed Soldier","invertU":1, "line": true, "tooltip": false, "taunt": true, "count": 1, "start": [0, 7], "checkpoints": [{ "start": [0, 7], "end": [1, 7], "pause": 10 },{ "start": [1, 7], "end": [1, 10], "pause": 0 },{ "start": [1, 10], "end": [2, 10], "pause": 5 },{ "start": [2, 10], "end": [3, 1], "pause": 0 }] },     
         { "number": 39, "time": 100, "gap": 3, "enemies": "Possessed Soldier","invertU":1, "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [1, 11], "checkpoints": [{ "start": [1, 11], "end": [1, 7], "pause": 0 },{ "start": [1, 7], "end": [3, 1], "pause": 0 }] },     
         { "number": 41, "time": 100, "gap": 3, "enemies": "Possessed Soldier","invertU":1, "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [7, 6], "checkpoints": [{ "start": [7, 6], "end": [7, 6], "pause": 0 },{ "start": [7, 6], "end": [5, 1], "pause": 0 }] },     
-
         { "number": 43, "time": 150, "gap": 3, "enemies": "Possessed Soldier","invertU":1, "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [1, 11], "checkpoints": [{ "start": [1, 11], "end": [1, 7], "pause": 0 },{ "start": [1, 7], "end": [3, 1], "pause": 0 }] },     
         { "number": 44, "time": 150, "gap": 3, "enemies": "Possessed Soldier","invertU":1, "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [7, 6], "checkpoints": [{ "start": [7, 6], "end": [7, 6], "pause": 0 },{ "start": [7, 6], "end": [5, 1], "pause": 0 }] },     
-
         { "number": 37, "time": 170, "gap": 5, "enemies": "Possessed Soldier","invertU":1, "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [1, 11], "checkpoints": [{ "start": [1, 11], "end": [1, 7], "pause": 0 },{ "start": [1, 7], "end": [3, 1], "pause": 0 }] },     
         { "number": 28, "time": 160, "gap": 30, "enemies": "Possessed Junkman","invertU":1, "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 11], "checkpoints": [{ "start": [1, 11], "end": [1, 7], "pause": 0 },{ "start": [1, 7], "end": [3, 1], "pause": 0 }] },     
         { "number": 29, "time": 160, "gap": 30, "enemies": "Possessed Junkman","invertU":1, "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [7, 6], "checkpoints": [{ "start": [7, 6], "end": [7, 6], "pause": 0 },{ "start": [7, 6], "end": [5, 1], "pause": 0 }] },     
@@ -748,10 +1315,8 @@ levels["5-11"] = {
         { "number": 30, "time": 210, "gap": 50, "enemies": "Enraged Possessed Soldier","invertU":1, "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [7, 6], "checkpoints": [{ "start": [7, 6], "end": [7, 10], "pause": 0 },{ "start": [7, 10], "end": [6, 10], "pause": 0 },{ "start": [6, 10], "end": [5, 1], "pause": 0 }] },     
         { "number": 85, "time": 190, "gap": 3, "enemies": "Possessed Soldier","invertU":1, "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [1, 11], "checkpoints": [{ "start": [1, 11], "end": [1, 7], "pause": 0 },{ "start": [1, 7], "end": [3, 1], "pause": 0 }] },     
         { "number": 96, "time": 190, "gap": 3, "enemies": "Possessed Soldier","invertU":1, "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [7, 6], "checkpoints": [{ "start": [7, 6], "end": [7, 6], "pause": 0 },{ "start": [7, 6], "end": [5, 1], "pause": 0 }] },     
-        
         { "number": 1235, "time": 215, "gap": 1, "enemies": "Possessed Soldier","invertU":1, "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [1, 11], "checkpoints": [{ "start": [1, 11], "end": [1, 7], "pause": 0 },{ "start": [1, 7], "end": [3, 1], "pause": 0 }] },     
         { "number": 1246, "time": 215, "gap": 1, "enemies": "Possessed Soldier","invertU":1, "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [7, 6], "checkpoints": [{ "start": [7, 6], "end": [7, 6], "pause": 0 },{ "start": [7, 6], "end": [5, 1], "pause": 0 }] },     
-        
         { "number": 240, "time": 220, "gap": 2, "enemies": "Possessed Junkman","invertU":1, "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [1, 11], "checkpoints": [{ "start": [1, 11], "end": [1, 7], "pause": 0 },{ "start": [1, 7], "end": [3, 1], "pause": 0 }] },     
         { "number": 229, "time": 220, "gap": 2, "enemies": "Possessed Junkman","invertU":1, "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [7, 6], "checkpoints": [{ "start": [7, 6], "end": [7, 6], "pause": 0 },{ "start": [7, 6], "end": [5, 1], "pause": 0 }] },     
        
@@ -774,10 +1339,10 @@ levels["5-11"] = {
     ],
 }
 
-levels["5-H1"] = {
-    level: "5-H1",
+levels["4-H1"] = {
+    level: "4-H1",
     name: "Operation Inferno-1",
-    bgm: "ep5_1",
+    bgm: "ep4_1",
     initialdp: 10,
     squadlimit: 9,
     hp: 3,
@@ -845,10 +1410,10 @@ levels["5-H1"] = {
     ],
 }
 
-levels["5-H2"] = {
-    level: "5-H2",
+levels["4-H2"] = {
+    level: "4-H2",
     name: "Operation Inferno-2",
-    bgm: "ep5_1",
+    bgm: "ep4_1",
     initialdp: 10,
     squadlimit: 9,
     hp: 3,
@@ -902,10 +1467,10 @@ levels["5-H2"] = {
     ],
 }
 
-levels["5-H3"] = {
-    level: "5-H3",
+levels["4-H3"] = {
+    level: "4-H3",
     name: "Operation Inferno-3",
-    bgm: "ep5_2",
+    bgm: "ep4_2",
     initialdp: 20,
     squadlimit: 9,
     hp: 3,
@@ -976,8 +1541,8 @@ levels["5-H3"] = {
 
 
 
-levels["5-H4"] = {
-    level: "5-H4",
+levels["4-H4"] = {
+    level: "4-H4",
     name: "Operation Inferno-4",
     bgm: "mephi",
     initialdp: 5,
@@ -1044,10 +1609,10 @@ levels["5-H4"] = {
     ],
 }
 
-levels["6-1"] = {
-    level: "6-1",
+levels["5-1"] = {
+    level: "5-1",
     name: "It Fell From the Sky!",
-    bgm: "ep6",
+    bgm: "ep5",
     initialdp: 10,
     squadlimit: 8,
     hp: 3,
@@ -1104,15 +1669,15 @@ levels["6-1"] = {
     ],
 }
 
-levels["6-2"] = {
-    level: "6-2",
+levels["5-2"] = {
+    level: "5-2",
     name: "Different Perspective",
-    bgm: "ep6",
+    bgm: "ep5",
     initialdp: 10,
     squadlimit: 8,
     hp: 3,
     background: "loading_LM_frost",
-    description: "The Yeti Squadron, \nin addition to fielding casters that specialize in ice-based Arts,\n has also released Spiders\nthat explode in a shower of rime upon death.\nPlease exercise caution.",
+    description: "The Yeti Squadron, \nin addition to fielding casters that specialize in ice-based Magic,\n has also released Spiders\nthat explode in a shower of rime upon death.\nPlease exercise caution.",
     place: "Frozen",
     offsetX: -20,
     offsetY: -70,
@@ -1180,10 +1745,10 @@ levels["6-2"] = {
     ],
 }
 
-levels["6-3"] = {
-    level: "6-3",
+levels["5-3"] = {
+    level: "5-3",
     name: "Bells of Liberation",
-    bgm: "ep6",
+    bgm: "ep5",
     initialdp: 1,
     squadlimit: 8,
     hp: 3,
@@ -1245,10 +1810,10 @@ levels["6-3"] = {
     ],
 }
 
-levels["6-4"] = {
-    level: "6-4",
+levels["5-4"] = {
+    level: "5-4",
     name: "Condensation-1",
-    bgm: "ep6",
+    bgm: "ep5",
     initialdp: 10,
     squadlimit: 8,
     hp: 3,
@@ -1310,10 +1875,10 @@ levels["6-4"] = {
     ],
 }
 
-levels["6-5"] = {
-    level: "6-5",
+levels["5-5"] = {
+    level: "5-5",
     name: "Condensation-2",
-    bgm: "ep6",
+    bgm: "ep5",
     initialdp: 10,
     squadlimit: 8,
     hp: 3,
@@ -1372,10 +1937,10 @@ levels["6-5"] = {
     ],
 }
 
-levels["6-6"] = {
-    level: "6-6",
+levels["5-6"] = {
+    level: "5-6",
     name: "Times Like These",
-    bgm: "ep6",
+    bgm: "ep5",
     initialdp: 10,
     squadlimit: 8,
     hp: 3,
@@ -1414,21 +1979,21 @@ levels["6-6"] = {
         { "number": 22, "time": 84, "gap": 5, "enemies": "Frostfang", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 11], "checkpoints": [{ "start": [3, 11], "end": [4, 6], "pause": 0 }, { "start": [4, 6], "end": [4, 1], "pause": 0 }] },
         { "number": 23, "time": 87, "gap": 12, "enemies": "Glacial Spider", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [2, 11], "checkpoints": [{ "start": [2, 11], "end": [2, 5], "pause": 0 }, { "start": [2, 5], "end": [3, 1], "pause": 0 }] },
         { "number": 24, "time": 91, "gap": 5, "enemies": "Glacial Spider", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 11], "checkpoints": [{ "start": [3, 11], "end": [4, 6], "pause": 0 }, { "start": [4, 6], "end": [4, 1], "pause": 0 }] },
-        { "number": 25, "time": 93, "gap": 5, "enemies": "Light-Armored Soldier Leader", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 11], "checkpoints": [{ "start": [3, 11], "end": [4, 6], "pause": 0 }, { "start": [4, 6], "end": [4, 1], "pause": 0 }] },
+        { "number": 25, "time": 93, "gap": 5, "enemies": "Light-Armored Soldier", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 11], "checkpoints": [{ "start": [3, 11], "end": [4, 6], "pause": 0 }, { "start": [4, 6], "end": [4, 1], "pause": 0 }] },
         { "number": 26, "time": 94, "gap": 5, "enemies": "Frostfang", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 11], "checkpoints": [{ "start": [3, 11], "end": [4, 6], "pause": 0 }, { "start": [4, 6], "end": [4, 1], "pause": 0 }] },
         { "number": 27, "time": 99, "gap": 12, "enemies": "Glacial Spider", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [2, 11], "checkpoints": [{ "start": [2, 11], "end": [2, 5], "pause": 0 }, { "start": [2, 5], "end": [3, 1], "pause": 0 }] },
         { "number": 28, "time": 118, "gap": 5, "enemies": "Yeti Icecleaver Leader", "line": false, "tooltip": true, "taunt": false, "count": 1, "start": [2, 11], "checkpoints": [{ "start": [2, 11], "end": [2, 10], "pause": 20 }, { "start": [2, 10], "end": [2, 5], "pause": 0 }, { "start": [2, 5], "end": [3, 1], "pause": 0 }] },
         { "number": 29, "time": 124, "gap": 13, "enemies": "Yeti Operative2", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [2, 11], "checkpoints": [{ "start": [2, 11], "end": [2, 5], "pause": 0 }, { "start": [2, 5], "end": [3, 1], "pause": 0 }] },
         { "number": 30, "time": 125, "gap": 13, "enemies": "Glacial Spider", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [2, 11], "checkpoints": [{ "start": [2, 11], "end": [2, 5], "pause": 0 }, { "start": [2, 5], "end": [3, 1], "pause": 0 }] },
         { "number": 31, "time": 128, "gap": 12, "enemies": "Razorfrost", "line": false, "tooltip": true, "taunt": false, "count": 4, "start": [3, 11], "checkpoints": [{ "start": [3, 11], "end": [4, 6], "pause": 0 }, { "start": [4, 6], "end": [4, 1], "pause": 0 }] },
-        { "number": 32, "time": 129, "gap": 12, "enemies": "Light-Armored Soldier Leader", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [3, 11], "checkpoints": [{ "start": [3, 11], "end": [4, 6], "pause": 0 }, { "start": [4, 6], "end": [4, 1], "pause": 0 }] },
+        { "number": 32, "time": 129, "gap": 12, "enemies": "Light-Armored Soldier", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [3, 11], "checkpoints": [{ "start": [3, 11], "end": [4, 6], "pause": 0 }, { "start": [4, 6], "end": [4, 1], "pause": 0 }] },
         { "number": 33, "time": 149, "gap": 15, "enemies": "Glacial Spider", "line": true, "tooltip": false, "taunt": true, "count": 2, "start": [0, 7], "checkpoints": [{ "start": [0, 7], "end": [2, 7], "pause": 0 }, { "start": [2, 7], "end": [2, 6], "pause": 0 }, { "start": [2, 6], "end": [4, 6], "pause": 0 }, { "start": [4, 6], "end": [4, 1], "pause": 0 }] },
         { "number": 34, "time": 187, "gap": 5, "enemies": "Yeti Icecleaver", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 11], "checkpoints": [{ "start": [3, 11], "end": [3, 10], "pause": 5 }, { "start": [3, 10], "end": [4, 6], "pause": 0 }, { "start": [4, 6], "end": [4, 1], "pause": 0 }] },
         { "number": 35, "time": 191, "gap": 1, "enemies": "Glacial Spider", "line": true, "tooltip": false, "taunt": false, "count": 2, "start": [0, 6], "checkpoints": [{ "start": [0, 6], "end": [2, 5], "pause": 0 }, { "start": [2, 5], "end": [3, 1], "pause": 0 }] },
         { "number": 36, "time": 193, "gap": 13, "enemies": "Razorfrost", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [2, 11], "checkpoints": [{ "start": [2, 11], "end": [2, 5], "pause": 0 }, { "start": [2, 5], "end": [3, 1], "pause": 0 }] },
         { "number": 37, "time": 193, "gap": 12, "enemies": "Razorfrost", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [3, 11], "checkpoints": [{ "start": [3, 11], "end": [4, 6], "pause": 0 }, { "start": [4, 6], "end": [4, 1], "pause": 0 }] },
         { "number": 38, "time": 194, "gap": 11, "enemies": "Glacial Spider", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [2, 11], "checkpoints": [{ "start": [2, 11], "end": [2, 5], "pause": 0 }, { "start": [2, 5], "end": [3, 1], "pause": 0 }] },
-        { "number": 39, "time": 194, "gap": 14, "enemies": "Light-Armored Soldier Leader", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [3, 11], "checkpoints": [{ "start": [3, 11], "end": [4, 6], "pause": 0 }, { "start": [4, 6], "end": [4, 1], "pause": 0 }] },
+        { "number": 39, "time": 194, "gap": 14, "enemies": "Light-Armored Soldier", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [3, 11], "checkpoints": [{ "start": [3, 11], "end": [4, 6], "pause": 0 }, { "start": [4, 6], "end": [4, 1], "pause": 0 }] },
         { "number": 40, "time": 203, "gap": 15, "enemies": "Yeti Operative2", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [2, 11], "checkpoints": [{ "start": [2, 11], "end": [2, 5], "pause": 0 }, { "start": [2, 5], "end": [3, 1], "pause": 0 }] },
         { "number": 41, "time": 208, "gap": 20, "enemies": "Yeti Caster", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [2, 11], "checkpoints": [{ "start": [2, 11], "end": [2, 5], "pause": 0 }, { "start": [2, 5], "end": [3, 1], "pause": 0 }] },
         { "number": 42, "time": 211, "gap": 1, "enemies": "Glacial Spider", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [0, 7], "checkpoints": [{ "start": [0, 7], "end": [2, 7], "pause": 0 }, { "start": [2, 7], "end": [2, 6], "pause": 0 }, { "start": [2, 6], "end": [4, 6], "pause": 0 }, { "start": [4, 6], "end": [4, 1], "pause": 0 }] },
@@ -1436,7 +2001,7 @@ levels["6-6"] = {
 
     ],
 
-    enemies: ["Yeti Operative2", "Light-Armored Soldier Leader", "Yeti Caster", "Yeti Caster Leader", "Glacial Spider α", "Glacial Spider", "Frostfang", "Razorfrost", "Yeti Icecleaver", "Yeti Icecleaver Leader"],
+    enemies: ["Yeti Operative2", "Light-Armored Soldier", "Yeti Caster", "Yeti Caster Leader", "Glacial Spider α", "Glacial Spider", "Frostfang", "Razorfrost", "Yeti Icecleaver", "Yeti Icecleaver Leader"],
     tooltips: ["Glacial Spider α", "Razorfrost", "Yeti Icecleaver Leader"],
     hazards: [],
 
@@ -1452,10 +2017,10 @@ levels["6-6"] = {
     ],
 }
 
-levels["6-7"] = {
-    level: "6-7",
+levels["5-7"] = {
+    level: "5-7",
     name: "Snow Upon the Tundra",
-    bgm: "ep6",
+    bgm: "ep5",
     initialdp: 10,
     squadlimit: 8,
     hp: 3,
@@ -1470,12 +2035,12 @@ levels["6-7"] = {
     snowstorm: true,
 
     waves: [
-        { "number": 1, "time": 3, "gap": 5, "enemies": "Originium Slug β", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [2, 2], "pause": 3 }, { "start": [2, 2], "end": [1, 11], "pause": 0 }] },
-        { "number": 2, "time": 5, "gap": 5, "enemies": "Originium Slug β", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [1, 11], "pause": 0 }] },
-        { "number": 3, "time": 10, "gap": 2, "enemies": "Originium Slug β", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [1, 11], "pause": 0 }] },
-        { "number": 4, "time": 18, "gap": 4, "enemies": "Originium Slug β", "line": true, "tooltip": false, "taunt": false, "count": 3, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [3, 11], "pause": 0 }] },
-        { "number": 5, "time": 21, "gap": 3, "enemies": "Originium Slug β", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [3, 11], "pause": 0 }] },
-        { "number": 6, "time": 25, "gap": 3, "enemies": "Originium Slug β", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [1, 11], "pause": 0 }] },
+        { "number": 1, "time": 3, "gap": 5, "enemies": "Originium Slug", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [2, 2], "pause": 3 }, { "start": [2, 2], "end": [1, 11], "pause": 0 }] },
+        { "number": 2, "time": 5, "gap": 5, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [1, 11], "pause": 0 }] },
+        { "number": 3, "time": 10, "gap": 2, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [1, 11], "pause": 0 }] },
+        { "number": 4, "time": 18, "gap": 4, "enemies": "Originium Slug", "line": true, "tooltip": false, "taunt": false, "count": 3, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [3, 11], "pause": 0 }] },
+        { "number": 5, "time": 21, "gap": 3, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [3, 11], "pause": 0 }] },
+        { "number": 6, "time": 25, "gap": 3, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [1, 11], "pause": 0 }] },
         { "number": 7, "time": 37, "gap": 4, "enemies": "Glacial Spider", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [4, 2], "pause": 3 }, { "start": [4, 2], "end": [3, 11], "pause": 0 }] },
         { "number": 8, "time": 47, "gap": 3, "enemies": "Glacial Spider", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [3, 11], "pause": 0 }] },
         { "number": 9, "time": 49, "gap": 4, "enemies": "Frostfang", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [4, 2], "pause": 3 }, { "start": [4, 2], "end": [3, 11], "pause": 0 }] },
@@ -1501,13 +2066,13 @@ levels["6-7"] = {
         { "number": 29, "time": 143, "gap": 4, "enemies": "Glacial Spider", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [3, 11], "pause": 0 }] },
         { "number": 30, "time": 150, "gap": 3, "enemies": "Glacial Spider", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [1, 11], "pause": 0 }] },
         { "number": 31, "time": 152, "gap": 3, "enemies": "Glacial Spider", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [3, 11], "pause": 0 }] },
-        { "number": 32, "time": 158, "gap": 2, "enemies": "Originium Slug β", "line": false, "tooltip": false, "taunt": false, "count": 5, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [1, 11], "pause": 0 }] },
-        { "number": 33, "time": 159, "gap": 2, "enemies": "Originium Slug β", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [1, 11], "pause": 0 }] },
-        { "number": 34, "time": 160, "gap": 2, "enemies": "Originium Slug β", "line": false, "tooltip": false, "taunt": false, "count": 5, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [3, 11], "pause": 0 }] },
-        { "number": 35, "time": 161, "gap": 2, "enemies": "Originium Slug β", "line": false, "tooltip": false, "taunt": false, "count": 6, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [3, 11], "pause": 0 }] },
+        { "number": 32, "time": 158, "gap": 2, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 5, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [1, 11], "pause": 0 }] },
+        { "number": 33, "time": 159, "gap": 2, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [1, 11], "pause": 0 }] },
+        { "number": 34, "time": 160, "gap": 2, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 5, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [3, 11], "pause": 0 }] },
+        { "number": 35, "time": 161, "gap": 2, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 6, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [3, 11], "pause": 0 }] },
     ],
 
-    enemies: ["Originium Slug β", "Glacial Spider", "Yeti Caster", "Frostfang"],
+    enemies: ["Originium Slug", "Glacial Spider", "Yeti Caster", "Frostfang"],
     tooltips: [],
     hazards: ["icealtar"],
 
@@ -1522,10 +2087,10 @@ levels["6-7"] = {
     ],
 }
 
-levels["6-8"] = {
-    level: "6-8",
+levels["5-8"] = {
+    level: "5-8",
     name: "Hoarfrost",
-    bgm: "ep6",
+    bgm: "ep5",
     initialdp: 10,
     squadlimit: 8,
     hp: 3,
@@ -1574,15 +2139,15 @@ levels["6-8"] = {
     ],
 }
 
-levels["6-9"] = {
-    level: "6-9",
+levels["5-9"] = {
+    level: "5-9",
     name: "Frost Upon the Tundra",
-    bgm: "ep6",
+    bgm: "ep5",
     initialdp: 10,
     squadlimit: 8,
     hp: 3,
     background: "loading_LM_frost",
-    description: "The \"Oneiros\" drones controlled by the Yeti Squad \nare capable of inflicting Arts damage in an area upon our units, \nas well as inflicting the Cold status. \nPlease prioritize taking them down.\n\n<Ice Crystal> Periodically releases a frigid wave that \nwill inflict Cold to affected allied units. ",
+    description: "The \"Oneiros\" drones controlled by the Yeti Squad \nare capable of inflicting Magic damage in an area upon our units, \nas well as inflicting the Cold status. \nPlease prioritize taking them down.\n\n<Ice Crystal> Periodically releases a frigid wave that \nwill inflict Cold to affected allied units. ",
     place: "Frozen",
     offsetX: -50,
     offsetY: -60,
@@ -1646,10 +2211,10 @@ levels["6-9"] = {
     ],
 }
 
-levels["6-10"] = {
-    level: "6-10",
+levels["5-10"] = {
+    level: "5-10",
     name: "Nostalgia",
-    bgm: "ep6",
+    bgm: "ep5",
     initialdp: 10,
     squadlimit: 9,
     hp: 3,
@@ -1713,8 +2278,8 @@ levels["6-10"] = {
     ],
 }
 
-levels["6-11"] = {
-    level: "6-11",
+levels["5-11"] = {
+    level: "5-11",
     name: "Black Rabbit, White Rabbit",
     bgm: "frost_1",
     initialdp: 10,
@@ -1752,11 +2317,11 @@ levels["6-11"] = {
         { "number": 7, "time": 78, "gap": 14, "enemies": "Yeti Icecleaver", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [4, 5], "pause": 20 }, { "start": [4, 5], "end": [4, 12], "pause": 0 }] },
         { "number": 8, "time": 79, "gap": 9, "enemies": "Razorfrost", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [4, 12], "pause": 0 }] },
         { "number": 9, "time": 134, "gap": 14, "enemies": "Yeti Icecleaver", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [4, 5], "pause": 15 }, { "start": [4, 5], "end": [4, 12], "pause": 0 }] },
-        { "number": 10, "time": 134, "gap": 35, "enemies": "Heavy Defender Leader", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [6, 3], "pause": 5 }, { "start": [6, 3], "end": [6, 12], "pause": 0 }] },
+        { "number": 10, "time": 134, "gap": 35, "enemies": "Heavy Defender", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [6, 3], "pause": 5 }, { "start": [6, 3], "end": [6, 12], "pause": 0 }] },
         { "number": 11, "time": 135, "gap": 15, "enemies": "Glacial Spider α", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [4, 12], "pause": 0 }] },
         { "number": 12, "time": 135, "gap": 20, "enemies": "Yeti Sniper Leader", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [6, 12], "pause": 0 }] },
         { "number": 13, "time": 181, "gap": 15, "enemies": "Glacial Spider α", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [4, 12], "pause": 0 }] },
-        { "number": 14, "time": 209, "gap": 35, "enemies": "Heavy Defender Leader", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [6, 5], "pause": 5 }, { "start": [6, 5], "end": [6, 12], "pause": 0 }] },
+        { "number": 14, "time": 209, "gap": 35, "enemies": "Heavy Defender", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [6, 5], "pause": 5 }, { "start": [6, 5], "end": [6, 12], "pause": 0 }] },
         { "number": 15, "time": 210, "gap": 12, "enemies": "Razorfrost", "line": false, "tooltip": false, "taunt": false, "count": 5, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [4, 12], "pause": 0 }] },
         { "number": 16, "time": 211.5, "gap": 26, "enemies": "Razorfrost", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [4, 12], "pause": 0 }] },
         { "number": 17, "time": 216, "gap": 25, "enemies": "Yeti Caster Leader", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [6, 12], "pause": 0 }] },
@@ -1766,7 +2331,7 @@ levels["6-11"] = {
 
     ],
 
-    enemies: ["Heavy Defender Leader", "Glacial Spider α", "Yeti Caster Leader", "Yeti Sniper Leader", "Razorfrost", "Yeti Operative2", "Yeti Icecleaver", "Frostnova", "Frostnova2"],
+    enemies: ["Heavy Defender", "Glacial Spider α", "Yeti Caster Leader", "Yeti Sniper Leader", "Razorfrost", "Yeti Operative2", "Yeti Icecleaver", "Frostnova", "Frostnova2"],
     tooltips: ["Yeti Sniper Leader", "Frostnova"],
     hazards: ["icealtar"],
 
@@ -1782,10 +2347,10 @@ levels["6-11"] = {
     ],
 }
 
-levels["6-H1"] = {
-    level: "6-H1",
+levels["5-H1"] = {
+    level: "5-H1",
     name: "Operation Cocytus-1",
-    bgm: "ep6",
+    bgm: "ep5",
     initialdp: 0,
     squadlimit: 9,
     hp: 3,
@@ -1861,10 +2426,10 @@ levels["6-H1"] = {
     ],
 }
 
-levels["6-H2"] = {
-    level: "6-H2",
+levels["5-H2"] = {
+    level: "5-H2",
     name: "Operation Cocytus-2",
-    bgm: "ep6",
+    bgm: "ep5",
     initialdp: 10,
     squadlimit: 9,
     hp: 3,
@@ -1940,10 +2505,10 @@ levels["6-H2"] = {
     ],
 }
 
-levels["6-H3"] = {
-    level: "6-H3",
+levels["5-H3"] = {
+    level: "5-H3",
     name: "Operation Cocytus-3",
-    bgm: "ep6",
+    bgm: "ep5",
     initialdp: 10,
     squadlimit: 9,
     hp: 3,
@@ -2046,10 +2611,10 @@ levels["6-H3"] = {
     ],
 }
 
-levels["6-H4"] = {
-    level: "6-H4",
+levels["5-H4"] = {
+    level: "5-H4",
     name: "Operation Cocytus-4",
-    bgm: "ep6",
+    bgm: "ep5",
     bgm2: "frost_2",
     initialdp: 10,
     squadlimit: 9,
@@ -2077,8 +2642,8 @@ levels["6-H4"] = {
         { "number": 10, "time": 79.5, "gap": 10, "enemies": "Razorfrost", "line": false, "tooltip": false, "taunt": false, "count": 5, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 12], "pause": 0 }] },
         { "number": 11, "time": 79.5, "gap": 20, "enemies": "Glacial Spider α", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 12], "pause": 0 }] },
         { "number": 12, "time": 80, "gap": 10, "enemies": "Razorfrost", "line": false, "tooltip": false, "taunt": false, "count": 5, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [4, 12], "pause": 0 }] },
-        { "number": 13, "time": 80.5, "gap": 10, "enemies": "Light-Armored Soldier Leader", "line": false, "tooltip": false, "taunt": false, "count": 5, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 12], "pause": 0 }] },
-        { "number": 14, "time": 81, "gap": 10, "enemies": "Light-Armored Soldier Leader", "line": false, "tooltip": false, "taunt": false, "count": 5, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [4, 12], "pause": 0 }] },
+        { "number": 13, "time": 80.5, "gap": 10, "enemies": "Light-Armored Soldier", "line": false, "tooltip": false, "taunt": false, "count": 5, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 12], "pause": 0 }] },
+        { "number": 14, "time": 81, "gap": 10, "enemies": "Light-Armored Soldier", "line": false, "tooltip": false, "taunt": false, "count": 5, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [4, 12], "pause": 0 }] },
         { "number": 15, "time": 81, "gap": 20, "enemies": "Glacial Spider α", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [4, 12], "pause": 0 }] },
         { "number": 16, "time": 92.5, "gap": 12, "enemies": "Yeti Operative2", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 12], "pause": 0 }] },
         { "number": 17, "time": 94.5, "gap": 15, "enemies": "Yeti Sniper Leader", "line": true, "tooltip": false, "taunt": false, "count": 2, "start": [0, 3], "checkpoints": [{ "start": [0, 3], "end": [4, 3], "pause": 0 },{ "start": [4, 3], "end": [4, 12], "pause": 0 }] },
@@ -2091,13 +2656,13 @@ levels["6-H4"] = {
         { "number": 24, "time": 127.5, "gap": 2, "enemies": "Razorfrost", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [4, 12], "pause": 0 }] },
         { "number": 25, "time": 146.5, "gap": 2, "enemies": "Yeti Icecleaver Leader", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 2], "pause": 5 },{ "start": [3, 2], "end": [3, 12], "pause": 0 }] },
         { "number": 26, "time": 146.5, "gap": 2, "enemies": "Yeti Icecleaver Leader", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [4, 2], "pause": 5 },{ "start": [4, 2], "end": [4, 12], "pause": 0 }] },
-        { "number": 27, "time": 157.5, "gap": 2, "enemies": "Light-Armored Soldier Leader", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [4, 12], "pause": 0 }] },
+        { "number": 27, "time": 157.5, "gap": 2, "enemies": "Light-Armored Soldier", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [4, 12], "pause": 0 }] },
         { "number": 28, "time": 158.5, "gap": 17, "enemies": "Oneiros", "flying":true,"line": true, "tooltip": false, "taunt": false, "count": 2, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [2, 10], "pause": 0 },{ "start": [2, 10], "end": [3, 12], "pause": 0 }] },
         { "number": 29, "time": 160.5, "gap": 17, "enemies": "Oneiros", "flying":true,"line": false, "tooltip": false, "taunt": false, "count": 2, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [2, 10], "pause": 0 },{ "start": [2, 10], "end": [3, 12], "pause": 0 }] },
         { "number": 30, "time": 163.5, "gap": 15, "enemies": "Mortar Gunner", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [0, 3], "checkpoints": [{ "start": [0, 3], "end": [1, 3], "pause": 20 },{ "start": [1, 3], "end": [4, 3], "pause": 0 },{ "start": [4, 3], "end": [4, 12], "pause": 0 }] },
         { "number": 31, "time": 164.5, "gap": 2, "enemies": "Yeti Caster Leader", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 12], "pause": 0 }] },
         { "number": 32, "time": 165.5, "gap": 2, "enemies": "Yeti Caster Leader", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [4, 12], "pause": 0 }] },
-        { "number": 33, "time": 171.5, "gap": 2, "enemies": "Light-Armored Soldier Leader", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [4, 12], "pause": 0 }] },
+        { "number": 33, "time": 171.5, "gap": 2, "enemies": "Light-Armored Soldier", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [4, 12], "pause": 0 }] },
         { "number": 34, "time": 188.5, "gap": 2, "enemies": "Yeti Icecleaver Leader", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 2], "pause": 5 },{ "start": [3, 2], "end": [3, 12], "pause": 0 }] },
         { "number": 35, "time": 188.5, "gap": 2, "enemies": "Yeti Icecleaver Leader", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [4, 2], "pause": 5 },{ "start": [4, 2], "end": [4, 12], "pause": 0 }] },
         { "number": 36, "time": 193.5, "gap": 12, "enemies": "Glacial Spider α", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 12], "pause": 0 }] },
@@ -2127,8 +2692,8 @@ levels["6-H4"] = {
         { "number": 48, "time": 256.5, "gap": 1, "enemies": "Yeti Icecleaver Leader", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [4, 12], "pause": 0 }] },
         { "number": 49, "time": 261.5, "gap": 1, "enemies": "Yeti Caster Leader", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 12], "pause": 0 }] },
         { "number": 50, "time": 261.5, "gap": 1, "enemies": "Yeti Caster Leader", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [4, 12], "pause": 0 }] },
-        { "number": 51, "time": 267.5, "gap": 2, "enemies": "Light-Armored Soldier Leader", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [4, 12], "pause": 0 }] },
-        { "number": 52, "time": 281.5, "gap": 2, "enemies": "Light-Armored Soldier Leader", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [4, 12], "pause": 0 }] },
+        { "number": 51, "time": 267.5, "gap": 2, "enemies": "Light-Armored Soldier", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [4, 12], "pause": 0 }] },
+        { "number": 52, "time": 281.5, "gap": 2, "enemies": "Light-Armored Soldier", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [4, 12], "pause": 0 }] },
         { "number": 53, "time": 288.5, "gap": 15, "enemies": "Mortar Gunner", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [0, 3], "checkpoints": [{ "start": [0, 3], "end": [1, 3], "pause": 20 },{ "start": [1, 3], "end": [4, 3], "pause": 0 },{ "start": [4, 3], "end": [4, 12], "pause": 0 }] },
         { "number": 54, "time": 291.5, "gap": 1, "enemies": "Yeti Icecleaver Leader", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 12], "pause": 0 }] },
         { "number": 55, "time": 292.5, "gap": 1, "enemies": "Yeti Icecleaver Leader", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [4, 12], "pause": 0 }] },
@@ -2137,17 +2702,17 @@ levels["6-H4"] = {
         { "number": 58, "time": 299.5, "gap": 1, "enemies": "Yeti Caster Leader", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [4, 12], "pause": 0 }] },
         { "number": 59, "time": 301.5, "gap": 15, "enemies": "Glacial Spider α", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [0, 7], "checkpoints": [{ "start": [0, 7], "end": [3, 7], "pause": 0 },{ "start": [3, 7], "end": [3, 12], "pause": 0 }] },
         { "number": 60, "time": 322.5, "gap": 1, "enemies": "Yeti Operative2", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 12], "pause": 0 }] },
-        { "number": 61, "time": 323.5, "gap": 1, "enemies": "Light-Armored Soldier Leader", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [4, 12], "pause": 0 }] },
+        { "number": 61, "time": 323.5, "gap": 1, "enemies": "Light-Armored Soldier", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [4, 12], "pause": 0 }] },
         { "number": 62, "time": 323.5, "gap": 15, "enemies": "Mortar Gunner", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [0, 3], "checkpoints": [{ "start": [0, 3], "end": [1, 3], "pause": 5 },{ "start": [1, 3], "end": [4, 3], "pause": 0 },{ "start": [4, 3], "end": [4, 12], "pause": 0 }] },
         { "number": 63, "time": 332.5, "gap": 1, "enemies": "Razorfrost", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 12], "pause": 0 }] },
         { "number": 64, "time": 333.5, "gap": 1, "enemies": "Razorfrost", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [4, 12], "pause": 0 }] },
         { "number": 65, "time": 340.5, "gap": 1, "enemies": "Yeti Operative2", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 12], "pause": 0 }] },
-        { "number": 66, "time": 341.5, "gap": 1, "enemies": "Light-Armored Soldier Leader", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [4, 12], "pause": 0 }] },
+        { "number": 66, "time": 341.5, "gap": 1, "enemies": "Light-Armored Soldier", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [4, 12], "pause": 0 }] },
         { "number": 67, "time": 350.5, "gap": 1, "enemies": "Yeti Operative2", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 12], "pause": 0 }] },
-        { "number": 68, "time": 351.5, "gap": 1, "enemies": "Light-Armored Soldier Leader", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [4, 12], "pause": 0 }] },
+        { "number": 68, "time": 351.5, "gap": 1, "enemies": "Light-Armored Soldier", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [4, 12], "pause": 0 }] },
     ],
 
-    enemies: ["Glacial Spider α","Mortar Gunner", "Razorfrost","Oneiros","Light-Armored Soldier Leader", "Yeti Operative2","Yeti Sniper Leader","FrostnovaEX","FrostnovaEX2", "Yeti Caster Leader", "Yeti Icecleaver Leader"],
+    enemies: ["Glacial Spider α","Mortar Gunner", "Razorfrost","Oneiros","Light-Armored Soldier", "Yeti Operative2","Yeti Sniper Leader","FrostnovaEX","FrostnovaEX2", "Yeti Caster Leader", "Yeti Icecleaver Leader"],
     tooltips: [],
     hazards: ["icealtar"],
 
@@ -2162,10 +2727,10 @@ levels["6-H4"] = {
     ],
 }
 
-levels["7-1"] = {
-    level: "7-1",
+levels["6-1"] = {
+    level: "6-1",
     name: "Side by Side-1",
-    bgm: "ep7_1",
+    bgm: "ep6_1",
     initialdp: 10,
     squadlimit: 8,
     hp: 3,
@@ -2253,10 +2818,10 @@ levels["7-1"] = {
     ],
 }
 
-levels["7-2"] = {
-    level: "7-2",
+levels["6-2"] = {
+    level: "6-2",
     name: "Side by Side-2",
-    bgm: "ep7_1",
+    bgm: "ep6_1",
     initialdp: 10,
     squadlimit: 8,
     hp: 3,
@@ -2318,10 +2883,10 @@ levels["7-2"] = {
     ],
 }
 
-levels["7-3"] = {
-    level: "7-3",
+levels["6-3"] = {
+    level: "6-3",
     name: "Forgotten Lands",
-    bgm: "ep7_2",
+    bgm: "ep6_2",
     initialdp: 10,
     squadlimit: 8,
     hp: 3,
@@ -2382,10 +2947,10 @@ levels["7-3"] = {
     ],
 }
 
-levels["7-4"] = {
-    level: "7-4",
+levels["6-4"] = {
+    level: "6-4",
     name: "Fury of the Silent-1",
-    bgm: "ep7_2",
+    bgm: "ep6_2",
     initialdp: 10,
     squadlimit: 8,
     hp: 3,
@@ -2450,10 +3015,10 @@ levels["7-4"] = {
     ],
 }
 
-levels["7-5"] = {
-    level: "7-5",
+levels["6-5"] = {
+    level: "6-5",
     name: "Fury of the Silent-2",
-    bgm: "ep7_2",
+    bgm: "ep6_2",
     initialdp: 10,
     squadlimit: 9,
     hp: 3,
@@ -2525,10 +3090,10 @@ levels["7-5"] = {
     ],
 }
 
-levels["7-6"] = {
-    level: "7-6",
+levels["6-6"] = {
+    level: "6-6",
     name: "Flames of the Faint",
-    bgm: "ep7_2",
+    bgm: "ep6_2",
     initialdp: 10,
     squadlimit: 8,
     hp: 3,
@@ -2583,15 +3148,15 @@ levels["7-6"] = {
     ],
 }
 
-levels["7-7"] = {
-    level: "7-7",
+levels["6-7"] = {
+    level: "6-7",
     name: "Stained-1",
-    bgm: "ep7_2",
+    bgm: "ep6_2",
     initialdp: 10,
     squadlimit: 8,
     hp: 3,
     background: "loading_CB_under",
-    description: "Sarkaz Casters have appeared on the battlefield,\nand it seems like the Fire Altars may be affecting their Arts.\nHowever, don't panic – we have ways of dealing with them.\n\n<Fire Altar> Periodically emits Fire Waves to the surrounding tiles,\ndamaging both allied and enemy units.",
+    description: "Sarkaz Casters have appeared on the battlefield,\nand it seems like the Fire Altars may be affecting their Magic.\nHowever, don't panic – we have ways of dealing with them.\n\n<Fire Altar> Periodically emits Fire Waves to the surrounding tiles,\ndamaging both allied and enemy units.",
     place: "Plain",
     offsetX: -20,
     offsetY: -60,
@@ -2642,10 +3207,10 @@ levels["7-7"] = {
     ],
 }
 
-levels["7-8"] = {
-    level: "7-8",
+levels["6-8"] = {
+    level: "6-8",
     name: "Stained-2",
-    bgm: "ep7_2",
+    bgm: "ep6_2",
     initialdp: 0,
     squadlimit: 9,
     hp: 3,
@@ -2709,10 +3274,10 @@ levels["7-8"] = {
     ],
 }
 
-levels["7-9"] = {
-    level: "7-9",
+levels["6-9"] = {
+    level: "6-9",
     name: "Aegis of the Infected-1",
-    bgm: "ep7_2",
+    bgm: "ep6_2",
     initialdp: 10,
     squadlimit: 8,
     hp: 3,
@@ -2769,10 +3334,10 @@ levels["7-9"] = {
     ],
 }
 
-levels["7-10"] = {
-    level: "7-10",
+levels["6-10"] = {
+    level: "6-10",
     name: "Guerrilla-1",
-    bgm: "ep7_2",
+    bgm: "ep6_2",
     initialdp: 10,
     squadlimit: 8,
     hp: 3,
@@ -2837,10 +3402,10 @@ levels["7-10"] = {
     ],
 }
 
-levels["7-11"] = {
-    level: "7-11",
+levels["6-11"] = {
+    level: "6-11",
     name: "Guerrilla-2",
-    bgm: "ep7_2",
+    bgm: "ep6_2",
     initialdp: 10,
     squadlimit: 8,
     hp: 3,
@@ -2905,15 +3470,15 @@ levels["7-11"] = {
     ],
 }
 
-levels["7-12"] = {
-    level: "7-12",
+levels["6-12"] = {
+    level: "6-12",
     name: "Unrivaled",
-    bgm: "ep7_2",
+    bgm: "ep6_2",
     initialdp: 10,
     squadlimit: 9,
     hp: 3,
     background: "loading_CB_under",
-    description: "Who has witnessed a battle like this before? \nWho can survive such a battlefield? \nEven a simple skirmish has struck fear into our hearts. \nWe do not have the ability to defeat them. \nWe must escape to where they cannot see us.",
+    description: "Who has witnessed a battle like this before? \nWho can survive such a battlefield? \nEven a simple skirmish has struck fear into our hemagic. \nWe do not have the ability to defeat them. \nWe must escape to where they cannot see us.",
     place: "Plain",
     offsetX: -20,
     offsetY: -60,
@@ -2983,10 +3548,10 @@ levels["7-12"] = {
     ],
 }
 
-levels["7-13"] = {
-    level: "7-13",
+levels["6-13"] = {
+    level: "6-13",
     name: "Aegis of the Infected-2",
-    bgm: "ep7_2",
+    bgm: "ep6_2",
     initialdp: 10,
     squadlimit: 9,
     hp: 3,
@@ -3041,8 +3606,8 @@ levels["7-13"] = {
     ],
 }
 
-levels["7-14"] = {
-    level: "7-14",
+levels["6-14"] = {
+    level: "6-14",
     name: "Death of a Patriot",
     bgm: "patriot_1",
     initialdp: 10,
@@ -3111,10 +3676,10 @@ levels["7-14"] = {
     ],
 }
 
-levels["7-H1"] = {
-    level: "7-H1",
+levels["6-H1"] = {
+    level: "6-H1",
     name: "Operation Starfire-1",
-    bgm: "ep7_1",
+    bgm: "ep6_1",
     initialdp: 8,
     squadlimit: 8,
     hp: 3,
@@ -3177,10 +3742,10 @@ levels["7-H1"] = {
     ],
 }
 
-levels["7-H2"] = {
-    level: "7-H2",
+levels["6-H2"] = {
+    level: "6-H2",
     name: "Operation Starfire-2",
-    bgm: "ep7_2",
+    bgm: "ep6_2",
     initialdp: 10,
     squadlimit: 8,
     hp: 3,
@@ -3255,10 +3820,10 @@ levels["7-H2"] = {
     ],
 }
 
-levels["7-H3"] = {
-    level: "7-H3",
+levels["6-H3"] = {
+    level: "6-H3",
     name: "Operation Starfire-3",
-    bgm: "ep7_2",
+    bgm: "ep6_2",
     initialdp: 10,
     squadlimit: 9,
     hp: 99,
@@ -3332,8 +3897,8 @@ levels["7-H3"] = {
     ],
 }
 
-levels["7-H4"] = {
-    level: "7-H4",
+levels["6-H4"] = {
+    level: "6-H4",
     name: "Operation Starfire-4",
     bgm: "patriot_2",
     initialdp: 10,
@@ -3511,8 +4076,8 @@ levels["7-H4"] = {
     ],
 }
 
-levels["T-DM"] = {
-    level: "T-DM",
+levels["3-1"] = {
+    level: "3-1",
     name: "Warm up",
     initialdp: 10,
     squadlimit: 8,
@@ -3628,7 +4193,7 @@ levels["T-DM"] = {
     hazards: [],
 
 }
-
+/*
 levels["T-7"] = {
     level: "T-7",
     name: "Operation Shield Breaker",
@@ -3750,10 +4315,11 @@ levels["T-7"] = {
 
     ],
 }
+*/
 
 
-levels["T-MN"] = {
-    level: "T-MN",
+levels["KM-H"] = {
+    level: "KM-H",
     name: "Dangerous Battlefield",
     bgm: "mn_2",
     initialdp: 20,
@@ -3769,7 +4335,7 @@ levels["T-MN"] = {
     offsetX: -20,
     offsetY: -60,
     offsetZ: 0,
-    type: "hard",
+    type: "hell",
     skybox: "cityneon.png",
 
     waves: [

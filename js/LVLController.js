@@ -13,6 +13,7 @@ class LVLController extends LVLAbstract {
         this.place = lvl.place;
         this.snowstorm = lvl.snowstorm || false;
         this.deployall = lvl.deployall || false;
+        this.unlock = lvl.unlock ||"Fang";
 
         this.enemiesreviving = []
         this.presentHazards = lvl.hazards;
@@ -138,6 +139,7 @@ class LVLController extends LVLAbstract {
 
             setTimeout(() => {
                 localStorage.setItem(lvlnumber, true)
+                localStorage.setItem(this.unlock,true)
                 if (!instance.gui.showinggui)
                     instance.gui.createLevelClearScreen(instance)
             }, 1000)

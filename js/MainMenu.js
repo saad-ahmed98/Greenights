@@ -325,60 +325,93 @@ class MainMenu extends LVLAbstract {
         label.fontFamily = "Butler Stencil";
         this.lvlcontroller.addControl(label)
         var j = 0
-        var z =0
+        var z = 0
         for (let i = 0; i < keys.length; i++) {
-            if (i % 3 == 0 && i>0) {
+            if (i % 3 == 0 && i > 0) {
                 j++
                 z = 0
             }
-            if(i==6){
-                j=0.5
-                z=3.2
+            if (i == 6) {
+                j = 0.5
+                z = 3.2
             }
-            let title = new BABYLON.GUI.TextBlock();
-            title.text = chapters[keys[i]].title;
-            title.fontSize = "3%";
-            title.color = "white";
-            title.top = (7 + j * 40)+"%";
-            title.left = (-10 + (z - 1) * 20) + "%";
-            title.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
-            title.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
-            this.lvlcontroller.addControl(title)
+            if (localStorage.getItem(chapters[keys[i]].unlock) != null) {
+                let title = new BABYLON.GUI.TextBlock();
+                title.text = chapters[keys[i]].title;
+                title.fontSize = "3%";
+                title.color = "white";
+                title.top = (7 + j * 40) + "%";
+                title.left = (-10 + (z - 1) * 20) + "%";
+                title.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
+                title.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
+                this.lvlcontroller.addControl(title)
+            }
+            else {
+                let title = new BABYLON.GUI.TextBlock();
+                title.text = chapters[keys[i]].unlockmsg;
+                title.fontSize = "2.5%";
+                title.color = "white";
+                title.top = (7 + j * 40) + "%";
+                title.left = (-10 + (z - 1) * 20) + "%";
+                title.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
+                title.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
+                this.lvlcontroller.addControl(title)
+            }
+
             z++
         }
-        var z=0
+        var z = 0
         j = 0
         for (let i = 0; i < keys.length; i++) {
-            if (i % 3 == 0 && i>0) {
+            if (i % 3 == 0 && i > 0) {
                 j++
                 z = 0
             }
-            if(i==6){
-                j=0.5
-                z=3.2
+            if (i == 6) {
+                j = 0.5
+                z = 3.2
             }
-            const button = BABYLON.GUI.Button.CreateImageOnlyButton("but", "images/menu/chapters/" + chapters[keys[i]].select);
-            button.width = (28 * 0.7) + "%";
-            button.height = (50 * 0.7) + "%";
-            button.top = (20 + j * 40)+"%";
-            button.left = (10 + z * 20) + "%";
+            if (localStorage.getItem(chapters[keys[i]].unlock) != null) {
+                const button = BABYLON.GUI.Button.CreateImageOnlyButton("but", "images/menu/chapters/" + chapters[keys[i]].select);
+                button.width = (28 * 0.7) + "%";
+                button.height = (50 * 0.7) + "%";
+                button.top = (20 + j * 40) + "%";
+                button.left = (10 + z * 20) + "%";
 
-            button.color = "transparent";
-            button.background = "transparent";
-            button.hoverCursor = "pointer";
-
-
-            button.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
-            button.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
-
-            this.lvlcontroller.addControl(button);
+                button.color = "transparent";
+                button.background = "transparent";
+                button.hoverCursor = "pointer";
 
 
+                button.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
+                button.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
 
-            button.onPointerUpObservable.add(function () {
-                instance.playSound("chapter", 0.3)
-                instance.createLVLSelect(chapters[keys[i]].label)
-            });
+                this.lvlcontroller.addControl(button);
+
+
+
+                button.onPointerUpObservable.add(function () {
+                    instance.playSound("chapter", 0.3)
+                    instance.createLVLSelect(chapters[keys[i]].label)
+                });
+            }
+            else {
+                const button = BABYLON.GUI.Button.CreateImageOnlyButton("but", "images/menu/chapters/lock.png");
+                button.width = (28 * 0.7) + "%";
+                button.height = (50 * 0.7) + "%";
+                button.top = (20 + j * 40) + "%";
+                button.left = (10 + z * 20) + "%";
+
+                button.color = "transparent";
+                button.background = "transparent";
+                button.hoverCursor = "pointer";
+
+
+                button.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
+                button.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
+
+                this.lvlcontroller.addControl(button);
+            }
             z++
         }
 
@@ -446,7 +479,7 @@ class MainMenu extends LVLAbstract {
             }
 
             var iscleared = localStorage.getItem(chapterlvl[i].level)
-            if (iscleared == null && !chapters[label].unlock && !unlockAll)
+            if (iscleared == null && !unlockAll)
                 stop = true;
 
 
@@ -695,8 +728,8 @@ class MainMenu extends LVLAbstract {
         let selected = [];
         var storage = localStorage.getItem("team");
         if (storage != null)
-            selected = JSON.parse(storage)
-
+            selected = JSON.parse(storage).filter(k =>localStorage.getItem(k)!=null)
+        
 
         let lastavailable = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
@@ -710,7 +743,7 @@ class MainMenu extends LVLAbstract {
 
 
 
-        let keys = Object.keys(playerlist)
+        let keysall = Object.keys(playerlist)
         var j = 0;
         var z = 0;
         var myScrollViewer = new BABYLON.GUI.ScrollViewer();
@@ -720,95 +753,100 @@ class MainMenu extends LVLAbstract {
 
         myScrollViewer.top = "-2%";
         myScrollViewer.color = "transparent"
+        let keys = keysall.filter(k=>localStorage.getItem(k)!=null)
 
         for (let i = 0; i < keys.length; i++) {
             if (i % 9 == 0 && i > 0) {
                 j++
                 z = 0
             }
-            var image = new BABYLON.GUI.Image("", playerlist[keys[i]].opicon);
-            image.width = "26%"
-            image.left = "-35%"
+            if (localStorage.getItem(playerlist[keys[i]].name) != null) {
+
+                var image = new BABYLON.GUI.Image("", playerlist[keys[i]].opicon);
+                image.width = "26%"
+                image.left = "-35%"
 
 
-            let button = BABYLON.GUI.Button.CreateSimpleButton("but", "");
-            button.width = "22.5%";
-            button.height = "9.5%";
-            button.top = (10 + z * 10) + "%";
-            button.left = (0 + j * 23.5) + "%";
-            button.color = "white";
-            button.hoverCursor = "pointer";
+                let button = BABYLON.GUI.Button.CreateSimpleButton("but", "");
+                button.width = "22.5%";
+                button.height = "9.5%";
+                button.top = (10 + z * 10) + "%";
+                button.left = (0 + j * 23.5) + "%";
+                button.color = "white";
+                button.hoverCursor = "pointer";
 
-            let container = new BABYLON.GUI.Rectangle();
-            container.width = "100%";
-            container.height = "100%";
-            container.color = "transparent";
-            container.background = "rgba(77, 184, 255,0)";
+                let container = new BABYLON.GUI.Rectangle();
+                container.width = "100%";
+                container.height = "100%";
+                container.color = "transparent";
+                container.background = "rgba(77, 184, 255,0)";
 
-            let txt = new BABYLON.GUI.TextBlock();
-            txt.text = "";
-            txt.color = "white";
-            txt.fontSize = "80%";
-            txt.left = "-35%"
+                let txt = new BABYLON.GUI.TextBlock();
+                txt.text = "";
+                txt.color = "white";
+                txt.fontSize = "80%";
+                txt.left = "-35%"
 
-            for (let x = 0; x < selected.length; x++) {
-                if (selected[x] == keys[i]) {
-                    button.color = "blue"
-                    button.thickness = 2;
-                    container.background = "rgba(77, 184, 255,0.6)";
-                    txt.text = lastavailable.shift()
-                }
-            }
-
-
-            button.background = playerlist[keys[i]].rarity;
-
-            var msg = new BABYLON.GUI.TextBlock();
-            msg.text = playerlist[keys[i]].name;
-            msg.color = "white";
-            msg.fontSize = "50%";
-            msg.left = "15%"
-
-            button.addControl(image)
-            button.addControl(container)
-            button.addControl(msg)
-            button.addControl(txt)
-
-            button.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
-            button.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
-
-            myScrollViewer.addControl(button);
-
-            this.createEmptyTooltip()
-
-            button.onPointerUpObservable.add(function () {
-                instance.playSound("click", 0.3)
-                if (button.color == "blue") {
-                    instance.createEmptyTooltip()
-                    selected = selected.filter(data => data != keys[i])
-                    button.color = "white"
-                    button.thickness = 1;
-                    container.background = "rgba(77, 184, 255,0)";
-                    lastavailable.push(parseInt(txt.text))
-                    lastavailable.sort((a, b) => a - b)
-                    txt.text = "";
-
-                }
-                else {
-                    if (selected.length < 12) {
-                        instance.createPlayerTooltip(playerlist[keys[i]])
-                        selected.push(keys[i])
+                for (let x = 0; x < selected.length; x++) {
+                    if (selected[x] == keys[i]) {
                         button.color = "blue"
                         button.thickness = 2;
                         container.background = "rgba(77, 184, 255,0.6)";
                         txt.text = lastavailable.shift()
                     }
                 }
-                select.text = "SELECTED " + selected.length + "/12";
 
-            });
+
+                button.background = playerlist[keys[i]].rarity;
+
+                var msg = new BABYLON.GUI.TextBlock();
+                msg.text = playerlist[keys[i]].name;
+                msg.color = "white";
+                msg.fontSize = "50%";
+                msg.left = "15%"
+
+                button.addControl(image)
+                button.addControl(container)
+                button.addControl(msg)
+                button.addControl(txt)
+
+                button.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
+                button.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
+
+                myScrollViewer.addControl(button);
+
+
+                button.onPointerUpObservable.add(function () {
+                    instance.playSound("click", 0.3)
+                    if (button.color == "blue") {
+                        instance.createEmptyTooltip()
+                        selected = selected.filter(data => data != keys[i])
+                        button.color = "white"
+                        button.thickness = 1;
+                        container.background = "rgba(77, 184, 255,0)";
+                        lastavailable.push(parseInt(txt.text))
+                        lastavailable.sort((a, b) => a - b)
+                        txt.text = "";
+
+                    }
+                    else {
+                        if (selected.length < 12) {
+                            instance.createPlayerTooltip(playerlist[keys[i]])
+                            selected.push(keys[i])
+                            button.color = "blue"
+                            button.thickness = 2;
+                            container.background = "rgba(77, 184, 255,0.6)";
+                            txt.text = lastavailable.shift()
+                        }
+                    }
+                    select.text = "SELECTED " + selected.length + "/12";
+
+                });
+            }
             z++
         }
+        this.createEmptyTooltip()
+
 
         this.lvlcontroller.addControl(myScrollViewer)
 
@@ -935,7 +973,7 @@ class MainMenu extends LVLAbstract {
 
         var textSP = new BABYLON.GUI.TextBlock();
         let duration = player.skill.duration
-        if(duration==9999)
+        if (duration == 9999)
             duration = "∞"
         textSP.text = player.skill.sp + " 🗲\t\t\t\t" + duration + " ◷"
         textSP.fontSize = "10%";

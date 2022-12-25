@@ -285,7 +285,7 @@ class EnemyController extends CharaController {
         this.shadow.width = 90 * this.chara.size;
 
         this.shadow.position = new BABYLON.Vector3((-15 * this.chara.size) + this.x * 30, 19, this.y * 30);
-        if (this.chara.name == "Originium Slug β") {
+        if (this.chara.name == "Originium Slug") {
             this.shadow.size = 70
             this.shadow.position.x = -16 + this.x * 30
         }
@@ -571,7 +571,7 @@ class EnemyController extends CharaController {
             case "physical":
                 dmgreceived = Math.max(dmg * 0.05, dmg - this.buffs.getFinalDef(this.chara.def))
                 break;
-            case "arts":
+            case "magic":
                 dmgreceived = Math.max(dmg * 0.10, (dmg + attackingplayer.buffs.getBonusDefDmg(this.chara.def)) * ((100 - this.buffs.getFinalRes(this.chara.res)) / 100))
                 break;
             case "true":

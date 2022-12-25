@@ -13,6 +13,7 @@ enemylist['Hound'] = {
     type: "g",
     range: 0,
     hploss: 1,
+    tooltip: "A fast-moving creature controlled\nby a Reunion recon squad.",
     dmgtype: "physical",
     size: 1,
 
@@ -70,6 +71,8 @@ enemylist['Crossbowman'] = {
     type: "g",
     range: 1.9,
     hploss: 1,
+    tooltip: "One of Reunion's ranged soldiers,\ncapable of attacking from long range.",
+
     dmgtype: "physical",
     bullet: { size: { height: 1, depth: 8, width: 0.5 }, arc:false, speed:5, color: new BABYLON.Color3(0.4, 0.4, 0.4)},
 
@@ -130,7 +133,7 @@ enemylist['Sarkaz Grudgebearer'] = {
     type: "g",
     range: 3,
     hploss: 1,
-    dmgtype: "arts",
+    dmgtype: "magic",
 
     targets: 2,
 
@@ -484,7 +487,7 @@ enemylist['Sarkaz Bladeweaver'] = {
     type: "g",
     range: 0,
     hploss: 1,
-    dmgtype: "arts",
+    dmgtype: "magic",
 
     targets: 1,
     size: 1.1,
@@ -1297,7 +1300,7 @@ enemylist["Sarkaz Guerrilla Fighter Leader"] = {
     hploss: 1,
     dmgtype: "physical",
     size: 1.2,
-    tooltip: "Does not take damage when \ncoming in contact with \na pulse wave and attacks\n instead deal Arts damage.",
+    tooltip: "Does not take damage when \ncoming in contact with \na pulse wave and attacks\n instead deal Magic damage.",
     targets: 1,
 
     enemytype: "normal",
@@ -1347,7 +1350,7 @@ enemylist["Sarkaz Guerrilla Fighter Leader"] = {
         skilltype: "sarkazaltar",
         target: "self",
         modifiers: {
-            dmgtype: "arts",
+            dmgtype: "magic",
         },
         aura: true,
         auratype: 2,
@@ -1374,7 +1377,7 @@ enemylist["Sarkaz Guerrilla Fighter"] = {
     hploss: 1,
     dmgtype: "physical",
     size: 1.2,
-    tooltip: "Does not take damage when \ncoming in contact with \na pulse wave and attacks\n instead deal Arts damage.",
+    tooltip: "Does not take damage when \ncoming in contact with \na pulse wave and attacks\n instead deal Magic damage.",
     targets: 1,
 
     enemytype: "normal",
@@ -1424,7 +1427,7 @@ enemylist["Sarkaz Guerrilla Fighter"] = {
         skilltype: "sarkazaltar",
         target: "self",
         modifiers: {
-            dmgtype: "arts",
+            dmgtype: "magic",
         },
         aura: true,
         auratype: 2,
@@ -1449,9 +1452,9 @@ enemylist["Sarkaz Guerrilla Caster"] = {
     type: "g",
     range: 1.5,
     hploss: 1,
-    dmgtype: "arts",
+    dmgtype: "magic",
     size: 1.2,
-    tooltip: "Deals arts to all surrounding units;\ncoming in contact with pulse\n waves increases atk range.",
+    tooltip: "Deals magic to all surrounding units;\ncoming in contact with pulse\n waves increases atk range.",
     targets: 99,
 
     enemytype: "normal",
@@ -1533,9 +1536,9 @@ enemylist["Sarkaz Guerrilla Caster Leader"] = {
     type: "g",
     range: 1.5,
     hploss: 1,
-    dmgtype: "arts",
+    dmgtype: "magic",
     size: 1.2,
-    tooltip: "Deals arts to all surrounding units;\ncoming in contact with pulse\n waves increases atk range.",
+    tooltip: "Deals magic to all surrounding units;\ncoming in contact with pulse\n waves increases atk range.",
     targets: 99,
 
     enemytype: "normal",
@@ -2668,7 +2671,7 @@ enemylist["Tytus Topola"] = {
     type: "g",
     range: 1.3,
     hploss: 1,
-    dmgtype: "arts",
+    dmgtype: "magic",
     size: 1.1,
     tooltip: "Decreases the ATK of the unit\n with the highest ATK;\nRevives.",
     revive: true,
@@ -2753,7 +2756,7 @@ enemylist["Tytus Topola2"] = {
     type: "g",
     range: 1.3,
     hploss: 1,
-    dmgtype: "arts",
+    dmgtype: "magic",
     size: 1,
     tooltip: "Decreases the ATK of the unit\n with the highest ATK;\nRevives.",
 
@@ -3990,7 +3993,7 @@ enemylist["Sarkaz Centurion Nidus Guard"] = {
     type: "g",
     range: 1.5,
     hploss: 1,
-    dmgtype: "arts",
+    dmgtype: "magic",
     size: 1.1,
     tooltip: "A stronger Centurion Host.\nAttacks 3 targets at once;\neach attack restores\nsome of this unit's HP.",
     targets: 3,
@@ -4061,7 +4064,7 @@ enemylist["Sarkaz Centurion Host"] = {
     type: "g",
     range: 1.5,
     hploss: 1,
-    dmgtype: "arts",
+    dmgtype: "magic",
     size: 1.1,
     tooltip: "Attacks 3 targets at once;\neach attack restores\nsome of this unit's HP.",
     targets: 3,
@@ -4771,6 +4774,68 @@ enemylist["Veteran Butcher"] = {
     }
 }
 
+//TODO CHANGE
+enemylist["Big Bob"] = {
+    name: "Big Bob",
+    hp: 22000,
+    atk: 1900,
+    def: 800,
+    res: 30,
+    atkinterval: 6,
+    speed: 0.5* 0.49,
+    blockcount: 1,
+    type: "g",
+    range: 0,
+    hploss: 2,
+    dmgtype: "physical",
+    size: 1.2,
+    tooltip: "One of Reunion's leaders who \nattacks with an electric chainsaw.\nHe has very high HP, ATK, and DEF.	",
+    targets: 1,
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/veteran-butcher-sheet.webp",
+
+    hasskill: false,
+
+    atkanim: {
+        start: 0,
+        end: 28,
+        contact: 14,
+        duration: 1,
+    },
+
+    death: {
+        start: 29,
+        end: 43,
+        duration: 1,
+
+    },
+    idle: {
+        start: 44,
+        end: 58,
+        duration: 1,
+
+    },
+
+    move: {
+        start: 59,
+        end: 74,
+        duration: 1.2,
+
+    },
+    sfx: {
+        atk: {
+            src: "bloodboil-atk",
+            volume: 0.1
+        },
+        hit: {
+            src: "bloodboil-hit",
+            volume: 0.1
+        }
+    }
+}
+
 enemylist["Caster"] = {
     name: "Caster",
     hp: 4000,
@@ -4783,9 +4848,9 @@ enemylist["Caster"] = {
     type: "g",
     range: 2,
     hploss: 1,
-    dmgtype: "arts",
+    dmgtype: "magic",
     size: 1,
-    tooltip: "A basic caster,capable of attacking using\nlong-ranged Arts.",
+    tooltip: "A basic caster,capable of attacking using\nlong-ranged Magic.",
     targets: 1,
     bullet: { size: { height: 1, depth: 5, width: 2 }, arc:false, speed:4, color: new BABYLON.Color3(0.69, 0.21, 0.67)},
 
@@ -4847,9 +4912,9 @@ enemylist["Caster Leader"] = {
     type: "g",
     range: 2.4,
     hploss: 1,
-    dmgtype: "arts",
+    dmgtype: "magic",
     size: 1,
-    tooltip: "A more dangerous caster,capable of attacking\n2 targets at once with\nlong-ranged Arts.",
+    tooltip: "A more dangerous caster,capable of attacking\n2 targets at once with\nlong-ranged Magic.",
     targets: 2,
     bullet: { size: { height: 1, depth: 5, width: 2 }, arc:false, speed:4, color: new BABYLON.Color3(0.69, 0.21, 0.67)},
 
@@ -4912,7 +4977,7 @@ enemylist["Yeti Caster"] = {
     type: "g",
     range: 2.2,
     hploss: 1,
-    dmgtype: "arts",
+    dmgtype: "magic",
     size: 1,
     tooltip: "A Yeti Squadron Caster, \ncapable of inflicting Cold upon\ntheir targets after 3 attacks.",
     targets: 1,
@@ -5010,7 +5075,7 @@ enemylist["Yeti Caster Leader"] = {
     type: "g",
     range: 2.2,
     hploss: 1,
-    dmgtype: "arts",
+    dmgtype: "magic",
     size: 1,
     tooltip: "An elite Yeti Squadron Caster, \ncapable of inflicting Cold upon\ntheir targets after 3 attacks.",
     targets: 1,
@@ -5112,7 +5177,7 @@ enemylist['Glacial Spider'] = {
     size: 0.95,
     targets: 1,
 
-    tooltip: "A creature native \nto colder environments.\n Upon death, they will explode, \ninflicting Cold on nearby Operators.",
+    tooltip: "A creature native \nto colder environments.\n Upon death, they will explode, \ninflicting Cold on nearby Ally units.",
 
     enemytype: "normal",
 
@@ -5193,7 +5258,7 @@ enemylist['Glacial Spider α'] = {
     size: 0.95,
     targets: 1,
 
-    tooltip: "A more threatening creature \nnative to colder environments.\n Upon death, they will explode, \ninflicting Cold on nearby Operators.",
+    tooltip: "A more threatening creature \nnative to colder environments.\n Upon death, they will explode, \ninflicting Cold on nearby Ally units.",
 
     enemytype: "normal",
 
@@ -5394,8 +5459,8 @@ enemylist["Yeti Icecleaver Leader"] = {
     },
 }
 
-enemylist["Light-Armored Soldier Leader"] = {
-    name: "Light-Armored Soldier Leader",
+enemylist["Light-Armored Soldier"] = {
+    name: "Light-Armored Soldier",
     hp: 3700,
     atk: 300,
     def: 500,
@@ -5408,7 +5473,7 @@ enemylist["Light-Armored Soldier Leader"] = {
     hploss: 1,
     dmgtype: "physical",
     size: 1,
-    tooltip: "A more potent Light-Armored Soldier \nthat has fairly high defense.",
+    tooltip: "A soldier with a light shield\nthat has fairly high defense.",
     targets: 1,
 
     enemytype: "normal",
@@ -5469,9 +5534,9 @@ enemylist["Oneiros"] = {
     type: "r",
     range: 2.5,
     hploss: 1,
-    dmgtype: "arts",
+    dmgtype: "magic",
     size: 0.95,
-    tooltip: "Carries a special warhead\ncapable of dealing Arts damage \nin a radius and inflicting \nCold on affected units.",
+    tooltip: "Carries a special warhead\ncapable of dealing Magic damage \nin a radius and inflicting \nCold on affected units.",
     targets: 1,
     splashradius:1,
 
@@ -5543,8 +5608,8 @@ enemylist["Oneiros"] = {
     }
 }
 
-enemylist["Originium Slug β"] = {
-    name: "Originium Slug β",
+enemylist["Originium Slug"] = {
+    name: "Originium Slug",
     hp: 1550,
     atk: 240,
     def: 0,
@@ -5557,7 +5622,7 @@ enemylist["Originium Slug β"] = {
     hploss: 1,
     dmgtype: "physical",
     size: 1.1,
-    tooltip: "An infected wild creature that is more \ndangerous than an Originium Slug α.",
+    tooltip: "A dangerous wild creature.",
     targets: 1,
 
     enemytype: "normal",
@@ -5603,9 +5668,9 @@ enemylist["Originium Slug β"] = {
 
 enemylist["Monster"] = {
     name: "Monster",
-    hp: 1870,
+    hp: 2000,
     atk: 0,
-    def: 50,
+    def: 150,
     res: 0,
     atkinterval: 999,
     speed: 0.9* 0.49,
@@ -5615,7 +5680,7 @@ enemylist["Monster"] = {
     hploss: 1,
     dmgtype: "physical",
     size: 0.95,
-    tooltip: "An unmanned enemy drone \nthat does not attack.",
+    tooltip: "An unmanned enemy drone\nthat does not attack.",
     targets: 0,
 
     enemytype: "normal",
@@ -5782,8 +5847,8 @@ enemylist["Demolitionist Leader"] = {
     },
 }
 
-enemylist["Heavy Defender Leader"] = {
-    name: "Heavy Defender Leader",
+enemylist["Heavy Defender"] = {
+    name: "Heavy Defender",
     hp: 10000,
     atk: 600,
     def: 1000,
@@ -5852,7 +5917,7 @@ enemylist["Frostnova"] = {
     type: "g",
     range: 2,
     hploss: 2,
-    dmgtype: "arts",
+    dmgtype: "magic",
     size: 1,
     tooltip: "Every attack inflicts cold.\n Deals massive damage\n against frozen allies.\nPeriodically releases an\nice nova damaging \nall allies in range.",
     revive: true,
@@ -5950,7 +6015,7 @@ enemylist["Frostnova2"] = {
     type: "g",
     range: 2,
     hploss: 2,
-    dmgtype: "arts",
+    dmgtype: "magic",
     size: 1,
     tooltip: "Every attack inflicts cold.\n Deals increased damage\n against frozen allies.\nPeriodically releases an\nice nova damaging \nall allies in range.",
     targets: 1,
@@ -6072,7 +6137,7 @@ enemylist["FrostnovaEX"] = {
     type: "g",
     range: 2,
     hploss: 2,
-    dmgtype: "arts",
+    dmgtype: "magic",
     size: 1,
     tooltip: "Every attack inflicts cold.\n Deals massive damage\n against frozen allies.\nPeriodically releases an\nice nova damaging \nall allies in range.",
     revive: true,
@@ -6170,7 +6235,7 @@ enemylist["FrostnovaEX2"] = {
     type: "g",
     range: 2,
     hploss: 2,
-    dmgtype: "arts",
+    dmgtype: "magic",
     size: 1,
     tooltip: "Every attack inflicts cold.\n Deals increased damage\n against frozen allies.\nPeriodically releases an\nice nova damaging \nall allies in range.",
     targets: 1,

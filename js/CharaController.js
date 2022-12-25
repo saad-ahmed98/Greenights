@@ -530,7 +530,7 @@ class CharaController {
             case "physical":
                 dmgreceived = Math.max(dmg * 0.05, dmg - this.buffs.getFinalDef(this.chara.def))
                 break;
-            case "arts":
+            case "magic":
                 dmgreceived = Math.max(dmg * 0.10, dmg * ((100 - this.buffs.getFinalRes(this.chara.res)) / 100))
                 break;
             case "true":

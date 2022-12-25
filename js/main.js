@@ -4,9 +4,10 @@ let gameconfig;
 let titleLoading = "";
 let lvlnumber = "";
 let backgroundimg = "";
-let unlockAll = true;
+let unlockAll = false;
 
 function startGame() {
+    prepareGame()
     let canvas = document.querySelector("#myCanvas");
 
     gameconfig = new GameConfig(canvas)
@@ -38,6 +39,11 @@ window.addEventListener("resize", () => {
 });
 
 
+function prepareGame(){
+    localStorage.setItem("0",true)
+    localStorage.setItem("Fang",true)
+
+}
 
 function shuffle(array) {
     let currentIndex = array.length,  randomIndex;

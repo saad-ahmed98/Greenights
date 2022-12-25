@@ -24,7 +24,7 @@ playerlist["Angelina"] = {
     range: 2,
     targets: 1,
 
-    dmgtype: "arts",
+    dmgtype: "magic",
 
     classicon: "images/classicons/decel.png",
 
@@ -239,7 +239,7 @@ playerlist["Saileach"] = {
     },
     talents: [{
         name: "Spiritual Influence",
-        description: "After deployment, the next operator has -2 DP Cost",
+        description: "After deployment, the next ally unit has -2 DP Cost",
         modifiers: {
         },
         apply: "self",
@@ -358,7 +358,7 @@ playerlist["Texas"] = {
 
     skill: {
         name: "Downpour",
-        description: "DMG turns into ARTS;\nDeals 240% ATK to surrounding enemies\nand the targets' RES -30% for 10 seconds;\nATK +55% and attacks twice in a row\nfor the rest of the duration.",
+        description: "DMG turns into MAGIC;\nDeals 240% ATK to surrounding enemies\nand the targets' RES -30% for 10 seconds;\nATK +55% and attacks twice in a row\nfor the rest of the duration.",
         duration: 10,
         sp: 0,
         initialsp: 0,
@@ -369,7 +369,7 @@ playerlist["Texas"] = {
             skillbomb: {
                 range: 1.5,
                 dmg: 4.5,
-                dmgtype: "arts",
+                dmgtype: "magic",
                 targets: 99,
                 applyeffects:
                 {
@@ -382,7 +382,7 @@ playerlist["Texas"] = {
                     }
                 },
             },
-            dmgtype: "arts",
+            dmgtype: "magic",
             atk: 0.55,
             flatmultiatk: 1.20,
             attacks: 1
@@ -991,7 +991,7 @@ playerlist["Ceobe"] = {
     targets: 1,
 
 
-    dmgtype: "arts",
+    dmgtype: "magic",
 
     classicon: "images/classicons/core.png",
 
@@ -1067,7 +1067,7 @@ playerlist["Ceobe"] = {
         },
         {
             name: "Thresher",
-            description: "Each attack deals additional ARTS damage\nequal to 44% of the target's DEF.",
+            description: "Each attack deals additional MAGIC damage\nequal to 44% of the target's DEF.",
             modifiers: {
                 bonusdefdmg: 0.44,
             },
@@ -1345,7 +1345,7 @@ playerlist["Istina"] = {
     range: 2,
     targets: 1,
 
-    dmgtype: "arts",
+    dmgtype: "magic",
 
     classicon: "images/classicons/decel.png",
 
@@ -1627,7 +1627,7 @@ playerlist["Lappland"] = {
 
     skill: {
         name: "Wolf Spirit",
-        description: "ATK +120%\nDamage turns into ARTS;\nAttacks 1 extra target.",
+        description: "ATK +120%\nDamage turns into MAGIC;\nAttacks 1 extra target.",
         duration: 20,
         sp: 17,
         initialsp: 0,
@@ -1636,7 +1636,7 @@ playerlist["Lappland"] = {
         modifiers: {
             atk: 1.2,
             targets:1,
-            dmgtype: "arts",
+            dmgtype: "magic",
         },
         apply: "self",
         skillimage: "images/opicons/lapplandskill.webp"
@@ -1932,7 +1932,7 @@ playerlist["Beeswax"] = {
     targets: 99,
 
 
-    dmgtype: "arts",
+    dmgtype: "magic",
 
     classicon: "images/classicons/phalanx.webp",
 
@@ -2004,7 +2004,7 @@ playerlist["Beeswax"] = {
         },
         {
             name: "Trait",
-            description: "Normally does not attack,\nbut has greatly increased DEF and RES;\nWhen skill is active, attacks deal AoE Arts Damage",
+            description: "Normally does not attack,\nbut has greatly increased DEF and RES;\nWhen skill is active, attacks deal AoE Magic Damage",
             modifiers: {
                 flatmultidef: 3,
                 flatres: 20,
@@ -2108,7 +2108,7 @@ playerlist["Liskarm"] = {
         },
         {
             name: "Tactical Defense",
-            description: "Restores 1 Skill Point to this Operator and \na random ally in the surrounding grids when attacked",
+            description: "Restores 1 Skill Point to this Ally unit and \na random ally in the surrounding grids when attacked",
             modifiers: {
             },
             apply: "self",
@@ -2200,7 +2200,7 @@ playerlist["Franka"] = {
 
     skill: {
         name: "Vorpal Edge",
-        description: "DEF reduces to 0,\nATK +100%\nDamage turns into TRUE",
+        description: "DEF reduces to 0,\nATK +100%\nDamage turns into TRUE\n(ignores both DEF and RES)",
         duration: 30,
         sp: 20,
         initialsp: 10,
@@ -2703,7 +2703,7 @@ playerlist["Gitano"] = {
     range: 2,
     targets: 1,
 
-    dmgtype: "arts",
+    dmgtype: "magic",
 
     classicon: "images/classicons/splash.png",
 
@@ -2814,7 +2814,7 @@ playerlist["Mousse"] = {
 
     type: "g",
     class: "guard",
-    subclass: "Arts fighter",
+    subclass: "Magic fighter",
 
 
     cost: 18,
@@ -2823,9 +2823,9 @@ playerlist["Mousse"] = {
     range: 1,
     targets: 1,
 
-    dmgtype: "arts",
+    dmgtype: "magic",
 
-    classicon: "images/classicons/artsfighter.png",
+    classicon: "images/classicons/magicfighter.png",
 
     opicon: "images/opicons/mousse.png",
 
@@ -3041,7 +3041,7 @@ playerlist["Haze"] = {
     range: 2,
     targets: 1,
 
-    dmgtype: "arts",
+    dmgtype: "magic",
 
     classicon: "images/classicons/core.png",
 
@@ -3951,7 +3951,7 @@ playerlist["Midnight"] = {
 
     skill: {
         name: "Enchanted Sword α",
-        description: "ATK +35%\ndamage turns into ARTS",
+        description: "ATK +35%\ndamage turns into MAGIC",
         duration: 40,
         sp: 70,
         initialsp: 30,
@@ -3959,7 +3959,7 @@ playerlist["Midnight"] = {
         triggertype: "manual",
         modifiers: {
             atk: 0.35,
-            dmgtype: "arts",
+            dmgtype: "magic",
         },
         apply: "self",
         skillimage: "images/opicons/midnightskill.png"
@@ -4118,7 +4118,7 @@ playerlist["Durin"] = {
     range: 2,
     targets: 1,
 
-    dmgtype: "arts",
+    dmgtype: "magic",
 
     classicon: "images/classicons/core.png",
 
@@ -4209,7 +4209,7 @@ playerlist["Orchid"] = {
     range: 2,
     targets: 1,
 
-    dmgtype: "arts",
+    dmgtype: "magic",
 
     classicon: "images/classicons/decel.png",
 
