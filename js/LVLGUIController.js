@@ -219,7 +219,7 @@ class LVLGUIController {
         //quit button
         var containerq = new BABYLON.GUI.Rectangle();
         containerq.width = "15%";
-        containerq.height = "80%";
+        containerq.height = "85%";
         containerq.left = "10%";
         containerq.color = "white";
         containerq.thickness = 3;
@@ -227,7 +227,7 @@ class LVLGUIController {
 
 
         var quit = new BABYLON.GUI.Image("",);
-        quit.domImage = this.scene.assets["quitbutton"]
+        quit.domImage = this.scene.assets["nextbutton"]
 
         containerq.addControl(quit)
         //on click, back to main menu
@@ -241,7 +241,7 @@ class LVLGUIController {
         //retry button
         var container2 = new BABYLON.GUI.Rectangle();
         container2.width = "15%";
-        container2.height = "80%";
+        container2.height = "85%";
         container2.left = "30%";
         container2.color = "white";
         container2.thickness = 3;
@@ -291,7 +291,7 @@ class LVLGUIController {
         //quit button
         var containerq = new BABYLON.GUI.Rectangle();
         containerq.width = "15%";
-        containerq.height = "80%";
+        containerq.height = "85%";
         containerq.left = "10%";
         containerq.color = "white";
         containerq.thickness = 3;
@@ -312,7 +312,7 @@ class LVLGUIController {
         //retry button
         var container2 = new BABYLON.GUI.Rectangle();
         container2.width = "15%";
-        container2.height = "80%";
+        container2.height = "85%";
         container2.left = "30%";
         container2.color = "white";
         container2.thickness = 3;

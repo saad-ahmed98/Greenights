@@ -551,6 +551,27 @@ class MainMenu extends LVLAbstract {
                 image.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
                 this.lvlcontroller.addControl(image);
             }
+            else {
+                if (chapterlvl[i].unlock != undefined) {
+                    var container = new BABYLON.GUI.Rectangle();
+                    container.width = "4%"
+                    container.height = "7%";
+                    container.top = (22.1 + z * 12) + "%";
+                    container.left = (16 + j * 19) + "%";
+                    container.color = "Black";
+                    container.thickness = 3;
+                    container.cornerRadius = 50
+                    container.background =  playerlist[chapterlvl[i].unlock].rarity;
+                    container.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
+                    container.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
+            
+                    var image = new BABYLON.GUI.Image("tooltip",playerlist[chapterlvl[i].unlock].opicon);
+                    container.addControl(image)
+                    this.lvlcontroller.addControl(container);
+
+
+                }
+            }
 
             if (chapterlvl[i].type.includes("boss")) {
 
@@ -648,9 +669,19 @@ class MainMenu extends LVLAbstract {
         var msg = new BABYLON.GUI.TextBlock();
         msg.text = lvl.name;
         msg.color = "white";
-        msg.fontSize = "5%";
+        msg.fontSize = "4.5%";
         msg.top = "-45%"
+        msg.left = "-19%"
+
         container.addControl(msg)
+
+        var diff = new BABYLON.GUI.TextBlock();
+        diff.text = lvl.difficulty;
+        diff.color = "white";
+        diff.fontSize = "4%";
+        diff.top = "-45%"
+        diff.left = "30%"
+        container.addControl(diff)
 
         var imgcontainer = new BABYLON.GUI.Rectangle();
         imgcontainer.height = "40%"
@@ -728,8 +759,8 @@ class MainMenu extends LVLAbstract {
         let selected = [];
         var storage = localStorage.getItem("team");
         if (storage != null)
-            selected = JSON.parse(storage).filter(k =>localStorage.getItem(k)!=null)
-        
+            selected = JSON.parse(storage).filter(k => localStorage.getItem(k) != null)
+
 
         let lastavailable = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
@@ -753,7 +784,7 @@ class MainMenu extends LVLAbstract {
 
         myScrollViewer.top = "-2%";
         myScrollViewer.color = "transparent"
-        let keys = keysall.filter(k=>localStorage.getItem(k)!=null)
+        let keys = keysall.filter(k => localStorage.getItem(k) != null)
 
         for (let i = 0; i < keys.length; i++) {
             if (i % 9 == 0 && i > 0) {

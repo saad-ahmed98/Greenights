@@ -336,6 +336,14 @@ class LVLController extends LVLAbstract {
         };
 
         binaryTask = assetsManager.addImageTask(
+            "nextbutton",
+            "images/common/next.png",
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets[task.name] = task.image
+        };
+
+        binaryTask = assetsManager.addImageTask(
             "rdfilter",
             "images/common/rd.png",
         );

@@ -3889,6 +3889,99 @@ playerlist["Hibiscus"] = {
         }
     }
 
+}
+
+playerlist["Ansel"] = {
+    name: "Ansel",
+    hp: 1135,
+    atk: 427,
+    def: 107,
+    res: 0,
+    atkinterval: 2.85,
+    blockcount: 1,
+
+    rdtimer: 66,
+    rdcounter: 0,
+
+    type: "r",
+    class: "medic",
+    subclass: "Doctor",
+    rarity: "rgb(58, 132, 255)",
+
+
+    cost: 15,
+    basecost: 15,
+
+    range: 3,
+    targets: 1,
+
+    dmgtype: "heal",
+
+    classicon: "images/classicons/doctor.png",
+
+    opicon: "images/opicons/ansel.webp",
+
+    spritesheet: "images/sprites/ansel-sheet.webp",
+    skillsfx: false,
+
+    atkanim: {
+        start: 0,
+        end: 14,
+        contact: 10,
+        duration: 1.1,
+    },
+
+    death: {
+        start: 15,
+        end: 29,
+    },
+
+    idle: {
+        start: 30,
+        end: 44
+    },
+
+    drop: {
+        start: 45,
+        end: 60
+    },
+
+    skill: {
+        name: "	Healing Range Up",
+        description: "Range +2;ATK +50%",
+        duration: 25,
+        sp: 35,
+        initialsp: 10,
+        chargetype: "second",
+        triggertype: "manual",
+        modifiers: {
+            atk: 0.40,
+            range:2,
+            targets:1
+        },
+        apply: "self",
+        skillimage: "images/opicons/anselskill.webp"
+
+
+    },
+    talents: [{
+        name: "Additional Healing",
+        description: "While skill is active, heals an extra ally.",
+        modifiers: {
+        },
+        apply: "self",
+    }],
+    sfx: {
+        atk: {
+            src: "ansel-atk",
+            volume: 0.1
+        },
+        skillact: {
+            src: "skill-heal",
+            volume: 0.3
+        }
+    }
+
 
 }
 
