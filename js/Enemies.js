@@ -4774,7 +4774,6 @@ enemylist["Veteran Butcher"] = {
     }
 }
 
-//TODO CHANGE
 enemylist["Big Bob"] = {
     name: "Big Bob",
     hp: 22000,
@@ -4788,49 +4787,49 @@ enemylist["Big Bob"] = {
     range: 0,
     hploss: 2,
     dmgtype: "physical",
-    size: 1.2,
-    tooltip: "One of Reunion's leaders who \nattacks with an electric chainsaw.\nHe has very high HP, ATK, and DEF.	",
+    size: 1.1,
+    tooltip: "One of Reunion's leaders who\nattacks with an electric chainsaw.\nHe has very high HP, ATK, and DEF.",
     targets: 1,
 
     enemytype: "normal",
 
-    spritesheet: "images/sprites/veteran-butcher-sheet.webp",
+    spritesheet: "images/sprites/big-bob-sheet.webp",
 
     hasskill: false,
 
     atkanim: {
         start: 0,
-        end: 28,
-        contact: 14,
+        end: 27,
+        contact: 12,
         duration: 1,
     },
 
     death: {
-        start: 29,
-        end: 43,
+        start: 28,
+        end: 42,
         duration: 1,
 
     },
     idle: {
-        start: 44,
-        end: 58,
+        start: 43,
+        end: 57,
         duration: 1,
 
     },
 
     move: {
-        start: 59,
-        end: 74,
-        duration: 1.2,
+        start: 58,
+        end: 72,
+        duration: 1.6,
 
     },
     sfx: {
         atk: {
-            src: "bloodboil-atk",
+            src: "bob-atk",
             volume: 0.1
         },
         hit: {
-            src: "bloodboil-hit",
+            src: "bob-hit",
             volume: 0.1
         }
     }

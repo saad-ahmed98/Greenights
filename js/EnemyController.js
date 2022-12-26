@@ -579,9 +579,12 @@ class EnemyController extends CharaController {
                 break;
         }
         this.hp -= dmgreceived
-        this.sprite.color.r = 10
-        this.sprite.color.g = 0
-        this.sprite.color.b = 0
+        if(!this.dead){
+            this.sprite.color.r = 10
+            this.sprite.color.g = 0
+            this.sprite.color.b = 0
+        }
+       
 
         setTimeout(() => {
             if (!this.dead) {
@@ -591,7 +594,7 @@ class EnemyController extends CharaController {
             }
 
         }
-            , 100)
+        , 100)
 
         //update hp bar after receiving damage
         this.updateHpBar();

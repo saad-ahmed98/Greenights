@@ -503,7 +503,7 @@ class LVLController extends LVLAbstract {
         if (this.frame < 550) {
             this.frame += 5;
             t = 0.5 + Math.cos(this.frame / 100) / 2;
-            this.light.intensity = 3 * t;
+            this.light.intensity = 4 * t;
             BABYLON.Color3.LerpToRef(BABYLON.Color3.BlackReadOnly, startingColor, t, this.scene.clearColor);
         }
         else {
@@ -525,6 +525,7 @@ class LVLController extends LVLAbstract {
                 if (!this.gui.isPaused)
                     this.createLvl();
             }
+            
             
         }
         this.scene.render();

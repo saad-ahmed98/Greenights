@@ -17,6 +17,8 @@ class Tile {
                 return new BABYLON.Color3(0.24, 0.4, 0.49)
             case "Long":
                 return BABYLON.Color3.FromHexString("#202D37");
+            case "Forest":
+                return new BABYLON.Color3(0, 0.08, 0);
             default:
                 return new BABYLON.Color3(0.17, 0.17, 0.17)
         }
