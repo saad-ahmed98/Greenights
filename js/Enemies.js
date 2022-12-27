@@ -59,6 +59,67 @@ enemylist['Hound'] = {
 
 }
 
+enemylist['Crossbowman Leader'] = {
+    name: "Crossbowman Leader",
+    hp: 3500,
+    atk: 410,
+    def: 150,
+    res: 0,
+    atkinterval: 2.4,
+    speed: (0.7 + 0.2)* 0.49,
+    blockcount: 1,
+    type: "g",
+    range: 1.9,
+    hploss: 1,
+    tooltip: "A more dangerous Crossbowman,\ncapable of attacking from long range.",
+
+    dmgtype: "physical",
+    bullet: { size: { height: 1, depth: 8, width: 0.5 }, arc:false, speed:5, color: new BABYLON.Color3(0.4, 0.4, 0.4)},
+
+
+    enemytype: "normal",
+    targets: 1,
+    size: 1,
+
+    spritesheet: "images/sprites/crossbowman-leader-sheet.webp",
+
+    hasskill: false,
+
+    atkanim: {
+        start: 0,
+        end: 13,
+        contact: 8,
+        duration: 1,
+
+    },
+
+    death: {
+        start: 14,
+        end: 29,
+        duration: 1,
+    },
+
+    idle: {
+        start: 30,
+        end: 44,
+        duration: 1,
+    },
+
+    move: {
+        start: 45,
+        end: 59,
+        duration: 1,
+
+    },
+
+    sfx: {
+        atk: {
+            src: "crossbow-atk",
+            volume: 0.1
+        }
+    }
+}
+
 enemylist['Crossbowman'] = {
     name: "Crossbowman",
     hp: 2500,
