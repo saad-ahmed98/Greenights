@@ -12,18 +12,9 @@ chapters["2"] ={
     title:"Counterattack",
     background:"2.png",
     bgm:"ep1_m",
-    select:"tests.png",
+    select:"2.jpg",
     unlock:"1-10",
     unlockmsg:"clear 1-10 to unlock"
-}
-chapters["3"] ={
-    label:"3",
-    title:"Darknights Memoir",
-    background:"3.png",
-    bgm:"ep3_m",
-    select:"tests.png",
-    unlock:"2-10",
-    unlockmsg:"clear 2-10 to unlock"
 }
 chapters["4"] ={
     label:"4",
@@ -31,8 +22,8 @@ chapters["4"] ={
     background:"4.png",
     bgm:"ep4_m",
     select:"4.jpg",
-    unlock:"3-10",
-    unlockmsg:"clear 3-10 to unlock"
+    unlock:"2-10",
+    unlockmsg:"clear 2-10 to unlock"
 }
 
 chapters["5"] ={
@@ -63,4 +54,14 @@ chapters["KM"] ={
     select:"kazimierz.png",
     unlock:"1-10",
     unlockmsg:"clear 1-10 to unlock"
+}
+
+chapters["DM"] ={
+    label:"DM",
+    title:"Darknights Memoir",
+    background:"3.png",
+    bgm:"ep3_m",
+    select:"3.jpg",
+    unlock:"2-10",
+    unlockmsg:"clear 2-10 to unlock"
 }

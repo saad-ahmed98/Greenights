@@ -61,7 +61,7 @@ enemylist['Hound'] = {
 
 enemylist['Crossbowman'] = {
     name: "Crossbowman",
-    hp: 1900,
+    hp: 2500,
     atk: 310,
     def: 150,
     res: 0,
@@ -85,6 +85,20 @@ enemylist['Crossbowman'] = {
 
     hasskill: false,
 
+    atkanim: {
+        start: 0,
+        end: 13,
+        contact: 8,
+        duration: 1,
+
+    },
+
+    death: {
+        start: 14,
+        end: 29,
+        duration: 1,
+    },
+
     idle: {
         start: 30,
         end: 42,
@@ -98,20 +112,6 @@ enemylist['Crossbowman'] = {
 
     },
 
-    atkanim: {
-        start: 0,
-        end: 13,
-        contact: 8,
-        duration: 1,
-
-    },
-
-    death: {
-        start: 14,
-        end: 29,
-        duration: 1,
-
-    },
     sfx: {
         atk: {
             src: "crossbow-atk",
@@ -4776,7 +4776,7 @@ enemylist["Veteran Butcher"] = {
 
 enemylist["Big Bob"] = {
     name: "Big Bob",
-    hp: 22000,
+    hp: 25000,
     atk: 1900,
     def: 800,
     res: 30,

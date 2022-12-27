@@ -327,12 +327,20 @@ class MainMenu extends LVLAbstract {
         var j = 0
         var z = 0
         for (let i = 0; i < keys.length; i++) {
-            if (i % 3 == 0 && i > 0) {
+            if (i % 2 == 0 && i > 0) {
                 j++
                 z = 0
             }
-            if (i == 6) {
+            if (i == 4) {
                 j = 0.5
+                z = 2
+            }
+            if (i == 5) {
+                j = 0
+                z = 3.2
+            }
+            if (i == 6) {
+                j = 1
                 z = 3.2
             }
             if (localStorage.getItem(chapters[keys[i]].unlock) != null) {
@@ -363,12 +371,20 @@ class MainMenu extends LVLAbstract {
         var z = 0
         j = 0
         for (let i = 0; i < keys.length; i++) {
-            if (i % 3 == 0 && i > 0) {
+            if (i % 2 == 0 && i > 0) {
                 j++
                 z = 0
             }
-            if (i == 6) {
+            if (i == 4) {
                 j = 0.5
+                z = 2
+            }
+            if (i == 5) {
+                j = 0
+                z = 3.2
+            }
+            if (i == 6) {
+                j = 1
                 z = 3.2
             }
             if (localStorage.getItem(chapters[keys[i]].unlock) != null) {
@@ -797,6 +813,12 @@ class MainMenu extends LVLAbstract {
                 image.width = "26%"
                 image.left = "-35%"
 
+                var image2 = new BABYLON.GUI.Image("", "images/classicons/"+playerlist[keys[i]].class+".webp");
+                image2.width = "22%"
+                image2.height = "80%"
+
+                image2.left = "40%"
+
 
                 let button = BABYLON.GUI.Button.CreateSimpleButton("but", "");
                 button.width = "22.5%";
@@ -833,10 +855,11 @@ class MainMenu extends LVLAbstract {
                 var msg = new BABYLON.GUI.TextBlock();
                 msg.text = playerlist[keys[i]].name;
                 msg.color = "white";
-                msg.fontSize = "50%";
-                msg.left = "15%"
+                msg.fontSize = "40%";
+                msg.left = "5%"
 
                 button.addControl(image)
+                button.addControl(image2)
                 button.addControl(container)
                 button.addControl(msg)
                 button.addControl(txt)
@@ -964,7 +987,7 @@ class MainMenu extends LVLAbstract {
         text.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT
         text.left = "5%";
 
-        var image = new BABYLON.GUI.Image("tooltip", player.classicon);
+        var image = new BABYLON.GUI.Image("tooltip","images/classicons/"+player.class+".webp");
         image.width = "15%"
         image.height = "40%"
         image.top = "-5%"

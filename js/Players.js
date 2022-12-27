@@ -26,8 +26,6 @@ playerlist["Angelina"] = {
 
     dmgtype: "magic",
 
-    classicon: "images/classicons/decel.png",
-
     opicon: "images/opicons/angelina.webp",
 
     spritesheet: "images/sprites/angelina-sheet.webp",
@@ -167,8 +165,6 @@ playerlist["Saileach"] = {
     targets: 1,
 
     dmgtype: "physical",
-
-    classicon: "images/classicons/flagbearer.webp",
 
     opicon: "images/opicons/saileach.webp",
 
@@ -311,7 +307,7 @@ playerlist["Texas"] = {
 
     dmgtype: "physical",
 
-    classicon: "images/classicons/executor.webp",
+    
 
     opicon: "images/opicons/texas.webp",
 
@@ -469,7 +465,7 @@ playerlist["Shining"] = {
 
     dmgtype: "heal",
 
-    classicon: "images/classicons/doctor.png",
+    
 
     opicon: "images/opicons/shining.webp",
 
@@ -590,7 +586,7 @@ playerlist["Saga"] = {
 
     dmgtype: "physical",
 
-    classicon: "images/classicons/pioneer.png",
+    
 
     opicon: "images/opicons/saga.webp",
 
@@ -726,7 +722,7 @@ playerlist["Exusiai"] = {
 
     dmgtype: "physical",
 
-    classicon: "images/classicons/marksman.png",
+    
 
     opicon: "images/opicons/exusiai.webp",
 
@@ -851,7 +847,7 @@ playerlist["Schwarz"] = {
 
     dmgtype: "physical",
 
-    classicon: "images/classicons/heavyshooter.webp",
+    
 
     opicon: "images/opicons/schwarz.webp",
 
@@ -993,7 +989,7 @@ playerlist["Ceobe"] = {
 
     dmgtype: "magic",
 
-    classicon: "images/classicons/core.png",
+    
 
     opicon: "images/opicons/ceobe.webp",
 
@@ -1129,7 +1125,7 @@ playerlist["Skadi"] = {
 
     dmgtype: "physical",
 
-    classicon: "images/classicons/dreadnought.png",
+    
 
     opicon: "images/opicons/skadi.webp",
 
@@ -1243,7 +1239,7 @@ playerlist["Savage"] = {
 
     dmgtype: "physical",
 
-    classicon: "images/classicons/centurion.png",
+    
 
     opicon: "images/opicons/savage.webp",
 
@@ -1347,7 +1343,7 @@ playerlist["Istina"] = {
 
     dmgtype: "magic",
 
-    classicon: "images/classicons/decel.png",
+    
 
     opicon: "images/opicons/istina.webp",
 
@@ -1462,7 +1458,7 @@ playerlist["Nearl"] = {
 
     dmgtype: "physical",
 
-    classicon: "images/classicons/guardian.webp",
+    
 
     opicon: "images/opicons/nearl.webp",
 
@@ -1589,7 +1585,7 @@ playerlist["Lappland"] = {
 
     dmgtype: "physical",
 
-    classicon: "images/classicons/lord.png",
+    
 
     opicon: "images/opicons/lappland.webp",
 
@@ -1710,7 +1706,7 @@ playerlist["Ceylon"] = {
 
     dmgtype: "heal",
 
-    classicon: "images/classicons/doctor.png",
+    
 
     opicon: "images/opicons/ceylon.webp",
 
@@ -1829,7 +1825,7 @@ playerlist["Breeze"] = {
 
     dmgtype: "heal",
 
-    classicon: "images/classicons/multitarget.png",
+    
 
     opicon: "images/opicons/breeze.webp",
 
@@ -1934,7 +1930,7 @@ playerlist["Beeswax"] = {
 
     dmgtype: "magic",
 
-    classicon: "images/classicons/phalanx.webp",
+    
 
     opicon: "images/opicons/beeswax.webp",
 
@@ -2052,7 +2048,7 @@ playerlist["Liskarm"] = {
 
     dmgtype: "physical",
 
-    classicon: "images/classicons/sentinel.webp",
+    
 
     opicon: "images/opicons/liskarm.webp",
 
@@ -2161,7 +2157,7 @@ playerlist["Franka"] = {
 
     dmgtype: "physical",
 
-    classicon: "images/classicons/dreadnought.png",
+    
 
     opicon: "images/opicons/franka.webp",
 
@@ -2279,7 +2275,7 @@ playerlist["Matterhorn"] = {
 
     dmgtype: "physical",
 
-    classicon: "images/classicons/protector.png",
+    
 
     opicon: "images/opicons/matterhorn.webp",
 
@@ -2381,7 +2377,7 @@ playerlist["Gravel"] = {
 
     dmgtype: "physical",
 
-    classicon: "images/classicons/executor.webp",
+    
 
     opicon: "images/opicons/gravel.webp",
 
@@ -2488,7 +2484,7 @@ playerlist["Perfumer"] = {
 
     dmgtype: "heal",
 
-    classicon: "images/classicons/multitarget.png",
+    
 
     opicon: "images/opicons/perfumer.png",
 
@@ -2604,7 +2600,7 @@ playerlist["Matoimaru"] = {
 
     dmgtype: "physical",
 
-    classicon: "images/classicons/dreadnought.png",
+    
 
     opicon: "images/opicons/matoimaru.png",
 
@@ -2705,7 +2701,7 @@ playerlist["Gitano"] = {
 
     dmgtype: "magic",
 
-    classicon: "images/classicons/splash.png",
+    
 
     opicon: "images/opicons/gitano.png",
 
@@ -2825,7 +2821,7 @@ playerlist["Mousse"] = {
 
     dmgtype: "magic",
 
-    classicon: "images/classicons/magicfighter.png",
+    
 
     opicon: "images/opicons/mousse.png",
 
@@ -2928,7 +2924,7 @@ playerlist["Meteor"] = {
 
     dmgtype: "physical",
 
-    classicon: "images/classicons/marksman.png",
+    
 
     opicon: "images/opicons/meteor.png",
 
@@ -3043,7 +3039,7 @@ playerlist["Haze"] = {
 
     dmgtype: "magic",
 
-    classicon: "images/classicons/core.png",
+    
 
     opicon: "images/opicons/haze.png",
 
@@ -3144,7 +3140,7 @@ playerlist["Courier"] = {
 
     dmgtype: "physical",
 
-    classicon: "images/classicons/pioneer.png",
+    
 
     opicon: "images/opicons/courier.png",
 
@@ -3237,7 +3233,7 @@ playerlist["Scavenger"] = {
 
     dmgtype: "physical",
 
-    classicon: "images/classicons/pioneer.png",
+    
 
     opicon: "images/opicons/scavenger.png",
 
@@ -3334,7 +3330,7 @@ playerlist["Plume"] = {
 
     dmgtype: "physical",
 
-    classicon: "images/classicons/charger.png",
+    
 
     opicon: "images/opicons/plume.png",
 
@@ -3435,7 +3431,7 @@ playerlist["Melantha"] = {
 
     dmgtype: "physical",
 
-    classicon: "images/classicons/dreadnought.png",
+    
 
     opicon: "images/opicons/melantha.png",
 
@@ -3530,7 +3526,7 @@ playerlist["Popukar"] = {
 
     dmgtype: "physical",
 
-    classicon: "images/classicons/centurion.png",
+    
 
     opicon: "images/opicons/popukar.png",
 
@@ -3631,7 +3627,7 @@ playerlist["Fang"] = {
 
     dmgtype: "physical",
 
-    classicon: "images/classicons/pioneer.png",
+    
 
     opicon: "images/opicons/fang.png",
 
@@ -3724,7 +3720,7 @@ playerlist["Adnachiel"] = {
 
     dmgtype: "physical",
 
-    classicon: "images/classicons/marksman.png",
+    
 
     opicon: "images/opicons/adnachiel.png",
 
@@ -3824,7 +3820,7 @@ playerlist["Hibiscus"] = {
 
     dmgtype: "heal",
 
-    classicon: "images/classicons/doctor.png",
+    
 
     opicon: "images/opicons/hibiscus.png",
 
@@ -3917,7 +3913,7 @@ playerlist["Ansel"] = {
 
     dmgtype: "heal",
 
-    classicon: "images/classicons/doctor.png",
+    
 
     opicon: "images/opicons/ansel.webp",
 
@@ -4011,7 +4007,7 @@ playerlist["Midnight"] = {
 
     dmgtype: "physical",
 
-    classicon: "images/classicons/lord.png",
+    
 
     opicon: "images/opicons/midnight.png",
 
@@ -4116,7 +4112,7 @@ playerlist["Beagle"] = {
 
     dmgtype: "physical",
 
-    classicon: "images/classicons/protector.png",
+    
 
     opicon: "images/opicons/beagle.png",
 
@@ -4213,7 +4209,7 @@ playerlist["Durin"] = {
 
     dmgtype: "magic",
 
-    classicon: "images/classicons/core.png",
+    
 
     opicon: "images/opicons/durin.png",
 
@@ -4304,7 +4300,7 @@ playerlist["Orchid"] = {
 
     dmgtype: "magic",
 
-    classicon: "images/classicons/decel.png",
+    
 
     opicon: "images/opicons/orchid.png",
 

@@ -3541,7 +3541,7 @@ levels["6-12"] = {
     squadlimit: 9,
     hp: 3,
     background: "loading_CB_under",
-    description: "Who has witnessed a battle like this before? \nWho can survive such a battlefield? \nEven a simple skirmish has struck fear into our hemagic. \nWe do not have the ability to defeat them. \nWe must escape to where they cannot see us.",
+    description: "Who has witnessed a battle like this before? \nWho can survive such a battlefield? \nEven a simple skirmish has struck fear into our hearts. \nWe do not have the ability to defeat them. \nWe must escape to where they cannot see us.",
     place: "Plain",
     difficulty:"★★★★★★☆",
     offsetX: -20,

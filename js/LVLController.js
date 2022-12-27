@@ -176,7 +176,7 @@ class LVLController extends LVLAbstract {
 
             binaryTask = assetsManager.addImageTask(
                 instance.playerlist[keys[i]].name + "-classicon",
-                instance.playerlist[keys[i]].classicon
+                "images/classicons/"+instance.playerlist[keys[i]].class+".webp"
             );
             binaryTask.onSuccess = function (task) {
                 instance.scene.assets[task.name] = task.image
