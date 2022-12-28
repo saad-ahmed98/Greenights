@@ -547,7 +547,7 @@ class EnemyController extends CharaController {
             var dmgpen = 0;
 
             //if attackingplayer is of lord subclass that is blocking, and has the trait dmg pen active, decrease the damage
-            if (attackingplayer.chara.subclass = "lord" && attackingplayer.buffs.getDmgPen() && attackingplayer.blocking == 0)
+            if (attackingplayer.chara.subclass == "lord" && attackingplayer.buffs.getDmgPen() && attackingplayer.blocking == 0)
                 dmgpen = 0.2;
 
             dmg = attackingplayer.buffs.getFinalAtk(attackingplayer.chara.atk - (attackingplayer.chara.atk * dmgpen)) * dmgmodifier
@@ -660,7 +660,9 @@ class EnemyController extends CharaController {
                     if (instance.sprite.cellIndex == instance.chara.death.end) {
                         if (this.playerSkill != undefined) {
                             if (this.playerSkill.triggertype == "on_death" && !this.buffs.isSilenced()) {
-                                instance.createEffects(instance.lvlcontroller.spriteManagers["boom"])
+                                if(instance.chara.name=="Explosive Spider")
+                                    instance.createEffects(instance.lvlcontroller.spriteManagers["boom"])
+                                else instance.createEffects(instance.lvlcontroller.spriteManagers["boomice"])
                                 instance.lvlcontroller.playSound(instance.chara.name + "-skillbomb", instance.chara.sfx.skillbomb.volume)
                                 instance.playerSkill.activateSkillBomb(instance, instance.lvlcontroller);
                             }

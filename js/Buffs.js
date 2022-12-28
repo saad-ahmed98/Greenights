@@ -49,10 +49,10 @@ class Buffs {
             attacks: 1,
             physdodge: 0,
             magicdodge: 0,
-            hpregenbuff:1,
-            statusres:1,
-            frozen:false,
-            silence:false,
+            hpregenbuff: 1,
+            statusres: 1,
+            frozen: false,
+            silence: false,
 
         }
     }
@@ -83,22 +83,22 @@ class Buffs {
     getFinalAtk(atk) {
         this.initModifiers();
         this.sumBuffs();
-        return Math.max(0, Math.round(((atk * this.modifiers.flatmultiatk) * (1 + this.modifiers.atk))+this.modifiers.inspireatk));
+        return Math.max(0, Math.round(((atk * this.modifiers.flatmultiatk) * (1 + this.modifiers.atk)) + this.modifiers.inspireatk));
     }
 
-    isFrozen(){
+    isFrozen() {
         this.initModifiers();
         this.sumBuffs();
         return this.modifiers.frozen;
     }
 
-    isSilenced(){
+    isSilenced() {
         this.initModifiers();
         this.sumBuffs();
         return this.modifiers.silence;
     }
 
-    getStatusRes(){
+    getStatusRes() {
         this.initModifiers();
         this.sumBuffs();
         return this.modifiers.statusres;
@@ -136,10 +136,18 @@ class Buffs {
             case "flying":
                 //sort by type of enemy
                 enemies.sort(function (x, y) {
-                    if (x.chara.type=="r") {
+                    if (x.chara.type == "r" && y.chara.type == "r") {
+                        if (x.getCloseToDestination() < y.getCloseToDestination()) {
+                            return -1;
+                        }
+                        if (x.getCloseToDestination() > y.getCloseToDestination()) {
+                            return 1;
+                        }
+                    }
+                    if (x.chara.type == "r") {
                         return -1;
                     }
-                    if (y.chara.type=="r") {
+                    if (y.chara.type == "r") {
                         return 1;
                     }
                     return 0;
@@ -242,7 +250,7 @@ class Buffs {
         this.initModifiers();
         this.sumBuffs();
         var finalhpregen = this.modifiers.flathpregen + maxhp * this.modifiers.hpregenpercent
-        if(finalhpregen>0)
+        if (finalhpregen > 0)
             finalhpregen *= this.modifiers.hpregenbuff
         return finalhpregen;
     }
@@ -250,7 +258,7 @@ class Buffs {
     getFinalBlock(block) {
         this.initModifiers();
         this.sumBuffs();
-        return Math.max(0,block + this.modifiers.block)
+        return Math.max(0, block + this.modifiers.block)
     }
 
     getFinalRange(range) {
@@ -266,11 +274,11 @@ class Buffs {
             case "magic":
                 if (Math.random() <= this.modifiers.magicdodge && this.modifiers.magicdodge > 0)
                     return false
-                    break;
+                break;
             case "physical":
                 if (Math.random() <= this.modifiers.physdodge && this.modifiers.physdodge > 0)
                     return false
-                    break;
+                break;
         }
         return true
     }

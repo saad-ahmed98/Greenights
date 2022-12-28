@@ -95,19 +95,19 @@ enemylist['Crossbowman Leader'] = {
 
     death: {
         start: 14,
-        end: 29,
+        end: 30,
         duration: 1,
     },
 
     idle: {
-        start: 30,
-        end: 44,
+        start: 31,
+        end: 45,
         duration: 1,
     },
 
     move: {
-        start: 45,
-        end: 59,
+        start: 46,
+        end: 60,
         duration: 1,
 
     },
@@ -421,9 +421,9 @@ enemylist['Sarkaz Swordsman'] = {
 
 enemylist['Sarkaz Greatswordsman'] = {
     name: "Sarkaz Greatswordsman",
-    hp: 7500,
-    atk: 600,
-    def: 230,
+    hp: 8500,
+    atk: 700,
+    def: 280,
     res: 50,
     atkinterval: 2,
     speed: (0.65 + 0.2)* 0.49,
@@ -436,6 +436,9 @@ enemylist['Sarkaz Greatswordsman'] = {
     targets: 1,
 
     enemytype: "normal",
+
+    tooltip: "A mercenary from Sarkaz who \nboasts fairly high ATK and RES.",
+
 
     spritesheet: "images/sprites/sarkaz-greatswordsman-sheet.webp",
 
@@ -456,7 +459,7 @@ enemylist['Sarkaz Greatswordsman'] = {
     },
 
     atkanim: {
-        start: 0,
+        start: 3,
         end: 21,
         contact: 15,
         duration: 1.25,
@@ -491,6 +494,7 @@ enemylist['Sarkaz Crossbowman'] = {
     hploss: 1,
     dmgtype: "physical",
     targets: 1,
+    tooltip: "A mercenary from Sarkaz who \nboasts fairly high ATK and RES;\n and uses ranged attacks.",
     size: 1.05,
     bullet: { size: { height: 1, depth: 8, width: 0.5 }, arc:false, speed:5, color: new BABYLON.Color3(0.4, 0.4, 0.4)},
 
@@ -3012,6 +3016,124 @@ enemylist["Veteran Junkman"] = {
     },
 }
 
+
+enemylist["Arts Guard"] = {
+    name: "Arts guard",
+    hp: 5000,
+    atk: 450,
+    def: 250,
+    res: 50,
+    atkinterval: 2.5,
+    speed: 0.75* 0.49,
+    blockcount: 1,
+    type: "g",
+    range: 0,
+    hploss: 1,
+    dmgtype: "magic",
+    size: 1,
+    tooltip: "A Reunion melee soldier trained\nto do melee magic attacks.\n",
+    targets: 1,
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/arts-guard-sheet.webp",
+
+    hasskill: false,
+
+    atkanim: {
+        start: 0,
+        end: 14,
+        contact: 6,
+        duration: 1,
+    },
+
+    death: {
+        start: 15,
+        end: 28,
+        duration: 1,
+
+    },
+    idle: {
+        start: 29,
+        end: 48,
+        duration: 1,
+
+    },
+    move: {
+        start: 49,
+        end: 64,
+        duration: 1.1,
+    },
+
+    sfx: {
+        atk: {
+            src: "artsguard-atk",
+            volume: 0.1
+        },
+        hit: {
+            src: "artsguard-hit",
+            volume: 0.1
+        }
+    },
+}
+
+enemylist["Dual Swordsman"] = {
+    name: "Dual Swordsman",
+    hp: 3500,
+    atk: 450,
+    def: 150,
+    res: 25,
+    atkinterval: 1.2,
+    speed: 1.1* 0.49,
+    blockcount: 1,
+    type: "g",
+    range: 0,
+    hploss: 1,
+    dmgtype: "physical",
+    size: 1,
+    tooltip: "A Reunion melee soldier,\nknown for having high attack.\n",
+    targets: 1,
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/dual-swordsman-sheet.webp",
+
+    hasskill: false,
+
+    atkanim: {
+        start: 0,
+        end: 16,
+        contact: 12,
+        duration: 1,
+    },
+
+    death: {
+        start: 17,
+        end: 30,
+        duration: 1,
+
+    },
+    idle: {
+        start: 31,
+        end: 45,
+        duration: 1,
+
+    },
+    move: {
+        start: 46,
+        end: 57,
+        duration: 1.1,
+
+    },
+
+    sfx: {
+        hit: {
+            src: "swordsman-hit",
+            volume: 0.1
+        }
+    },
+}
+
 enemylist["Soldier"] = {
     name: "Soldier",
     hp: 3200,
@@ -4042,6 +4164,65 @@ enemylist["MephistoEX"] = {
     },
 }
 
+enemylist["Sarkaz Centurion"] = {
+    name: "Sarkaz Centurion",
+    hp: 25000,
+    atk: 950,
+    def: 250,
+    res: 35,
+    atkinterval: 5,
+    speed: 0.78* 0.49,
+    blockcount: 1,
+    type: "g",
+    range: 2.35,
+    hploss: 2,
+    dmgtype: "magic",
+    size: 1.1,
+    tooltip: "A strong Reunion squad leader.\nDoes ranged magic attacks\nto 2targets at once.",
+    targets: 2,
+    bullet: { size: { height: 1, depth: 5, width: 3 }, arc:false, speed:5, color: new BABYLON.Color3(0.69, 0.21, 0.67)},
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/sarkaz-centurion-sheet.webp",
+
+    hasskill: false,
+
+    atkanim: {
+        start: 0,
+        end: 51,
+        contact: 16,
+        duration: 1,
+    },
+
+    death: {
+        start: 52,
+        end: 66,
+        duration: 1,
+
+    },
+    idle: {
+        start: 67,
+        end: 81,
+        duration: 1,
+
+    },
+    move: {
+        start: 82,
+        end: 106,
+        duration: 1.2,
+    },
+
+    sfx: {
+
+        hit: {
+            src: "centurion-hit",
+            volume: 0.1
+        }
+    },
+
+}
+
 enemylist["Sarkaz Centurion Nidus Guard"] = {
     name: "Sarkaz Centurion Nidus Guard",
     hp: 14000,
@@ -4910,7 +5091,7 @@ enemylist["Caster"] = {
     hploss: 1,
     dmgtype: "magic",
     size: 1,
-    tooltip: "A basic caster,capable of attacking using\nlong-ranged Magic.",
+    tooltip: "A basic caster,\ncapable of attacking using\nlong-ranged Magic.",
     targets: 1,
     bullet: { size: { height: 1, depth: 5, width: 2 }, arc:false, speed:4, color: new BABYLON.Color3(0.69, 0.21, 0.67)},
 
@@ -4974,7 +5155,7 @@ enemylist["Caster Leader"] = {
     hploss: 1,
     dmgtype: "magic",
     size: 1,
-    tooltip: "A more dangerous caster,capable of attacking\n2 targets at once with\nlong-ranged Magic.",
+    tooltip: "A more dangerous caster,\ncapable of attacking\n2 targets at once with\nlong-ranged Magic.",
     targets: 2,
     bullet: { size: { height: 1, depth: 5, width: 2 }, arc:false, speed:4, color: new BABYLON.Color3(0.69, 0.21, 0.67)},
 
@@ -5221,6 +5402,85 @@ enemylist["Yeti Caster Leader"] = {
     }
 }
 
+enemylist['Explosive Spider'] = {
+    name: "Explosive Spider",
+    hp: 2500,
+    atk: 260,
+    def: 0,
+    res: 0,
+    atkinterval: 1.7,
+    speed: 1* 0.49,
+    blockcount: 1,
+    type: "g",
+    range: 0,
+    hploss: 1,
+    dmgtype: "physical",
+    size: 0.95,
+    targets: 1,
+
+    tooltip: "A dangerous creature.\n Upon death, they will explode, \ninflicting damage to nearby Ally units.",
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/explosive-spider-sheet.webp",
+
+    hasskill: true,
+
+    atkanim: {
+        start: 0,
+        end: 22,
+        contact: 9,
+        duration: 1,
+    },
+
+    death: {
+        start: 23,
+        end: 37,
+        duration: 1,
+
+    },
+
+    idle: {
+        start: 38,
+        end: 53,
+        duration: 1,
+
+    },
+
+    move: {
+        start: 54,
+        end: 68,
+        duration: 0.5,
+
+    },
+
+    sfx: {
+        hit: {
+            src: "slug-hit",
+            volume: 0.05
+        },
+        skillbomb: {
+            src:"icespider-die",
+            volume: 0.05
+        }
+    },
+
+    skill: {
+        name: "spiderhit",
+        triggertype: "on_death",
+        skilltype: "skillbomb",
+        target: "self",
+        modifiers: {
+            skillbomb:{
+                targets: 99,
+                range:1,
+                dmg:4,
+            }
+        },
+        aura: false,
+    }
+}
+
 enemylist['Glacial Spider'] = {
     name: "Glacial Spider",
     hp: 3250,
@@ -5299,7 +5559,6 @@ enemylist['Glacial Spider'] = {
         },
         aura: false,
     }
-
 }
 
 enemylist['Glacial Spider α'] = {
@@ -5780,6 +6039,64 @@ enemylist["Monster"] = {
     }
 }
 
+enemylist["Monster mk II"] = {
+    name: "Monster mk II",
+    hp: 2500,
+    atk: 330,
+    def: 175,
+    res: 25,
+    atkinterval: 3,
+    speed: 0.9* 0.49,
+    blockcount: 99,
+    type: "r",
+    range: 2,
+    hploss: 1,
+    dmgtype: "physical",
+    size: 0.95,
+    tooltip: "An improved Monster capable\nof ranged attacks.",
+    targets: 0,
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/monster-mk2-sheet.webp",
+    hasskill: false,
+
+
+    atkanim: {
+        start: 0,
+        end: 15,
+        contact: 9,
+        duration: 1.1,
+    },
+
+    death: {
+        start: 16,
+        end: 30,
+        duration: 1,
+
+    },
+    idle: {
+        start: 31,
+        end: 60,
+        duration: 1,
+
+    },
+
+    move: {
+        start: 61,
+        end: 90,
+        duration: 1,
+
+    },
+
+    sfx: {
+        atk: {
+            src: "monster-atk",
+            volume: 0.1
+        }
+    }
+}
+
 enemylist["Demolitionist"] = {
     name: "Demolitionist",
     hp: 15000,
@@ -5832,7 +6149,7 @@ enemylist["Demolitionist"] = {
     },
 
     sfx: {
-        hit: {
+        atk: {
             src: "demolitionist-atk",
             volume: 0.1
         },
@@ -5896,7 +6213,7 @@ enemylist["Demolitionist Leader"] = {
     },
 
     sfx: {
-        hit: {
+        atk: {
             src: "demolitionist-atk",
             volume: 0.1
         },

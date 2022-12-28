@@ -19,6 +19,8 @@ class Tile {
                 return BABYLON.Color3.FromHexString("#202D37");
             case "Forest":
                 return new BABYLON.Color3(0, 0.08, 0);
+            case "Cave":
+                return new BABYLON.Color3(0.1, 0.09, 0.07)
             default:
                 return new BABYLON.Color3(0.17, 0.17, 0.17)
         }
@@ -106,8 +108,8 @@ class Tile {
 
     displayRange(diffuse = true, color) {
         if (diffuse) {
-            this.mesh.material.diffuseColor = new BABYLON.Color3(1, 0.51, 0.76);
-            this.mesh.outlineColor = new BABYLON.Color3(1, 0.53, 0, 0.9);
+            this.mesh.material.diffuseColor = new BABYLON.Color3(1, 0.34, 0.34);
+            this.mesh.outlineColor = new BABYLON.Color3(1, 0, 0, 0.9);
             this.mesh.outlineWidth = 1;
         }
         else {

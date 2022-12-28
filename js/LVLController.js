@@ -515,7 +515,6 @@ class LVLController extends LVLAbstract {
             BABYLON.Color3.LerpToRef(BABYLON.Color3.BlackReadOnly, startingColor, t, this.scene.clearColor);
         }
         else {
-            
             if (!this.render) {
                 this.createGUIs()
                 this.render = true;
@@ -533,7 +532,6 @@ class LVLController extends LVLAbstract {
                 if (!this.gui.isPaused)
                     this.createLvl();
             }
-            
             
         }
         this.scene.render();
@@ -739,6 +737,18 @@ class LVLController extends LVLAbstract {
         );
         binaryTask.onSuccess = function (task) {
             instance.spriteManagers[task.name] = new BABYLON.SpriteManager("BoomManager", undefined, 50, { width: 888, height: 605 });
+            instance.spriteManagers[task.name].texture = task.texture
+        };
+
+        binaryTask = assetsManager.addTextureTask(
+            "boomice",
+            "images/common/boomice-sheet.png",
+            true,
+            false,
+            BABYLON.Texture.TRILINEAR_SAMPLINGMODE
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.spriteManagers[task.name] = new BABYLON.SpriteManager("BoomIceManager", undefined, 50, { width: 888, height: 605 });
             instance.spriteManagers[task.name].texture = task.texture
         };
 
