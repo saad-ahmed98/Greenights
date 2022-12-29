@@ -473,8 +473,8 @@ class EnemyController extends CharaController {
                                 }
                                 else {
                                     let splashenemies = this.getSplashPlayersInRange(players, player[i], this.chara.splash)
-                                    for (let j = 0; j < splashenemies.length; j++){
-                                        splashenemies[j].receiveDamage(instance,false,this.chara.splashdmg)
+                                    for (let j = 0; j < splashenemies.length; j++) {
+                                        splashenemies[j].receiveDamage(instance, false, this.chara.splashdmg)
                                     }
                                     player[i].receiveDamage(instance)
                                 }
@@ -579,12 +579,12 @@ class EnemyController extends CharaController {
                 break;
         }
         this.hp -= dmgreceived
-        if(!this.dead){
+        if (!this.dead) {
             this.sprite.color.r = 10
             this.sprite.color.g = 0
             this.sprite.color.b = 0
         }
-       
+
 
         setTimeout(() => {
             if (!this.dead) {
@@ -594,7 +594,7 @@ class EnemyController extends CharaController {
             }
 
         }
-        , 100)
+            , 100)
 
         //update hp bar after receiving damage
         this.updateHpBar();
@@ -660,7 +660,7 @@ class EnemyController extends CharaController {
                     if (instance.sprite.cellIndex == instance.chara.death.end) {
                         if (this.playerSkill != undefined) {
                             if (this.playerSkill.triggertype == "on_death" && !this.buffs.isSilenced()) {
-                                if(instance.chara.name=="Explosive Spider")
+                                if (instance.chara.name == "Explosive Spider")
                                     instance.createEffects(instance.lvlcontroller.spriteManagers["boom"])
                                 else instance.createEffects(instance.lvlcontroller.spriteManagers["boomice"])
                                 instance.lvlcontroller.playSound(instance.chara.name + "-skillbomb", instance.chara.sfx.skillbomb.volume)
@@ -692,10 +692,9 @@ class EnemyController extends CharaController {
             }
 
             //if was blocked, remove itself from block count of blocking player
-            if (this.blockingplayer != undefined) {
-                this.blockingplayer.blocking = Math.max(this.blockingplayer.blocking - this.chara.blockcount, 0);
+            if (this.blockingplayer != undefined)
                 this.blockingplayer.removeBlocked(this.id)
-            }
+
         }
     }
 
@@ -913,6 +912,8 @@ class EnemyController extends CharaController {
     //unblock from the player
     unblock() {
         this.blocked = false;
+        if (this.blockingplayer != undefined)
+            this.blockingplayer.removeBlocked(this.id)
         this.blockingplayer = undefined
     }
 
@@ -982,7 +983,6 @@ class EnemyController extends CharaController {
                     if (players[i].buffs.getFinalBlock(players[i].chara.blockcount) - players[i].blocking >= this.chara.blockcount && !this.blocked) {
                         this.blockingplayer = players[i];
                         players[i].blockedenemies.push(this)
-                        this.blockingplayer.blocking += this.chara.blockcount;
                         this.blocked = true;
                         foundblock = true;
                     }

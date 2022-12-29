@@ -13,7 +13,7 @@ class LVLController extends LVLAbstract {
         this.place = lvl.place;
         this.snowstorm = lvl.snowstorm || false;
         this.deployall = lvl.deployall || false;
-        this.unlock = lvl.unlock ||"Fang";
+        this.unlock = lvl.unlock || "Fang";
 
         this.enemiesreviving = []
         this.presentHazards = lvl.hazards;
@@ -65,7 +65,7 @@ class LVLController extends LVLAbstract {
 
         this.activate = false;
 
-        if(lvl.poison!=undefined)
+        if (lvl.poison != undefined)
             this.poison = lvl.poison
 
         this.configureAssetManager();
@@ -139,7 +139,7 @@ class LVLController extends LVLAbstract {
 
             setTimeout(() => {
                 localStorage.setItem(lvlnumber, true)
-                localStorage.setItem(this.unlock,true)
+                localStorage.setItem(this.unlock, true)
                 if (!instance.gui.showinggui)
                     instance.gui.createLevelClearScreen(instance)
             }, 1000)
@@ -176,7 +176,7 @@ class LVLController extends LVLAbstract {
 
             binaryTask = assetsManager.addImageTask(
                 instance.playerlist[keys[i]].name + "-classicon",
-                "images/classicons/"+instance.playerlist[keys[i]].class+".webp"
+                "images/classicons/" + instance.playerlist[keys[i]].class + ".webp"
             );
             binaryTask.onSuccess = function (task) {
                 instance.scene.assets[task.name] = task.image
@@ -254,7 +254,7 @@ class LVLController extends LVLAbstract {
 
         binaryTask = assetsManager.addTextureTask(
             "blood",
-            "images/textures/"+instance.place+"/blood.jpg",
+            "images/textures/" + instance.place + "/blood.jpg",
         );
         binaryTask.onSuccess = function (task) {
             instance.scene.assets[task.name] = task.texture
@@ -474,7 +474,7 @@ class LVLController extends LVLAbstract {
                 }
             }
 
-        },1000)
+        }, 1000)
 
 
     }
@@ -515,7 +515,7 @@ class LVLController extends LVLAbstract {
             BABYLON.Color3.LerpToRef(BABYLON.Color3.BlackReadOnly, startingColor, t, this.scene.clearColor);
         }
         else {
-            
+
             if (!this.render) {
                 this.createGUIs()
                 this.render = true;
@@ -533,8 +533,7 @@ class LVLController extends LVLAbstract {
                 if (!this.gui.isPaused)
                     this.createLvl();
             }
-            
-            
+
         }
         this.scene.render();
     }
@@ -1228,10 +1227,11 @@ class LVLController extends LVLAbstract {
 
     checkPlayers() {
         for (let i = 0; i < this.activePlayers.length; i++) {
-            this.activePlayers[i].updateHP()
-            this.activePlayers[i].checkAliveBuffs()
-            this.activePlayers[i].checkBlocking()
-
+            if (!this.pause) {
+                this.activePlayers[i].updateHP()
+                this.activePlayers[i].checkAliveBuffs()
+                this.activePlayers[i].checkBlocking()
+            }
             if (this.activePlayers[i].hp <= 0) {
                 this.tiles[this.activePlayers[i].x][this.activePlayers[i].y].player = undefined;
                 this.activePlayers[i].removeAllBlocking()
@@ -1269,6 +1269,11 @@ class LVLController extends LVLAbstract {
         player.hp = -999;
         this.currentdp = Math.min(99, this.currentdp + Math.round(player.chara.cost / 2))
         player.dead = true;
+        if (this.pause) {
+            this.checkPlayers()
+            this.gui.updatePlayerWheelUI(this.currentdp, this.squadlimit)
+        }
+
     }
 
     pauseGame() {
@@ -1647,13 +1652,13 @@ class LVLController extends LVLAbstract {
         }
     }
 
-    createEnemy(e, start, checkpoints, id,invertU) {
+    createEnemy(e, start, checkpoints, id, invertU) {
         var enemyUse = this.enemylist[e]
         var matrixUse = this.matrix
         if (enemyUse.type == "r")
             matrixUse = this.flyingmatrix
         var enemy = new EnemyController(enemyUse, this.scene, start[0], start[1], this, id);
-        enemy.createEnemy(matrixUse, checkpoints, this.spriteManagers, this.gui, this.spriteManagers["icons"],invertU);
+        enemy.createEnemy(matrixUse, checkpoints, this.spriteManagers, this.gui, this.spriteManagers["icons"], invertU);
         enemy.gamespeed = this.gamespeed;
         this.enemies.push(enemy);
     }
@@ -1715,7 +1720,7 @@ class LVLController extends LVLAbstract {
 
                 this.waves[i]["time"] += this.waves[i]["gap"];
 
-                this.createEnemy(this.waves[i]["enemies"], this.waves[i]["start"], this.waves[i]["checkpoints"], "wave" + this.waves[i]["number"] + this.waves[i]["count"],this.waves[i]["invertU"] || 0);
+                this.createEnemy(this.waves[i]["enemies"], this.waves[i]["start"], this.waves[i]["checkpoints"], "wave" + this.waves[i]["number"] + this.waves[i]["count"], this.waves[i]["invertU"] || 0);
                 this.waves[i]["count"]--;
                 if (this.waves[i]["count"] <= 0) {
                     this.waves.splice(i, 1)

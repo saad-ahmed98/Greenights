@@ -22,8 +22,8 @@ chapters["3"] ={
     background:"3.png",
     bgm:"ep3_m",
     select:"3.jpg",
-    unlock:"2-13",
-    unlockmsg:"clear 2-13 to unlock"
+    unlock:"2-12",
+    unlockmsg:"clear 2-12 to unlock"
 }
 
 chapters["4"] ={
@@ -62,6 +62,6 @@ chapters["DM"] ={
     background:"dm.png",
     bgm:"ep2_m",
     select:"dm.jpg",
-    unlock:"2-13",
-    unlockmsg:"clear 2-13 to unlock"
+    unlock:"2-12",
+    unlockmsg:"clear 2-12 to unlock"
 }

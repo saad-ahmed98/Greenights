@@ -26,7 +26,6 @@ class PlayerController extends CharaController {
             this.aura.position = new BABYLON.Vector3(-5 + this.x * 30, 20, 6 + this.y * 30);
             this.aura.size = 65;
             this.aura.width = 100;
-
             this.aura.position.z -= Math.min(5, this.y);
             this.aura.position.x -= this.x;
         }
@@ -38,6 +37,7 @@ class PlayerController extends CharaController {
 
 
     checkBlocking() {
+        this.blocking = this.blockedenemies.length
         if (this.blockedenemies.length > this.buffs.getFinalBlock(this.chara.blockcount) && this.blockedenemies.length > 0) {
             this.blockedenemies[this.blockedenemies.length - 1].unblock()
             this.blockedenemies.splice(this.blockedenemies.length - 1, 1)
@@ -176,6 +176,8 @@ class PlayerController extends CharaController {
         this.addSkillBar(gui);
 
         this.activateTalents();
+        if(this.lvlcontroller.pause)
+            this.pauseSpriteIndex = this.chara.drop.end
 
         var interval = setInterval(() => {
 

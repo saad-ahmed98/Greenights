@@ -649,8 +649,10 @@ class CharaController {
         this.running = false;
         for (let i = 0; i < keys.length; i++) {
             if (this.chara[keys[i]] != undefined) {
-                if (this.pauseSpriteIndex >= this.chara[keys[i]].start && this.pauseSpriteIndex <= this.chara[keys[i]].end)
+                if (this.pauseSpriteIndex >= this.chara[keys[i]].start && this.pauseSpriteIndex <= this.chara[keys[i]].end){
+                    console.log(this.pauseSpriteIndex)
                     this.sprite.playAnimation(this.pauseSpriteIndex, this.chara[keys[i]].end, false, 30 * this.gamespeed * this.chara[keys[i]].duration);
+                }
             }
         }
         if (this.pauseSpriteIndex >= this.chara.atkanim.start && this.pauseSpriteIndex <= this.chara.atkanim.end) {

@@ -177,7 +177,7 @@ class LVLGUIController {
         setTimeout(() => {
             if (instance.showinggui)
                 instance.timerPause = true
-        }, 100)
+        }, 200)
     }
 
     //gives the possibility of reactivating the pause screen only after a short delay from clicking esc
@@ -185,7 +185,7 @@ class LVLGUIController {
         var instance = this
         setTimeout(() => {
             instance.canPause = true
-        }, 100)
+        }, 200)
     }
 
     //shows the level clear screen, considered as a pause menu so everything else is disabled
@@ -606,7 +606,7 @@ class LVLGUIController {
                 redfilter.domImage = this.scene.assets["rdfilter"]
                 //var redfilter = new BABYLON.GUI.Image("", "images/common/rd.png");
                 var timer = new BABYLON.GUI.TextBlock();
-                timer.text = players[keys[i]].rdcounter;
+                timer.text =  Math.round(players[keys[i]].rdcounter / 30);
                 timer.color = "white";
                 timer.fontSize = "40%";
                 timer.top = "10%";

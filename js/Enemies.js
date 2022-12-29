@@ -369,6 +369,7 @@ enemylist['Sarkaz Swordsman'] = {
     blockcount: 1,
     type: "g",
     range: 0,
+    tooltip:"A mercenary from Sarkaz\nwho boasts fairly high RES.",
     hploss: 1,
     dmgtype: "physical",
     size: 1,
@@ -542,9 +543,9 @@ enemylist['Sarkaz Crossbowman'] = {
 
 enemylist['Sarkaz Bladeweaver'] = {
     name: "Sarkaz Bladeweaver",
-    hp: 6500,
-    atk: 400,
-    def: 200,
+    hp: 8000,
+    atk: 450,
+    def: 220,
     res: 50,
     atkinterval: 2.5,
     speed: (0.2 + 0.2)* 0.49,
@@ -553,6 +554,7 @@ enemylist['Sarkaz Bladeweaver'] = {
     range: 0,
     hploss: 1,
     dmgtype: "magic",
+    tooltip: "Starts battle in Standby\nand will not attack.\nUpon being injured,\nbecomes Combat-Ready and\ninflicts Magic melee attacks.",
 
     targets: 1,
     size: 1.1,
@@ -573,7 +575,7 @@ enemylist['Sarkaz Bladeweaver'] = {
     move: {
         start: 72,
         end: 87,
-        duration: 2.5,
+        duration: 2,
 
     },
 
@@ -4167,7 +4169,7 @@ enemylist["MephistoEX"] = {
 enemylist["Sarkaz Centurion"] = {
     name: "Sarkaz Centurion",
     hp: 25000,
-    atk: 950,
+    atk: 850,
     def: 250,
     res: 35,
     atkinterval: 5,
@@ -6111,14 +6113,14 @@ enemylist["Demolitionist"] = {
     hploss: 1,
     dmgtype: "physical",
     size: 1.2,
-    tooltip: "Elite enemy whose \nattacks cause explosions,\n dealing Splash damage to units\non the 4 tiles\n surrounding the primary target.",
+    tooltip: "Elite enemy whose \nattacks cause explosions,\ndealing Splash damage to units\non the 4 tiles\nsurrounding the primary target.",
     targets: 1,
     splash:1,
     splashdmg:0.5,
 
     enemytype: "normal",
 
-    spritesheet: "images/sprites/demolitionist-leader-sheet.webp",
+    spritesheet: "images/sprites/demolitionist-sheet.webp",
     hasskill: false,
 
 

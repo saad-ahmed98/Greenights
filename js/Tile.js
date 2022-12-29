@@ -23,6 +23,8 @@ class Tile {
                 return new BABYLON.Color3(0, 0.08, 0);
             case "Cave":
                 return new BABYLON.Color3(0.1, 0.09, 0.07)
+            case "CB":
+                return new BABYLON.Color3(0.1, 0.09, 0.07)
             default:
                 return new BABYLON.Color3(0.17, 0.17, 0.17)
         }

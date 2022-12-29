@@ -1263,6 +1263,75 @@ levels["2-11"] = {
     ],
 }
 
+levels["2-12"] = {
+    level: "2-12",
+    name: "Breach",
+    bgm: "dm_2",
+    initialdp: 10,
+    squadlimit: 8,
+    hp: 3,
+    background: "dm",
+    description: "The mercenaries from Sarkaz laid a trap for us right outside the cave.\nSome of the enemies waiting are completely alien to us,\n but we must break through their formation!\n\n<Bloodrush Tile> Allies deployed on it and enemies who have passed it\nwill take constant damage,\nbut their ATK and Attack Speed will be increased significantly.\n<Heated Path> Deals massive damage to \nunits and enemies on it at intervals.",
+    place: "CB",
+    offsetX: -20,
+    offsetY: -50,
+    offsetZ: 0,
+    difficulty:"★★★★★☆☆",
+    unlock:"Mousse",
+    type: "boss",
+    skybox: "desert.png",
+
+    waves: [
+        { "number": 0, "time": 0, "gap": 1, "enemies": "Sarkaz Bladeweaver", "line": false, "tooltip": true, "taunt": false, "count": 1, "start": [1, 2], "checkpoints": [{ "start": [1, 2],  "end": [1, 2], "pause": 150 },{ "start": [1, 2],  "end": [2, 11], "pause": 0 }] },
+        { "number": 1, "time": 0, "gap": 1, "enemies": "Sarkaz Bladeweaver", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [4, 2], "checkpoints": [{ "start": [4, 2],  "end": [4, 2], "pause": 150 },{ "start": [4, 2],  "end": [3, 11], "pause": 0 }] },
+        { "number": 2, "time": 0, "gap": 1, "enemies": "Sarkaz Bladeweaver", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [2, 2], "checkpoints": [{ "start": [2, 2],  "end": [2, 2], "pause": 90 },{ "start": [2, 2],  "end": [2, 11], "pause": 0 }] },
+        { "number": 3, "time": 0, "gap": 1, "enemies": "Sarkaz Bladeweaver", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 2], "checkpoints": [{ "start": [3, 2],  "end": [3, 2], "pause": 90 },{ "start": [3, 2],  "end": [3, 11], "pause": 0 }] },
+        { "number": 4, "time": 6, "gap": 1, "enemies": "Hound", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [2, 1], "checkpoints": [{ "start": [2, 1],  "end": [2, 2], "pause": 0 },{ "start": [2, 2],  "end": [2, 11], "pause": 0 }] },
+        { "number": 5, "time": 7, "gap": 1, "enemies": "Hound", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [3, 1], "checkpoints": [{ "start": [3, 1],  "end": [3, 2], "pause": 0 },{ "start": [3, 2],  "end": [3, 11], "pause": 0 }] },
+        { "number": 6, "time": 11, "gap": 6, "enemies": "Hound", "line": true, "tooltip": false, "taunt": false, "count": 3, "start": [1, 1], "checkpoints": [{ "start": [1, 1],  "end": [1, 2], "pause": 0 },{ "start": [1, 2],  "end": [2, 11], "pause": 0 }] },
+        { "number": 7, "time": 12, "gap": 6, "enemies": "Hound", "line": true, "tooltip": false, "taunt": false, "count": 3, "start": [4, 1], "checkpoints": [{ "start": [4, 1],  "end": [4, 2], "pause": 0 },{ "start": [4, 2],  "end": [2, 11], "pause": 0 }] },
+        { "number": 8, "time": 28, "gap": 8, "enemies": "Sarkaz Swordsman", "line": false, "tooltip": true, "taunt": false, "count": 2, "start": [2, 1], "checkpoints": [{ "start": [2, 1],  "end": [2, 2], "pause": 0 },{ "start": [2, 2],  "end": [2, 11], "pause": 0 }] },
+        { "number": 9, "time": 29, "gap": 8, "enemies": "Sarkaz Swordsman", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1],  "end": [3, 2], "pause": 0 },{ "start": [3, 2],  "end": [3, 11], "pause": 0 }] },
+        { "number": 10, "time": 55, "gap": 8, "enemies": "Sarkaz Crossbowman", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 1], "checkpoints": [{ "start": [3, 1],  "end": [3, 2], "pause": 0 },{ "start": [3, 2],  "end": [3, 11], "pause": 0 }] },
+        { "number": 11, "time": 55, "gap": 15, "enemies": "Sarkaz Greatswordsman", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [6, 11], "checkpoints": [{ "start": [6, 11],  "end": [4, 2], "pause": 0 },{ "start": [4, 2],  "end": [3, 11], "pause": 0 }] },
+        { "number": 12, "time": 70, "gap": 3, "enemies": "Explosive Spider", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [6, 11], "checkpoints": [{ "start": [6, 11],  "end": [4, 2], "pause": 0 },{ "start": [4, 2],  "end": [3, 11], "pause": 0 }] },
+        { "number": 13, "time": 56, "gap": 5, "enemies": "Hound", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [2, 1], "checkpoints": [{ "start": [2, 1],  "end": [2, 2], "pause": 0 },{ "start": [2, 2],  "end": [2, 11], "pause": 0 }] },
+        { "number": 14, "time": 57, "gap": 5, "enemies": "Hound", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1],  "end": [3, 2], "pause": 0 },{ "start": [3, 2],  "end": [3, 11], "pause": 0 }] },
+        { "number": 15, "time": 64, "gap": 10, "enemies": "Sarkaz Swordsman", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [2, 1], "checkpoints": [{ "start": [2, 1],  "end": [2, 2], "pause": 0 },{ "start": [2, 2],  "end": [2, 11], "pause": 0 }] },
+        { "number": 16, "time": 65, "gap": 10, "enemies": "Sarkaz Swordsman", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [3, 1], "checkpoints": [{ "start": [3, 1],  "end": [3, 2], "pause": 0 },{ "start": [3, 2],  "end": [3, 11], "pause": 0 }] },
+        { "number": 17, "time": 92, "gap": 8, "enemies": "Sarkaz Crossbowman", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 1], "checkpoints": [{ "start": [3, 1],  "end": [3, 2], "pause": 0 },{ "start": [3, 2],  "end": [3, 11], "pause": 0 }] },
+        { "number": 18, "time": 92, "gap": 3, "enemies": "Explosive Spider", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [6, 11], "checkpoints": [{ "start": [6, 11],  "end": [4, 2], "pause": 0 },{ "start": [4, 2],  "end": [3, 11], "pause": 0 }] },
+        { "number": 19, "time": 125, "gap": 6, "enemies": "Demolitionist", "line": true, "tooltip": true, "taunt": true, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1],  "end": [1, 2], "pause": 0 },{ "start": [1, 2],  "end": [2, 11], "pause": 0 }] },
+        { "number": 20, "time": 125, "gap": 15, "enemies": "Sarkaz Greatswordsman", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [6, 11], "checkpoints": [{ "start": [6, 11],  "end": [4, 2], "pause": 0 },{ "start": [4, 2],  "end": [3, 11], "pause": 0 }] },
+        { "number": 21, "time": 140, "gap": 3, "enemies": "Sarkaz Centurion", "line": true, "tooltip": true, "taunt": false, "count": 1, "start": [6, 11], "checkpoints": [{ "start": [6, 11],  "end": [6, 7], "pause": 40 },{ "start": [6, 7],  "end": [3, 11], "pause": 0 }] },
+        { "number": 22, "time": 126, "gap": 8, "enemies": "Sarkaz Swordsman", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [2, 1], "checkpoints": [{ "start": [2, 1],  "end": [2, 2], "pause": 0 },{ "start": [2, 2],  "end": [2, 11], "pause": 0 }] },
+        { "number": 23, "time": 127, "gap": 8, "enemies": "Sarkaz Swordsman", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1],  "end": [3, 2], "pause": 0 },{ "start": [3, 2],  "end": [3, 11], "pause": 0 }] },
+        { "number": 24, "time": 132, "gap": 8, "enemies": "Sarkaz Crossbowman", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 1], "checkpoints": [{ "start": [3, 1],  "end": [3, 2], "pause": 0 },{ "start": [3, 2],  "end": [3, 11], "pause": 0 }] },
+        { "number": 25, "time": 134, "gap": 15, "enemies": "Sarkaz Swordsman", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [2, 1], "checkpoints": [{ "start": [2, 1],  "end": [2, 2], "pause": 0 },{ "start": [2, 2],  "end": [2, 11], "pause": 0 }] },
+        { "number": 26, "time": 135, "gap": 15, "enemies": "Sarkaz Swordsman", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [3, 1], "checkpoints": [{ "start": [3, 1],  "end": [3, 2], "pause": 0 },{ "start": [3, 2],  "end": [3, 11], "pause": 0 }] },
+        { "number": 27, "time": 152, "gap": 8, "enemies": "Sarkaz Crossbowman", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 1], "checkpoints": [{ "start": [3, 1],  "end": [3, 2], "pause": 0 },{ "start": [3, 2],  "end": [3, 11], "pause": 0 }] },
+        { "number": 28, "time": 167, "gap": 6, "enemies": "Demolitionist", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1],  "end": [1, 2], "pause": 0 },{ "start": [1, 2],  "end": [2, 11], "pause": 0 }] },
+
+    ],
+
+    enemies: ["Hound","Sarkaz Crossbowman","Sarkaz Bladeweaver","Sarkaz Swordsman","Demolitionist","Sarkaz Centurion","Sarkaz Greatswordsman","Explosive Spider"],
+    tooltips: ["Sarkaz Swordsman","Sarkaz Bladeweaver","Demolitionist","Sarkaz Centurion"],
+
+    hazards: [],
+
+
+    layout: [
+        ["e", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg","bg","bg"],
+        ["e", "red", "g", "g", "bg", "r", "gblk", "bg", "gblk", "r","bg","bg"],
+        ["e", "red", "g", "g", "blk", "magma", "blk", "magma", "blk", "magma","blk","blue"],
+        ["e", "red", "g", "g", "blk", "magma", "blk", "magma", "blk", "magma","blk","blue"],
+        ["e", "red", "g", "g", "bg", "r", "r", "r", "r", "r","bg","bg"],
+        ["e", "bg", "g", "g", "bg", "r", "bg", "r", "bg", "bg","bg","bg"],
+        ["e", "bg", "g", "g", "blood", "g", "g", "g", "g", "g","g","red"],
+        ["e", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg","bg","bg"],
+    ],
+}
+
 
 
 
@@ -4838,7 +4907,7 @@ levels["DM-1"] = {
     squadlimit: 8,
     hp: 3,
     bgm: "dm_2",
-    background: "loading4",
+    background: "dm",
     description: "This is just the beginning, don't let your guard down though.\n",
     place: "CB",
     offsetX: -20,
