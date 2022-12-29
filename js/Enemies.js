@@ -421,9 +421,9 @@ enemylist['Sarkaz Swordsman'] = {
 
 enemylist['Sarkaz Greatswordsman'] = {
     name: "Sarkaz Greatswordsman",
-    hp: 8500,
+    hp: 9500,
     atk: 700,
-    def: 280,
+    def: 240,
     res: 50,
     atkinterval: 2,
     speed: (0.65 + 0.2)* 0.49,
@@ -432,7 +432,7 @@ enemylist['Sarkaz Greatswordsman'] = {
     range: 0,
     hploss: 1,
     dmgtype: "physical",
-    size: 1.05,
+    size: 1.1,
     targets: 1,
 
     enemytype: "normal",
@@ -462,7 +462,7 @@ enemylist['Sarkaz Greatswordsman'] = {
         start: 3,
         end: 21,
         contact: 15,
-        duration: 1.25,
+        duration: 1.1,
     },
 
     death: {
@@ -474,7 +474,7 @@ enemylist['Sarkaz Greatswordsman'] = {
     sfx: {
         atk: {
             src: "greatswordsman-atk",
-            volume: 0.1
+            volume: 0.2
         }
     }
 
@@ -482,8 +482,8 @@ enemylist['Sarkaz Greatswordsman'] = {
 
 enemylist['Sarkaz Crossbowman'] = {
     name: "Sarkaz Crossbowman",
-    hp: 6000,
-    atk: 450,
+    hp: 8000,
+    atk: 500,
     def: 200,
     res: 50,
     atkinterval: 3,
@@ -495,7 +495,7 @@ enemylist['Sarkaz Crossbowman'] = {
     dmgtype: "physical",
     targets: 1,
     tooltip: "A mercenary from Sarkaz who \nboasts fairly high ATK and RES;\n and uses ranged attacks.",
-    size: 1.05,
+    size: 1.1,
     bullet: { size: { height: 1, depth: 8, width: 0.5 }, arc:false, speed:5, color: new BABYLON.Color3(0.4, 0.4, 0.4)},
 
     enemytype: "normal",
@@ -3018,10 +3018,10 @@ enemylist["Veteran Junkman"] = {
 
 
 enemylist["Arts Guard"] = {
-    name: "Arts guard",
-    hp: 5000,
+    name: "Arts Guard",
+    hp: 5500,
     atk: 450,
-    def: 250,
+    def: 220,
     res: 50,
     atkinterval: 2.5,
     speed: 0.75* 0.49,
@@ -5418,7 +5418,7 @@ enemylist['Explosive Spider'] = {
     size: 0.95,
     targets: 1,
 
-    tooltip: "A dangerous creature.\n Upon death, they will explode, \ninflicting damage to nearby Ally units.",
+    tooltip: "A dangerous creature.\n Upon death, they will explode,\ninflicting damage to nearby Ally units.",
 
     enemytype: "normal",
 

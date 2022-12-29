@@ -12,7 +12,7 @@ class MagmaTile {
         this.y = this.tile.z
 
         this.totalsp = 19;
-        this.dmg = 500
+        this.dmg = 600
         this.currentsp = Math.floor(Math.random() * 6)
 
         //sp at which the atk effect starts triggering

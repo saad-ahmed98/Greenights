@@ -1924,7 +1924,7 @@ playerlist["Beeswax"] = {
     cost: 21,
     basecost: 21,
 
-    range: 2,
+    range: 2.5,
     targets: 99,
 
 
@@ -1970,14 +1970,13 @@ playerlist["Beeswax"] = {
 
     skill: {
         name: "Growing Sandstorm",
-        description: "Range expands; ATK +60%",
+        description: "ATK +60%",
         duration: 20,
         sp: 18,
         initialsp: 0,
         chargetype: "second",
         triggertype: "manual",
         modifiers: {
-            range: 0.5,
             atk: 0.6,
             flatmultidef: (1 / 3),
             flatres: -20,

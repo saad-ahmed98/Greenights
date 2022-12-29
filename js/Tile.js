@@ -11,10 +11,12 @@ class Tile {
         this.color;
     }
 
-    getBgColor(){
-        switch(this.place){
+    getBgColor() {
+        switch (this.place) {
             case "Frozen":
                 return new BABYLON.Color3(0.24, 0.4, 0.49)
+            case "LongDay":
+                return BABYLON.Color3.FromHexString("#2a4153");
             case "Long":
                 return BABYLON.Color3.FromHexString("#202D37");
             case "Forest":

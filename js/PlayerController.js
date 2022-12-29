@@ -33,7 +33,6 @@ class PlayerController extends CharaController {
     }
 
     canHitFlying() {
-        console.log(this.chara.subclass)
         return (this.chara.type == "r" || this.chara.subclass == "Lord" || this.chara.subclass == "Sentinel")
     }
 
