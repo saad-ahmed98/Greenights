@@ -1312,6 +1312,7 @@ class LVLController extends LVLAbstract {
         var dragging = false;
         var sprite = null;
         var currentTile = null;
+        var prevtile = null;
 
         var instance = this;
         var getGroundPosition = function () {
@@ -1439,6 +1440,7 @@ class LVLController extends LVLAbstract {
                             instance.gui.wheelclick = false;
                             currentMesh.dispose();
                             currentMesh = null
+                            prevtile = null
                         }
                         else if (sprite != null) {
                             sprite.dispose();
@@ -1451,6 +1453,22 @@ class LVLController extends LVLAbstract {
                         if (instance.gui.wheelclick == true) {
                             dragging = true;
                             pointerMove(pointerInfo);
+                            var tilex = Math.round(getGroundPosition().x / 30);
+                            var tiley = Math.round(getGroundPosition().z / 30);
+                            if (tilex > 0 && tilex < instance.tiles.length && tiley > 0 && tiley < instance.tiles[0].length) {
+                                if (instance.tiles[tilex][tiley].player == undefined && instance.tiles[tilex][tiley].canBeDeployed(instance.gui.wheelchoice.type, instance.deployall)) {
+                                    if (prevtile != null)
+                                        prevtile.displayDeployable()
+                                    prevtile = instance.tiles[tilex][tiley]
+                                    prevtile.displayRange()
+                                    prevtile.mesh.outlineColor = new BABYLON.Color3(0, 0, 0);
+                                    prevtile.mesh.outlineWidth = 0.1;
+                                }
+                                else if (prevtile != null)
+                                    prevtile.displayDeployable()
+                            }
+                            else if (prevtile != null)
+                                prevtile.displayDeployable()
                         }
                         break;
                 }
@@ -1534,14 +1552,10 @@ class LVLController extends LVLAbstract {
         this.createGlobalCamera();
 
 
-        for (let i = 0; i < this.waves.length; i++) {
+        for (let i = 0; i < this.waves.length; i++)
             this.enemytot += this.waves[i].count;
-        }
-
-        //camera.attachControl(this.canvas, true);
 
 
-        //camera.setPosition(new BABYLON.Vector3(20, 200, 400));
         this.createLights();
         if (this.gameconfig.inputStates.pause) {
             if (!this.gui.showinggui)
@@ -1549,9 +1563,8 @@ class LVLController extends LVLAbstract {
         }
 
         this.createSkybox()
-        if (this.snowstorm) {
+        if (this.snowstorm)
             this.createSnowstorm()
-        }
 
         return this.scene;
     }

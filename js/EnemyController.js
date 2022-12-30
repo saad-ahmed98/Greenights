@@ -435,6 +435,7 @@ class EnemyController extends CharaController {
                     this.lvlcontroller.playSound(this.chara.name + "-atk", this.chara.sfx.atk.volume)
             }
             if (this.chara.hasatkanim != undefined) {
+                this.atktimer = 0
                 if (this.hp > 0) {
                     for (let i = 0; i < player.length; i++) {
                         if (instance.chara.dmgtype == "heal") {

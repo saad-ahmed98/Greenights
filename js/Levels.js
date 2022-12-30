@@ -4000,7 +4000,6 @@ levels["5-7"] = {
         { "number": 19, "time": 169, "gap": 28, "enemies": "Sarkaz Guerrilla Fighter Leader", "line": false, "tooltip": false, "count": 2, "taunt": false, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [2, 11], "pause": 0 }] },
         { "number": 20, "time": 171, "gap": 28, "enemies": "Sarkaz Guerrilla Caster", "line": false, "tooltip": false, "count": 2, "taunt": false, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [2, 11], "pause": 0 }] },
         { "number": 21, "time": 176, "gap": 7, "enemies": "Guerrilla Sniper Leader", "line": false, "tooltip": false, "count": 2, "taunt": false, "start": [5, 11], "checkpoints": [{ "start": [5, 11], "end": [0, 3], "pause": 0 }] },
-
     ],
 
     enemies: ["Guerrilla Hound Pro", "Guerrilla Fighter Leader", "Guerrilla Herald Leader", "Sarkaz Guerrilla Caster", "Sarkaz Guerrilla Fighter Leader", "Guerrilla Sniper Leader"],
