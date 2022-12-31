@@ -31,6 +31,24 @@ class PlayerController extends CharaController {
         }
     }
 
+    correctDirection(i, j) {
+        var dirx = this.buffs.getDirectionX()
+        var diry = this.buffs.getDirectionY()
+
+        if (dirx == 0 && diry == 0)
+            return true
+        if (dirx != 0) {
+            if (dirx < 0)
+                return i - this.x <= 0
+            else return i - this.x >= 0
+        }
+        if (diry != 0) {
+            if (diry < 0)
+                return j - this.y <= 0
+            else return j - this.y >= 0
+        }
+    }
+
     canHitFlying() {
         return (this.chara.type == "r" || this.chara.subclass == "Lord" || this.chara.subclass == "Sentinel")
     }
@@ -176,7 +194,7 @@ class PlayerController extends CharaController {
         this.addSkillBar(gui);
 
         this.activateTalents();
-        if(this.lvlcontroller.pause)
+        if (this.lvlcontroller.pause)
             this.pauseSpriteIndex = this.chara.drop.end
 
         var interval = setInterval(() => {
@@ -201,8 +219,8 @@ class PlayerController extends CharaController {
             }
         }, 1);
 
-        if(this.lvlcontroller.poison!=undefined)
-            this.buffs.buffs["poison"] = { "name": "poison", "modifiers": {"flathpregen":-(this.lvlcontroller.poison)} }
+        if (this.lvlcontroller.poison != undefined)
+            this.buffs.buffs["poison"] = { "name": "poison", "modifiers": { "flathpregen": -(this.lvlcontroller.poison) } }
     }
     updateSkillBarCharging() {
 
@@ -326,7 +344,7 @@ class PlayerController extends CharaController {
             if (enemy[0].mesh.position.z <= this.mesh.position.z)
                 this.sprite.invertU = 1
             else this.sprite.invertU = 0;
-            if (this.chara.atkanim.exists!=false) {
+            if (this.chara.atkanim.exists != false) {
                 var contactframe = this.chara.atkanim.contact
                 if (this.playerSkill.active && this.chara.skillatkanim != undefined) {
                     contactframe = this.chara.skillatkanim.contact
@@ -380,8 +398,8 @@ class PlayerController extends CharaController {
                                 }
                             }
                         }
-                        if (instance.playerSkill.chargetype == "attack" && instance.playerSkill.triggertype == "auto" && instance.playerSkill.duration==0 && instance.playerSkill.currentsp >= instance.playerSkill.totalsp) {
-                            
+                        if (instance.playerSkill.chargetype == "attack" && instance.playerSkill.triggertype == "auto" && instance.playerSkill.duration == 0 && instance.playerSkill.currentsp >= instance.playerSkill.totalsp) {
+
                             if (Math.random() < 0.30)
                                 this.lvlcontroller.playSound(instance.chara.name + "-skill", this.lvlcontroller.vcvolume)
                             if (instance.chara.skillsfx) {
@@ -402,7 +420,7 @@ class PlayerController extends CharaController {
                 }, 1);
                 return true;
             }
-            else{
+            else {
                 if (this.playerSkill.active && this.chara.skillsfx) {
                     if (this.chara.sfx.skillhit != undefined && this.chara.bullet == undefined)
                         this.lvlcontroller.playSound(this.chara.name + "-skillhit", this.chara.sfx.skillhit.volume)

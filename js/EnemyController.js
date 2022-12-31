@@ -70,6 +70,27 @@ class EnemyController extends CharaController {
 
     }
 
+    directionMovement(dirx, diry) {
+        let xfound = false;
+        let zfound = false;
+        if (this.mesh.position.x <= this.currentpoint[1] * 30 + 1 && this.mesh.position.x >= this.currentpoint[1] * 30 - 1)
+            xfound = true;
+        if (this.mesh.position.z <= this.currentpoint[0] * 30 + 1 && this.mesh.position.z >= this.currentpoint[0] * 30 - 1)
+            zfound = true;
+        if (dirx != 0 && !xfound) {
+            if (this.currentpoint[1] - this.mesh.position.x <= 0 && dirx < 0)
+                return 0.5
+            else return 1.8
+        }
+        if (diry != 0 && !zfound) {
+            if (this.currentpoint[0] - this.mesh.position.z <= 0 && diry < 0)
+                return 0.5
+            else return 1.8
+        }
+        return 1
+
+    }
+
     //update speed if game speed changes
     updateSpeed(gamespeed, pause) {
         this.gamespeed = gamespeed;
@@ -677,6 +698,9 @@ class EnemyController extends CharaController {
             }
             //if enemy can revive, activate revival
             else {
+                this.sprite.color.r = 1
+                this.sprite.color.g = 1
+                this.sprite.color.b = 1
                 if (this.chara.revival1 != undefined) {
                     this.sprite.playAnimation(this.chara.revival1.start, this.chara.revival1.end, false, 30 * this.gamespeed * (this.chara.revival1.duration));
                     this.lvlcontroller.playSound(this.chara.name + "-revival", this.chara.sfx.revival.volume)

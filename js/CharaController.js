@@ -219,6 +219,11 @@ class CharaController {
 
     }
 
+    correctDirection(i, j) {
+        return true
+    }
+
+
     distanceFromCenter(a, b, x, y, r) {
         var dist_points = (a - x) * (a - x) + (b - y) * (b - y);
         r *= r;
@@ -295,7 +300,7 @@ class CharaController {
                 if (this.between(enemies[i].mesh.position.x, squarerange[0]) && this.between(enemies[i].mesh.position.z, squarerange[1]) && !enemies[i].spawning && !enemies[i].invincible && !enemies[i].stairs) {
                     var x = Math.round(enemies[i].mesh.position.x / 30)
                     var z = Math.round(enemies[i].mesh.position.z / 30)
-                    if (Math.abs(z - this.y) <= counter + rangeexpand) {
+                    if (Math.abs(z - this.y) <= counter + rangeexpand && this.correctDirection(x,z)) {
                         var found = false;
                         //check if enemy is not already a target
                         for (let j = 0; j < res.length; j++) {
@@ -332,7 +337,7 @@ class CharaController {
         for (let i = 0; i < players.length; i++) {
             var counter = Math.abs(Math.abs(Math.round(players[i].mesh.position.x / 30) - this.x) - range);
             if (this.between(players[i].x * 30, squarerange[0]) && this.between(players[i].y * 30, squarerange[1]) && players[i].hp < players[i].maxhp) {
-                if (Math.abs(Math.round(players[i].mesh.position.z / 30) - this.y) <= counter + rangeexpand) {
+                if (Math.abs(Math.round(players[i].mesh.position.z / 30) - this.y) <= counter + rangeexpand  && this.correctDirection(players[i].x,players[i].y)) {
                     if (res.length < targetcount)
                         res.push(players[i])
                     else {
@@ -370,7 +375,7 @@ class CharaController {
         for (let i = 0; i < players.length; i++) {
             var counter = Math.abs(Math.abs(Math.round(players[i].mesh.position.x / 30) - this.x) - range);
             if (this.between(players[i].x * 30, squarerange[0]) && this.between(players[i].y * 30, squarerange[1])) {
-                if (Math.abs(Math.round(players[i].mesh.position.z / 30) - this.y) <= counter + rangeexpand) {
+                if (Math.abs(Math.round(players[i].mesh.position.z / 30) - this.y) <= counter + rangeexpand && this.correctDirection(players[i].x,players[i].y)) {
                     if (res.length < targetcount)
                         res.push(players[i])
                     else {
@@ -447,7 +452,7 @@ class CharaController {
             if (this.between(enemies[i].mesh.position.x, squarerange[0]) && this.between(enemies[i].mesh.position.z, squarerange[1]) && !enemies[i].spawning && !enemies[i].invincible && !enemies[i].stairs) {
                 var x = Math.round(enemies[i].mesh.position.x / 30)
                 var z = Math.round(enemies[i].mesh.position.z / 30)
-                if (Math.abs(z - this.y) <= counter + rangeexpand) {
+                if (Math.abs(z - this.y) <= counter + rangeexpand && this.correctDirection(x,z)) {
                     if (line) {
                         if (x - this.x == 0 || z - this.y == 0) {
                             res.push(enemies[i])
@@ -650,7 +655,6 @@ class CharaController {
         for (let i = 0; i < keys.length; i++) {
             if (this.chara[keys[i]] != undefined) {
                 if (this.pauseSpriteIndex >= this.chara[keys[i]].start && this.pauseSpriteIndex <= this.chara[keys[i]].end){
-                    console.log(this.pauseSpriteIndex)
                     this.sprite.playAnimation(this.pauseSpriteIndex, this.chara[keys[i]].end, false, 30 * this.gamespeed * this.chara[keys[i]].duration);
                 }
             }

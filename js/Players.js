@@ -21,7 +21,7 @@ playerlist["Angelina"] = {
     cost: 14,
     basecost: 14,
 
-    range: 2,
+    range: 3,
     targets: 1,
 
     dmgtype: "magic",
@@ -59,14 +59,13 @@ playerlist["Angelina"] = {
 
     skill: {
         name: "Arcane Staff - Anti-Gravity Mode",
-        description: "Range +1; ATK +150%\nTargets 4 enemies at once",
+        description: "ATK +150%\nTargets 4 enemies at once",
         duration: 25,
         sp: 25,
         initialsp: 10,
         chargetype: "second",
         triggertype: "manual",
         modifiers: {
-            range: 1,
             atk: 1.5,
             targets: 3,
             canattack: true,
@@ -96,7 +95,7 @@ playerlist["Angelina"] = {
         },
         {
             name: "Part-time Job",
-            description: "Cannot attack while skill is inactive.\nAll allies restore 25 HP every second.",
+            description: "Cannot attack while skill is inactive.\nRestore 25 HP to all allies every second.",
             modifiers: {
                 canattack:false,
             },

@@ -53,6 +53,8 @@ class Buffs {
             statusres: 1,
             frozen: false,
             silence: false,
+            directionx: 0,
+            directiony:0
 
         }
     }
@@ -84,6 +86,17 @@ class Buffs {
         this.initModifiers();
         this.sumBuffs();
         return Math.max(0, Math.round(((atk * this.modifiers.flatmultiatk) * (1 + this.modifiers.atk)) + this.modifiers.inspireatk));
+    }
+    getDirectionX(){
+        this.initModifiers();
+        this.sumBuffs();
+        return this.modifiers.directionx;
+    }
+
+    getDirectionY(){
+        this.initModifiers();
+        this.sumBuffs();
+        return this.modifiers.directiony;
     }
 
     isFrozen() {

@@ -114,12 +114,12 @@ class LVLController extends LVLAbstract {
             this.moveEnemies();
             this.checkEnemies();
             this.checkPlayers();
+            this.checkSkills();
             this.movePlayers();
             this.maptimer += 1 / this.gamespeed;
             this.dptimer += 1 / this.gamespeed;
             if (!this.isSpawning)
                 this.spawnEnemies();
-            this.checkSkills();
             this.checkBullets();
             this.checkTimeEffects();
         }
@@ -294,6 +294,99 @@ class LVLController extends LVLAbstract {
         binaryTask = assetsManager.addTextureTask(
             "enterbottom",
             "images/textures/enterbottom.jpg",
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets[task.name] = task.texture
+        };
+
+        binaryTask = assetsManager.addTextureTask(
+            "rright",
+            "images/textures/rright.jpg",
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets[task.name] = task.texture
+        };
+
+        binaryTask = assetsManager.addTextureTask(
+            "rleft",
+            "images/textures/rleft.jpg",
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets[task.name] = task.texture
+        };
+
+        binaryTask = assetsManager.addTextureTask(
+            "rtop",
+            "images/textures/rtop.jpg",
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets[task.name] = task.texture
+        };
+        binaryTask = assetsManager.addTextureTask(
+            "rbottom",
+            "images/textures/rbottom.jpg",
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets[task.name] = task.texture
+        };
+
+        binaryTask = assetsManager.addTextureTask(
+            "gright",
+            "images/textures/gright.jpg",
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets[task.name] = task.texture
+        };
+
+        binaryTask = assetsManager.addTextureTask(
+            "gleft",
+            "images/textures/gleft.jpg",
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets[task.name] = task.texture
+        };
+
+        binaryTask = assetsManager.addTextureTask(
+            "gtop",
+            "images/textures/gtop.jpg",
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets[task.name] = task.texture
+        };
+        binaryTask = assetsManager.addTextureTask(
+            "gbottom",
+            "images/textures/gbottom.jpg",
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets[task.name] = task.texture
+        };
+
+        binaryTask = assetsManager.addTextureTask(
+            "blkright",
+            "images/textures/blkright.jpg",
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets[task.name] = task.texture
+        };
+
+        binaryTask = assetsManager.addTextureTask(
+            "blkleft",
+            "images/textures/blkleft.jpg",
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets[task.name] = task.texture
+        };
+
+        binaryTask = assetsManager.addTextureTask(
+            "blktop",
+            "images/textures/blktop.jpg",
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets[task.name] = task.texture
+        };
+        binaryTask = assetsManager.addTextureTask(
+            "blkbottom",
+            "images/textures/blkbottom.jpg",
         );
         binaryTask.onSuccess = function (task) {
             instance.scene.assets[task.name] = task.texture
@@ -515,7 +608,7 @@ class LVLController extends LVLAbstract {
             BABYLON.Color3.LerpToRef(BABYLON.Color3.BlackReadOnly, startingColor, t, this.scene.clearColor);
         }
         else {
-
+            
             if (!this.render) {
                 this.createGUIs()
                 this.render = true;
@@ -533,6 +626,7 @@ class LVLController extends LVLAbstract {
                 if (!this.gui.isPaused)
                     this.createLvl();
             }
+            
 
         }
         this.scene.render();
@@ -1176,17 +1270,16 @@ class LVLController extends LVLAbstract {
         }
         p.currentsp = Math.min(p.currentsp + (1 / 30) / this.gamespeed, p.totalsp);
         p.updateSkillBarCharging()
-
-
     }
 
     checkSkills() {
-        for (let i = 0; i < this.activePlayers.length; i++) {
-            this.checkPlayerSkill(this.activePlayers[i])
-        }
         for (let i = 0; i < this.hazards.length; i++) {
             this.checkHazardSkill(this.hazards[i])
         }
+        for (let i = 0; i < this.activePlayers.length; i++) {
+            this.checkPlayerSkill(this.activePlayers[i])
+        }
+
 
     }
 
@@ -1397,7 +1490,7 @@ class LVLController extends LVLAbstract {
                                         instance.zoom = true;
                                         var pl = instance.tiles[x][y].player
                                         instance.playSound(pl.chara.name + "-select", instance.vcvolume)
-                                        instance.displayRangeTiles(x, y, pl.buffs.getFinalRange(pl.chara.range))
+                                        instance.displayRangeTiles(x, y, pl)
                                         instance.createFocusCamera(x * 30, y * 30);
                                         if (instance.gamespeed != 8)
                                             instance.prevspeed = instance.gamespeed
@@ -1486,10 +1579,12 @@ class LVLController extends LVLAbstract {
         }
     }
 
-    displayRangeTiles(x, y, ranget) {
+    displayRangeTiles(x, y, pl) {
         var rangeexpand = 0
+        var ranget = pl.buffs.getFinalRange(pl.chara.range)
         var range = ranget
         var line = false;
+
         if (range / 0.5 % 2 != 0) {
             if (Math.round(range - 0.3) % Math.round(range) == 0) {
                 range = Math.round(ranget - 0.3)
@@ -1504,7 +1599,7 @@ class LVLController extends LVLAbstract {
         for (let i = squarerange[0][0]; i <= squarerange[0][1]; i++) {
             var counter = Math.abs(Math.abs(i - x) - range);
             for (let j = squarerange[1][0]; j <= squarerange[1][1]; j++) {
-                if (Math.abs(j - y) <= counter + rangeexpand) {
+                if (Math.abs(j - y) <= counter + rangeexpand && pl.correctDirection(i, j)) {
                     if (line) {
                         if (i - x == 0 || j - y == 0)
                             this.tiles[i][j].displayRange()
@@ -1628,6 +1723,14 @@ class LVLController extends LVLAbstract {
                     this.hazards.push(new InactiveIceAltar(i, j, this))
                 if (array[i][j] == "magma")
                     this.hazards.push(new MagmaTile(tile, this))
+                if (array[i][j] == "rtop" || array[i][j] == "gtop" || array[i][j] == "blktop")
+                    this.hazards.push(new DirectionTile(tile, this, -1, 0))
+                if (array[i][j] == "rbottom" || array[i][j] == "gbottom" || array[i][j] == "blkbottom")
+                    this.hazards.push(new DirectionTile(tile, this, 1, 0))
+                if (array[i][j] == "rleft" || array[i][j] == "gleft" || array[i][j] == "blkleft")
+                    this.hazards.push(new DirectionTile(tile, this, 0, -1))
+                if (array[i][j] == "rright" || array[i][j] == "gright" || array[i][j] == "blkright")
+                    this.hazards.push(new DirectionTile(tile, this, 0, 1))
                 if (array[i][j] == "blood" || array[i][j] == "bloodblk")
                     this.hazards.push(new BloodTile(tile, this))
 

@@ -5149,7 +5149,7 @@ levels["KM-H"] = {
     initialdp: 20,
     squadlimit: 8,
     hp: 3,
-    background: "loading_Kazimierz_Final",
+    background: "km",
     description: "The most dangerous competitions are usually\nthe first ones to run out of tickets.\n" +
         "As such, it is advised to make arenas as\nhazardous as possible for maximum profit.\n\n" +
         "<Heated Path> Deals massive damage to any enemy or ally on it at intervals.\n" +

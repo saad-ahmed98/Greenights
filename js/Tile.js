@@ -48,7 +48,9 @@ class Tile {
                 color = this.getBgColor()
                 break;
             default:
-                h = 3;
+                if (this.type.charAt(0) == 'r' && this.type!="red")
+                    h = 10
+                else h = 3;
                 color = BABYLON.Color3.White();
         }
 
@@ -132,7 +134,7 @@ class Tile {
     }
     canBeDeployed(type, deployall) {
         if (!deployall)
-            return (this.type == type || (type == "g" && this.type == "magma") || (type == "g" && this.type == "blood") || (type == "g" && this.type == "gblk"))
-        return this.type == "g" || this.type == "magma" || this.type == "blood" || this.type == "gblk"
+            return (this.type == type || (type == "g" && this.type == "magma") || (type == "g" && this.type == "blood") || (type == "g" && this.type.charAt(0) == 'g') || (type == "r" && this.type!="red" && this.type.charAt(0) == 'r'))
+        return this.type.charAt(0) == 'g' || this.type == "magma" || this.type == "blood"
     }
 }
