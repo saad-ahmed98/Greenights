@@ -2461,8 +2461,8 @@ enemylist["PatriotEX2"] = {
     }
 }
 
-enemylist["Roar Knightclub Elite"] = {
-    name: "Roar Knightclub Elite",
+enemylist["Roar Knightclub Member"] = {
+    name: "Roar Knightclub Member",
     hp: 3800,
     atk: 420,
     def: 100,
@@ -2475,7 +2475,7 @@ enemylist["Roar Knightclub Elite"] = {
     hploss: 1,
     dmgtype: "physical",
     size: 0.9,
-    tooltip: "Has significantly increased DEF\nand RES for a period of time.",
+    tooltip: "A sniper with\n significantly increased DEF\nand RES for a period of time.",
     targets: 1,
     bullet: { size: { height: 1, depth: 8, width: 0.5 }, arc:false, speed:5, color: new BABYLON.Color3(0.4, 0.4, 0.4)},
 
@@ -2534,10 +2534,10 @@ enemylist["Roar Knightclub Elite"] = {
 
 }
 
-enemylist["Bloodboil Knightclub Elite"] = {
-    name: "Bloodboil Knightclub Elite",
+enemylist["Bloodboil Knightclub Member"] = {
+    name: "Bloodboil Knightclub Member",
     hp: 13000,
-    atk: 800,
+    atk: 650,
     def: 800,
     res: 0,
     atkinterval: 2.3,
@@ -2609,8 +2609,8 @@ enemylist["Bloodboil Knightclub Elite"] = {
     },
 }
 
-enemylist["Elite Knight Shielder"] = {
-    name: "Elite Knight Shielder",
+enemylist["Knight Shielder"] = {
+    name: "Knight Shielder",
     hp: 12000,
     atk: 700,
     def: 1300,
@@ -2667,6 +2667,63 @@ enemylist["Elite Knight Shielder"] = {
 
 }
 
+enemylist["Nameless Knight"] = {
+    name: "Nameless Knight",
+    hp: 3800,
+    atk: 360,
+    def: 150,
+    res: 0,
+    atkinterval: 2,
+    speed: 1.1* 0.49,
+    blockcount: 1,
+    type: "g",
+    range: 0,
+    hploss: 1,
+    dmgtype: "physical",
+    size: 1,
+    tooltip: "An independent Kazimierz knight\nlittle in the way of\nachievements or skill.",
+    targets: 1,
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/nameless-knight-sheet.webp",
+
+    hasskill: false,
+
+    atkanim: {
+        start: 0,
+        end: 14,
+        contact: 6,
+        duration: 1,
+    },
+
+    death: {
+        start: 15,
+        end: 29,
+        duration: 1,
+
+    },
+    idle: {
+        start: 30,
+        end: 59,
+        duration: 1,
+
+    },
+    move: {
+        start: 60,
+        end: 71,
+        duration: 1.1,
+
+    },
+
+    sfx: {
+        hit: {
+            src: "swordsman-hit",
+            volume: 0.1
+        }
+    },
+}
+
 enemylist["Vicious Training Gloompincer"] = {
     name: "Vicious Training Gloompincer",
     hp: 3000,
@@ -2681,7 +2738,7 @@ enemylist["Vicious Training Gloompincer"] = {
     hploss: 1,
     dmgtype: "physical",
     size: 0.95,
-    tooltip: "An Infected creature commonly\nfound in the rivers of Kazimierz.",
+    tooltip: "A sturdy creature commonly\nfound in the rivers of Kazimierz.",
     targets: 1,
 
     enemytype: "normal",
@@ -2726,8 +2783,8 @@ enemylist["Vicious Training Gloompincer"] = {
 }
 
 
-enemylist["Tytus Topola"] = {
-    name: "Tytus Topola",
+enemylist["'Left-hand' Tytus Topola"] = {
+    name: "'Left-hand' Tytus Topola",
     hp: 20000,
     atk: 750,
     def: 700,
@@ -2811,8 +2868,8 @@ enemylist["Tytus Topola"] = {
     }
 }
 
-enemylist["Tytus Topola2"] = {
-    name: "Tytus Topola2",
+enemylist["'Left-hand' Tytus Topola2"] = {
+    name: "'Left-hand' Tytus Topola2",
     hp: 25000,
     atk: 750,
     def: 700,
@@ -2900,6 +2957,102 @@ enemylist["Tytus Topola2"] = {
             },
             duration: 25,
             effecticon: 3
+        },
+    }
+}
+
+enemylist["Corrupted Knight"] = {
+    name: "Corrupted Knight",
+    hp: 40000,
+    atk: 1200,
+    def: 1200,
+    res: 30,
+    atkinterval: 4,
+    speed: 0.65* 0.49,
+    blockcount: 1,
+    type: "g",
+    range: 0,
+    hploss: 2,
+    dmgtype: "physical",
+    size: 1.1,
+    tooltip: "Attacks deal Splash damage to units\nsurrounding the primary target.\nGains greatly increased ATK, ASPD,\nand Movement Speed when\na Withered Knight dies.",
+    targets: 1,
+    splash:1,
+    splashdmg:1,
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/corrupted-knight-sheet.webp",
+
+    hasskill: false,
+    hasspatk: true,
+
+    atkanim: {
+        start: 0,
+        end: 34,
+        contact: 17,
+        duration: 1,
+    },
+
+    death: {
+        start: 35,
+        end: 74,
+        duration: 1,
+
+    },
+    idle: {
+        start: 75,
+        end: 97,
+        duration: 1,
+
+    },
+    move: {
+        start: 98,
+        end: 124,
+        duration: 1.1,
+
+    },
+    spatk: {
+        start: 125,
+        end: 225,
+        contact: 225-14,
+
+        duration: 1,
+    },
+
+    sfx: {
+        atk: {
+            src: "corrupt-atk",
+            volume: 0.1
+        },
+        hit: {
+            src: "corrupt-hit",
+            volume: 0.1
+        },
+        spatk: {
+            src: "corrupt-spatk",
+            volume: 0.1
+        },
+        sphit: {
+            src: "corrupt-hit",
+            volume: 0.3
+        },
+    },
+    spattack: {
+        name: "knightnuke",
+        target: "allblocking",
+        range: 0,
+        initialsp: 22,
+        sp: 22,
+        chargetype:"second",
+        dmgmodifier: 3,
+        splash:1,
+        effectcontact: 130,
+        applyeffects: {
+            modifiers: {
+            },
+            duration: 4,
+            effecticon: 14
         },
     }
 }
@@ -4380,7 +4533,7 @@ enemylist["Ergate"] = {
     range: 0,
     hploss: 1,
     dmgtype: "physical",
-    size: 1,
+    size: 1.1,
     tooltip: "Specializes in sabotage.\nCannot be blocked.\nMust be eliminated quickly.",
     targets: 1,
 
@@ -4431,7 +4584,7 @@ enemylist["Ergate Leader"] = {
     blockcount: 99,
     type: "g",
     range: 0,
-    hploss: 1,
+    hploss: 1.1,
     dmgtype: "physical",
     size: 1,
     tooltip: "More durable than Ergates.\nCannot be blocked.\nMust be eliminated quickly.",

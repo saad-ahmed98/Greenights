@@ -52,15 +52,15 @@ chapters["KM"] ={
     background:"kazimierz.png",
     bgm:"km_m",
     select:"kazimierz.png",
-    unlock:"1-10",
-    unlockmsg:"clear 1-10 to unlock"
+    unlock:"2-12",
+    unlockmsg:"clear 2-12 to unlock"
 }
 
 chapters["DM"] ={
     label:"DM",
     title:"Darknights Memoir",
     background:"dm.png",
-    bgm:"ep2_m",
+    bgm:"dm_m",
     select:"dm.jpg",
     unlock:"2-12",
     unlockmsg:"clear 2-12 to unlock"

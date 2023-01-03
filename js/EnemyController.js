@@ -701,6 +701,7 @@ class EnemyController extends CharaController {
                 this.sprite.color.r = 1
                 this.sprite.color.g = 1
                 this.sprite.color.b = 1
+                this.healthBarBackground.isVisible = false
                 if (this.chara.revival1 != undefined) {
                     this.sprite.playAnimation(this.chara.revival1.start, this.chara.revival1.end, false, 30 * this.gamespeed * (this.chara.revival1.duration));
                     this.lvlcontroller.playSound(this.chara.name + "-revival", this.chara.sfx.revival.volume)
@@ -820,14 +821,11 @@ class EnemyController extends CharaController {
         this.sortBySpAtkPriority(targets)
         if (this.chara.spattack.target == "farthest")
             targets = targets.filter(player => player.chara.type == "r");
+        if (this.chara.spattack.targets == "highestatk")
+            targets = targets.filter(player => player.buffs.effects[this.chara.spattack.name] == undefined);
+
 
         var players = this.getFirstPlayerInRange(targets, this.chara.spattack.range, this.chara.spattack.targets || this.chara.targets + this.buffs.getTargets())
-        for (let i = 0; i < players.length; i++) {
-            if (players[i].buffs.effects[this.chara.spattack.name] != undefined) {
-                players.splice(i, 1)
-                i--
-            }
-        }
         if (players.length > 0) {
             //turn towards the player to hit
             if (players[0].mesh.position.z <= this.mesh.position.z)
@@ -863,8 +861,16 @@ class EnemyController extends CharaController {
             if (this.chara.spattack.dmgmodifier != undefined) {
                 var interval2 = setInterval(() => {
                     if (instance.sprite.cellIndex >= instance.chara.spatk.contact && instance.hp > 0) {
-                        for (let i = 0; i < players.length; i++)
-                            players[i].receiveDamage(instance, false, instance.chara.spattack.dmgmodifier)
+                        for (let i = 0; i < players.length; i++) {
+                            if (this.chara.spattack.splash == undefined)
+                                players[i].receiveDamage(instance, false, instance.chara.spattack.dmgmodifier)
+                            else {
+                                let splashenemies = this.getSplashPlayersInRange(this.lvlcontroller.activePlayers, players[i], this.chara.spattack.splash)
+                                for (let j = 0; j < splashenemies.length; j++)
+                                    splashenemies[j].receiveDamage(instance, false, instance.chara.spattack.dmgmodifier)
+                                players[i].receiveDamage(instance, false, instance.chara.spattack.dmgmodifier)
+                            }
+                        }
 
                         instance.lvlcontroller.playSound(instance.chara.name + "-sphit", instance.chara.sfx.sphit.volume)
                         clearInterval(interval2);

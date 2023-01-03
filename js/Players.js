@@ -1639,7 +1639,7 @@ playerlist["Lappland"] = {
     },
     talents: [{
         name: "Spiritual Destruction",
-        description: "Disables the target's special ability when attacking, \nlasting 3 seconds",
+        description: "Silences the target when attacking,\n(disables their special skill)\nlasting 3 seconds",
         modifiers: {
         },
         applyeffects: {

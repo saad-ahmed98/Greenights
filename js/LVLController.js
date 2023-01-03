@@ -399,6 +399,20 @@ class LVLController extends LVLAbstract {
         binaryTask.onSuccess = function (task) {
             instance.scene.assets[task.name] = task.texture
         };
+        binaryTask = assetsManager.addTextureTask(
+            "gdef",
+            "images/textures/" + instance.place + "/gdef.jpg",
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets[task.name] = task.texture
+        };
+        binaryTask = assetsManager.addTextureTask(
+            "gheal",
+            "images/textures/" + instance.place + "/gheal.jpg",
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets[task.name] = task.texture
+        };
     }
     loadStaticImages() {
         this.loadTextures()
@@ -608,7 +622,7 @@ class LVLController extends LVLAbstract {
             BABYLON.Color3.LerpToRef(BABYLON.Color3.BlackReadOnly, startingColor, t, this.scene.clearColor);
         }
         else {
-            
+
             if (!this.render) {
                 this.createGUIs()
                 this.render = true;
@@ -626,8 +640,6 @@ class LVLController extends LVLAbstract {
                 if (!this.gui.isPaused)
                     this.createLvl();
             }
-            
-
         }
         this.scene.render();
     }
@@ -1711,10 +1723,8 @@ class LVLController extends LVLAbstract {
                 linetiles.push(tile);
                 if (array[i][j] == "blue")
                     this.hpbox.push(new HPBox("", i, j, this.scene))
-
                 if (array[i][j] == "red")
                     this.spawns.push(new EnemySpawn("", i, j, this.scene))
-
                 if (array[i][j] == "altar")
                     this.hazards.push(new FireAltar(i, j, this))
                 if (array[i][j] == "icealtar")
@@ -1733,7 +1743,10 @@ class LVLController extends LVLAbstract {
                     this.hazards.push(new DirectionTile(tile, this, 0, 1))
                 if (array[i][j] == "blood" || array[i][j] == "bloodblk")
                     this.hazards.push(new BloodTile(tile, this))
-
+                if (array[i][j] == "gdef")
+                    this.hazards.push(new RuneTile(tile, this, { "flatdef": 200 }))
+                if (array[i][j] == "gheal")
+                    this.hazards.push(new RuneTile(tile, this, {"hpregenpercent": 0.03}))
             }
             this.tiles.push(linetiles);
             this.matrix.push(line);
@@ -1759,11 +1772,12 @@ class LVLController extends LVLAbstract {
             case "inactivealtar":
             case "icealtar":
             case "altar":
-            case "r":
             case "e":
             case "gblk":
                 return 1;
             default:
+                if (tiletype.charAt(0) == 'r' && tiletype != "red")
+                    return 1;
                 return 0;
         }
     }
