@@ -3059,7 +3059,7 @@ levels["4-10"] = {
         { "number": 25, "time": 137, "gap": 20, "enemies": "Oneiros", "line": false, "flying": true, "tooltip": false, "taunt": false, "count": 2, "start": [1, 11], "checkpoints": [{ "start": [1, 11], "end": [1, 10], "pause": 10 }, { "start": [1, 10], "end": [1, 7], "pause": 0 }, { "start": [1, 7], "end": [2, 6], "pause": 20 }, { "start": [2, 6], "end": [6, 6], "pause": 0 }] },
         { "number": 26, "time": 137, "gap": 10, "enemies": "Glacial Spider α", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [6, 8], "checkpoints": [{ "start": [6, 8], "end": [6, 6], "pause": 0 }] },
         { "number": 27, "time": 138, "gap": 20, "enemies": "Oneiros", "line": true, "flying": true, "tooltip": false, "taunt": false, "count": 2, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 2], "pause": 10 }, { "start": [1, 2], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [2, 6], "pause": 20 }, { "start": [2, 6], "end": [6, 6], "pause": 0 }] },
-        { "number": 28, "time": 154, "gap": 10, "enemies": "Yeti Icecleaver", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [0, 6], "checkpoints": [{ "start": [0, 6], "end": [6, 6], "pause": 0 }] },
+        { "number": 28, "time": 154, "gap": 10, "enemies": "Yeti Icecleaver Leader", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [0, 6], "checkpoints": [{ "start": [0, 6], "end": [6, 6], "pause": 0 }] },
         { "number": 29, "time": 157, "gap": 5, "enemies": "Glacial Spider α", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [6, 4], "checkpoints": [{ "start": [6, 4], "end": [6, 6], "pause": 0 }] },
         { "number": 30, "time": 174, "gap": 2, "enemies": "Yeti Icecleaver", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [0, 6], "checkpoints": [{ "start": [0, 6], "end": [6, 6], "pause": 0 }] },
         { "number": 31, "time": 184, "gap": 10, "enemies": "Glacial Spider α", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [0, 6], "checkpoints": [{ "start": [0, 6], "end": [6, 6], "pause": 0 }] },
@@ -3131,12 +3131,12 @@ levels["4-11"] = {
         { "number": 16, "time": 211.5, "gap": 26, "enemies": "Razorfrost", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [4, 12], "pause": 0 }] },
         { "number": 17, "time": 216, "gap": 25, "enemies": "Yeti Caster Leader", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [6, 12], "pause": 0 }] },
         { "number": 18, "time": 231, "gap": 35, "enemies": "Yeti Icecleaver", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [4, 5], "pause": 15 }, { "start": [4, 5], "end": [4, 12], "pause": 0 }] },
-        { "number": 19, "time": 312, "gap": 12, "enemies": "Yeti Icecleaver", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [4, 12], "pause": 0 }] },
-        { "number": 20, "time": 312, "gap": 12, "enemies": "Yeti Icecleaver", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [6, 12], "pause": 0 }] },
+        { "number": 19, "time": 312, "gap": 12, "enemies": "Yeti Icecleaver Leader", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [4, 12], "pause": 0 }] },
+        { "number": 20, "time": 312, "gap": 12, "enemies": "Yeti Icecleaver Leader", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [6, 12], "pause": 0 }] },
 
     ],
 
-    enemies: ["Heavy Defender", "Glacial Spider α", "Yeti Caster Leader", "Yeti Sniper Leader", "Razorfrost", "Yeti Operative2", "Yeti Icecleaver", "Frostnova", "Frostnova2"],
+    enemies: ["Heavy Defender", "Glacial Spider α", "Yeti Caster Leader", "Yeti Sniper Leader", "Razorfrost", "Yeti Operative2","Yeti Icecleaver", "Yeti Icecleaver Leader", "Frostnova", "Frostnova2"],
     tooltips: ["Yeti Sniper Leader", "Frostnova"],
     hazards: ["icealtar"],
 
@@ -3210,14 +3210,14 @@ levels["4-H1"] = {
         { "number": 37, "time": 180, "gap": 1, "enemies": "Razorfrost", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [3, 11], "pause": 0 }] },
         { "number": 38, "time": 181, "gap": 1.1, "enemies": "Yeti Operative2", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [3, 11], "pause": 0 }] },
         { "number": 39, "time": 187, "gap": 1, "enemies": "Yeti Icecleaver Leader", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [3, 11], "pause": 0 }] },
-        { "number": 40, "time": 187, "gap": 17, "enemies": "Yeti Icecleaver Leader", "line": true, "tooltip": false, "taunt": false, "count": 2, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [3, 11], "pause": 0 }] },
+        { "number": 40, "time": 187, "gap": 17, "enemies": "Yeti Icecleaver", "line": true, "tooltip": false, "taunt": false, "count": 2, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [3, 11], "pause": 0 }] },
         { "number": 41, "time": 201, "gap": 1, "enemies": "Yeti Caster Leader", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [3, 11], "pause": 0 }] },
         { "number": 42, "time": 201, "gap": 17, "enemies": "Yeti Caster Leader", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [3, 11], "pause": 0 }] },
         { "number": 43, "time": 202, "gap": 4, "enemies": "Yeti Operative2", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [3, 11], "pause": 0 }] },
         { "number": 44, "time": 202, "gap": 4, "enemies": "Razorfrost", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [3, 11], "pause": 0 }] },
     ],
 
-    enemies: ["Glacial Spider α", "Oneiros", "Razorfrost", "Yeti Operative2", "Yeti Caster Leader", "Yeti Icecleaver Leader"],
+    enemies: ["Glacial Spider α", "Oneiros", "Razorfrost", "Yeti Operative2", "Yeti Caster Leader","Yeti Icecleaver","Yeti Icecleaver Leader"],
     tooltips: [],
     hazards: ["icealtar"],
 
@@ -5163,25 +5163,25 @@ levels["KM-1"] = {
     offsetZ: 0,
     difficulty: "★★★☆☆☆☆",
     type: "normal",
-    skybox: "forest.png",
+    skybox: "bgarena.png",
 
     waves: [
         { "number": 0, "time": 6, "gap": 18, "enemies": "Nameless Knight", "line": true, "tooltip": false, "taunt": true, "count": 1, "start": [0, 2], "checkpoints": [{ "start": [0, 2], "end": [4, 2], "pause": 0 }, { "start": [4, 2], "end": [5, 7], "pause": 0 }, { "start": [5, 7], "end": [7, 7], "pause": 0 }] },
         { "number": 1, "time": 18, "gap": 9, "enemies": "Nameless Knight", "line": false, "tooltip": false, "taunt": false, "count": 6, "start": [0, 2], "checkpoints": [{ "start": [0, 2], "end": [4, 2], "pause": 0 }, { "start": [4, 2], "end": [5, 7], "pause": 0 }, { "start": [5, 7], "end": [7, 7], "pause": 0 }] },
         { "number": 2, "time": 27, "gap": 9, "enemies": "Nameless Knight", "line": true, "tooltip": false, "taunt": false, "count": 5, "start": [0, 2], "checkpoints": [{ "start": [0, 2], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [6, 6], "pause": 0 }, { "start": [6, 6], "end": [7, 7], "pause": 0 }] },
         { "number": 3, "time": 58, "gap": 10, "enemies": "Ergate Leader", "line": true, "tooltip": true, "taunt": false, "count": 4, "start": [0, 9], "checkpoints": [{ "start": [0, 9], "end": [4, 9], "pause": 2 }, { "start": [4, 9], "end": [7, 9], "pause": 0 }] },
-        { "number": 4, "time": 96, "gap": 12, "enemies": "Roar Knightclub Member", "line": false, "tooltip": false, "taunt": false, "count": 6, "start": [0, 2], "checkpoints": [{ "start": [0, 2], "end": [4, 2], "pause": 0 }, { "start": [4, 2], "end": [5, 7], "pause": 0 }, { "start": [5, 7], "end": [7, 7], "pause": 0 }] },
-        { "number": 5, "time": 96, "gap": 12, "enemies": "Roar Knightclub Member", "line": false, "tooltip": false, "taunt": false, "count": 6, "start": [0, 2], "checkpoints": [{ "start": [0, 2], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [6, 6], "pause": 0 }, { "start": [6, 6], "end": [7, 7], "pause": 0 }] },
+        { "number": 4, "time": 96, "gap": 12, "enemies": "Roar Knight", "line": false, "tooltip": false, "taunt": false, "count": 6, "start": [0, 2], "checkpoints": [{ "start": [0, 2], "end": [4, 2], "pause": 0 }, { "start": [4, 2], "end": [5, 7], "pause": 0 }, { "start": [5, 7], "end": [7, 7], "pause": 0 }] },
+        { "number": 5, "time": 96, "gap": 12, "enemies": "Roar Knight", "line": false, "tooltip": false, "taunt": false, "count": 6, "start": [0, 2], "checkpoints": [{ "start": [0, 2], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [6, 6], "pause": 0 }, { "start": [6, 6], "end": [7, 7], "pause": 0 }] },
         { "number": 6, "time": 121, "gap": 5, "enemies": "Ergate Leader", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [0, 9], "checkpoints": [{ "start": [0, 9], "end": [4, 9], "pause": 2 }, { "start": [4, 9], "end": [7, 9], "pause": 0 }] },
         { "number": 7, "time": 151, "gap": 5, "enemies": "Ergate Leader", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [0, 9], "checkpoints": [{ "start": [0, 9], "end": [4, 9], "pause": 2 }, { "start": [4, 9], "end": [7, 9], "pause": 0 }] },
-        { "number": 8, "time": 173, "gap": 5, "enemies": "Roar Knightclub Member", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [0, 2], "checkpoints": [{ "start": [0, 2], "end": [4, 2], "pause": 0 }, { "start": [4, 2], "end": [5, 7], "pause": 0 }, { "start": [5, 7], "end": [7, 7], "pause": 0 }] },
-        { "number": 9, "time": 173, "gap": 5, "enemies": "Roar Knightclub Member", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [0, 2], "checkpoints": [{ "start": [0, 2], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [6, 6], "pause": 0 }, { "start": [6, 6], "end": [7, 7], "pause": 0 }] },
+        { "number": 8, "time": 173, "gap": 5, "enemies": "Roar Knight", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [0, 2], "checkpoints": [{ "start": [0, 2], "end": [4, 2], "pause": 0 }, { "start": [4, 2], "end": [5, 7], "pause": 0 }, { "start": [5, 7], "end": [7, 7], "pause": 0 }] },
+        { "number": 9, "time": 173, "gap": 5, "enemies": "Roar Knight", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [0, 2], "checkpoints": [{ "start": [0, 2], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [6, 6], "pause": 0 }, { "start": [6, 6], "end": [7, 7], "pause": 0 }] },
         { "number": 10, "time": 188, "gap": 3, "enemies": "Ergate Leader", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [0, 9], "checkpoints": [{ "start": [0, 9], "end": [7, 9], "pause": 0 }] },
 
     ],
 
-    enemies: ["Ergate Leader", "Roar Knightclub Member", "Nameless Knight"],
-    tooltips: ["Ergate Leader", "Roar Knightclub Member", "Nameless Knight"],
+    enemies: ["Ergate Leader", "Roar Knight", "Nameless Knight"],
+    tooltips: ["Ergate Leader", "Roar Knight", "Nameless Knight"],
 
     hazards: [],
 
@@ -5212,22 +5212,22 @@ levels["KM-2"] = {
     offsetZ: -30,
     difficulty: "★★★★☆☆☆",
     type: "normal",
-    skybox: "cave.png",
+    skybox: "bgarena.png",
 
     waves: [
-        { "number": 0, "time": 6, "gap": 3, "enemies": "Nameless Knight", "line": true, "tooltip": true, "taunt": true, "count": 12, "start": [0, 5], "checkpoints": [{ "start": [0, 5], "end": [1, 2], "pause": 0 }, { "start": [1, 2], "end": [3, 2], "pause": 0 }, { "start": [3, 2], "end": [3, 6], "pause": 0 }, { "start": [3, 6], "end": [5, 6], "pause": 0 }, { "start": [5, 6], "end": [6, 5], "pause": 0 }] },
+        { "number": 0, "time": 6, "gap": 3, "enemies": "Nameless Knight", "line": true, "tooltip": false, "taunt": true, "count": 12, "start": [0, 5], "checkpoints": [{ "start": [0, 5], "end": [1, 2], "pause": 0 }, { "start": [1, 2], "end": [3, 2], "pause": 0 }, { "start": [3, 2], "end": [3, 6], "pause": 0 }, { "start": [3, 6], "end": [5, 6], "pause": 0 }, { "start": [5, 6], "end": [6, 5], "pause": 0 }] },
         { "number": 1, "time": 6, "gap": 3, "enemies": "Nameless Knight", "line": true, "tooltip": false, "taunt": false, "count": 12, "start": [0, 5], "checkpoints": [{ "start": [0, 5], "end": [1, 8], "pause": 0 }, { "start": [1, 8], "end": [3, 8], "pause": 0 }, { "start": [3, 8], "end": [3, 4], "pause": 0 }, { "start": [3, 4], "end": [5, 4], "pause": 0 }, { "start": [5, 4], "end": [6, 5], "pause": 0 }] },
         { "number": 2, "time": 48, "gap": 5, "enemies": "Vicious Training Gloompincer", "line": false, "tooltip": true, "taunt": false, "count": 3, "start": [0, 5], "checkpoints": [{ "start": [0, 5], "end": [1, 2], "pause": 0 }, { "start": [1, 2], "end": [3, 2], "pause": 0 }, { "start": [3, 2], "end": [3, 6], "pause": 0 }, { "start": [3, 6], "end": [5, 6], "pause": 0 }, { "start": [5, 6], "end": [6, 5], "pause": 0 }] },
         { "number": 3, "time": 48, "gap": 5, "enemies": "Vicious Training Gloompincer", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [0, 5], "checkpoints": [{ "start": [0, 5], "end": [1, 8], "pause": 0 }, { "start": [1, 8], "end": [3, 8], "pause": 0 }, { "start": [3, 8], "end": [3, 4], "pause": 0 }, { "start": [3, 4], "end": [5, 4], "pause": 0 }, { "start": [5, 4], "end": [6, 5], "pause": 0 }] },
-        { "number": 4, "time": 76, "gap": 20, "enemies": "Roar Knightclub Member", "line": true, "tooltip": true, "taunt": true, "count": 3, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [1, 2], "pause": 0 }, { "start": [1, 2], "end": [1, 8], "pause": 0 }, { "start": [1, 8], "end": [5, 8], "pause": 0 }, { "start": [5, 8], "end": [5, 2], "pause": 0 }, { "start": [5, 2], "end": [1, 2], "pause": 0 }, { "start": [1, 2], "end": [1, 8], "pause": 0 }, { "start": [1, 8], "end": [5, 8], "pause": 0 }, { "start": [5, 8], "end": [6, 5], "pause": 0 }] },
+        { "number": 4, "time": 76, "gap": 20, "enemies": "Roar Knight", "line": true, "tooltip": false, "taunt": true, "count": 3, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [1, 2], "pause": 0 }, { "start": [1, 2], "end": [1, 8], "pause": 0 }, { "start": [1, 8], "end": [5, 8], "pause": 0 }, { "start": [5, 8], "end": [5, 2], "pause": 0 }, { "start": [5, 2], "end": [1, 2], "pause": 0 }, { "start": [1, 2], "end": [1, 8], "pause": 0 }, { "start": [1, 8], "end": [5, 8], "pause": 0 }, { "start": [5, 8], "end": [6, 5], "pause": 0 }] },
         { "number": 5, "time": 86, "gap": 5, "enemies": "Vicious Training Gloompincer", "line": false, "tooltip": false, "taunt": false, "count": 8, "start": [0, 5], "checkpoints": [{ "start": [0, 5], "end": [1, 2], "pause": 0 }, { "start": [1, 2], "end": [3, 2], "pause": 0 }, { "start": [3, 2], "end": [3, 6], "pause": 0 }, { "start": [3, 6], "end": [5, 6], "pause": 0 }, { "start": [5, 6], "end": [6, 5], "pause": 0 }] },
         { "number": 6, "time": 86, "gap": 5, "enemies": "Vicious Training Gloompincer", "line": false, "tooltip": false, "taunt": false, "count": 8, "start": [0, 5], "checkpoints": [{ "start": [0, 5], "end": [1, 8], "pause": 0 }, { "start": [1, 8], "end": [3, 8], "pause": 0 }, { "start": [3, 8], "end": [3, 4], "pause": 0 }, { "start": [3, 4], "end": [5, 4], "pause": 0 }, { "start": [5, 4], "end": [6, 5], "pause": 0 }] },
-        { "number": 7, "time": 129, "gap": 12, "enemies": "Roar Knightclub Member", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [1, 2], "pause": 0 }, { "start": [1, 2], "end": [1, 8], "pause": 0 }, { "start": [1, 8], "end": [5, 8], "pause": 0 }, { "start": [5, 8], "end": [5, 2], "pause": 0 }, { "start": [5, 2], "end": [1, 2], "pause": 0 }, { "start": [1, 2], "end": [1, 8], "pause": 0 }, { "start": [1, 8], "end": [5, 8], "pause": 0 }, { "start": [5, 8], "end": [6, 5], "pause": 0 }] },
+        { "number": 7, "time": 129, "gap": 12, "enemies": "Roar Knight", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [1, 2], "pause": 0 }, { "start": [1, 2], "end": [1, 8], "pause": 0 }, { "start": [1, 8], "end": [5, 8], "pause": 0 }, { "start": [5, 8], "end": [5, 2], "pause": 0 }, { "start": [5, 2], "end": [1, 2], "pause": 0 }, { "start": [1, 2], "end": [1, 8], "pause": 0 }, { "start": [1, 8], "end": [5, 8], "pause": 0 }, { "start": [5, 8], "end": [6, 5], "pause": 0 }] },
         { "number": 8, "time": 146, "gap": 5, "enemies": "Nameless Knight", "line": false, "tooltip": false, "taunt": false, "count": 12, "start": [0, 5], "checkpoints": [{ "start": [0, 5], "end": [1, 2], "pause": 0 }, { "start": [1, 2], "end": [3, 2], "pause": 0 }, { "start": [3, 2], "end": [3, 6], "pause": 0 }, { "start": [3, 6], "end": [5, 6], "pause": 0 }, { "start": [5, 6], "end": [6, 5], "pause": 0 }] },
         { "number": 9, "time": 146, "gap": 5, "enemies": "Nameless Knight", "line": false, "tooltip": false, "taunt": false, "count": 12, "start": [0, 5], "checkpoints": [{ "start": [0, 5], "end": [1, 8], "pause": 0 }, { "start": [1, 8], "end": [3, 8], "pause": 0 }, { "start": [3, 8], "end": [3, 4], "pause": 0 }, { "start": [3, 4], "end": [5, 4], "pause": 0 }, { "start": [5, 4], "end": [6, 5], "pause": 0 }] },
     ],
 
-    enemies: ["Vicious Training Gloompincer", "Roar Knightclub Member", "Nameless Knight"],
+    enemies: ["Vicious Training Gloompincer", "Roar Knight", "Nameless Knight"],
     tooltips: ["Vicious Training Gloompincer"],
 
     hazards: [],
@@ -5259,30 +5259,30 @@ levels["KM-3"] = {
     offsetZ: -15,
     difficulty: "★★★★☆☆☆",
     type: "normal",
-    skybox: "city.png",
+    skybox: "bgarena.png",
     deployall: true,
 
     waves: [
 
-        { "number": 0, "time": 7, "gap": 80, "enemies": "Bloodboil Knightclub Member", "line": true, "tooltip": true, "taunt": true, "count": 2, "start": [0, 5], "checkpoints": [{ "start": [0, 5], "end": [2, 5], "pause": 60 }, { "start": [2, 5], "end": [6, 5], "pause": 0 }] },
-        { "number": 1, "time": 7, "gap": 80, "enemies": "Bloodboil Knightclub Member", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [0, 6], "checkpoints": [{ "start": [0, 6], "end": [2, 6], "pause": 60 }, { "start": [2, 6], "end": [6, 6], "pause": 0 }] },
+        { "number": 0, "time": 7, "gap": 80, "enemies": "Bloodboil Knight", "line": true, "tooltip": true, "taunt": true, "count": 2, "start": [0, 5], "checkpoints": [{ "start": [0, 5], "end": [2, 5], "pause": 60 }, { "start": [2, 5], "end": [6, 5], "pause": 0 }] },
+        { "number": 1, "time": 7, "gap": 80, "enemies": "Bloodboil Knight", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [0, 6], "checkpoints": [{ "start": [0, 6], "end": [2, 6], "pause": 60 }, { "start": [2, 6], "end": [6, 6], "pause": 0 }] },
         { "number": 2, "time": 13, "gap": 18, "enemies": "Nameless Knight", "line": false, "tooltip": false, "taunt": false, "count": 7, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [5, 1], "pause": 5 }, { "start": [3, 5], "end": [5, 5], "pause": 0 }] },
         { "number": 3, "time": 17, "gap": 18, "enemies": "Nameless Knight", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [2, 10], "checkpoints": [{ "start": [2, 10], "end": [5, 10], "pause": 5 }, { "start": [3, 6], "end": [5, 6], "pause": 0 }] },
         { "number": 4, "time": 77, "gap": 18, "enemies": "Nameless Knight", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [2, 10], "checkpoints": [{ "start": [2, 10], "end": [5, 10], "pause": 5 }, { "start": [3, 6], "end": [5, 6], "pause": 0 }] },
-        { "number": 5, "time": 83, "gap": 80, "enemies": "Bloodboil Knightclub Member", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [0, 5], "checkpoints": [{ "start": [0, 5], "end": [1, 5], "pause": 60 }, { "start": [1, 5], "end": [6, 5], "pause": 0 }] },
-        { "number": 6, "time": 87, "gap": 80, "enemies": "Bloodboil Knightclub Member", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [0, 6], "checkpoints": [{ "start": [0, 6], "end": [2, 6], "pause": 60 }, { "start": [2, 6], "end": [6, 6], "pause": 0 }] },
+        { "number": 5, "time": 83, "gap": 80, "enemies": "Bloodboil Knight", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [0, 5], "checkpoints": [{ "start": [0, 5], "end": [1, 5], "pause": 60 }, { "start": [1, 5], "end": [6, 5], "pause": 0 }] },
+        { "number": 6, "time": 87, "gap": 80, "enemies": "Bloodboil Knight", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [0, 6], "checkpoints": [{ "start": [0, 6], "end": [2, 6], "pause": 60 }, { "start": [2, 6], "end": [6, 6], "pause": 0 }] },
         { "number": 7, "time": 107, "gap": 18, "enemies": "Vicious Training Gloompincer", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [2, 10], "checkpoints": [{ "start": [2, 10], "end": [5, 10], "pause": 5 }, { "start": [3, 6], "end": [5, 6], "pause": 0 }] },
         { "number": 8, "time": 147, "gap": 17, "enemies": "Vicious Training Gloompincer", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [2, 10], "checkpoints": [{ "start": [2, 10], "end": [5, 10], "pause": 5 }, { "start": [3, 6], "end": [5, 6], "pause": 0 }] },
         { "number": 9, "time": 151, "gap": 10, "enemies": "Nameless Knight", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [5, 1], "pause": 5 }, { "start": [3, 5], "end": [5, 5], "pause": 0 }] },
-        { "number": 10, "time": 163, "gap": 80, "enemies": "Bloodboil Knightclub Member", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [0, 5], "checkpoints": [{ "start": [0, 5], "end": [1, 5], "pause": 30 }, { "start": [1, 5], "end": [6, 5], "pause": 0 }] },
-        { "number": 11, "time": 163, "gap": 80, "enemies": "Bloodboil Knightclub Member", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [0, 6], "checkpoints": [{ "start": [0, 6], "end": [1, 6], "pause": 30 }, { "start": [1, 6], "end": [6, 6], "pause": 0 }] },
-        { "number": 12, "time": 167, "gap": 80, "enemies": "Bloodboil Knightclub Member", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [0, 5], "checkpoints": [{ "start": [0, 5], "end": [2, 5], "pause": 30 }, { "start": [2, 5], "end": [6, 5], "pause": 0 }] },
-        { "number": 13, "time": 167, "gap": 80, "enemies": "Bloodboil Knightclub Member", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [0, 6], "checkpoints": [{ "start": [0, 6], "end": [2, 6], "pause": 30 }, { "start": [2, 6], "end": [6, 6], "pause": 0 }] },
+        { "number": 10, "time": 163, "gap": 80, "enemies": "Bloodboil Knight", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [0, 5], "checkpoints": [{ "start": [0, 5], "end": [1, 5], "pause": 30 }, { "start": [1, 5], "end": [6, 5], "pause": 0 }] },
+        { "number": 11, "time": 163, "gap": 80, "enemies": "Bloodboil Knight", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [0, 6], "checkpoints": [{ "start": [0, 6], "end": [1, 6], "pause": 30 }, { "start": [1, 6], "end": [6, 6], "pause": 0 }] },
+        { "number": 12, "time": 167, "gap": 80, "enemies": "Bloodboil Knight", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [0, 5], "checkpoints": [{ "start": [0, 5], "end": [2, 5], "pause": 30 }, { "start": [2, 5], "end": [6, 5], "pause": 0 }] },
+        { "number": 13, "time": 167, "gap": 80, "enemies": "Bloodboil Knight", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [0, 6], "checkpoints": [{ "start": [0, 6], "end": [2, 6], "pause": 30 }, { "start": [2, 6], "end": [6, 6], "pause": 0 }] },
 
     ],
 
-    enemies: ["Vicious Training Gloompincer", "Bloodboil Knightclub Member", "Nameless Knight"],
-    tooltips: ["Bloodboil Knightclub Member"],
+    enemies: ["Vicious Training Gloompincer", "Bloodboil Knight", "Nameless Knight"],
+    tooltips: ["Bloodboil Knight"],
 
     hazards: [],
 
@@ -5314,7 +5314,7 @@ levels["KM-4"] = {
     difficulty: "★★★★★☆☆",
     type: "hard",
     unlock: "Gravel",
-    skybox: "nightsky.png",
+    skybox: "bgarena.png",
 
     waves: [
 
@@ -5324,32 +5324,32 @@ levels["KM-4"] = {
         { "number": 3, "time": 45, "gap": 3.5, "enemies": "Vicious Training Gloompincer", "line": true, "tooltip": false, "taunt": false, "count": 3, "start": [6, 8], "checkpoints": [{ "start": [6, 8], "end": [1, 11], "pause": 0 }] },
         { "number": 4, "time": 54, "gap": 2, "enemies": "Nameless Knight", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [0, 4], "checkpoints": [{ "start": [0, 4], "end": [6, 1], "pause": 0 }] },
         { "number": 5, "time": 34, "gap": 12, "enemies": "Monster mk II", "flying": true, "line": true, "tooltip": false, "taunt": false, "count": 3, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [2, 3], "pause": 0 }, { "start": [2, 3], "end": [5, 6], "pause": 0 }, { "start": [5, 6], "end": [2, 9], "pause": 0 }, { "start": [2, 9], "end": [2, 11], "pause": 0 }] },
-        { "number": 6, "time": 54, "gap": 3.5, "enemies": "Bloodboil Knightclub Member", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [6, 8], "checkpoints": [{ "start": [6, 8], "end": [6, 9], "pause": 25 }, { "start": [6, 9], "end": [1, 11], "pause": 0 }] },
+        { "number": 6, "time": 54, "gap": 3.5, "enemies": "Bloodboil Knight", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [6, 8], "checkpoints": [{ "start": [6, 8], "end": [6, 9], "pause": 25 }, { "start": [6, 9], "end": [1, 11], "pause": 0 }] },
         { "number": 7, "time": 66, "gap": 3.5, "enemies": "Vicious Training Gloompincer", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [6, 8], "checkpoints": [{ "start": [6, 8], "end": [1, 11], "pause": 0 }] },
         { "number": 8, "time": 74, "gap": 2, "enemies": "Nameless Knight", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [0, 4], "checkpoints": [{ "start": [0, 4], "end": [6, 1], "pause": 0 }] },
         { "number": 9, "time": 88, "gap": 2, "enemies": "Nameless Knight", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [0, 4], "checkpoints": [{ "start": [0, 4], "end": [6, 1], "pause": 0 }] },
         { "number": 10, "time": 95, "gap": 2, "enemies": "Nameless Knight", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [0, 4], "checkpoints": [{ "start": [0, 4], "end": [6, 1], "pause": 0 }] },
-        { "number": 11, "time": 100, "gap": 3.5, "enemies": "Bloodboil Knightclub Member", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [6, 8], "checkpoints": [{ "start": [6, 8], "end": [6, 9], "pause": 25 }, { "start": [6, 9], "end": [1, 11], "pause": 0 }] },
+        { "number": 11, "time": 100, "gap": 3.5, "enemies": "Bloodboil Knight", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [6, 8], "checkpoints": [{ "start": [6, 8], "end": [6, 9], "pause": 25 }, { "start": [6, 9], "end": [1, 11], "pause": 0 }] },
         { "number": 12, "time": 100, "gap": 8, "enemies": "Monster mk II", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [2, 3], "pause": 0 }, { "start": [2, 3], "end": [5, 6], "pause": 0 }, { "start": [5, 6], "end": [2, 9], "pause": 0 }, { "start": [2, 9], "end": [2, 11], "pause": 0 }] },
-        { "number": 13, "time": 110, "gap": 0, "enemies": "Roar Knightclub Member", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [0, 4], "checkpoints": [{ "start": [0, 4], "end": [1, 4], "pause": 5 }, { "start": [1, 4], "end": [1, 11], "pause": 0 }] },
-        { "number": 14, "time": 118, "gap": 0, "enemies": "Roar Knightclub Member", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [0, 4], "checkpoints": [{ "start": [0, 4], "end": [1, 4], "pause": 5 }, { "start": [1, 4], "end": [6, 1], "pause": 0 }] },
+        { "number": 13, "time": 110, "gap": 0, "enemies": "Roar Knight", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [0, 4], "checkpoints": [{ "start": [0, 4], "end": [1, 4], "pause": 5 }, { "start": [1, 4], "end": [1, 11], "pause": 0 }] },
+        { "number": 14, "time": 118, "gap": 0, "enemies": "Roar Knight", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [0, 4], "checkpoints": [{ "start": [0, 4], "end": [1, 4], "pause": 5 }, { "start": [1, 4], "end": [6, 1], "pause": 0 }] },
         { "number": 15, "time": 116, "gap": 1, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 20, "start": [3, 6], "checkpoints": [{ "start": [3, 6], "end": [3, 5], "pause": 0 }, { "start": [3, 5], "end": [5, 5], "pause": 0 }, { "start": [5, 5], "end": [5, 7], "pause": 0 }, { "start": [5, 7], "end": [1, 7], "pause": 0 }, { "start": [1, 7], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [5, 5], "pause": 0 }, { "start": [5, 5], "end": [5, 7], "pause": 0 }, { "start": [5, 7], "end": [1, 7], "pause": 0 }, { "start": [1, 7], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [6, 1], "pause": 0 }] },
-        { "number": 16, "time": 131, "gap": 0, "enemies": "Roar Knightclub Member", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [0, 4], "checkpoints": [{ "start": [0, 4], "end": [1, 4], "pause": 0 }, { "start": [1, 4], "end": [6, 1], "pause": 0 }] },
-        { "number": 17, "time": 137, "gap": 0, "enemies": "Roar Knightclub Member", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [0, 4], "checkpoints": [{ "start": [0, 4], "end": [1, 4], "pause": 5 }, { "start": [1, 4], "end": [1, 11], "pause": 0 }] },
-        { "number": 18, "time": 142, "gap": 3.5, "enemies": "Bloodboil Knightclub Member", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [6, 8], "checkpoints": [{ "start": [6, 8], "end": [4, 10], "pause": 5 }, { "start": [4, 10], "end": [1, 11], "pause": 0 }] },
-        { "number": 19, "time": 148, "gap": 3.5, "enemies": "Bloodboil Knightclub Member", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [6, 8], "checkpoints": [{ "start": [6, 8], "end": [6, 9], "pause": 10 }, { "start": [6, 9], "end": [1, 11], "pause": 0 }] },
+        { "number": 16, "time": 131, "gap": 0, "enemies": "Roar Knight", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [0, 4], "checkpoints": [{ "start": [0, 4], "end": [1, 4], "pause": 0 }, { "start": [1, 4], "end": [6, 1], "pause": 0 }] },
+        { "number": 17, "time": 137, "gap": 0, "enemies": "Roar Knight", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [0, 4], "checkpoints": [{ "start": [0, 4], "end": [1, 4], "pause": 5 }, { "start": [1, 4], "end": [1, 11], "pause": 0 }] },
+        { "number": 18, "time": 142, "gap": 3.5, "enemies": "Bloodboil Knight", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [6, 8], "checkpoints": [{ "start": [6, 8], "end": [4, 10], "pause": 5 }, { "start": [4, 10], "end": [1, 11], "pause": 0 }] },
+        { "number": 19, "time": 148, "gap": 3.5, "enemies": "Bloodboil Knight", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [6, 8], "checkpoints": [{ "start": [6, 8], "end": [6, 9], "pause": 10 }, { "start": [6, 9], "end": [1, 11], "pause": 0 }] },
         { "number": 20, "time": 149, "gap": 1, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 5, "start": [3, 6], "checkpoints": [{ "start": [3, 6], "end": [3, 5], "pause": 0 }, { "start": [3, 5], "end": [5, 5], "pause": 0 }, { "start": [5, 5], "end": [5, 7], "pause": 0 }, { "start": [5, 7], "end": [1, 7], "pause": 0 }, { "start": [1, 7], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [5, 5], "pause": 0 }, { "start": [5, 5], "end": [5, 7], "pause": 0 }, { "start": [5, 7], "end": [1, 7], "pause": 0 }, { "start": [1, 7], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [6, 1], "pause": 0 }] },
         { "number": 21, "time": 154, "gap": 10, "enemies": "Monster mk II", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [2, 3], "pause": 0 }, { "start": [2, 3], "end": [5, 6], "pause": 0 }, { "start": [5, 6], "end": [2, 9], "pause": 0 }, { "start": [2, 9], "end": [2, 11], "pause": 0 }] },
-        { "number": 22, "time": 159, "gap": 0, "enemies": "Roar Knightclub Member", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [0, 4], "checkpoints": [{ "start": [0, 4], "end": [1, 4], "pause": 0 }, { "start": [1, 4], "end": [6, 1], "pause": 0 }] },
-        { "number": 23, "time": 167, "gap": 3.5, "enemies": "Bloodboil Knightclub Member", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [6, 8], "checkpoints": [{ "start": [6, 8], "end": [4, 10], "pause": 10 }, { "start": [4, 10], "end": [1, 11], "pause": 0 }] },
+        { "number": 22, "time": 159, "gap": 0, "enemies": "Roar Knight", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [0, 4], "checkpoints": [{ "start": [0, 4], "end": [1, 4], "pause": 0 }, { "start": [1, 4], "end": [6, 1], "pause": 0 }] },
+        { "number": 23, "time": 167, "gap": 3.5, "enemies": "Bloodboil Knight", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [6, 8], "checkpoints": [{ "start": [6, 8], "end": [4, 10], "pause": 10 }, { "start": [4, 10], "end": [1, 11], "pause": 0 }] },
         { "number": 24, "time": 170, "gap": 1, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 5, "start": [3, 6], "checkpoints": [{ "start": [3, 6], "end": [3, 5], "pause": 0 }, { "start": [3, 5], "end": [5, 5], "pause": 0 }, { "start": [5, 5], "end": [5, 7], "pause": 0 }, { "start": [5, 7], "end": [1, 7], "pause": 0 }, { "start": [1, 7], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [5, 5], "pause": 0 }, { "start": [5, 5], "end": [5, 7], "pause": 0 }, { "start": [5, 7], "end": [1, 7], "pause": 0 }, { "start": [1, 7], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [6, 1], "pause": 0 }] },
-        { "number": 25, "time": 173, "gap": 3.5, "enemies": "Bloodboil Knightclub Member", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [6, 8], "checkpoints": [{ "start": [6, 8], "end": [6, 9], "pause": 10 }, { "start": [6, 9], "end": [1, 11], "pause": 0 }] },
-        { "number": 26, "time": 175, "gap": 0, "enemies": "Bloodboil Knightclub Member", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [0, 4], "checkpoints": [{ "start": [0, 4], "end": [1, 4], "pause": 20 }, { "start": [1, 4], "end": [1, 11], "pause": 0 }] },
+        { "number": 25, "time": 173, "gap": 3.5, "enemies": "Bloodboil Knight", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [6, 8], "checkpoints": [{ "start": [6, 8], "end": [6, 9], "pause": 10 }, { "start": [6, 9], "end": [1, 11], "pause": 0 }] },
+        { "number": 26, "time": 175, "gap": 0, "enemies": "Bloodboil Knight", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [0, 4], "checkpoints": [{ "start": [0, 4], "end": [1, 4], "pause": 20 }, { "start": [1, 4], "end": [1, 11], "pause": 0 }] },
         { "number": 27, "time": 185, "gap": 1, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 5, "start": [3, 6], "checkpoints": [{ "start": [3, 6], "end": [3, 5], "pause": 0 }, { "start": [3, 5], "end": [5, 5], "pause": 0 }, { "start": [5, 5], "end": [5, 7], "pause": 0 }, { "start": [5, 7], "end": [1, 7], "pause": 0 }, { "start": [1, 7], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [5, 5], "pause": 0 }, { "start": [5, 5], "end": [5, 7], "pause": 0 }, { "start": [5, 7], "end": [1, 7], "pause": 0 }, { "start": [1, 7], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [6, 1], "pause": 0 }] },
 
     ],
 
-    enemies: ["Vicious Training Gloompincer", "Roar Knightclub Member", "Originium Slug", "Monster mk II", "Bloodboil Knightclub Member", "Nameless Knight"],
+    enemies: ["Vicious Training Gloompincer", "Roar Knight", "Originium Slug", "Monster mk II", "Bloodboil Knight", "Nameless Knight"],
     tooltips: [],
 
     hazards: ["altar"],
@@ -5382,12 +5382,12 @@ levels["KM-5"] = {
     offsetZ: 0,
     difficulty: "★★★★★☆☆",
     type: "normal",
-    skybox: "desert.png",
+    skybox: "bgarena.png",
 
     waves: [
 
         {
-            "number": 0, "time": 3, "gap": 1, "enemies": "Bloodboil Knightclub Member", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 11], "checkpoints": [
+            "number": 0, "time": 3, "gap": 1, "enemies": "Bloodboil Knight", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 11], "checkpoints": [
                 { "start": [3, 11], "end": [3, 10], "pause": 15 },
                 { "start": [3, 10], "end": [3, 9], "pause": 10 },
                 { "start": [3, 9], "end": [4, 10], "pause": 10 },
@@ -5403,17 +5403,17 @@ levels["KM-5"] = {
         { "number": 5, "time": 47, "gap": 5, "enemies": "Nameless Knight", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 11], "pause": 0 }] },
         { "number": 6, "time": 48, "gap": 4, "enemies": "Knight Shielder", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 2], "pause": 0 }, { "start": [5, 2], "end": [3, 2], "pause": 0 }, { "start": [3, 2], "end": [3, 3], "pause": 0 }, { "start": [3, 3], "end": [1, 11], "pause": 0 }] },
         { "number": 7, "time": 60, "gap": 3, "enemies": "Nameless Knight", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 11], "pause": 0 }] },
-        { "number": 8, "time": 83, "gap": 5, "enemies": "Roar Knightclub Member", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 2], "pause": 5 }, { "start": [1, 2], "end": [1, 11], "pause": 0 }] },
-        { "number": 9, "time": 98, "gap": 5, "enemies": "Roar Knightclub Member", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 2], "pause": 0 }, { "start": [1, 2], "end": [1, 11], "pause": 0 }] },
+        { "number": 8, "time": 83, "gap": 5, "enemies": "Roar Knight", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 2], "pause": 5 }, { "start": [1, 2], "end": [1, 11], "pause": 0 }] },
+        { "number": 9, "time": 98, "gap": 5, "enemies": "Roar Knight", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 2], "pause": 0 }, { "start": [1, 2], "end": [1, 11], "pause": 0 }] },
         {
-            "number": 10, "time": 90, "gap": 1, "enemies": "Bloodboil Knightclub Member", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 11], "checkpoints": [
+            "number": 10, "time": 90, "gap": 1, "enemies": "Bloodboil Knight", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 11], "checkpoints": [
                 { "start": [3, 11], "end": [3, 9], "pause": 10 },
                 { "start": [3, 9], "end": [4, 9], "pause": 10 },
                 { "start": [4, 9], "end": [5, 9], "pause": 15 },
                 { "start": [5, 9], "end": [1, 11], "pause": 0 }]
         },
         {
-            "number": 11, "time": 99, "gap": 1, "enemies": "Bloodboil Knightclub Member", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 11], "checkpoints": [
+            "number": 11, "time": 99, "gap": 1, "enemies": "Bloodboil Knight", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 11], "checkpoints": [
                 { "start": [3, 11], "end": [3, 10], "pause": 10 },
                 { "start": [3, 10], "end": [4, 10], "pause": 10 },
                 { "start": [4, 10], "end": [5, 10], "pause": 15 },
@@ -5422,14 +5422,14 @@ levels["KM-5"] = {
         },
         { "number": 12, "time": 102, "gap": 8, "enemies": "Knight Shielder", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 2], "pause": 0 }, { "start": [5, 2], "end": [3, 2], "pause": 0 }, { "start": [3, 2], "end": [3, 3], "pause": 0 }, { "start": [3, 3], "end": [1, 11], "pause": 0 }] },
         { "number": 13, "time": 106, "gap": 4, "enemies": "Nameless Knight", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 11], "pause": 0 }] },
-        { "number": 14, "time": 115, "gap": 5, "enemies": "Roar Knightclub Member", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 2], "pause": 0 }, { "start": [1, 2], "end": [1, 11], "pause": 0 }] },
+        { "number": 14, "time": 115, "gap": 5, "enemies": "Roar Knight", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 2], "pause": 0 }, { "start": [1, 2], "end": [1, 11], "pause": 0 }] },
         { "number": 15, "time": 117, "gap": 4, "enemies": "Nameless Knight", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 11], "pause": 0 }] },
         { "number": 16, "time": 124, "gap": 8, "enemies": "Knight Shielder", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 2], "pause": 0 }, { "start": [5, 2], "end": [3, 2], "pause": 0 }, { "start": [3, 2], "end": [3, 3], "pause": 0 }, { "start": [3, 3], "end": [1, 11], "pause": 0 }] },
-        { "number": 17, "time": 150, "gap": 5, "enemies": "Roar Knightclub Member", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 2], "pause": 0 }, { "start": [1, 2], "end": [1, 11], "pause": 0 }] },
+        { "number": 17, "time": 150, "gap": 5, "enemies": "Roar Knight", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 2], "pause": 0 }, { "start": [1, 2], "end": [1, 11], "pause": 0 }] },
         { "number": 18, "time": 150, "gap": 8, "enemies": "Knight Shielder", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 2], "pause": 0 }, { "start": [5, 2], "end": [3, 2], "pause": 0 }, { "start": [3, 2], "end": [3, 3], "pause": 0 }, { "start": [3, 3], "end": [4, 3], "pause": 25 }, { "start": [4, 3], "end": [1, 11], "pause": 0 }] },
         { "number": 19, "time": 152, "gap": 8, "enemies": "Knight Shielder", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 2], "pause": 0 }, { "start": [5, 2], "end": [3, 2], "pause": 0 }, { "start": [3, 2], "end": [3, 3], "pause": 25 }, { "start": [3, 3], "end": [1, 11], "pause": 0 }] },
         {
-            "number": 20, "time": 152, "gap": 1, "enemies": "Bloodboil Knightclub Member", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 11], "checkpoints": [
+            "number": 20, "time": 152, "gap": 1, "enemies": "Bloodboil Knight", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 11], "checkpoints": [
                 { "start": [3, 11], "end": [3, 9], "pause": 10 },
                 { "start": [3, 9], "end": [4, 9], "pause": 10 },
                 { "start": [4, 9], "end": [5, 9], "pause": 10 },
@@ -5437,7 +5437,7 @@ levels["KM-5"] = {
         },
         { "number": 21, "time": 154, "gap": 8, "enemies": "Knight Shielder", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 2], "pause": 0 }, { "start": [5, 2], "end": [3, 2], "pause": 25 }, { "start": [3, 2], "end": [3, 3], "pause": 0 }, { "start": [3, 3], "end": [1, 11], "pause": 0 }] },
         {
-            "number": 22, "time": 99, "gap": 1, "enemies": "Bloodboil Knightclub Member", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 11], "checkpoints": [
+            "number": 22, "time": 99, "gap": 1, "enemies": "Bloodboil Knight", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 11], "checkpoints": [
                 { "start": [3, 11], "end": [3, 10], "pause": 10 },
                 { "start": [3, 10], "end": [4, 10], "pause": 10 },
                 { "start": [4, 10], "end": [5, 10], "pause": 10 },
@@ -5445,28 +5445,28 @@ levels["KM-5"] = {
         },
         { "number": 23, "time": 156, "gap": 8, "enemies": "Knight Shielder", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 2], "pause": 0 }, { "start": [5, 2], "end": [4, 2], "pause": 25 }, { "start": [4, 2], "end": [3, 2], "pause": 0 }, { "start": [3, 2], "end": [3, 3], "pause": 0 }, { "start": [3, 3], "end": [1, 11], "pause": 0 }] },
         {
-            "number": 25, "time": 175, "gap": 1, "enemies": "Bloodboil Knightclub Member", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 11], "checkpoints": [
+            "number": 25, "time": 175, "gap": 1, "enemies": "Bloodboil Knight", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 11], "checkpoints": [
                 { "start": [3, 11], "end": [3, 9], "pause": 5 },
                 { "start": [3, 9], "end": [4, 9], "pause": 8 },
                 { "start": [4, 9], "end": [5, 9], "pause": 5 },
                 { "start": [5, 9], "end": [1, 11], "pause": 0 }]
         },
         {
-            "number": 28, "time": 178, "gap": 1, "enemies": "Bloodboil Knightclub Member", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 11], "checkpoints": [
+            "number": 28, "time": 178, "gap": 1, "enemies": "Bloodboil Knight", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 11], "checkpoints": [
                 { "start": [3, 11], "end": [3, 10], "pause": 5 },
                 { "start": [3, 10], "end": [4, 10], "pause": 8 },
                 { "start": [4, 10], "end": [5, 10], "pause": 5 },
                 { "start": [5, 10], "end": [1, 11], "pause": 0 }]
         },
         {
-            "number": 30, "time": 187, "gap": 1, "enemies": "Bloodboil Knightclub Member", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 11], "checkpoints": [
+            "number": 30, "time": 187, "gap": 1, "enemies": "Bloodboil Knight", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 11], "checkpoints": [
                 { "start": [3, 11], "end": [3, 9], "pause": 5 },
                 { "start": [3, 9], "end": [4, 9], "pause": 5 },
                 { "start": [4, 9], "end": [5, 9], "pause": 5 },
                 { "start": [5, 9], "end": [1, 11], "pause": 0 }]
         },
         {
-            "number": 31, "time": 190, "gap": 1, "enemies": "Bloodboil Knightclub Member", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 11], "checkpoints": [
+            "number": 31, "time": 190, "gap": 1, "enemies": "Bloodboil Knight", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 11], "checkpoints": [
                 { "start": [3, 11], "end": [3, 10], "pause": 5 },
                 { "start": [3, 10], "end": [4, 10], "pause": 5 },
                 { "start": [4, 10], "end": [5, 10], "pause": 5 },
@@ -5476,12 +5476,12 @@ levels["KM-5"] = {
         { "number": 33, "time": 181, "gap": 4, "enemies": "Nameless Knight", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 11], "pause": 0 }] },
         { "number": 34, "time": 195, "gap": 4, "enemies": "Nameless Knight", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 11], "pause": 0 }] },
         { "number": 35, "time": 196, "gap": 4, "enemies": "Nameless Knight", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 11], "pause": 0 }] },
-        { "number": 14, "time": 170, "gap": 5, "enemies": "Roar Knightclub Member", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 2], "pause": 0 }, { "start": [1, 2], "end": [1, 11], "pause": 0 }] },
-        { "number": 14, "time": 180, "gap": 5, "enemies": "Roar Knightclub Member", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 2], "pause": 0 }, { "start": [1, 2], "end": [1, 11], "pause": 0 }] },
+        { "number": 14, "time": 170, "gap": 5, "enemies": "Roar Knight", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 2], "pause": 0 }, { "start": [1, 2], "end": [1, 11], "pause": 0 }] },
+        { "number": 14, "time": 180, "gap": 5, "enemies": "Roar Knight", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 2], "pause": 0 }, { "start": [1, 2], "end": [1, 11], "pause": 0 }] },
 
     ],
 
-    enemies: ["Knight Shielder", "Roar Knightclub Member", "Bloodboil Knightclub Member", "Nameless Knight"],
+    enemies: ["Knight Shielder", "Roar Knight", "Bloodboil Knight", "Nameless Knight"],
     tooltips: ["Knight Shielder"],
 
     hazards: [],
@@ -5514,7 +5514,7 @@ levels["KM-6"] = {
     offsetZ: 0,
     difficulty: "★★★★★☆☆",
     type: "normal",
-    skybox: "city.png",
+    skybox: "bgarena.png",
 
     waves: [
 
@@ -5522,24 +5522,24 @@ levels["KM-6"] = {
         { "number": 1, "time": 3, "gap": 5, "enemies": "Vicious Training Gloompincer", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [5, 11], "checkpoints": [{ "start": [5, 11], "end": [5, 10], "pause": 5 },{ "start": [5, 10], "end": [3, 6], "pause": 0 },{ "start": [3, 6], "end": [5, 1], "pause": 0 }] },
         { "number": 2, "time": 28, "gap": 6, "enemies": "Nameless Knight", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 2], "pause": 0 },{ "start": [1, 2], "end": [3, 6], "pause": 0 },{ "start": [3, 6], "end": [0, 10], "pause": 0 }] },
         { "number": 3, "time": 30, "gap": 9, "enemies": "Vicious Training Gloompincer", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [5, 11], "checkpoints": [{ "start": [5, 11], "end": [5, 10], "pause": 0 },{ "start": [5, 10], "end": [3, 6], "pause": 0 },{ "start": [3, 6], "end": [5, 1], "pause": 0 }] },
-        { "number": 4, "time": 52, "gap": 9, "enemies": "Bloodboil Knightclub Member", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [5, 11], "checkpoints": [{ "start": [5, 11], "end": [5, 10], "pause": 16 },{ "start": [5, 10], "end": [3, 6], "pause": 0 },{ "start": [3, 6], "end": [5, 1], "pause": 0 }] },
+        { "number": 4, "time": 52, "gap": 9, "enemies": "Bloodboil Knight", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [5, 11], "checkpoints": [{ "start": [5, 11], "end": [5, 10], "pause": 16 },{ "start": [5, 10], "end": [3, 6], "pause": 0 },{ "start": [3, 6], "end": [5, 1], "pause": 0 }] },
         { "number": 5, "time": 50, "gap": 6, "enemies": "Knight Shielder", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 2], "pause": 16 },{ "start": [1, 2], "end": [3, 6], "pause": 0 },{ "start": [3, 6], "end": [0, 10], "pause": 0 }] },
         { "number": 6, "time": 62, "gap": 5, "enemies": "Nameless Knight", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 2], "pause": 0 },{ "start": [1, 2], "end": [3, 6], "pause": 0 },{ "start": [3, 6], "end": [0, 10], "pause": 0 }] },
         { "number": 7, "time": 62, "gap": 9, "enemies": "Vicious Training Gloompincer", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [5, 11], "checkpoints": [{ "start": [5, 11], "end": [5, 10], "pause": 0 },{ "start": [5, 10], "end": [3, 6], "pause": 0 },{ "start": [3, 6], "end": [5, 1], "pause": 0 }] },
-        { "number": 8, "time": 88, "gap": 9, "enemies": "Roar Knightclub Member", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [5, 11], "checkpoints": [{ "start": [5, 11], "end": [5, 10], "pause": 0 },{ "start": [5, 10], "end": [3, 6], "pause": 0 },{ "start": [3, 6], "end": [5, 1], "pause": 0 }] },
+        { "number": 8, "time": 88, "gap": 9, "enemies": "Roar Knight", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [5, 11], "checkpoints": [{ "start": [5, 11], "end": [5, 10], "pause": 0 },{ "start": [5, 10], "end": [3, 6], "pause": 0 },{ "start": [3, 6], "end": [5, 1], "pause": 0 }] },
         { "number": 9, "time": 89, "gap": 3, "enemies": "Nameless Knight", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 2], "pause": 0 },{ "start": [1, 2], "end": [3, 6], "pause": 0 },{ "start": [3, 6], "end": [0, 10], "pause": 0 }] },
         { "number": 10, "time": 110, "gap": 3, "enemies": "'Left-hand' Tytus Topola", "line": true, "tooltip": true, "taunt": true, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 2], "pause": 40 },{ "start": [1, 2], "end": [3, 6], "pause": 0 },{ "start": [3, 6], "end": [0, 10], "pause": 0 }] },
-        { "number": 11, "time": 115, "gap": 6, "enemies": "Roar Knightclub Member", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [5, 11], "checkpoints": [{ "start": [5, 11], "end": [5, 10], "pause": 0 },{ "start": [5, 10], "end": [3, 6], "pause": 0 },{ "start": [3, 6], "end": [5, 1], "pause": 0 }] },
+        { "number": 11, "time": 115, "gap": 6, "enemies": "Roar Knight", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [5, 11], "checkpoints": [{ "start": [5, 11], "end": [5, 10], "pause": 0 },{ "start": [5, 10], "end": [3, 6], "pause": 0 },{ "start": [3, 6], "end": [5, 1], "pause": 0 }] },
         { "number": 12, "time": 115, "gap": 6, "enemies": "Knight Shielder", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 2], "pause": 5 },{ "start": [1, 2], "end": [3, 6], "pause": 0 },{ "start": [3, 6], "end": [0, 10], "pause": 0 }] },
         { "number": 13, "time": 127, "gap": 9, "enemies": "Vicious Training Gloompincer", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [5, 11], "checkpoints": [{ "start": [5, 11], "end": [5, 10], "pause": 0 },{ "start": [5, 10], "end": [3, 6], "pause": 0 },{ "start": [3, 6], "end": [5, 1], "pause": 0 }] },
-        { "number": 14, "time": 140, "gap": 9, "enemies": "Bloodboil Knightclub Member", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [5, 11], "checkpoints": [{ "start": [5, 11], "end": [5, 10], "pause": 40 },{ "start": [5, 10], "end": [3, 6], "pause": 0 },{ "start": [3, 6], "end": [5, 1], "pause": 0 }] },
+        { "number": 14, "time": 140, "gap": 9, "enemies": "Bloodboil Knight", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [5, 11], "checkpoints": [{ "start": [5, 11], "end": [5, 10], "pause": 40 },{ "start": [5, 10], "end": [3, 6], "pause": 0 },{ "start": [3, 6], "end": [5, 1], "pause": 0 }] },
         { "number": 15, "time": 144, "gap": 6, "enemies": "Vicious Training Gloompincer", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [5, 11], "checkpoints": [{ "start": [5, 11], "end": [5, 10], "pause": 0 },{ "start": [5, 10], "end": [3, 6], "pause": 0 },{ "start": [3, 6], "end": [5, 1], "pause": 0 }] },
         { "number": 16, "time": 145, "gap": 6, "enemies": "Knight Shielder", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 2], "pause": 5 },{ "start": [1, 2], "end": [3, 6], "pause": 0 },{ "start": [3, 6], "end": [0, 10], "pause": 0 }] },
         { "number": 17, "time": 161, "gap": 5, "enemies": "Nameless Knight", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 2], "pause": 0 },{ "start": [1, 2], "end": [3, 6], "pause": 0 },{ "start": [3, 6], "end": [0, 10], "pause": 0 }] },
         { "number": 18, "time": 176, "gap": 3, "enemies": "Vicious Training Gloompincer", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [5, 11], "checkpoints": [{ "start": [5, 11], "end": [5, 10], "pause": 0 },{ "start": [5, 10], "end": [3, 6], "pause": 0 },{ "start": [3, 6], "end": [5, 1], "pause": 0 }] },
     ],
 
-    enemies: ["Knight Shielder", "Roar Knightclub Member", "Bloodboil Knightclub Member","Vicious Training Gloompincer","'Left-hand' Tytus Topola", "Nameless Knight"],
+    enemies: ["Knight Shielder", "Roar Knight", "Bloodboil Knight","Vicious Training Gloompincer","'Left-hand' Tytus Topola", "Nameless Knight"],
     tooltips: ["'Left-hand' Tytus Topola"],
 
     hazards: ["icealtar"],
@@ -5572,7 +5572,7 @@ levels["KM-7"] = {
     difficulty: "★★★★★★☆",
     type: "hard",
     unlock: "Nearl",
-    skybox: "bluebg.png",
+    skybox: "bgarena.png",
     poison:50,
 
     waves: [
@@ -5635,28 +5635,28 @@ levels["KM-7"] = {
 levels["KM-8"] = {
     level: "KM-8",
     name: "Corrosion",
-    bgm: "km_2",
+    bgm: "km_3",
     initialdp: 10,
     squadlimit: 8,
     hp: 3,
     background: "km",
-    description: "The competition is reaching its climax.\nYou might wanna think about using any trump card\n you have left before you get crushed by the monsters lying ahead.\n\n<Healing Rune> Units deployed on this tile constantly regenerate HP.\n<Bloodrush Rune> Allies deployed on it and enemies who have passed it\nwill take constant damage,\nbut their ATK and Attack Speed will be increased significantly.",
+    description: "The competition is reaching its climax.\nYou might wanna consider using any trump card\n you have left before you get crushed by the monsters lying ahead.\n\n<Healing Rune> Units deployed on this tile constantly regenerate HP.\n<Bloodrush Rune> Allies deployed on it and enemies who have passed it\nwill take constant damage,\nbut their ATK and Attack Speed will be increased significantly.",
     place: "LongDay",
     offsetX: -10,
     offsetY: -40,
     offsetZ: 15,
     difficulty: "★★★★★★☆",
     type: "normal",
-    skybox: "city.png",
+    skybox: "bgarena.png",
 
     waves: [
 
-        { "number": 0, "time": 0, "gap": 5, "enemies": "Corrupted Knight", "line": true, "tooltip": true, "taunt": false, "count": 1, "start": [3, 6], "checkpoints": [{ "start": [3, 6], "end": [3, 6], "pause": 550 }] },
+        { "number": 0, "time": 0, "gap": 5, "enemies": "Withered Knight", "line": true, "tooltip": true, "taunt": false, "count": 1, "start": [3, 6], "checkpoints": [{ "start": [3, 6], "end": [3, 6], "pause": 550 }] },
 
     ],
 
-    enemies: ["Knight Shielder", "Monster mk II","Corrupted Knight", "Nameless Knight"],
-    tooltips: ["Corrupted Knight"],
+    enemies: ["Knight Shielder", "Monster mk II","Withered Knight", "Nameless Knight"],
+    tooltips: ["Withered Knight"],
 
     hazards: [],
 
@@ -5697,8 +5697,8 @@ levels["KM-H"] = {
     skybox: "desert.png",
 
     waves: [
-        { "number": 0, "time": 0, "gap": 5, "enemies": "Bloodboil Knightclub Member", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 11], "checkpoints": [{ "start": [3, 11], "end": [3, 10], "pause": 90 }, { "start": [3, 10], "end": [1, 11], "pause": 0 }] },
-        { "number": 1, "time": 0, "gap": 5, "enemies": "Bloodboil Knightclub Member", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [4, 11], "checkpoints": [{ "start": [4, 11], "end": [4, 10], "pause": 90 }, { "start": [4, 10], "end": [6, 11], "pause": 0 }] },
+        { "number": 0, "time": 0, "gap": 5, "enemies": "Bloodboil Knight", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 11], "checkpoints": [{ "start": [3, 11], "end": [3, 10], "pause": 90 }, { "start": [3, 10], "end": [1, 11], "pause": 0 }] },
+        { "number": 1, "time": 0, "gap": 5, "enemies": "Bloodboil Knight", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [4, 11], "checkpoints": [{ "start": [4, 11], "end": [4, 10], "pause": 90 }, { "start": [4, 10], "end": [6, 11], "pause": 0 }] },
 
         //tytus
         { "number": 2, "time": 5, "gap": 5, "enemies": "'Left-hand' Tytus Topola", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [3, 1], "pause": 200 }, { "start": [3, 1], "end": [2, 2], "pause": 0 }, { "start": [2, 2], "end": [1, 11], "pause": 0 }] },
@@ -5707,19 +5707,19 @@ levels["KM-H"] = {
         { "number": 4, "time": 23, "gap": 8, "enemies": "Vicious Training Gloompincer", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [6, 11], "pause": 0 }] },
         { "number": 5, "time": 35, "gap": 4, "enemies": "Vicious Training Gloompincer", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [6, 11], "pause": 0 }] },
 
-        { "number": 6, "time": 35, "gap": 20, "enemies": "Roar Knightclub Member", "line": true, "tooltip": false, "taunt": false, "count": 2, "start": [3, 11], "checkpoints": [{ "start": [3, 11], "end": [1, 11], "pause": 0 }] },
-        { "number": 7, "time": 35, "gap": 20, "enemies": "Roar Knightclub Member", "line": true, "tooltip": false, "taunt": false, "count": 2, "start": [4, 11], "checkpoints": [{ "start": [4, 11], "end": [6, 11], "pause": 0 }] },
+        { "number": 6, "time": 35, "gap": 20, "enemies": "Roar Knight", "line": true, "tooltip": false, "taunt": false, "count": 2, "start": [3, 11], "checkpoints": [{ "start": [3, 11], "end": [1, 11], "pause": 0 }] },
+        { "number": 7, "time": 35, "gap": 20, "enemies": "Roar Knight", "line": true, "tooltip": false, "taunt": false, "count": 2, "start": [4, 11], "checkpoints": [{ "start": [4, 11], "end": [6, 11], "pause": 0 }] },
         { "number": 5, "time": 45, "gap": 4, "enemies": "Vicious Training Gloompincer", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [6, 11], "pause": 0 }] },
-        { "number": 1, "time": 53, "gap": 20, "enemies": "Roar Knightclub Member", "line": true, "tooltip": false, "taunt": false, "count": 2, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 11], "pause": 0 }] },
+        { "number": 1, "time": 53, "gap": 20, "enemies": "Roar Knight", "line": true, "tooltip": false, "taunt": false, "count": 2, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 11], "pause": 0 }] },
         { "number": 5, "time": 66, "gap": 4, "enemies": "Vicious Training Gloompincer", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [6, 11], "pause": 0 }] },
         { "number": 1, "time": 80, "gap": 20, "enemies": "Knight Shielder", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 11], "pause": 0 }] },
         { "number": 6, "time": 110, "gap": 45, "enemies": "Knight Shielder", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 11], "checkpoints": [{ "start": [3, 11], "end": [1, 11], "pause": 0 }] },
         { "number": 7, "time": 110, "gap": 45, "enemies": "Knight Shielder", "line": false, "tooltip": false, "taunt": true, "count": 2, "start": [4, 11], "checkpoints": [{ "start": [4, 11], "end": [6, 11], "pause": 0 }] },
         { "number": 5, "time": 123, "gap": 4, "enemies": "Vicious Training Gloompincer", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [6, 11], "pause": 0 }] },
-        { "number": 6, "time": 128, "gap": 20, "enemies": "Roar Knightclub Member", "line": false, "tooltip": false, "taunt": false, "count": 5, "start": [3, 11], "checkpoints": [{ "start": [3, 11], "end": [1, 11], "pause": 0 }] },
-        { "number": 7, "time": 128, "gap": 20, "enemies": "Roar Knightclub Member", "line": false, "tooltip": false, "taunt": true, "count": 5, "start": [4, 11], "checkpoints": [{ "start": [4, 11], "end": [6, 11], "pause": 0 }] },
-        { "number": 0, "time": 140, "gap": 5, "enemies": "Bloodboil Knightclub Member", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 11], "checkpoints": [{ "start": [3, 11], "end": [3, 10], "pause": 60 }, { "start": [3, 10], "end": [1, 11], "pause": 0 }] },
-        { "number": 1, "time": 140, "gap": 5, "enemies": "Bloodboil Knightclub Member", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [4, 11], "checkpoints": [{ "start": [4, 11], "end": [4, 10], "pause": 60 }, { "start": [4, 10], "end": [6, 11], "pause": 0 }] },
+        { "number": 6, "time": 128, "gap": 20, "enemies": "Roar Knight", "line": false, "tooltip": false, "taunt": false, "count": 5, "start": [3, 11], "checkpoints": [{ "start": [3, 11], "end": [1, 11], "pause": 0 }] },
+        { "number": 7, "time": 128, "gap": 20, "enemies": "Roar Knight", "line": false, "tooltip": false, "taunt": true, "count": 5, "start": [4, 11], "checkpoints": [{ "start": [4, 11], "end": [6, 11], "pause": 0 }] },
+        { "number": 0, "time": 140, "gap": 5, "enemies": "Bloodboil Knight", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 11], "checkpoints": [{ "start": [3, 11], "end": [3, 10], "pause": 60 }, { "start": [3, 10], "end": [1, 11], "pause": 0 }] },
+        { "number": 1, "time": 140, "gap": 5, "enemies": "Bloodboil Knight", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [4, 11], "checkpoints": [{ "start": [4, 11], "end": [4, 10], "pause": 60 }, { "start": [4, 10], "end": [6, 11], "pause": 0 }] },
         { "number": 5, "time": 135, "gap": 3, "enemies": "Vicious Training Gloompincer", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [6, 11], "pause": 0 }] },
         { "number": 1, "time": 140, "gap": 30, "enemies": "Knight Shielder", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 11], "pause": 0 }] },
         { "number": 5, "time": 160, "gap": 3, "enemies": "Vicious Training Gloompincer", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [6, 11], "pause": 0 }] },
@@ -5727,7 +5727,7 @@ levels["KM-H"] = {
         { "number": 5, "time": 190, "gap": 3, "enemies": "Vicious Training Gloompincer", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [6, 11], "pause": 0 }] },
     ],
 
-    enemies: ["Bloodboil Knightclub Member", "Knight Shielder", "Roar Knightclub Member", "Vicious Training Gloompincer", "'Left-hand' Tytus Topola"],
+    enemies: ["Bloodboil Knight", "Knight Shielder", "Roar Knight", "Vicious Training Gloompincer", "'Left-hand' Tytus Topola"],
     tooltips: [],
     hazards: ["altar", "icealtar"],
 

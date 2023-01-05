@@ -1,5 +1,5 @@
 class Bullet {
-    constructor(source, scene, target, lvlcontroller, skill = false) {
+    constructor(source, scene, target, lvlcontroller, skill = false, spatk) {
         this.source = source;
         this.scene = scene,
             this.lvl = lvlcontroller
@@ -17,6 +17,7 @@ class Bullet {
         this.friction = 0;
         this.splashradius;
         this.isplayer = this.source.chara.class != undefined
+        this.spatk = spatk
         this.createBullet();
     }
 
@@ -117,9 +118,22 @@ class Bullet {
             }
             else {
                 //TODO CHANGE HARD CODED
-                if (this.source.chara.name == "Frostnova" || this.source.chara.name == "Frostnova2" || this.source.chara.name == "FrostnovaEX" || this.source.chara.name == "FrostnovaEX2")
+                if (this.source.chara.name.includes("Frostnova") && this.spatk == undefined) {
                     this.target.applyCold(5)
-                this.target.receiveDamage(this.source)
+                    this.target.receiveDamage(this.source)
+                }
+                else {
+                    if (this.spatk != undefined) {
+                        this.target.buffs.buffs[this.spatk.name] = { "name": this.source.name, "modifiers": this.spatk.applyeffects.modifiers }
+                        this.target.buffs.effects[this.spatk.name] = this.spatk.applyeffects.duration
+                        if (this.target.buffs.effectSprite[this.spatk.name] == undefined && this.spatk.applyeffects.effecticon != undefined)
+                            this.target.createDebuffAura(this.spatk.name, this.spatk.applyeffects.effecticon)
+                        this.source.applySpecialEffect(this.spatk.applyeffects.modifiers, this.target)
+                        this.target.receiveDamage(this.source, false, this.spatk.dmgmodifier || 1)
+
+                    }
+                    else this.target.receiveDamage(this.source)
+                }
             }
         }
     }

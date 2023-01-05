@@ -843,12 +843,15 @@ class EnemyController extends CharaController {
             var interval = setInterval(() => {
                 if (instance.sprite.cellIndex == instance.chara.spattack.effectcontact && !applied) {
                     applied = true;
-                    for (let i = 0; i < players.length; i++) {
-                        players[i].buffs.buffs[this.chara.spattack.name] = { "name": this.name, "modifiers": this.chara.spattack.applyeffects.modifiers }
-                        players[i].buffs.effects[this.chara.spattack.name] = this.chara.spattack.applyeffects.duration
-                        if (players[i].buffs.effectSprite[this.chara.spattack.name] == undefined && this.chara.spattack.applyeffects.effecticon != undefined)
-                            players[i].createDebuffAura(this.chara.spattack.name, this.chara.spattack.applyeffects.effecticon)
-                        this.applySpecialEffect(this.chara.spattack.applyeffects.modifiers, players[i])
+                    if (this.chara.spattack.skillbullet == undefined) {
+
+                        for (let i = 0; i < players.length; i++) {
+                            players[i].buffs.buffs[this.chara.spattack.name] = { "name": this.name, "modifiers": this.chara.spattack.applyeffects.modifiers }
+                            players[i].buffs.effects[this.chara.spattack.name] = this.chara.spattack.applyeffects.duration
+                            if (players[i].buffs.effectSprite[this.chara.spattack.name] == undefined && this.chara.spattack.applyeffects.effecticon != undefined)
+                                players[i].createDebuffAura(this.chara.spattack.name, this.chara.spattack.applyeffects.effecticon)
+                            this.applySpecialEffect(this.chara.spattack.applyeffects.modifiers, players[i])
+                        }
                     }
                 }
                 if (instance.sprite.cellIndex == instance.chara.spatk.end) {
@@ -859,19 +862,24 @@ class EnemyController extends CharaController {
                 }
             }, 1);
 
-
             if (this.chara.spattack.dmgmodifier != undefined) {
                 var interval2 = setInterval(() => {
                     if (instance.sprite.cellIndex >= instance.chara.spatk.contact && instance.hp > 0) {
                         for (let i = 0; i < players.length; i++) {
-                            if (this.chara.spattack.splash == undefined)
-                                players[i].receiveDamage(instance, false, instance.chara.spattack.dmgmodifier)
-                            else {
-                                let splashenemies = this.getSplashPlayersInRange(this.lvlcontroller.activePlayers, players[i], this.chara.spattack.splash)
-                                for (let j = 0; j < splashenemies.length; j++)
-                                    splashenemies[j].receiveDamage(instance, false, instance.chara.spattack.dmgmodifier)
-                                players[i].receiveDamage(instance, false, instance.chara.spattack.dmgmodifier)
+                            if (this.chara.spattack.skillbullet == undefined) {
+                                if (this.chara.spattack.splash == undefined)
+                                    players[i].receiveDamage(instance, false, instance.chara.spattack.dmgmodifier)
+                                else {
+                                    let splashenemies = this.getSplashPlayersInRange(this.lvlcontroller.activePlayers, players[i], this.chara.spattack.splash)
+                                    for (let j = 0; j < splashenemies.length; j++)
+                                        splashenemies[j].receiveDamage(instance, false, instance.chara.spattack.dmgmodifier)
+                                    players[i].receiveDamage(instance, false, instance.chara.spattack.dmgmodifier)
+                                }
                             }
+                            else
+                                new Bullet(this, this.scene, players[i], this.lvlcontroller, false, this.chara.spattack)
+
+
                         }
 
                         instance.lvlcontroller.playSound(instance.chara.name + "-sphit", instance.chara.sfx.sphit.volume)

@@ -2461,8 +2461,8 @@ enemylist["PatriotEX2"] = {
     }
 }
 
-enemylist["Roar Knightclub Member"] = {
-    name: "Roar Knightclub Member",
+enemylist["Roar Knight"] = {
+    name: "Roar Knight",
     hp: 3800,
     atk: 420,
     def: 100,
@@ -2534,8 +2534,8 @@ enemylist["Roar Knightclub Member"] = {
 
 }
 
-enemylist["Bloodboil Knightclub Member"] = {
-    name: "Bloodboil Knightclub Member",
+enemylist["Bloodboil Knight"] = {
+    name: "Bloodboil Knight",
     hp: 13000,
     atk: 650,
     def: 800,
@@ -2975,10 +2975,11 @@ enemylist["Corrupted Knight"] = {
     hploss: 2,
     dmgtype: "physical",
     size: 1.1,
-    tooltip: "Attacks deal Splash damage to units\nsurrounding the primary target.\nGains greatly increased ATK, ASPD,\nand Movement Speed when\na Withered Knight dies.",
+    tooltip: "Attacks deal Splash damage to units\nsurrounding the primary target.\nGains greatly increased ATK, ASPD,\nand Movement Speed when\nthe Withered Knight dies.",
     targets: 1,
     splash:1,
     splashdmg:1,
+    
 
     enemytype: "normal",
 
@@ -3042,7 +3043,7 @@ enemylist["Corrupted Knight"] = {
         name: "knightnuke",
         target: "allblocking",
         range: 0,
-        initialsp: 22,
+        initialsp: 0,
         sp: 22,
         chargetype:"second",
         dmgmodifier: 3,
@@ -3053,6 +3054,101 @@ enemylist["Corrupted Knight"] = {
             },
             duration: 4,
             effecticon: 14
+        },
+    }
+}
+
+enemylist["Withered Knight"] = {
+    name: "Withered Knight",
+    hp: 40000,
+    atk: 500,
+    def: 600,
+    res: 70,
+    atkinterval: 4,
+    speed: 0.65* 0.49,
+    blockcount: 1,
+    type: "g",
+    range: 2.5,
+    hploss: 2,
+    dmgtype: "magic",
+    size: 1.1,
+    tooltip: "Targets 3 units at once\nwith magic arrows.\nGains greatly increased ATK, ASPD,\nand Movement Speed when\nthe Corrupted Knight dies.",
+    targets: 3,
+    bullet: { size: { height: 1,  depth: 6, width: 0.7 }, arc:false, speed:6, color: new BABYLON.Color3(0.69, 0.21, 0.67)},
+
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/withered-knight-sheet.webp",
+
+    hasskill: false,
+    hasspatk: true,
+
+    atkanim: {
+        start: 0,
+        end: 24,
+        contact: 14,
+        duration: 1,
+    },
+
+    death: {
+        start: 25,
+        end: 54,
+        duration: 1,
+
+    },
+    idle: {
+        start: 55,
+        end: 84,
+        duration: 1,
+
+    },
+    move: {
+        start: 85,
+        end: 104,
+        duration: 1.15,
+
+    },
+    spatk: {
+        start: 105,
+        end: 129,
+        contact: 129-11,
+
+        duration: 1,
+    },
+
+    sfx: {
+        atk: {
+            src: "wither-atk",
+            volume: 0.1
+        },
+        hit: {
+            src: "wither-hit",
+            volume: 0.1
+        },
+        spatk: {
+            src: "wither-atk",
+            volume: 0.1
+        },
+        sphit: {
+            src: "wither-hit",
+            volume: 0.1
+        },
+    },
+    spattack: {
+        name: "knightnuke",
+        target: "allblocking",
+        range: 2.5,
+        initialsp: 0,
+        sp: 22,
+        chargetype:"second",
+        dmgmodifier: 1.6,
+        effectcontact: 129-11,
+        skillbullet:true,
+        applyeffects: {
+            modifiers: {
+            },
+            duration: 0,
         },
     }
 }
@@ -6453,7 +6549,7 @@ enemylist["Frostnova"] = {
     hploss: 2,
     dmgtype: "magic",
     size: 1,
-    tooltip: "Every attack inflicts cold.\n Deals massive damage\n against frozen allies.\nPeriodically releases an\nice nova damaging \nall allies in range.",
+    tooltip: "Every attack inflicts cold.\n Deals increased damage\n against frozen allies.\nPeriodically releases an\nice nova damaging \nall allies in range.",
     revive: true,
     revivetimer: 0,
     revivemax: 0,
@@ -6514,7 +6610,7 @@ enemylist["Frostnova"] = {
         skilltype: "yeti",
         target: "self",
         modifiers: {
-            frozenmod: 2,
+            frozenmod: 1,
         },
         aura: false,
     },
@@ -6553,7 +6649,7 @@ enemylist["Frostnova2"] = {
     dmgtype: "magic",
     size: 1,
     tooltip: "Every attack inflicts cold.\n Deals increased damage\n against frozen allies.\nPeriodically releases an\nice nova damaging \nall allies in range.",
-    targets: 1,
+    targets: 2,
     enemytype: "normal",
 
     spritesheet: "images/sprites/frostnova2-sheet.webp",
@@ -6637,7 +6733,7 @@ enemylist["Frostnova2"] = {
         skilltype: "yeti",
         target: "self",
         modifiers: {
-            frozenmod: 0.5,
+            frozenmod: 1,
         },
         aura: false,
     },
@@ -6736,7 +6832,7 @@ enemylist["FrostnovaEX"] = {
         skilltype: "yeti",
         target: "self",
         modifiers: {
-            frozenmod: 2,
+            frozenmod: 1,
         },
         aura: false,
     },
@@ -6775,7 +6871,7 @@ enemylist["FrostnovaEX2"] = {
     dmgtype: "magic",
     size: 1,
     tooltip: "Every attack inflicts cold.\n Deals increased damage\n against frozen allies.\nPeriodically releases an\nice nova damaging \nall allies in range.",
-    targets: 1,
+    targets: 2,
     enemytype: "normal",
 
     spritesheet: "images/sprites/frostnova2-sheet.webp",
@@ -6860,7 +6956,7 @@ enemylist["FrostnovaEX2"] = {
         skilltype: "yeti",
         target: "self",
         modifiers: {
-            frozenmod: 0.5,
+            frozenmod: 1,
         },
         aura: false,
     },
