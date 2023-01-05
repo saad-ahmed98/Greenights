@@ -1367,7 +1367,7 @@ enemylist["Sarkaz Guerrilla Fighter Leader"] = {
     hploss: 1,
     dmgtype: "physical",
     size: 1.2,
-    tooltip: "Does not take damage when \ncoming in contact with \na pulse wave and attacks\n instead deal Magic damage.",
+    tooltip: "Does not take damage when \ncoming in contact with \na fire wave and attacks\n instead deal Magic damage.",
     targets: 1,
 
     enemytype: "normal",
@@ -1444,7 +1444,7 @@ enemylist["Sarkaz Guerrilla Fighter"] = {
     hploss: 1,
     dmgtype: "physical",
     size: 1.2,
-    tooltip: "Does not take damage when \ncoming in contact with \na pulse wave and attacks\n instead deal Magic damage.",
+    tooltip: "Does not take damage when \ncoming in contact with \na fire wave and attacks\n instead deal Magic damage.",
     targets: 1,
 
     enemytype: "normal",
@@ -1521,7 +1521,7 @@ enemylist["Sarkaz Guerrilla Caster"] = {
     hploss: 1,
     dmgtype: "magic",
     size: 1.2,
-    tooltip: "Deals magic to all surrounding units;\ncoming in contact with pulse\n waves increases atk range.",
+    tooltip: "Deals magic to all surrounding units;\ncoming in contact with fire\n waves increases atk range.",
     targets: 99,
 
     enemytype: "normal",
@@ -1605,7 +1605,7 @@ enemylist["Sarkaz Guerrilla Caster Leader"] = {
     hploss: 1,
     dmgtype: "magic",
     size: 1.2,
-    tooltip: "Deals magic to all surrounding units;\ncoming in contact with pulse\n waves increases atk range.",
+    tooltip: "Deals magic to all surrounding units;\ncoming in contact with fire\n waves increases atk range.",
     targets: 99,
 
     enemytype: "normal",
@@ -2045,7 +2045,7 @@ enemylist["Patriot"] = {
     hploss: 2,
     dmgtype: "physical",
     size: 1.1,
-    tooltip: "Has extremely high DEF & RES.\n Inspires all enemies,\n increasing their ATK and DEF.",
+    tooltip: "Has extremely high DEF & RES.\nMore likely to be attacked.\n Inspires all enemies,\n increasing their ATK and DEF.",
     revive: true,
     revivetimer: 30,
     revivemax: 30,
@@ -5450,6 +5450,7 @@ enemylist["Yeti Caster"] = {
         sp: 3,
         dmgmodifier: 1,
         effectcontact: 10,
+        skillbullet : true,
         applyeffects: {
             modifiers: {
                 cold:10
@@ -5548,6 +5549,7 @@ enemylist["Yeti Caster Leader"] = {
         sp: 3,
         dmgmodifier: 1,
         effectcontact: 10,
+        skillbullet : true,
         applyeffects: {
             modifiers: {
                 cold:10
@@ -6526,6 +6528,7 @@ enemylist["Frostnova"] = {
         targets:99,
         effectcontact: 18,
         dmgmodifier: 1.5,
+        skillbullet : true,
         applyeffects: {
             modifiers: {
                 cold:5
@@ -6648,6 +6651,7 @@ enemylist["Frostnova2"] = {
         targets:99,
         effectcontact: 342,
         dmgmodifier: 1.5,
+        skillbullet : true,
         applyeffects: {
             modifiers: {
                 cold:5
@@ -6746,6 +6750,7 @@ enemylist["FrostnovaEX"] = {
         targets:99,
         effectcontact: 18,
         dmgmodifier: 1.5,
+        skillbullet : true,
         applyeffects: {
             modifiers: {
                 cold:5
@@ -6775,6 +6780,7 @@ enemylist["FrostnovaEX2"] = {
 
     spritesheet: "images/sprites/frostnova2-sheet.webp",
     bullet: { size: { height: 1, depth: 5, width: 2 }, arc:false, speed:4, color: new BABYLON.Color3(0.88, 0.96, 1)},
+
 
     hasskill: true,
     hasspatk: true,
@@ -6868,6 +6874,7 @@ enemylist["FrostnovaEX2"] = {
         targets:99,
         effectcontact: 342,
         dmgmodifier: 1.5,
+        skillbullet : true,
         applyeffects: {
             modifiers: {
                 cold:5
