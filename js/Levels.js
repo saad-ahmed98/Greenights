@@ -5630,6 +5630,7 @@ levels["KM-7"] = {
         ["e", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg", "bg"],
     ],
 }
+/*
 
 levels["KM-8"] = {
     level: "KM-8",
@@ -5672,6 +5673,7 @@ levels["KM-8"] = {
 
     ],
 }
+*/
 
 levels["KM-H"] = {
     level: "KM-H",

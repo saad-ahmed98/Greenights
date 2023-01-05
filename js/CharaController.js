@@ -237,7 +237,6 @@ class CharaController {
 
     //if player is blocked, then hit the blocked enemies in priority
     getBlockedEnemyInRange(enemies, targets) {
-        var instance = this;
         var res = [];
         var targetcount = targets;
         var squarerange = [[this.x * 30 - 15, this.x * 30 + 15], [this.y * 30 - 15, this.y * 30 + 15]];
@@ -655,7 +654,7 @@ class CharaController {
         for (let i = 0; i < keys.length; i++) {
             if (this.chara[keys[i]] != undefined) {
                 if (this.pauseSpriteIndex >= this.chara[keys[i]].start && this.pauseSpriteIndex <= this.chara[keys[i]].end){
-                    this.sprite.playAnimation(this.pauseSpriteIndex, this.chara[keys[i]].end, false, 30 * this.gamespeed * this.chara[keys[i]].duration);
+                    this.sprite.playAnimation(this.pauseSpriteIndex, this.chara[keys[i]].end, false, 30 * this.gamespeed * this.chara[keys[i]].duration || 1);
                 }
             }
         }
@@ -663,11 +662,11 @@ class CharaController {
             this.sprite.playAnimation(this.pauseSpriteIndex, this.chara.atkanim.end, false, 30 * this.gamespeed * this.buffs.getFinalAtkInterval(this.chara.atkanim.duration, true));
         }
         if (this.pauseSpriteIndex >= this.chara.idle.start && this.pauseSpriteIndex <= this.chara.idle.end) {
-            this.sprite.playAnimation(this.chara.idle.start, this.chara.idle.end, true, 30 * this.gamespeed * this.chara.idle.duration);
+            this.sprite.playAnimation(this.chara.idle.start, this.chara.idle.end, true, 30 * this.gamespeed * this.chara.idle.duration || 1);
         }
         if (this.chara.skillidle != undefined) {
             if (this.pauseSpriteIndex >= this.chara.skillidle.start && this.pauseSpriteIndex <= this.chara.skillidle.end) {
-                this.sprite.playAnimation(this.chara.skillidle.start, this.chara.skillidle.end, true, 30 * this.gamespeed * this.chara.skillidle.duration);
+                this.sprite.playAnimation(this.chara.skillidle.start, this.chara.skillidle.end, true, 30 * this.gamespeed * this.chara.skillidle.duration || 1);
             }
         }
     }

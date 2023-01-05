@@ -16,6 +16,7 @@ class PlayerController extends CharaController {
         this.condtalent;
         this.condtalentcounter = 0;
         this.alivebuffs = [];
+        this.contact = false
 
     }
 
@@ -322,6 +323,7 @@ class PlayerController extends CharaController {
 
 
     attack(enemies, players) {
+        this.contact = true;
         var enemy;
         if (!this.canHitFlying())
             enemies = enemies.filter(e => (e.chara.type == "g"))
@@ -363,9 +365,11 @@ class PlayerController extends CharaController {
 
                 var interval = setInterval(() => {
                     if (instance.isfrozen) {
+                        this.contact = false
                         clearInterval(interval)
                     }
                     if (instance.sprite.cellIndex >= contactframe && instance.hp > 0) {
+                        this.contact = false
                         if (this.playerSkill.active && this.chara.skillsfx) {
                             if (this.chara.sfx.skillhit != undefined && this.chara.bullet == undefined)
                                 this.lvlcontroller.playSound(this.chara.name + "-skillhit", this.chara.sfx.skillhit.volume)
@@ -421,6 +425,7 @@ class PlayerController extends CharaController {
                 return true;
             }
             else {
+                this.contact = false
                 if (this.playerSkill.active && this.chara.skillsfx) {
                     if (this.chara.sfx.skillhit != undefined && this.chara.bullet == undefined)
                         this.lvlcontroller.playSound(this.chara.name + "-skillhit", this.chara.sfx.skillhit.volume)
@@ -456,6 +461,7 @@ class PlayerController extends CharaController {
                 return true;
             }
         }
+        else this.contact = false
         return false;
     }
 
@@ -507,7 +513,7 @@ class PlayerController extends CharaController {
                     this.running = true;
                 }
                 this.atktimer += 1 / this.gamespeed;
-                if (this.atktimer >= this.buffs.getFinalAtkInterval(this.chara.atkinterval) * 25 && this.buffs.getCanAttack()) {
+                if (this.atktimer >= this.buffs.getFinalAtkInterval(this.chara.atkinterval) * 25 && this.buffs.getCanAttack() && !this.contact) {
                     this.atktimer = 0;
                     var success = this.attack(enemies, players);
                     if (!success)

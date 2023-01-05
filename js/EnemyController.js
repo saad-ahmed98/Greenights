@@ -826,6 +826,8 @@ class EnemyController extends CharaController {
 
 
         var players = this.getFirstPlayerInRange(targets, this.chara.spattack.range, this.chara.spattack.targets || this.chara.targets + this.buffs.getTargets())
+        if (this.chara.spattack.range == 0 && !this.blocked)
+            players = []
         if (players.length > 0) {
             //turn towards the player to hit
             if (players[0].mesh.position.z <= this.mesh.position.z)
@@ -1015,6 +1017,7 @@ class EnemyController extends CharaController {
                         this.blockingplayer = players[i];
                         players[i].blockedenemies.push(this)
                         this.blocked = true;
+                        players[i].checkBlocking()
                         foundblock = true;
                     }
                     if (this.blockingplayer != undefined) {
@@ -1027,22 +1030,6 @@ class EnemyController extends CharaController {
             if (!foundblock)
                 this.unblock()
 
-            /* 
-            //verify if blocking player can still block the enemy
-            if (currenttile.player != undefined) {
-                if (currenttile.player.buffs.getFinalBlock(currenttile.player.chara.blockcount) - currenttile.player.blocking >= this.chara.blockcount && !this.blocked) {
-                    this.blockingplayer = currenttile.player;
-                    currenttile.player.blockedenemies.push(this)
-                    this.blockingplayer.blocking += this.chara.blockcount;
-                    this.blocked = true;
-                }
-     
-            }
-            //if not possible (example: skill increasing block count is over, unblock)
-            else {
-                this.unblock()
-            }
-            */
             if (!this.skillproc) {
                 //conditions to see if enemy can attack
                 if (this.spattacktimer != undefined) {
