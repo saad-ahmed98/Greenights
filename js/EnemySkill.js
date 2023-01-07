@@ -58,10 +58,13 @@ class EnemySkill {
     }
 
     updateBloodboilSkill(target) {
-
-        this.durationtimer += (1 / 30) / target.gamespeed
         if (target.buffs.buffs[this.name] == undefined) {
-            target.buffs.buffs[this.name] = { "name": this.name, "modifiers": JSON.parse(JSON.stringify(this.modifiers)) }
+            target.buffs.buffs[this.name] = {
+                "name": this.name, "modifiers": JSON.parse(JSON.stringify(this.modifiers))
+            }
+            if (target.aura == undefined)
+                target.createBuffAura(this.auratype)
+
         }
         else if (this.durationtimer < this.modifiers.stack) {
             var keys = Object.keys(this.modifiers)
@@ -69,8 +72,10 @@ class EnemySkill {
                 target.buffs.buffs[this.name].modifiers[keys[i]] += this.modifiers[keys[i]]
         }
         this.durationtimer++;
-        if (this.durationtimer >= this.modifiers.stack && target.aura == undefined)
-            target.createBuffAura(this.auratype)
+        if (this.durationtimer >= this.modifiers.stack && target.invincibleaura == undefined) {
+            target.createInvincibleAura()
+            target.activateSkillAnims()
+        }
 
     }
 
@@ -84,14 +89,11 @@ class EnemySkill {
         if (players.length > 0) {
             for (let i = 0; i < players.length; i++) {
                 players[i].receiveDamage(enemy, false, skillbomb.dmg)
-                if(skillbomb.cold!=undefined)
-                    players[i].applyCold(skillbomb.cold)   
+                if (skillbomb.cold != undefined)
+                    players[i].applyCold(skillbomb.cold)
             }
         }
-
     }
-
-
 
     //deactivate skill
     deactivateSkill(targets, removeaura = false) {

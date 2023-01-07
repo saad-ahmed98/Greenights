@@ -2985,7 +2985,7 @@ enemylist["Corrupted Knight"] = {
 
     spritesheet: "images/sprites/corrupted-knight-sheet.webp",
 
-    hasskill: false,
+    hasskill: true,
     hasspatk: true,
 
     atkanim: {
@@ -3009,15 +3009,14 @@ enemylist["Corrupted Knight"] = {
     },
     move: {
         start: 98,
-        end: 124,
+        end: 122,
         duration: 1.1,
 
     },
     spatk: {
-        start: 125,
+        start: 123,
         end: 225,
         contact: 225-14,
-
         duration: 1,
     },
 
@@ -3038,6 +3037,38 @@ enemylist["Corrupted Knight"] = {
             src: "corrupt-hit",
             volume: 0.3
         },
+    },
+    skill: {
+        name: "bloodboil",
+        triggertype: "on_knightdeath",
+        skilltype: "bloodboil",
+        target: "self",
+        modifiers: {
+            atk: 0.8,
+            aspd: 100,
+            speed:0.65*0.49*0.7,
+            stack: 1
+        },
+        move: {
+            start: 98,
+            end: 122,
+            duration: 0.1,
+        },
+        atkanim: {
+            start: 0,
+            end: 34,
+            contact: 17,
+            duration: 0.8,
+        },
+        spatk: {
+            start: 123,
+            end: 225,
+            contact: 225-14,
+            duration: 0.8,
+        },
+        
+        aura: false,
+        auratype: 8
     },
     spattack: {
         name: "knightnuke",
@@ -3081,7 +3112,7 @@ enemylist["Withered Knight"] = {
 
     spritesheet: "images/sprites/withered-knight-sheet.webp",
 
-    hasskill: false,
+    hasskill: true,
     hasspatk: true,
 
     atkanim: {
@@ -3134,6 +3165,38 @@ enemylist["Withered Knight"] = {
             src: "wither-hit",
             volume: 0.1
         },
+    },
+    skill: {
+        name: "bloodboil",
+        triggertype: "on_knightdeath",
+        skilltype: "bloodboil",
+        target: "self",
+        modifiers: {
+            atk: 0.8,
+            aspd: 100,
+            speed:0.65* 0.49*0.7,
+            stack: 1
+        },
+        move: {
+            start: 85,
+            end: 104,
+            duration: 0.4,
+        },
+        atkanim: {
+            start: 0,
+            end: 24,
+            contact: 14,
+            duration: 0.8,
+        },
+        spatk: {
+            start: 105,
+            end: 129,
+            contact: 129-11,
+    
+            duration: 0.8,
+        },
+        aura: false,
+        auratype: 8
     },
     spattack: {
         name: "knightnuke",

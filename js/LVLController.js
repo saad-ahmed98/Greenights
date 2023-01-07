@@ -622,7 +622,7 @@ class LVLController extends LVLAbstract {
             BABYLON.Color3.LerpToRef(BABYLON.Color3.BlackReadOnly, startingColor, t, this.scene.clearColor);
         }
         else {
-
+            
             if (!this.render) {
                 this.createGUIs()
                 this.render = true;
@@ -1171,14 +1171,16 @@ class LVLController extends LVLAbstract {
                         this.enemies[i].playerSkill.deactivateSkill(this.enemies)
                     }
                 }
+                let charaname = this.enemies[i].chara.name
                 this.enemies.splice(i, 1)
+                if (charaname.includes("Withered") || charaname.includes("Corrupted"))
+                    this.updateKnightDeathSkill()
+
                 i--;
                 this.enemycount++;
                 this.gui.updateStatsUI(this.enemycount + "/" + this.enemytot, this.hp, this.maxhp);
             }
             else if (this.enemies[i].hp <= 0 || this.enemies[i].hp == NaN) {
-                //this.enemies[i].sprite.dispose();
-                this.updateOnAnyDeathSkills()
                 if (this.enemies[i].playerSkill != undefined) {
                     if (this.enemies[i].playerSkill.skilltype == "alive") {
                         this.enemies[i].playerSkill.deactivateSkill(this.enemies)
@@ -1190,8 +1192,12 @@ class LVLController extends LVLAbstract {
                     this.enemycount++;
                     this.gui.updateStatsUI(this.enemycount + "/" + this.enemytot, this.hp, this.maxhp);
                 }
+                let charaname = this.enemies[i].chara.name
                 this.enemies.splice(i, 1)
                 i--;
+                this.updateOnAnyDeathSkills()
+                if (charaname.includes("Withered") || charaname.includes("Corrupted"))
+                    this.updateKnightDeathSkill()
 
             }
         }
@@ -1218,6 +1224,16 @@ class LVLController extends LVLAbstract {
         for (let i = 0; i < this.enemies.length; i++) {
             if (this.enemies[i].playerSkill != undefined) {
                 if (this.enemies[i].playerSkill.triggertype == "on_anydeath")
+                    this.enemies[i].playerSkill.updateBloodboilSkill(this.enemies[i])
+
+            }
+        }
+    }
+
+    updateKnightDeathSkill() {
+        for (let i = 0; i < this.enemies.length; i++) {
+            if (this.enemies[i].playerSkill != undefined) {
+                if (this.enemies[i].playerSkill.triggertype == "on_knightdeath")
                     this.enemies[i].playerSkill.updateBloodboilSkill(this.enemies[i])
 
             }
@@ -1746,7 +1762,7 @@ class LVLController extends LVLAbstract {
                 if (array[i][j] == "gdef")
                     this.hazards.push(new RuneTile(tile, this, { "flatdef": 200 }))
                 if (array[i][j] == "gheal")
-                    this.hazards.push(new RuneTile(tile, this, {"hpregenpercent": 0.03}))
+                    this.hazards.push(new RuneTile(tile, this, { "hpregenpercent": 0.03 }))
             }
             this.tiles.push(linetiles);
             this.matrix.push(line);

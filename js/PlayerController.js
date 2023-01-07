@@ -413,7 +413,7 @@ class PlayerController extends CharaController {
                             instance.playerSkill.currentsp = -1
                         }
 
-                        if (instance.playerSkill.chargetype == "attack" && !instance.playerSkill.active) {
+                        if (instance.playerSkill.chargetype == "attack"  && !instance.playerSkill.active) {
                             instance.playerSkill.currentsp = Math.min(instance.playerSkill.currentsp + 1, instance.playerSkill.totalsp);
                             instance.updateSkillBarCharging();
                         }

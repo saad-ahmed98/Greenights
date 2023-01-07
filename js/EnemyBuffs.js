@@ -34,6 +34,7 @@ class EnemyBuffs extends Buffs {
             attacks: 1,
             frozenmod: 1,
             silence:false,
+            asleep:false,
 
         }
     }
@@ -58,6 +59,12 @@ class EnemyBuffs extends Buffs {
         this.initModifiers();
         this.sumBuffs();
         return dmg*this.modifiers.lifesteal
+    }
+
+    isAsleep() {
+        this.initModifiers();
+        this.sumBuffs();
+        return this.modifiers.asleep;
     }
 
     getFrozenModifier() {

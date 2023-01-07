@@ -147,6 +147,13 @@ class CharaController {
             this.createDebuffAura("silence", 16)
     }
 
+    applyAsleep(duration) {
+        this.buffs.buffs["asleep"] = { "name": "asleep", "modifiers": { "asleep": true } }
+        this.buffs.effects["asleep"] = duration
+        if (this.buffs.effectSprite["asleep"] == undefined)
+            this.createDebuffAura("asleep", 16)
+    }
+
 
     //if healed, then receive healing
     receiveHealing(healer) {
@@ -299,7 +306,7 @@ class CharaController {
                 if (this.between(enemies[i].mesh.position.x, squarerange[0]) && this.between(enemies[i].mesh.position.z, squarerange[1]) && !enemies[i].spawning && !enemies[i].invincible && !enemies[i].stairs) {
                     var x = Math.round(enemies[i].mesh.position.x / 30)
                     var z = Math.round(enemies[i].mesh.position.z / 30)
-                    if (Math.abs(z - this.y) <= counter + rangeexpand && this.correctDirection(x,z)) {
+                    if (Math.abs(z - this.y) <= counter + rangeexpand && this.correctDirection(x, z)) {
                         var found = false;
                         //check if enemy is not already a target
                         for (let j = 0; j < res.length; j++) {
@@ -336,7 +343,7 @@ class CharaController {
         for (let i = 0; i < players.length; i++) {
             var counter = Math.abs(Math.abs(Math.round(players[i].mesh.position.x / 30) - this.x) - range);
             if (this.between(players[i].x * 30, squarerange[0]) && this.between(players[i].y * 30, squarerange[1]) && players[i].hp < players[i].maxhp) {
-                if (Math.abs(Math.round(players[i].mesh.position.z / 30) - this.y) <= counter + rangeexpand  && this.correctDirection(players[i].x,players[i].y)) {
+                if (Math.abs(Math.round(players[i].mesh.position.z / 30) - this.y) <= counter + rangeexpand && this.correctDirection(players[i].x, players[i].y)) {
                     if (res.length < targetcount)
                         res.push(players[i])
                     else {
@@ -374,7 +381,7 @@ class CharaController {
         for (let i = 0; i < players.length; i++) {
             var counter = Math.abs(Math.abs(Math.round(players[i].mesh.position.x / 30) - this.x) - range);
             if (this.between(players[i].x * 30, squarerange[0]) && this.between(players[i].y * 30, squarerange[1])) {
-                if (Math.abs(Math.round(players[i].mesh.position.z / 30) - this.y) <= counter + rangeexpand && this.correctDirection(players[i].x,players[i].y)) {
+                if (Math.abs(Math.round(players[i].mesh.position.z / 30) - this.y) <= counter + rangeexpand && this.correctDirection(players[i].x, players[i].y)) {
                     if (res.length < targetcount)
                         res.push(players[i])
                     else {
@@ -451,7 +458,7 @@ class CharaController {
             if (this.between(enemies[i].mesh.position.x, squarerange[0]) && this.between(enemies[i].mesh.position.z, squarerange[1]) && !enemies[i].spawning && !enemies[i].invincible && !enemies[i].stairs) {
                 var x = Math.round(enemies[i].mesh.position.x / 30)
                 var z = Math.round(enemies[i].mesh.position.z / 30)
-                if (Math.abs(z - this.y) <= counter + rangeexpand && this.correctDirection(x,z)) {
+                if (Math.abs(z - this.y) <= counter + rangeexpand && this.correctDirection(x, z)) {
                     if (line) {
                         if (x - this.x == 0 || z - this.y == 0) {
                             res.push(enemies[i])
@@ -470,15 +477,15 @@ class CharaController {
         return res;
     }
 
-    getSplashPlayersInRange(enemies,center, range) {
+    getSplashPlayersInRange(enemies, center, range) {
 
-        var squarerange = [[center.mesh.position.x - 15 - 30 * range, center.mesh.position.x + 15 + 30 * range], [center.mesh.position.z - 15 - 30 * range,center.mesh.position.z + 15 + 30 * range]];
+        var squarerange = [[center.mesh.position.x - 15 - 30 * range, center.mesh.position.x + 15 + 30 * range], [center.mesh.position.z - 15 - 30 * range, center.mesh.position.z + 15 + 30 * range]];
         var res = [];
         for (let i = 0; i < enemies.length; i++) {
-            var counter = Math.abs(Math.abs(Math.round(enemies[i].mesh.position.x / 30) -Math.abs(Math.round(center.mesh.position.x/30))) - range);
+            var counter = Math.abs(Math.abs(Math.round(enemies[i].mesh.position.x / 30) - Math.abs(Math.round(center.mesh.position.x / 30))) - range);
             if (this.between(enemies[i].mesh.position.x, squarerange[0]) && this.between(enemies[i].mesh.position.z, squarerange[1])) {
                 var z = Math.round(enemies[i].mesh.position.z / 30)
-                if (Math.abs(z - Math.abs(Math.round(center.mesh.position.z/30))) <= counter && enemies[i].chara.name!=center.chara.name)
+                if (Math.abs(z - Math.abs(Math.round(center.mesh.position.z / 30))) <= counter && enemies[i].chara.name != center.chara.name)
                     res.push(enemies[i])
             }
         }
@@ -584,6 +591,9 @@ class CharaController {
                 case "silence":
                     target.applySilence(modifiers[keys[i]])
                     break;
+                case "asleep":
+                    target.applyAsleep(modifiers[keys[i]])
+                    break;
             }
         }
     }
@@ -653,7 +663,7 @@ class CharaController {
         this.running = false;
         for (let i = 0; i < keys.length; i++) {
             if (this.chara[keys[i]] != undefined) {
-                if (this.pauseSpriteIndex >= this.chara[keys[i]].start && this.pauseSpriteIndex <= this.chara[keys[i]].end){
+                if (this.pauseSpriteIndex >= this.chara[keys[i]].start && this.pauseSpriteIndex <= this.chara[keys[i]].end) {
                     this.sprite.playAnimation(this.pauseSpriteIndex, this.chara[keys[i]].end, false, 30 * this.gamespeed * this.chara[keys[i]].duration || 1);
                 }
             }

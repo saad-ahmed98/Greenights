@@ -1,7 +1,7 @@
 class MainMenu extends LVLAbstract {
     constructor(gameconfig, startscreen = "") {
         super(gameconfig)
-        backgroundimg = "images/background/default.png"
+        backgroundimg = "images/menu/backgrounds/main.png",
 
         this.gameconfig = gameconfig;
         this.scene = new BABYLON.Scene(gameconfig.engine);

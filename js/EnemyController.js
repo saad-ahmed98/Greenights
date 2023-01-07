@@ -39,12 +39,15 @@ class EnemyController extends CharaController {
     //create invincibility aura if enemy can be invincible
     startInvincibility() {
         this.invincible = true;
+        this.createInvincibleAura()
+
+    }
+    createInvincibleAura(){
         this.invincibleaura = new BABYLON.Sprite("", this.lvlcontroller.spriteManagers["skillaura"]);
         this.invincibleaura.position = new BABYLON.Vector3(this.sprite.position.x, this.sprite.position.y + 1, this.sprite.position.z);
         this.invincibleaura.size = 70 * this.chara.size;
         this.invincibleaura.width = 100 * this.chara.size;
         this.invincibleaura.playAnimation(4, 7, true, 30 * this.gamespeed);
-
     }
 
     //update invincibility timer, if timer is zero then remove it, and remove the aura
@@ -438,7 +441,6 @@ class EnemyController extends CharaController {
                 if (this.playerSkill.triggertype == "on_attack") {
                     this.playerSkill.activateSkill([this])
                     this.activateSkillAnims()
-
                 }
             }
             //turn towards the player to hit
@@ -478,6 +480,10 @@ class EnemyController extends CharaController {
                 this.sprite.playAnimation(this.chara.atkanim.start, this.chara.atkanim.end, false, 30 * this.gamespeed * this.buffs.getFinalAtkInterval(this.chara.atkanim.duration));
 
                 var interval1 = setInterval(() => {
+                    if (instance.isasleep) {
+                        clearInterval(interval1)
+                        instance.attacking = false
+                    }
                     if (instance.sprite.cellIndex >= instance.chara.atkanim.contact && instance.hp > 0) {
                         if (this.spattacktimer != undefined && this.chara.spattack.chargetype == "attack")
                             this.spattacktimer += 1;
@@ -511,6 +517,9 @@ class EnemyController extends CharaController {
 
                 //stay idle while waiting to be able to attack again
                 var interval2 = setInterval(() => {
+                    if (instance.isasleep) {
+                        clearInterval(interval2)
+                    }
                     if (instance.sprite.cellIndex == instance.chara.atkanim.end && instance.hp > 0) {
                         this.sprite.playAnimation(this.chara.idle.start, this.chara.idle.end, true, 30 * this.gamespeed * this.chara.idle.duration);
                         this.attacking = false;
@@ -664,6 +673,8 @@ class EnemyController extends CharaController {
 
                 this.healthBar.dispose()
                 this.healthBarBackground.dispose()
+                if(this.invincibleaura!=undefined)
+                this.invincibleaura.dispose()
 
                 if (this.skillBar != undefined)
                     this.skillBar.dispose();
@@ -841,6 +852,12 @@ class EnemyController extends CharaController {
             var instance = this;
             let applied = false;
             var interval = setInterval(() => {
+                if (instance.isasleep) {
+                    clearInterval(interval)
+                    instance.attacking = false
+                    instance.spattacktimer = 0
+                    instance.atktimer = 0
+                }
                 if (instance.sprite.cellIndex == instance.chara.spattack.effectcontact && !applied) {
                     applied = true;
                     if (this.chara.spattack.skillbullet == undefined) {
@@ -858,12 +875,16 @@ class EnemyController extends CharaController {
                     instance.sprite.playAnimation(instance.chara.idle.start, instance.chara.idle.end, true, 30 * this.gamespeed * instance.chara.idle.duration);
                     instance.attacking = false;
                     instance.spattacktimer = 0;
+                    instance.atktimer = 0
                     clearInterval(interval);
                 }
             }, 1);
 
             if (this.chara.spattack.dmgmodifier != undefined) {
                 var interval2 = setInterval(() => {
+                    if (instance.isasleep) {
+                        clearInterval(interval2)
+                    }
                     if (instance.sprite.cellIndex >= instance.chara.spatk.contact && instance.hp > 0) {
                         for (let i = 0; i < players.length; i++) {
                             if (this.chara.spattack.skillbullet == undefined) {
@@ -1011,113 +1032,125 @@ class EnemyController extends CharaController {
     //move logic, do actions depending on state
     move(tiles, players) {
         //if the enemy is spawning (doing start animation), don't move
-        if (!this.spawning) {
-            this.atktimer += 1 / this.gamespeed;
-            if (this.spattacktimer != undefined && this.chara.spattack.chargetype == "second")
-                this.spattacktimer = Math.min(this.chara.spattack.sp, this.spattacktimer + (1 / 30) / this.gamespeed);
-            this.hp = Math.min(this.maxhp, this.hp + this.buffs.getFinalHpRegen(this.maxhp) * (1 / 30) / this.gamespeed)
+        if (this.buffs.isAsleep()) {
+            this.isasleep = true;
+            this.pause();
+        }
+        else {
+            if (this.isasleep) {
+                this.sprite.playAnimation(this.chara.idle.start, this.chara.idle.end, true, 30 * this.gamespeed * (this.chara.idle.duration));
+                this.isasleep = false;
+            }
+        }
+        if (!this.isasleep) {
+            if (!this.spawning) {
+                this.atktimer += 1 / this.gamespeed;
+                if (this.spattacktimer != undefined && this.chara.spattack.chargetype == "second")
+                    this.spattacktimer = Math.min(this.chara.spattack.sp, this.spattacktimer + (1 / 30) / this.gamespeed);
+                this.hp = Math.min(this.maxhp, this.hp + this.buffs.getFinalHpRegen(this.maxhp) * (1 / 30) / this.gamespeed)
 
-            var i = 0;
-            var foundblock = false
-            while (i < players.length && !foundblock) {
-                if (this.mesh.position.x <= players[i].x * 30 + 20 && this.mesh.position.x >= players[i].x * 30 - 20 && this.mesh.position.z <= players[i].y * 30 + 20 && this.mesh.position.z >= players[i].y * 30 - 20) {
-                    if (players[i].buffs.getFinalBlock(players[i].chara.blockcount) - players[i].blocking >= this.chara.blockcount && !this.blocked) {
-                        this.blockingplayer = players[i];
-                        players[i].blockedenemies.push(this)
-                        this.blocked = true;
-                        players[i].checkBlocking()
-                        foundblock = true;
-                    }
-                    if (this.blockingplayer != undefined) {
-                        if (players[i].chara.name == this.blockingplayer.chara.name)
+                var i = 0;
+                var foundblock = false
+                while (i < players.length && !foundblock) {
+                    if (this.mesh.position.x <= players[i].x * 30 + 20 && this.mesh.position.x >= players[i].x * 30 - 20 && this.mesh.position.z <= players[i].y * 30 + 20 && this.mesh.position.z >= players[i].y * 30 - 20) {
+                        if (players[i].buffs.getFinalBlock(players[i].chara.blockcount) - players[i].blocking >= this.chara.blockcount && !this.blocked) {
+                            this.blockingplayer = players[i];
+                            players[i].blockedenemies.push(this)
+                            this.blocked = true;
+                            players[i].checkBlocking()
                             foundblock = true;
-                    }
-                }
-                i++
-            }
-            if (!foundblock)
-                this.unblock()
-
-            if (!this.skillproc) {
-                //conditions to see if enemy can attack
-                if (this.spattacktimer != undefined) {
-                    if (this.spattacktimer == this.chara.spattack.sp && this.chara.spattack.chargetype == "second" && !this.attacking && !this.stairs && !this.buffs.isSilenced())
-                        this.activateSpSkill(players)
-                }
-                //if enemy has no atk, can't attack
-
-                var enter = false;
-
-                if (this.chara.atk > 0)
-                    enter = true;
-                //if enemy is standby, can't attack
-                if (this.chara.enemytype == "standby" && this.buffs.getStandby())
-                    enter = false;
-                if (this.stairs)
-                    enter = false;
-                //if no not attack condition met, attack if atk timer is over
-                if (enter) {
-                    if (this.atktimer >= this.buffs.getFinalAtkInterval(this.chara.atkinterval) * 25 && !this.attacking) {
-                        if (this.spattacktimer != undefined) {
-                            if (this.spattacktimer == this.chara.spattack.sp && this.chara.spattack.chargetype == "attack" && !this.stairs)
-                                this.activateSpSkill(players)
-                            else this.attacking = this.attack(players);
                         }
-                        else this.attacking = this.attack(players);
-
-                        if (this.attacking)
-                            this.atktimer = 0
+                        if (this.blockingplayer != undefined) {
+                            if (players[i].chara.name == this.blockingplayer.chara.name)
+                                foundblock = true;
+                        }
                     }
+                    i++
                 }
+                if (!foundblock)
+                    this.unblock()
 
-                //if not attacking, waiting or being blocked, then move
-                if (!this.blocked && !this.attacking && !this.wait)
-                    this.patrol();
-                else {
-                    //if wait, then idle
-                    if (this.running) {
-                        this.sprite.playAnimation(this.chara.idle.start, this.chara.idle.end, true, 30 * this.gamespeed * (this.chara.idle.duration));
-                        this.running = false;
+                if (!this.skillproc) {
+                    //conditions to see if enemy can attack
+                    if (this.spattacktimer != undefined) {
+                        if (this.spattacktimer == this.chara.spattack.sp && this.chara.spattack.chargetype == "second" && !this.attacking && !this.stairs && !this.buffs.isSilenced())
+                            this.activateSpSkill(players)
                     }
-                }
-            }
+                    //if enemy has no atk, can't attack
 
-            this.updateHpBar()
+                    var enter = false;
 
-            //if waiting, increase wait timer and when the timer reaches the specified amount, get the new checkpoint to reach
-            if (this.wait) {
-                if (this.lvlcontroller.tiles[Math.round(this.mesh.position.x / 30)][Math.round(this.mesh.position.z / 30)].type.includes("enter")) {
-                    this.hideInStairs()
-                }
-                this.waittimer += 1 / this.gamespeed;
-                if (this.waittimer >= this.checkpoints.pause * 30) {
-                    if (this.pattern.length > 0) {
-                        this.checkpoints = this.pattern.shift()
-                        this.waittimer = 0;
-                        this.wait = false;
+                    if (this.chara.atk > 0)
+                        enter = true;
+                    //if enemy is standby, can't attack
+                    if (this.chara.enemytype == "standby" && this.buffs.getStandby())
+                        enter = false;
+                    if (this.stairs)
+                        enter = false;
+                    //if no not attack condition met, attack if atk timer is over
+                    if (enter) {
+                        if (this.atktimer >= this.buffs.getFinalAtkInterval(this.chara.atkinterval) * 25 && !this.attacking) {
+                            if (this.spattacktimer != undefined) {
+                                if (this.spattacktimer == this.chara.spattack.sp && this.chara.spattack.chargetype == "attack" && !this.stairs)
+                                    this.activateSpSkill(players)
+                                else this.attacking = this.attack(players);
+                            }
+                            else this.attacking = this.attack(players);
+
+                            if (this.attacking)
+                                this.atktimer = 0
+                        }
                     }
+
+                    //if not attacking, waiting or being blocked, then move
+                    if (!this.blocked && !this.attacking && !this.wait)
+                        this.patrol();
                     else {
-                        //if final checkpoint reached, remove the enemy
-                        this.finish = true;
-                        this.mesh.dispose(true, true);
-                        this.sprite.dispose();
-                        this.shadow.dispose();
-                        this.healthBar.dispose();
-                        this.healthBarBackground.dispose();
-                        if (this.skillBar != undefined)
-                            this.skillBar.dispose();
-                        if (this.aura != undefined)
-                            this.aura.dispose()
-                        var keys = Object.keys(this.buffs.effectSprite)
-                        for (let i = 0; i < keys.length; i++)
-                            this.buffs.effectSprite[keys[i]].dispose()
-                        if (this.invincibleaura != undefined)
-                            this.invincibleaura.dispose()
+                        //if wait, then idle
+                        if (this.running) {
+                            this.sprite.playAnimation(this.chara.idle.start, this.chara.idle.end, true, 30 * this.gamespeed * (this.chara.idle.duration));
+                            this.running = false;
+                        }
                     }
                 }
+
+                this.updateHpBar()
+
+                //if waiting, increase wait timer and when the timer reaches the specified amount, get the new checkpoint to reach
+                if (this.wait) {
+                    if (this.lvlcontroller.tiles[Math.round(this.mesh.position.x / 30)][Math.round(this.mesh.position.z / 30)].type.includes("enter")) {
+                        this.hideInStairs()
+                    }
+                    this.waittimer += 1 / this.gamespeed;
+                    if (this.waittimer >= this.checkpoints.pause * 30) {
+                        if (this.pattern.length > 0) {
+                            this.checkpoints = this.pattern.shift()
+                            this.waittimer = 0;
+                            this.wait = false;
+                        }
+                        else {
+                            //if final checkpoint reached, remove the enemy
+                            this.finish = true;
+                            this.mesh.dispose(true, true);
+                            this.sprite.dispose();
+                            this.shadow.dispose();
+                            this.healthBar.dispose();
+                            this.healthBarBackground.dispose();
+                            if (this.skillBar != undefined)
+                                this.skillBar.dispose();
+                            if (this.aura != undefined)
+                                this.aura.dispose()
+                            var keys = Object.keys(this.buffs.effectSprite)
+                            for (let i = 0; i < keys.length; i++)
+                                this.buffs.effectSprite[keys[i]].dispose()
+                            if (this.invincibleaura != undefined)
+                                this.invincibleaura.dispose()
+                        }
+                    }
+                }
+                if (this.hp <= 0)
+                    this.activateDeath()
             }
-            if (this.hp <= 0)
-                this.activateDeath()
         }
     }
 
