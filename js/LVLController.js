@@ -639,7 +639,7 @@ class LVLController extends LVLAbstract {
                 }
                 if (!this.gui.isPaused)
                     this.createLvl();
-            }
+            } 
         }
         this.scene.render();
     }
@@ -781,8 +781,6 @@ class LVLController extends LVLAbstract {
                 instance.spriteManagers[task.name].texture = task.texture
             };
         }
-
-
 
         keys = Object.keys(this.playerlist);
         for (let i = 0; i < keys.length; i++) {
@@ -1283,7 +1281,6 @@ class LVLController extends LVLAbstract {
                 delete p.buffs.buffs[keys[i]]
                 delete p.buffs.effectSprite[keys[i]]
             }
-
         }
     }
 

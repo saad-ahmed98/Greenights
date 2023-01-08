@@ -62,7 +62,7 @@ class EnemySkill {
             target.buffs.buffs[this.name] = {
                 "name": this.name, "modifiers": JSON.parse(JSON.stringify(this.modifiers))
             }
-            if (target.aura == undefined)
+            if (target.aura == undefined && this.modifiers.stack>1)
                 target.createBuffAura(this.auratype)
 
         }

@@ -404,7 +404,7 @@ class PlayerController extends CharaController {
                         }
                         if (instance.playerSkill.chargetype == "attack" && instance.playerSkill.triggertype == "auto" && instance.playerSkill.duration == 0 && instance.playerSkill.currentsp >= instance.playerSkill.totalsp) {
 
-                            if (Math.random() < 0.30)
+                            if (Math.random() < 0.15)
                                 this.lvlcontroller.playSound(instance.chara.name + "-skill", this.lvlcontroller.vcvolume)
                             if (instance.chara.skillsfx) {
                                 if (instance.chara.sfx.skillhit != undefined)

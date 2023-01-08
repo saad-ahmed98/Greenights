@@ -266,6 +266,90 @@ enemylist['Sarkaz Grudgebearer'] = {
     }
 }
 
+enemylist['Sarkaz Worldcurser'] = {
+    name: "Sarkaz Worldcurser",
+    hp: 22000,
+    atk: 850,
+    def: 300,
+    res: 50,
+    atkinterval: 5,
+    speed: (0.2 + 0.2)* 0.49,
+    blockcount: 1,
+    type: "g",
+    range: 3,
+    hploss: 1,
+    dmgtype: "magic",
+
+    targets: 2,
+
+    enemytype: "standby",
+
+    hasskill: true,
+    size: 1.1,
+    bullet: { size: { height: 1, depth: 5, width: 3 }, arc:false, speed:5, color: new BABYLON.Color3(0.69, 0.21, 0.67)},
+
+
+    spritesheet: "images/sprites/sarkaz-worldcurser-sheet.webp",
+
+    idle: {
+        start: 39,
+        end: 62,
+        duration: 1,
+    },
+
+    move: {
+        start: 63,
+        end: 87,
+        duration: 1.5,
+    },
+
+    atkanim: {
+        start: 0,
+        end: 23,
+        contact: 14,
+        duration: 1,
+
+    },
+
+    death: {
+        start: 24,
+        end: 38,
+        duration: 1,
+
+    },
+
+    skill: {
+        name: "standby",
+        triggertype: "on_hit",
+        skilltype: "sarkazstandby",
+        target: "self",
+        modifiers: {
+            speed: 0.4,
+            standby: false,
+        },
+        aura: false,
+
+        move: {
+            start: 88,
+            end: 107,
+            duration: 0.5,
+
+        },
+        idle: {
+            start: 108,
+            end: 125,
+            duration: 1,
+        },
+    }
+    ,
+    sfx: {
+        atk: {
+            src: "grudgebearer-atk",
+            volume: 0.1
+        }
+    }
+}
+
 enemylist['Sarkaz Sentinel'] = {
     name: "Sarkaz Sentinel",
     hp: 4000,
@@ -565,6 +649,84 @@ enemylist['Sarkaz Bladeweaver'] = {
 
 
     spritesheet: "images/sprites/sarkaz-bladeweaver-sheet.webp",
+
+    idle: {
+        start: 52,
+        end: 71,
+        duration: 1,
+    },
+
+    move: {
+        start: 72,
+        end: 87,
+        duration: 2,
+
+    },
+
+    atkanim: {
+        start: 0,
+        end: 32,
+        contact: 13,
+        duration: 1,
+
+    },
+
+    death: {
+        start: 33,
+        end: 51,
+        duration: 1,
+
+    },
+
+    skill: {
+        name: "standby",
+        triggertype: "on_hit",
+        skilltype: "sarkazstandby",
+        target: "self",
+        modifiers: {
+            speed: 0.4,
+            standby: false,
+        },
+        aura: false,
+        move: {
+            start: 72,
+            end: 87,
+            duration: 0.7,
+    
+        },
+    },
+    sfx: {
+        atk: {
+            src: "bladeweaver-atk",
+            volume: 0.1
+        }
+    }
+}
+
+enemylist['Sarkaz Bladeweaver Leader'] = {
+    name: "Sarkaz Bladeweaver Leader",
+    hp: 12000,
+    atk: 550,
+    def: 280,
+    res: 50,
+    atkinterval: 2.5,
+    speed: (0.2 + 0.2)* 0.49,
+    blockcount: 1,
+    type: "g",
+    range: 0,
+    hploss: 1,
+    dmgtype: "magic",
+    tooltip: "Starts battle in Standby\nand will not attack.\nUpon being injured,\nbecomes Combat-Ready and\ninflicts Magic melee attacks.",
+
+    targets: 1,
+    size: 1.1,
+
+    enemytype: "standby",
+
+    hasskill: true,
+
+
+    spritesheet: "images/sprites/sarkaz-bladeweaver-leader-sheet.webp",
 
     idle: {
         start: 52,
@@ -3052,7 +3214,135 @@ enemylist["Corrupted Knight"] = {
         move: {
             start: 98,
             end: 122,
-            duration: 0.1,
+            duration: 0.3,
+        },
+        atkanim: {
+            start: 0,
+            end: 34,
+            contact: 17,
+            duration: 0.8,
+        },
+        spatk: {
+            start: 123,
+            end: 225,
+            contact: 225-14,
+            duration: 0.8,
+        },
+        
+        aura: false,
+        auratype: 8
+    },
+    spattack: {
+        name: "knightnuke",
+        target: "allblocking",
+        range: 0,
+        initialsp: 0,
+        sp: 22,
+        chargetype:"second",
+        dmgmodifier: 3,
+        splash:1,
+        effectcontact: 130,
+        applyeffects: {
+            modifiers: {
+            },
+            duration: 4,
+            effecticon: 14
+        },
+    }
+}
+
+enemylist["Corrupted KnightEX"] = {
+    name: "Corrupted KnightEX",
+    hp: 60000,
+    atk: 1400,
+    def: 1200,
+    res: 30,
+    atkinterval: 4,
+    speed: 0.65* 0.49,
+    blockcount: 1,
+    type: "g",
+    range: 0,
+    hploss: 2,
+    dmgtype: "physical",
+    size: 1.1,
+    tooltip: "Attacks deal Splash damage to units\nsurrounding the primary target.\nGains greatly increased ATK, ASPD,\nand Movement Speed when\nthe Withered Knight dies.",
+    targets: 1,
+    splash:1,
+    splashdmg:1,
+    
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/corrupted-knight-sheet.webp",
+
+    hasskill: true,
+    hasspatk: true,
+
+    atkanim: {
+        start: 0,
+        end: 34,
+        contact: 17,
+        duration: 1,
+    },
+
+    death: {
+        start: 35,
+        end: 74,
+        duration: 1,
+
+    },
+    idle: {
+        start: 75,
+        end: 97,
+        duration: 1,
+
+    },
+    move: {
+        start: 98,
+        end: 122,
+        duration: 1.1,
+
+    },
+    spatk: {
+        start: 123,
+        end: 225,
+        contact: 225-14,
+        duration: 1,
+    },
+
+    sfx: {
+        atk: {
+            src: "corrupt-atk",
+            volume: 0.1
+        },
+        hit: {
+            src: "corrupt-hit",
+            volume: 0.1
+        },
+        spatk: {
+            src: "corrupt-spatk",
+            volume: 0.1
+        },
+        sphit: {
+            src: "corrupt-hit",
+            volume: 0.3
+        },
+    },
+    skill: {
+        name: "bloodboil",
+        triggertype: "on_knightdeath",
+        skilltype: "bloodboil",
+        target: "self",
+        modifiers: {
+            atk: 0.8,
+            aspd: 100,
+            speed:0.65*0.49*0.7,
+            stack: 1
+        },
+        move: {
+            start: 98,
+            end: 122,
+            duration: 0.3,
         },
         atkanim: {
             start: 0,
@@ -3180,7 +3470,134 @@ enemylist["Withered Knight"] = {
         move: {
             start: 85,
             end: 104,
-            duration: 0.4,
+            duration: 0.6,
+        },
+        atkanim: {
+            start: 0,
+            end: 24,
+            contact: 14,
+            duration: 0.8,
+        },
+        spatk: {
+            start: 105,
+            end: 129,
+            contact: 129-11,
+    
+            duration: 0.8,
+        },
+        aura: false,
+        auratype: 8
+    },
+    spattack: {
+        name: "knightnuke",
+        target: "allblocking",
+        range: 2.5,
+        initialsp: 0,
+        sp: 22,
+        chargetype:"second",
+        dmgmodifier: 1.6,
+        effectcontact: 129-11,
+        skillbullet:true,
+        applyeffects: {
+            modifiers: {
+            },
+            duration: 0,
+        },
+    }
+}
+
+enemylist["Withered KnightEX"] = {
+    name: "Withered KnightEX",
+    hp: 60000,
+    atk: 650,
+    def: 600,
+    res: 70,
+    atkinterval: 4,
+    speed: 0.65* 0.49,
+    blockcount: 1,
+    type: "g",
+    range: 2.5,
+    hploss: 2,
+    dmgtype: "magic",
+    size: 1.1,
+    tooltip: "Targets 3 units at once\nwith magic arrows.\nGains greatly increased ATK, ASPD,\nand Movement Speed when\nthe Corrupted Knight dies.",
+    targets: 3,
+    bullet: { size: { height: 1,  depth: 6, width: 0.7 }, arc:false, speed:6, color: new BABYLON.Color3(0.69, 0.21, 0.67)},
+
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/withered-knight-sheet.webp",
+
+    hasskill: true,
+    hasspatk: true,
+
+    atkanim: {
+        start: 0,
+        end: 24,
+        contact: 14,
+        duration: 1,
+    },
+
+    death: {
+        start: 25,
+        end: 54,
+        duration: 1,
+
+    },
+    idle: {
+        start: 55,
+        end: 84,
+        duration: 1,
+
+    },
+    move: {
+        start: 85,
+        end: 104,
+        duration: 1.15,
+
+    },
+    spatk: {
+        start: 105,
+        end: 129,
+        contact: 129-11,
+
+        duration: 1,
+    },
+
+    sfx: {
+        atk: {
+            src: "wither-atk",
+            volume: 0.1
+        },
+        hit: {
+            src: "wither-hit",
+            volume: 0.1
+        },
+        spatk: {
+            src: "wither-atk",
+            volume: 0.1
+        },
+        sphit: {
+            src: "wither-hit",
+            volume: 0.1
+        },
+    },
+    skill: {
+        name: "bloodboil",
+        triggertype: "on_knightdeath",
+        skilltype: "bloodboil",
+        target: "self",
+        modifiers: {
+            atk: 0.8,
+            aspd: 100,
+            speed:0.65* 0.49*0.7,
+            stack: 1
+        },
+        move: {
+            start: 85,
+            end: 104,
+            duration: 0.6,
         },
         atkanim: {
             start: 0,
