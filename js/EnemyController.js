@@ -39,10 +39,15 @@ class EnemyController extends CharaController {
     //create invincibility aura if enemy can be invincible
     startInvincibility() {
         this.invincible = true;
-        this.createInvincibleAura()
+        this.invincibleaura  = new BABYLON.Sprite("", this.lvlcontroller.spriteManagers["icons"]);
+        this.invincibleaura.position = new BABYLON.Vector3(this.sprite.position.x, this.sprite.position.y + 1, this.sprite.position.z);
+        this.invincibleaura.cellIndex = 12
+        this.invincibleaura.size = 65;
+        this.invincibleaura.width = 90;
 
     }
-    createInvincibleAura(){
+
+    createRageAura(){
         this.invincibleaura = new BABYLON.Sprite("", this.lvlcontroller.spriteManagers["skillaura"]);
         this.invincibleaura.position = new BABYLON.Vector3(this.sprite.position.x, this.sprite.position.y + 1, this.sprite.position.z);
         this.invincibleaura.size = 70 * this.chara.size;
@@ -66,11 +71,6 @@ class EnemyController extends CharaController {
         this.aura.cellIndex = bufftype
         this.aura.size = 65;
         this.aura.width = 90;
-
-        // this.aura.position.z -= (8 - (this.mesh.position.z / 30));
-        //this.aura.position.x -= (13 - (this.mesh.position.x / 30));
-
-
     }
 
     directionMovement(dirx, diry) {

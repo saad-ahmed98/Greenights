@@ -5160,9 +5160,9 @@ enemylist["Ergate Leader"] = {
     blockcount: 99,
     type: "g",
     range: 0,
-    hploss: 1.1,
+    hploss: 1,
     dmgtype: "physical",
-    size: 1,
+    size: 1.1,
     tooltip: "More durable than Ergates.\nCannot be blocked.\nMust be eliminated quickly.",
     targets: 1,
 
@@ -7129,7 +7129,7 @@ enemylist["Frostnova2"] = {
     dmgtype: "magic",
     size: 1,
     tooltip: "Every attack inflicts cold.\n Deals increased damage\n against frozen allies.\nPeriodically releases an\nice nova damaging \nall allies in range.",
-    targets: 2,
+    targets: 1,
     enemytype: "normal",
 
     spritesheet: "images/sprites/frostnova2-sheet.webp",
@@ -7351,7 +7351,7 @@ enemylist["FrostnovaEX2"] = {
     dmgtype: "magic",
     size: 1,
     tooltip: "Every attack inflicts cold.\n Deals increased damage\n against frozen allies.\nPeriodically releases an\nice nova damaging \nall allies in range.",
-    targets: 2,
+    targets: 1,
     enemytype: "normal",
 
     spritesheet: "images/sprites/frostnova2-sheet.webp",

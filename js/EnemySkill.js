@@ -73,7 +73,7 @@ class EnemySkill {
         }
         this.durationtimer++;
         if (this.durationtimer >= this.modifiers.stack && target.invincibleaura == undefined) {
-            target.createInvincibleAura()
+            target.createRageAura()
             target.activateSkillAnims()
         }
 
