@@ -611,7 +611,6 @@ class LVLController extends LVLAbstract {
     }
 
     renderScene() {
-
         var startingColor = this.scene.clearColor.clone();
         var t;
 
@@ -639,7 +638,7 @@ class LVLController extends LVLAbstract {
                 }
                 if (!this.gui.isPaused)
                     this.createLvl();
-            } 
+            }
         }
         this.scene.render();
     }
@@ -1355,7 +1354,7 @@ class LVLController extends LVLAbstract {
                 this.activePlayers[i].removeAllBlocking()
                 this.activePlayers[i].chara.cost = Math.min(this.activePlayers[i].chara.basecost + Math.round(this.activePlayers[i].chara.basecost * 0.5), this.activePlayers[i].chara.basecost * 2),
 
-                    this.playerlist[this.activePlayers[i].chara.name] = this.activePlayers[i].chara
+                this.playerlist[this.activePlayers[i].chara.name] = this.activePlayers[i].chara
                 this.activePlayers.splice(i, 1)
                 i--;
                 this.squadlimit++;

@@ -197,6 +197,7 @@ enemylist['Sarkaz Grudgebearer'] = {
     dmgtype: "magic",
 
     targets: 2,
+    tooltip: "Starts battle in Standby\nand will not attack.\nUpon being injured,\nbecomes Combat-Ready and\ninflicts Magic ranged attacks\n to 2 targets at once.",
 
     enemytype: "standby",
 
@@ -283,6 +284,8 @@ enemylist['Sarkaz Worldcurser'] = {
     targets: 2,
 
     enemytype: "standby",
+    tooltip: "Starts battle in Standby\nand will not attack.\nUpon being injured,\nbecomes Combat-Ready and\ninflicts Magic ranged attacks\n to 2 targets at once.",
+
 
     hasskill: true,
     size: 1.1,
@@ -352,9 +355,9 @@ enemylist['Sarkaz Worldcurser'] = {
 
 enemylist['Sarkaz Sentinel'] = {
     name: "Sarkaz Sentinel",
-    hp: 4000,
+    hp: 5000,
     atk: 0,
-    def: 100,
+    def: 160,
     res: 30,
     atkinterval: 1,
     speed: (0.3 + 0.2)* 0.49,
@@ -365,6 +368,9 @@ enemylist['Sarkaz Sentinel'] = {
     dmgtype: "physical",
 
     targets: 1,
+
+    tooltip: " Upon being injured,\nissues an alarm to \nimprove the ATK and DEF\nof enemies as well as causing\nany enemy units in Standby\nto become Combat-Ready.",
+    	
 
     enemytype: "normal",
 
@@ -409,8 +415,8 @@ enemylist['Sarkaz Sentinel'] = {
         skilltype: "sarkazalert",
         target: "all",
         modifiers: {
-            atk: 0.3,
-            def: 0.3,
+            atk: 0.5,
+            def: 0.5,
         },
         aura: true,
         auratype: 5,
@@ -2843,7 +2849,7 @@ enemylist["Nameless Knight"] = {
     hploss: 1,
     dmgtype: "physical",
     size: 1,
-    tooltip: "An independent Kazimierz knight\nlittle in the way of\nachievements or skill.",
+    tooltip: "An independent Kazimierz knight\n with little in the way of\nachievements or skill.",
     targets: 1,
 
     enemytype: "normal",

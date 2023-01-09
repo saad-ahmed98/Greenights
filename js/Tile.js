@@ -93,7 +93,7 @@ class Tile {
                 newMeshHolePlate.material = holeMat
                 box1.dispose()
                 box2.dispose()
-                newMeshHolePlate.material.diffuseColor = new BABYLON.Color3(0.1, 0.1, 0.1);
+                newMeshHolePlate.material.diffuseColor = this.getBgColor()
                 colorMaterial.diffuseTexture = this.scene.assets["g"]
                 break;
             default:

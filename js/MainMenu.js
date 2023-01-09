@@ -32,7 +32,6 @@ class MainMenu extends LVLAbstract {
         junction_font.load().then(function (loaded_face) {
             document.fonts.add(loaded_face);
             //document.body.style.fontFamily = '"Junction Regular", Arial';
-
         })
         this.loadBackgrounds()
     }
@@ -258,7 +257,7 @@ class MainMenu extends LVLAbstract {
         if (this.startingscreen != "")
             this.createLVLSelect(this.startingscreen)
         else this.createMainMenu()
-        var postProcess = new BABYLON.FxaaPostProcess("fxaa", 1.0, camera);
+        new BABYLON.FxaaPostProcess("fxaa", 1.0, camera);
 
         return this.scene;
 
@@ -343,7 +342,7 @@ class MainMenu extends LVLAbstract {
                 j = 1
                 z = 3.2
             }
-            if (localStorage.getItem(chapters[keys[i]].unlock) != null) {
+            if (localStorage.getItem(chapters[keys[i]].unlock) != null || unlockAll) {
                 let title = new BABYLON.GUI.TextBlock();
                 title.text = chapters[keys[i]].title;
                 title.fontSize = "3%";
@@ -387,7 +386,7 @@ class MainMenu extends LVLAbstract {
                 j = 1
                 z = 3.2
             }
-            if (localStorage.getItem(chapters[keys[i]].unlock) != null) {
+            if (localStorage.getItem(chapters[keys[i]].unlock) != null || unlockAll) {
                 const button = BABYLON.GUI.Button.CreateImageOnlyButton("but", "images/menu/chapters/" + chapters[keys[i]].select);
                 button.width = (28 * 0.7) + "%";
                 button.height = (50 * 0.7) + "%";

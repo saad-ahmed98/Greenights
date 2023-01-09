@@ -39,7 +39,7 @@ class EnemyController extends CharaController {
     //create invincibility aura if enemy can be invincible
     startInvincibility() {
         this.invincible = true;
-        this.invincibleaura  = new BABYLON.Sprite("", this.lvlcontroller.spriteManagers["icons"]);
+        this.invincibleaura = new BABYLON.Sprite("", this.lvlcontroller.spriteManagers["icons"]);
         this.invincibleaura.position = new BABYLON.Vector3(this.sprite.position.x, this.sprite.position.y + 1, this.sprite.position.z);
         this.invincibleaura.cellIndex = 12
         this.invincibleaura.size = 65;
@@ -47,7 +47,7 @@ class EnemyController extends CharaController {
 
     }
 
-    createRageAura(){
+    createRageAura() {
         this.invincibleaura = new BABYLON.Sprite("", this.lvlcontroller.spriteManagers["skillaura"]);
         this.invincibleaura.position = new BABYLON.Vector3(this.sprite.position.x, this.sprite.position.y + 1, this.sprite.position.z);
         this.invincibleaura.size = 70 * this.chara.size;
@@ -81,14 +81,16 @@ class EnemyController extends CharaController {
         if (this.mesh.position.z <= this.currentpoint[0] * 30 + 1 && this.mesh.position.z >= this.currentpoint[0] * 30 - 1)
             zfound = true;
         if (dirx != 0 && !xfound) {
-            if (this.currentpoint[1] - this.mesh.position.x <= 0 && dirx < 0)
-                return 0.5
-            else return 1.8
+            console.log("point:"+this.currentpoint[1])
+            console.log("x:"+this.mesh.position.x)
+            if (this.currentpoint[1]*30 - this.mesh.position.x <= 0 && dirx < 0)
+                return 1.8
+            else return 0.5
         }
         if (diry != 0 && !zfound) {
-            if (this.currentpoint[0] - this.mesh.position.z <= 0 && diry < 0)
-                return 0.5
-            else return 1.8
+            if (this.currentpoint[0]*30 - this.mesh.position.z <= 0 && diry < 0)
+                return 1.8
+            else return 0.5
         }
         return 1
 
@@ -554,6 +556,14 @@ class EnemyController extends CharaController {
                 }
             }
             var dmgmodifier = mod;
+            //TODO HARD CODED BAD
+            if (attackingplayer.chara.name == "Platinum") {
+                dmgmodifier = Math.max(1, Math.min(attackingplayer.prevatktimer / 25 * 0.8, 2))
+                console.log(dmgmodifier)
+            }
+
+            if (this.isasleep)
+                dmgmodifier = attackingplayer.buffs.getDmgSleep()
 
             //if attackingplayer can activate a on trigger dmg up skill, activate it 
             if (attackingplayer.playerSkill.chargetype == "attack" && attackingplayer.playerSkill.triggertype == "auto" && attackingplayer.playerSkill.currentsp >= attackingplayer.playerSkill.totalsp) {
@@ -649,7 +659,7 @@ class EnemyController extends CharaController {
                         if (attackingplayer.condtalent.condition == "kill")
                             attackingplayer.checkConditionTalent();
                     }
-                    this.lvlcontroller.currentdp += attackingplayer.buffs.getDpOnKill();
+                    this.lvlcontroller.currentdp = Math.min(this.lvlcontroller.currentdp + attackingplayer.buffs.getDpOnKill(), 99);
                     this.lvlcontroller.gui.updatePlayerWheelUI(this.lvlcontroller.currentdp, this.lvlcontroller.squadlimit)
                 }
             }
@@ -673,8 +683,8 @@ class EnemyController extends CharaController {
 
                 this.healthBar.dispose()
                 this.healthBarBackground.dispose()
-                if(this.invincibleaura!=undefined)
-                this.invincibleaura.dispose()
+                if (this.invincibleaura != undefined)
+                    this.invincibleaura.dispose()
 
                 if (this.skillBar != undefined)
                     this.skillBar.dispose();
@@ -1032,7 +1042,7 @@ class EnemyController extends CharaController {
     //move logic, do actions depending on state
     move(tiles, players) {
         //if the enemy is spawning (doing start animation), don't move
-        if (this.buffs.isAsleep()) {
+        if (this.buffs.isAsleep() && this.hp > 0) {
             this.isasleep = true;
             this.pause();
         }
@@ -1040,6 +1050,8 @@ class EnemyController extends CharaController {
             if (this.isasleep) {
                 this.sprite.playAnimation(this.chara.idle.start, this.chara.idle.end, true, 30 * this.gamespeed * (this.chara.idle.duration));
                 this.isasleep = false;
+                this.running = false;
+                this.attacking = false;
             }
         }
         if (!this.isasleep) {
@@ -1048,7 +1060,6 @@ class EnemyController extends CharaController {
                 if (this.spattacktimer != undefined && this.chara.spattack.chargetype == "second")
                     this.spattacktimer = Math.min(this.chara.spattack.sp, this.spattacktimer + (1 / 30) / this.gamespeed);
                 this.hp = Math.min(this.maxhp, this.hp + this.buffs.getFinalHpRegen(this.maxhp) * (1 / 30) / this.gamespeed)
-
                 var i = 0;
                 var foundblock = false
                 while (i < players.length && !foundblock) {
@@ -1113,9 +1124,6 @@ class EnemyController extends CharaController {
                         }
                     }
                 }
-
-                this.updateHpBar()
-
                 //if waiting, increase wait timer and when the timer reaches the specified amount, get the new checkpoint to reach
                 if (this.wait) {
                     if (this.lvlcontroller.tiles[Math.round(this.mesh.position.x / 30)][Math.round(this.mesh.position.z / 30)].type.includes("enter")) {
@@ -1148,10 +1156,11 @@ class EnemyController extends CharaController {
                         }
                     }
                 }
-                if (this.hp <= 0)
-                    this.activateDeath()
             }
         }
+        if (this.hp <= 0)
+            this.activateDeath()
+        this.updateHpBar()
     }
 
 }

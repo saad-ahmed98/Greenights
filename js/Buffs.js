@@ -54,8 +54,9 @@ class Buffs {
             frozen: false,
             silence: false,
             directionx: 0,
-            directiony:0
-
+            sphit: false,
+            directiony: 0,
+            dmgsleep: 0,
         }
     }
 
@@ -82,18 +83,30 @@ class Buffs {
         }
     }
 
+    getSpHit() {
+        this.initModifiers();
+        this.sumBuffs();
+        return this.modifiers.sphit
+    }
+
+    getDmgSleep() {
+        this.initModifiers();
+        this.sumBuffs();
+        return this.modifiers.dmgsleep
+    }
+
     getFinalAtk(atk) {
         this.initModifiers();
         this.sumBuffs();
         return Math.max(0, Math.round(((atk * this.modifiers.flatmultiatk) * (1 + this.modifiers.atk)) + this.modifiers.inspireatk));
     }
-    getDirectionX(){
+    getDirectionX() {
         this.initModifiers();
         this.sumBuffs();
         return this.modifiers.directionx;
     }
 
-    getDirectionY(){
+    getDirectionY() {
         this.initModifiers();
         this.sumBuffs();
         return this.modifiers.directiony;
@@ -141,6 +154,26 @@ class Buffs {
                         return -1;
                     }
                     if (x.buffs.getFinalDef(x.chara.def) < y.buffs.getFinalDef(y.chara.def)) {
+                        return 1;
+                    }
+                    return 0;
+                });
+                break;
+            case "sleep":
+                //sort by sleeping
+                enemies.sort(function (x, y) {
+                    if (x.isasleep && y.isasleep) {
+                        if (x.getCloseToDestination() < y.getCloseToDestination()) {
+                            return -1;
+                        }
+                        if (x.getCloseToDestination() > y.getCloseToDestination()) {
+                            return 1;
+                        }
+                    }
+                    if (x.isasleep) {
+                        return -1;
+                    }
+                    if (y.isasleep) {
                         return 1;
                     }
                     return 0;

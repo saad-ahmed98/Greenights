@@ -25,6 +25,16 @@ class PlayerSkill {
             lvl.gui.updatePlayerWheelUI(lvl.currentdp, lvl.squadlimit)
         }
 
+        if (keys.includes("instantsleep")) {
+            let enemy = targets[0].getFirstEnemyInRange(lvl.enemies, 1, 99);
+            
+            if (enemy.length > 0) {
+                for (let i=0;i<enemy.length;i++){
+                    enemy[i].applyAsleep(this.modifiers.instantsleep)
+                }
+            }
+        }
+
         for (let i = 0; i < targets.length; i++) {
             if (this.modifiers.instantheal != undefined) {
                 targets[i].hp = Math.min(targets[i].maxhp, targets[i].hp + targets[i].maxhp * this.modifiers.instantheal)

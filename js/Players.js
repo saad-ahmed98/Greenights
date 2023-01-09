@@ -1,5 +1,152 @@
 let playerlist = {};
 
+playerlist["Blemishine"] = {
+    name: "Blemishine",
+    hp: 3242,
+    atk: 607,
+    def: 601,
+    res: 10,
+    atkinterval: 1.2,
+    blockcount: 3,
+    rarity: "rgb(255, 115, 0)",
+
+    rdtimer: 66,
+    rdcounter: 0,
+
+    type: "g",
+    class: "defender",
+    subclass: "Guardian",
+
+
+    cost: 20,
+    basecost: 20,
+
+    range: 1,
+    targets: 1,
+
+    dmgtype: "physical",
+
+    opicon: "images/opicons/blemishine.webp",
+
+    spritesheet: "images/sprites/blemishine-sheet.webp",
+
+    skillsfx: true,
+
+    atkanim: {
+        start: 0,
+        end: 17,
+        contact: 9,
+        duration: 1.1,
+    },
+
+    death: {
+        start: 18,
+        end: 32,
+    },
+
+    idle: {
+        start: 33,
+        end: 62
+    },
+
+    drop: {
+        start: 63,
+        end: 77
+    },
+
+    skillatkanim: {
+        start: 78,
+        end: 95,
+        contact: 78+9,
+        duration: 1.1,
+    },
+
+    skill: {
+        name: "Deterring Radiance",
+        description: "ATK +110% and all enemies within \nrange as herself are put to Sleep\n(Invincible,unable to move or act)\nRestores the HP of all nearby allies\nby 20% of Blemishine's ATK every second.",
+        duration: 10,
+        sp: 12,
+        initialsp: 0,
+        chargetype: "hit",
+        triggertype: "manual",
+        modifiers: {
+            atk: 1.1,
+            instantsleep: 10,
+        },
+        applyeffects:
+            {
+                name: "Radiance effect",
+                apply: "aliveallies",
+                range: 2,
+                modifiers: {
+                    flathpregen: {
+                        stat: "atk",
+                        percent: 0.2
+                    }
+                },
+                duration: 0.5,
+                targets: 99,
+            },
+        apply: "self",
+        skillimage: "images/opicons/blemishineskill.webp"
+
+    },
+    talents: [
+        {
+            name: "Knight of Sword and Shield",
+            description: "When deployed, allies that have a Hit Recovery\nskill also gain 1 SP when attacking.",
+            modifiers: {
+            },
+            applyeffects:
+            {
+                name: "Knight of Sword and Shield effect",
+                apply: "aliveallies",
+                range: 99,
+                modifiers: {
+                    sphit:true
+                },
+                duration: 0.5,
+                targets: 99,
+            },
+            apply: "self",
+        },
+        {
+            name: "Mercy",
+            description: "Blemishine can attack and will prioritize Sleeping enemies;\nIncrease ATK to 144% when attacking Sleeping enemies",
+            modifiers: {
+                priority: "sleep",
+                dmgsleep : 1.44
+            },
+            apply: "self",
+        },
+        {
+            name: "Trait",
+            description: "Can heal allies by using the skill",
+            modifiers: {
+            },
+            apply: "self",
+        },
+
+    ],
+    sfx: {
+       
+        hit: {
+            src: "blem-hit",
+            volume: 0.1
+        },
+        skillact: {
+            src: "blem-skill",
+            volume: 0.3
+        },
+
+        skillhit: {
+            src: "blem-skillhit",
+            volume: 0.1
+        },
+
+    }
+}
+
 playerlist["Angelina"] = {
     name: "Angelina",
     hp: 1385,
@@ -1212,6 +1359,342 @@ playerlist["Skadi"] = {
         }
     }
 }
+
+playerlist["Platinum"] = {
+    name: "Platinum",
+    hp: 1550,
+    atk: 593,
+    def: 165,
+    res: 0,
+    atkinterval: 1,
+    blockcount: 1,
+    rarity: "rgb(255, 221, 26)",
+
+    rdtimer: 66,
+    rdcounter: 0,
+
+    type: "r",
+    class: "sniper",
+    subclass: "Marksman",
+
+
+    cost: 12,
+    basecost: 12,
+
+    range: 3,
+    targets: 1,
+
+
+    dmgtype: "physical",
+
+    
+
+    opicon: "images/opicons/platinum.webp",
+
+    spritesheet: "images/sprites/platinum-sheet.webp",
+    bullet: { size: { height: 1, depth: 4, width: 0.5 }, arc: false, speed: 4, color: new BABYLON.Color3(1, 1, 1) },
+
+    skillsfx: false,
+
+    atkanim: {
+        start: 0,
+        end: 14,
+        contact: 10,
+        duration: 1.1,
+    },
+
+    death: {
+        start: 15,
+        end: 29,
+    },
+
+    idle: {
+        start: 30,
+        end: 58
+    },
+
+    drop: {
+        start: 59,
+        end: 74
+    },
+
+    skillatkanim: {
+        start: 75,
+        end: 95,
+        contact: 75+18,
+        duration: 1.1,
+
+    },
+
+
+    skill: {
+        name: "Pegasian Sight",
+        description: "ASPD -20; but ATK +100%;\nRange expands.\nInfinite duration",
+        duration: 9999,
+        sp: 50,
+        initialsp: 0,
+        chargetype: "second",
+        triggertype: "auto",
+
+        modifiers: {
+            atk: 1,
+            aspd: -20,
+            range : 0.5,
+            ignoreaniminterval: true,
+        },
+        apply: "self",
+        skillimage: "images/opicons/platinumskill.webp"
+
+    },
+    talents: [
+        {
+            name: "All-Out Attack",
+            description: "The longer the interval from the last attack is,\nthe higher the ATK of the next attack will be\n(The longest interval is 2.5 seconds \nand the corresponding ATK increases to 200%)",
+            modifiers: {
+            },
+            apply: "self",
+
+        },
+        {
+            name: "Trait",
+            description: "Prioritizes flying enemies",
+            modifiers: {
+                priority: "flying",
+            },
+            apply: "self",
+        }
+
+    ],
+    sfx: {
+        atk: {
+            src: "plat-atk",
+            volume: 0.1
+        },
+
+        skillact: {
+            src: "plat-skill",
+            volume: 0.4
+        }
+    }
+}
+
+playerlist["Lava"] = {
+    name: "Lava",
+    hp: 1543,
+    atk: 950,
+    def: 115,
+    res: 20,
+    atkinterval: 2.9,
+    blockcount: 1,
+    rarity: "rgb(255, 221, 26)",
+
+    rdtimer: 60,
+    rdcounter: 0,
+
+    type: "r",
+    class: "caster",
+    subclass: "Splash caster",
+
+
+    cost: 32,
+    basecost: 32,
+
+    range: 2,
+    targets: 1,
+
+    dmgtype: "magic",
+
+    
+
+    opicon: "images/opicons/lava.webp",
+
+    spritesheet: "images/sprites/lava-sheet.webp",
+
+    skillsfx: false,
+
+    atkanim: {
+        start: 0,
+        end: 14,
+        contact: 9,
+        duration: 1.1,
+    },
+
+    death: {
+        start: 15,
+        end: 29,
+    },
+
+    idle: {
+        start: 31,
+        end: 49
+    },
+
+    drop: {
+        start: 50,
+        end: 61
+    },
+
+    skillatkanim: {
+        start: 62,
+        end: 83,
+        contact: 62+8,
+        duration: 1.1,
+    },
+
+    skill: {
+        name: "Flame Quenched Dagger",
+        description: "Attack Range +1 tile, ATK +20%,\nand attack up to 2 targets simultaneously.\nInfinite duration",
+        duration: 9999,
+        sp: 80,
+        initialsp: 0,
+        chargetype: "second",
+        triggertype: "auto",
+        modifiers: {
+            atk: 0.2,
+            range: 1,
+            targets: 1,
+        },
+        apply: "self",
+        skillimage: "images/opicons/lavaskill.webp"
+
+    },
+    talents: [
+        {
+            name: "See no Evil",
+            description: "When Lava defeats an enemy,\nLava gains ATK +2%, stacking up to 15 times",
+            condtalent: 15,
+            modifiers: {
+                flatmultiatk:1.02
+            },
+            condition: "kill",
+        },
+        {
+            name: "Trait",
+            description: "Attacks hit all enemies in a radius \nfrom the primary target.",
+            modifiers: {
+                splash: true,
+                splashradius: 1.1,
+            },
+            apply: "self",
+        }],
+    sfx: {
+        atk: {
+            src: "lava-atk",
+            volume: 0.1
+        },
+        hit: {
+            src: "lava-hit",
+            volume: 0.1
+        },
+        skillact: {
+            src: "skill-atk",
+            volume: 0.3
+        }
+    }
+}
+
+playerlist["Reed"] = {
+    name: "Reed",
+    hp: 2215,
+    atk: 657,
+    def: 364,
+    res: 0,
+    atkinterval: 1,
+    blockcount: 1,
+
+    rarity: "rgb(255, 221, 26)",
+
+    rdtimer: 60,
+
+    rdcounter: 0,
+
+    type: "g",
+    class: "vanguard",
+    subclass: "Charger",
+
+    cost: 10,
+    basecost: 10,
+    range: 1,
+
+    targets: 1,
+
+    dmgtype: "physical",
+
+    
+
+    opicon: "images/opicons/reed.webp",
+
+    spritesheet: "images/sprites/reed-sheet.webp",
+    skillsfx: false,
+
+    atkanim: {
+        start: 0,
+        end: 11,
+        contact: 3,
+        duration: 1.3,
+    },
+
+    death: {
+        start: 12,
+        end: 26,
+    },
+
+    idle: {
+        start: 27,
+        end: 56
+    },
+
+    drop: {
+        start: 57,
+        end: 71
+    },
+    skill: {
+        name: "Soul Spark",
+        description: "ATK +100%,\ndamage turns into MAGIC,\nand restores +1 DP when\ndefeating an enemy.",
+        duration: 30,
+        sp: 35,
+        initialsp: 20,
+        chargetype: "second",
+        triggertype: "manual",
+        modifiers: {
+            atk: 1,
+            dponkill: 1,
+            dmgtype:"magic"
+        },
+        apply: "self",
+        skillimage: "images/opicons/reedskill.webp"
+    },
+    talents: [{
+        name: "Blighted Blood",
+        description: "RES +20",
+        modifiers: {
+            flatres: 20,
+        },
+        apply: "self",
+    }, {
+        name: "Trait",
+        description: "Gains 1DP each kill.",
+        modifiers: {
+            dponkill: 1,
+        },
+        apply: "self",
+    }],
+    sfx: {
+        atk: {
+            src: "plume-atk",
+            volume: 0.1
+        },
+        hit: {
+            src: "plume-hit",
+            volume: 0.1
+        },
+        skillact: {
+            src: "skill-speed",
+            volume: 0.3
+        }
+    }
+}
+
 playerlist["Savage"] = {
     name: "Savage",
     hp: 2680,
@@ -2678,7 +3161,7 @@ playerlist["Gitano"] = {
     hp: 1598,
     atk: 812,
     def: 118,
-    res: 10,
+    res: 20,
     atkinterval: 2.9,
     blockcount: 1,
     rarity: "rgb(216, 132, 255)",

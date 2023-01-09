@@ -17,6 +17,7 @@ class PlayerController extends CharaController {
         this.condtalentcounter = 0;
         this.alivebuffs = [];
         this.contact = false
+        this.prevatktimer = 0;
 
     }
 
@@ -334,10 +335,10 @@ class PlayerController extends CharaController {
             enemy = this.getLowestHpPlayerInRange(players, this.buffs.getFinalRange(this.chara.range), this.chara.targets + this.buffs.getTargets());
         else {
             if (this.blocking == 0) {
-                enemy = this.getFirstEnemyInRange(enemies, this.buffs.getFinalRange(this.chara.range), this.chara.targets + this.buffs.getTargets());
+                enemy = this.getFirstEnemyInRange(enemies, this.buffs.getFinalRange(this.chara.range), this.chara.targets + this.buffs.getTargets(), this.buffs.getDmgSleep() > 0);
             }
             else {
-                enemy = this.getBlockedEnemyInRange(enemies, this.chara.targets + this.buffs.getTargets())
+                enemy = this.getBlockedEnemyInRange(enemies, this.chara.targets + this.buffs.getTargets(), this.buffs.getDmgSleep() > 0)
                 //enemy = this.getFirstEnemyInRange(enemies, 0,this.chara.targets+this.buffs.getTargets())
             }
         }
@@ -413,7 +414,7 @@ class PlayerController extends CharaController {
                             instance.playerSkill.currentsp = -1
                         }
 
-                        if (instance.playerSkill.chargetype == "attack"  && !instance.playerSkill.active) {
+                        if ((instance.playerSkill.chargetype == "attack" || (instance.playerSkill.chargetype == "hit" && instance.buffs.getSpHit())) && !instance.playerSkill.active) {
                             instance.playerSkill.currentsp = Math.min(instance.playerSkill.currentsp + 1, instance.playerSkill.totalsp);
                             instance.updateSkillBarCharging();
                         }
@@ -514,6 +515,7 @@ class PlayerController extends CharaController {
                 }
                 this.atktimer += 1 / this.gamespeed;
                 if (this.atktimer >= this.buffs.getFinalAtkInterval(this.chara.atkinterval) * 25 && this.buffs.getCanAttack() && !this.contact) {
+                    this.prevatktimer = this.atktimer
                     this.atktimer = 0;
                     var success = this.attack(enemies, players);
                     if (!success)
