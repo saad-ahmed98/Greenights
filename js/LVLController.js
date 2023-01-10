@@ -621,7 +621,7 @@ class LVLController extends LVLAbstract {
             BABYLON.Color3.LerpToRef(BABYLON.Color3.BlackReadOnly, startingColor, t, this.scene.clearColor);
         }
         else {
-            
+
             if (!this.render) {
                 this.createGUIs()
                 this.render = true;
@@ -1354,7 +1354,7 @@ class LVLController extends LVLAbstract {
                 this.activePlayers[i].removeAllBlocking()
                 this.activePlayers[i].chara.cost = Math.min(this.activePlayers[i].chara.basecost + Math.round(this.activePlayers[i].chara.basecost * 0.5), this.activePlayers[i].chara.basecost * 2),
 
-                this.playerlist[this.activePlayers[i].chara.name] = this.activePlayers[i].chara
+                    this.playerlist[this.activePlayers[i].chara.name] = this.activePlayers[i].chara
                 this.activePlayers.splice(i, 1)
                 i--;
                 this.squadlimit++;
@@ -1528,10 +1528,23 @@ class LVLController extends LVLAbstract {
                             }
                             if (instance.zoom && (currentTile.x != x || currentTile.z != y)) {
                                 currentTile = null;
-
                                 instance.unzoom()
+                                if (x < instance.tiles.length && x >= 0 && y < instance.tiles[0].length && y >= 0) {
+                                    if (instance.tiles[x][y].player != undefined) {
+                                        instance.zoom = true;
+                                        var pl = instance.tiles[x][y].player
+                                        instance.playSound(pl.chara.name + "-select", instance.vcvolume)
+                                        instance.displayRangeTiles(x, y, pl)
+                                        instance.createFocusCamera(x * 30, y * 30);
+                                        if (instance.gamespeed != 8)
+                                            instance.prevspeed = instance.gamespeed
+                                        instance.gamespeed = 8
+                                        instance.updateSpeed()
+                                        currentTile = instance.tiles[x][y];
+                                        instance.gui.createContextMenu(pl, instance);
+                                    }
+                                }
                             }
-
                         }
                         break;
                     case BABYLON.PointerEventTypes.POINTERUP:
@@ -1795,6 +1808,7 @@ class LVLController extends LVLAbstract {
     }
 
     createEnemy(e, start, checkpoints, id, invertU) {
+        localStorage.setItem(e,true)
         var enemyUse = this.enemylist[e]
         var matrixUse = this.matrix
         if (enemyUse.type == "r")

@@ -3,7 +3,7 @@ class MainMenu extends LVLAbstract {
         super(gameconfig)
         backgroundimg = "images/menu/backgrounds/main.png",
 
-        this.gameconfig = gameconfig;
+            this.gameconfig = gameconfig;
         this.scene = new BABYLON.Scene(gameconfig.engine);
         this.lvlcontroller = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI", true, this.scene);
         this.opcontroller = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("opUI", true, this.scene);
@@ -576,11 +576,11 @@ class MainMenu extends LVLAbstract {
                     container.color = "Black";
                     container.thickness = 3;
                     container.cornerRadius = 50
-                    container.background =  playerlist[chapterlvl[i].unlock].rarity;
+                    container.background = playerlist[chapterlvl[i].unlock].rarity;
                     container.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
                     container.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
-            
-                    var image = new BABYLON.GUI.Image("tooltip",playerlist[chapterlvl[i].unlock].opicon);
+
+                    var image = new BABYLON.GUI.Image("tooltip", playerlist[chapterlvl[i].unlock].opicon);
                     container.addControl(image)
                     this.lvlcontroller.addControl(container);
 
@@ -670,9 +670,7 @@ class MainMenu extends LVLAbstract {
         container.width = "40%"
         container.height = "80%";
         container.top = "5%";
-        //container.left = (i * -8.3) + "%";
         container.color = "White";
-        //container.thickness = 1;
         container.background = "rgba(0, 0, 0, 0.8)";
 
         if (lvl.type.includes("hell")) {
@@ -738,11 +736,20 @@ class MainMenu extends LVLAbstract {
         image2.width = "40%"
         image2.height = "15%"
         image2.top = "39%"
-        image2.left = "3%"
+        image2.left = "-20%"
         image2.color = "transparent"
         image2.background = "transparent"
 
+        var image3 = BABYLON.GUI.Button.CreateImageOnlyButton("but", "images/menu/enemyinfo.png");
+        image3.width = "32%"
+        image3.height = "12%"
+        image3.top = "40%"
+        image3.left = "25%"
+        image3.color = "transparent"
+        image3.background = "transparent"
+
         container.addControl(image2)
+        container.addControl(image3)
 
         var instance = this
 
@@ -752,8 +759,102 @@ class MainMenu extends LVLAbstract {
             //new LVLController(instance.gameconfig, enemylist, playerlist, levels[lvlname]);
         });
 
+        image3.onPointerUpObservable.add(function () {
+            instance.playSound("confirm", 0.3)
+            instance.createEnemyInfo(lvlname, chapter)
+            //new LVLController(instance.gameconfig, enemylist, playerlist, levels[lvlname]);
+        });
+
 
         this.opcontroller.addControl(container)
+    }
+
+    createEnemyInfo(lvlname, chapter) {
+        this.lvlcontroller.dispose()
+        this.opcontroller.dispose()
+        this.lvlcontroller = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI", true, this.scene);
+        var instance = this;
+
+        var label = new BABYLON.GUI.TextBlock();
+        label.text = "ENEMIES SPOTTED";
+        label.fontSize = "8%";
+        label.color = "white";
+        label.top = "-40%";
+        label.left = "10%";
+        label.fontFamily = "Butler Stencil";
+        this.lvlcontroller.addControl(label)
+
+        let keys = levels[lvlname].enemies.sort()
+        var j = 0;
+        var z = 0;
+        var myScrollViewer = new BABYLON.GUI.ScrollViewer();
+        myScrollViewer.width = "63%"
+        myScrollViewer.height = "100%";
+        myScrollViewer.left = "-10%";
+
+        myScrollViewer.top = "10%";
+        myScrollViewer.color = "transparent"
+
+        for (let i = 0; i < keys.length; i++) {
+            if (i % 3 == 0 && i > 0) {
+                j++
+                z = 0
+            }
+            let button;
+            let name = keys[i].split("EX")[0]
+            if (keys[i].slice(-1) != '2') {
+                if (localStorage.getItem(name) != null) {
+                    button = BABYLON.GUI.Button.CreateImageOnlyButton(name, "images/enemyicons/" + name + ".png");
+                    button.onPointerUpObservable.add(function () {
+                        instance.playSound("click", 0.3)
+                        instance.createEnemyTooltip(enemylist[keys[i]])
+                    });
+                }
+                else button = BABYLON.GUI.Button.CreateImageOnlyButton(name, "images/menu/notfound.jpg");
+
+                button.width = "17%";
+                button.height = "18%";
+                button.top = (10 + j * 19) + "%";
+                button.left = (0 + z * 18) + "%";
+                button.color = "transparent";
+                button.hoverCursor = "pointer";
+
+                button.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
+                button.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
+
+                myScrollViewer.addControl(button);
+                z++
+            }
+            else{
+                keys.splice(i,1)
+                i--
+            }
+        }
+
+        this.lvlcontroller.addControl(myScrollViewer)
+
+
+        var quit = BABYLON.GUI.Button.CreateImageOnlyButton("but", "images/menu/back.png");
+
+        quit.width = "17%"
+        quit.height = "13%";
+        quit.top = "5%";
+        quit.color = "transparent";
+        quit.background = "transparent"
+        quit.cornerRadius = 10;
+        quit.left = "10%"
+        quit.hoverCursor = "pointer";
+        quit.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
+        quit.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
+        this.lvlcontroller.addControl(quit);
+
+        quit.onPointerUpObservable.add(function () {
+            instance.playSound("back", 0.3)
+            instance.createLVLSelect(chapter)
+            localStorage.setItem("team", JSON.stringify(selected))
+        });
+        this.createEmptyEnemyTooltip()
+
     }
 
     createPlayerSelection(lvlname, chapter) {
@@ -812,7 +913,7 @@ class MainMenu extends LVLAbstract {
                 image.width = "26%"
                 image.left = "-35%"
 
-                var image2 = new BABYLON.GUI.Image("", "images/classicons/"+playerlist[keys[i]].class+".webp");
+                var image2 = new BABYLON.GUI.Image("", "images/classicons/" + playerlist[keys[i]].class + ".webp");
                 image2.width = "22%"
                 image2.height = "80%"
 
@@ -986,7 +1087,7 @@ class MainMenu extends LVLAbstract {
         text.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT
         text.left = "5%";
 
-        var image = new BABYLON.GUI.Image("tooltip","images/classicons/"+player.class+".webp");
+        var image = new BABYLON.GUI.Image("tooltip", "images/classicons/" + player.class + ".webp");
         image.width = "15%"
         image.height = "40%"
         image.top = "-5%"
@@ -1122,8 +1223,102 @@ class MainMenu extends LVLAbstract {
         icon.left = "-1%"
 
         container.addControl(icon)
+        textbox.addControl(text)
+        container.addControl(textbox)
+
+        this.opcontroller.addControl(container);
+    }
+
+    //creates description when clicking on an enemy
+    createEnemyTooltip(enemy) {
+
+        this.opcontroller.dispose()
+        this.opcontroller = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("opUI", true, this.scene);
+
+
+        var container = new BABYLON.GUI.Rectangle();
+        container.width = "50%";
+        container.height = "20%";
+        container.left = "-1%";
+        container.top = "15%";
+        container.color = "white";
+        container.thickness = 1;
+        container.background = "rgba(0, 0, 0, 0.3)";
+        container.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_RIGHT;
+        container.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
+
+
+        var textbox = new BABYLON.GUI.Rectangle();
+        textbox.width = "100%";
+        textbox.left = "1%";
+        textbox.color = "white";
+        textbox.thickness = 0;
+        textbox.background = "transparent";
+
+        //stats description
+        var text = new BABYLON.GUI.TextBlock();
+        text.text = "\"" + enemy.name.split("EX")[0] + "\"\n\n\n\tHP:\t" + enemy.hp + "\t\t\tATK:\t" + enemy.atk + "\t\t\tDEF:\t" 
+        + enemy.def + "\t\t\tRES:\t" + enemy.res+ "\t\t\tDMG:\t" + enemy.dmgtype.toUpperCase();
+        text.color = "white";
+        text.fontSize = "14%";
+        text.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT
+        text.left = "5%";
+
+        var icon = new BABYLON.GUI.Image("tooltip", "images/menu/stats-icon.png");
+        icon.width = "8%"
+        icon.height = "36%"
+        icon.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_RIGHT;
+        icon.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
+        icon.top = "3%"
+        icon.left = "-1%"
+
+        container.addControl(icon)
 
         textbox.addControl(text)
+        container.addControl(textbox)
+        this.opcontroller.addControl(container);
+
+
+        var textbox = new BABYLON.GUI.Rectangle();
+        textbox.width = "100%";
+        textbox.left = "1%";
+        textbox.color = "white";
+        textbox.thickness = 0;
+        textbox.background = "transparent";
+
+        var text = new BABYLON.GUI.TextBlock();
+        text.text = enemy.description || "nada"
+        text.color = "white";
+        text.top = "2%"
+        text.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT
+        text.textVerticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
+
+        text.left = "5%";
+        text.fontSize = "3.5%";
+
+
+        textbox.addControl(text)
+
+        container = new BABYLON.GUI.Rectangle();
+        container.width = "50%";
+        container.height = "64%";
+        container.left = "-1%";
+        container.top = "35%";
+        container.color = "white";
+        container.thickness = 1;
+        container.background = "rgba(0, 0, 0, 0.3)";
+        container.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_RIGHT;
+        container.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
+
+        var icon = new BABYLON.GUI.Image("tooltip", "images/menu/talents-icon.png");
+        icon.width = "9%"
+        icon.height = "12%"
+        icon.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_RIGHT;
+        icon.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
+        icon.top = "3%"
+        icon.left = "-1%"
+
+        container.addControl(icon)
         container.addControl(textbox)
 
 
@@ -1136,7 +1331,6 @@ class MainMenu extends LVLAbstract {
 
         this.opcontroller.dispose()
         this.opcontroller = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("opUI", true, this.scene);
-
 
         var container = new BABYLON.GUI.Rectangle();
         container.width = "28%";
@@ -1151,6 +1345,33 @@ class MainMenu extends LVLAbstract {
 
         var icon = new BABYLON.GUI.Image("tooltip", "images/menu/noinfo.png");
         icon.width = "60%"
+        icon.height = "50%"
+        icon.top = "3%"
+        icon.left = "-1%"
+
+        container.addControl(icon)
+
+        this.opcontroller.addControl(container);
+
+    }
+    createEmptyEnemyTooltip() {
+
+        this.opcontroller.dispose()
+        this.opcontroller = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("opUI", true, this.scene);
+
+        var container = new BABYLON.GUI.Rectangle();
+        container.width = "50%";
+        container.height = "84%";
+        container.left = "-1%";
+        container.top = "15%";
+        container.color = "white";
+        container.thickness = 1;
+        container.background = "rgba(0, 0, 0, 0.3)";
+        container.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_RIGHT;
+        container.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
+
+        var icon = new BABYLON.GUI.Image("tooltip", "images/menu/noinfo.png");
+        icon.width = "50%"
         icon.height = "50%"
         icon.top = "3%"
         icon.left = "-1%"

@@ -26,7 +26,7 @@ class PlayerSkill {
         }
 
         if (keys.includes("instantsleep")) {
-            let enemy = targets[0].getFirstEnemyInRange(lvl.enemies, 1, 99);
+            let enemy = targets[0].getBlockedEnemyInRange(lvl.enemies, 99,true);
             
             if (enemy.length > 0) {
                 for (let i=0;i<enemy.length;i++){

@@ -16,7 +16,6 @@ function startGame() {
     if(sessionStorage.getItem("startingscreen")!=null)
         startingscreen = sessionStorage.getItem("startingscreen")
     new MainMenu(gameconfig,startingscreen)
-
 }
 
 function resize() {

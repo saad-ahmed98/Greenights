@@ -8,17 +8,17 @@ enemylist['Hound'] = {
     def: 0,
     res: 20,
     atkinterval: 1.4,
-    speed: (1.7 + 0.2)* 0.49,
+    speed: (1.7 + 0.2) * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
     hploss: 1,
     tooltip: "A fast-moving creature controlled\nby a Reunion recon squad.",
+    description: "A fast enemy that attacks and moves very fast.\n\nCapable of taking by surprise unprepared defenses.",
+
     dmgtype: "physical",
     size: 1,
-
     enemytype: "normal",
-
     spritesheet: "images/sprites/dog-sheet.webp",
 
     hasskill: false,
@@ -66,15 +66,17 @@ enemylist['Crossbowman Leader'] = {
     def: 150,
     res: 0,
     atkinterval: 2.4,
-    speed: (0.7 + 0.2)* 0.49,
+    speed: (0.7 + 0.2) * 0.49,
     blockcount: 1,
     type: "g",
     range: 1.9,
     hploss: 1,
     tooltip: "A more dangerous Crossbowman,\ncapable of attacking from long range.",
+    description: "An enemy that uses ranged attacks that can \ntarget both ranged and ground units.\n\nBoosts better stats than a normal Crossbowman.",
+
 
     dmgtype: "physical",
-    bullet: { size: { height: 1, depth: 8, width: 0.5 }, arc:false, speed:5, color: new BABYLON.Color3(0.4, 0.4, 0.4)},
+    bullet: { size: { height: 1, depth: 8, width: 0.5 }, arc: false, speed: 5, color: new BABYLON.Color3(0.4, 0.4, 0.4) },
 
 
     enemytype: "normal",
@@ -127,15 +129,16 @@ enemylist['Crossbowman'] = {
     def: 150,
     res: 0,
     atkinterval: 2.4,
-    speed: (0.7 + 0.2)* 0.49,
+    speed: (0.7 + 0.2) * 0.49,
     blockcount: 1,
     type: "g",
     range: 1.9,
     hploss: 1,
-    tooltip: "One of Reunion's ranged soldiers,\ncapable of attacking from long range.",
+    tooltip: "One of Reunion's ranged soldiers,\ncapable of attacking from long range.\n\n",
+    description: "An enemy that uses ranged attacks that \ncan target both ranged and ground units.",
 
     dmgtype: "physical",
-    bullet: { size: { height: 1, depth: 8, width: 0.5 }, arc:false, speed:5, color: new BABYLON.Color3(0.4, 0.4, 0.4)},
+    bullet: { size: { height: 1, depth: 8, width: 0.5 }, arc: false, speed: 5, color: new BABYLON.Color3(0.4, 0.4, 0.4) },
 
 
     enemytype: "normal",
@@ -189,7 +192,7 @@ enemylist['Sarkaz Grudgebearer'] = {
     def: 250,
     res: 50,
     atkinterval: 5,
-    speed: (0.2 + 0.2)* 0.49,
+    speed: (0.2 + 0.2) * 0.49,
     blockcount: 1,
     type: "g",
     range: 3,
@@ -198,12 +201,16 @@ enemylist['Sarkaz Grudgebearer'] = {
 
     targets: 2,
     tooltip: "Starts battle in Standby\nand will not attack.\nUpon being injured,\nbecomes Combat-Ready and\ninflicts Magic ranged attacks\n to 2 targets at once.",
+    description: "An extremely powerful Sarkaz caster with high stats,\ncapable of attacking 2 targets at once with long range magic.\n\n" +
+        "Starts the battle in Standby, he will not attack \nany ally unit as long as he remains in this state.\n" +
+        "If he gets attacked or a Sarkaz Sentinel raises an alarm.\nBecomes Combat-Ready, increases his own movement speed and starts attacking.\n"
+        + "If the Grudgebearer was waiting in a tile before becoming Combat-ready,\ninstantly lowers the wait time to zero.",
 
     enemytype: "standby",
 
     hasskill: true,
     size: 1.1,
-    bullet: { size: { height: 1, depth: 5, width: 3 }, arc:false, speed:5, color: new BABYLON.Color3(0.69, 0.21, 0.67)},
+    bullet: { size: { height: 1, depth: 5, width: 3 }, arc: false, speed: 5, color: new BABYLON.Color3(0.69, 0.21, 0.67) },
 
 
     spritesheet: "images/sprites/sarkaz-grudgebearer-sheet.webp",
@@ -274,7 +281,7 @@ enemylist['Sarkaz Worldcurser'] = {
     def: 300,
     res: 50,
     atkinterval: 5,
-    speed: (0.2 + 0.2)* 0.49,
+    speed: (0.2 + 0.2) * 0.49,
     blockcount: 1,
     type: "g",
     range: 3,
@@ -285,11 +292,14 @@ enemylist['Sarkaz Worldcurser'] = {
 
     enemytype: "standby",
     tooltip: "Starts battle in Standby\nand will not attack.\nUpon being injured,\nbecomes Combat-Ready and\ninflicts Magic ranged attacks\n to 2 targets at once.",
-
+    description: "An even stronger Sarkaz caster with high stats,\ncapable of attacking 2 targets at once with long range magic.\n\n" +
+        "Starts the battle in Standby, he will not attack \nany ally unit as long as he remains in this state.\n" +
+        "If he gets attacked or a Sarkaz Sentinel raises an alarm.\nBecomes Combat-Ready, increases his own movement speed and starts attacking.\n"
+        + "If the Worldcurser was waiting in a tile before becoming Combat-ready,\ninstantly lowers the wait time to zero.",
 
     hasskill: true,
     size: 1.1,
-    bullet: { size: { height: 1, depth: 5, width: 3 }, arc:false, speed:5, color: new BABYLON.Color3(0.69, 0.21, 0.67)},
+    bullet: { size: { height: 1, depth: 5, width: 3 }, arc: false, speed: 5, color: new BABYLON.Color3(0.69, 0.21, 0.67) },
 
 
     spritesheet: "images/sprites/sarkaz-worldcurser-sheet.webp",
@@ -360,7 +370,7 @@ enemylist['Sarkaz Sentinel'] = {
     def: 160,
     res: 30,
     atkinterval: 1,
-    speed: (0.3 + 0.2)* 0.49,
+    speed: (0.3 + 0.2) * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -370,7 +380,10 @@ enemylist['Sarkaz Sentinel'] = {
     targets: 1,
 
     tooltip: " Upon being injured,\nissues an alarm to \nimprove the ATK and DEF\nof enemies as well as causing\nany enemy units in Standby\nto become Combat-Ready.",
-    	
+    description: "A Sarkaz with no offensive capabilities of his own.\nRaises an alarm whenever he gets hit,\ninspiring all enemies and activating Standby enemies.\n\n" +
+        "Sarkaz Sentinel is a reconnaissance enemy that supports other Sarkaz in case he gets hit.\n" +
+        "When a Sentinel gets hit, raises his flag, instantly buffing all present enemies ATK and DEF by 50%.\n"
+        + "Additionally, if any Standby enemy is present, turns them Combat-Ready after raising his flag.",
 
     enemytype: "normal",
 
@@ -455,17 +468,17 @@ enemylist['Sarkaz Swordsman'] = {
     def: 100,
     res: 50,
     atkinterval: 2.5,
-    speed: (0.8 + 0.2)* 0.49,
+    speed: (0.8 + 0.2) * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
-    tooltip:"A mercenary from Sarkaz\nwho boasts fairly high RES.",
+    tooltip: "A mercenary from Sarkaz\nwho boasts fairly high RES.",
     hploss: 1,
     dmgtype: "physical",
     size: 1,
     targets: 1,
-
-
+    description: "A basic melee Sarkaz mercenary.\n\n" +
+        "Thanks to his ancient heritage, boosts fairly high RES.\n",
     enemytype: "normal",
 
     spritesheet: "images/sprites/sarkaz-swordsman-sheet.webp",
@@ -517,7 +530,7 @@ enemylist['Sarkaz Greatswordsman'] = {
     def: 240,
     res: 50,
     atkinterval: 2,
-    speed: (0.65 + 0.2)* 0.49,
+    speed: (0.65 + 0.2) * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -529,7 +542,8 @@ enemylist['Sarkaz Greatswordsman'] = {
     enemytype: "normal",
 
     tooltip: "A mercenary from Sarkaz who \nboasts fairly high ATK and RES.",
-
+    description: "A powerful melee Sarkaz mercenary with high stats.\n\n" +
+        "Thanks to his ancient heritage, boosts fairly high RES.\n",
 
     spritesheet: "images/sprites/sarkaz-greatswordsman-sheet.webp",
 
@@ -578,7 +592,7 @@ enemylist['Sarkaz Crossbowman'] = {
     def: 200,
     res: 50,
     atkinterval: 3,
-    speed: (0.6 + 0.2)* 0.49,
+    speed: (0.6 + 0.2) * 0.49,
     blockcount: 1,
     type: "g",
     range: 2.2,
@@ -586,8 +600,10 @@ enemylist['Sarkaz Crossbowman'] = {
     dmgtype: "physical",
     targets: 1,
     tooltip: "A mercenary from Sarkaz who \nboasts fairly high ATK and RES;\n and uses ranged attacks.",
+    description: "A powerful ranged Sarkaz mercenary with high stats.\n\n" +
+        "Capable of attacking both Ranged and\nGround units with dangerous attacks.\nThanks to his ancient heritage, boosts fairly high RES.\n",
     size: 1.1,
-    bullet: { size: { height: 1, depth: 8, width: 0.5 }, arc:false, speed:5, color: new BABYLON.Color3(0.4, 0.4, 0.4)},
+    bullet: { size: { height: 1, depth: 8, width: 0.5 }, arc: false, speed: 5, color: new BABYLON.Color3(0.4, 0.4, 0.4) },
 
     enemytype: "normal",
 
@@ -638,13 +654,17 @@ enemylist['Sarkaz Bladeweaver'] = {
     def: 220,
     res: 50,
     atkinterval: 2.5,
-    speed: (0.2 + 0.2)* 0.49,
+    speed: (0.2 + 0.2) * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
     hploss: 1,
     dmgtype: "magic",
     tooltip: "Starts battle in Standby\nand will not attack.\nUpon being injured,\nbecomes Combat-Ready and\ninflicts Magic melee attacks.",
+    description: "A powerful Sarkaz swordsman with high stats,\ncapable of doing strong melee magic attacks.\n\n" +
+        "Starts the battle in Standby, he will not attack \nany ally unit as long as he remains in this state.\n" +
+        "If he gets attacked or a Sarkaz Sentinel raises an alarm.\nBecomes Combat-Ready, increases his own movement speed and starts attacking.\n"
+        + "If the Bladeweaver was waiting in a tile before becoming Combat-ready,\ninstantly lowers the wait time to zero.",
 
     targets: 1,
     size: 1.1,
@@ -698,7 +718,7 @@ enemylist['Sarkaz Bladeweaver'] = {
             start: 72,
             end: 87,
             duration: 0.7,
-    
+
         },
     },
     sfx: {
@@ -716,14 +736,17 @@ enemylist['Sarkaz Bladeweaver Leader'] = {
     def: 280,
     res: 50,
     atkinterval: 2.5,
-    speed: (0.2 + 0.2)* 0.49,
+    speed: (0.2 + 0.2) * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
     hploss: 1,
     dmgtype: "magic",
     tooltip: "Starts battle in Standby\nand will not attack.\nUpon being injured,\nbecomes Combat-Ready and\ninflicts Magic melee attacks.",
-
+    description: "A more powerful Sarkaz swordsman with high stats,\ncapable of doing strong melee magic attacks.\n\n" +
+        "Starts the battle in Standby, he will not attack \nany ally unit as long as he remains in this state.\n" +
+        "If he gets attacked or a Sarkaz Sentinel raises an alarm.\nBecomes Combat-Ready, increases his own movement speed and starts attacking.\n"
+        + "If the Bladeweaver was waiting in a tile before becoming Combat-ready,\ninstantly lowers the wait time to zero.",
     targets: 1,
     size: 1.1,
 
@@ -776,7 +799,7 @@ enemylist['Sarkaz Bladeweaver Leader'] = {
             start: 72,
             end: 87,
             duration: 0.7,
-    
+
         },
     },
     sfx: {
@@ -794,7 +817,7 @@ enemylist["Guerrilla Fighter"] = {
     def: 300,
     res: 20,
     atkinterval: 2,
-    speed: (0.9 + 0.2)* 0.49,
+    speed: (0.9 + 0.2) * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -808,6 +831,9 @@ enemylist["Guerrilla Fighter"] = {
 
     spritesheet: "images/sprites/guerrilla-fighter-sheet.webp",
 
+    description: "A basic guerrilla melee soldier that moves faster when Inspired.\n\n" +
+        "The basic melee soldier of the Guerrilla faction,\nhe boosts fairly high DEF compared to other basic melee soldiers.\n" +
+        "If he gets Inspired by a Guerrilla Herald or Patriot, \nin addition to the stats increases,\nmoves faster.\n(Indicated by the icon above his head)",
 
     hasskill: true,
 
@@ -869,7 +895,7 @@ enemylist["Guerrilla Fighter Leader"] = {
     def: 350,
     res: 20,
     atkinterval: 2,
-    speed: (0.9 + 0.2)* 0.49,
+    speed: (0.9 + 0.2) * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -877,6 +903,8 @@ enemylist["Guerrilla Fighter Leader"] = {
     dmgtype: "physical",
     size: 1,
     tooltip: "Moves faster when Inspired\n by a Herald or by Patriot.",
+    description: "A stronger guerrilla melee soldier that moves faster when Inspired.\n\n" +
+        "If he gets Inspired by a Guerrilla Herald or Patriot, \nin addition to the stats increases,\nmoves faster.\n(Indicated by the icon above his head)",
     targets: 1,
 
 
@@ -943,7 +971,7 @@ enemylist["Guerrilla Mortar"] = {
     def: 550,
     res: 20,
     atkinterval: 4.8,
-    speed: 0.6* 0.49,
+    speed: 0.6 * 0.49,
     blockcount: 1,
     type: "g",
     range: 15,
@@ -951,13 +979,16 @@ enemylist["Guerrilla Mortar"] = {
     dmgtype: "physical",
     size: 1,
     tooltip: "Gains significantly\nincreased ASPD when inspired\nby a Herald or by Patriot.",
+    description: "A guerrilla soldier equipped with a \nmilitary-grade mortar capable of\ndoing extremely long range attacks that hit \nall units in a radius around the primary target.\n\n" +
+        "Guerrilla mortars are similar to Mortar Gunners, albeit with overall better stats.\n" +
+        "If he gets Inspired by a Guerrilla Herald or Patriot,\nin addition to the stats increases,\nthe mortar will receive a massive ASPD boost of 50.\n(Indicated by the icon above his head)",
     targets: 1,
-    splashradius:1,
+    splashradius: 1,
 
     enemytype: "normal",
 
     spritesheet: "images/sprites/guerrilla-mortar-sheet.webp",
-    bullet: { size: { height: 3, depth: 3, width: 3 }, arc:true, speed:10, color: new BABYLON.Color3(0.95, 0, 0)},
+    bullet: { size: { height: 3, depth: 3, width: 3 }, arc: true, speed: 10, color: new BABYLON.Color3(0.95, 0, 0) },
 
     hasskill: true,
 
@@ -1006,7 +1037,7 @@ enemylist["Guerrilla Mortar"] = {
         skilltype: "guerrilainspire",
         target: "self",
         modifiers: {
-            aspd: 50*1.3,
+            aspd: 50,
         },
         aura: true,
         auratype: 2
@@ -1020,7 +1051,7 @@ enemylist["Guerrilla Mortar Leader"] = {
     def: 550,
     res: 20,
     atkinterval: 4.8,
-    speed: 0.6* 0.49,
+    speed: 0.6 * 0.49,
     blockcount: 1,
     type: "g",
     range: 15,
@@ -1028,13 +1059,16 @@ enemylist["Guerrilla Mortar Leader"] = {
     dmgtype: "physical",
     size: 1,
     tooltip: "Gains significantly\nincreased ASPD when inspired\nby a Herald or by Patriot.",
+    description: "A guerrilla soldier equipped with an \neven better military-grade mortar capable of\ndoing extremely long range\nattacks that hit all units in a radius around the primary target.\n\n" +
+        "If he gets Inspired by a Guerrilla Herald or Patriot,\nin addition to the stats increases,\n the mortar will receive a massive ASPD boost of 50.\n(Indicated by the icon above his head)",
+
     targets: 1,
-    splashradius:1,
+    splashradius: 1,
 
     enemytype: "normal",
 
     spritesheet: "images/sprites/guerrilla-mortar-leader-sheet.webp",
-    bullet: { size: { height: 3, depth: 3, width: 3 }, arc:true, speed:10, color: new BABYLON.Color3(0.95, 0, 0)},
+    bullet: { size: { height: 3, depth: 3, width: 3 }, arc: true, speed: 10, color: new BABYLON.Color3(0.95, 0, 0) },
 
     hasskill: true,
 
@@ -1083,7 +1117,7 @@ enemylist["Guerrilla Mortar Leader"] = {
         skilltype: "guerrilainspire",
         target: "self",
         modifiers: {
-            aspd: 50*1.3,
+            aspd: 50 * 1.3,
         },
         aura: true,
         auratype: 2
@@ -1099,7 +1133,7 @@ enemylist["Guerrilla Sniper"] = {
     def: 300,
     res: 20,
     atkinterval: 2.5,
-    speed: 0.9* 0.49,
+    speed: 0.9 * 0.49,
     blockcount: 1,
     type: "g",
     range: 2.2,
@@ -1107,8 +1141,12 @@ enemylist["Guerrilla Sniper"] = {
     dmgtype: "physical",
     size: 1,
     tooltip: "Attacks two targets at once when\nInspired by a Herald or by Patriot.",
+    description: "A guerrilla capable of doing Ranged attacks\n which can hit both Ranged and Melee units.\n\n" +
+        "Guerrilla Snipers are similar to Crossbowmen, albeit with overall better stats.\n" +
+        "If he gets Inspired by a Guerrilla Herald or Patriot,\nin addition to the stats increases,\nthe Sniper will be able to target 2 units at once.\n(Indicated by the icon above his head)",
+
     targets: 1,
-    bullet: { size: { height: 1, depth: 8, width: 0.5 }, arc:false, speed:5, color: new BABYLON.Color3(0.4, 0.4, 0.4)},
+    bullet: { size: { height: 1, depth: 8, width: 0.5 }, arc: false, speed: 5, color: new BABYLON.Color3(0.4, 0.4, 0.4) },
 
     enemytype: "normal",
 
@@ -1173,7 +1211,7 @@ enemylist["Guerrilla Sniper Leader"] = {
     def: 300,
     res: 20,
     atkinterval: 2.7,
-    speed: 0.9* 0.49,
+    speed: 0.9 * 0.49,
     blockcount: 1,
     type: "g",
     range: 2.2,
@@ -1181,8 +1219,11 @@ enemylist["Guerrilla Sniper Leader"] = {
     dmgtype: "physical",
     size: 1,
     tooltip: "Attacks two targets at once when\nInspired by a Herald or by Patriot.",
+    description: "A stronger guerrilla sniper capable of doing Ranged attacks\n which can hit both Ranged and Melee units.\n\n" +
+        "If he gets Inspired by a Guerrilla Herald or Patriot,\nin addition to the stats increases,\nthe Sniper will be able to target 2 units at once.\n(Indicated by the icon above his head)",
+
     targets: 1,
-    bullet: { size: { height: 1, depth: 8, width: 0.5 }, arc:false, speed:5, color: new BABYLON.Color3(0.4, 0.4, 0.4)},
+    bullet: { size: { height: 1, depth: 8, width: 0.5 }, arc: false, speed: 5, color: new BABYLON.Color3(0.4, 0.4, 0.4) },
 
     enemytype: "normal",
 
@@ -1246,7 +1287,7 @@ enemylist['Guerrilla Hound'] = {
     def: 150,
     res: 20,
     atkinterval: 1.4,
-    speed: 1.9* 0.49,
+    speed: 1.9 * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -1256,6 +1297,8 @@ enemylist['Guerrilla Hound'] = {
     targets: 1,
 
     tooltip: "A basic guerrilla-ops war hound\nhaving decent defenses while\nstill being able to move quickly.",
+    description: "A hound trained by the Guerrillas, having decent defenses \nwhile still being able to move quickly\n\n" +
+        "Guerrilla Hounds are similar to basic Hounds but with better stats.\n",
 
     enemytype: "normal",
 
@@ -1306,7 +1349,7 @@ enemylist['Guerrilla Hound Pro'] = {
     def: 150,
     res: 20,
     atkinterval: 1.4,
-    speed: 1.9* 0.49,
+    speed: 1.9 * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -1315,7 +1358,7 @@ enemylist['Guerrilla Hound Pro'] = {
     size: 1,
     tooltip: "An elite guerrilla-ops war hound\nmore aggressive than\nstandard guerrilla hounds.",
     targets: 1,
-
+    description: "An elite guerrilla-ops war hound, having decent defenses \nwhile still being able to move quickly",
     enemytype: "normal",
 
     spritesheet: "images/sprites/guerrilla-grunts-leader-sheet.webp",
@@ -1365,7 +1408,7 @@ enemylist["Guerrilla Siegebreaker"] = {
     def: 550,
     res: 20,
     atkinterval: 1.9,
-    speed: (0.8 + 0.2)* 0.49,
+    speed: (0.8 + 0.2) * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -1373,6 +1416,10 @@ enemylist["Guerrilla Siegebreaker"] = {
     dmgtype: "physical",
     size: 1,
     tooltip: "Has significantly increased\n ATK when Inspired\n by a Herald or by Patriot.",
+    description: "An elite Guerrilla soldier that can appear anywhere on the map,\nand is extremely dangerous when Inspired.\n\n" +
+        "Siegebreakers are capable of spawning anywhere,\nmaking them dangerous foes that can easily get behind unprepared defenses." +
+        "If a Siegebreaker gets Inspired by a Guerrilla Herald or Patriot,\nin addition to the stats increases,\nthey will get a massive ATK buff of 50%.\n(Indicated by the icon above his head)",
+
     targets: 1,
 
     enemytype: "normal",
@@ -1446,7 +1493,7 @@ enemylist["Guerrilla Siegebreaker Leader"] = {
     def: 550,
     res: 20,
     atkinterval: 1.9,
-    speed: (0.8 + 0.2)* 0.49,
+    speed: (0.8 + 0.2) * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -1454,6 +1501,9 @@ enemylist["Guerrilla Siegebreaker Leader"] = {
     dmgtype: "physical",
     size: 1,
     tooltip: "Has significantly increased\n ATK when Inspired\n by a Herald or by Patriot.",
+    description: "An even stronger Siegebreaker that can appear anywhere on the map,\nand is extremely dangerous when Inspired.\n\n" +
+        "If a Siegebreaker gets Inspired by a Guerrilla Herald or Patriot,\nin addition to the stats increases,\nthey will get a massive ATK buff of 50%.\n(Indicated by the icon above their head)",
+
     targets: 1,
 
     enemytype: "normal",
@@ -1528,15 +1578,19 @@ enemylist["Sarkaz Guerrilla Fighter Leader"] = {
     def: 400,
     res: 50,
     atkinterval: 2.5,
-    speed: (0.65 + 0.2)* 0.49,
+    speed: (0.65 + 0.2) * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
     hploss: 1,
     dmgtype: "physical",
     size: 1.2,
-    tooltip: "Does not take damage when \ncoming in contact with \na fire wave and attacks\n instead deal Magic damage.",
+    tooltip: "Does not take damage when \ncoming in contact with\na fire wave and attacks\n instead deal Magic damage.",
     targets: 1,
+    description: "A stronger Sarkaz mercenary inspired by Reunion\nand officially became member of the Guerrillas.\nThrough ancient Magic rituals, he is capable\nof using Fire Altars to his advantage.\n\n" +
+        "Sarkaz Guerrilla Fighters will spawn dealing physical damage.\n" +
+        "However, if they get in contact with a Fire Altar wave,\nthey will not take damage and instead turns their dmg type to magic.\n(Indicated by the icon above their head)",
+
 
     enemytype: "normal",
 
@@ -1605,7 +1659,7 @@ enemylist["Sarkaz Guerrilla Fighter"] = {
     def: 400,
     res: 50,
     atkinterval: 2.5,
-    speed: (0.65 + 0.2)* 0.49,
+    speed: (0.65 + 0.2) * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -1613,6 +1667,10 @@ enemylist["Sarkaz Guerrilla Fighter"] = {
     dmgtype: "physical",
     size: 1.2,
     tooltip: "Does not take damage when \ncoming in contact with \na fire wave and attacks\n instead deal Magic damage.",
+    description: "A Sarkaz mercenary inspired by Reunion\nand officially became member of the Guerrillas.\nThrough ancient Magic rituals, he is capable\nof using Fire Altars to his advantage.\n\n" +
+        "Sarkaz Guerrilla Fighters will spawn dealing physical damage.\n" +
+        "However, if they get in contact with a Fire Altar wave,\nthey will not take damage and instead turns their dmg type to magic.\n(Indicated by the icon above their head)",
+
     targets: 1,
 
     enemytype: "normal",
@@ -1682,7 +1740,7 @@ enemylist["Sarkaz Guerrilla Caster"] = {
     def: 400,
     res: 50,
     atkinterval: 5,
-    speed: 0.75* 0.49,
+    speed: 0.75 * 0.49,
     blockcount: 1,
     type: "g",
     range: 1.5,
@@ -1690,20 +1748,24 @@ enemylist["Sarkaz Guerrilla Caster"] = {
     dmgtype: "magic",
     size: 1.2,
     tooltip: "Deals magic to all surrounding units;\ncoming in contact with fire\n waves increases atk range.",
+    description: "A Sarkaz mercenary inspired by Reunion\nand officially became member of the Guerrillas.\nThrough ancient Magic rituals, he is capable\nof using Fire Altars to his advantage.\n\n" +
+        "Sarkaz Guerrilla Casters periodically release a \nmagic wave around them that hits all ally units in range.\n" +
+        "If they get in contact with a Fire Altar wave,\nthey will not take damage and instead increase \ntheir attack range (indicated by the icon above their head)\nmaking them reach furter units with their wave.\n",
+
     targets: 99,
 
     enemytype: "normal",
 
     spritesheet: "images/sprites/sarkaz-guerrilla-caster-sheet.webp",
-    bullet: { size: { height: 1, depth: 5, width: 3 }, arc:false, speed:5, color: new BABYLON.Color3(0.69, 0.21, 0.67)},
+    bullet: { size: { height: 1, depth: 5, width: 3 }, arc: false, speed: 5, color: new BABYLON.Color3(0.69, 0.21, 0.67) },
 
     hasskill: true,
     hasatkanim: false,
 
-    atkanim:{
-        start :99999,
+    atkanim: {
+        start: 99999,
         end: 99999,
-        duration:1
+        duration: 1
     },
 
     death: {
@@ -1748,13 +1810,13 @@ enemylist["Sarkaz Guerrilla Caster"] = {
             start: 61,
             end: 83,
             duration: 1,
-    
+
         },
         move: {
             start: 84,
             end: 106,
             duration: 1.5,
-    
+
         },
     },
 }
@@ -1766,7 +1828,7 @@ enemylist["Sarkaz Guerrilla Caster Leader"] = {
     def: 400,
     res: 50,
     atkinterval: 5,
-    speed: 0.75* 0.49,
+    speed: 0.75 * 0.49,
     blockcount: 1,
     type: "g",
     range: 1.5,
@@ -1775,19 +1837,22 @@ enemylist["Sarkaz Guerrilla Caster Leader"] = {
     size: 1.2,
     tooltip: "Deals magic to all surrounding units;\ncoming in contact with fire\n waves increases atk range.",
     targets: 99,
+    description: "A Stronger Sarkaz mercenary inspired by Reunion\nand officially became member of the Guerrillas.\nThrough ancient Magic rituals, he is capable\nof using Fire Altars to his advantage.\n\n" +
+        "Sarkaz Guerrilla Casters periodically release a \nmagic wave around them that hits all ally units in range.\n" +
+        "If they get in contact with a Fire Altar wave,\nthey will not take damage and instead increase \ntheir attack range (indicated by the icon above their head)\nmaking them reach furter units with their wave.\n",
 
     enemytype: "normal",
 
     spritesheet: "images/sprites/sarkaz-guerrilla-caster-leader-sheet.webp",
-    bullet: { size: { height: 1, depth: 5, width: 3 }, arc:false, speed:5, color: new BABYLON.Color3(0.69, 0.21, 0.67)},
+    bullet: { size: { height: 1, depth: 5, width: 3 }, arc: false, speed: 5, color: new BABYLON.Color3(0.69, 0.21, 0.67) },
 
     hasskill: true,
     hasatkanim: false,
 
-    atkanim:{
-        start :99999,
+    atkanim: {
+        start: 99999,
         end: 99999,
-        duration:1
+        duration: 1
     },
 
     death: {
@@ -1832,13 +1897,13 @@ enemylist["Sarkaz Guerrilla Caster Leader"] = {
             start: 61,
             end: 83,
             duration: 1,
-    
+
         },
         move: {
             start: 84,
             end: 106,
             duration: 1,
-    
+
         },
     },
 }
@@ -1850,7 +1915,7 @@ enemylist["Guerrilla Shieldguard"] = {
     def: 1300,
     res: 60,
     atkinterval: 3.8,
-    speed: (0.5 + 0.2)* 0.49,
+    speed: (0.5 + 0.2) * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -1858,6 +1923,10 @@ enemylist["Guerrilla Shieldguard"] = {
     dmgtype: "physical",
     size: 1.2,
     tooltip: "Covers the advance of \nenemies by making themselves\n more likely to be attacked.",
+    description: "The creme of the crop of Patriot's forces.\nCovers the advance of enemies by making themselves\nmore likely to be attacked.\n\n" +
+        "These powerful enemies boost high HP, DEF and RES,\nmaking them extremely hard to take down.\n" +
+        "Additionally, they will always taunt all nearby units' ranged attacks which\ncan render useless misplaced allies that aren't capable of damaging them\n",
+
     targets: 1,
 
     enemytype: "normal",
@@ -1920,14 +1989,18 @@ enemylist["Guerrilla Shieldguard Leader"] = {
     def: 1500,
     res: 60,
     atkinterval: 3.8,
-    speed: (0.5 + 0.2)* 0.49,
+    speed: (0.5 + 0.2) * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
     hploss: 1,
     dmgtype: "physical",
     size: 1.2,
-    tooltip: "Covers the advance of \nenemies by making themselves\nmore likely to be attacked.",
+    tooltip: "Covers the advance of\nenemies by making themselves\nmore likely to be attacked.",
+    description: "The creme of the crop of Patriot's forces.\nCovers the advance of enemies by making themselves\nmore likely to be attacked.\n\n" +
+        "Even stronger Shieldguards with very high HP, DEF and RES,\nmaking them extremely hard to take down.\n" +
+        "Additionally, they will always taunt all nearby units' ranged attacks which\ncan render useless misplaced allies that aren't capable of damaging them\n",
+
     targets: 1,
 
     enemytype: "normal",
@@ -1990,7 +2063,7 @@ enemylist["Guerrilla Shieldguard LeaderEX"] = {
     def: 1500,
     res: 60,
     atkinterval: 3.8,
-    speed: 0.4* 0.49,
+    speed: 0.4 * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -1999,6 +2072,9 @@ enemylist["Guerrilla Shieldguard LeaderEX"] = {
     size: 1.2,
     tooltip: "Covers the advance of \nenemies by making themselves\nmore likely to be attacked.",
     targets: 1,
+    description: "The creme of the crop of Patriot's forces.\nCovers the advance of enemies by making themselves\nmore likely to be attacked.\n\n" +
+        "Even stronger Shieldguards with very high HP, DEF and RES,\nmaking them extremely hard to take down.\n" +
+        "Additionally, they will always taunt all nearby units' ranged attacks which\ncan render useless misplaced allies that aren't capable of damaging them\n",
 
     enemytype: "normal",
 
@@ -2060,7 +2136,7 @@ enemylist["Guerrilla Herald"] = {
     def: 120,
     res: 50,
     atkinterval: 2.7,
-    speed: (0.8 + 0.2)* 0.49,
+    speed: (0.8 + 0.2) * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -2068,6 +2144,9 @@ enemylist["Guerrilla Herald"] = {
     dmgtype: "physical",
     size: 1,
     tooltip: "When on the battlefield,\n Inspires all enemies,\n increasing their ATK and DEF.",
+    description: "A battlefield messenger of Patriot's Guerrillas,\nThe presence of Guerrilla Heralds inspires all enemies on the battlefield.\n\n" +
+        "Guerrilla Heralds are weak on the offensive,\n" +
+        "however, as long as they are alive, they will Inspire all enemies increasing their ATK by 10% and DEF by 100,\nwhich can be stacked with other Heralds.\n",
     targets: 1,
 
     enemytype: "normal",
@@ -2133,7 +2212,7 @@ enemylist["Guerrilla Herald Leader"] = {
     def: 120,
     res: 50,
     atkinterval: 2.5,
-    speed: (0.8 + 0.2)* 0.49,
+    speed: (0.8 + 0.2) * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -2141,6 +2220,9 @@ enemylist["Guerrilla Herald Leader"] = {
     dmgtype: "physical",
     size: 1,
     tooltip: "When on the battlefield,\n Inspires all enemies,\n increasing their ATK and DEF.",
+    description: "A battlefield messenger of Patriot's Guerrillas,\nThe presence of Guerrilla Heralds inspires all enemies on the battlefield.\n\n" +
+        "Guerrilla Herald Leaders boost better stats to improve survivability.\n" +
+        "As long as they are alive, they will Inspire \nall enemies increasing their ATK by 10% and DEF by 100,\nwhich can be stacked with other Heralds.\n",
     targets: 1,
 
     enemytype: "normal",
@@ -2206,7 +2288,7 @@ enemylist["Patriot"] = {
     def: 1900,
     res: 90,
     atkinterval: 4,
-    speed: 0.4* 0.49,
+    speed: 0.4 * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -2214,6 +2296,17 @@ enemylist["Patriot"] = {
     dmgtype: "physical",
     size: 1.1,
     tooltip: "Has extremely high DEF & RES.\nMore likely to be attacked.\n Inspires all enemies,\n increasing their ATK and DEF.",
+    description: "The backbone of the Reunion movement and leader of the Guerrillas,\nhe is a formidable foe that should not be underestimated.\n\n\n" +
+        "Capable of inspiring all enemies increasing their ATK by 20% and their DEF by 200,\nwhich can be stacked with other inspire buffs.\n" +
+        "Patriot has two phases :\n\n"
+        + "Marching stance : in this phase Patriot holds up his Shield,\ntaunting all ally shots (this taunt is stronger than the one of the Shieldguards).\n"
+        + "Additionally, every time Patriot attacks he will deal 4 instances\nof his ATK at once which can potentially knock out any unit!\n"
+        + "After being knocked out once, Patriot will begin reviving over 30 seconds\nduring which his Inspire buff is deactivated and he cannot be targeted.\n\n"
+        + "Ruination stance : After finishing reviving, Patriot enters his second phase,\nPatriot becomes invincible for 15 seconds (indicated by the yellow aura around him),\n"
+        + "will lose his shield, which reduces dramatically \nhis defensive capabilities (DEF/RES lower to 500/45),\n"
+        + "disables his taunt and ability to attack 4 times at once,\nbut makes him capable of attacking ranged units very close to him.\n"
+        + "Patriot is also now capable of launching his halberd to the\nfarthest Ranged unit from him every 20 seconds (15 seconds for the first activation)\n" +
+        "for 1.35x of his own ATK.",
     revive: true,
     revivetimer: 30,
     revivemax: 30,
@@ -2293,7 +2386,7 @@ enemylist["Patriot2"] = {
     def: 500,
     res: 45,
     atkinterval: 3.6,
-    speed: 0.5* 0.49,
+    speed: 0.5 * 0.49,
     blockcount: 1,
     type: "g",
     range: 0.85,
@@ -2402,7 +2495,7 @@ enemylist["Patriot2"] = {
         range: 99,
         initialsp: 5,
         sp: 20,
-        chargetype:"second",
+        chargetype: "second",
         dmgmodifier: 1.35,
         effectcontact: 201,
         applyeffects: {
@@ -2421,7 +2514,7 @@ enemylist["PatriotEX"] = {
     def: 1900,
     res: 90,
     atkinterval: 4,
-    speed: 0.4* 0.49,
+    speed: 0.4 * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -2429,6 +2522,17 @@ enemylist["PatriotEX"] = {
     dmgtype: "physical",
     size: 1.1,
     tooltip: "Has extremely high DEF & RES.\n Inspires all enemies,\n increasing their ATK and DEF.",
+    description: "The backbone of the Reunion movement and leader of the Guerrillas,\nhe is a formidable foe that should not be underestimated.\n\n\n" +
+        "Capable of inspiring all enemies increasing their ATK by 20% and their DEF by 200,\nwhich can be stacked with other inspire buffs.\n" +
+        "Patriot has two phases :\n\n"
+        + "Marching stance : in this phase Patriot holds up his Shield,\ntaunting all ally shots (this taunt is stronger than the one of the Shieldguards).\n"
+        + "Additionally, every time Patriot attacks he will deal 4 instances\nof his ATK at once which can potentially knock out any unit!\n"
+        + "After being knocked out once, Patriot will begin reviving over 30 seconds\nduring which his Inspire buff is deactivated and he cannot be targeted.\n\n"
+        + "Ruination stance : After finishing reviving, Patriot enters his second phase,\nPatriot becomes invincible for 15 seconds (indicated by the yellow aura around him),\n"
+        + "will lose his shield, which reduces dramatically \nhis defensive capabilities (DEF/RES lower to 500/45),\n"
+        + "disables his taunt and ability to attack 4 times at once,\nbut makes him capable of attacking ranged units very close to him.\n"
+        + "Patriot is also now capable of launching his halberd to the\nfarthest Ranged unit from him every 20 seconds (15 seconds for the first activation)\n" +
+        "for 1.35x of his own ATK.",
     revive: true,
     revivetimer: 30,
     revivemax: 30,
@@ -2508,7 +2612,7 @@ enemylist["PatriotEX2"] = {
     def: 500,
     res: 45,
     atkinterval: 3.6,
-    speed: 0.5* 0.49,
+    speed: 0.5 * 0.49,
     blockcount: 1,
     type: "g",
     range: 0.85,
@@ -2616,7 +2720,7 @@ enemylist["PatriotEX2"] = {
         target: "farthest",
         range: 99,
         initialsp: 5,
-        chargetype:"second",
+        chargetype: "second",
         sp: 20,
         dmgmodifier: 1.35,
         effectcontact: 201,
@@ -2636,7 +2740,7 @@ enemylist["Roar Knight"] = {
     def: 100,
     res: 0,
     atkinterval: 2.4,
-    speed: (0.7 + 0.2)* 0.49,
+    speed: (0.7 + 0.2) * 0.49,
     blockcount: 1,
     type: "g",
     range: 2,
@@ -2644,8 +2748,13 @@ enemylist["Roar Knight"] = {
     dmgtype: "physical",
     size: 0.9,
     tooltip: "A sniper with\n significantly increased DEF\nand RES for a period of time.",
+    description: "A competitive knight capable of ranged attacks, wearing a prototype \narmor that increases his defensive capabilities temporarely.\n\n" +
+        "Roar Knights can be compared to Crossbowmen, albeit with better stats.\n" +
+        "Additionally, Roar Knights start equipped with a shield that lasts for 30 seconds \nwhich increases their DEF and RES by 3000 and 95 respectivily for the duration,\n"
+        + "The shield renders these knights almost invincible for the duration!",
+
     targets: 1,
-    bullet: { size: { height: 1, depth: 8, width: 0.5 }, arc:false, speed:5, color: new BABYLON.Color3(0.4, 0.4, 0.4)},
+    bullet: { size: { height: 1, depth: 8, width: 0.5 }, arc: false, speed: 5, color: new BABYLON.Color3(0.4, 0.4, 0.4) },
 
     enemytype: "normal",
 
@@ -2709,7 +2818,7 @@ enemylist["Bloodboil Knight"] = {
     def: 800,
     res: 0,
     atkinterval: 2.3,
-    speed: (0.5 + 0.2)* 0.49,
+    speed: (0.5 + 0.2) * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -2718,6 +2827,11 @@ enemylist["Bloodboil Knight"] = {
     size: 1.2,
     tooltip: "Each time an enemy is defeated,\ngains ATK and ASPD,\nstacking up to 10 times.",
     targets: 1,
+    tooltip: "A sniper with\n significantly increased DEF\nand RES for a period of time.",
+    description: "A competitive knight that thirsts for battle.\nWhenever an enemy dies on the battlefield, his stats increase.\n\n" +
+        "Bloodboil knights boost fairly high stats that make them formidable foes.\n" +
+        "Additionally, whenever an enemy dies while the Bloodboil is present,\nthey will have their ATK and ASPD increased by 10% and 5 respectively.\n(indicated by the icon above their head)\n" +
+        "This buff can stack up to 10 times for a total of 100% ATK and 50 ASPD increases.\nIf the buff is maxed out, the Bloodboil will be surrounded by a red aura.\n",
 
     enemytype: "normal",
 
@@ -2769,7 +2883,7 @@ enemylist["Bloodboil Knight"] = {
         target: "self",
         modifiers: {
             atk: 0.1,
-            aspd: 5*1.3,
+            aspd: 5,
             stack: 10
         },
         aura: false,
@@ -2784,7 +2898,7 @@ enemylist["Knight Shielder"] = {
     def: 1300,
     res: 0,
     atkinterval: 3,
-    speed: (0.5 + 0.2)* 0.49,
+    speed: (0.5 + 0.2) * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -2793,6 +2907,7 @@ enemylist["Knight Shielder"] = {
     size: 1.3,
     tooltip: "A Kazimierz knight with\ndefensive equipment, relying\non a slow-and-steady approach.",
     targets: 1,
+    description: "A knight equipped with defensive equipment, but with no RES,\nmaking them vulnerable to magic attacks.\n\n",
 
     enemytype: "normal",
 
@@ -2842,7 +2957,7 @@ enemylist["Nameless Knight"] = {
     def: 150,
     res: 0,
     atkinterval: 2,
-    speed: 1.1* 0.49,
+    speed: 1.1 * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -2850,6 +2965,8 @@ enemylist["Nameless Knight"] = {
     dmgtype: "physical",
     size: 1,
     tooltip: "An independent Kazimierz knight\n with little in the way of\nachievements or skill.",
+    description: "A nameless knight with little to no achievements.\nThey probably won't make it far in the competition.\n\n",
+
     targets: 1,
 
     enemytype: "normal",
@@ -2899,7 +3016,7 @@ enemylist["Vicious Training Gloompincer"] = {
     def: 700,
     res: 50,
     atkinterval: 2.5,
-    speed: (0.8 + 0.2)* 0.49,
+    speed: (0.8 + 0.2) * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -2907,8 +3024,9 @@ enemylist["Vicious Training Gloompincer"] = {
     dmgtype: "physical",
     size: 0.95,
     tooltip: "A sturdy creature commonly\nfound in the rivers of Kazimierz.",
+    description: "A gloompincer bred for use in the Kazimierz Major,\nwhether as target practices or to be slain in beastfighting arenas.\n\n" +
+        "Training Gloompincers have balanced \noverall stats with fairly high DEF and RES.",
     targets: 1,
-
     enemytype: "normal",
 
     spritesheet: "images/sprites/vicious-training-gloompincer-sheet.webp",
@@ -2958,7 +3076,7 @@ enemylist["'Left-hand' Tytus Topola"] = {
     def: 700,
     res: 50,
     atkinterval: 3,
-    speed: (0.55 + 0.2)* 0.49,
+    speed: (0.55 + 0.2) * 0.49,
     blockcount: 1,
     type: "g",
     range: 1.3,
@@ -2966,6 +3084,10 @@ enemylist["'Left-hand' Tytus Topola"] = {
     dmgtype: "magic",
     size: 1.1,
     tooltip: "Decreases the ATK of the unit\n with the highest ATK;\nRevives.",
+    description: "A legendary knight,with incredible resolve crashing your own.\n\n" +
+        "Tytus Topola, is a formidable opponent with high stats and\ncapable of dangerous ranged Magic attacks thanks to his spear." +
+        "\nIn addition, Tytus is capable of unleashing a special ability every 10 seconds \nwhere he raises his spear towards the \ndirection of the highest ATK ally unit on the battlefield,\nand lowers their ATK by 50% for 25 seconds.\nHe will not use the debuff on a unit that already has it.\n"
+        + "After being downed once,\nTytus will use his almighty resolve to revive himself once,\nthis will also reset his special ability cooldown.",
     revive: true,
     revivetimer: 0,
     revivemax: 0,
@@ -3021,7 +3143,7 @@ enemylist["'Left-hand' Tytus Topola"] = {
     spattack: {
         name: "bladehelmdebuff",
         target: "highestatk",
-        chargetype:"second",
+        chargetype: "second",
         range: 99,
         initialsp: 0,
         sp: 10,
@@ -3043,7 +3165,7 @@ enemylist["'Left-hand' Tytus Topola2"] = {
     def: 700,
     res: 50,
     atkinterval: 3,
-    speed: (0.55 + 0.2)* 0.49,
+    speed: (0.55 + 0.2) * 0.49,
     blockcount: 1,
     type: "g",
     range: 1.3,
@@ -3116,7 +3238,7 @@ enemylist["'Left-hand' Tytus Topola2"] = {
         target: "highestatk",
         range: 99,
         initialsp: 0,
-        chargetype:"second",
+        chargetype: "second",
         sp: 10,
         effectcontact: 94,
         applyeffects: {
@@ -3136,7 +3258,7 @@ enemylist["Corrupted Knight"] = {
     def: 1200,
     res: 30,
     atkinterval: 4,
-    speed: 0.65* 0.49,
+    speed: 0.65 * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -3144,10 +3266,16 @@ enemylist["Corrupted Knight"] = {
     dmgtype: "physical",
     size: 1.1,
     tooltip: "Attacks deal Splash damage to units\nsurrounding the primary target.\nGains greatly increased ATK, ASPD,\nand Movement Speed when\nthe Withered Knight dies.",
+    description: "A Sarkaz knight with a broken horn who \nradiates terror and shows clear signs of excessive drug use.\nUses a warhammer in battle that crushes everything on its way\n\n" +
+        "The Corrupted Knight is a strong enemy that unleashes devastating \nmelee attacks capable of hitting all units around the primary target.\n" +
+        "Additionally, every 22 seconds, the Corrupted Knight will charge \na massive blow that deals 3x of his ATK damage to his targets.\n" +
+        "If the Withered Knight is knocked out or \nenters a Blue box while the Corrupted Knight is present,\n" +
+        "the Corrupted Knight will become enraged \n(indicated by the red aura surrounding him) \nwhich increases his ATK, ASPD, and speed by 80%, 100, and 150% respectivily.\nIt is thus imperative to kill both Knights at the same time.",
+
     targets: 1,
-    splash:1,
-    splashdmg:1,
-    
+    splash: 1,
+    splashdmg: 1,
+
 
     enemytype: "normal",
 
@@ -3184,7 +3312,7 @@ enemylist["Corrupted Knight"] = {
     spatk: {
         start: 123,
         end: 225,
-        contact: 225-14,
+        contact: 225 - 14,
         duration: 1,
     },
 
@@ -3214,7 +3342,7 @@ enemylist["Corrupted Knight"] = {
         modifiers: {
             atk: 0.8,
             aspd: 100,
-            speed:0.65*0.49*0.7,
+            speed: 0.65 * 0.49 * 0.7,
             stack: 1
         },
         move: {
@@ -3231,10 +3359,10 @@ enemylist["Corrupted Knight"] = {
         spatk: {
             start: 123,
             end: 225,
-            contact: 225-14,
+            contact: 225 - 14,
             duration: 0.8,
         },
-        
+
         aura: false,
         auratype: 8
     },
@@ -3244,9 +3372,9 @@ enemylist["Corrupted Knight"] = {
         range: 0,
         initialsp: 0,
         sp: 22,
-        chargetype:"second",
+        chargetype: "second",
         dmgmodifier: 3,
-        splash:1,
+        splash: 1,
         effectcontact: 130,
         applyeffects: {
             modifiers: {
@@ -3264,7 +3392,7 @@ enemylist["Corrupted KnightEX"] = {
     def: 1200,
     res: 30,
     atkinterval: 4,
-    speed: 0.65* 0.49,
+    speed: 0.65 * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -3272,10 +3400,16 @@ enemylist["Corrupted KnightEX"] = {
     dmgtype: "physical",
     size: 1.1,
     tooltip: "Attacks deal Splash damage to units\nsurrounding the primary target.\nGains greatly increased ATK, ASPD,\nand Movement Speed when\nthe Withered Knight dies.",
+    description: "A Sarkaz knight with a broken horn who \nradiates terror and shows clear signs of excessive drug use.\nUses a warhammer in battle that crushes everything on its way\n\n" +
+        "The Corrupted Knight is a strong enemy that unleashes devastating \nmelee attacks capable of hitting all units around the primary target.\n" +
+        "Additionally, every 22 seconds, the Corrupted Knight will charge \na massive blow that deals 3x of his ATK damage to his targets.\n" +
+        "If the Withered Knight is knocked out or \nenters a Blue box while the Corrupted Knight is present,\n" +
+        "the Corrupted Knight will become enraged \n(indicated by the red aura surrounding him) \nwhich increases his ATK, ASPD, and speed by 80%, 100, and 150% respectivily.\nIt is thus imperative to kill both Knights at the same time.",
+
     targets: 1,
-    splash:1,
-    splashdmg:1,
-    
+    splash: 1,
+    splashdmg: 1,
+
 
     enemytype: "normal",
 
@@ -3312,7 +3446,7 @@ enemylist["Corrupted KnightEX"] = {
     spatk: {
         start: 123,
         end: 225,
-        contact: 225-14,
+        contact: 225 - 14,
         duration: 1,
     },
 
@@ -3342,7 +3476,7 @@ enemylist["Corrupted KnightEX"] = {
         modifiers: {
             atk: 0.8,
             aspd: 100,
-            speed:0.65*0.49*0.7,
+            speed: 0.65 * 0.49 * 0.7,
             stack: 1
         },
         move: {
@@ -3359,10 +3493,10 @@ enemylist["Corrupted KnightEX"] = {
         spatk: {
             start: 123,
             end: 225,
-            contact: 225-14,
+            contact: 225 - 14,
             duration: 0.8,
         },
-        
+
         aura: false,
         auratype: 8
     },
@@ -3372,9 +3506,9 @@ enemylist["Corrupted KnightEX"] = {
         range: 0,
         initialsp: 0,
         sp: 22,
-        chargetype:"second",
+        chargetype: "second",
         dmgmodifier: 3,
-        splash:1,
+        splash: 1,
         effectcontact: 130,
         applyeffects: {
             modifiers: {
@@ -3392,7 +3526,7 @@ enemylist["Withered Knight"] = {
     def: 600,
     res: 70,
     atkinterval: 4,
-    speed: 0.65* 0.49,
+    speed: 0.65 * 0.49,
     blockcount: 1,
     type: "g",
     range: 2.5,
@@ -3400,8 +3534,14 @@ enemylist["Withered Knight"] = {
     dmgtype: "magic",
     size: 1.1,
     tooltip: "Targets 3 units at once\nwith magic arrows.\nGains greatly increased ATK, ASPD,\nand Movement Speed when\nthe Corrupted Knight dies.",
+    description: "A Sarkaz knight with a broken horn who \nradiates terror and shows clear signs of excessive drug use.\nUses a cursed arrow in battle to fire powerful magic attacks.\n\n" +
+        "The Withered Knight is a strong enemy capable of firing \nranged magic attacks to up to 3 units in range.\n" +
+        "Additionally, every 22 seconds, the Withered Knight will fire \nstronger arrows that deal 1.6x of his ATK damage to his targets.\n" +
+        "If the Corrupted Knight is knocked out or \nenters a Blue box while the Withered Knight is present,\n" +
+        "the Withered Knight will become enraged \n(indicated by the red aura surrounding him) \nwhich increases his ATK, ASPD, and speed by 80%, 100, and 150% respectivily.\nIt is thus imperative to kill both Knights at the same time.",
+
     targets: 3,
-    bullet: { size: { height: 1,  depth: 6, width: 0.7 }, arc:false, speed:6, color: new BABYLON.Color3(0.69, 0.21, 0.67)},
+    bullet: { size: { height: 1, depth: 6, width: 0.7 }, arc: false, speed: 6, color: new BABYLON.Color3(0.69, 0.21, 0.67) },
 
 
     enemytype: "normal",
@@ -3439,7 +3579,7 @@ enemylist["Withered Knight"] = {
     spatk: {
         start: 105,
         end: 129,
-        contact: 129-11,
+        contact: 129 - 11,
 
         duration: 1,
     },
@@ -3470,7 +3610,7 @@ enemylist["Withered Knight"] = {
         modifiers: {
             atk: 0.8,
             aspd: 100,
-            speed:0.65* 0.49*0.7,
+            speed: 0.65 * 0.49 * 0.7,
             stack: 1
         },
         move: {
@@ -3487,8 +3627,8 @@ enemylist["Withered Knight"] = {
         spatk: {
             start: 105,
             end: 129,
-            contact: 129-11,
-    
+            contact: 129 - 11,
+
             duration: 0.8,
         },
         aura: false,
@@ -3500,10 +3640,10 @@ enemylist["Withered Knight"] = {
         range: 2.5,
         initialsp: 0,
         sp: 22,
-        chargetype:"second",
+        chargetype: "second",
         dmgmodifier: 1.6,
-        effectcontact: 129-11,
-        skillbullet:true,
+        effectcontact: 129 - 11,
+        skillbullet: true,
         applyeffects: {
             modifiers: {
             },
@@ -3519,7 +3659,7 @@ enemylist["Withered KnightEX"] = {
     def: 600,
     res: 70,
     atkinterval: 4,
-    speed: 0.65* 0.49,
+    speed: 0.65 * 0.49,
     blockcount: 1,
     type: "g",
     range: 2.5,
@@ -3527,8 +3667,14 @@ enemylist["Withered KnightEX"] = {
     dmgtype: "magic",
     size: 1.1,
     tooltip: "Targets 3 units at once\nwith magic arrows.\nGains greatly increased ATK, ASPD,\nand Movement Speed when\nthe Corrupted Knight dies.",
+    description: "A Sarkaz knight with a broken horn who \nradiates terror and shows clear signs of excessive drug use.\nUses a cursed arrow in battle to fire powerful magic attacks.\n\n" +
+        "The Withered Knight is a strong enemy capable of firing \nranged magic attacks to up to 3 units in range.\n" +
+        "Additionally, every 22 seconds, the Withered Knight will fire \nstronger arrows that deal 1.6x of his ATK damage to his targets.\n" +
+        "If the Corrupted Knight is knocked out or \nenters a Blue box while the Withered Knight is present,\n" +
+        "the Withered Knight will become enraged \n(indicated by the red aura surrounding him) \nwhich increases his ATK, ASPD, and speed by 80%, 100, and 150% respectivily.\nIt is thus imperative to kill both Knights at the same time.",
+
     targets: 3,
-    bullet: { size: { height: 1,  depth: 6, width: 0.7 }, arc:false, speed:6, color: new BABYLON.Color3(0.69, 0.21, 0.67)},
+    bullet: { size: { height: 1, depth: 6, width: 0.7 }, arc: false, speed: 6, color: new BABYLON.Color3(0.69, 0.21, 0.67) },
 
 
     enemytype: "normal",
@@ -3566,7 +3712,7 @@ enemylist["Withered KnightEX"] = {
     spatk: {
         start: 105,
         end: 129,
-        contact: 129-11,
+        contact: 129 - 11,
 
         duration: 1,
     },
@@ -3597,7 +3743,7 @@ enemylist["Withered KnightEX"] = {
         modifiers: {
             atk: 0.8,
             aspd: 100,
-            speed:0.65* 0.49*0.7,
+            speed: 0.65 * 0.49 * 0.7,
             stack: 1
         },
         move: {
@@ -3614,8 +3760,8 @@ enemylist["Withered KnightEX"] = {
         spatk: {
             start: 105,
             end: 129,
-            contact: 129-11,
-    
+            contact: 129 - 11,
+
             duration: 0.8,
         },
         aura: false,
@@ -3627,10 +3773,10 @@ enemylist["Withered KnightEX"] = {
         range: 2.5,
         initialsp: 0,
         sp: 22,
-        chargetype:"second",
+        chargetype: "second",
         dmgmodifier: 1.6,
-        effectcontact: 129-11,
-        skillbullet:true,
+        effectcontact: 129 - 11,
+        skillbullet: true,
         applyeffects: {
             modifiers: {
             },
@@ -3646,7 +3792,7 @@ enemylist["Junkman"] = {
     def: 50,
     res: 20,
     atkinterval: 3,
-    speed: 0.8* 0.49,
+    speed: 0.8 * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -3654,6 +3800,8 @@ enemylist["Junkman"] = {
     dmgtype: "physical",
     size: 1.2,
     tooltip: "A ragged-looking \nenemy combatant.",
+    description: "A ragged-looking enemy combatant.\nAccording to intel, they disguise themselves as drifters\nto conceal the fact that they are mercenaries.\n\n"
+        + "They boost higher stats than your average enemy soldier,\nmaking healing possibly required in order to withstand their hits.",
     targets: 1,
 
     enemytype: "normal",
@@ -3703,7 +3851,7 @@ enemylist["Veteran Junkman"] = {
     def: 70,
     res: 20,
     atkinterval: 3,
-    speed: 0.8* 0.49,
+    speed: 0.8 * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -3711,6 +3859,7 @@ enemylist["Veteran Junkman"] = {
     dmgtype: "physical",
     size: 1.2,
     tooltip: "A ragged-looking enemy.\nMore dangerous than a Junkman.",
+    description: "A ragged-looking enemy combatant.\nEven stronger than regular Junkmen.\n\n",
     targets: 1,
 
     enemytype: "normal",
@@ -3761,7 +3910,7 @@ enemylist["Arts Guard"] = {
     def: 220,
     res: 50,
     atkinterval: 2.5,
-    speed: 0.75* 0.49,
+    speed: 0.75 * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -3769,6 +3918,8 @@ enemylist["Arts Guard"] = {
     dmgtype: "magic",
     size: 1,
     tooltip: "A Reunion melee soldier trained\nto do melee magic attacks.\n",
+    description: "A Reunion soldier trained in the use of Magic.\nThey use magic-infused swords to strike.\n\n"
+        + "These dangerous enemies are capable of striking with magic attacks,\nrendering any DEF focused unit like Defenders useless against them.",
     targets: 1,
 
     enemytype: "normal",
@@ -3821,7 +3972,7 @@ enemylist["Dual Swordsman"] = {
     def: 150,
     res: 25,
     atkinterval: 1.2,
-    speed: 1.1* 0.49,
+    speed: 1.1 * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -3829,6 +3980,8 @@ enemylist["Dual Swordsman"] = {
     dmgtype: "physical",
     size: 1,
     tooltip: "A Reunion melee soldier,\nknown for having high attack.\n",
+    description: "A Reunion soldier wielding two swords at once.\n\n"
+        + "These enemy soldiers boost fairly high ATK and fast attack speed,\nmaking them easily melt down low DEF units on their path.",
     targets: 1,
 
     enemytype: "normal",
@@ -3878,7 +4031,7 @@ enemylist["Soldier"] = {
     def: 50,
     res: 0,
     atkinterval: 2,
-    speed: 1.1* 0.49,
+    speed: 1.1 * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -3886,6 +4039,8 @@ enemylist["Soldier"] = {
     dmgtype: "physical",
     size: 1,
     tooltip: "A basic melee soldier.",
+    description: "A basic Reunion melee soldier.\n\n"
+        + "A soldier that joined Reunion's cause,\nwhile having nothing in the way of skills.",
     targets: 1,
 
     enemytype: "normal",
@@ -3939,7 +4094,7 @@ enemylist["Breaker"] = {
     def: 50,
     res: 25,
     atkinterval: 1.4,
-    speed: 1.9* 0.49,
+    speed: 1.9 * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -3947,6 +4102,8 @@ enemylist["Breaker"] = {
     dmgtype: "physical",
     size: 1,
     tooltip: "A well-trained rushing unit \nwith high movement speed \nand above average ATK.",
+    description: "A Reunion melee soldier with movement speed comparable to Hounds.\n\n"
+        + "A soldier with very fast movement speed, and fairly high stats,\nmaking him able to slip through unprepared defense lines.",
     targets: 1,
 
     enemytype: "normal",
@@ -3995,7 +4152,7 @@ enemylist["Breaker Leader"] = {
     def: 80,
     res: 25,
     atkinterval: 1.4,
-    speed: 1.9* 0.49,
+    speed: 1.9 * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -4003,6 +4160,8 @@ enemylist["Breaker Leader"] = {
     dmgtype: "physical",
     size: 1,
     tooltip: "A more dangerous Breaker\nwith high movement speed \nand above average ATK.",
+    description: "An even stronger Breaker with movement speed comparable to Hounds.\n\n"
+        + "A Breaker with higher stats,\nable to slip through unprepared defense lines.",
     targets: 1,
 
     enemytype: "normal",
@@ -4054,7 +4213,7 @@ enemylist["Possessed Soldier Leader"] = {
     def: 150,
     res: 30,
     atkinterval: 1.8,
-    speed: (0.7 + 0.2)* 0.49,
+    speed: (0.7 + 0.2) * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -4062,6 +4221,8 @@ enemylist["Possessed Soldier Leader"] = {
     dmgtype: "physical",
     size: 1,
     tooltip: "A stronger Soldier.\nRegenerates HP rapidly.",
+    description: "A soldier that has been controlled by an unknown entity,\ncapable of regenerating rapidly.\nThe appearance of such an aberration on\nthe battlefield is almost beyond imagination.\n\n"
+        + "A stronger possessed soldier with regenerative abilities,\ncapable of regenerating 150 HP per second.",
     targets: 1,
 
     enemytype: "normal",
@@ -4127,7 +4288,7 @@ enemylist["Possessed Soldier"] = {
     def: 100,
     res: 30,
     atkinterval: 1.8,
-    speed: (0.7 + 0.2)* 0.49,
+    speed: (0.7 + 0.2) * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -4135,6 +4296,8 @@ enemylist["Possessed Soldier"] = {
     dmgtype: "physical",
     size: 1,
     tooltip: "A soldier that has been controlled\n by an unknown entity,\ncapable of regenerating rapidly.",
+    description: "A soldier that has been controlled by an unknown entity,\ncapable of regenerating rapidly.\nThe appearance of such an\naberration on the battlefield is almost beyond imagination.\n\n"
+        + "An enemy basic soldier with regenerative abilities,\ncapable of regenerating 80 HP per second.",
     targets: 1,
 
     enemytype: "normal",
@@ -4200,7 +4363,7 @@ enemylist["Possessed Defender"] = {
     def: 800,
     res: 0,
     atkinterval: 2.6,
-    speed: (0.55 + 0.2)* 0.49,
+    speed: (0.55 + 0.2) * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -4208,6 +4371,8 @@ enemylist["Possessed Defender"] = {
     dmgtype: "physical",
     size: 1.2,
     tooltip: "A heavy defender that has been\ncontrolled by an unknown entity,\ncapable of regenerating rapidly",
+    description: "A heavy defender that has been controlled by an unknown entity, \ncapable of regenerating rapidly.\nWell-protected by elite tactical gear, the appearance of such an aberration\non the battlefield is almost beyond imagination.\n\n"
+        + "An enemy heavy defender with regenerative abilities,\ncapable of regenerating 200 HP per second.",
     targets: 1,
 
     enemytype: "normal",
@@ -4270,7 +4435,7 @@ enemylist["Possessed Junkman"] = {
     def: 100,
     res: 30,
     atkinterval: 3,
-    speed: (0.45 + 0.2)* 0.49,
+    speed: (0.45 + 0.2) * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -4278,6 +4443,8 @@ enemylist["Possessed Junkman"] = {
     dmgtype: "physical",
     size: 1.2,
     tooltip: "A Junkman that has been controlled\nby an unknown entity and is \ncapable of regenerating rapidly.",
+    description: "A junkman that has been controlled by an unknown entity,\ncapable of regenerating rapidly.\nWielding a club filled with spikes, the appearance of such an\naberration on the battlefield is almost beyond imagination.\n\n"
+        + "A Junkman with regenerative abilities,\ncapable of regenerating 200 HP per second.",
     targets: 1,
 
     enemytype: "normal",
@@ -4341,7 +4508,7 @@ enemylist["Possessed Defender Leader"] = {
     def: 1000,
     res: 0,
     atkinterval: 2.6,
-    speed: (0.55 + 0.2)* 0.49,
+    speed: (0.55 + 0.2) * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -4349,6 +4516,8 @@ enemylist["Possessed Defender Leader"] = {
     dmgtype: "physical",
     size: 1.2,
     tooltip: "A more dangerous Defender.\nRegenerates HP rapidly.",
+    description: "A stronger defender that has been controlled by an unknown entity, \ncapable of regenerating rapidly.\nWell-protected by elite tactical gear, the appearance of such an aberration\non the battlefield is almost beyond imagination.\n\n"
+        + "A stronger heavy defender with regenerative abilities,\ncapable of regenerating 250 HP per second.",
     targets: 1,
 
     enemytype: "normal",
@@ -4411,7 +4580,7 @@ enemylist["Possessed Veteran Junkman"] = {
     def: 200,
     res: 30,
     atkinterval: 3,
-    speed: (0.45 + 0.2)* 0.49,
+    speed: (0.45 + 0.2) * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -4419,6 +4588,8 @@ enemylist["Possessed Veteran Junkman"] = {
     dmgtype: "physical",
     size: 1.2,
     tooltip: "A more dangerous Junkman.\nRegenerates HP rapidly.",
+    description: "A veteran junkman that has been controlled by an unknown entity,\ncapable of regenerating rapidly.\nWielding a club filled with spikes, the appearance of such an\naberration on the battlefield is almost beyond imagination.\n\n"
+        + "A stronger Junkman with regenerative abilities,\ncapable of regenerating 250 HP per second.",
     targets: 1,
 
     enemytype: "normal",
@@ -4481,7 +4652,7 @@ enemylist["Enraged Possessed Bonethrower"] = {
     def: 220,
     res: 30,
     atkinterval: 2,
-    speed: (0.5 + 0.2)* 0.49,
+    speed: (0.5 + 0.2) * 0.49,
     blockcount: 1,
     type: "g",
     range: 2.3,
@@ -4489,8 +4660,11 @@ enemylist["Enraged Possessed Bonethrower"] = {
     dmgtype: "physical",
     size: 1.05,
     tooltip: "A possessed ranged combatant that\nhas completely given in to madness,\nhaving extremely high ATK.\nLoses HP over time.",
+    description: "An enemy combatant who has completely descended into \nprimal madness as their lifeforce is consumed.\nHurl as projectiles whatever they can put their hands on.\n\n" +
+        "A dangerous Reunion soldier that was turned into a force of nature,\ncapable of doing long ranged attacks to Ranged and Ground units.\nBoosts high attack in exchange for losing 350 HP every second.",
+
     targets: 1,
-    bullet: { size: { height: 1, depth: 12, width: 1.2 }, arc:false, speed:5, color: new BABYLON.Color3(0, 0, 0) },
+    bullet: { size: { height: 1, depth: 12, width: 1.2 }, arc: false, speed: 5, color: new BABYLON.Color3(0, 0, 0) },
 
 
     enemytype: "normal",
@@ -4553,7 +4727,7 @@ enemylist["Enraged Possessed Thrower"] = {
     def: 200,
     res: 30,
     atkinterval: 2.1,
-    speed: (0.5 + 0.2)* 0.49,
+    speed: (0.5 + 0.2) * 0.49,
     blockcount: 1,
     type: "g",
     range: 2.3,
@@ -4561,8 +4735,11 @@ enemylist["Enraged Possessed Thrower"] = {
     dmgtype: "physical",
     size: 1.05,
     tooltip: "A possessed ranged combatant\nthat has descended into madness,\nhaving extremely high ATK.\nLoses HP over time.",
+    description: "An enemy combatant who has slowly descended into \nprimal madness as their lifeforce is consumed.\nHurl as projectiles whatever they can put their hands on.\n\n" +
+        "A dangerous Reunion soldier that was turned into a force of nature,\ncapable of doing long ranged attacks to Ranged and Ground units.\nBoosts high attack in exchange for losing 250 HP every second.",
+
     targets: 1,
-    bullet: { size: { height: 1, depth: 12, width: 1.2 }, arc:false, speed:5, color: new BABYLON.Color3(0, 0, 0) },
+    bullet: { size: { height: 1, depth: 12, width: 1.2 }, arc: false, speed: 5, color: new BABYLON.Color3(0, 0, 0) },
 
     enemytype: "normal",
 
@@ -4624,7 +4801,7 @@ enemylist["Enraged Possessed Leader"] = {
     def: 230,
     res: 30,
     atkinterval: 1.3,
-    speed: 1.2* 0.49,
+    speed: 1.2 * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -4632,6 +4809,8 @@ enemylist["Enraged Possessed Leader"] = {
     dmgtype: "physical",
     size: 1.05,
     tooltip: "A possessed enemy combatant that\nhas completely given in to madness,\nhaving extremely high ATK.\nLoses HP over time.",
+    description: "An enemy combatant who has completely descended \ninto primal madness as their lifeforce is consumed.\n\n" +
+        "A massively powerful Reunion soldier that was turned into a force of nature.\nBoosts extremely attack and high attack speed in\nexchange for losing 500 HP every second.\nDo not let them touch you!",
     targets: 1,
 
     enemytype: "normal",
@@ -4694,7 +4873,7 @@ enemylist["Enraged Possessed Soldier"] = {
     def: 200,
     res: 30,
     atkinterval: 1.3,
-    speed: 1.2* 0.49,
+    speed: 1.2 * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -4702,6 +4881,8 @@ enemylist["Enraged Possessed Soldier"] = {
     dmgtype: "physical",
     size: 1.05,
     tooltip: "A possessed enemy combatant that \nhas descended into madness,\nhaving extremely high ATK.\nLoses HP over time.",
+    description: "An enemy combatant who has slowly descended into \nprimal madness as their lifeforce is consumed.\n\n" +
+        "A dangerous Reunion soldier that was turned into a force of nature.\nBoosts very high attack and high attack speed in\nexchange for losing 330 HP every second.",
     targets: 1,
 
     enemytype: "normal",
@@ -4764,7 +4945,7 @@ enemylist["Mephisto"] = {
     def: 200,
     res: 60,
     atkinterval: 10,
-    speed: 0.5* 0.49,
+    speed: 0.5 * 0.49,
     blockcount: 1,
     type: "g",
     range: 99,
@@ -4772,6 +4953,12 @@ enemylist["Mephisto"] = {
     dmgtype: "heal",
     size: 1.05,
     tooltip: "Less likely to be attacked.\nAttacks heal up to 3 enemies.\nWhile on the battlefield,\nincrease all enemies'\nATK and ASPD.",
+    description: "A Medic who is one of Reunion's squad leaders.\nHe heals the wounded while commanding his troops to attack,\nand can improve their life recovery rate and battle capabilities.\nHe boasts a high resistance to Magic.\nCurrently, it has been confirmed that he is the one controlling the Possessed.\n\n" +
+        "Mephisto is an enemy with no offensive capabilities of his own,\nhe is however capable of supporting his Herd while they do his bidding.\n" +
+        "Mephisto attacks do not hit ally units,\nthey instead heal up to 3 enemies anywhere on the map.\n" +
+        "Mephisto will make himself less likely to be targeted by ally units ranged attacks,\nwhile simultaneously Inspiring all enemy presents as long as he is alive,\n" +
+        "increasing their ATK and ASPD by 10% and 10 respectively,\nhe will also double the HP regen of possessed enemies if applicable.",
+
     targets: 3,
 
     enemytype: "normal",
@@ -4821,7 +5008,7 @@ enemylist["Mephisto"] = {
         target: "all",
         modifiers: {
             atk: 0.1,
-            aspd: 10*1.3,
+            aspd: 10,
             hpregenbuff: 2
         },
         aura: false,
@@ -4836,7 +5023,7 @@ enemylist["MephistoEX"] = {
     def: 300,
     res: 60,
     atkinterval: 10,
-    speed: (0.5)* 0.49,
+    speed: (0.5) * 0.49,
     blockcount: 1,
     type: "g",
     range: 99,
@@ -4844,6 +5031,12 @@ enemylist["MephistoEX"] = {
     dmgtype: "heal",
     size: 1.05,
     tooltip: "Less likely to be attacked.\nAttacks heal up to 3 enemies.\nWhile on the battlefield,\nincrease all enemies'\nATK and ASPD.",
+    description: "A Medic who is one of Reunion's squad leaders.\nHe heals the wounded while commanding his troops to attack,\nand can improve their life recovery rate and battle capabilities.\nHe boasts a high resistance to Magic.\nCurrently, it has been confirmed that he is the one controlling the Possessed.\n\n" +
+        "Mephisto is a Reunion leader with no offensive capabilities of his own,\nhe is however capable of supporting his Herd while they do his bidding.\n" +
+        "Mephisto attacks do not hit ally units,\nthey instead heal up to 3 enemies anywhere on the map.\n" +
+        "Mephisto will make himself less likely to be targeted by ally units ranged attacks,\nwhile simultaneously Inspiring all enemy presents as long as he is alive,\n" +
+        "increasing their ATK and ASPD by 20% and 10 respectively,\nhe will also double the HP regen of possessed enemies if applicable.",
+
     targets: 3,
 
     enemytype: "normal",
@@ -4893,7 +5086,7 @@ enemylist["MephistoEX"] = {
         target: "all",
         modifiers: {
             atk: 0.2,
-            aspd: 10*1.3,
+            aspd: 10,
             hpregenbuff: 2
         },
         aura: false,
@@ -4908,7 +5101,7 @@ enemylist["Sarkaz Centurion"] = {
     def: 250,
     res: 35,
     atkinterval: 5,
-    speed: 0.78* 0.49,
+    speed: 0.78 * 0.49,
     blockcount: 1,
     type: "g",
     range: 2.35,
@@ -4916,8 +5109,9 @@ enemylist["Sarkaz Centurion"] = {
     dmgtype: "magic",
     size: 1.1,
     tooltip: "A strong Reunion squad leader.\nDoes ranged magic attacks\nto 2targets at once.",
+    description: "One of Reunion's squad leaders who also serves as a Sarkaz mercenary.\nHe leads a group of Sarkaz mercenaries to fight on the front lines.\n\nA strong enemy with high stats and very powerful \nranged Magic attacks that can target 2 ally units at once.",
     targets: 2,
-    bullet: { size: { height: 1, depth: 5, width: 3 }, arc:false, speed:5, color: new BABYLON.Color3(0.69, 0.21, 0.67)},
+    bullet: { size: { height: 1, depth: 5, width: 3 }, arc: false, speed: 5, color: new BABYLON.Color3(0.69, 0.21, 0.67) },
 
     enemytype: "normal",
 
@@ -4967,7 +5161,7 @@ enemylist["Sarkaz Centurion Nidus Guard"] = {
     def: 220,
     res: 60,
     atkinterval: 5,
-    speed: 0.8* 0.49,
+    speed: 0.8 * 0.49,
     blockcount: 1,
     type: "g",
     range: 1.5,
@@ -4975,8 +5169,11 @@ enemylist["Sarkaz Centurion Nidus Guard"] = {
     dmgtype: "magic",
     size: 1.1,
     tooltip: "A stronger Centurion Host.\nAttacks 3 targets at once;\neach attack restores\nsome of this unit's HP.",
+    description: "A Sarkaz mercenary unwittingly converted into one of Mephisto's Herd,\nable to damage multiple targets at once and drain vitality from its victims.\n\n"
+        + "A stronger Centurion turned into a Possessed,\nhad his combat capabilities enhanced and can now\ntarget up to 3 targets at once with ranged magic attacks\nwhile also restoring 150% of the damage dealt.",
+
     targets: 3,
-    bullet: { size: { height: 1, depth: 5, width: 3 }, arc:false, speed:5, color: new BABYLON.Color3(0.69, 0.21, 0.67)},
+    bullet: { size: { height: 1, depth: 5, width: 3 }, arc: false, speed: 5, color: new BABYLON.Color3(0.69, 0.21, 0.67) },
 
 
     enemytype: "normal",
@@ -5038,7 +5235,7 @@ enemylist["Sarkaz Centurion Host"] = {
     def: 200,
     res: 60,
     atkinterval: 5,
-    speed: 0.8* 0.49,
+    speed: 0.8 * 0.49,
     blockcount: 1,
     type: "g",
     range: 1.5,
@@ -5046,8 +5243,10 @@ enemylist["Sarkaz Centurion Host"] = {
     dmgtype: "magic",
     size: 1.1,
     tooltip: "Attacks 3 targets at once;\neach attack restores\nsome of this unit's HP.",
+    description: "A Sarkaz mercenary unwittingly converted into one of Mephisto's Herd,\nable to damage multiple targets at once and drain vitality from its victims.\n\n"
+        + "This enemy Centurion turned into a Possessed,\nhad his combat capabilities enhanced and can now\ntarget up to 3 targets at once with ranged magic attacks\nwhile also restoring 150% of the damage dealt.",
     targets: 3,
-    bullet: { size: { height: 1, depth: 5, width: 3 }, arc:false, speed:5, color: new BABYLON.Color3(0.69, 0.21, 0.67)},
+    bullet: { size: { height: 1, depth: 5, width: 3 }, arc: false, speed: 5, color: new BABYLON.Color3(0.69, 0.21, 0.67) },
 
 
     enemytype: "normal",
@@ -5109,7 +5308,7 @@ enemylist["Ergate"] = {
     def: 120,
     res: 40,
     atkinterval: 1,
-    speed: 1.2* 0.49,
+    speed: 1.2 * 0.49,
     blockcount: 99,
     type: "g",
     range: 0,
@@ -5117,6 +5316,8 @@ enemylist["Ergate"] = {
     dmgtype: "physical",
     size: 1.1,
     tooltip: "Specializes in sabotage.\nCannot be blocked.\nMust be eliminated quickly.",
+    description: "An engineer that specializes in sabotage,\nalmost never seen wielding weapons.\nThough unarmed, they utilize their agility and cunning to slip\nthrough defenses in order to sabotage\nmechanical and electrical equipment.\n\n" +
+        "These fast enemies with no offensive abilities cannot be blocked by ground units,\nmaking them able to slip by unnoticed through defense lines.",
     targets: 1,
 
     enemytype: "normal",
@@ -5162,7 +5363,7 @@ enemylist["Ergate Leader"] = {
     def: 260,
     res: 45,
     atkinterval: 1,
-    speed: 1.2* 0.49,
+    speed: 1.2 * 0.49,
     blockcount: 99,
     type: "g",
     range: 0,
@@ -5170,6 +5371,8 @@ enemylist["Ergate Leader"] = {
     dmgtype: "physical",
     size: 1.1,
     tooltip: "More durable than Ergates.\nCannot be blocked.\nMust be eliminated quickly.",
+    description: "An engineer that specializes in sabotage,\nalmost never seen wielding weapons.\nThough unarmed, they utilize their agility and cunning to slip\nthrough defenses in order to sabotage\nmechanical and electrical equipment.\n\n" +
+        "These Ergates with better survivability cannot be blocked by ground units,\nmaking them able to slip by unnoticed through defense lines.",
     targets: 1,
 
     enemytype: "normal",
@@ -5215,7 +5418,7 @@ enemylist["Yeti Operative"] = {
     def: 100,
     res: 0,
     atkinterval: 2,
-    speed: 1.1* 0.49,
+    speed: 1.1 * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -5223,6 +5426,8 @@ enemylist["Yeti Operative"] = {
     dmgtype: "physical",
     size: 1,
     tooltip: "A basic Yeti Squadron\nmelee combatant,\ncapable of dealing increased\ndamage to Frozen units.",
+    description:"A melee combatant of the Yeti Squadron hailing from the Northen tundras.\n\n"+
+    "Relatively similar to basic Reunion Soldiers,\nYeti Operatives can deal 1.5x damage when attacking frozen targets.",
     targets: 1,
 
     enemytype: "normal",
@@ -5277,14 +5482,14 @@ enemylist["Yeti Operative"] = {
     },
 }
 
-enemylist["Yeti Operative2"] = {
-    name: "Yeti Operative2",
+enemylist["Yeti OperativeEX"] = {
+    name: "Yeti OperativeEX",
     hp: 5000,
     atk: 380,
     def: 135,
     res: 0,
     atkinterval: 2,
-    speed: 1.1* 0.49,
+    speed: 1.1 * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -5292,6 +5497,8 @@ enemylist["Yeti Operative2"] = {
     dmgtype: "physical",
     size: 1,
     tooltip: "A basic Yeti Squadron melee combatant,\ncapable of dealing \nincreased damage to Frozen units.",
+    description:"A melee combatant of the Yeti Squadron hailing from the Northen tundras.\n\n"+
+    "Relatively similar to basic Reunion Soldiers,\nYeti Operatives can deal 1.5x damage when attacking frozen targets.",
     targets: 1,
 
     enemytype: "normal",
@@ -5352,7 +5559,7 @@ enemylist['Frostfang'] = {
     def: 0,
     res: 30,
     atkinterval: 1.4,
-    speed: 1.9* 0.49,
+    speed: 1.9 * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -5362,6 +5569,8 @@ enemylist['Frostfang'] = {
     targets: 1,
 
     tooltip: "An agile creature controlled \nby the Yeti Squadron\ncapable of dealing \nincreased damage to Frozen units",
+    description:"A hound used by the Yeti Squadron that \nadapted to the weather of the Northern tundras.\n\n"+
+    "Relatively similar to Hounds,\nFrostfangs can deal 1.5x damage when attacking frozen targets.",
 
     enemytype: "normal",
 
@@ -5423,7 +5632,7 @@ enemylist['Razorfrost'] = {
     def: 0,
     res: 30,
     atkinterval: 1.4,
-    speed: 1.9* 0.49,
+    speed: 1.9 * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -5433,6 +5642,9 @@ enemylist['Razorfrost'] = {
     targets: 1,
 
     tooltip: "A dangerous creature controlled \nby the Yeti Squadron\ncapable of dealing \nincreased damage to Frozen units",
+    description:"A stronger hound used by the Yeti Squadron that \nadapted to the weather of the Northern tundras.\n\n"+
+    "Stronger than frostfangs,\nRazorfrosts can deal 1.5x damage when attacking frozen targets.",
+
 
     enemytype: "normal",
 
@@ -5494,7 +5706,7 @@ enemylist["Yeti Sniper"] = {
     def: 80,
     res: 0,
     atkinterval: 2.4,
-    speed: 0.9* 0.49,
+    speed: 0.9 * 0.49,
     blockcount: 1,
     type: "g",
     range: 1.9,
@@ -5502,8 +5714,10 @@ enemylist["Yeti Sniper"] = {
     dmgtype: "physical",
     size: 1,
     tooltip: "A basic Yeti ranged combatant,\ncapable of dealing \nincreased damage to Frozen units",
+    description:"A ranged combatant of the Yeti Squadron hailing from the Northen tundras.\n\n"+
+    "Relatively similar to Crossbowmen,\nYeti Snipers can deal 1.5x damage when attacking frozen targets.",
     targets: 1,
-    bullet: { size: { height: 1, depth: 6, width: 0.5 }, arc:false, speed:5, color: new BABYLON.Color3(0.4, 0.4, 0.4)},
+    bullet: { size: { height: 1, depth: 6, width: 0.5 }, arc: false, speed: 5, color: new BABYLON.Color3(0.4, 0.4, 0.4) },
 
     enemytype: "normal",
 
@@ -5539,7 +5753,7 @@ enemylist["Yeti Sniper"] = {
 
     },
 
-    
+
     sfx: {
         atk: {
             src: "crossbow-atk",
@@ -5566,7 +5780,7 @@ enemylist["Yeti Sniper Leader"] = {
     def: 100,
     res: 0,
     atkinterval: 2.4,
-    speed: 0.9* 0.49,
+    speed: 0.9 * 0.49,
     blockcount: 1,
     type: "g",
     range: 1.9,
@@ -5574,8 +5788,10 @@ enemylist["Yeti Sniper Leader"] = {
     dmgtype: "physical",
     size: 1,
     tooltip: "An elite Yeti ranged combatant,\ncapable of dealing \nincreased damage to Frozen units",
+    description:"A stronger ranged acombatant of the \nYeti Squadron hailing from the Northen tundras.\n\n"+
+    "Stronger than normal snipers,\nYeti Sniper Leaders can deal 1.5x damage when attacking frozen targets.",
     targets: 1,
-    bullet: { size: { height: 1, depth: 6, width: 0.5 }, arc:false, speed:5, color: new BABYLON.Color3(0.4, 0.4, 0.4)},
+    bullet: { size: { height: 1, depth: 6, width: 0.5 }, arc: false, speed: 5, color: new BABYLON.Color3(0.4, 0.4, 0.4) },
 
     enemytype: "normal",
 
@@ -5611,7 +5827,7 @@ enemylist["Yeti Sniper Leader"] = {
 
     },
 
-    
+
     sfx: {
         atk: {
             src: "crossbow-atk",
@@ -5638,7 +5854,7 @@ enemylist["Butcher"] = {
     def: 230,
     res: 30,
     atkinterval: 3.5,
-    speed: (0.5 + 0.2)* 0.49,
+    speed: (0.5 + 0.2) * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -5699,7 +5915,7 @@ enemylist["Veteran Butcher"] = {
     def: 270,
     res: 30,
     atkinterval: 3.5,
-    speed: (0.5 + 0.2)* 0.49,
+    speed: (0.5 + 0.2) * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -5760,7 +5976,7 @@ enemylist["Big Bob"] = {
     def: 800,
     res: 30,
     atkinterval: 6,
-    speed: 0.5* 0.49,
+    speed: 0.5 * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -5821,7 +6037,7 @@ enemylist["Caster"] = {
     def: 250,
     res: 50,
     atkinterval: 4,
-    speed: 0.8* 0.49,
+    speed: 0.8 * 0.49,
     blockcount: 1,
     type: "g",
     range: 2,
@@ -5830,7 +6046,7 @@ enemylist["Caster"] = {
     size: 1,
     tooltip: "A basic caster,\ncapable of attacking using\nlong-ranged Magic.",
     targets: 1,
-    bullet: { size: { height: 1, depth: 5, width: 2 }, arc:false, speed:4, color: new BABYLON.Color3(0.69, 0.21, 0.67)},
+    bullet: { size: { height: 1, depth: 5, width: 2 }, arc: false, speed: 4, color: new BABYLON.Color3(0.69, 0.21, 0.67) },
 
     enemytype: "normal",
 
@@ -5865,7 +6081,7 @@ enemylist["Caster"] = {
         duration: 1.1,
 
     },
-    
+
     sfx: {
         atk: {
             src: "caster-atk",
@@ -5885,7 +6101,7 @@ enemylist["Caster Leader"] = {
     def: 300,
     res: 50,
     atkinterval: 4,
-    speed: 0.8* 0.49,
+    speed: 0.8 * 0.49,
     blockcount: 1,
     type: "g",
     range: 2.4,
@@ -5894,7 +6110,7 @@ enemylist["Caster Leader"] = {
     size: 1,
     tooltip: "A more dangerous caster,\ncapable of attacking\n2 targets at once with\nlong-ranged Magic.",
     targets: 2,
-    bullet: { size: { height: 1, depth: 5, width: 2 }, arc:false, speed:4, color: new BABYLON.Color3(0.69, 0.21, 0.67)},
+    bullet: { size: { height: 1, depth: 5, width: 2 }, arc: false, speed: 4, color: new BABYLON.Color3(0.69, 0.21, 0.67) },
 
     enemytype: "normal",
 
@@ -5929,7 +6145,7 @@ enemylist["Caster Leader"] = {
         duration: 1.1,
 
     },
-    
+
     sfx: {
         atk: {
             src: "caster-atk",
@@ -5950,7 +6166,7 @@ enemylist["Yeti Caster"] = {
     def: 200,
     res: 50,
     atkinterval: 4.5,
-    speed: 0.8* 0.49,
+    speed: 0.8 * 0.49,
     blockcount: 1,
     type: "g",
     range: 2.2,
@@ -5959,7 +6175,7 @@ enemylist["Yeti Caster"] = {
     size: 1,
     tooltip: "A Yeti Squadron Caster, \ncapable of inflicting Cold upon\ntheir targets after 3 attacks.",
     targets: 1,
-    bullet: { size: { height: 1, depth: 5, width: 2 }, arc:false, speed:4, color: new BABYLON.Color3(0.88, 0.96, 1)},
+    bullet: { size: { height: 1, depth: 5, width: 2 }, arc: false, speed: 4, color: new BABYLON.Color3(0.88, 0.96, 1) },
 
     enemytype: "normal",
 
@@ -6002,7 +6218,7 @@ enemylist["Yeti Caster"] = {
         duration: 1,
     },
 
-    
+
     sfx: {
         atk: {
             src: "yeticaster-atk",
@@ -6013,8 +6229,8 @@ enemylist["Yeti Caster"] = {
             volume: 0.1
         },
 
-        spatk:{
-            src:"yeticaster-atk",
+        spatk: {
+            src: "yeticaster-atk",
             volume: 0.1,
         },
         sphit: {
@@ -6026,16 +6242,16 @@ enemylist["Yeti Caster"] = {
     spattack: {
         name: "freeze",
         target: "allblocking",
-        chargetype:"attack",
+        chargetype: "attack",
         range: 2.2,
         initialsp: 0,
         sp: 3,
         dmgmodifier: 1,
         effectcontact: 10,
-        skillbullet : true,
+        skillbullet: true,
         applyeffects: {
             modifiers: {
-                cold:10
+                cold: 10
             },
             duration: 1,
         },
@@ -6049,7 +6265,7 @@ enemylist["Yeti Caster Leader"] = {
     def: 250,
     res: 50,
     atkinterval: 4,
-    speed: 0.8* 0.49,
+    speed: 0.8 * 0.49,
     blockcount: 1,
     type: "g",
     range: 2.2,
@@ -6058,7 +6274,7 @@ enemylist["Yeti Caster Leader"] = {
     size: 1,
     tooltip: "An elite Yeti Squadron Caster, \ncapable of inflicting Cold upon\ntheir targets after 3 attacks.",
     targets: 1,
-    bullet: { size: { height: 1, depth: 5, width: 2 }, arc:false, speed:4, color: new BABYLON.Color3(0.88, 0.96, 1)},
+    bullet: { size: { height: 1, depth: 5, width: 2 }, arc: false, speed: 4, color: new BABYLON.Color3(0.88, 0.96, 1) },
 
     enemytype: "normal",
 
@@ -6101,7 +6317,7 @@ enemylist["Yeti Caster Leader"] = {
         duration: 1,
     },
 
-    
+
     sfx: {
         atk: {
             src: "yeticaster-atk",
@@ -6112,8 +6328,8 @@ enemylist["Yeti Caster Leader"] = {
             volume: 0.1
         },
 
-        spatk:{
-            src:"yeticaster-atk",
+        spatk: {
+            src: "yeticaster-atk",
             volume: 0.1,
         },
         sphit: {
@@ -6125,16 +6341,16 @@ enemylist["Yeti Caster Leader"] = {
     spattack: {
         name: "freeze",
         target: "allblocking",
-        chargetype:"attack",
+        chargetype: "attack",
         range: 2.2,
         initialsp: 0,
         sp: 3,
         dmgmodifier: 1,
         effectcontact: 10,
-        skillbullet : true,
+        skillbullet: true,
         applyeffects: {
             modifiers: {
-                cold:10
+                cold: 10
             },
             duration: 1,
         },
@@ -6148,7 +6364,7 @@ enemylist['Explosive Spider'] = {
     def: 0,
     res: 0,
     atkinterval: 1.7,
-    speed: 1* 0.49,
+    speed: 1 * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -6199,7 +6415,7 @@ enemylist['Explosive Spider'] = {
             volume: 0.05
         },
         skillbomb: {
-            src:"icespider-die",
+            src: "icespider-die",
             volume: 0.05
         }
     },
@@ -6210,10 +6426,10 @@ enemylist['Explosive Spider'] = {
         skilltype: "skillbomb",
         target: "self",
         modifiers: {
-            skillbomb:{
+            skillbomb: {
                 targets: 99,
-                range:1,
-                dmg:4,
+                range: 1,
+                dmg: 4,
             }
         },
         aura: false,
@@ -6227,7 +6443,7 @@ enemylist['Glacial Spider'] = {
     def: 0,
     res: 0,
     atkinterval: 1.75,
-    speed: 1* 0.49,
+    speed: 1 * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -6278,7 +6494,7 @@ enemylist['Glacial Spider'] = {
             volume: 0.05
         },
         skillbomb: {
-            src:"icespider-die",
+            src: "icespider-die",
             volume: 0.05
         }
     },
@@ -6289,11 +6505,11 @@ enemylist['Glacial Spider'] = {
         skilltype: "skillbomb",
         target: "self",
         modifiers: {
-            skillbomb:{
+            skillbomb: {
                 targets: 99,
-                range:1,
-                dmg:2,
-                cold:10,
+                range: 1,
+                dmg: 2,
+                cold: 10,
             }
         },
         aura: false,
@@ -6307,7 +6523,7 @@ enemylist['Glacial Spider α'] = {
     def: 0,
     res: 0,
     atkinterval: 1.75,
-    speed: 1* 0.49,
+    speed: 1 * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -6358,7 +6574,7 @@ enemylist['Glacial Spider α'] = {
             volume: 0.05
         },
         skillbomb: {
-            src:"icespider-die",
+            src: "icespider-die",
             volume: 0.05
         }
     },
@@ -6369,11 +6585,11 @@ enemylist['Glacial Spider α'] = {
         skilltype: "skillbomb",
         target: "self",
         modifiers: {
-            skillbomb:{
+            skillbomb: {
                 targets: 99,
-                range:1,
-                dmg:2,
-                cold:10,
+                range: 1,
+                dmg: 2,
+                cold: 10,
             }
         },
         aura: false,
@@ -6388,7 +6604,7 @@ enemylist["Yeti Icecleaver"] = {
     def: 500,
     res: 20,
     atkinterval: 3,
-    speed: 0.7* 0.49,
+    speed: 0.7 * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -6456,7 +6672,7 @@ enemylist["Yeti Icecleaver Leader"] = {
     def: 600,
     res: 20,
     atkinterval: 3,
-    speed: 0.7* 0.49,
+    speed: 0.7 * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -6524,7 +6740,7 @@ enemylist["Light-Armored Soldier"] = {
     def: 500,
     res: 0,
     atkinterval: 2,
-    speed: 1* 0.49,
+    speed: 1 * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -6587,7 +6803,7 @@ enemylist["Oneiros"] = {
     def: 180,
     res: 0,
     atkinterval: 999,
-    speed: 0.6* 0.49,
+    speed: 0.6 * 0.49,
     blockcount: 99,
     type: "r",
     range: 2.5,
@@ -6596,13 +6812,13 @@ enemylist["Oneiros"] = {
     size: 0.95,
     tooltip: "Carries a special warhead\ncapable of dealing Magic damage \nin a radius and inflicting \nCold on affected units.",
     targets: 1,
-    splashradius:1,
+    splashradius: 1,
 
     enemytype: "normal",
 
     spritesheet: "images/sprites/oneiros-sheet.webp",
     hasskill: true,
-    bullet: { size: { height: 3, depth: 5, width: 3 }, arc:false, speed:20, color: new BABYLON.Color3(0.09, 0.73, 0.94)},
+    bullet: { size: { height: 3, depth: 5, width: 3 }, arc: false, speed: 20, color: new BABYLON.Color3(0.09, 0.73, 0.94) },
 
 
     atkanim: {
@@ -6637,20 +6853,20 @@ enemylist["Oneiros"] = {
         skilltype: "warhead",
         target: "self",
         modifiers: {
-            
+
         },
         aura: false,
         idle: {
             start: 89,
             end: 118,
             duration: 1,
-    
+
         },
         move: {
             start: 119,
             end: 148,
             duration: 1,
-    
+
         },
     },
 
@@ -6673,7 +6889,7 @@ enemylist["Originium Slug"] = {
     def: 0,
     res: 0,
     atkinterval: 1.7,
-    speed: 1* 0.49,
+    speed: 1 * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -6731,7 +6947,7 @@ enemylist["Monster"] = {
     def: 150,
     res: 0,
     atkinterval: 999,
-    speed: 0.9* 0.49,
+    speed: 0.9 * 0.49,
     blockcount: 99,
     type: "r",
     range: 0,
@@ -6785,7 +7001,7 @@ enemylist["Monster mk II"] = {
     def: 175,
     res: 25,
     atkinterval: 3,
-    speed: 0.9* 0.49,
+    speed: 0.9 * 0.49,
     blockcount: 99,
     type: "r",
     range: 2,
@@ -6843,7 +7059,7 @@ enemylist["Demolitionist"] = {
     def: 800,
     res: 0,
     atkinterval: 5,
-    speed: 0.6* 0.49,
+    speed: 0.6 * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -6852,8 +7068,8 @@ enemylist["Demolitionist"] = {
     size: 1.2,
     tooltip: "Elite enemy whose \nattacks cause explosions,\ndealing Splash damage to units\non the 4 tiles\nsurrounding the primary target.",
     targets: 1,
-    splash:1,
-    splashdmg:0.5,
+    splash: 1,
+    splashdmg: 0.5,
 
     enemytype: "normal",
 
@@ -6907,7 +7123,7 @@ enemylist["Demolitionist Leader"] = {
     def: 1000,
     res: 0,
     atkinterval: 5,
-    speed: 0.6* 0.49,
+    speed: 0.6 * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -6916,8 +7132,8 @@ enemylist["Demolitionist Leader"] = {
     size: 1.2,
     tooltip: "Elite enemy whose \nattacks cause explosions,\ndealing Splash damage to units\non the 4 tiles\nsurrounding the primary target.",
     targets: 1,
-    splash:1,
-    splashdmg:0.5,
+    splash: 1,
+    splashdmg: 0.5,
 
     enemytype: "normal",
 
@@ -6970,7 +7186,7 @@ enemylist["Heavy Defender"] = {
     def: 1000,
     res: 0,
     atkinterval: 2.6,
-    speed: 0.75* 0.49,
+    speed: 0.75 * 0.49,
     blockcount: 1,
     type: "g",
     range: 0,
@@ -7028,7 +7244,7 @@ enemylist["Frostnova"] = {
     def: 380,
     res: 50,
     atkinterval: 3.7,
-    speed: 0.5* 0.49,
+    speed: 0.5 * 0.49,
     blockcount: 1,
     type: "g",
     range: 2,
@@ -7044,7 +7260,7 @@ enemylist["Frostnova"] = {
     enemytype: "normal",
 
     spritesheet: "images/sprites/frostnova-sheet.webp",
-    bullet: { size: { height: 1, depth: 5, width: 2 }, arc:false, speed:4, color: new BABYLON.Color3(0.88, 0.96, 1)},
+    bullet: { size: { height: 1, depth: 5, width: 2 }, arc: false, speed: 4, color: new BABYLON.Color3(0.88, 0.96, 1) },
 
     hasskill: true,
     hasspatk: true,
@@ -7103,17 +7319,17 @@ enemylist["Frostnova"] = {
     spattack: {
         name: "icenova",
         target: "allblocking",
-        chargetype:"second",
+        chargetype: "second",
         range: 2,
         initialsp: 0,
         sp: 10.5,
-        targets:99,
+        targets: 99,
         effectcontact: 18,
         dmgmodifier: 1.5,
-        skillbullet : true,
+        skillbullet: true,
         applyeffects: {
             modifiers: {
-                cold:5
+                cold: 5
             },
             duration: 1,
         },
@@ -7127,7 +7343,7 @@ enemylist["Frostnova2"] = {
     def: 380,
     res: 50,
     atkinterval: 3.7,
-    speed: 0.5* 0.49,
+    speed: 0.5 * 0.49,
     blockcount: 1,
     type: "g",
     range: 2,
@@ -7139,7 +7355,7 @@ enemylist["Frostnova2"] = {
     enemytype: "normal",
 
     spritesheet: "images/sprites/frostnova2-sheet.webp",
-    bullet: { size: { height: 1, depth: 5, width: 2 }, arc:false, speed:4, color: new BABYLON.Color3(0.88, 0.96, 1)},
+    bullet: { size: { height: 1, depth: 5, width: 2 }, arc: false, speed: 4, color: new BABYLON.Color3(0.88, 0.96, 1) },
 
     hasskill: true,
     hasspatk: true,
@@ -7190,7 +7406,7 @@ enemylist["Frostnova2"] = {
         start2: {
             src: "frostnova2-start1",
             volume: 0.3,
-            sprite: (188+27),
+            sprite: (188 + 27),
             playing: false
         },
         start3: {
@@ -7199,7 +7415,7 @@ enemylist["Frostnova2"] = {
             sprite: 293,
             playing: false
         },
-        
+
         hit: {
             src: "frostnova-hit",
             volume: 0.1
@@ -7226,17 +7442,17 @@ enemylist["Frostnova2"] = {
     spattack: {
         name: "icenova",
         target: "allblocking",
-        chargetype:"second",
+        chargetype: "second",
         range: 3,
         initialsp: 0,
         sp: 10.5,
-        targets:99,
+        targets: 99,
         effectcontact: 342,
         dmgmodifier: 1.5,
-        skillbullet : true,
+        skillbullet: true,
         applyeffects: {
             modifiers: {
-                cold:5
+                cold: 5
             },
             duration: 1,
         },
@@ -7250,7 +7466,7 @@ enemylist["FrostnovaEX"] = {
     def: 440,
     res: 50,
     atkinterval: 3.7,
-    speed: 0.5* 0.49,
+    speed: 0.5 * 0.49,
     blockcount: 1,
     type: "g",
     range: 2,
@@ -7266,7 +7482,7 @@ enemylist["FrostnovaEX"] = {
     enemytype: "normal",
 
     spritesheet: "images/sprites/frostnova-sheet.webp",
-    bullet: { size: { height: 1, depth: 5, width: 2 }, arc:false, speed:4, color: new BABYLON.Color3(0.88, 0.96, 1)},
+    bullet: { size: { height: 1, depth: 5, width: 2 }, arc: false, speed: 4, color: new BABYLON.Color3(0.88, 0.96, 1) },
 
     hasskill: true,
     hasspatk: true,
@@ -7325,17 +7541,17 @@ enemylist["FrostnovaEX"] = {
     spattack: {
         name: "icenova",
         target: "allblocking",
-        chargetype:"second",
+        chargetype: "second",
         range: 2,
         initialsp: 0,
         sp: 10.5,
-        targets:99,
+        targets: 99,
         effectcontact: 18,
         dmgmodifier: 1.5,
-        skillbullet : true,
+        skillbullet: true,
         applyeffects: {
             modifiers: {
-                cold:5
+                cold: 5
             },
             duration: 1,
         },
@@ -7349,7 +7565,7 @@ enemylist["FrostnovaEX2"] = {
     def: 440,
     res: 50,
     atkinterval: 3.7,
-    speed: 0.5* 0.49,
+    speed: 0.5 * 0.49,
     blockcount: 1,
     type: "g",
     range: 2,
@@ -7361,7 +7577,7 @@ enemylist["FrostnovaEX2"] = {
     enemytype: "normal",
 
     spritesheet: "images/sprites/frostnova2-sheet.webp",
-    bullet: { size: { height: 1, depth: 5, width: 2 }, arc:false, speed:4, color: new BABYLON.Color3(0.88, 0.96, 1)},
+    bullet: { size: { height: 1, depth: 5, width: 2 }, arc: false, speed: 4, color: new BABYLON.Color3(0.88, 0.96, 1) },
 
 
     hasskill: true,
@@ -7413,7 +7629,7 @@ enemylist["FrostnovaEX2"] = {
         start2: {
             src: "frostnova2-start1",
             volume: 0.3,
-            sprite: (188+27),
+            sprite: (188 + 27),
             playing: false
         },
         start3: {
@@ -7422,7 +7638,7 @@ enemylist["FrostnovaEX2"] = {
             sprite: 293,
             playing: false
         },
-        
+
         hit: {
             src: "frostnova-hit",
             volume: 0.1
@@ -7449,17 +7665,17 @@ enemylist["FrostnovaEX2"] = {
     spattack: {
         name: "icenova",
         target: "allblocking",
-        chargetype:"second",
+        chargetype: "second",
         range: 3,
         initialsp: 0,
         sp: 10.5,
-        targets:99,
+        targets: 99,
         effectcontact: 342,
         dmgmodifier: 1.5,
-        skillbullet : true,
+        skillbullet: true,
         applyeffects: {
             modifiers: {
-                cold:5
+                cold: 5
             },
             duration: 1,
         },
@@ -7473,7 +7689,7 @@ enemylist["Mortar Gunner"] = {
     def: 150,
     res: 0,
     atkinterval: 4.5,
-    speed: 0.8* 0.49,
+    speed: 0.8 * 0.49,
     blockcount: 1,
     type: "g",
     range: 7,
@@ -7482,12 +7698,12 @@ enemylist["Mortar Gunner"] = {
     size: 1,
     tooltip: "A dangerous foe \nthat can launch very \nlong-ranged AoE attacks.",
     targets: 1,
-    splashradius:1,
+    splashradius: 1,
 
     enemytype: "normal",
 
     spritesheet: "images/sprites/mortar-gunner-sheet.webp",
-    bullet: { size: { height: 3, depth: 3, width: 3 }, arc:true, speed:10, color: new BABYLON.Color3(0.95, 0, 0)},
+    bullet: { size: { height: 3, depth: 3, width: 3 }, arc: true, speed: 10, color: new BABYLON.Color3(0.95, 0, 0) },
 
     hasskill: false,
 

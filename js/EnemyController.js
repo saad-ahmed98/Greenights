@@ -81,8 +81,6 @@ class EnemyController extends CharaController {
         if (this.mesh.position.z <= this.currentpoint[0] * 30 + 1 && this.mesh.position.z >= this.currentpoint[0] * 30 - 1)
             zfound = true;
         if (dirx != 0 && !xfound) {
-            console.log("point:"+this.currentpoint[1])
-            console.log("x:"+this.mesh.position.x)
             if (this.currentpoint[1]*30 - this.mesh.position.x <= 0 && dirx < 0)
                 return 1.8
             else return 0.5

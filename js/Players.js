@@ -63,7 +63,7 @@ playerlist["Blemishine"] = {
 
     skill: {
         name: "Deterring Radiance",
-        description: "ATK +110% and all enemies within \nrange as herself are put to Sleep\n(Invincible,unable to move or act)\nRestores the HP of all nearby allies\nby 20% of Blemishine's ATK every second.",
+        description: "ATK +110% and all enemies in \nrange are put to Sleep\n(Invincible,unable to move or act)\nRestores the HP of all nearby allies\nby 20% of Blemishine's ATK every second.",
         duration: 10,
         sp: 12,
         initialsp: 0,
