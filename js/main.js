@@ -112,7 +112,7 @@ function clearChapterThreeH(){
     localStorage.setItem("3-H3",true)
     localStorage.setItem("3-H4",true)
     localStorage.setItem("Shining",true)
-    localStorage.setItem("Saileach",true)
+    localStorage.setItem("Saga",true)
 }
 
 function clearChapterFour(){
@@ -129,7 +129,7 @@ function clearChapterFour(){
     localStorage.setItem("4-11",true)
     localStorage.setItem("Ceylon",true)
     localStorage.setItem("Matterhorn",true)
-    localStorage.setItem("Exusiai",true)
+    localStorage.setItem("Lappland",true)
 }
 
 function clearChapterFourH(){
@@ -137,10 +137,33 @@ function clearChapterFourH(){
     localStorage.setItem("4-H2",true)
     localStorage.setItem("4-H3",true)
     localStorage.setItem("4-H4",true)
-    localStorage.setItem("Lappland",true)
+    localStorage.setItem("Exusiai",true)
     localStorage.setItem("Angelina",true)
 }
 
+function clearKm(){
+    localStorage.setItem("KM-1",true)
+    localStorage.setItem("KM-2",true)
+    localStorage.setItem("KM-3",true)
+    localStorage.setItem("KM-4",true)
+    localStorage.setItem("KM-5",true)
+    localStorage.setItem("KM-6",true)
+    localStorage.setItem("KM-7",true)
+    localStorage.setItem("KM-8",true)
+    localStorage.setItem("KM-9",true)
+    localStorage.setItem("KM-10",true)
+    localStorage.setItem("Gravel",true)
+    localStorage.setItem("Nearl",true)
+    localStorage.setItem("Breeze",true)
+}
+
+function clearKmH(){
+    localStorage.setItem("KM-H1",true)
+    localStorage.setItem("KM-H2",true)
+    localStorage.setItem("KM-H3",true)
+    localStorage.setItem("Platinum",true)
+    localStorage.setItem("Blemishine",true)
+}
 
 function clearChapterFive(){
     localStorage.setItem("5-1",true)
@@ -168,7 +191,7 @@ function clearChapterFiveH(){
     localStorage.setItem("5-H2",true)
     localStorage.setItem("5-H3",true)
     localStorage.setItem("5-H4",true)
-    localStorage.setItem("Saga",true)
+    localStorage.setItem("Saileach",true)
     localStorage.setItem("Texas",true)
 }
 

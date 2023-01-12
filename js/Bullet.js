@@ -20,7 +20,7 @@ class Bullet {
         this.spatk = spatk
         this.createBullet();
     }
-
+    //creates a bullet for an enemy or ally
     createBullet() {
         if (this.source.chara.splashradius != undefined)
             this.splashradius = this.source.chara.splashradius;
@@ -51,6 +51,7 @@ class Bullet {
     move(gamespeed) {
         var xfound = false;
         var zfound = false;
+        //if halfarc, it means it's a mortar shot, so make the bullet travel in an arc
         if (this.halfarc != undefined) {
             var current = Math.sqrt(Math.abs(this.mesh.position.x - this.target.mesh.position.x) + Math.abs(this.mesh.position.z - this.target.mesh.position.z))
             if (current > this.halfarc) {
@@ -61,6 +62,7 @@ class Bullet {
                 this.friction = this.offsetY
             this.mesh.position.y -= this.offsetY / 3 / gamespeed
         }
+        //travel to target on x axis
         if (this.mesh.position.x <= this.target.mesh.position.x + 10 && this.mesh.position.x >= this.target.mesh.position.x - 10) {
             xfound = true;
             if (this.halfarc == undefined)
@@ -72,6 +74,7 @@ class Bullet {
                 dir = -1;
             this.mesh.position.x += this.offsetX * dir / gamespeed;
         }
+        //travel to target on z axis
         if (this.mesh.position.z <= this.target.mesh.position.z + 10 && this.mesh.position.z >= this.target.mesh.position.z - 10) {
             zfound = true;
             if (this.halfarc == undefined)
@@ -84,6 +87,7 @@ class Bullet {
             this.mesh.position.z += this.offsetZ * dir / gamespeed;
         }
 
+        //if source is high ground, then make the bullet travel in y axis too
         if (this.source.chara.type == "r" && !this.isplayer) {
             if (!(this.mesh.position.y <= this.target.mesh.position.y + 1 && this.mesh.position.y >= this.target.mesh.position.y - 1)) {
                 var dir = 1;
@@ -92,7 +96,8 @@ class Bullet {
                 this.mesh.position.y += dir / gamespeed;
             }
         }
-
+        
+        //if target reached, hit them
         if (!this.done && xfound && zfound) {
             this.done = true;
             if (this.source.playerSkill != undefined) {
@@ -106,6 +111,7 @@ class Bullet {
             else if (this.source.chara.sfx.hit != undefined)
                 this.lvl.playSound(this.source.chara.name + "-hit", this.source.chara.sfx.hit.volume)
 
+            //if splash available, do splash
             if (this.splashradius != undefined) {
                 let splashenemies = this.source.getSplashEnemiesInRange(this.lvl.activePlayers, this.target, this.splashradius)
                 for (let j = 0; j < splashenemies.length; j++) {
@@ -124,6 +130,7 @@ class Bullet {
                 }
                 else {
                     if (this.spatk != undefined) {
+                        //bullet created from enemy special attacks
                         this.target.buffs.buffs[this.spatk.name] = { "name": this.source.name, "modifiers": this.spatk.applyeffects.modifiers }
                         this.target.buffs.effects[this.spatk.name] = this.spatk.applyeffects.duration
                         if (this.target.buffs.effectSprite[this.spatk.name] == undefined && this.spatk.applyeffects.effecticon != undefined)

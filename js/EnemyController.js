@@ -47,6 +47,7 @@ class EnemyController extends CharaController {
 
     }
 
+    //red aura used by bloodboil and twin knights
     createRageAura() {
         this.invincibleaura = new BABYLON.Sprite("", this.lvlcontroller.spriteManagers["skillaura"]);
         this.invincibleaura.position = new BABYLON.Vector3(this.sprite.position.x, this.sprite.position.y + 1, this.sprite.position.z);
@@ -73,6 +74,7 @@ class EnemyController extends CharaController {
         this.aura.width = 90;
     }
 
+    //calculates the speed modifier to apply to self depending on direction tile direction
     directionMovement(dirx, diry) {
         let xfound = false;
         let zfound = false;
@@ -81,12 +83,12 @@ class EnemyController extends CharaController {
         if (this.mesh.position.z <= this.currentpoint[0] * 30 + 1 && this.mesh.position.z >= this.currentpoint[0] * 30 - 1)
             zfound = true;
         if (dirx != 0 && !xfound) {
-            if (this.currentpoint[1]*30 - this.mesh.position.x <= 0 && dirx < 0)
+            if (this.currentpoint[1] * 30 - this.mesh.position.x <= 0 && dirx < 0)
                 return 1.8
             else return 0.5
         }
         if (diry != 0 && !zfound) {
-            if (this.currentpoint[0]*30 - this.mesh.position.z <= 0 && diry < 0)
+            if (this.currentpoint[0] * 30 - this.mesh.position.z <= 0 && diry < 0)
                 return 1.8
             else return 0.5
         }
@@ -125,14 +127,6 @@ class EnemyController extends CharaController {
         //if the game is paused, then don't let the animations play
         if (pause)
             this.sprite.stopAnimation()
-    }
-
-    angle(cx, cy, ex, ey) {
-        var dy = ey - cy;
-        var dx = ex - cx;
-        var theta = Math.atan2(dy, dx); // range (-PI, PI]
-        theta *= 180 / Math.PI; // rads to degs, range (-180, 180]
-        return theta;
     }
 
     //move the enemy across the map
@@ -619,6 +613,7 @@ class EnemyController extends CharaController {
         }
         this.hp -= dmgreceived
         if (!this.dead) {
+            //changes the color of the sprite to red to show they are getting hit
             this.sprite.color.r = 10
             this.sprite.color.g = 0
             this.sprite.color.b = 0
@@ -631,9 +626,7 @@ class EnemyController extends CharaController {
                 this.sprite.color.g = 1
                 this.sprite.color.b = 1
             }
-
-        }
-            , 100)
+        }, 100)
 
         //update hp bar after receiving damage
         this.updateHpBar();
@@ -657,7 +650,7 @@ class EnemyController extends CharaController {
                         if (attackingplayer.condtalent.condition == "kill")
                             attackingplayer.checkConditionTalent();
                     }
-                    this.lvlcontroller.currentdp = Math.min(this.lvlcontroller.currentdp + attackingplayer.buffs.getDpOnKill(), 99);
+                    this.lvlcontroller.currentdp = Math.min(this.lvlcontroller.currentdp + attackingplayer.buffs.getDpOnKill(), this.lvlcontroller.dplimit);
                     this.lvlcontroller.gui.updatePlayerWheelUI(this.lvlcontroller.currentdp, this.lvlcontroller.squadlimit)
                 }
             }
@@ -695,12 +688,15 @@ class EnemyController extends CharaController {
                 this.sprite.playAnimation(this.chara.death.start, this.chara.death.end, false, 30 * Math.min(2, this.gamespeed) * (this.chara.death.duration));
                 var instance = this
                 let interval = setInterval(() => {
+                    //darkens the sprite color to make it fade away
                     this.sprite.color.r -= darkening / this.gamespeed
                     this.sprite.color.g -= darkening / this.gamespeed
                     this.sprite.color.b -= darkening / this.gamespeed
                     if (instance.sprite.cellIndex == instance.chara.death.end) {
                         if (this.playerSkill != undefined) {
+                            //if explosive spider and not silenced, explode
                             if (this.playerSkill.triggertype == "on_death" && !this.buffs.isSilenced()) {
+                                //TODO CHANGE HARD CODED
                                 if (instance.chara.name == "Explosive Spider")
                                     instance.createEffects(instance.lvlcontroller.spriteManagers["boom"])
                                 else instance.createEffects(instance.lvlcontroller.spriteManagers["boomice"])
@@ -838,8 +834,12 @@ class EnemyController extends CharaController {
         for (let i = 0; i < playerz.length; i++)
             targets.push(playerz[i])
         this.sortBySpAtkPriority(targets)
+
+        //patriot skill, can only target ranged units
         if (this.chara.spattack.target == "farthest")
             targets = targets.filter(player => player.chara.type == "r");
+
+        //tytus topola skill, can only target units without the debuff already applied
         if (this.chara.spattack.targets == "highestatk")
             targets = targets.filter(player => player.buffs.effects[this.chara.spattack.name] == undefined);
 
@@ -866,6 +866,7 @@ class EnemyController extends CharaController {
                     instance.spattacktimer = 0
                     instance.atktimer = 0
                 }
+
                 if (instance.sprite.cellIndex == instance.chara.spattack.effectcontact && !applied) {
                     applied = true;
                     if (this.chara.spattack.skillbullet == undefined) {
@@ -887,7 +888,7 @@ class EnemyController extends CharaController {
                     clearInterval(interval);
                 }
             }, 1);
-
+            //if special attack damages the targets
             if (this.chara.spattack.dmgmodifier != undefined) {
                 var interval2 = setInterval(() => {
                     if (instance.isasleep) {

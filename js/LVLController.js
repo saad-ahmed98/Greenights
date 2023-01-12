@@ -96,16 +96,22 @@ class LVLController extends LVLAbstract {
         this.cameraOffsetZ = lvl.offsetZ;
     }
 
+    //restarts the level
     restart() {
         new LVLController(this.gameconfig, enemylist, this.restartlist, JSON.parse(JSON.stringify(levels[lvlnumber])))
     }
 
+    //creates level stats and player wheel
     createGUIs() {
         this.gui.createStatsUI(this.enemycount + "/" + this.enemytot, this.hp, this);
         this.gui.createPlayerWheelUI(this.playerlist, this);
     }
 
-    createLvl() {
+    //scene render loop
+    //checks every frame all enemies for movement
+    //checks enemy blocking, player skills and life
+    //all bullets and timed effects
+    levelRenderLoop() {
         //this.gameconfig.divFps.innerHTML = this.gameconfig.engine.getFps().toFixed() + " fps";
         this.gameconfig.rollingAverage.add(this.scene.getAnimationRatio());
         this.gui.updateRedeployTimers(this.playerlist, this.gamespeed);
@@ -123,7 +129,6 @@ class LVLController extends LVLAbstract {
             this.checkBullets();
             this.checkTimeEffects();
         }
-
 
         if (this.dptimer >= 30) {
             this.currentdp = Math.min(this.currentdp + 1, this.dplimit);
@@ -159,6 +164,8 @@ class LVLController extends LVLAbstract {
         this.loadEnemyIcons();
         this.loadStaticImages();
     }
+
+    //unit icons used for player wheel
     loadPlayerIcons() {
         var instance = this;
         var assetsManager = instance.scene.assetsManager;
@@ -184,6 +191,7 @@ class LVLController extends LVLAbstract {
         }
     }
 
+    //enemy images if there is a tooltip showing up
     loadEnemyIcons() {
         var instance = this;
         var assetsManager = instance.scene.assetsManager;
@@ -198,8 +206,10 @@ class LVLController extends LVLAbstract {
                 instance.scene.assets[task.name] = task.image
             };
         }
-
     }
+
+    //layout textures
+    //loads a texture for each type of tile
     loadTextures() {
         var instance = this;
         var assetsManager = instance.scene.assetsManager;
@@ -414,6 +424,8 @@ class LVLController extends LVLAbstract {
             instance.scene.assets[task.name] = task.texture
         };
     }
+
+    //loads gui images
     loadStaticImages() {
         this.loadTextures()
         var instance = this;
@@ -496,10 +508,9 @@ class LVLController extends LVLAbstract {
         binaryTask.onSuccess = function (task) {
             instance.scene.assets[task.name] = task.image
         };
-
-
     }
 
+    //load meshes used for scenary
     loadHazards() {
         var instance = this;
         var keys = Object.keys(this.presentHazards)
@@ -534,6 +545,7 @@ class LVLController extends LVLAbstract {
 
     }
 
+    //plays bgm of the map
     playBGM(volume) {
         var intro = this.scene.assets.bgmintro
         var loop = this.scene.assets.bgmloop
@@ -546,12 +558,14 @@ class LVLController extends LVLAbstract {
 
             });
             intro.onended = function () {
+                //when intro ends, play part that loops
                 loop.setVolume(volume);
                 loop.play()
             }
 
             var keys = Object.keys(this.playerlist)
             if (keys.length > 0 && !this.depart) {
+                //play random depart voiceline of one of the units
                 this.depart = true
                 this.playSound(this.playerlist[keys[Math.floor(Math.random() * keys.length)]].name + "-depart", this.vcvolume);
             }
@@ -559,6 +573,7 @@ class LVLController extends LVLAbstract {
 
     }
 
+    //plays 2nd bgm of the map if applicable
     playBGM2(volume) {
         var intro = this.scene.assets.bgm2intro
         var loop = this.scene.assets.bgm2loop
@@ -586,7 +601,7 @@ class LVLController extends LVLAbstract {
 
     }
 
-
+    //plays mission clear voice and music
     playMissionClear() {
         this.scene.assets.bgmintro.stop()
         this.scene.assets.bgmloop.stop()
@@ -614,6 +629,7 @@ class LVLController extends LVLAbstract {
         var startingColor = this.scene.clearColor.clone();
         var t;
 
+        //fade in animation
         if (this.frame < 550) {
             this.frame += 5;
             t = 0.5 + Math.cos(this.frame / 100) / 2;
@@ -628,7 +644,6 @@ class LVLController extends LVLAbstract {
             }
             else {
                 this.playBGM(0.2)
-
                 if (this.gameconfig.inputStates.pause) {
                     if (!this.gui.showinggui && this.gui.canPause) {
                         this.gui.createPauseScreen(this);
@@ -636,14 +651,15 @@ class LVLController extends LVLAbstract {
                     else if (this.gui.timerPause)
                         this.gui.removePauseScreen(this);
                 }
+                //if game isn't paused, run the game logic loop
                 if (!this.gui.isPaused)
-                    this.createLvl();
+                    this.levelRenderLoop();
             }
         }
         this.scene.render();
     }
 
-
+    //plays mission failed voice and music
     playMissionFailed() {
         this.scene.assets.bgmintro.stop()
         this.scene.assets.bgmloop.stop()
@@ -664,6 +680,7 @@ class LVLController extends LVLAbstract {
     }
 
 
+    //load all player sound effects
     loadPlayerSFX() {
         var instance = this;
         var assetsManager = instance.scene.assetsManager;
@@ -693,6 +710,7 @@ class LVLController extends LVLAbstract {
 
     }
 
+    //load all enemy sound effects
     loadEnemySFX() {
         var instance = this;
         var assetsManager = instance.scene.assetsManager;
@@ -721,6 +739,8 @@ class LVLController extends LVLAbstract {
 
     }
 
+    //load all units voicelines
+    //win voiceline currently unused
     loadPlayerVoicelines() {
         var instance = this;
         var assetsManager = instance.scene.assetsManager;
@@ -728,7 +748,7 @@ class LVLController extends LVLAbstract {
         var keys = Object.keys(this.playerlist)
         for (let i = 0; i < keys.length; i++) {
 
-            var sfx = ["depart", "taunt", "skill", "select", "deploy", "win"]
+            var sfx = ["depart", "taunt", "skill", "select", "deploy"]
             for (let j = 0; j < sfx.length; j++) {
 
                 binaryTask = assetsManager.addBinaryFileTask(
@@ -767,6 +787,9 @@ class LVLController extends LVLAbstract {
                 spritesheets.add(this.enemylist[keys[i]].spritesheet)
         }
 
+        //preloads sprite sheets
+        //loads spritesheet image as texture
+
         for (const item of spritesheets) {
             let binaryTask = assetsManager.addTextureTask(
                 item,
@@ -774,8 +797,11 @@ class LVLController extends LVLAbstract {
                 true,
                 false,
                 BABYLON.Texture.TRILINEAR_SAMPLINGMODE
+                //MUST LOAD IN TRILINEAR_SAMPLINGMODE!!!
             );
             binaryTask.onSuccess = function (task) {
+                //after loading texture,
+                //creates sprite manager and manually gives it the spritesheet as texture
                 instance.spriteManagers[task.name] = new BABYLON.SpriteManager(task.name + "Manager", undefined, 20, { width: 444, height: 302.5 });
                 instance.spriteManagers[task.name].texture = task.texture
             };
@@ -867,16 +893,15 @@ class LVLController extends LVLAbstract {
             instance.spriteManagers[task.name] = new BABYLON.SpriteManager("SnowManager", undefined, 1, { width: 500 * 0.96, height: 282 * 0.96 });
             instance.spriteManagers[task.name].texture = task.texture
         };
-
     }
 
-    loadSounds() {
 
+    //load game sounds
+    loadSounds() {
         var instance = this;
         var assetsManager = instance.scene.assetsManager;
         this.loadPlayerSFX();
         this.loadEnemySFX();
-
         this.loadPlayerVoicelines();
 
 
@@ -1142,6 +1167,7 @@ class LVLController extends LVLAbstract {
 
     }
 
+    //activate inactive altars, currently only used by frostnova
     activateAltars() {
         this.playSound("token", 0.3)
         for (let i = 0; i < this.hazards.length; i++) {
@@ -1150,16 +1176,20 @@ class LVLController extends LVLAbstract {
         }
     }
 
+    //checks enemy status every frame
     checkEnemies() {
         for (let i = 0; i < this.enemies.length; i++) {
             if (this.enemies[i].playerSkill != undefined) {
+                //if enemy has a skill that needs them to be alive to stay active, update it
                 if (this.enemies[i].playerSkill.skilltype == "alive") {
                     this.enemies[i].playerSkill.updateSkill(this.enemies)
                 }
+                //if enemy has a skill that has a limited duration, update it
                 if (this.enemies[i].playerSkill.skilltype == "duration") {
                     this.enemies[i].playerSkill.updateDurationSkill(this.enemies[i])
                 }
             }
+            //if enemy reaches a blue box
             if (this.enemies[i].finish) {
                 this.playSound("alarmenter", 0.3)
                 this.hp -= this.enemies[i].chara.hploss;
@@ -1170,22 +1200,26 @@ class LVLController extends LVLAbstract {
                 }
                 let charaname = this.enemies[i].chara.name
                 this.enemies.splice(i, 1)
+                //TODO BAD HARD CODED
                 if (charaname.includes("Withered") || charaname.includes("Corrupted"))
                     this.updateKnightDeathSkill()
-
                 i--;
+                //update enemy killed counter
                 this.enemycount++;
                 this.gui.updateStatsUI(this.enemycount + "/" + this.enemytot, this.hp, this.maxhp);
             }
+            //if enemy hp reaches 0
             else if (this.enemies[i].hp <= 0 || this.enemies[i].hp == NaN) {
                 if (this.enemies[i].playerSkill != undefined) {
                     if (this.enemies[i].playerSkill.skilltype == "alive") {
                         this.enemies[i].playerSkill.deactivateSkill(this.enemies)
                     }
                 }
+                //if the enemy can revive, activate revival
                 if (this.enemies[i].chara.revive == true)
                     this.enemiesreviving.push(this.enemies[i])
                 else {
+                    //else update enemy killed counter
                     this.enemycount++;
                     this.gui.updateStatsUI(this.enemycount + "/" + this.enemytot, this.hp, this.maxhp);
                 }
@@ -1193,11 +1227,13 @@ class LVLController extends LVLAbstract {
                 this.enemies.splice(i, 1)
                 i--;
                 this.updateOnAnyDeathSkills()
+                //TODO BAD HARD CODED
                 if (charaname.includes("Withered") || charaname.includes("Corrupted"))
                     this.updateKnightDeathSkill()
 
             }
         }
+        //activate inspire buff if available
         if (this.enemies.length > 0) {
             let inspired = this.enemies[0].buffs.getInspire()
             for (let i = 0; i < this.enemies.length; i++) {
@@ -1210,7 +1246,6 @@ class LVLController extends LVLAbstract {
                                 this.enemies[i].playerSkill.deactivateSkill([this.enemies[i]], true)
                         }
                     }
-
                 }
             }
         }
@@ -1227,6 +1262,7 @@ class LVLController extends LVLAbstract {
         }
     }
 
+    //activates enemy skills with on_knightdeath triggertype (twin knights)
     updateKnightDeathSkill() {
         for (let i = 0; i < this.enemies.length; i++) {
             if (this.enemies[i].playerSkill != undefined) {
@@ -1238,14 +1274,18 @@ class LVLController extends LVLAbstract {
     }
 
 
+    //checks player skills
     checkPlayerSkill(p) {
+        //if player skill is inactive and it charges every second, increase skill points
         if (!p.playerSkill.active) {
             if (p.playerSkill.chargetype == "second") {
                 p.playerSkill.currentsp = Math.min(p.playerSkill.currentsp + (1 / 30) / this.gamespeed, p.playerSkill.totalsp);
                 p.updateSkillBarCharging()
             }
+            //if skill is ready and the skill has to be manually triggered, show skill ready icon
             if (p.playerSkill.currentsp >= p.playerSkill.totalsp && p.playerSkill.triggertype == "manual")
                 p.skillready.isVisible = true;
+            //if skill is ready and the skill auto triggers, trigger skill
             if (p.playerSkill.triggertype == "auto" && p.playerSkill.currentsp >= p.playerSkill.totalsp && p.playerSkill.duration > 0 && !p.isfrozen) {
                 this.playSound(p.chara.name + "-skillact", p.chara.sfx.skillact.volume)
                 this.playSound(p.chara.name + "-skill", this.vcvolume)
@@ -1255,6 +1295,7 @@ class LVLController extends LVLAbstract {
                     p.sprite.playAnimation(p.chara.skillidle.start, p.chara.skillidle.end, true, this.gamespeed * 30);
             }
         }
+        //if skill is active, lower the duration timer
         else if (p.playerSkill.active) {
             p.updateSkillBarTrigger()
             p.playerSkill.duration -= (1 / 30) / this.gamespeed;
@@ -1268,6 +1309,7 @@ class LVLController extends LVLAbstract {
         }
     }
 
+    //update buffs/debuffs
     checkEffect(p) {
         var ef = p.buffs.effects
         var keys = Object.keys(ef)
@@ -1283,6 +1325,7 @@ class LVLController extends LVLAbstract {
         }
     }
 
+    //update hazards (special map gimmicks)
     checkHazardSkill(p) {
         if (Math.round(p.currentsp) == p.displaysp)
             p.displayRangeTiles()
@@ -1303,10 +1346,9 @@ class LVLController extends LVLAbstract {
         for (let i = 0; i < this.activePlayers.length; i++) {
             this.checkPlayerSkill(this.activePlayers[i])
         }
-
-
     }
 
+    //update bullet positions
     checkBullets() {
         for (let i = 0; i < this.bullets.length; i++) {
             if (this.bullets[i].done) {
@@ -1316,7 +1358,6 @@ class LVLController extends LVLAbstract {
             else this.bullets[i].move(this.gamespeed);
         }
     }
-
 
 
     checkTimeEffects() {
@@ -1330,10 +1371,12 @@ class LVLController extends LVLAbstract {
             if (this.enemies[i].invincible)
                 this.enemies[i].updateInvincibility()
         }
+        //update revival timer for reviving enemies
         for (let i = 0; i < this.enemiesreviving.length; i++) {
             this.enemiesreviving[i].healthBarBackground.value = 0
             this.enemiesreviving[i].chara.revivetimer -= (1 / 30) / this.gamespeed;
             this.enemiesreviving[i].healthBar.value = (this.enemiesreviving[i].chara.revivemax - this.enemiesreviving[i].chara.revivetimer) / this.enemiesreviving[i].chara.revivemax * 100
+            //if reviving is done, finish revival (spawn 2nd form as new enemy on top of old one)
             if (this.enemiesreviving[i].chara.revivetimer <= 0) {
                 this.enemiesreviving[i].finishRevival()
                 this.enemiesreviving.splice(i, 1)
@@ -1342,6 +1385,7 @@ class LVLController extends LVLAbstract {
         }
     }
 
+    //check units status in battle
     checkPlayers() {
         for (let i = 0; i < this.activePlayers.length; i++) {
             if (!this.pause) {
@@ -1349,21 +1393,22 @@ class LVLController extends LVLAbstract {
                 this.activePlayers[i].checkAliveBuffs()
                 this.activePlayers[i].checkBlocking()
             }
+            //if player dies, remove all blocking enemies, and remake the player wheel
             if (this.activePlayers[i].hp <= 0) {
                 this.tiles[this.activePlayers[i].x][this.activePlayers[i].y].player = undefined;
                 this.activePlayers[i].removeAllBlocking()
+                //increase cost of player
                 this.activePlayers[i].chara.cost = Math.min(this.activePlayers[i].chara.basecost + Math.round(this.activePlayers[i].chara.basecost * 0.5), this.activePlayers[i].chara.basecost * 2),
-
                     this.playerlist[this.activePlayers[i].chara.name] = this.activePlayers[i].chara
                 this.activePlayers.splice(i, 1)
                 i--;
                 this.squadlimit++;
                 this.gui.createPlayerWheelUI(this.playerlist, this)
             }
-
         }
     }
 
+    //retreat player after clicking retreat button
     retreatPlayer(player) {
         this.playSound("retreat", 0.3)
         player.condtalentcounter = 999
@@ -1384,15 +1429,16 @@ class LVLController extends LVLAbstract {
             player.buffs.effectSprite[keys[i]].dispose()
 
         player.hp = -999;
-        this.currentdp = Math.min(99, this.currentdp + Math.round(player.chara.cost / 2))
+        //refund half of the player cost
+        this.currentdp = Math.min(this.dplimit, this.currentdp + Math.round(player.chara.cost / 2))
         player.dead = true;
         if (this.pause) {
             this.checkPlayers()
             this.gui.updatePlayerWheelUI(this.currentdp, this.squadlimit)
         }
-
     }
 
+    //pauses the sprites animations
     pauseGame() {
         for (let i = 0; i < this.enemies.length; i++)
             this.enemies[i].pause();
@@ -1401,6 +1447,7 @@ class LVLController extends LVLAbstract {
         this.pause = true;
     }
 
+    //resumes the sprites animations
     resumeGame() {
         this.pause = false;
         for (let i = 0; i < this.enemies.length; i++)
@@ -1409,18 +1456,17 @@ class LVLController extends LVLAbstract {
             this.activePlayers[i].resume();
     }
 
+    //removes focus from a player context menu
     unzoom() {
         this.zoom = false;
         this.createGlobalCamera();
         this.undisplayTiles();
-
         this.gamespeed = this.prevspeed
         this.updateSpeed()
-
         this.gui.contextMenuController.dispose();
     }
 
-
+    //drag & drop to place new units or open context menu of already deployed ones
     initDragNDrop() {
         var ground = BABYLON.MeshBuilder.CreateGround("ground", { width: 1000, height: 1000 }, this.scene, false);
         ground.visibility = 0;
@@ -1441,6 +1487,7 @@ class LVLController extends LVLAbstract {
             return null;
         }
 
+        //if clicked somewhere valid, slow the game speed
         var pointerDown = function (mesh) {
             if (!dragging) {
                 currentMesh = mesh;
@@ -1448,7 +1495,6 @@ class LVLController extends LVLAbstract {
                     instance.prevspeed = instance.gamespeed
                 instance.gamespeed = 8
                 instance.updateSpeed()
-
                 startingPoint = getGroundPosition();
             }
             else { } //do stuff
@@ -1462,6 +1508,7 @@ class LVLController extends LVLAbstract {
             }
         }
 
+        //udates the current position, based on the position of the pointer on the ground mesh
         var pointerMove = function () {
             if (!startingPoint) {
                 return;
@@ -1470,7 +1517,6 @@ class LVLController extends LVLAbstract {
             if (!current) {
                 return;
             }
-
 
             currentMesh.position = getGroundPosition();
             currentMesh.position.y = 20;
@@ -1485,7 +1531,10 @@ class LVLController extends LVLAbstract {
             if (!(this.gui.showinggui && !this.gui.isPaused)) {
                 switch (pointerInfo.type) {
                     case BABYLON.PointerEventTypes.POINTERDOWN:
+                        //if clicked on the player wheel, create sprite on mouse of the unit selected
+                        //display all deployable tiles
                         if (instance.gui.wheelclick == true) {
+                            //if the game was zoomed in, zoom out before creating the player wheel sprite
                             if (instance.zoom) {
                                 instance.zoom = false;
                                 currentTile = null;
@@ -1508,6 +1557,7 @@ class LVLController extends LVLAbstract {
                         else {
                             var x = Math.round(pointerInfo.pickInfo.pickedPoint.x / 30);
                             var y = Math.round(pointerInfo.pickInfo.pickedPoint.z / 30);
+                            //zooms on unit and creates context menu
                             if (x < instance.tiles.length && x >= 0 && y < instance.tiles[0].length && y >= 0) {
                                 if (instance.tiles[x][y].player != undefined) {
                                     if (!instance.zoom) {
@@ -1520,7 +1570,6 @@ class LVLController extends LVLAbstract {
                                             instance.prevspeed = instance.gamespeed
                                         instance.gamespeed = 8
                                         instance.updateSpeed()
-
                                         currentTile = instance.tiles[x][y];
                                         instance.gui.createContextMenu(pl, instance);
                                     }
@@ -1529,6 +1578,8 @@ class LVLController extends LVLAbstract {
                             if (instance.zoom && (currentTile.x != x || currentTile.z != y)) {
                                 currentTile = null;
                                 instance.unzoom()
+                                //if click outside of context menu, unzoom,
+                                //if selected a new unit, instantly zoom on that unit
                                 if (x < instance.tiles.length && x >= 0 && y < instance.tiles[0].length && y >= 0) {
                                     if (instance.tiles[x][y].player != undefined) {
                                         instance.zoom = true;
@@ -1548,6 +1599,8 @@ class LVLController extends LVLAbstract {
                         }
                         break;
                     case BABYLON.PointerEventTypes.POINTERUP:
+                        //if stopped clicking and player was trying to deploy a unit
+                        //try to deploy the unit if applicable
                         if (instance.gui.wheelclick == true && currentMesh != null) {
                             pointerUp();
                             dragging = false;
@@ -1557,6 +1610,7 @@ class LVLController extends LVLAbstract {
 
                             var tilex = Math.round(currentMesh.position.x / 30)
                             var tiley = Math.round(currentMesh.position.z / 30)
+                            //check if player can be deployed on selected tile
                             if (tilex >= 0 && tilex < instance.tiles.length && tiley >= 0 && tiley < instance.tiles[0].length && instance.currentdp >= instance.gui.wheelchoice.cost && instance.squadlimit > 0) {
                                 if (instance.tiles[tilex][tiley].player == undefined && instance.tiles[tilex][tiley].canBeDeployed(instance.gui.wheelchoice.type, instance.deployall)) {
                                     instance.createPlayer(instance.gui.wheelchoice.name, tilex, tiley);
@@ -1576,10 +1630,10 @@ class LVLController extends LVLAbstract {
                             sprite.dispose();
                             sprite = null
                             //instance.undisplayTiles()
-
                         }
                         break;
                     case BABYLON.PointerEventTypes.POINTERMOVE:
+                        //move sprite with mouse
                         if (instance.gui.wheelclick == true) {
                             dragging = true;
                             pointerMove(pointerInfo);
@@ -1587,6 +1641,8 @@ class LVLController extends LVLAbstract {
                             var tiley = Math.round(getGroundPosition().z / 30);
                             if (tilex > 0 && tilex < instance.tiles.length && tiley > 0 && tiley < instance.tiles[0].length) {
                                 if (instance.tiles[tilex][tiley].player == undefined && instance.tiles[tilex][tiley].canBeDeployed(instance.gui.wheelchoice.type, instance.deployall)) {
+                                    //display in red the tile where the mouse is hovering if it can be deployed on
+                                    //this makes sure the player knows where the unit will end up if they let go of the mouse
                                     if (prevtile != null)
                                         prevtile.displayDeployable()
                                     prevtile = instance.tiles[tilex][tiley]
@@ -1607,6 +1663,7 @@ class LVLController extends LVLAbstract {
 
     }
 
+    //colors green the tiles where the unit can be deployed
     displayAvailableTiles(type) {
         for (let i = 0; i < this.tiles.length; i++) {
             for (let j = 0; j < this.tiles[i].length; j++) {
@@ -1616,6 +1673,7 @@ class LVLController extends LVLAbstract {
         }
     }
 
+    //colors red the tiles where the unit can reach with their attacks
     displayRangeTiles(x, y, pl) {
         var rangeexpand = 0
         var ranget = pl.buffs.getFinalRange(pl.chara.range)
@@ -1660,8 +1718,6 @@ class LVLController extends LVLAbstract {
         var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 10, new BABYLON.Vector3(250 + this.cameraOffsetX, 290 + this.cameraOffsetY, 180 + this.cameraOffsetZ), this.scene); //updown,
         camera.alpha = -0.0034155996227517244
         camera.beta = 0.45497477002057213
-
-
         this.scene.activeCamera = camera;
     }
 
@@ -1669,26 +1725,22 @@ class LVLController extends LVLAbstract {
         var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 10, new BABYLON.Vector3(x + 120, 290 + this.cameraOffsetY, z + this.cameraOffsetZ), this.scene);
         camera.alpha = -0.0034155996227517244
         camera.beta = 0.45497477002057213
-
         this.scene.activeCamera = camera;
 
     }
 
     createScene() {
 
-
-        this.createObstacles();
+        this.createLayout();
+        this.createGlobalCamera();
+        this.createLights();
         this.initDragNDrop();
 
 
-        this.createGlobalCamera();
-
-
+        //creates the enemy counter
         for (let i = 0; i < this.waves.length; i++)
             this.enemytot += this.waves[i].count;
 
-
-        this.createLights();
         if (this.gameconfig.inputStates.pause) {
             if (!this.gui.showinggui)
                 this.gui.createPauseScreen(this)
@@ -1701,6 +1753,7 @@ class LVLController extends LVLAbstract {
         return this.scene;
     }
 
+    //creates a snowstorm effect (uses a spritesheet)
     createSnowstorm() {
         let snowstorm = new BABYLON.Sprite("", this.spriteManagers["snow"]);
         snowstorm.position = new BABYLON.Vector3(120, 110, 150);
@@ -1734,7 +1787,7 @@ class LVLController extends LVLAbstract {
     }
 
 
-    createObstacles() {
+    createLayout() {
         let array = this.layout
         for (let i = 0; i < array.length; i++) {
             var line = [];
@@ -1776,20 +1829,22 @@ class LVLController extends LVLAbstract {
             this.tiles.push(linetiles);
             this.matrix.push(line);
             this.flyingmatrix.push(flyingline);
-
         }
     }
 
+    //move enemies
     moveEnemies() {
         for (let i = 0; i < this.enemies.length; i++)
             this.enemies[i].move(this.tiles, this.activePlayers.slice());
     }
 
+    //move players
     movePlayers() {
         for (let i = 0; i < this.activePlayers.length; i++)
             this.activePlayers[i].move(this.enemies.slice(), this.activePlayers.slice());
     }
 
+    //check if enemies can walk on the tile type for pathfinding
     getWalkable(tiletype) {
         switch (tiletype) {
             case "bg":
@@ -1808,7 +1863,7 @@ class LVLController extends LVLAbstract {
     }
 
     createEnemy(e, start, checkpoints, id, invertU) {
-        localStorage.setItem(e,true)
+        localStorage.setItem(e, true)
         var enemyUse = this.enemylist[e]
         var matrixUse = this.matrix
         if (enemyUse.type == "r")
@@ -1839,15 +1894,14 @@ class LVLController extends LVLAbstract {
                 this.playerlist[keys[i]].cost -= 2
             this.saileach = true;
         }
-
         this.activePlayers.push(player);
-
-
     }
 
+    //spawn enemies using the info from the wave
     spawnEnemies() {
         this.isSpawning = true;
         for (let i = 0; i < this.waves.length; i++) {
+            //if the taunt is selected, select a random unit that will taunt the enemy with a voiceline
             if ((this.waves[i]["time"] - 2) * 30 <= this.maptimer && this.waves[i]["line"]) {
                 if (this.waves[i]["taunt"]) {
                     var keys = Object.keys(this.playerlist)
@@ -1861,12 +1915,15 @@ class LVLController extends LVLAbstract {
                         }
                     }
                 }
+                //if music is true, then play the next bgm
                 if (this.waves[i]["music"] == true)
                     this.playBGM2(0.2)
 
+                //if line is true, draw line to show player path
                 this.waves[i]["line"] = false;
                 this.drawLine(this.waves[i]["checkpoints"], this.waves[i]["flying"] || false)
             }
+            //create enemy description tooltip
             if (this.waves[i]["time"] * 30 <= this.maptimer) {
                 if (this.waves[i]["tooltip"]) {
                     this.playSound("tooltip", 0.5);
@@ -1887,6 +1944,7 @@ class LVLController extends LVLAbstract {
         this.isSpawning = false;
     }
 
+    //draw path line, creates a line and progressively updates the position 
     drawLine(checkpoints, isFLying) {
         var matrixUse = this.matrix
         var colorUse = new BABYLON.Color3(1, 0, 0);
@@ -1929,9 +1987,6 @@ class LVLController extends LVLAbstract {
                 else clearInterval(interval)
             }
         }, 60)
-
-
-
     }
 
     createPathfinding(points, matrix) {
@@ -1950,6 +2005,4 @@ class LVLController extends LVLAbstract {
         }
         return checks;
     }
-
-
 }

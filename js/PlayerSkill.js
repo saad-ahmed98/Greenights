@@ -13,15 +13,13 @@ class PlayerSkill {
         this.active = false;
         this.skillimage = source;
         this.applyeffects = applyeffects
-        //this.infinite;
     }
     activateDurationSkill(targets, lvl) {
         this.currentsp = 0;
         this.active = true;
-
         var keys = Object.keys(this.modifiers)
         if (keys.includes("instantdp")) {
-            lvl.currentdp = Math.min(99, lvl.currentdp + this.modifiers.instantdp)
+            lvl.currentdp = Math.min(lvl.dplimit, lvl.currentdp + this.modifiers.instantdp)
             lvl.gui.updatePlayerWheelUI(lvl.currentdp, lvl.squadlimit)
         }
 
@@ -47,9 +45,7 @@ class PlayerSkill {
                     targets[i].alivebuffs.push(JSON.parse(JSON.stringify(this.applyeffects)))
                 else targets[i].buffs.applyeffects[this.name] = this.applyeffects
             }
-
         }
-
         this.targets = targets;
 
     }

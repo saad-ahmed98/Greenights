@@ -48,7 +48,7 @@ class EnemySkill {
         }
     }
 
-    //update skill buffs
+    //update roar knight timer
     updateDurationSkill(target) {
         this.durationtimer += (1 / 30) / target.gamespeed
         if (target.buffs.buffs[this.name] != undefined) {
@@ -57,6 +57,7 @@ class EnemySkill {
         }
     }
 
+    //update bloodboil skill modifiers
     updateBloodboilSkill(target) {
         if (target.buffs.buffs[this.name] == undefined) {
             target.buffs.buffs[this.name] = {
@@ -79,6 +80,7 @@ class EnemySkill {
 
     }
 
+    //activates explosion of spiders
     activateSkillBomb(enemy, lvl) {
         var skillbomb = this.modifiers.skillbomb;
         var players = [];

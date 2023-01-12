@@ -18,7 +18,5 @@ class EnemySpawn extends Tile {
         this.mesh.freezeWorldMatrix();
         this.mesh.convertToUnIndexedMesh();
 
-
-
     }
 }

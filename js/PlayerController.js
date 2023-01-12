@@ -21,6 +21,7 @@ class PlayerController extends CharaController {
 
     }
 
+    //creates aura sprite when skill is active
     createSkillAura(auraManager) {
         if (this.aura == undefined) {
             this.aura = new BABYLON.Sprite("", auraManager);
@@ -33,6 +34,7 @@ class PlayerController extends CharaController {
         }
     }
 
+    //returns if the tile is in the direction of the unit
     correctDirection(i, j) {
         var dirx = this.buffs.getDirectionX()
         var diry = this.buffs.getDirectionY()
@@ -51,6 +53,7 @@ class PlayerController extends CharaController {
         }
     }
 
+    //returns if the unit can hit flying enemies or not
     canHitFlying() {
         return (this.chara.type == "r" || this.chara.subclass == "Lord" || this.chara.subclass == "Sentinel")
     }
@@ -96,6 +99,7 @@ class PlayerController extends CharaController {
         }
     }
 
+    //update sprite animations depending on game speed
     updateSpeed(gamespeed, pause) {
         this.gamespeed = gamespeed;
         if (this.sprite.cellIndex >= this.chara.atkanim.start && this.sprite.cellIndex <= this.chara.atkanim.end) {
@@ -110,19 +114,27 @@ class PlayerController extends CharaController {
             if (this.sprite.cellIndex >= this.chara.skillatkanim.start && this.sprite.cellIndex <= this.chara.skillatkanim.end) {
                 this.sprite.playAnimation(this.sprite.cellIndex, this.chara.skillatkanim.end, false, 30 * this.gamespeed * this.buffs.getFinalAtkInterval(this.chara.atkanim.duration, true));
             }
-            else this.sprite.delay = 30 * this.gamespeed
         }
-        else this.sprite.delay = 30 * this.gamespeed
+        if (this.chara.skillidle != undefined) {
+            if (this.sprite.cellIndex >= this.chara.skillidle.start && this.sprite.cellIndex <= this.chara.skillidle.end)
+                this.sprite.delay = 30 * this.gamespeed
+        }
+
+        if (this.sprite.cellIndex >= this.chara.idle.start && this.sprite.cellIndex <= this.chara.idle.end)
+            this.sprite.delay = 30 * this.gamespeed
 
         if (pause)
             this.sprite.stopAnimation()
+        console.log(this.sprite.delay)
     }
 
+    //updates hp values, be it max hp or current hp, activates hp regen
     updateHP() {
         var res = this.buffs.getCurrentHpRatio(this.hp, this.maxhp, this.chara.hp)
         this.hp = res.hp
         this.maxhp = res.maxhp
         this.hp = Math.min(this.maxhp, this.hp + this.buffs.getFinalHpRegen(this.maxhp) * (1 / 30) / this.gamespeed)
+        //check hp tied talents i.e Saga
         if (this.hp / this.maxhp <= 0.4) {
             if (this.condtalent != undefined) {
                 if (this.condtalent.condition == "hp") {
@@ -132,9 +144,11 @@ class PlayerController extends CharaController {
         }
         this.updateTooltipStats()
         this.updateHpBar()
+        //check death in case there is an hp loss that kills the unit
         this.checkDeath()
     }
 
+    //updates player tooltip- to show in real time the evolution of stats (mainly hp)
     updateTooltipStats() {
         this.lvlcontroller.gui.updatePlayerTooltip(this);
     }
@@ -326,20 +340,22 @@ class PlayerController extends CharaController {
     attack(enemies, players) {
         this.contact = true;
         var enemy;
+        //if can't hit flying enemies, remove all flying enemies from list of possible targets
         if (!this.canHitFlying())
             enemies = enemies.filter(e => (e.chara.type == "g"))
         var dmgtype = this.buffs.getDmgType()
         if (dmgtype == "")
             dmgtype = this.chara.dmgtype
+        //if healer, heal allies
         if (dmgtype == "heal")
             enemy = this.getLowestHpPlayerInRange(players, this.buffs.getFinalRange(this.chara.range), this.chara.targets + this.buffs.getTargets());
         else {
             if (this.blocking == 0) {
                 enemy = this.getFirstEnemyInRange(enemies, this.buffs.getFinalRange(this.chara.range), this.chara.targets + this.buffs.getTargets(), this.buffs.getDmgSleep() > 0);
             }
+            //if blocking an enemy, attack them in priority
             else {
                 enemy = this.getBlockedEnemyInRange(enemies, this.chara.targets + this.buffs.getTargets(), this.buffs.getDmgSleep() > 0)
-                //enemy = this.getFirstEnemyInRange(enemies, 0,this.chara.targets+this.buffs.getTargets())
             }
         }
         if (enemy.length > 0) {
@@ -466,6 +482,7 @@ class PlayerController extends CharaController {
         return false;
     }
 
+    //talents that activate depending on condition
     checkConditionTalent() {
         if (this.condtalent != undefined) {
             if (this.condtalentcounter < this.condtalent.condtalent) {
@@ -494,8 +511,10 @@ class PlayerController extends CharaController {
         }
     }
 
+    //check the action the player will do depending on situation
     move(enemies, players) {
         if (!this.spawning) {
+            //if unit is frozen, can't move
             if (this.buffs.isFrozen()) {
                 this.isfrozen = true;
                 this.pause();
@@ -506,6 +525,7 @@ class PlayerController extends CharaController {
                     this.isfrozen = false;
                 }
             }
+            //if unit is not frozen, can do actions
             if (!this.isfrozen) {
                 if (!this.running && !this.sprite.animationStarted) {
                     if (this.playerSkill.active && this.chara.skillidle != undefined)
@@ -514,10 +534,12 @@ class PlayerController extends CharaController {
                     this.running = true;
                 }
                 this.atktimer += 1 / this.gamespeed;
+                //if atk timer has passed, try to attack
                 if (this.atktimer >= this.buffs.getFinalAtkInterval(this.chara.atkinterval) * 25 && this.buffs.getCanAttack() && !this.contact) {
                     this.prevatktimer = this.atktimer
                     this.atktimer = 0;
                     var success = this.attack(enemies, players);
+                    //if no target found, reset atk timer and wait for new target
                     if (!success)
                         this.atktimer += 10000
                 }

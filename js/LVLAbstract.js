@@ -22,7 +22,6 @@ class LVLAbstract {
 
     loadSkybox(url) {
         var instance = this;
-
         var textureTask = assetsManager.addTextureTask("image task", url);
         textureTask.onSuccess = function (task) {
             instance.scene.assets.skybox = task.texture

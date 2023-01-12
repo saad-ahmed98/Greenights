@@ -114,6 +114,7 @@ class CharaController {
         }
         */
 
+    //applies cold effect to self, if cold already exists, then apply frozen instead
     applyCold(duration) {
         var statusres = this.buffs.getStatusRes();
         duration *= statusres
@@ -140,6 +141,7 @@ class CharaController {
         }
     }
 
+    //applies silence effect to self (cannot use any special abilities)
     applySilence(duration) {
         this.buffs.buffs["silence"] = { "name": "silence", "modifiers": { "silence": true } }
         this.buffs.effects["silence"] = duration
@@ -147,6 +149,7 @@ class CharaController {
             this.createDebuffAura("silence", 16)
     }
 
+    //applies asleep effect to self (cannot move or attack)
     applyAsleep(duration) {
         this.buffs.buffs["asleep"] = { "name": "asleep", "modifiers": { "asleep": true } }
         this.buffs.effects["asleep"] = duration
@@ -231,6 +234,7 @@ class CharaController {
     }
 
 
+    //finds if points reside at the center of the range circle of the enemy
     distanceFromCenter(a, b, x, y, r) {
         var dist_points = (a - x) * (a - x) + (b - y) * (b - y);
         r *= r;
@@ -243,13 +247,13 @@ class CharaController {
 
 
     //if player is blocked, then hit the blocked enemies in priority
-    getBlockedEnemyInRange(enemies, targets,canasleep=false) {
+    getBlockedEnemyInRange(enemies, targets, canasleep = false) {
         var res = [];
         var targetcount = targets;
         var squarerange = [[this.x * 30 - 15, this.x * 30 + 15], [this.y * 30 - 15, this.y * 30 + 15]];
 
         for (let i = 0; i < enemies.length; i++) {
-            if (enemies[i].blockingplayer == this && !enemies[i].spawning && !enemies[i].invincible 
+            if (enemies[i].blockingplayer == this && !enemies[i].spawning && !enemies[i].invincible
                 && !enemies[i].stairs && (!enemies[i].isasleep || canasleep)) {
                 res.push(enemies[i])
                 targetcount--;
@@ -305,7 +309,7 @@ class CharaController {
             for (let i = enemies.length - 1; i >= 0; i--) {
                 var counter = Math.abs(Math.abs(Math.round(enemies[i].mesh.position.x / 30) - this.x) - range);
                 if (this.between(enemies[i].mesh.position.x, squarerange[0]) && this.between(enemies[i].mesh.position.z, squarerange[1])
-                 && !enemies[i].spawning && !enemies[i].invincible && !enemies[i].stairs && (!enemies[i].isasleep || canasleep)) {
+                    && !enemies[i].spawning && !enemies[i].invincible && !enemies[i].stairs && (!enemies[i].isasleep || canasleep)) {
                     var x = Math.round(enemies[i].mesh.position.x / 30)
                     var z = Math.round(enemies[i].mesh.position.z / 30)
                     if (Math.abs(z - this.y) <= counter + rangeexpand && this.correctDirection(x, z)) {
@@ -411,7 +415,7 @@ class CharaController {
     // enemies is the list of the enemies on the map
     // range is the range of the player
     // targets is the number of targets
-    getFirstEnemyInRange(enemies, ranget, targets,canasleep = false) {
+    getFirstEnemyInRange(enemies, ranget, targets, canasleep = false) {
 
         //sort by distance between the player
         enemies.sort(function (x, y) {
@@ -457,7 +461,7 @@ class CharaController {
         for (let i = 0; i < enemies.length; i++) {
             var counter = Math.abs(Math.abs(Math.round(enemies[i].mesh.position.x / 30) - this.x) - range);
             if (this.between(enemies[i].mesh.position.x, squarerange[0]) && this.between(enemies[i].mesh.position.z, squarerange[1])
-             && !enemies[i].spawning && !enemies[i].invincible && !enemies[i].stairs && (!enemies[i].isasleep || canasleep)) {
+                && !enemies[i].spawning && !enemies[i].invincible && !enemies[i].stairs && (!enemies[i].isasleep || canasleep)) {
                 var x = Math.round(enemies[i].mesh.position.x / 30)
                 var z = Math.round(enemies[i].mesh.position.z / 30)
                 if (Math.abs(z - this.y) <= counter + rangeexpand && this.correctDirection(x, z)) {
@@ -479,6 +483,7 @@ class CharaController {
         return res;
     }
 
+    //get players hit by splash in surrounding tiles from the center (main target)
     getSplashPlayersInRange(enemies, center, range) {
 
         var squarerange = [[center.mesh.position.x - 15 - 30 * range, center.mesh.position.x + 15 + 30 * range], [center.mesh.position.z - 15 - 30 * range, center.mesh.position.z + 15 + 30 * range]];
@@ -495,19 +500,20 @@ class CharaController {
     }
 
     //get enemies hit by splash in a radius from the center (first enemy hit)
-    getSplashEnemiesInRange(enemies, center, radius,canasleep=false) {
+    getSplashEnemiesInRange(enemies, center, radius, canasleep = false) {
         var res = [];
         var squarerange = [[center.mesh.position.x - 30 * radius, center.mesh.position.x + 30 * radius], [center.mesh.position.z - 30 * radius, center.mesh.position.z + 30 * radius]];
 
         for (let i = 0; i < enemies.length; i++) {
-            if (this.between(enemies[i].mesh.position.x, squarerange[0]) && this.between(enemies[i].mesh.position.z, squarerange[1]) 
-            && !enemies[i].spawning && !enemies[i].invincible && !enemies[i].stairs  && (!enemies[i].isasleep || canasleep)) {
+            if (this.between(enemies[i].mesh.position.x, squarerange[0]) && this.between(enemies[i].mesh.position.z, squarerange[1])
+                && !enemies[i].spawning && !enemies[i].invincible && !enemies[i].stairs && (!enemies[i].isasleep || canasleep)) {
                 res.push(enemies[i])
             }
         }
         return res;
     }
 
+    //creates effect status icon
     createEffects(auraManager) {
         var aura = new BABYLON.Sprite("", auraManager);
         aura.playAnimation(0, 13, false, 60);
@@ -561,6 +567,21 @@ class CharaController {
 
 
         }
+        if (this.hp>0) {
+            //changes the color of the sprite to red to show they are getting hit
+            this.sprite.color.r = 10
+            this.sprite.color.g = 0
+            this.sprite.color.b = 0
+        }
+
+
+        setTimeout(() => {
+            if (this.hp>0) {
+                this.sprite.color.r = 1
+                this.sprite.color.g = 1
+                this.sprite.color.b = 1
+            }
+        }, 100)
         //TODO HARDCODED
         if (this.chara.name == "Liskarm") {
             let list = this.lvlcontroller.activePlayers.filter(op => (op.chara.name != "Liskarm" && op.playerSkill.chargetype != "passive" && !op.playerSkill.active))
@@ -576,14 +597,12 @@ class CharaController {
             this.playerSkill.currentsp = Math.min(this.playerSkill.currentsp + 1, this.playerSkill.totalsp);
             this.updateSkillBarCharging();
         }
-
-
-
         //update hp bar after receiving damage
         this.updateHpBar();
         this.checkDeath();
     }
 
+    //apply status effect to target when applicable
     applySpecialEffect(modifiers, target) {
         let keys = Object.keys(modifiers);
         for (let i = 0; i < keys.length; i++) {
@@ -631,6 +650,9 @@ class CharaController {
                 var keys = Object.keys(this.buffs.effectSprite)
                 for (let i = 0; i < keys.length; i++)
                     this.buffs.effectSprite[keys[i]].dispose()
+                this.sprite.color.r = 1
+                this.sprite.color.g = 1
+                this.sprite.color.b = 1
 
                 //play death animation
                 var darkening = 1 / (this.chara.death.end - this.chara.death.start) / 2.5
@@ -638,6 +660,7 @@ class CharaController {
 
                 var instance = this
                 var interval = setInterval(() => {
+
                     this.sprite.color.r -= darkening / this.gamespeed
                     this.sprite.color.g -= darkening / this.gamespeed
                     this.sprite.color.b -= darkening / this.gamespeed
@@ -675,11 +698,11 @@ class CharaController {
             this.sprite.playAnimation(this.pauseSpriteIndex, this.chara.atkanim.end, false, 30 * this.gamespeed * this.buffs.getFinalAtkInterval(this.chara.atkanim.duration, true));
         }
         if (this.pauseSpriteIndex >= this.chara.idle.start && this.pauseSpriteIndex <= this.chara.idle.end) {
-            this.sprite.playAnimation(this.chara.idle.start, this.chara.idle.end, true, 30 * this.gamespeed * this.chara.idle.duration || 1);
+            this.sprite.playAnimation(this.chara.idle.start, this.chara.idle.end, true, 30 * this.gamespeed * (this.chara.idle.duration || 1));
         }
         if (this.chara.skillidle != undefined) {
             if (this.pauseSpriteIndex >= this.chara.skillidle.start && this.pauseSpriteIndex <= this.chara.skillidle.end) {
-                this.sprite.playAnimation(this.chara.skillidle.start, this.chara.skillidle.end, true, 30 * this.gamespeed * this.chara.skillidle.duration || 1);
+                this.sprite.playAnimation(this.chara.skillidle.start, this.chara.skillidle.end, true, 30 * this.gamespeed * (this.chara.skillidle.duration || 1));
             }
         }
     }

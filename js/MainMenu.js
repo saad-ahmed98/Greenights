@@ -386,8 +386,9 @@ class MainMenu extends LVLAbstract {
                 j = 1
                 z = 3.2
             }
+            let button;
             if (localStorage.getItem(chapters[keys[i]].unlock) != null || unlockAll) {
-                const button = BABYLON.GUI.Button.CreateImageOnlyButton("but", "images/menu/chapters/" + chapters[keys[i]].select);
+                button = BABYLON.GUI.Button.CreateImageOnlyButton("but", "images/menu/chapters/" + chapters[keys[i]].select);
                 button.width = (28 * 0.7) + "%";
                 button.height = (50 * 0.7) + "%";
                 button.top = (20 + j * 40) + "%";
@@ -411,7 +412,7 @@ class MainMenu extends LVLAbstract {
                 });
             }
             else {
-                const button = BABYLON.GUI.Button.CreateImageOnlyButton("but", "images/menu/chapters/lock.png");
+                button = BABYLON.GUI.Button.CreateImageOnlyButton("but", "images/menu/chapters/" + chapters[keys[i]].select);
                 button.width = (28 * 0.7) + "%";
                 button.height = (50 * 0.7) + "%";
                 button.top = (20 + j * 40) + "%";
@@ -421,11 +422,33 @@ class MainMenu extends LVLAbstract {
                 button.background = "transparent";
                 button.hoverCursor = "pointer";
 
+                const lock = new BABYLON.GUI.Image("lock", "images/menu/chapters/locked.png");
+                button.addControl(lock)
 
                 button.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
                 button.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
 
                 this.lvlcontroller.addControl(button);
+            }
+            if(localStorage.getItem(chapters[keys[i]].normalclear)){
+                let clear = new BABYLON.GUI.Image("clear", "images/menu/normalclear.png");
+                clear.width = "20%"
+                clear.height = "20%"
+                clear.left = "1.4%"
+                clear.top = "1.4%"
+                clear.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
+                clear.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
+                button.addControl(clear)
+            }
+            if(localStorage.getItem(chapters[keys[i]].hardclear)){
+                let clear = new BABYLON.GUI.Image("clear", "images/menu/hardclear.png");
+                clear.width = "20%"
+                clear.height = "20%"
+                clear.left = "1.4%"
+                clear.top = "21.9%"
+                clear.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
+                clear.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
+                button.addControl(clear)
             }
             z++
         }
@@ -557,10 +580,13 @@ class MainMenu extends LVLAbstract {
             this.lvlcontroller.addControl(button);
 
             if (iscleared != null) {
-                var image = new BABYLON.GUI.Image("tooltip", "images/menu/clearicon.png");
-                image.width = "4%"
-                image.height = "7%"
-                image.top = (22.5 + z * 12) + "%";
+                if (chapterlvl[i].level.includes("H"))
+                    var image = new BABYLON.GUI.Image("tooltip", "images/menu/hardclear.png");
+                else
+                    var image = new BABYLON.GUI.Image("tooltip", "images/menu/normalclear.png");
+                image.width = "3.9%"
+                image.height = "6.8%"
+                image.top = (22.4 + z * 12) + "%";
                 image.left = (16 + j * 19) + "%";
                 image.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
                 image.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
@@ -756,13 +782,11 @@ class MainMenu extends LVLAbstract {
         image2.onPointerUpObservable.add(function () {
             instance.playSound("confirm", 0.3)
             instance.createPlayerSelection(lvlname, chapter)
-            //new LVLController(instance.gameconfig, enemylist, playerlist, levels[lvlname]);
         });
 
         image3.onPointerUpObservable.add(function () {
             instance.playSound("confirm", 0.3)
             instance.createEnemyInfo(lvlname, chapter)
-            //new LVLController(instance.gameconfig, enemylist, playerlist, levels[lvlname]);
         });
 
 
@@ -825,8 +849,8 @@ class MainMenu extends LVLAbstract {
                 myScrollViewer.addControl(button);
                 z++
             }
-            else{
-                keys.splice(i,1)
+            else {
+                keys.splice(i, 1)
                 i--
             }
         }
@@ -1257,8 +1281,8 @@ class MainMenu extends LVLAbstract {
 
         //stats description
         var text = new BABYLON.GUI.TextBlock();
-        text.text = "\"" + enemy.name.split("EX")[0] + "\"\n\n\n\tHP:\t" + enemy.hp + "\t\t\tATK:\t" + enemy.atk + "\t\t\tDEF:\t" 
-        + enemy.def + "\t\t\tRES:\t" + enemy.res+ "\t\t\tDMG:\t" + enemy.dmgtype.toUpperCase();
+        text.text = "\"" + enemy.name.split("EX")[0] + "\"\n\n\n\tHP:\t" + enemy.hp + "\t\t\tATK:\t" + enemy.atk + "\t\t\tDEF:\t"
+            + enemy.def + "\t\t\tRES:\t" + enemy.res + "\t\t\tDMG:\t" + enemy.dmgtype.toUpperCase();
         text.color = "white";
         text.fontSize = "14%";
         text.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT
@@ -1328,7 +1352,6 @@ class MainMenu extends LVLAbstract {
     }
 
     createEmptyTooltip() {
-
         this.opcontroller.dispose()
         this.opcontroller = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("opUI", true, this.scene);
 
@@ -1355,10 +1378,8 @@ class MainMenu extends LVLAbstract {
 
     }
     createEmptyEnemyTooltip() {
-
         this.opcontroller.dispose()
         this.opcontroller = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("opUI", true, this.scene);
-
         var container = new BABYLON.GUI.Rectangle();
         container.width = "50%";
         container.height = "84%";

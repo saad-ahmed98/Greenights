@@ -19,18 +19,18 @@ levels["1-1"] = {
     skybox: "forest.png",
 
     waves: [
-        { "number": 0, "time": 5, "gap": 5, "enemies": "Originium Slug", "line": true, "tooltip": true, "taunt": true, "count": 1, "start": [3, 9], "checkpoints": [{ "start": [3, 9], "end": [2, 1], "pause": 0 }] },
-        { "number": 1, "time": 16, "gap": 2, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 9], "checkpoints": [{ "start": [3, 9], "end": [2, 1], "pause": 0 }] },
-        { "number": 2, "time": 29, "gap": 0.7, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 9], "checkpoints": [{ "start": [3, 9], "end": [2, 1], "pause": 0 }] },
-        { "number": 3, "time": 34, "gap": 0.7, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 9], "checkpoints": [{ "start": [3, 9], "end": [2, 1], "pause": 0 }] },
-        { "number": 4, "time": 45, "gap": 0.7, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 9], "checkpoints": [{ "start": [3, 9], "end": [2, 1], "pause": 0 }] },
-        { "number": 5, "time": 52, "gap": 0.7, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 9], "checkpoints": [{ "start": [3, 9], "end": [2, 1], "pause": 0 }] },
+        { "number": 0, "time": 5, "gap": 5, "enemies": "Lava Slug", "line": true, "tooltip": true, "taunt": true, "count": 1, "start": [3, 9], "checkpoints": [{ "start": [3, 9], "end": [2, 1], "pause": 0 }] },
+        { "number": 1, "time": 16, "gap": 2, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 9], "checkpoints": [{ "start": [3, 9], "end": [2, 1], "pause": 0 }] },
+        { "number": 2, "time": 29, "gap": 0.7, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 9], "checkpoints": [{ "start": [3, 9], "end": [2, 1], "pause": 0 }] },
+        { "number": 3, "time": 34, "gap": 0.7, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 9], "checkpoints": [{ "start": [3, 9], "end": [2, 1], "pause": 0 }] },
+        { "number": 4, "time": 45, "gap": 0.7, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 9], "checkpoints": [{ "start": [3, 9], "end": [2, 1], "pause": 0 }] },
+        { "number": 5, "time": 52, "gap": 0.7, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 9], "checkpoints": [{ "start": [3, 9], "end": [2, 1], "pause": 0 }] },
         { "number": 6, "time": 63.7, "gap": 4, "enemies": "Soldier", "line": true, "tooltip": true, "taunt": false, "count": 2, "start": [3, 9], "checkpoints": [{ "start": [3, 9], "end": [3, 8], "pause": 3 }, { "start": [3, 8], "end": [2, 1], "pause": 0 }] },
 
     ],
 
-    enemies: ["Originium Slug", "Soldier"],
-    tooltips: ["Originium Slug", "Soldier"],
+    enemies: ["Lava Slug", "Soldier"],
+    tooltips: ["Lava Slug", "Soldier"],
 
     hazards: [],
 
@@ -64,23 +64,23 @@ levels["1-2"] = {
     skybox: "forest.png",
 
     waves: [
-        { "number": 0, "time": 3, "gap": 1.2, "enemies": "Originium Slug", "line": true, "tooltip": false, "taunt": true, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [5, 9], "pause": 0 }] },
-        { "number": 1, "time": 9, "gap": 1.2, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [5, 9], "pause": 0 }] },
-        { "number": 2, "time": 15, "gap": 1.2, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [5, 9], "pause": 0 }] },
-        { "number": 3, "time": 32, "gap": 1.2, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [5, 9], "pause": 0 }] },
+        { "number": 0, "time": 3, "gap": 1.2, "enemies": "Lava Slug", "line": true, "tooltip": false, "taunt": true, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [5, 9], "pause": 0 }] },
+        { "number": 1, "time": 9, "gap": 1.2, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [5, 9], "pause": 0 }] },
+        { "number": 2, "time": 15, "gap": 1.2, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [5, 9], "pause": 0 }] },
+        { "number": 3, "time": 32, "gap": 1.2, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [5, 9], "pause": 0 }] },
         { "number": 4, "time": 30, "gap": 1.2, "enemies": "Soldier", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [5, 9], "pause": 0 }] },
-        { "number": 5, "time": 39, "gap": 1.2, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [5, 9], "pause": 0 }] },
-        { "number": 6, "time": 45.2, "gap": 1.2, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [5, 9], "pause": 0 }] },
+        { "number": 5, "time": 39, "gap": 1.2, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [5, 9], "pause": 0 }] },
+        { "number": 6, "time": 45.2, "gap": 1.2, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [5, 9], "pause": 0 }] },
         { "number": 7, "time": 50.4, "gap": 1.2, "enemies": "Monster", "flying": true, "line": true, "tooltip": true, "taunt": true, "count": 1, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [2, 5], "pause": 5 }, { "start": [2, 5], "end": [5, 9], "pause": 0 }] },
         { "number": 8, "time": 61, "gap": 3, "enemies": "Soldier", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [5, 9], "pause": 0 }] },
-        { "number": 9, "time": 71, "gap": 1.2, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [5, 9], "pause": 0 }] },
+        { "number": 9, "time": 71, "gap": 1.2, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [5, 9], "pause": 0 }] },
         { "number": 10, "time": 72, "gap": 3, "enemies": "Soldier", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [5, 9], "pause": 0 }] },
-        { "number": 11, "time": 77, "gap": 1.2, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [5, 9], "pause": 0 }] },
+        { "number": 11, "time": 77, "gap": 1.2, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [5, 9], "pause": 0 }] },
         { "number": 12, "time": 78.8, "gap": 1.2, "enemies": "Monster", "flying": true, "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [2, 5], "pause": 5 }, { "start": [2, 5], "end": [5, 9], "pause": 0 }] },
 
     ],
 
-    enemies: ["Monster", "Soldier", "Originium Slug"],
+    enemies: ["Monster", "Soldier", "Lava Slug"],
     tooltips: ["Monster"],
 
     hazards: [],
@@ -177,20 +177,20 @@ levels["1-4"] = {
         { "number": 1, "time": 4, "gap": 1.2, "enemies": "Hound", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 2], "pause": 1 }, { "start": [5, 2], "end": [4, 10], "pause": 0 }] },
         { "number": 2, "time": 15, "gap": 9, "enemies": "Hound", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 2], "pause": 1 }, { "start": [1, 2], "end": [2, 10], "pause": 0 }] },
         { "number": 3, "time": 16, "gap": 9, "enemies": "Hound", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 2], "pause": 1 }, { "start": [5, 2], "end": [4, 10], "pause": 0 }] },
-        { "number": 4, "time": 30, "gap": 0.8, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 2], "pause": 0 }, { "start": [1, 2], "end": [2, 10], "pause": 0 }] },
-        { "number": 5, "time": 31, "gap": 0.8, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 2], "pause": 0 }, { "start": [5, 2], "end": [4, 10], "pause": 0 }] },
+        { "number": 4, "time": 30, "gap": 0.8, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 2], "pause": 0 }, { "start": [1, 2], "end": [2, 10], "pause": 0 }] },
+        { "number": 5, "time": 31, "gap": 0.8, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 2], "pause": 0 }, { "start": [5, 2], "end": [4, 10], "pause": 0 }] },
         { "number": 6, "time": 44.8, "gap": 24, "enemies": "Junkman", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 2], "pause": 1 }, { "start": [1, 2], "end": [2, 10], "pause": 0 }] },
         { "number": 7, "time": 44.8, "gap": 24, "enemies": "Junkman", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 2], "pause": 1 }, { "start": [5, 2], "end": [4, 10], "pause": 0 }] },
         { "number": 8, "time": 47.8, "gap": 24, "enemies": "Hound", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 2], "pause": 1 }, { "start": [1, 2], "end": [2, 10], "pause": 0 }] },
         { "number": 9, "time": 47.8, "gap": 24, "enemies": "Hound", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 2], "pause": 1 }, { "start": [5, 2], "end": [4, 10], "pause": 0 }] },
         { "number": 10, "time": 50.8, "gap": 19, "enemies": "Monster", "flying": true, "line": true, "tooltip": false, "taunt": false, "count": 3, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 6], "pause": 0 }, { "start": [3, 6], "end": [5, 10], "pause": 0 }] },
-        { "number": 11, "time": 81.8, "gap": 0.8, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 2], "pause": 0 }, { "start": [1, 2], "end": [2, 10], "pause": 0 }] },
-        { "number": 12, "time": 83.8, "gap": 0.8, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 2], "pause": 0 }, { "start": [5, 2], "end": [4, 10], "pause": 0 }] },
+        { "number": 11, "time": 81.8, "gap": 0.8, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 2], "pause": 0 }, { "start": [1, 2], "end": [2, 10], "pause": 0 }] },
+        { "number": 12, "time": 83.8, "gap": 0.8, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 2], "pause": 0 }, { "start": [5, 2], "end": [4, 10], "pause": 0 }] },
         { "number": 13, "time": 101.8, "gap": 24, "enemies": "Junkman", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 2], "pause": 1 }, { "start": [1, 2], "end": [2, 10], "pause": 0 }] },
         { "number": 14, "time": 101.8, "gap": 24, "enemies": "Junkman", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 2], "pause": 1 }, { "start": [5, 2], "end": [4, 10], "pause": 0 }] },
     ],
 
-    enemies: ["Monster", "Originium Slug", "Junkman", "Hound"],
+    enemies: ["Monster", "Lava Slug", "Junkman", "Hound"],
     tooltips: ["Hound"],
 
     hazards: [],
@@ -266,7 +266,7 @@ levels["1-6"] = {
     squadlimit: 8,
     hp: 5,
     background: "ch1",
-    description: "A large quantity of Originium Slugs and\nshielded soldiers have arrived on the battlefield.\nUse properly your Melee and Ranged units to suppress them.",
+    description: "A large quantity of Lava Slugs and\nshielded soldiers have arrived on the battlefield.\nUse properly your Melee and Ranged units to suppress them.",
     place: "Forest",
     offsetX: -55,
     offsetY: -80,
@@ -277,31 +277,31 @@ levels["1-6"] = {
     skybox: "forest.png",
 
     waves: [
-        { "number": 0, "time": 5, "gap": 1.2, "enemies": "Originium Slug", "line": true, "tooltip": false, "taunt": true, "count": 1, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [3, 8], "pause": 0 }] },
-        { "number": 0, "time": 5, "gap": 1.2, "enemies": "Originium Slug", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [3, 8], "pause": 0 }] },
-        { "number": 0, "time": 12, "gap": 5, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 5, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [3, 8], "pause": 0 }] },
-        { "number": 0, "time": 12, "gap": 5, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 5, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [3, 8], "pause": 0 }] },
-        { "number": 0, "time": 20.5, "gap": 4, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 6, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [3, 8], "pause": 0 }] },
-        { "number": 0, "time": 25.5, "gap": 4, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [3, 8], "pause": 0 }] },
-        { "number": 0, "time": 35, "gap": 9, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [3, 8], "pause": 0 }] },
-        { "number": 0, "time": 34, "gap": 6, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [3, 8], "pause": 0 }] },
-        { "number": 0, "time": 39, "gap": 2, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [3, 8], "pause": 0 }] },
+        { "number": 0, "time": 5, "gap": 1.2, "enemies": "Lava Slug", "line": true, "tooltip": false, "taunt": true, "count": 1, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [3, 8], "pause": 0 }] },
+        { "number": 0, "time": 5, "gap": 1.2, "enemies": "Lava Slug", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [3, 8], "pause": 0 }] },
+        { "number": 0, "time": 12, "gap": 5, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 5, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [3, 8], "pause": 0 }] },
+        { "number": 0, "time": 12, "gap": 5, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 5, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [3, 8], "pause": 0 }] },
+        { "number": 0, "time": 20.5, "gap": 4, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 6, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [3, 8], "pause": 0 }] },
+        { "number": 0, "time": 25.5, "gap": 4, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [3, 8], "pause": 0 }] },
+        { "number": 0, "time": 35, "gap": 9, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [3, 8], "pause": 0 }] },
+        { "number": 0, "time": 34, "gap": 6, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [3, 8], "pause": 0 }] },
+        { "number": 0, "time": 39, "gap": 2, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [3, 8], "pause": 0 }] },
         { "number": 0, "time": 42, "gap": 6, "enemies": "Light-Armored Soldier", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [3, 8], "pause": 0 }] },
-        { "number": 0, "time": 43, "gap": 1, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [3, 8], "pause": 0 }] },
+        { "number": 0, "time": 43, "gap": 1, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [3, 8], "pause": 0 }] },
         { "number": 0, "time": 56, "gap": 2, "enemies": "Light-Armored Soldier", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [3, 8], "pause": 0 }] },
         { "number": 0, "time": 56, "gap": 6, "enemies": "Light-Armored Soldier", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [3, 8], "pause": 0 }] },
         { "number": 0, "time": 63, "gap": 10, "enemies": "Junkman", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [3, 8], "pause": 0 }] },
         { "number": 0, "time": 67, "gap": 8.5, "enemies": "Junkman", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [3, 8], "pause": 0 }] },
-        { "number": 0, "time": 77, "gap": 2.3, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [3, 8], "pause": 0 }] },
-        { "number": 0, "time": 77, "gap": 4.7, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 6, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [3, 8], "pause": 0 }] },
-        { "number": 0, "time": 79, "gap": 4, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [3, 8], "pause": 0 }] },
-        { "number": 0, "time": 79, "gap": 1.7, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 7, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [3, 8], "pause": 0 }] },
+        { "number": 0, "time": 77, "gap": 2.3, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [3, 8], "pause": 0 }] },
+        { "number": 0, "time": 77, "gap": 4.7, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 6, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [3, 8], "pause": 0 }] },
+        { "number": 0, "time": 79, "gap": 4, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [3, 8], "pause": 0 }] },
+        { "number": 0, "time": 79, "gap": 1.7, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 7, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [3, 8], "pause": 0 }] },
         { "number": 0, "time": 86, "gap": 10, "enemies": "Light-Armored Soldier", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [3, 8], "pause": 0 }] },
         { "number": 0, "time": 93, "gap": 9, "enemies": "Light-Armored Soldier", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [3, 8], "pause": 0 }] },
-        { "number": 0, "time": 96, "gap": 1.7, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [3, 8], "pause": 0 }] },
+        { "number": 0, "time": 96, "gap": 1.7, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [3, 8], "pause": 0 }] },
     ],
 
-    enemies: ["Light-Armored Soldier", "Junkman", "Originium Slug"],
+    enemies: ["Light-Armored Soldier", "Junkman", "Lava Slug"],
     tooltips: [],
 
     hazards: [],
@@ -390,20 +390,20 @@ levels["1-8"] = {
 
     waves: [
         { "number": 0, "time": 3, "gap": 1.2, "enemies": "Soldier", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 8], "pause": 0 }, { "start": [3, 8], "end": [6, 10], "pause": 0 }] },
-        { "number": 1, "time": 9, "gap": 3, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 8], "pause": 0 }, { "start": [3, 8], "end": [6, 10], "pause": 0 }] },
-        { "number": 2, "time": 13, "gap": 3, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 8], "pause": 0 }, { "start": [3, 8], "end": [6, 10], "pause": 0 }] },
-        { "number": 3, "time": 15.5, "gap": 3, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 8], "pause": 0 }, { "start": [3, 8], "end": [6, 10], "pause": 0 }] },
+        { "number": 1, "time": 9, "gap": 3, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 8], "pause": 0 }, { "start": [3, 8], "end": [6, 10], "pause": 0 }] },
+        { "number": 2, "time": 13, "gap": 3, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 8], "pause": 0 }, { "start": [3, 8], "end": [6, 10], "pause": 0 }] },
+        { "number": 3, "time": 15.5, "gap": 3, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 8], "pause": 0 }, { "start": [3, 8], "end": [6, 10], "pause": 0 }] },
         { "number": 4, "time": 24, "gap": 6, "enemies": "Crossbowman", "line": true, "tooltip": true, "taunt": false, "count": 2, "start": [7, 2], "checkpoints": [{ "start": [7, 2], "end": [6, 5], "pause": 0 }, { "start": [6, 5], "end": [6, 10], "pause": 0 }] },
         { "number": 5, "time": 30, "gap": 2, "enemies": "Soldier", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 8], "pause": 0 }, { "start": [3, 8], "end": [6, 10], "pause": 0 }] },
-        { "number": 6, "time": 31, "gap": 2, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [7, 2], "checkpoints": [{ "start": [7, 2], "end": [6, 5], "pause": 0 }, { "start": [6, 5], "end": [6, 10], "pause": 0 }] },
-        { "number": 7, "time": 32, "gap": 4, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [7, 2], "checkpoints": [{ "start": [7, 2], "end": [6, 5], "pause": 0 }, { "start": [6, 5], "end": [6, 10], "pause": 0 }] },
+        { "number": 6, "time": 31, "gap": 2, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [7, 2], "checkpoints": [{ "start": [7, 2], "end": [6, 5], "pause": 0 }, { "start": [6, 5], "end": [6, 10], "pause": 0 }] },
+        { "number": 7, "time": 32, "gap": 4, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [7, 2], "checkpoints": [{ "start": [7, 2], "end": [6, 5], "pause": 0 }, { "start": [6, 5], "end": [6, 10], "pause": 0 }] },
         { "number": 8, "time": 36, "gap": 2, "enemies": "Soldier", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 8], "pause": 0 }, { "start": [3, 8], "end": [6, 10], "pause": 0 }] },
         { "number": 9, "time": 48, "gap": 2, "enemies": "Hound", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [1, 10], "pause": 0 }] },
         { "number": 10, "time": 58, "gap": 2, "enemies": "Light-Armored Soldier", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 8], "pause": 0 }, { "start": [3, 8], "end": [6, 10], "pause": 0 }] },
-        { "number": 11, "time": 61, "gap": 3, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 6, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 8], "pause": 0 }, { "start": [3, 8], "end": [6, 10], "pause": 0 }] },
+        { "number": 11, "time": 61, "gap": 3, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 6, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 8], "pause": 0 }, { "start": [3, 8], "end": [6, 10], "pause": 0 }] },
         { "number": 12, "time": 61, "gap": 4, "enemies": "Crossbowman", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [7, 2], "checkpoints": [{ "start": [7, 2], "end": [6, 5], "pause": 0 }, { "start": [6, 5], "end": [6, 10], "pause": 0 }] },
-        { "number": 13, "time": 64.5, "gap": 6, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 8], "pause": 0 }, { "start": [3, 8], "end": [6, 10], "pause": 0 }] },
-        { "number": 14, "time": 66, "gap": 4, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 8], "pause": 0 }, { "start": [3, 8], "end": [6, 10], "pause": 0 }] },
+        { "number": 13, "time": 64.5, "gap": 6, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 8], "pause": 0 }, { "start": [3, 8], "end": [6, 10], "pause": 0 }] },
+        { "number": 14, "time": 66, "gap": 4, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 8], "pause": 0 }, { "start": [3, 8], "end": [6, 10], "pause": 0 }] },
         { "number": 15, "time": 74, "gap": 4, "enemies": "Soldier", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [7, 2], "checkpoints": [{ "start": [7, 2], "end": [6, 5], "pause": 0 }, { "start": [6, 5], "end": [6, 10], "pause": 0 }] },
         { "number": 16, "time": 76, "gap": 6, "enemies": "Crossbowman", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [7, 2], "checkpoints": [{ "start": [7, 2], "end": [6, 5], "pause": 0 }, { "start": [6, 5], "end": [6, 10], "pause": 0 }] },
         { "number": 17, "time": 82, "gap": 3, "enemies": "Hound", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [1, 10], "pause": 0 }] },
@@ -419,7 +419,7 @@ levels["1-8"] = {
 
     ],
 
-    enemies: ["Light-Armored Soldier", "Originium Slug", "Hound", "Crossbowman", "Soldier", "Butcher"],
+    enemies: ["Light-Armored Soldier", "Lava Slug", "Hound", "Crossbowman", "Soldier", "Butcher"],
     tooltips: ["Crossbowman"],
 
     hazards: [],
@@ -458,14 +458,14 @@ levels["1-9"] = {
     waves: [
         { "number": 0, "time": 3, "gap": 1.2, "enemies": "Heavy Defender", "line": true, "tooltip": true, "taunt": false, "count": 1, "start": [3, 4], "checkpoints": [{ "start": [3, 4], "end": [3, 5], "pause": 25 }, { "start": [3, 5], "end": [3, 6], "pause": 0 }, { "start": [3, 6], "end": [3, 8], "pause": 0 }, { "start": [3, 8], "end": [3, 11], "pause": 0 }] },
         { "number": 1, "time": 3, "gap": 1.2, "enemies": "Hound", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [3, 9], "pause": 0 }, { "start": [3, 9], "end": [3, 11], "pause": 0 }] },
-        { "number": 2, "time": 5, "gap": 1.2, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [3, 9], "pause": 0 }, { "start": [3, 9], "end": [3, 11], "pause": 0 }] },
-        { "number": 3, "time": 12, "gap": 1.2, "enemies": "Originium Slug", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [6, 8], "checkpoints": [{ "start": [6, 8], "end": [3, 11], "pause": 0 }] },
-        { "number": 4, "time": 15, "gap": 1.2, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [3, 9], "pause": 0 }, { "start": [3, 9], "end": [3, 11], "pause": 0 }] },
+        { "number": 2, "time": 5, "gap": 1.2, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [3, 9], "pause": 0 }, { "start": [3, 9], "end": [3, 11], "pause": 0 }] },
+        { "number": 3, "time": 12, "gap": 1.2, "enemies": "Lava Slug", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [6, 8], "checkpoints": [{ "start": [6, 8], "end": [3, 11], "pause": 0 }] },
+        { "number": 4, "time": 15, "gap": 1.2, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [3, 9], "pause": 0 }, { "start": [3, 9], "end": [3, 11], "pause": 0 }] },
         { "number": 5, "time": 25, "gap": 1.2, "enemies": "Hound", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [3, 9], "pause": 0 }, { "start": [3, 9], "end": [3, 11], "pause": 0 }] },
-        { "number": 6, "time": 27, "gap": 1.2, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [6, 8], "checkpoints": [{ "start": [6, 8], "end": [3, 11], "pause": 0 }] },
-        { "number": 7, "time": 33, "gap": 1.2, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [3, 9], "pause": 0 }, { "start": [3, 9], "end": [3, 11], "pause": 0 }] },
-        { "number": 8, "time": 40, "gap": 1.2, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [6, 8], "checkpoints": [{ "start": [6, 8], "end": [3, 11], "pause": 0 }] },
-        { "number": 9, "time": 50, "gap": 0.7, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [6, 8], "checkpoints": [{ "start": [6, 8], "end": [3, 11], "pause": 0 }] },
+        { "number": 6, "time": 27, "gap": 1.2, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [6, 8], "checkpoints": [{ "start": [6, 8], "end": [3, 11], "pause": 0 }] },
+        { "number": 7, "time": 33, "gap": 1.2, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [3, 9], "pause": 0 }, { "start": [3, 9], "end": [3, 11], "pause": 0 }] },
+        { "number": 8, "time": 40, "gap": 1.2, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [6, 8], "checkpoints": [{ "start": [6, 8], "end": [3, 11], "pause": 0 }] },
+        { "number": 9, "time": 50, "gap": 0.7, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [6, 8], "checkpoints": [{ "start": [6, 8], "end": [3, 11], "pause": 0 }] },
         { "number": 10, "time": 60.7, "gap": 0.7, "enemies": "Soldier", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 3], "pause": 3 }, { "start": [1, 3], "end": [3, 9], "pause": 0 }, { "start": [3, 9], "end": [3, 11], "pause": 0 }] },
         { "number": 11, "time": 65.7, "gap": 35, "enemies": "Heavy Defender", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 4], "checkpoints": [{ "start": [3, 4], "end": [3, 5], "pause": 5 }, { "start": [3, 5], "end": [3, 6], "pause": 0 }, { "start": [3, 6], "end": [3, 8], "pause": 0 }, { "start": [3, 8], "end": [3, 11], "pause": 0 }] },
         { "number": 12, "time": 65.7, "gap": 8, "enemies": "Junkman", "line": false, "tooltip": false, "taunt": false, "count": 8, "start": [6, 8], "checkpoints": [{ "start": [6, 8], "end": [3, 11], "pause": 0 }] },
@@ -483,7 +483,7 @@ levels["1-9"] = {
 
     ],
 
-    enemies: ["Light-Armored Soldier", "Heavy Defender", "Originium Slug", "Hound", "Crossbowman", "Soldier", "Junkman"],
+    enemies: ["Light-Armored Soldier", "Heavy Defender", "Lava Slug", "Hound", "Crossbowman", "Soldier", "Junkman"],
     tooltips: ["Heavy Defender"],
 
     hazards: [],
@@ -1845,10 +1845,10 @@ levels["3-8"] = {
     skybox: "city.png",
 
     waves: [
-        { "number": 0, "time": 3, "gap": 8, "enemies": "Originium Slug", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [0, 8], "checkpoints": [{ "start": [0, 8], "end": [1, 8], "pause": 2 }, { "start": [1, 8], "end": [3, 5], "pause": 0 }, { "start": [3, 5], "end": [6, 1], "pause": 0 }] },
-        { "number": 1, "time": 11, "gap": 8, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [0, 8], "checkpoints": [{ "start": [0, 8], "end": [1, 8], "pause": 0 }, { "start": [1, 8], "end": [3, 5], "pause": 0 }, { "start": [3, 5], "end": [6, 1], "pause": 0 }] },
+        { "number": 0, "time": 3, "gap": 8, "enemies": "Lava Slug", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [0, 8], "checkpoints": [{ "start": [0, 8], "end": [1, 8], "pause": 2 }, { "start": [1, 8], "end": [3, 5], "pause": 0 }, { "start": [3, 5], "end": [6, 1], "pause": 0 }] },
+        { "number": 1, "time": 11, "gap": 8, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [0, 8], "checkpoints": [{ "start": [0, 8], "end": [1, 8], "pause": 0 }, { "start": [1, 8], "end": [3, 5], "pause": 0 }, { "start": [3, 5], "end": [6, 1], "pause": 0 }] },
         { "number": 2, "time": 14, "gap": 8, "enemies": "Hound", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [0, 9], "checkpoints": [{ "start": [0, 9], "end": [1, 9], "pause": 2 }, { "start": [1, 9], "end": [6, 9], "pause": 0 }, { "start": [6, 9], "end": [6, 1], "pause": 0 }] },
-        { "number": 3, "time": 17, "gap": 4, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [0, 8], "checkpoints": [{ "start": [0, 8], "end": [1, 8], "pause": 0 }, { "start": [1, 8], "end": [3, 5], "pause": 0 }, { "start": [3, 5], "end": [6, 1], "pause": 0 }] },
+        { "number": 3, "time": 17, "gap": 4, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [0, 8], "checkpoints": [{ "start": [0, 8], "end": [1, 8], "pause": 0 }, { "start": [1, 8], "end": [3, 5], "pause": 0 }, { "start": [3, 5], "end": [6, 1], "pause": 0 }] },
         { "number": 4, "time": 20, "gap": 8, "enemies": "Hound", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [0, 9], "checkpoints": [{ "start": [0, 9], "end": [1, 9], "pause": 0 }, { "start": [1, 9], "end": [6, 9], "pause": 0 }, { "start": [6, 9], "end": [6, 1], "pause": 0 }] },
         { "number": 5, "time": 28, "gap": 8, "enemies": "Enraged Possessed Thrower", "line": false, "tooltip": true, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 2], "pause": 9 }, { "start": [1, 2], "end": [0, 5], "pause": 5 }, { "start": [3, 1], "end": [6, 1], "pause": 0 }] },
         { "number": 6, "time": 31, "gap": 10, "enemies": "Possessed Soldier Leader", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [0, 8], "checkpoints": [{ "start": [0, 8], "end": [1, 8], "pause": 0 }, { "start": [1, 8], "end": [3, 5], "pause": 0 }, { "start": [3, 5], "end": [6, 1], "pause": 0 }] },
@@ -1866,13 +1866,13 @@ levels["3-8"] = {
         { "number": 18, "time": 117, "gap": 8, "enemies": "Enraged Possessed Thrower", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 2], "pause": 5 }, { "start": [1, 2], "end": [0, 5], "pause": 5 }, { "start": [3, 1], "end": [6, 1], "pause": 0 }] },
         { "number": 19, "time": 125, "gap": 15, "enemies": "Possessed Defender", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [0, 9], "checkpoints": [{ "start": [0, 9], "end": [1, 9], "pause": 3 }, { "start": [1, 9], "end": [6, 9], "pause": 0 }, { "start": [6, 9], "end": [6, 1], "pause": 0 }] },
         { "number": 20, "time": 135, "gap": 9, "enemies": "Possessed Veteran Junkman", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [0, 8], "checkpoints": [{ "start": [0, 8], "end": [1, 8], "pause": 0 }, { "start": [1, 8], "end": [3, 5], "pause": 0 }, { "start": [3, 5], "end": [6, 1], "pause": 0 }] },
-        { "number": 21, "time": 137, "gap": 2, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 6, "start": [0, 9], "checkpoints": [{ "start": [0, 9], "end": [1, 9], "pause": 0 }, { "start": [1, 9], "end": [6, 9], "pause": 0 }, { "start": [6, 9], "end": [6, 1], "pause": 0 }] },
-        { "number": 22, "time": 141, "gap": 3, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [0, 9], "checkpoints": [{ "start": [0, 9], "end": [1, 9], "pause": 0 }, { "start": [1, 9], "end": [6, 9], "pause": 0 }, { "start": [6, 9], "end": [6, 1], "pause": 0 }] },
-        { "number": 23, "time": 146, "gap": 3, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [0, 8], "checkpoints": [{ "start": [0, 8], "end": [1, 8], "pause": 0 }, { "start": [1, 8], "end": [3, 5], "pause": 0 }, { "start": [3, 5], "end": [6, 1], "pause": 0 }] },
-        { "number": 24, "time": 148, "gap": 2, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [0, 8], "checkpoints": [{ "start": [0, 8], "end": [1, 8], "pause": 0 }, { "start": [1, 8], "end": [3, 5], "pause": 0 }, { "start": [3, 5], "end": [6, 1], "pause": 0 }] },
+        { "number": 21, "time": 137, "gap": 2, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 6, "start": [0, 9], "checkpoints": [{ "start": [0, 9], "end": [1, 9], "pause": 0 }, { "start": [1, 9], "end": [6, 9], "pause": 0 }, { "start": [6, 9], "end": [6, 1], "pause": 0 }] },
+        { "number": 22, "time": 141, "gap": 3, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [0, 9], "checkpoints": [{ "start": [0, 9], "end": [1, 9], "pause": 0 }, { "start": [1, 9], "end": [6, 9], "pause": 0 }, { "start": [6, 9], "end": [6, 1], "pause": 0 }] },
+        { "number": 23, "time": 146, "gap": 3, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [0, 8], "checkpoints": [{ "start": [0, 8], "end": [1, 8], "pause": 0 }, { "start": [1, 8], "end": [3, 5], "pause": 0 }, { "start": [3, 5], "end": [6, 1], "pause": 0 }] },
+        { "number": 24, "time": 148, "gap": 2, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [0, 8], "checkpoints": [{ "start": [0, 8], "end": [1, 8], "pause": 0 }, { "start": [1, 8], "end": [3, 5], "pause": 0 }, { "start": [3, 5], "end": [6, 1], "pause": 0 }] },
     ],
 
-    enemies: ["Possessed Soldier Leader", "Possessed Defender", "Originium Slug", "Enraged Possessed Thrower", "Possessed Veteran Junkman", "Hound"],
+    enemies: ["Possessed Soldier Leader", "Possessed Defender", "Lava Slug", "Enraged Possessed Thrower", "Possessed Veteran Junkman", "Hound"],
     tooltips: ["Possessed Defender", "Enraged Possessed Thrower"],
     hazards: [],
 
@@ -2834,12 +2834,12 @@ levels["4-7"] = {
     snowstorm: true,
 
     waves: [
-        { "number": 1, "time": 3, "gap": 5, "enemies": "Originium Slug", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [2, 2], "pause": 3 }, { "start": [2, 2], "end": [1, 11], "pause": 0 }] },
-        { "number": 2, "time": 5, "gap": 5, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [1, 11], "pause": 0 }] },
-        { "number": 3, "time": 10, "gap": 2, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [1, 11], "pause": 0 }] },
-        { "number": 4, "time": 18, "gap": 4, "enemies": "Originium Slug", "line": true, "tooltip": false, "taunt": false, "count": 3, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [3, 11], "pause": 0 }] },
-        { "number": 5, "time": 21, "gap": 3, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [3, 11], "pause": 0 }] },
-        { "number": 6, "time": 25, "gap": 3, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [1, 11], "pause": 0 }] },
+        { "number": 1, "time": 3, "gap": 5, "enemies": "Lava Slug", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [2, 2], "pause": 3 }, { "start": [2, 2], "end": [1, 11], "pause": 0 }] },
+        { "number": 2, "time": 5, "gap": 5, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [1, 11], "pause": 0 }] },
+        { "number": 3, "time": 10, "gap": 2, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [1, 11], "pause": 0 }] },
+        { "number": 4, "time": 18, "gap": 4, "enemies": "Lava Slug", "line": true, "tooltip": false, "taunt": false, "count": 3, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [3, 11], "pause": 0 }] },
+        { "number": 5, "time": 21, "gap": 3, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [3, 11], "pause": 0 }] },
+        { "number": 6, "time": 25, "gap": 3, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [1, 11], "pause": 0 }] },
         { "number": 7, "time": 37, "gap": 4, "enemies": "Glacial Spider", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [4, 2], "pause": 3 }, { "start": [4, 2], "end": [3, 11], "pause": 0 }] },
         { "number": 8, "time": 47, "gap": 3, "enemies": "Glacial Spider", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [3, 11], "pause": 0 }] },
         { "number": 9, "time": 49, "gap": 4, "enemies": "Frostfang", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [4, 2], "pause": 3 }, { "start": [4, 2], "end": [3, 11], "pause": 0 }] },
@@ -2865,13 +2865,13 @@ levels["4-7"] = {
         { "number": 29, "time": 143, "gap": 4, "enemies": "Glacial Spider", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [3, 11], "pause": 0 }] },
         { "number": 30, "time": 150, "gap": 3, "enemies": "Glacial Spider", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [1, 11], "pause": 0 }] },
         { "number": 31, "time": 152, "gap": 3, "enemies": "Glacial Spider", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [3, 11], "pause": 0 }] },
-        { "number": 32, "time": 158, "gap": 2, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 5, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [1, 11], "pause": 0 }] },
-        { "number": 33, "time": 159, "gap": 2, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [1, 11], "pause": 0 }] },
-        { "number": 34, "time": 160, "gap": 2, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 5, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [3, 11], "pause": 0 }] },
-        { "number": 35, "time": 161, "gap": 2, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 6, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [3, 11], "pause": 0 }] },
+        { "number": 32, "time": 158, "gap": 2, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 5, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [1, 11], "pause": 0 }] },
+        { "number": 33, "time": 159, "gap": 2, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [1, 11], "pause": 0 }] },
+        { "number": 34, "time": 160, "gap": 2, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 5, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [3, 11], "pause": 0 }] },
+        { "number": 35, "time": 161, "gap": 2, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 6, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [3, 11], "pause": 0 }] },
     ],
 
-    enemies: ["Originium Slug", "Glacial Spider", "Yeti Caster", "Frostfang"],
+    enemies: ["Lava Slug", "Glacial Spider", "Yeti Caster", "Frostfang"],
     tooltips: [],
     hazards: ["icealtar"],
 
@@ -3743,7 +3743,6 @@ levels["5-3"] = {
         { "number": 24, "time": 181, "gap": 13, "enemies": "Guerrilla Fighter Leader", "line": false, "tooltip": false, "count": 3, "taunt": false, "start": [4, 11], "checkpoints": [{ "start": [4, 11], "end": [4, 4], "pause": 0 }] },
         { "number": 25, "time": 182, "gap": 13, "enemies": "Guerrilla Sniper Leader", "line": false, "tooltip": false, "count": 3, "taunt": false, "start": [4, 11], "checkpoints": [{ "start": [4, 11], "end": [4, 9], "pause": 0 }, { "start": [4, 9], "end": [3, 4], "pause": 0 }] },
         { "number": 26, "time": 183, "gap": 13, "enemies": "Guerrilla Fighter Leader", "line": false, "tooltip": false, "count": 3, "taunt": false, "start": [3, 11], "checkpoints": [{ "start": [3, 11], "end": [3, 4], "pause": 0 }] },
-
     ],
 
     enemies: ["Guerrilla Hound", "Guerrilla Hound Pro", "Guerrilla Fighter Leader", "Guerrilla Herald", "Guerrilla Sniper", "Guerrilla Sniper Leader"],
@@ -3858,12 +3857,10 @@ levels["5-5"] = {
         { "number": 4, "time": 20, "gap": 5, "enemies": "Guerrilla Hound Pro", "line": true, "tooltip": false, "count": 1, "taunt": false, "start": [0, 8], "checkpoints": [{ "start": [0, 8], "end": [6, 8], "pause": 0 }, { "start": [6, 8], "end": [6, 11], "pause": 0 }] },
         { "number": 5, "time": 28, "gap": 5, "enemies": "Guerrilla Herald Leader", "line": true, "tooltip": false, "count": 1, "taunt": false, "start": [0, 5], "checkpoints": [{ "start": [0, 5], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [6, 5], "pause": 4 }, { "start": [6, 5], "end": [6, 6], "pause": 4 }, { "start": [6, 6], "end": [1, 6], "pause": 0 }, { "start": [1, 6], "end": [1, 5], "pause": 4 }, { "start": [1, 5], "end": [6, 5], "pause": 4 }, { "start": [6, 5], "end": [6, 6], "pause": 0 }, { "start": [6, 6], "end": [1, 6], "pause": 0 }, { "start": [1, 6], "end": [1, 5], "pause": 4 }, { "start": [1, 5], "end": [7, 5], "pause": 0 }] },
         { "number": 6, "time": 30, "gap": 5, "enemies": "Guerrilla Hound Pro", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [0, 8], "checkpoints": [{ "start": [0, 8], "end": [1, 8], "pause": 2 }, { "start": [1, 8], "end": [6, 8], "pause": 0 }, { "start": [6, 8], "end": [6, 11], "pause": 0 }] },
-
         { "number": 7, "time": 35, "gap": 5, "enemies": "Guerrilla Hound Pro", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [0, 8], "checkpoints": [{ "start": [0, 8], "end": [3, 8], "pause": 0 }, { "start": [3, 8], "end": [5, 11], "pause": 0 }] },
         { "number": 8, "time": 40, "gap": 5, "enemies": "Guerrilla Hound Pro", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [0, 8], "checkpoints": [{ "start": [0, 8], "end": [6, 8], "pause": 0 }, { "start": [6, 8], "end": [6, 11], "pause": 0 }] },
         { "number": 9, "time": 57, "gap": 6, "enemies": "Guerrilla Hound Pro", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [6, 1], "pause": 0 }] },
         { "number": 10, "time": 72, "gap": 5, "enemies": "Guerrilla Fighter Leader", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [0, 9], "checkpoints": [{ "start": [0, 9], "end": [5, 11], "pause": 0 }] },
-
         { "number": 11, "time": 65, "gap": 5, "enemies": "Guerrilla Fighter Leader", "line": true, "tooltip": false, "count": 1, "taunt": false, "start": [0, 9], "checkpoints": [{ "start": [0, 9], "end": [1, 9], "pause": 2 }, { "start": [1, 9], "end": [5, 11], "pause": 0 }] },
         { "number": 11, "time": 75, "gap": 5, "enemies": "Guerrilla Hound Pro", "line": false, "tooltip": false, "count": 2, "taunt": false, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [6, 1], "pause": 0 }] },
         { "number": 12, "time": 75, "gap": 5, "enemies": "Guerrilla Hound Pro", "line": false, "tooltip": false, "count": 1, "taunt": false, "start": [0, 8], "checkpoints": [{ "start": [0, 8], "end": [3, 8], "pause": 0 }, { "start": [3, 8], "end": [5, 11], "pause": 0 }] },
@@ -5487,7 +5484,7 @@ levels["KM-4"] = {
 
     waves: [
 
-        { "number": 0, "time": 3, "gap": 1, "enemies": "Originium Slug", "line": true, "tooltip": false, "taunt": false, "count": 25, "start": [3, 6], "checkpoints": [{ "start": [3, 6], "end": [3, 5], "pause": 0 }, { "start": [3, 5], "end": [5, 5], "pause": 0 }, { "start": [5, 5], "end": [5, 7], "pause": 0 }, { "start": [5, 7], "end": [1, 7], "pause": 0 }, { "start": [1, 7], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [5, 5], "pause": 0 }, { "start": [5, 5], "end": [5, 7], "pause": 0 }, { "start": [5, 7], "end": [1, 7], "pause": 0 }, { "start": [1, 7], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [6, 1], "pause": 0 }] },
+        { "number": 0, "time": 3, "gap": 1, "enemies": "Lava Slug", "line": true, "tooltip": false, "taunt": false, "count": 25, "start": [3, 6], "checkpoints": [{ "start": [3, 6], "end": [3, 5], "pause": 0 }, { "start": [3, 5], "end": [5, 5], "pause": 0 }, { "start": [5, 5], "end": [5, 7], "pause": 0 }, { "start": [5, 7], "end": [1, 7], "pause": 0 }, { "start": [1, 7], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [5, 5], "pause": 0 }, { "start": [5, 5], "end": [5, 7], "pause": 0 }, { "start": [5, 7], "end": [1, 7], "pause": 0 }, { "start": [1, 7], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [6, 1], "pause": 0 }] },
         { "number": 1, "time": 25, "gap": 4, "enemies": "Nameless Knight", "line": true, "tooltip": false, "taunt": false, "count": 3, "start": [0, 4], "checkpoints": [{ "start": [0, 4], "end": [6, 1], "pause": 0 }] },
         { "number": 2, "time": 45, "gap": 2, "enemies": "Nameless Knight", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [0, 4], "checkpoints": [{ "start": [0, 4], "end": [6, 1], "pause": 0 }] },
         { "number": 3, "time": 45, "gap": 3.5, "enemies": "Vicious Training Gloompincer", "line": true, "tooltip": false, "taunt": false, "count": 3, "start": [6, 8], "checkpoints": [{ "start": [6, 8], "end": [1, 11], "pause": 0 }] },
@@ -5502,23 +5499,23 @@ levels["KM-4"] = {
         { "number": 12, "time": 100, "gap": 8, "enemies": "Monster mk II", "line": false, "tooltip": false, "taunt": false, "count": 3, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [2, 3], "pause": 0 }, { "start": [2, 3], "end": [5, 6], "pause": 0 }, { "start": [5, 6], "end": [2, 9], "pause": 0 }, { "start": [2, 9], "end": [2, 11], "pause": 0 }] },
         { "number": 13, "time": 110, "gap": 0, "enemies": "Roar Knight", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [0, 4], "checkpoints": [{ "start": [0, 4], "end": [1, 4], "pause": 5 }, { "start": [1, 4], "end": [1, 11], "pause": 0 }] },
         { "number": 14, "time": 118, "gap": 0, "enemies": "Roar Knight", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [0, 4], "checkpoints": [{ "start": [0, 4], "end": [1, 4], "pause": 5 }, { "start": [1, 4], "end": [6, 1], "pause": 0 }] },
-        { "number": 15, "time": 116, "gap": 1, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 20, "start": [3, 6], "checkpoints": [{ "start": [3, 6], "end": [3, 5], "pause": 0 }, { "start": [3, 5], "end": [5, 5], "pause": 0 }, { "start": [5, 5], "end": [5, 7], "pause": 0 }, { "start": [5, 7], "end": [1, 7], "pause": 0 }, { "start": [1, 7], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [5, 5], "pause": 0 }, { "start": [5, 5], "end": [5, 7], "pause": 0 }, { "start": [5, 7], "end": [1, 7], "pause": 0 }, { "start": [1, 7], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [6, 1], "pause": 0 }] },
+        { "number": 15, "time": 116, "gap": 1, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 20, "start": [3, 6], "checkpoints": [{ "start": [3, 6], "end": [3, 5], "pause": 0 }, { "start": [3, 5], "end": [5, 5], "pause": 0 }, { "start": [5, 5], "end": [5, 7], "pause": 0 }, { "start": [5, 7], "end": [1, 7], "pause": 0 }, { "start": [1, 7], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [5, 5], "pause": 0 }, { "start": [5, 5], "end": [5, 7], "pause": 0 }, { "start": [5, 7], "end": [1, 7], "pause": 0 }, { "start": [1, 7], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [6, 1], "pause": 0 }] },
         { "number": 16, "time": 131, "gap": 0, "enemies": "Roar Knight", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [0, 4], "checkpoints": [{ "start": [0, 4], "end": [1, 4], "pause": 0 }, { "start": [1, 4], "end": [6, 1], "pause": 0 }] },
         { "number": 17, "time": 137, "gap": 0, "enemies": "Roar Knight", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [0, 4], "checkpoints": [{ "start": [0, 4], "end": [1, 4], "pause": 5 }, { "start": [1, 4], "end": [1, 11], "pause": 0 }] },
         { "number": 18, "time": 142, "gap": 3.5, "enemies": "Bloodboil Knight", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [6, 8], "checkpoints": [{ "start": [6, 8], "end": [4, 10], "pause": 5 }, { "start": [4, 10], "end": [1, 11], "pause": 0 }] },
         { "number": 19, "time": 148, "gap": 3.5, "enemies": "Bloodboil Knight", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [6, 8], "checkpoints": [{ "start": [6, 8], "end": [6, 9], "pause": 10 }, { "start": [6, 9], "end": [1, 11], "pause": 0 }] },
-        { "number": 20, "time": 149, "gap": 1, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 5, "start": [3, 6], "checkpoints": [{ "start": [3, 6], "end": [3, 5], "pause": 0 }, { "start": [3, 5], "end": [5, 5], "pause": 0 }, { "start": [5, 5], "end": [5, 7], "pause": 0 }, { "start": [5, 7], "end": [1, 7], "pause": 0 }, { "start": [1, 7], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [5, 5], "pause": 0 }, { "start": [5, 5], "end": [5, 7], "pause": 0 }, { "start": [5, 7], "end": [1, 7], "pause": 0 }, { "start": [1, 7], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [6, 1], "pause": 0 }] },
+        { "number": 20, "time": 149, "gap": 1, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 5, "start": [3, 6], "checkpoints": [{ "start": [3, 6], "end": [3, 5], "pause": 0 }, { "start": [3, 5], "end": [5, 5], "pause": 0 }, { "start": [5, 5], "end": [5, 7], "pause": 0 }, { "start": [5, 7], "end": [1, 7], "pause": 0 }, { "start": [1, 7], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [5, 5], "pause": 0 }, { "start": [5, 5], "end": [5, 7], "pause": 0 }, { "start": [5, 7], "end": [1, 7], "pause": 0 }, { "start": [1, 7], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [6, 1], "pause": 0 }] },
         { "number": 21, "time": 154, "gap": 10, "enemies": "Monster mk II", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [2, 3], "pause": 0 }, { "start": [2, 3], "end": [5, 6], "pause": 0 }, { "start": [5, 6], "end": [2, 9], "pause": 0 }, { "start": [2, 9], "end": [2, 11], "pause": 0 }] },
         { "number": 22, "time": 159, "gap": 0, "enemies": "Roar Knight", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [0, 4], "checkpoints": [{ "start": [0, 4], "end": [1, 4], "pause": 0 }, { "start": [1, 4], "end": [6, 1], "pause": 0 }] },
         { "number": 23, "time": 167, "gap": 3.5, "enemies": "Bloodboil Knight", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [6, 8], "checkpoints": [{ "start": [6, 8], "end": [4, 10], "pause": 10 }, { "start": [4, 10], "end": [1, 11], "pause": 0 }] },
-        { "number": 24, "time": 170, "gap": 1, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 5, "start": [3, 6], "checkpoints": [{ "start": [3, 6], "end": [3, 5], "pause": 0 }, { "start": [3, 5], "end": [5, 5], "pause": 0 }, { "start": [5, 5], "end": [5, 7], "pause": 0 }, { "start": [5, 7], "end": [1, 7], "pause": 0 }, { "start": [1, 7], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [5, 5], "pause": 0 }, { "start": [5, 5], "end": [5, 7], "pause": 0 }, { "start": [5, 7], "end": [1, 7], "pause": 0 }, { "start": [1, 7], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [6, 1], "pause": 0 }] },
+        { "number": 24, "time": 170, "gap": 1, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 5, "start": [3, 6], "checkpoints": [{ "start": [3, 6], "end": [3, 5], "pause": 0 }, { "start": [3, 5], "end": [5, 5], "pause": 0 }, { "start": [5, 5], "end": [5, 7], "pause": 0 }, { "start": [5, 7], "end": [1, 7], "pause": 0 }, { "start": [1, 7], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [5, 5], "pause": 0 }, { "start": [5, 5], "end": [5, 7], "pause": 0 }, { "start": [5, 7], "end": [1, 7], "pause": 0 }, { "start": [1, 7], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [6, 1], "pause": 0 }] },
         { "number": 25, "time": 173, "gap": 3.5, "enemies": "Bloodboil Knight", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [6, 8], "checkpoints": [{ "start": [6, 8], "end": [6, 9], "pause": 10 }, { "start": [6, 9], "end": [1, 11], "pause": 0 }] },
         { "number": 26, "time": 175, "gap": 0, "enemies": "Bloodboil Knight", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [0, 4], "checkpoints": [{ "start": [0, 4], "end": [1, 4], "pause": 20 }, { "start": [1, 4], "end": [1, 11], "pause": 0 }] },
-        { "number": 27, "time": 185, "gap": 1, "enemies": "Originium Slug", "line": false, "tooltip": false, "taunt": false, "count": 5, "start": [3, 6], "checkpoints": [{ "start": [3, 6], "end": [3, 5], "pause": 0 }, { "start": [3, 5], "end": [5, 5], "pause": 0 }, { "start": [5, 5], "end": [5, 7], "pause": 0 }, { "start": [5, 7], "end": [1, 7], "pause": 0 }, { "start": [1, 7], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [5, 5], "pause": 0 }, { "start": [5, 5], "end": [5, 7], "pause": 0 }, { "start": [5, 7], "end": [1, 7], "pause": 0 }, { "start": [1, 7], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [6, 1], "pause": 0 }] },
+        { "number": 27, "time": 185, "gap": 1, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 5, "start": [3, 6], "checkpoints": [{ "start": [3, 6], "end": [3, 5], "pause": 0 }, { "start": [3, 5], "end": [5, 5], "pause": 0 }, { "start": [5, 5], "end": [5, 7], "pause": 0 }, { "start": [5, 7], "end": [1, 7], "pause": 0 }, { "start": [1, 7], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [5, 5], "pause": 0 }, { "start": [5, 5], "end": [5, 7], "pause": 0 }, { "start": [5, 7], "end": [1, 7], "pause": 0 }, { "start": [1, 7], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [6, 1], "pause": 0 }] },
 
     ],
 
-    enemies: ["Vicious Training Gloompincer", "Roar Knight", "Originium Slug", "Monster mk II", "Bloodboil Knight", "Nameless Knight"],
+    enemies: ["Vicious Training Gloompincer", "Roar Knight", "Lava Slug", "Monster mk II", "Bloodboil Knight", "Nameless Knight"],
     tooltips: [],
 
     hazards: ["altar"],
@@ -5708,7 +5705,7 @@ levels["KM-6"] = {
         { "number": 18, "time": 176, "gap": 3, "enemies": "Vicious Training Gloompincer", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [5, 11], "checkpoints": [{ "start": [5, 11], "end": [5, 10], "pause": 0 }, { "start": [5, 10], "end": [3, 6], "pause": 0 }, { "start": [3, 6], "end": [5, 1], "pause": 0 }] },
     ],
 
-    enemies: ["Knight Shielder", "Roar Knight", "Bloodboil Knight", "Vicious Training Gloompincer", "'Left-hand' Tytus Topola", "Nameless Knight"],
+    enemies: ["Knight Shielder", "Roar Knight", "Bloodboil Knight", "Vicious Training Gloompincer", "'Left-hand' Tytus Topola", "'Left-hand' Tytus Topola2", "Nameless Knight"],
     tooltips: ["'Left-hand' Tytus Topola"],
 
     hazards: ["icealtar"],
@@ -5783,7 +5780,7 @@ levels["KM-7"] = {
 
     ],
 
-    enemies: ["Knight Shielder", "Monster mk II", "Guerrilla Herald Leader", "Vicious Training Gloompincer", "'Left-hand' Tytus Topola", "Nameless Knight"],
+    enemies: ["Knight Shielder", "Monster mk II", "Guerrilla Herald Leader", "Vicious Training Gloompincer", "'Left-hand' Tytus Topola","'Left-hand' Tytus Topola2", "Nameless Knight"],
     tooltips: ["Guerrilla Herald Leader"],
 
     hazards: [],
@@ -5992,7 +5989,7 @@ levels["KM-10"] = {
         { "number": 11, "time": 150, "gap": 12, "enemies": "Knight Shielder", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [5, 3], "checkpoints": [{ "start": [5, 3], "end": [5, 9], "pause": 0 }, { "start": [5, 9], "end": [3, 9], "pause": 0 }] },
     ],
 
-    enemies: ["'Left-hand' Tytus Topola", "Knight Shielder", "Withered Knight", "Corrupted Knight", "Nameless Knight", "Vicious Training Gloompincer"],
+    enemies: ["'Left-hand' Tytus Topola","'Left-hand' Tytus Topola2", "Knight Shielder", "Withered Knight", "Corrupted Knight", "Nameless Knight", "Vicious Training Gloompincer"],
     tooltips: ["Withered Knight"],
 
     hazards: [],
@@ -6086,7 +6083,7 @@ levels["KM-H1"] = {
         { "number": 21, "time": 223, "gap": 12, "enemies": "Roar Knight", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [2, 1], "checkpoints": [{ "start": [2, 1], "end": [2, 2], "pause": 0 }, { "start": [2, 2], "end": [2, 4], "pause": 5 }, { "start": [2, 7], "end": [2, 12], "pause": 0 }] }
     ],
 
-    enemies: ["Veteran Butcher", "Guerrilla Mortar Leader", "Roar Knight", "Bloodboil Knight", "Guerrilla Herald Leader", "'Left-hand' Tytus Topola"],
+    enemies: ["Veteran Butcher", "Guerrilla Mortar Leader", "Roar Knight", "Bloodboil Knight", "Guerrilla Herald Leader", "'Left-hand' Tytus Topola2","'Left-hand' Tytus Topola"],
     tooltips: ["Guerrilla Mortar Leader"],
 
     hazards: [],
@@ -6153,7 +6150,7 @@ levels["KM-H2"] = {
         { "number": 23, "time": 190, "gap": 3, "enemies": "Vicious Training Gloompincer", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [6, 1], "checkpoints": [{ "start": [6, 1], "end": [6, 11], "pause": 0 }] },
     ],
 
-    enemies: ["Bloodboil Knight", "Knight Shielder", "Roar Knight", "Vicious Training Gloompincer", "'Left-hand' Tytus Topola"],
+    enemies: ["Bloodboil Knight", "Knight Shielder", "Roar Knight", "Vicious Training Gloompincer","'Left-hand' Tytus Topola2", "'Left-hand' Tytus Topola"],
     tooltips: [],
     hazards: ["altar", "icealtar"],
 
@@ -6219,7 +6216,7 @@ levels["KM-H3"] = {
         { "number": 28, "time": 235, "gap": 14, "enemies": "Withered KnightEX", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [1, 10], "checkpoints": [{ "start": [1, 10], "end": [1, 9], "pause": 10 },{ "start": [1, 9], "end": [4, 8], "pause": 0 },{ "start": [4, 8], "end": [3, 5], "pause": 0 }, { "start": [3, 5], "end": [1, 1], "pause": 0 }] },
     ],
 
-    enemies: ["Bloodboil Knight", "Knight Shielder", "'Left-hand' Tytus Topola", "Roar Knight", "Vicious Training Gloompincer","Nameless Knight","Withered KnightEX","Corrupted KnightEX"],
+    enemies: ["Bloodboil Knight", "Knight Shielder", "'Left-hand' Tytus Topola2","'Left-hand' Tytus Topola", "Roar Knight", "Vicious Training Gloompincer","Nameless Knight","Withered KnightEX","Corrupted KnightEX"],
     tooltips: [],
     hazards: [],
 

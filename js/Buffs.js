@@ -69,7 +69,7 @@ class Buffs {
                 if (typeof this.modifiers[keysmodifiers[j]] == "boolean")
                     this.modifiers[keysmodifiers[j]] = this.buffs[keys[i]].modifiers[keysmodifiers[j]]
                 else {
-                    //if movspeed change, then have at least a min of 0.1
+                    //if values we know are multiplied with each other
                     if (keysmodifiers[j] == "flatmultiatk" || keysmodifiers[j] == "flatmultidef" || keysmodifiers[j] == "speedpercent") {
 
                         this.modifiers[keysmodifiers[j]] *= this.buffs[keys[i]].modifiers[keysmodifiers[j]]

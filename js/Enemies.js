@@ -2827,7 +2827,6 @@ enemylist["Bloodboil Knight"] = {
     size: 1.2,
     tooltip: "Each time an enemy is defeated,\ngains ATK and ASPD,\nstacking up to 10 times.",
     targets: 1,
-    tooltip: "A sniper with\n significantly increased DEF\nand RES for a period of time.",
     description: "A competitive knight that thirsts for battle.\nWhenever an enemy dies on the battlefield, his stats increase.\n\n" +
         "Bloodboil knights boost fairly high stats that make them formidable foes.\n" +
         "Additionally, whenever an enemy dies while the Bloodboil is present,\nthey will have their ATK and ASPD increased by 10% and 5 respectively.\n(indicated by the icon above their head)\n" +
@@ -5788,7 +5787,7 @@ enemylist["Yeti Sniper Leader"] = {
     dmgtype: "physical",
     size: 1,
     tooltip: "An elite Yeti ranged combatant,\ncapable of dealing \nincreased damage to Frozen units",
-    description:"A stronger ranged acombatant of the \nYeti Squadron hailing from the Northen tundras.\n\n"+
+    description:"A stronger ranged combatant of the \nYeti Squadron hailing from the Northen tundras.\n\n"+
     "Stronger than normal snipers,\nYeti Sniper Leaders can deal 1.5x damage when attacking frozen targets.",
     targets: 1,
     bullet: { size: { height: 1, depth: 6, width: 0.5 }, arc: false, speed: 5, color: new BABYLON.Color3(0.4, 0.4, 0.4) },
@@ -5862,9 +5861,11 @@ enemylist["Butcher"] = {
     dmgtype: "physical",
     size: 1.2,
     tooltip: "An enemy with relatively\nhigh ATK and defense.",
+    description:"An enemy of unknown identity who attacks using a massive blunt object.\nThey possess relatively high defense.\n\n"+
+    "A Reunion fighter weilding a heavy axe.\nHe possesses relatively high stats and can easily destroy low DEF units.\nPlease use high defense units to deal with this threat!",
+
     targets: 1,
 
-    enemytype: "normal",
 
     spritesheet: "images/sprites/butcher-sheet.webp",
 
@@ -5924,7 +5925,7 @@ enemylist["Veteran Butcher"] = {
     size: 1.2,
     tooltip: "A more dangerous Butcher with\nhigh ATK and defense.",
     targets: 1,
-
+    description:"An enemy of unknown identity who attacks using a massive blunt object.\nThis variant is even more dangerous than a normal Butcher,\nand has relatively high defense.",
     enemytype: "normal",
 
     spritesheet: "images/sprites/veteran-butcher-sheet.webp",
@@ -5984,6 +5985,8 @@ enemylist["Big Bob"] = {
     dmgtype: "physical",
     size: 1.1,
     tooltip: "One of Reunion's leaders who\nattacks with an electric chainsaw.\nHe has very high HP, ATK, and DEF.",
+    description: "One of Reunion's squad leaders who attacks with an electric chainsaw.\nHe has high HP, ATK, and DEF.\n\n"
+    +"While having no special abilities at all,\nBig Bob has sheer HP and DEF, decent RES,\nand massive ATK that allows him to severely damage \nor outright knock out most Units with a single attack.\nHowever, he moves and attacks very slowly \nmaking him more of a slow-but-powerful enemy.\nIt is recommended to slow him down and\nuse Magic to dispatch him from a distance.",
     targets: 1,
 
     enemytype: "normal",
@@ -6045,6 +6048,9 @@ enemylist["Caster"] = {
     dmgtype: "magic",
     size: 1,
     tooltip: "A basic caster,\ncapable of attacking using\nlong-ranged Magic.",
+    description:"A shaman that joined Reunion ranks\nand is capable of using long-range magic attacks.\n\n"
+    +"Reunion casters can target both Melee and Ranged units\nwith ranged attacks that inflict Magic damage thus ignoring the target's DEF entirely.\nWith fairly balanced stats and decent DEF,\nthey should not be underestimated.",
+
     targets: 1,
     bullet: { size: { height: 1, depth: 5, width: 2 }, arc: false, speed: 4, color: new BABYLON.Color3(0.69, 0.21, 0.67) },
 
@@ -6109,6 +6115,9 @@ enemylist["Caster Leader"] = {
     dmgtype: "magic",
     size: 1,
     tooltip: "A more dangerous caster,\ncapable of attacking\n2 targets at once with\nlong-ranged Magic.",
+    description:"A high-rank shaman that joined Reunion ranks.\nThanks to his years of experience and better equipment,\nhe can target 2 units at once with long-range magic attacks.\n\n"
+    +"Reunion caster leaders are a step up from Reunion casters in terms of stats,\nnoticeably they can now target 2 units at once with magic attacks\nwhich can allow them to easily knock out unprepared defense lines.",
+
     targets: 2,
     bullet: { size: { height: 1, depth: 5, width: 2 }, arc: false, speed: 4, color: new BABYLON.Color3(0.69, 0.21, 0.67) },
 
@@ -6174,6 +6183,8 @@ enemylist["Yeti Caster"] = {
     dmgtype: "magic",
     size: 1,
     tooltip: "A Yeti Squadron Caster, \ncapable of inflicting Cold upon\ntheir targets after 3 attacks.",
+    description:"A caster of the Yeti Squadron hailing from the Northen tundras.\n\n"+
+    "Relatively similar to Casters,\nYeti Casters differenciate themselves by their mastery of Ice-based Magic.\nEvery 3 attacks, Yeti Casters can fire a special shot \nthat will inflict Cold to their target\n(attack speed reduced by 30%).\nIf the target was already inflicted with Cold,\nthey will get Frozen instead (cannot move or attack)",
     targets: 1,
     bullet: { size: { height: 1, depth: 5, width: 2 }, arc: false, speed: 4, color: new BABYLON.Color3(0.88, 0.96, 1) },
 
@@ -6273,6 +6284,9 @@ enemylist["Yeti Caster Leader"] = {
     dmgtype: "magic",
     size: 1,
     tooltip: "An elite Yeti Squadron Caster, \ncapable of inflicting Cold upon\ntheir targets after 3 attacks.",
+    description:"A caster of the Yeti Squadron hailing from the Northen tundras.\n\n"+
+    "Yeti Caster Leaders are a step up from Yeti Casters in terms of stats.\nEvery 3 attacks, Yeti Caster Leaders can fire a special shot that \nwill inflict Cold to their target\n(attack speed reduced by 30%).\nIf the target was already inflicted with Cold,\nthey will get Frozen instead (cannot move or attack)",
+    
     targets: 1,
     bullet: { size: { height: 1, depth: 5, width: 2 }, arc: false, speed: 4, color: new BABYLON.Color3(0.88, 0.96, 1) },
 
@@ -6374,6 +6388,8 @@ enemylist['Explosive Spider'] = {
     targets: 1,
 
     tooltip: "A dangerous creature.\n Upon death, they will explode,\ninflicting damage to nearby Ally units.",
+    description:"A dangerous unstable creature,\ntheir body is filled with dangerous radiation and lava.\nThey explode once defeated.\n\n"+
+    "A seemingly harmless creature,\nthe danger lies on their ability to explode once they die\nprovoking a blast that will deal 4x of their own ATK to any nearby Unit,\nmaking it important to not let them explode near the more fragile units.",  
 
     enemytype: "normal",
 
@@ -6453,6 +6469,9 @@ enemylist['Glacial Spider'] = {
     targets: 1,
 
     tooltip: "A creature native \nto colder environments.\n Upon death, they will explode, \ninflicting Cold on nearby Ally units.",
+    description:"A dangerous unstable creature hailing from the Northern tundras,\ntheir body is filled with dangerous radiation and ice.\nThey explode once defeated.\n\n"+
+    "Similar to Exploding Spiders,\nthey share the same ability of exploding once defeated.\nHowever, their blast damage is much weaker (only 2x of their own ATK)\nwhich is offset by their ability to inflict Cold\n(attack speed reduced by 30%) to all Units caught in the explosion.\nIf the targets were already inflicted with Cold,\nthey will get Frozen instead (cannot move or attack)",  
+
 
     enemytype: "normal",
 
@@ -6533,6 +6552,9 @@ enemylist['Glacial Spider α'] = {
     targets: 1,
 
     tooltip: "A more threatening creature \nnative to colder environments.\n Upon death, they will explode, \ninflicting Cold on nearby Ally units.",
+    description:"A stronger unstable creature hailing from the Northern tundras,\ntheir body is filled with dangerous radiation and ice.\nThey explode once defeated.\n\n"+
+    "Glacial Spiders α are a direct upgrade to normal Glacial Spiders,\nsharing the same exploding properties.",
+
 
     enemytype: "normal",
 
@@ -6612,6 +6634,9 @@ enemylist["Yeti Icecleaver"] = {
     dmgtype: "physical",
     size: 1.1,
     tooltip: "A special Yeti Squadron\nmelee combatant,\ncapable of dealing massive\ndamage to Frozen units.",
+    description:"An elite melee combatant of the Yeti Squadron\nhailing from the Northwestern tundras.\nGrim reapers on the battlefield,\nthey wield long katanas that can easily ravage frozen Operators\nhence the nickname they've been given, \"Ice Cleaver\".\n\n"
+    +"Yeti Icecleavers are the strongest of Yeti Squadron enemies\nwith high HP, ATK, and good DEF that eclipses their comrades,\nmaking them a force to be reckoned with.\nYeti Icecleavers will deal 2.5x damage against frozen units,\nwhich can easily severely damage or knock out\nany Frozen unit standing on their path. ",
+
     targets: 1,
 
     enemytype: "normal",
@@ -6680,6 +6705,9 @@ enemylist["Yeti Icecleaver Leader"] = {
     dmgtype: "physical",
     size: 1.1,
     tooltip: "A special elite Yeti Squadron\nmelee combatant,\ncapable of dealing catastrophic\ndamage to Frozen units.",
+    description:"An elite melee combatant of the Yeti Squadron\nhailing from the Northwestern tundras.\nExperienced executioners on the battlefield,\nthey wield long katanas that can easily ravage frozen Operators\nand their nickname, \"Ice Cleaver,\"references their devastating blows\nthat seem strong enough to split glaciers..\n\n"
+    +"Yeti Icecleaver Leaders are a massive step up\nfrom Yeti Icecleavers in terms of stats.\nOn top of that, the Leader variant will deal 3x damage against frozen units,\nwhich paired with their much higher ATK can pretty much knock out any Unit!",
+
     targets: 1,
 
     enemytype: "normal",
@@ -6748,6 +6776,8 @@ enemylist["Light-Armored Soldier"] = {
     dmgtype: "physical",
     size: 1,
     tooltip: "A soldier with a light shield\nthat has fairly high defense.",
+    description: "A Reunion melee soldier equipped with a stolen light shield.\n\n"
+    + "A soldier that boosts fairly high DEF thanks to their improved gear,\nalbeit lacking completely on any Magic defense.\nIt is recommended to use Magic to deal with them.",
     targets: 1,
 
     enemytype: "normal",
@@ -6810,7 +6840,9 @@ enemylist["Oneiros"] = {
     hploss: 1,
     dmgtype: "magic",
     size: 0.95,
-    tooltip: "Carries a special warhead\ncapable of dealing Magic damage \nin a radius and inflicting \nCold on affected units.",
+    tooltip: "Carries a special warhead\ncapable of dealing Magic damage\nin a radius and inflicting \nCold on affected units.",
+    description: "An unmanned, slow-flying enemy drone equipped with a special warhead\nreleased upon approaching Units\nthat inflicts Magic damage and a freezing effect in an area.\n\n"+
+    "Oneiros are special drones employed by the Yeti Squadron\n that differenciate from Monsters in their ability\nto fire a special warhead that will explode upon hitting its target\ndealing damage to them and all other ally units around.\nThe blast will not only deal magic damage,\nbut will also inflict Cold (attack speed reduced by 30%)\nto all Units caught in the explosion.\nIf the targets were already inflicted with Cold,\nthey will get Frozen instead (cannot move or attack).\nThe Oneiros can launch the warhead only once.",
     targets: 1,
     splashradius: 1,
 
@@ -6882,8 +6914,8 @@ enemylist["Oneiros"] = {
     }
 }
 
-enemylist["Originium Slug"] = {
-    name: "Originium Slug",
+enemylist["Lava Slug"] = {
+    name: "Lava Slug",
     hp: 1550,
     atk: 240,
     def: 0,
@@ -6897,6 +6929,7 @@ enemylist["Originium Slug"] = {
     dmgtype: "physical",
     size: 1.1,
     tooltip: "A dangerous wild creature.",
+    description:"A wild creature originating from the nearby volcano.\nDue to their low intelligence,\nthey are easily controlled by enemy casters\nfor use as cannon fodder during invasions.",
     targets: 1,
 
     enemytype: "normal",
@@ -6955,6 +6988,8 @@ enemylist["Monster"] = {
     dmgtype: "physical",
     size: 0.95,
     tooltip: "An unmanned enemy drone\nthat does not attack.",
+    description:" An unmanned enemy drone, called \"Monster\" by Reunion forces.\nThough they come with no offensive abilities whatsoever,\nthey can slip by unnoticed during the heat of battle.\n\n"
+    +"Enemy drones are flying enemies,\nwhich is caracterized by their ability to \nmove anywhere on the map and not be able to be blocked.\nAdditionally, they can only be hit by Ranged units\nor Ground units with ranged attacks.",
     targets: 0,
 
     enemytype: "normal",
@@ -7009,6 +7044,9 @@ enemylist["Monster mk II"] = {
     dmgtype: "physical",
     size: 0.95,
     tooltip: "An improved Monster capable\nof ranged attacks.",
+    description:" An improved Monster, equipped with a light gun.\n\n"
+    +"Monsters mk II are a direct upgrade to Monsters,\nnoticeably they can now do ranged attacks which,\npaired with their ability to move freely anywhere on the map,\ncan pose a threat to more fragile units if targeted.",
+    
     targets: 0,
 
     enemytype: "normal",
@@ -7067,6 +7105,8 @@ enemylist["Demolitionist"] = {
     dmgtype: "physical",
     size: 1.2,
     tooltip: "Elite enemy whose \nattacks cause explosions,\ndealing Splash damage to units\non the 4 tiles\nsurrounding the primary target.",
+    description: "A high-level elite Reunion combatant who wears heavy-duty,\nexplosion-proof protective gear.\nTheir special Magic-powered hammers have massive destructive range,\nand must be dealt with cautiously.\n\n"
+    +"Boosting extremely high ATK and decent DEF and HP.\nDemolitionists are slow moving enemies that once blocked,\nwill smash their hammer on the target causing an explosion\nthat will also hit all surrounding units around the primary target for 50% of damage.\nIt is thus recommended to not keep\nunits tightly close to each other when facing them.",
     targets: 1,
     splash: 1,
     splashdmg: 0.5,
@@ -7131,6 +7171,9 @@ enemylist["Demolitionist Leader"] = {
     dmgtype: "physical",
     size: 1.2,
     tooltip: "Elite enemy whose \nattacks cause explosions,\ndealing Splash damage to units\non the 4 tiles\nsurrounding the primary target.",
+    description: "A high-level elite Reunion combatant who wears heavy-duty,\nexplosion-proof protective gear.\nTheir special Magic-powered hammers have massive destructive range,\nand must be dealt with cautiously.\n\n"
+    +"Boosting even better stats than Demolitionists.\nDemolitionist Leaders are a direct upgrade to Demolitionists \nand share the same property of\ndealing 50% of their own damage to any Unit caught in the blast\naround the primary target of their hammer.",
+   
     targets: 1,
     splash: 1,
     splashdmg: 0.5,
@@ -7194,6 +7237,8 @@ enemylist["Heavy Defender"] = {
     dmgtype: "physical",
     size: 1.2,
     tooltip: "Has very high defense and \nis difficult to take down.",
+    description: "One of Reunion's melee soldiers.\nEquipped with a full set of heavy armor,\nthey have ample combat experience and are extremely hard to defeat.\nAs they may have had formal training, proceed with caution.\n\n"+
+    "Heavy Defenders are elite Reunion enemies with\nfairly decent HP, ATK and considerably improved DEF.\nJust like Light-Armored Soldiers they lack any RES,\nit is recommended to dispatch them with Magic while slowing their advance.",
     targets: 1,
 
     enemytype: "normal",
@@ -7252,6 +7297,14 @@ enemylist["Frostnova"] = {
     dmgtype: "magic",
     size: 1,
     tooltip: "Every attack inflicts cold.\n Deals increased damage\n against frozen allies.\nPeriodically releases an\nice nova damaging \nall allies in range.",
+    description: "One of Reunion squad leaders and leader of the Yeti Squadron,\nher Cold stare might be just as deadly as her Cold magic attacks.\n\n" +
+    "Frostnova is a formidable opponent that can launch long range Magic attacks,\nand comes with different properties:\n" +
+    "All Frostnova attacks will inflict Cold (or Frozen if already Cold)\nto the target hit for 5 seconds.\nAdditionally, her attacks deal 2x damage to Frozen units,\nmaking her able to lock units into a Frozen state\nand melt them down if no healing is provided."
+    + "\nFrostnova comes with a special attack: every 10.5 seconds, Frostnova releases\nan Ice Nova to all targets around her dealing 1.5x of her own ATK.\n"
+    + "After being knocked out once,\nshe will revive herself and becomes invincible for 20 seconds\n(indicated by a yellow aura around her)\nduring which she can't be targeted.\n"
+    +"and activates all inactive Ice Altars on the field\n(placed on previously empty black boxes on the map)\n"
+    + "After reviving, Frostnova will gain a 50% increase to her ATK,\nher Ice Nova will also be improved,\nbeing able to target ally units from\na higher distance at the cost of a higher wind up time.\n",
+   
     revive: true,
     revivetimer: 0,
     revivemax: 0,
@@ -7474,6 +7527,13 @@ enemylist["FrostnovaEX"] = {
     dmgtype: "magic",
     size: 1,
     tooltip: "Every attack inflicts cold.\n Deals massive damage\n against frozen allies.\nPeriodically releases an\nice nova damaging \nall allies in range.",
+    description: "One of Reunion squad leaders and leader of the Yeti Squadron,\nher Cold stare might be just as deadly as her Cold magic attacks.\n\n" +
+    "Frostnova is a formidable opponent that can launch long range Magic attacks,\nand comes with different properties:\n" +
+    "All Frostnova attacks will inflict Cold (or Frozen if already Cold)\nto the target hit for 5 seconds.\nAdditionally, her attacks deal 2x damage to Frozen units,\nmaking her able to lock units into a Frozen state\nand melt them down if no healing is provided."
+    + "\nFrostnova comes with a special attack: every 10.5 seconds, Frostnova releases\nan Ice Nova to all targets around her dealing 1.5x of her own ATK.\n"
+    + "After being knocked out once,\nshe will revive herself and becomes invincible for 25 seconds\n(indicated by a yellow aura around her)\nduring which she can't be targeted,\n"
+    +"and activates all inactive Ice Altars on the field\n(placed on previously empty black boxes on the map)\n"
+    + "After reviving, Frostnova will gain a 50% increase to her ATK,\nher Ice Nova will also be improved,\nbeing able to target ally units from\na higher distance at the cost of a higher wind up time.\n",
     revive: true,
     revivetimer: 0,
     revivemax: 0,
@@ -7697,6 +7757,8 @@ enemylist["Mortar Gunner"] = {
     dmgtype: "physical",
     size: 1,
     tooltip: "A dangerous foe \nthat can launch very \nlong-ranged AoE attacks.",
+    description: "One of Reunion's special ranged soldiers.\nEquipped with stolen mortar launchers,\nthey launch explosive attacks from hard-to-defend positions,\nmaking them a significant threat to back-line units.\n\n"+
+    "Mortar Gunners stand out from other ranged enemies\nfrom their ability to launch an explosive shot every hit that,\nnot only can be fired from very long distances,\nbut also hits all units caught in the blast around the primary target.\nIt is imperative to not keep units tightly close to the last\ndeployed unit to avoid getting destroyed by Mortar Gunners.",
     targets: 1,
     splashradius: 1,
 

@@ -39,6 +39,7 @@ class DirectionTile {
         //get all targets
 
         let hitenemies = this.getEnemiesInRange(enemies, 0)
+        //increases/decreases speed of enemies depending on direction
         for (let i = 0; i < hitenemies.length; i++) {
 
             hitenemies[i].buffs.buffs[this.name] = { "name": this.name, "modifiers": { "speedpercent": hitenemies[i].directionMovement(this.directionx, this.directiony) } }
@@ -50,7 +51,7 @@ class DirectionTile {
         }
 
         let hitplayers = this.getEnemiesInRange(players, 0)
-        //hit all the players
+        //locks direction of players and increases their atk
         for (let i = 0; i < hitplayers.length; i++) {
             hitplayers[i].buffs.buffs[this.name] = { "name": this.name, "modifiers": { "directiony": this.directiony, "directionx": this.directionx, "atk": 0.30 } }
             hitplayers[i].buffs.effects[this.name] = 300
