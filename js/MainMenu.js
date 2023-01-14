@@ -291,6 +291,18 @@ class MainMenu extends LVLAbstract {
         label.top = "-20%";
         label.fontFamily = "Butler Stencil";
 
+
+        var credits = new BABYLON.GUI.TextBlock();
+
+        credits.text = "An Arknights fangame in BabylonJS\ndevelopped by Kruss.";
+        credits.fontSize = "3%";
+        credits.color = "white";
+        credits.left = "65%";
+        credits.top = "40%";
+        credits.fontFamily = "Butler Stencil";
+        credits.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT
+        
+
         var button = BABYLON.GUI.Button.CreateImageOnlyButton("but", "images/menu/play.png");
         button.width = "25%";
         button.height = "20%";
@@ -300,6 +312,7 @@ class MainMenu extends LVLAbstract {
 
         this.lvlcontroller.addControl(label);
         this.lvlcontroller.addControl(button);
+        this.lvlcontroller.addControl(credits);
 
         button.onPointerUpObservable.add(function () {
             instance.playSound("confirm", 0.3)
@@ -430,7 +443,7 @@ class MainMenu extends LVLAbstract {
 
                 this.lvlcontroller.addControl(button);
             }
-            if(localStorage.getItem(chapters[keys[i]].normalclear)){
+            if (localStorage.getItem(chapters[keys[i]].normalclear)) {
                 let clear = new BABYLON.GUI.Image("clear", "images/menu/normalclear.png");
                 clear.width = "20%"
                 clear.height = "20%"
@@ -440,7 +453,7 @@ class MainMenu extends LVLAbstract {
                 clear.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
                 button.addControl(clear)
             }
-            if(localStorage.getItem(chapters[keys[i]].hardclear)){
+            if (localStorage.getItem(chapters[keys[i]].hardclear)) {
                 let clear = new BABYLON.GUI.Image("clear", "images/menu/hardclear.png");
                 clear.width = "20%"
                 clear.height = "20%"
@@ -1345,10 +1358,7 @@ class MainMenu extends LVLAbstract {
         container.addControl(icon)
         container.addControl(textbox)
 
-
         this.opcontroller.addControl(container);
-
-
     }
 
     createEmptyTooltip() {
@@ -1390,15 +1400,12 @@ class MainMenu extends LVLAbstract {
         container.background = "rgba(0, 0, 0, 0.3)";
         container.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_RIGHT;
         container.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
-
         var icon = new BABYLON.GUI.Image("tooltip", "images/menu/noinfo.png");
         icon.width = "50%"
         icon.height = "50%"
         icon.top = "3%"
         icon.left = "-1%"
-
         container.addControl(icon)
-
         this.opcontroller.addControl(container);
 
     }
