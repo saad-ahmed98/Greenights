@@ -532,6 +532,7 @@ class CharaController {
 
         if (!hazard) {
             dmg = enemy.buffs.getFinalAtk(enemy.chara.atk) * mod
+            dmg +=enemy.getSpeedDmg();
             if (this.isfrozen)
                 dmg *= enemy.buffs.getFrozenModifier();
             dmgtype = enemy.buffs.getDmgType()

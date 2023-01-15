@@ -125,7 +125,6 @@ class PlayerController extends CharaController {
 
         if (pause)
             this.sprite.stopAnimation()
-        console.log(this.sprite.delay)
     }
 
     //updates hp values, be it max hp or current hp, activates hp regen

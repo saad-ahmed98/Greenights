@@ -637,7 +637,7 @@ class LVLController extends LVLAbstract {
             BABYLON.Color3.LerpToRef(BABYLON.Color3.BlackReadOnly, startingColor, t, this.scene.clearColor);
         }
         else {
-
+            
             if (!this.render) {
                 this.createGUIs()
                 this.render = true;
@@ -655,6 +655,7 @@ class LVLController extends LVLAbstract {
                 if (!this.gui.isPaused)
                     this.levelRenderLoop();
             }
+            
         }
         this.scene.render();
     }
@@ -1864,7 +1865,7 @@ class LVLController extends LVLAbstract {
 
     createEnemy(e, start, checkpoints, id, invertU) {
         localStorage.setItem(e, true)
-        var enemyUse = this.enemylist[e]
+        var enemyUse = JSON.parse(JSON.stringify(this.enemylist[e]))
         var matrixUse = this.matrix
         if (enemyUse.type == "r")
             matrixUse = this.flyingmatrix

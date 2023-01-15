@@ -78,19 +78,33 @@ class EnemyController extends CharaController {
     directionMovement(dirx, diry) {
         let xfound = false;
         let zfound = false;
-        if (this.mesh.position.x <= this.currentpoint[1] * 30 + 1 && this.mesh.position.x >= this.currentpoint[1] * 30 - 1)
+        if (this.mesh.position.x <= this.currentpoint[1] * 30 + this.buffs.getFinalSpeed(this.chara.speed) * 1.1 && this.mesh.position.x >= this.currentpoint[1] * 30 - this.buffs.getFinalSpeed(this.chara.speed) * 1.1)
             xfound = true;
-        if (this.mesh.position.z <= this.currentpoint[0] * 30 + 1 && this.mesh.position.z >= this.currentpoint[0] * 30 - 1)
+        if (this.mesh.position.z <= this.currentpoint[0] * 30 + this.buffs.getFinalSpeed(this.chara.speed) * 1.1 && this.mesh.position.z >= this.currentpoint[0] * 30 - this.buffs.getFinalSpeed(this.chara.speed) * 1.1)
             zfound = true;
         if (dirx != 0 && !xfound) {
-            if (this.currentpoint[1] * 30 - this.mesh.position.x <= 0 && dirx < 0)
-                return 1.8
-            else return 0.5
+            if (dirx < 0) {
+                if (this.currentpoint[1] * 30 - this.mesh.position.x > 0)
+                    return 0.5
+                else return 1.8
+            }
+            if (dirx > 0) {
+                if (this.currentpoint[1] * 30 - this.mesh.position.x > 0)
+                    return 1.8
+                else return 0.5
+            }
         }
         if (diry != 0 && !zfound) {
-            if (this.currentpoint[0] * 30 - this.mesh.position.z <= 0 && diry < 0)
-                return 1.8
-            else return 0.5
+            if (diry < 0) {
+                if (this.currentpoint[0] * 30 - this.mesh.position.y < 0)
+                    return 0.5
+                else return 1.8
+            }
+            if (diry > 0) {
+                if (this.currentpoint[0] * 30 - this.mesh.position.y < 0)
+                    return 1.8
+                else return 0.5
+            }
         }
         return 1
 
@@ -131,6 +145,10 @@ class EnemyController extends CharaController {
 
     //move the enemy across the map
     patrol() {
+        if (this.playerSkill != undefined) {
+            if (this.playerSkill.triggertype == "on_move")
+                this.chara.speed = Math.min(this.chara.speed + (this.playerSkill.modifiers.basespeed / 30) / this.gamespeed, this.playerSkill.modifiers.basespeed * this.playerSkill.modifiers.stacks);
+        }
 
         if (!this.running) {
             var duration = this.chara.move.duration
@@ -178,9 +196,9 @@ class EnemyController extends CharaController {
             }
         }
         else {
-            if (this.mesh.position.x <= this.currentpoint[1] * 30 + 1 && this.mesh.position.x >= this.currentpoint[1] * 30 - 1)
+            if (this.mesh.position.x <= this.currentpoint[1] * 30 + this.buffs.getFinalSpeed(this.chara.speed) * 1.1 && this.mesh.position.x >= this.currentpoint[1] * 30 - this.buffs.getFinalSpeed(this.chara.speed) * 1.1)
                 xfound = true;
-            if (this.mesh.position.z <= this.currentpoint[0] * 30 + 1 && this.mesh.position.z >= this.currentpoint[0] * 30 - 1)
+            if (this.mesh.position.z <= this.currentpoint[0] * 30 + this.buffs.getFinalSpeed(this.chara.speed) * 1.1 && this.mesh.position.z >= this.currentpoint[0] * 30 - this.buffs.getFinalSpeed(this.chara.speed) * 1.1)
                 zfound = true;
             if (!xfound && !zfound) {
                 this.speedoffsetZ = 2 / 3
@@ -239,25 +257,6 @@ class EnemyController extends CharaController {
                 else {
                     //if there isn't any left, wait
                     this.wait = true;
-                }
-                this.sprite.position.x -= Math.round(this.mesh.position.x / 30) / 40;
-                this.sprite.position.z -= Math.round(this.mesh.position.z / 30) / 40;
-
-                this.shadow.position.x -= Math.round(this.mesh.position.x / 30) / 40;
-                this.shadow.position.z -= Math.round(this.mesh.position.z / 30) / 40;
-
-                if (this.aura != undefined) {
-                    this.aura.position.x -= Math.round(this.mesh.position.x / 30) / 40;
-                    this.aura.position.z -= Math.round(this.mesh.position.z / 30) / 40;
-                }
-                var keys = Object.keys(this.buffs.effectSprite)
-                for (let i = 0; i < keys.length; i++) {
-                    this.buffs.effectSprite[keys[i]].position.x -= Math.round(this.mesh.position.x / 30) / 40;
-                    this.buffs.effectSprite[keys[i]].position.z -= Math.round(this.mesh.position.z / 30) / 40;
-                }
-                if (this.invincibleaura != undefined) {
-                    this.invincibleaura.position.x -= Math.round(this.mesh.position.x / 30) / 40;
-                    this.invincibleaura.position.z -= Math.round(this.mesh.position.z / 30) / 40;
                 }
             }
         }
@@ -397,6 +396,20 @@ class EnemyController extends CharaController {
                 else this.playerSkill.activateSkill([this])
             }
         }
+    }
+
+    //get speed damage modifier
+    getSpeedDmg() {
+        if (this.playerSkill != undefined) {
+            if (this.playerSkill.triggertype == "on_move") {
+                if (this.chara.speed == this.playerSkill.modifiers.basespeed)
+                    return 0
+                let dmg = this.playerSkill.modifiers.dmg * this.buffs.getFinalSpeed(this.chara.speed);
+                this.chara.speed = this.playerSkill.modifiers.basespeed
+                return dmg;
+            }
+        }
+        return 0;
     }
 
     //creates pathfinding
@@ -930,11 +943,12 @@ class EnemyController extends CharaController {
             if (this.chara.sfx.skillact != undefined)
                 this.lvlcontroller.playSound(this.chara.name + "-skillact", this.chara.sfx.skillact.volume)
             var instance = this;
-            var timer = this.chara.skill.begin.end - this.chara.skill.begin.start + 2
             var interval = setInterval(() => {
-                if (instance.sprite.cellIndex == instance.chara.skill.begin.end || timer <= 0) {
+                if (instance.sprite.cellIndex == instance.chara.skill.begin.end) {
+                    if (instance.wait)
+                        instance.running = true;
+                    else instance.running = false;
                     instance.skillproc = false;
-                    instance.running = false;
                     clearInterval(interval);
                 }
                 timer--;
@@ -1117,7 +1131,7 @@ class EnemyController extends CharaController {
                         this.patrol();
                     else {
                         //if wait, then idle
-                        if (this.running) {
+                        if (this.running && this.checkpoints.pause != 0) {
                             this.sprite.playAnimation(this.chara.idle.start, this.chara.idle.end, true, 30 * this.gamespeed * (this.chara.idle.duration));
                             this.running = false;
                         }
@@ -1134,6 +1148,7 @@ class EnemyController extends CharaController {
                             this.checkpoints = this.pattern.shift()
                             this.waittimer = 0;
                             this.wait = false;
+                            this.patrol();
                         }
                         else {
                             //if final checkpoint reached, remove the enemy

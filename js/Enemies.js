@@ -381,9 +381,9 @@ enemylist['Sarkaz Sentinel'] = {
 
     tooltip: " Upon being injured,\nissues an alarm to \nimprove the ATK and DEF\nof enemies as well as causing\nany enemy units in Standby\nto become Combat-Ready.",
     description: "A Sarkaz with no offensive capabilities of his own.\nRaises an alarm whenever he gets hit,\ninspiring all enemies and activating Standby enemies.\n\n" +
-        "Sarkaz Sentinel is a reconnaissance enemy that supports other Sarkaz in case he gets hit.\n" +
-        "When a Sentinel gets hit, raises his flag, instantly buffing all present enemies ATK and DEF by 50%.\n"
-        + "Additionally, if any Standby enemy is present, turns them Combat-Ready after raising his flag.",
+        "Sarkaz Sentinel is a reconnaissance enemy that\nsupports other Sarkaz in case they gets hit.\n" +
+        "When a Sentinel gets hit, they raise their flag,\ninstantly buffing all present enemies ATK and DEF by 50%.\n"
+        + "Additionally, if any Standby enemy is present,\nturns them Combat-Ready after raising their flag.",
 
     enemytype: "normal",
 
@@ -463,8 +463,8 @@ enemylist['Sarkaz Sentinel'] = {
 
 enemylist['Sarkaz Swordsman'] = {
     name: "Sarkaz Swordsman",
-    hp: 4000,
-    atk: 370,
+    hp: 4500,
+    atk: 400,
     def: 100,
     res: 50,
     atkinterval: 2.5,
@@ -517,6 +517,150 @@ enemylist['Sarkaz Swordsman'] = {
     sfx: {
         hit: {
             src: "swordsman-hit",
+            volume: 0.1
+        }
+    }
+}
+
+enemylist['Sarkaz Lancer'] = {
+    name: "Sarkaz Lancer",
+    hp: 6000,
+    atk: 450,
+    def: 150,
+    res: 40,
+    atkinterval: 4,
+    speed: 0.25 * 0.49,
+    blockcount: 1,
+    type: "g",
+    range: 0,
+    tooltip: "Gradually accelerates when moving,\ndealing bonus damage on the\nfirst hit after being blocked\nbased upon Movement Speed.",
+    hploss: 1,
+    dmgtype: "physical",
+    size: 1,
+    targets: 1,
+    description: "A Sarkaz mercenary.\nAfter special training, they are capable of rushing\nforward with a long spear, building up speed.\nThe faster they charge,\nthe harder they strike any who might stand in their way."+
+    "\n\nThese peculiar enemies gradually increase their movement speed with\na rate of increase of +0.25 tiles/sec every second\nwhich can be stacked up to 25 times."
+    +"\nAfter being blocked, they will release all their built up speed\nas a charged attack that will deal\nbonus (600 x current speed) damage to the unit blocking."
+    ,
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/sarkaz-lancer-sheet.webp",
+
+    hasskill: true,
+
+    atkanim: {
+        start: 0,
+        end: 15,
+        contact: 3,
+        duration: 1,
+    },
+
+    death: {
+        start: 16,
+        end: 30,
+        duration: 1,
+
+    },
+    idle: {
+        start: 31,
+        end: 48,
+        duration: 1,
+
+    },
+
+    move: {
+        start: 49,
+        end: 61,
+        duration: 0.7,
+
+    },
+    skill: {
+        name: "speedup",
+        triggertype: "on_move",
+        skilltype: "lancerspeed",
+        target: "self",
+        modifiers: {
+            dmg: 600,
+            basespeed:0.25*0.49,
+            stacks:25,
+        },
+        aura: false,
+    },
+    sfx: {
+        hit: {
+            src: "knightshield-hit",
+            volume: 0.1
+        }
+    }
+}
+
+enemylist['Sarkaz Lancer Leader'] = {
+    name: "Sarkaz Lancer Leader",
+    hp: 8000,
+    atk: 500,
+    def: 230,
+    res: 40,
+    atkinterval: 4,
+    speed: 0.3 * 0.49,
+    blockcount: 1,
+    type: "g",
+    range: 0,
+    tooltip: "Gradually accelerates when moving,\ndealing bonus damage on the\nfirst hit after being blocked\nbased upon Movement Speed.",
+    hploss: 1,
+    dmgtype: "physical",
+    size: 1,
+    targets: 1,
+    description: "A Sarkaz, more threatening than a normal Sarkaz Lancer.\nAfter special training, they are capable of rushing\nforward with a long spear, building up speed.\nThe faster they charge,\nthe harder they strike any who might stand in their way."+
+    "\n\nBoosting higher stats than a standard Sarkaz Lancer,\nthey come with better speed modifiers\ngradually increasing their movement speed with\na rate of increase of +0.3 tiles/sec every second\nwhich can be stacked up to 25 times."
+    +"\nAfter being blocked, they will release all their built up speed\nas a charged attack that will deal\nbonus (800 x current speed) damage to the unit blocking."
+    ,
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/sarkaz-lancer-leader-sheet.webp",
+
+    hasskill: true,
+
+    atkanim: {
+        start: 0,
+        end: 15,
+        contact: 3,
+        duration: 1,
+    },
+
+    death: {
+        start: 16,
+        end: 30,
+        duration: 1,
+
+    },
+    idle: {
+        start: 31,
+        end: 48,
+        duration: 1,
+
+    },
+
+    move: {
+        start: 49,
+        end: 61,
+        duration: 0.7,
+
+    },
+    skill: {
+        name: "speedup",
+        triggertype: "on_move",
+        skilltype: "lancerspeed",
+        target: "self",
+        modifiers: {
+            dmg: 800,
+            basespeed:0.3*0.49,
+            stacks:25,
+        },
+        aura: false,
+    },
+    sfx: {
+        hit: {
+            src: "knightshield-hit",
             volume: 0.1
         }
     }
