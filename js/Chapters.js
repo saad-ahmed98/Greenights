@@ -73,7 +73,7 @@ chapters["DM"] ={
     bgm:"dm_m",
     select:"dm.jpg",
     unlock:"2-12",
-    normalclear:"DM-10",
+    normalclear:"DM-9",
     hardclear:"DM-H5",
     unlockmsg:"clear 2-12 to unlock"
 }

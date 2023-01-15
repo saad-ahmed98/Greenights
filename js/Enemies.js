@@ -1,8 +1,251 @@
 let enemylist = {};
 
+enemylist["Lava Slug"] = {
+    name: "Lava Slug",
+    id:1,
+    hp: 1550,
+    atk: 240,
+    def: 0,
+    res: 0,
+    atkinterval: 1.7,
+    speed: 1 * 0.49,
+    blockcount: 1,
+    type: "g",
+    range: 0,
+    hploss: 1,
+    dmgtype: "physical",
+    size: 1.1,
+    tooltip: "A dangerous wild creature.",
+    description:"A wild creature originating from the nearby volcano.\nDue to their low intelligence,\nthey are easily controlled by enemy casters\nfor use as cannon fodder during invasions.",
+    targets: 1,
 
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/originium-slug-beta-sheet.webp",
+
+    hasskill: false,
+
+    atkanim: {
+        start: 0,
+        end: 11,
+        contact: 4,
+        duration: 1.3,
+    },
+
+    death: {
+        start: 12,
+        end: 26,
+        duration: 1,
+
+    },
+    idle: {
+        start: 27,
+        end: 56,
+        duration: 1,
+
+    },
+
+    move: {
+        start: 57,
+        end: 86,
+        duration: 1,
+
+    },
+
+    sfx: {
+        hit: {
+            src: "slug-hit",
+            volume: 0.01
+        }
+    }
+}
+
+
+enemylist["Soldier"] = {
+    name: "Soldier",
+    id:2,
+    hp: 3200,
+    atk: 350,
+    def: 50,
+    res: 0,
+    atkinterval: 2,
+    speed: 1.1 * 0.49,
+    blockcount: 1,
+    type: "g",
+    range: 0,
+    hploss: 1,
+    dmgtype: "physical",
+    size: 1,
+    tooltip: "A basic melee soldier.",
+    description: "A basic Reunion melee soldier.\n\n"
+        + "A soldier that joined Reunion's cause,\nwhile having nothing in the way of skills.",
+    targets: 1,
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/soldier-sheet.webp",
+
+    hasskill: false,
+
+    atkanim: {
+        start: 0,
+        end: 14,
+        contact: 6,
+        duration: 1,
+    },
+
+    death: {
+        start: 15,
+        end: 29,
+        duration: 1,
+
+    },
+    idle: {
+        start: 30,
+        end: 59,
+        duration: 1,
+
+    },
+    move: {
+        start: 60,
+        end: 83,
+        duration: 1.1,
+
+    },
+
+    sfx: {
+        atk: {
+            src: "soldier-atk",
+            volume: 0.1
+        },
+        hit: {
+            src: "soldier-hit",
+            volume: 0.1
+        }
+    },
+}
+
+enemylist["Monster"] = {
+    name: "Monster",
+    id:3,
+    hp: 2000,
+    atk: 0,
+    def: 150,
+    res: 0,
+    atkinterval: 999,
+    speed: 0.9 * 0.49,
+    blockcount: 99,
+    type: "r",
+    range: 0,
+    hploss: 1,
+    dmgtype: "physical",
+    size: 0.95,
+    tooltip: "An unmanned enemy drone\nthat does not attack.",
+    description:" An unmanned enemy drone, called \"Monster\" by Reunion forces.\nThough they come with no offensive abilities whatsoever,\nthey can slip by unnoticed during the heat of battle.\n\n"
+    +"Enemy drones are flying enemies,\nwhich is caracterized by their ability to \nmove anywhere on the map and not be able to be blocked.\nAdditionally, they can only be hit by Ranged units\nor Ground units with ranged attacks.",
+    targets: 0,
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/monster-sheet.webp",
+    hasskill: false,
+
+
+    atkanim: {
+        start: 9999,
+        end: 9999,
+        contact: 7,
+        duration: 1.3,
+    },
+
+    death: {
+        start: 0,
+        end: 14,
+        duration: 1,
+
+    },
+    idle: {
+        start: 15,
+        end: 44,
+        duration: 1,
+
+    },
+
+    move: {
+        start: 45,
+        end: 74,
+        duration: 1,
+
+    },
+
+    sfx: {
+    }
+}
+
+enemylist["Monster mk II"] = {
+    name: "Monster mk II",
+    id:4,
+    hp: 2500,
+    atk: 330,
+    def: 175,
+    res: 25,
+    atkinterval: 3,
+    speed: 0.9 * 0.49,
+    blockcount: 99,
+    type: "r",
+    range: 2,
+    hploss: 1,
+    dmgtype: "physical",
+    size: 0.95,
+    tooltip: "An improved Monster capable\nof ranged attacks.",
+    description:" An improved Monster, equipped with a light gun.\n\n"
+    +"Monsters mk II are a direct upgrade to Monsters,\nnoticeably they can now do ranged attacks which,\npaired with their ability to move freely anywhere on the map,\ncan pose a threat to more fragile units if targeted.",
+    
+    targets: 0,
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/monster-mk2-sheet.webp",
+    hasskill: false,
+
+
+    atkanim: {
+        start: 0,
+        end: 15,
+        contact: 9,
+        duration: 1.1,
+    },
+
+    death: {
+        start: 16,
+        end: 30,
+        duration: 1,
+
+    },
+    idle: {
+        start: 31,
+        end: 60,
+        duration: 1,
+
+    },
+
+    move: {
+        start: 61,
+        end: 90,
+        duration: 1,
+
+    },
+
+    sfx: {
+        atk: {
+            src: "monster-atk",
+            volume: 0.1
+        }
+    }
+}
 enemylist['Hound'] = {
     name: "Hound",
+    id:7,
     hp: 3000,
     atk: 370,
     def: 0,
@@ -61,6 +304,7 @@ enemylist['Hound'] = {
 
 enemylist['Crossbowman Leader'] = {
     name: "Crossbowman Leader",
+    id:12,
     hp: 3500,
     atk: 410,
     def: 150,
@@ -124,6 +368,7 @@ enemylist['Crossbowman Leader'] = {
 
 enemylist['Crossbowman'] = {
     name: "Crossbowman",
+    id:11,
     hp: 2500,
     atk: 310,
     def: 150,
@@ -187,8 +432,9 @@ enemylist['Crossbowman'] = {
 
 enemylist['Sarkaz Grudgebearer'] = {
     name: "Sarkaz Grudgebearer",
-    hp: 15000,
-    atk: 700,
+    id:31,
+    hp: 17000,
+    atk: 750,
     def: 250,
     res: 50,
     atkinterval: 5,
@@ -276,8 +522,9 @@ enemylist['Sarkaz Grudgebearer'] = {
 
 enemylist['Sarkaz Worldcurser'] = {
     name: "Sarkaz Worldcurser",
-    hp: 22000,
-    atk: 850,
+    id:32,
+    hp: 24000,
+    atk: 900,
     def: 300,
     res: 50,
     atkinterval: 5,
@@ -365,6 +612,7 @@ enemylist['Sarkaz Worldcurser'] = {
 
 enemylist['Sarkaz Sentinel'] = {
     name: "Sarkaz Sentinel",
+    id:28,
     hp: 5000,
     atk: 0,
     def: 160,
@@ -463,6 +711,7 @@ enemylist['Sarkaz Sentinel'] = {
 
 enemylist['Sarkaz Swordsman'] = {
     name: "Sarkaz Swordsman",
+    id:22,
     hp: 4500,
     atk: 400,
     def: 100,
@@ -524,7 +773,8 @@ enemylist['Sarkaz Swordsman'] = {
 
 enemylist['Sarkaz Lancer'] = {
     name: "Sarkaz Lancer",
-    hp: 6000,
+    id:29,
+    hp: 7000,
     atk: 450,
     def: 150,
     res: 40,
@@ -596,7 +846,8 @@ enemylist['Sarkaz Lancer'] = {
 
 enemylist['Sarkaz Lancer Leader'] = {
     name: "Sarkaz Lancer Leader",
-    hp: 8000,
+    id:30,
+    hp: 9000,
     atk: 500,
     def: 230,
     res: 40,
@@ -669,6 +920,7 @@ enemylist['Sarkaz Lancer Leader'] = {
 
 enemylist['Sarkaz Greatswordsman'] = {
     name: "Sarkaz Greatswordsman",
+    id:18,
     hp: 9500,
     atk: 700,
     def: 240,
@@ -731,6 +983,7 @@ enemylist['Sarkaz Greatswordsman'] = {
 
 enemylist['Sarkaz Crossbowman'] = {
     name: "Sarkaz Crossbowman",
+    id:19,
     hp: 8000,
     atk: 500,
     def: 200,
@@ -793,6 +1046,7 @@ enemylist['Sarkaz Crossbowman'] = {
 
 enemylist['Sarkaz Bladeweaver'] = {
     name: "Sarkaz Bladeweaver",
+    id:23,
     hp: 8000,
     atk: 450,
     def: 220,
@@ -875,6 +1129,7 @@ enemylist['Sarkaz Bladeweaver'] = {
 
 enemylist['Sarkaz Bladeweaver Leader'] = {
     name: "Sarkaz Bladeweaver Leader",
+    id:24,
     hp: 12000,
     atk: 550,
     def: 280,
@@ -956,6 +1211,7 @@ enemylist['Sarkaz Bladeweaver Leader'] = {
 
 enemylist["Guerrilla Fighter"] = {
     name: "Guerrilla Fighter",
+    id:66,
     hp: 3300,
     atk: 300,
     def: 300,
@@ -1034,6 +1290,7 @@ enemylist["Guerrilla Fighter"] = {
 
 enemylist["Guerrilla Fighter Leader"] = {
     name: "Guerrilla Fighter Leader",
+    id:67,
     hp: 4500,
     atk: 330,
     def: 350,
@@ -1110,6 +1367,7 @@ enemylist["Guerrilla Fighter Leader"] = {
 
 enemylist["Guerrilla Mortar"] = {
     name: "Guerrilla Mortar",
+    id:81,
     hp: 5500,
     atk: 450,
     def: 550,
@@ -1190,6 +1448,7 @@ enemylist["Guerrilla Mortar"] = {
 
 enemylist["Guerrilla Mortar Leader"] = {
     name: "Guerrilla Mortar Leader",
+    id:81,
     hp: 6500,
     atk: 590,
     def: 550,
@@ -1272,6 +1531,7 @@ enemylist["Guerrilla Mortar Leader"] = {
 
 enemylist["Guerrilla Sniper"] = {
     name: "Guerrilla Sniper",
+    id:70,
     hp: 3000,
     atk: 340,
     def: 300,
@@ -1350,6 +1610,7 @@ enemylist["Guerrilla Sniper"] = {
 
 enemylist["Guerrilla Sniper Leader"] = {
     name: "Guerrilla Sniper Leader",
+    id:71,
     hp: 4000,
     atk: 390,
     def: 300,
@@ -1426,6 +1687,7 @@ enemylist["Guerrilla Sniper Leader"] = {
 
 enemylist['Guerrilla Hound'] = {
     name: "Guerrilla Hound",
+    id:68,
     hp: 2900,
     atk: 350,
     def: 150,
@@ -1488,6 +1750,7 @@ enemylist['Guerrilla Hound'] = {
 
 enemylist['Guerrilla Hound Pro'] = {
     name: "Guerrilla Hound Pro",
+    id:69,
     hp: 3080,
     atk: 420,
     def: 150,
@@ -1547,6 +1810,7 @@ enemylist['Guerrilla Hound Pro'] = {
 
 enemylist["Guerrilla Siegebreaker"] = {
     name: "Guerrilla Siegebreaker",
+    id:82,
     hp: 3800,
     atk: 360,
     def: 550,
@@ -1632,6 +1896,7 @@ enemylist["Guerrilla Siegebreaker"] = {
 
 enemylist["Guerrilla Siegebreaker Leader"] = {
     name: "Guerrilla Siegebreaker Leader",
+    id:83,
     hp: 5000,
     atk: 430,
     def: 550,
@@ -1717,6 +1982,7 @@ enemylist["Guerrilla Siegebreaker Leader"] = {
 
 enemylist["Sarkaz Guerrilla Fighter Leader"] = {
     name: "Sarkaz Guerrilla Fighter Leader",
+    id:75,
     hp: 12000,
     atk: 580,
     def: 400,
@@ -1798,6 +2064,7 @@ enemylist["Sarkaz Guerrilla Fighter Leader"] = {
 
 enemylist["Sarkaz Guerrilla Fighter"] = {
     name: "Sarkaz Guerrilla Fighter",
+    id:74,
     hp: 8000,
     atk: 480,
     def: 400,
@@ -1879,6 +2146,7 @@ enemylist["Sarkaz Guerrilla Fighter"] = {
 
 enemylist["Sarkaz Guerrilla Caster"] = {
     name: "Sarkaz Guerrilla Caster",
+    id:76,
     hp: 7000,
     atk: 350,
     def: 400,
@@ -1967,6 +2235,7 @@ enemylist["Sarkaz Guerrilla Caster"] = {
 
 enemylist["Sarkaz Guerrilla Caster Leader"] = {
     name: "Sarkaz Guerrilla Caster Leader",
+    id:77,
     hp: 10000,
     atk: 450,
     def: 400,
@@ -2054,6 +2323,7 @@ enemylist["Sarkaz Guerrilla Caster Leader"] = {
 
 enemylist["Guerrilla Shieldguard"] = {
     name: "Guerrilla Shieldguard",
+    id:78,
     hp: 15000,
     atk: 700,
     def: 1300,
@@ -2128,6 +2398,7 @@ enemylist["Guerrilla Shieldguard"] = {
 
 enemylist["Guerrilla Shieldguard Leader"] = {
     name: "Guerrilla Shieldguard Leader",
+    id:79,
     hp: 25000,
     atk: 800,
     def: 1500,
@@ -2202,6 +2473,7 @@ enemylist["Guerrilla Shieldguard Leader"] = {
 
 enemylist["Guerrilla Shieldguard LeaderEX"] = {
     name: "Guerrilla Shieldguard LeaderEX",
+    id:80,
     hp: 25000,
     atk: 800,
     def: 1500,
@@ -2275,6 +2547,7 @@ enemylist["Guerrilla Shieldguard LeaderEX"] = {
 
 enemylist["Guerrilla Herald"] = {
     name: "Guerrilla Herald",
+    id:72,
     hp: 7000,
     atk: 300,
     def: 120,
@@ -2351,6 +2624,7 @@ enemylist["Guerrilla Herald"] = {
 
 enemylist["Guerrilla Herald Leader"] = {
     name: "Guerrilla Herald Leader",
+    id:73,
     hp: 10000,
     atk: 360,
     def: 120,
@@ -2427,6 +2701,7 @@ enemylist["Guerrilla Herald Leader"] = {
 
 enemylist["Patriot"] = {
     name: "Patriot",
+    id:5011,
     hp: 45000,
     atk: 2400,
     def: 1900,
@@ -2653,6 +2928,7 @@ enemylist["Patriot2"] = {
 
 enemylist["PatriotEX"] = {
     name: "PatriotEX",
+    id:5012,
     hp: 60000,
     atk: 3000,
     def: 1900,
@@ -2879,6 +3155,7 @@ enemylist["PatriotEX2"] = {
 
 enemylist["Roar Knight"] = {
     name: "Roar Knight",
+    id:34,
     hp: 3800,
     atk: 420,
     def: 100,
@@ -2957,6 +3234,7 @@ enemylist["Roar Knight"] = {
 
 enemylist["Bloodboil Knight"] = {
     name: "Bloodboil Knight",
+    id:36,
     hp: 13000,
     atk: 650,
     def: 800,
@@ -3036,6 +3314,7 @@ enemylist["Bloodboil Knight"] = {
 
 enemylist["Knight Shielder"] = {
     name: "Knight Shielder",
+    id:37,
     hp: 12000,
     atk: 700,
     def: 1300,
@@ -3095,6 +3374,7 @@ enemylist["Knight Shielder"] = {
 
 enemylist["Nameless Knight"] = {
     name: "Nameless Knight",
+    id:33,
     hp: 3800,
     atk: 360,
     def: 150,
@@ -3154,6 +3434,7 @@ enemylist["Nameless Knight"] = {
 
 enemylist["Vicious Training Gloompincer"] = {
     name: "Vicious Training Gloompincer",
+    id:35,
     hp: 3000,
     atk: 450,
     def: 700,
@@ -3214,7 +3495,8 @@ enemylist["Vicious Training Gloompincer"] = {
 
 enemylist["'Left-hand' Tytus Topola"] = {
     name: "'Left-hand' Tytus Topola",
-    hp: 20000,
+    id:38,
+    hp: 25000,
     atk: 750,
     def: 700,
     res: 50,
@@ -3227,7 +3509,7 @@ enemylist["'Left-hand' Tytus Topola"] = {
     dmgtype: "magic",
     size: 1.1,
     tooltip: "Decreases the ATK of the unit\n with the highest ATK;\nRevives.",
-    description: "A legendary knight,with incredible resolve crashing your own.\n\n" +
+    description: "A legendary knight, with incredible resolve crashing your own.\n\n" +
         "Tytus Topola, is a formidable opponent with high stats and\ncapable of dangerous ranged Magic attacks thanks to his spear." +
         "\nIn addition, Tytus is capable of unleashing a special ability every 10 seconds \nwhere he raises his spear towards the \ndirection of the highest ATK ally unit on the battlefield,\nand lowers their ATK by 50% for 25 seconds.\nHe will not use the debuff on a unit that already has it.\n"
         + "After being downed once,\nTytus will use his almighty resolve to revive himself once,\nthis will also reset his special ability cooldown.",
@@ -3303,6 +3585,7 @@ enemylist["'Left-hand' Tytus Topola"] = {
 
 enemylist["'Left-hand' Tytus Topola2"] = {
     name: "'Left-hand' Tytus Topola2",
+    id:39,
     hp: 25000,
     atk: 750,
     def: 700,
@@ -3396,6 +3679,7 @@ enemylist["'Left-hand' Tytus Topola2"] = {
 
 enemylist["Corrupted Knight"] = {
     name: "Corrupted Knight",
+    id:5003,
     hp: 40000,
     atk: 1200,
     def: 1200,
@@ -3530,6 +3814,7 @@ enemylist["Corrupted Knight"] = {
 
 enemylist["Corrupted KnightEX"] = {
     name: "Corrupted KnightEX",
+    id:5004,
     hp: 60000,
     atk: 1400,
     def: 1200,
@@ -3664,6 +3949,7 @@ enemylist["Corrupted KnightEX"] = {
 
 enemylist["Withered Knight"] = {
     name: "Withered Knight",
+    id:5005,
     hp: 40000,
     atk: 500,
     def: 600,
@@ -3797,6 +4083,7 @@ enemylist["Withered Knight"] = {
 
 enemylist["Withered KnightEX"] = {
     name: "Withered KnightEX",
+    id:5006,
     hp: 60000,
     atk: 650,
     def: 600,
@@ -3930,6 +4217,7 @@ enemylist["Withered KnightEX"] = {
 
 enemylist["Junkman"] = {
     name: "Junkman",
+    id:5,
     hp: 5000,
     atk: 500,
     def: 50,
@@ -3989,6 +4277,7 @@ enemylist["Junkman"] = {
 
 enemylist["Veteran Junkman"] = {
     name: "Veteran Junkman",
+    id:6,
     hp: 7500,
     atk: 600,
     def: 70,
@@ -4048,6 +4337,7 @@ enemylist["Veteran Junkman"] = {
 
 enemylist["Arts Guard"] = {
     name: "Arts Guard",
+    id:20,
     hp: 5500,
     atk: 450,
     def: 220,
@@ -4110,6 +4400,7 @@ enemylist["Arts Guard"] = {
 
 enemylist["Dual Swordsman"] = {
     name: "Dual Swordsman",
+    id:14,
     hp: 3500,
     atk: 450,
     def: 150,
@@ -4167,71 +4458,9 @@ enemylist["Dual Swordsman"] = {
     },
 }
 
-enemylist["Soldier"] = {
-    name: "Soldier",
-    hp: 3200,
-    atk: 350,
-    def: 50,
-    res: 0,
-    atkinterval: 2,
-    speed: 1.1 * 0.49,
-    blockcount: 1,
-    type: "g",
-    range: 0,
-    hploss: 1,
-    dmgtype: "physical",
-    size: 1,
-    tooltip: "A basic melee soldier.",
-    description: "A basic Reunion melee soldier.\n\n"
-        + "A soldier that joined Reunion's cause,\nwhile having nothing in the way of skills.",
-    targets: 1,
-
-    enemytype: "normal",
-
-    spritesheet: "images/sprites/soldier-sheet.webp",
-
-    hasskill: false,
-
-    atkanim: {
-        start: 0,
-        end: 14,
-        contact: 6,
-        duration: 1,
-    },
-
-    death: {
-        start: 15,
-        end: 29,
-        duration: 1,
-
-    },
-    idle: {
-        start: 30,
-        end: 59,
-        duration: 1,
-
-    },
-    move: {
-        start: 60,
-        end: 83,
-        duration: 1.1,
-
-    },
-
-    sfx: {
-        atk: {
-            src: "soldier-atk",
-            volume: 0.1
-        },
-        hit: {
-            src: "soldier-hit",
-            volume: 0.1
-        }
-    },
-}
-
 enemylist["Breaker"] = {
     name: "Breaker",
+    id:40,
     hp: 3500,
     atk: 410,
     def: 50,
@@ -4290,6 +4519,7 @@ enemylist["Breaker"] = {
 
 enemylist["Breaker Leader"] = {
     name: "Breaker Leader",
+    id:41,
     hp: 5000,
     atk: 500,
     def: 80,
@@ -4351,6 +4581,7 @@ enemylist["Breaker Leader"] = {
 
 enemylist["Possessed Soldier Leader"] = {
     name: "Possessed Soldier Leader",
+    id:43,
     hp: 4000,
     atk: 300,
     def: 150,
@@ -4426,6 +4657,7 @@ enemylist["Possessed Soldier Leader"] = {
 
 enemylist["Possessed Soldier"] = {
     name: "Possessed Soldier",
+    id:42,
     hp: 2500,
     atk: 250,
     def: 100,
@@ -4501,6 +4733,7 @@ enemylist["Possessed Soldier"] = {
 
 enemylist["Possessed Defender"] = {
     name: "Possessed Defender",
+    id:45,
     hp: 10000,
     atk: 600,
     def: 800,
@@ -4573,6 +4806,7 @@ enemylist["Possessed Defender"] = {
 
 enemylist["Possessed Junkman"] = {
     name: "Possessed Junkman",
+    id:43,
     hp: 6000,
     atk: 530,
     def: 100,
@@ -4646,6 +4880,7 @@ enemylist["Possessed Junkman"] = {
 
 enemylist["Possessed Defender Leader"] = {
     name: "Possessed Defender Leader",
+    id:46,
     hp: 16000,
     atk: 800,
     def: 1000,
@@ -4718,6 +4953,7 @@ enemylist["Possessed Defender Leader"] = {
 
 enemylist["Possessed Veteran Junkman"] = {
     name: "Possessed Veteran Junkman",
+    id:44,
     hp: 11000,
     atk: 650,
     def: 200,
@@ -4790,6 +5026,7 @@ enemylist["Possessed Veteran Junkman"] = {
 
 enemylist["Enraged Possessed Bonethrower"] = {
     name: "Enraged Possessed Bonethrower",
+    id:50,
     hp: 22000,
     atk: 1050,
     def: 220,
@@ -4865,6 +5102,7 @@ enemylist["Enraged Possessed Bonethrower"] = {
 
 enemylist["Enraged Possessed Thrower"] = {
     name: "Enraged Possessed Thrower",
+    id:49,
     hp: 15000,
     atk: 750,
     def: 200,
@@ -4939,6 +5177,7 @@ enemylist["Enraged Possessed Thrower"] = {
 
 enemylist["Enraged Possessed Leader"] = {
     name: "Enraged Possessed Leader",
+    id:48,
     hp: 30000,
     atk: 1750,
     def: 230,
@@ -5011,6 +5250,7 @@ enemylist["Enraged Possessed Leader"] = {
 
 enemylist["Enraged Possessed Soldier"] = {
     name: "Enraged Possessed Soldier",
+    id:47,
     hp: 20000,
     atk: 1000,
     def: 200,
@@ -5083,6 +5323,7 @@ enemylist["Enraged Possessed Soldier"] = {
 
 enemylist["Mephisto"] = {
     name: "Mephisto",
+    id:5007,
     hp: 35000,
     atk: 600,
     def: 200,
@@ -5161,6 +5402,7 @@ enemylist["Mephisto"] = {
 
 enemylist["MephistoEX"] = {
     name: "MephistoEX",
+    id:5008,
     hp: 60000,
     atk: 1000,
     def: 300,
@@ -5239,6 +5481,7 @@ enemylist["MephistoEX"] = {
 
 enemylist["Sarkaz Centurion"] = {
     name: "Sarkaz Centurion",
+    id:5002,
     hp: 25000,
     atk: 850,
     def: 250,
@@ -5299,6 +5542,7 @@ enemylist["Sarkaz Centurion"] = {
 
 enemylist["Sarkaz Centurion Nidus Guard"] = {
     name: "Sarkaz Centurion Nidus Guard",
+    id:52,
     hp: 14000,
     atk: 700,
     def: 220,
@@ -5373,6 +5617,7 @@ enemylist["Sarkaz Centurion Nidus Guard"] = {
 
 enemylist["Sarkaz Centurion Host"] = {
     name: "Sarkaz Centurion Host",
+    id:51,
     hp: 10000,
     atk: 600,
     def: 200,
@@ -5446,10 +5691,11 @@ enemylist["Sarkaz Centurion Host"] = {
 
 enemylist["Ergate"] = {
     name: "Ergate",
-    hp: 2300,
+    id:26,
+    hp: 4500,
     atk: 0,
-    def: 120,
-    res: 40,
+    def: 280,
+    res: 45,
     atkinterval: 1,
     speed: 1.2 * 0.49,
     blockcount: 99,
@@ -5499,8 +5745,10 @@ enemylist["Ergate"] = {
 
 }
 
+/*
 enemylist["Ergate Leader"] = {
     name: "Ergate Leader",
+    id:27,
     hp: 3800,
     atk: 0,
     def: 260,
@@ -5553,12 +5801,13 @@ enemylist["Ergate Leader"] = {
     },
 
 }
-
+*/
 enemylist["Yeti Operative"] = {
     name: "Yeti Operative",
-    hp: 3400,
-    atk: 360,
-    def: 100,
+    id:53,
+    hp: 4000,
+    atk: 380,
+    def: 120,
     res: 0,
     atkinterval: 2,
     speed: 1.1 * 0.49,
@@ -5627,9 +5876,10 @@ enemylist["Yeti Operative"] = {
 
 enemylist["Yeti OperativeEX"] = {
     name: "Yeti OperativeEX",
-    hp: 5000,
-    atk: 380,
-    def: 135,
+    id:54,
+    hp: 5200,
+    atk: 400,
+    def: 150,
     res: 0,
     atkinterval: 2,
     speed: 1.1 * 0.49,
@@ -5697,8 +5947,9 @@ enemylist["Yeti OperativeEX"] = {
 
 enemylist['Frostfang'] = {
     name: "Frostfang",
-    hp: 3150,
-    atk: 350,
+    id:55,
+    hp: 3300,
+    atk: 370,
     def: 0,
     res: 30,
     atkinterval: 1.4,
@@ -5770,6 +6021,7 @@ enemylist['Frostfang'] = {
 
 enemylist['Razorfrost'] = {
     name: "Razorfrost",
+    id:56,
     hp: 4650,
     atk: 430,
     def: 0,
@@ -5844,8 +6096,9 @@ enemylist['Razorfrost'] = {
 
 enemylist["Yeti Sniper"] = {
     name: "Yeti Sniper",
-    hp: 2500,
-    atk: 290,
+    id:57,
+    hp: 3000,
+    atk: 320,
     def: 80,
     res: 0,
     atkinterval: 2.4,
@@ -5918,8 +6171,9 @@ enemylist["Yeti Sniper"] = {
 
 enemylist["Yeti Sniper Leader"] = {
     name: "Yeti Sniper Leader",
-    hp: 3500,
-    atk: 360,
+    id:58,
+    hp: 4000,
+    atk: 380,
     def: 100,
     res: 0,
     atkinterval: 2.4,
@@ -5992,6 +6246,7 @@ enemylist["Yeti Sniper Leader"] = {
 
 enemylist["Butcher"] = {
     name: "Butcher",
+    id:9,
     hp: 9000,
     atk: 850,
     def: 230,
@@ -6055,6 +6310,7 @@ enemylist["Butcher"] = {
 
 enemylist["Veteran Butcher"] = {
     name: "Veteran Butcher",
+    id:10,
     hp: 14000,
     atk: 950,
     def: 270,
@@ -6116,6 +6372,7 @@ enemylist["Veteran Butcher"] = {
 
 enemylist["Big Bob"] = {
     name: "Big Bob",
+    id:5001,
     hp: 25000,
     atk: 1900,
     def: 800,
@@ -6179,6 +6436,7 @@ enemylist["Big Bob"] = {
 
 enemylist["Caster"] = {
     name: "Caster",
+    id:16,
     hp: 4000,
     atk: 400,
     def: 250,
@@ -6246,6 +6504,7 @@ enemylist["Caster"] = {
 
 enemylist["Caster Leader"] = {
     name: "Caster Leader",
+    id:17,
     hp: 6000,
     atk: 450,
     def: 300,
@@ -6314,6 +6573,7 @@ enemylist["Caster Leader"] = {
 
 enemylist["Yeti Caster"] = {
     name: "Yeti Caster",
+    id:59,
     hp: 5000,
     atk: 320,
     def: 200,
@@ -6415,6 +6675,7 @@ enemylist["Yeti Caster"] = {
 
 enemylist["Yeti Caster Leader"] = {
     name: "Yeti Caster Leader",
+    id:60,
     hp: 8000,
     atk: 400,
     def: 250,
@@ -6517,6 +6778,7 @@ enemylist["Yeti Caster Leader"] = {
 
 enemylist['Explosive Spider'] = {
     name: "Explosive Spider",
+    id:21,
     hp: 2500,
     atk: 260,
     def: 0,
@@ -6598,6 +6860,7 @@ enemylist['Explosive Spider'] = {
 
 enemylist['Glacial Spider'] = {
     name: "Glacial Spider",
+    id:61,
     hp: 3250,
     atk: 300,
     def: 0,
@@ -6681,6 +6944,7 @@ enemylist['Glacial Spider'] = {
 
 enemylist['Glacial Spider α'] = {
     name: "Glacial Spider α",
+    id:62,
     hp: 4850,
     atk: 370,
     def: 0,
@@ -6765,6 +7029,7 @@ enemylist['Glacial Spider α'] = {
 
 enemylist["Yeti Icecleaver"] = {
     name: "Yeti Icecleaver",
+    id:63,
     hp: 16000,
     atk: 830,
     def: 500,
@@ -6836,6 +7101,7 @@ enemylist["Yeti Icecleaver"] = {
 
 enemylist["Yeti Icecleaver Leader"] = {
     name: "Yeti Icecleaver Leader",
+    id:64,
     hp: 25000,
     atk: 1100,
     def: 600,
@@ -6907,6 +7173,7 @@ enemylist["Yeti Icecleaver Leader"] = {
 
 enemylist["Light-Armored Soldier"] = {
     name: "Light-Armored Soldier",
+    id:8,
     hp: 3700,
     atk: 300,
     def: 500,
@@ -6972,6 +7239,7 @@ enemylist["Light-Armored Soldier"] = {
 
 enemylist["Oneiros"] = {
     name: "Oneiros",
+    id:65,
     hp: 4000,
     atk: 500,
     def: 180,
@@ -7058,184 +7326,9 @@ enemylist["Oneiros"] = {
     }
 }
 
-enemylist["Lava Slug"] = {
-    name: "Lava Slug",
-    hp: 1550,
-    atk: 240,
-    def: 0,
-    res: 0,
-    atkinterval: 1.7,
-    speed: 1 * 0.49,
-    blockcount: 1,
-    type: "g",
-    range: 0,
-    hploss: 1,
-    dmgtype: "physical",
-    size: 1.1,
-    tooltip: "A dangerous wild creature.",
-    description:"A wild creature originating from the nearby volcano.\nDue to their low intelligence,\nthey are easily controlled by enemy casters\nfor use as cannon fodder during invasions.",
-    targets: 1,
-
-    enemytype: "normal",
-
-    spritesheet: "images/sprites/originium-slug-beta-sheet.webp",
-
-    hasskill: false,
-
-    atkanim: {
-        start: 0,
-        end: 11,
-        contact: 4,
-        duration: 1.3,
-    },
-
-    death: {
-        start: 12,
-        end: 26,
-        duration: 1,
-
-    },
-    idle: {
-        start: 27,
-        end: 56,
-        duration: 1,
-
-    },
-
-    move: {
-        start: 57,
-        end: 86,
-        duration: 1,
-
-    },
-
-    sfx: {
-        hit: {
-            src: "slug-hit",
-            volume: 0.01
-        }
-    }
-}
-
-enemylist["Monster"] = {
-    name: "Monster",
-    hp: 2000,
-    atk: 0,
-    def: 150,
-    res: 0,
-    atkinterval: 999,
-    speed: 0.9 * 0.49,
-    blockcount: 99,
-    type: "r",
-    range: 0,
-    hploss: 1,
-    dmgtype: "physical",
-    size: 0.95,
-    tooltip: "An unmanned enemy drone\nthat does not attack.",
-    description:" An unmanned enemy drone, called \"Monster\" by Reunion forces.\nThough they come with no offensive abilities whatsoever,\nthey can slip by unnoticed during the heat of battle.\n\n"
-    +"Enemy drones are flying enemies,\nwhich is caracterized by their ability to \nmove anywhere on the map and not be able to be blocked.\nAdditionally, they can only be hit by Ranged units\nor Ground units with ranged attacks.",
-    targets: 0,
-
-    enemytype: "normal",
-
-    spritesheet: "images/sprites/monster-sheet.webp",
-    hasskill: false,
-
-
-    atkanim: {
-        start: 9999,
-        end: 9999,
-        contact: 7,
-        duration: 1.3,
-    },
-
-    death: {
-        start: 0,
-        end: 14,
-        duration: 1,
-
-    },
-    idle: {
-        start: 15,
-        end: 44,
-        duration: 1,
-
-    },
-
-    move: {
-        start: 45,
-        end: 74,
-        duration: 1,
-
-    },
-
-    sfx: {
-    }
-}
-
-enemylist["Monster mk II"] = {
-    name: "Monster mk II",
-    hp: 2500,
-    atk: 330,
-    def: 175,
-    res: 25,
-    atkinterval: 3,
-    speed: 0.9 * 0.49,
-    blockcount: 99,
-    type: "r",
-    range: 2,
-    hploss: 1,
-    dmgtype: "physical",
-    size: 0.95,
-    tooltip: "An improved Monster capable\nof ranged attacks.",
-    description:" An improved Monster, equipped with a light gun.\n\n"
-    +"Monsters mk II are a direct upgrade to Monsters,\nnoticeably they can now do ranged attacks which,\npaired with their ability to move freely anywhere on the map,\ncan pose a threat to more fragile units if targeted.",
-    
-    targets: 0,
-
-    enemytype: "normal",
-
-    spritesheet: "images/sprites/monster-mk2-sheet.webp",
-    hasskill: false,
-
-
-    atkanim: {
-        start: 0,
-        end: 15,
-        contact: 9,
-        duration: 1.1,
-    },
-
-    death: {
-        start: 16,
-        end: 30,
-        duration: 1,
-
-    },
-    idle: {
-        start: 31,
-        end: 60,
-        duration: 1,
-
-    },
-
-    move: {
-        start: 61,
-        end: 90,
-        duration: 1,
-
-    },
-
-    sfx: {
-        atk: {
-            src: "monster-atk",
-            volume: 0.1
-        }
-    }
-}
-
 enemylist["Demolitionist"] = {
     name: "Demolitionist",
+    id:25,
     hp: 15000,
     atk: 1700,
     def: 800,
@@ -7302,6 +7395,7 @@ enemylist["Demolitionist"] = {
 
 enemylist["Demolitionist Leader"] = {
     name: "Demolitionist Leader",
+    id:26,
     hp: 25000,
     atk: 2200,
     def: 1000,
@@ -7368,6 +7462,7 @@ enemylist["Demolitionist Leader"] = {
 
 enemylist["Heavy Defender"] = {
     name: "Heavy Defender",
+    id:13,
     hp: 10000,
     atk: 600,
     def: 1000,
@@ -7428,6 +7523,7 @@ enemylist["Heavy Defender"] = {
 
 enemylist["Frostnova"] = {
     name: "Frostnova",
+    id:5009,
     hp: 30000,
     atk: 440,
     def: 380,
@@ -7658,6 +7754,7 @@ enemylist["Frostnova2"] = {
 
 enemylist["FrostnovaEX"] = {
     name: "FrostnovaEX",
+    id:5010,
     hp: 45000,
     atk: 530,
     def: 440,
@@ -7888,6 +7985,7 @@ enemylist["FrostnovaEX2"] = {
 
 enemylist["Mortar Gunner"] = {
     name: "Mortar Gunner",
+    id:15,
     hp: 5000,
     atk: 550,
     def: 150,

@@ -96,12 +96,12 @@ class EnemyController extends CharaController {
         }
         if (diry != 0 && !zfound) {
             if (diry < 0) {
-                if (this.currentpoint[0] * 30 - this.mesh.position.y < 0)
+                if (this.currentpoint[0] * 30 - this.mesh.position.z > 0)
                     return 0.5
                 else return 1.8
             }
             if (diry > 0) {
-                if (this.currentpoint[0] * 30 - this.mesh.position.y < 0)
+                if (this.currentpoint[0] * 30 - this.mesh.position.z > 0)
                     return 1.8
                 else return 0.5
             }
@@ -150,7 +150,7 @@ class EnemyController extends CharaController {
                 this.chara.speed = Math.min(this.chara.speed + (this.playerSkill.modifiers.basespeed / 30) / this.gamespeed, this.playerSkill.modifiers.basespeed * this.playerSkill.modifiers.stacks);
         }
 
-        if (!this.running) {
+        if (!this.running && !this.attacking) {
             var duration = this.chara.move.duration
             this.sprite.playAnimation(this.chara.move.start, this.chara.move.end, true, 30 * this.gamespeed * duration);
             this.running = true;
@@ -953,8 +953,6 @@ class EnemyController extends CharaController {
                 }
                 timer--;
             }, 1);
-
-
         }
 
         //if on skill activation, animations change, then modify them
@@ -1131,7 +1129,7 @@ class EnemyController extends CharaController {
                         this.patrol();
                     else {
                         //if wait, then idle
-                        if (this.running && this.checkpoints.pause != 0) {
+                        if (this.running) {
                             this.sprite.playAnimation(this.chara.idle.start, this.chara.idle.end, true, 30 * this.gamespeed * (this.chara.idle.duration));
                             this.running = false;
                         }

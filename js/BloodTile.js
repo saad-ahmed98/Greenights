@@ -37,19 +37,28 @@ class BloodTile {
         let hitenemies = this.getEnemiesInRange(enemies, 0)
         let hitplayers = this.getEnemiesInRange(players, 0)
         for (let i = 0; i < hitenemies.length; i++) {
-            hitenemies[i].buffs.buffs[this.name] = { "name": this.name, "modifiers": { "aspd": 50,"atk":0.5,"flathpregen":-150 } }
+            hitenemies[i].buffs.buffs[this.name] = { "name": this.name, "modifiers": { "aspd": 50, "atk": 0.5, "flathpregen": -150 } }
             hitenemies[i].buffs.effects[this.name] = 300
             if (hitenemies[i].buffs.effectSprite[this.name] == undefined)
                 hitenemies[i].createDebuffAura(this.name, 11)
+
+            //if enemy has a on hit skill, activate it
+            if (hitenemies[i].chara.hasskill && !hitenemies[i].playerSkill.active) {
+                if (hitenemies[i].playerSkill.triggertype == "on_hit") {
+                    hitenemies[i].activateSkillAnims()
+                    if (hitenemies[i].playerSkill.targettype == "all")
+                        hitenemies[i].playerSkill.activateSkill(hitenemies[i].lvlcontroller.enemies)
+                    else hitenemies[i].playerSkill.activateSkill([hitenemies[i]])
+                }
+            }
         }
         //hit all the players
         for (let i = 0; i < hitplayers.length; i++) {
-            hitplayers[i].buffs.buffs[this.name] = { "name": this.name, "modifiers": { "aspd": 50,"atk":0.5,"flathpregen":-150 } }
+            hitplayers[i].buffs.buffs[this.name] = { "name": this.name, "modifiers": { "aspd": 50, "atk": 0.5, "flathpregen": -150 } }
             hitplayers[i].buffs.effects[this.name] = 300
             if (hitplayers[i].buffs.effectSprite[this.name] == undefined)
                 hitplayers[i].createDebuffAura(this.name, 11)
         }
-
     }
 
     getEnemiesInRange(enemies, range) {

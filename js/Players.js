@@ -1650,14 +1650,14 @@ playerlist["Reed"] = {
     },
     skill: {
         name: "Soul Spark",
-        description: "ATK +100%,\ndamage turns into MAGIC,\nand restores +1 DP when\ndefeating an enemy.",
+        description: "ATK +110%,\ndamage turns into MAGIC,\nand restores +1 DP when\ndefeating an enemy.",
         duration: 30,
         sp: 35,
         initialsp: 20,
         chargetype: "second",
         triggertype: "manual",
         modifiers: {
-            atk: 1,
+            atk: 1.1,
             dponkill: 1,
             dmgtype:"magic"
         },

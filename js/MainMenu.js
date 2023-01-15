@@ -301,7 +301,7 @@ class MainMenu extends LVLAbstract {
         credits.top = "40%";
         credits.fontFamily = "Butler Stencil";
         credits.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT
-        
+
 
         var button = BABYLON.GUI.Button.CreateImageOnlyButton("but", "images/menu/play.png");
         button.width = "25%";
@@ -821,7 +821,9 @@ class MainMenu extends LVLAbstract {
         label.fontFamily = "Butler Stencil";
         this.lvlcontroller.addControl(label)
 
-        let keys = levels[lvlname].enemies.sort()
+        let keys = levels[lvlname].enemies.sort(function (a, b) {
+            return enemylist[a].id - enemylist[b].id
+        })
         var j = 0;
         var z = 0;
         var myScrollViewer = new BABYLON.GUI.ScrollViewer();
