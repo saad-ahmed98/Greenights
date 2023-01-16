@@ -7354,31 +7354,32 @@ enemylist["Demolitionist"] = {
     hasskill: false,
 
 
-    atkanim: {
+   atkanim: {
         start: 0,
-        end: 28,
-        contact: 16,
+        end: 37,
+        contact: 24,
         duration: 1.1,
     },
 
     death: {
-        start: 29,
-        end: 43,
+        start: 39,
+        end: 51,
         duration: 1,
 
     },
     idle: {
-        start: 44,
-        end: 73,
+        start: 52,
+        end: 81,
         duration: 1,
 
     },
     move: {
-        start: 74,
-        end: 89,
+        start: 82,
+        end: 97,
         duration: 1.5,
 
     },
+
 
     sfx: {
         atk: {
