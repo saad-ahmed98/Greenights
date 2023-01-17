@@ -295,7 +295,7 @@ class MainMenu extends LVLAbstract {
 
         var credits = new BABYLON.GUI.TextBlock();
 
-        credits.text = "An Arknights fangame in BabylonJS\ndevelopped by Kruss.";
+        credits.text = "An Arknights fangame in BabylonJS\ndeveloped by Kruss.";
         credits.fontSize = "3%";
         credits.color = "white";
         credits.left = "65%";

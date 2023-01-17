@@ -5494,7 +5494,7 @@ enemylist["Sarkaz Centurion"] = {
     hploss: 2,
     dmgtype: "magic",
     size: 1.1,
-    tooltip: "A strong Reunion squad leader.\nDoes ranged magic attacks\nto 2targets at once.",
+    tooltip: "A strong Reunion squad leader.\nDoes ranged magic attacks\nto 2 targets at once.",
     description: "One of Reunion's squad leaders who also serves as a Sarkaz mercenary.\nHe leads a group of Sarkaz mercenaries to fight on the front lines.\n\nA strong enemy with high stats and very powerful \nranged Magic attacks that can target 2 ally units at once.",
     targets: 2,
     bullet: { size: { height: 1, depth: 5, width: 3 }, arc: false, speed: 5, color: new BABYLON.Color3(0.69, 0.21, 0.67) },
