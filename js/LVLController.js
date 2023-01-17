@@ -637,7 +637,7 @@ class LVLController extends LVLAbstract {
             BABYLON.Color3.LerpToRef(BABYLON.Color3.BlackReadOnly, startingColor, t, this.scene.clearColor);
         }
         else {
-            
+
             if (!this.render) {
                 this.createGUIs()
                 this.render = true;
@@ -655,7 +655,7 @@ class LVLController extends LVLAbstract {
                 if (!this.gui.isPaused)
                     this.levelRenderLoop();
             }
-            
+
         }
         this.scene.render();
     }
@@ -1304,8 +1304,9 @@ class LVLController extends LVLAbstract {
                 p.playerSkill.deactivateDurationSkill();
                 p.aura.dispose();
                 p.aura = undefined;
-                if (p.chara.skillidle != undefined && !p.attacking)
+                if (p.chara.skillidle != undefined && !p.contact) {
                     p.sprite.playAnimation(p.chara.idle.start, p.chara.idle.end, true, this.gamespeed * 30);
+                }
             }
         }
     }
@@ -1421,6 +1422,7 @@ class LVLController extends LVLAbstract {
         player.skillBar.dispose()
         player.shadow.dispose()
         player.skillready.dispose()
+        player.barriericon.dispose()
 
         if (player.aura != undefined)
             player.aura.dispose();

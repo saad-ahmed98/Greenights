@@ -50,6 +50,7 @@ class Buffs {
             physdodge: 0,
             magicdodge: 0,
             hpregenbuff: 1,
+            barrierdegen: 0,
             statusres: 1,
             frozen: false,
             silence: false,
@@ -57,6 +58,8 @@ class Buffs {
             sphit: false,
             directiony: 0,
             dmgsleep: 0,
+            barrieronkill:0,
+            barrierreflect:0,
         }
     }
 
@@ -93,6 +96,11 @@ class Buffs {
         this.initModifiers();
         this.sumBuffs();
         return this.modifiers.dmgsleep
+    }
+    getFinalBarrierReflect(atk) {
+        this.initModifiers();
+        this.sumBuffs();
+        return this.getFinalAtk(atk)*this.modifiers.barrierreflect
     }
 
     getFinalAtk(atk) {
@@ -230,6 +238,12 @@ class Buffs {
         return this.modifiers.dponkill;
     }
 
+    getBarrierOnKill() {
+        this.initModifiers();
+        this.sumBuffs();
+        return this.modifiers.barrieronkill;
+    }
+
     getCanAttack() {
         this.initModifiers();
         this.sumBuffs();
@@ -299,6 +313,11 @@ class Buffs {
         if (finalhpregen > 0)
             finalhpregen *= this.modifiers.hpregenbuff
         return finalhpregen;
+    }
+    getFinalBarrierDegen(maxhp) {
+        this.initModifiers();
+        this.sumBuffs();
+        return maxhp * this.modifiers.barrierdegen*2.51
     }
 
     getFinalBlock(block) {

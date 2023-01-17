@@ -1,5 +1,146 @@
 let playerlist = {};
 
+playerlist["Penance"] = {
+    name: "Penance",
+    hp: 4655,
+    atk: 944,
+    def: 616,
+    res: 10,
+    atkinterval: 1.6,
+    blockcount: 3,
+    rarity: "rgb(255, 115, 0)",
+
+    rdtimer: 70,
+    rdcounter: 0,
+
+    type: "g",
+    class: "defender",
+    subclass: "Juggernaut",
+
+
+    cost: 34,
+    basecost: 34,
+
+    range: 1,
+    targets: 1,
+
+
+    dmgtype: "physical",
+
+    opicon: "images/opicons/penance.webp",
+
+    spritesheet: "images/sprites/penance-sheet.webp",
+
+
+    skillsfx: true,
+
+    atkanim: {
+        start: 0,
+        end: 23,
+        contact: 10,
+        duration: 1.1,
+    },
+
+    death: {
+        start: 24,
+        end: 39,
+    },
+
+    idle: {
+        start: 40,
+        end: 99
+    },
+
+    drop: {
+        start: 100,
+        end: 114
+    },
+    skillatkanim: {
+        start: 115,
+        end: 139,
+        contact: 115+9,
+        duration: 1.1,
+    },
+    skillidle: {
+        start: 140,
+        end: 154,
+    },
+    
+
+
+    skill: {
+        name: "Overcoming Obstacles",
+        description: "Immediately obtains a barrier \nequal to 130% of Max HP,\nAttack Interval increases, ATK +400%,\nand taunts enemy attacks\n",
+        duration: 30,
+        sp: 20,
+        initialsp: 0,
+        chargetype: "hit",
+        triggertype: "manual",
+
+        modifiers: {
+            barrier: 1.3,
+            atk: 4,
+            atkinterval: 0.9,
+            taunt:1,
+            ignoreaniminterval: true,
+        },
+        apply: "self",
+        skillimage: "images/opicons/penanceskill.webp"
+
+    },
+    talents: [
+        {
+            name: "Guardian of Law",
+            description: "Immediately obtains a Barrier equal to 55% of Max HP;\nEach time this unit defeats an enemy,\nobtains a Barrier equal to 10% of Max HP\n(up to 300% of Max HP)",
+            modifiers: {
+                barrier:0.55,
+                barrieronkill:0.1,
+            },
+            apply: "self",
+
+        },
+        {
+            name: "Ring of Thorns",
+            description: "While having a Barrier active, deals 53% of Penance's ATK \nas Magic to enemies that attacked her",
+
+            modifiers: {
+                barrierreflect:0.53
+            },
+            apply: "self",
+        },
+        {
+            name: "Trait",
+            description: "Cannot be healed by allies",
+            modifiers: {
+            },
+            apply: "self",
+        },
+    ],
+    sfx: {
+        atk:{
+            src: "penance-atk",
+            volume: 0.1
+        },
+        hit: {
+            src: "penance-hit",
+            volume: 0.1
+        },
+        skillatk:{
+            src: "penance-skillatk",
+            volume: 0.1
+        },
+        skillhit: {
+            src: "penance-skillhit",
+            volume: 0.1
+        },
+
+        skillact: {
+            src: "skill-def",
+            volume: 0.3
+        }
+    }
+}
+
 playerlist["Blemishine"] = {
     name: "Blemishine",
     hp: 3242,
@@ -284,146 +425,6 @@ playerlist["Angelina"] = {
             volume: 0.3
         }
     }
-}
-
-playerlist["Saileach"] = {
-    name: "Saileach",
-    hp: 1835,
-    atk: 611,
-    def: 407,
-    res: 0,
-    atkinterval: 1.3,
-    blockcount: 1,
-
-    rdtimer: 66,
-    rdcounter: 0,
-
-    type: "g",
-    class: "vanguard",
-    subclass: "Flagbearer",
-    rarity: "rgb(255, 115, 0)",
-
-
-    cost: 10,
-    basecost: 10,
-
-    range: 1,
-    targets: 1,
-
-    dmgtype: "physical",
-
-    opicon: "images/opicons/saileach.webp",
-
-    spritesheet: "images/sprites/saileach-sheet.webp",
-    skillsfx: false,
-
-    atkanim: {
-        start: 0,
-        end: 14,
-        contact: 8,
-        duration: 1.1,
-    },
-
-    death: {
-        start: 15,
-        end: 29,
-    },
-
-    idle: {
-        start: 30,
-        end: 69,
-        duration: 1.1,
-    },
-
-    drop: {
-        start: 70,
-        end: 84
-    },
-    skillidle: {
-        start: 85,
-        end: 124
-    },
-
-    skill: {
-        name: "Inheritance of Faith",
-        description: "Range +1.Instantly gains 20 DP.\nGrants DEF +50% and regenerates HP\nequals to 50% of Saileach's ATK\nto the ally with the lowest HP percentage\nin range.",
-        duration: 15,
-        sp: 29,
-        initialsp: 15,
-        chargetype: "second",
-        triggertype: "manual",
-        modifiers: {
-            instantdp: 20,
-            canattack: false,
-            range: 1,
-            block: -99,
-        },
-        applyeffects:
-        {
-            name: "Faith effect",
-            apply: "aliveallies",
-            range: 2,
-            modifiers: {
-                def: 0.5,
-                flathpregen: {
-                    stat: "atk",
-                    percent: 0.5
-                }
-            },
-            duration: 0.1,
-            targets: 1,
-            effecticon: 13,
-            targetselected: [],
-        },
-        apply: "self",
-        skillimage: "images/opicons/saileachskill.webp"
-
-    },
-    talents: [{
-        name: "Spiritual Influence",
-        description: "After deployment, the next ally unit has -2 DP Cost",
-        modifiers: {
-        },
-        apply: "self",
-    }, {
-        name: "Unwavering Banner",
-        description: "Allied units within the surrounding 8 tiles of Saileach\nhave ASPD +12 and regenerate 1.5% of their own Max HP.",
-        modifiers: {
-        },
-        applyeffects:
-        {
-            name: "Unwavering Banner effect",
-            apply: "aliveallies",
-            range: 1.5,
-            modifiers: {
-                aspd: 12,
-                hpregenpercent: 0.015,
-            },
-            duration: 0.5,
-            targets: 99,
-        },
-        apply: "self",
-    },
-    {
-        name: "Trait",
-        description: "Cannot block enemies or attack during the skill duration.",
-        modifiers: {
-
-        },
-        apply: "self",
-    },
-    ],
-    sfx: {
-        hit: {
-            src: "saileach-hit",
-            volume: 0.1
-        },
-        skillact: {
-            src: "skill-flag",
-            volume: 0.3
-        }
-    }
-
 }
 
 playerlist["Texas"] = {
@@ -2385,6 +2386,117 @@ playerlist["Breeze"] = {
     }
 }
 
+playerlist["Astesia"] = {
+    name: "Astesia",
+    hp: 2523,
+    atk: 690,
+    def: 471,
+    res: 15,
+    atkinterval: 1.25,
+    blockcount: 1,
+    rarity: "rgb(255, 221, 26)",
+
+    rdtimer: 60,
+    rdcounter: 0,
+
+    class: "guard",
+    subclass: "Magic fighter",
+
+    type: "g",
+
+    cost: 19,
+    basecost: 19,
+
+    range: 1,
+    targets: 1,
+
+    dmgtype: "magic",
+
+    opicon: "images/opicons/astesia.webp",
+
+    spritesheet: "images/sprites/astesia-sheet.webp",
+
+    skillsfx: true,
+
+
+    atkanim: {
+        start: 0,
+        end: 18,
+        contact: 10,
+        duration: 1.1,
+    },
+
+    death: {
+        start: 19,
+        end: 33,
+    },
+
+    idle: {
+        start: 34,
+        end: 63
+    },
+
+    drop: {
+        start: 64,
+        end: 78
+    },
+
+
+    skill: {
+        name: "Astral Sword",
+        description: "ATK +80%, DEF +80%,\nBlocked enemies +1, Targets +1",
+        duration: 15,
+        sp: 20,
+        initialsp: 10,
+        chargetype: "second",
+        triggertype: "manual",
+        modifiers: {
+            atk: 0.8,
+            def:0.8,
+            block:1,
+            targets:1
+        },
+        apply: "self",
+        skillimage: "images/opicons/astesiaskill.webp"
+
+    },
+    talents: [
+        {
+            name: "Celestial Globe",
+            description: "For every 20 seconds Astesia stays on the battlefield,\nASPD +5, stacking up to 5 times.",
+            condtalent: 5,
+            modifiers: {
+                aspd:5,
+            },
+            condition: "time",
+            time:20,
+        },
+    ],
+    sfx: {
+        atk: {
+            src: "astesia-atk",
+            volume: 0.1
+        },
+        hit: {
+            src: "astesia-hit",
+            volume: 0.1
+        },
+        skillact: {
+            src: "skill-atk",
+            volume: 0.3
+        },
+
+        skillatk: {
+            src: "astesia-skillatk",
+            volume: 0.1
+        },
+        skillhit: {
+            src: "astesia-skillhit",
+            volume: 0.1
+        },
+    }
+}
+
 playerlist["Beeswax"] = {
     name: "Beeswax",
     hp: 2005,
@@ -2850,7 +2962,7 @@ playerlist["Gravel"] = {
 
 
     cost: 5,
-    basecost: 6,
+    basecost: 5,
 
     range: 1,
     targets: 1,
@@ -2890,7 +3002,7 @@ playerlist["Gravel"] = {
 
     skill: {
         name: "Rat Swarm",
-        description: "Max HP +250% for 10 seconds\nafter deployment.",
+        description: "Obtains a barrier equal\nto 250% max HP that \ndegenerates over 10 seconds\nafter deployment.",
         duration: 10,
         sp: 0,
         initialsp: 0,
@@ -2899,7 +3011,9 @@ playerlist["Gravel"] = {
 
         modifiers: {
             instantheal: 1,
-            maxhp: 2.5,
+            barrier:2.5,
+            barrierdegen:0.1,
+            //maxhp: 2.5,
         },
         apply: "self",
         skillimage: "images/opicons/gravelskill.webp"
@@ -2912,6 +3026,7 @@ playerlist["Gravel"] = {
             description: "DP Cost -1; DEF +16%",
             modifiers: {
                 def: 0.16,
+                //barrier:2.5,
             },
             apply: "self",
         },

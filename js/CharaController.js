@@ -10,6 +10,7 @@ class CharaController {
         this.healthBar;
         this.healthBarBackground;
         this.dead = false;
+        this.barrier = 0;
 
 
         //current hp
@@ -46,7 +47,17 @@ class CharaController {
 
     //update health bar value
     updateHpBar() {
-        this.healthBar.value = Math.round(this.hp / this.maxhp * 100)
+        this.healthBar.value = Math.round(this.hp / (this.maxhp + this.barrier) * 100)
+        if (this.barrierBar != undefined) {
+            if (this.barrier == 0){
+                this.barrierBar.value = 0;
+                this.barriericon.isVisible = false
+            }
+            else {
+                this.barriericon.isVisible = true
+                this.barrierBar.value = Math.round((this.hp+this.barrier) / (this.maxhp + this.barrier) * 100)
+            }
+        }
         this.healthBarBackground.value = Math.max(this.healthBar.value, this.healthBarBackground.value - 1)
     }
     /*
@@ -182,7 +193,7 @@ class CharaController {
     // players is the list of all the active players
     //range is the range of the enemy
     //targets is the number of targets that can be hit
-    getFirstPlayerInRange(players, range, targets) {
+    getFirstPlayerInRange(playerz, range, targets) {
         var res = []
         var targetcount = targets;
 
@@ -192,6 +203,20 @@ class CharaController {
             if (targetcount <= 0)
                 return res;
         }
+        let players = [];
+        //to avoid sort that permanently affects order
+        for (let i = 0; i < playerz.length; i++)
+            players.push(playerz[i])
+        //sort by taunt
+        players.sort(function (x, y) {
+            if (x.buffs.getTauntLevel() < y.buffs.getTauntLevel()) {
+                return -1;
+            }
+            if (x.buffs.getTauntLevel() > y.buffs.getTauntLevel()) {
+                return 1;
+            }
+            return 0;
+        });
         for (let i = players.length - 1; i >= 0; i--) {
             if (this.distanceFromCenter(players[i].y * 30, players[i].x * 30, this.mesh.position.z, this.mesh.position.x, range * 30 + 16)) {
                 res.push(players[i])
@@ -348,7 +373,7 @@ class CharaController {
         var res = [];
         for (let i = 0; i < players.length; i++) {
             var counter = Math.abs(Math.abs(Math.round(players[i].mesh.position.x / 30) - this.x) - range);
-            if (this.between(players[i].x * 30, squarerange[0]) && this.between(players[i].y * 30, squarerange[1]) && players[i].hp < players[i].maxhp) {
+            if (this.between(players[i].x * 30, squarerange[0]) && this.between(players[i].y * 30, squarerange[1]) && players[i].chara.subclass!="Juggernaut" && players[i].hp < players[i].maxhp) {
                 if (Math.abs(Math.round(players[i].mesh.position.z / 30) - this.y) <= counter + rangeexpand && this.correctDirection(players[i].x, players[i].y)) {
                     if (res.length < targetcount)
                         res.push(players[i])
@@ -532,7 +557,7 @@ class CharaController {
 
         if (!hazard) {
             dmg = enemy.buffs.getFinalAtk(enemy.chara.atk) * mod
-            dmg +=enemy.getSpeedDmg();
+            dmg += enemy.getSpeedDmg();
             if (this.isfrozen)
                 dmg *= enemy.buffs.getFrozenModifier();
             dmgtype = enemy.buffs.getDmgType()
@@ -560,15 +585,25 @@ class CharaController {
         }
         if (this.buffs.getHitOrMiss(dmgtype)) {
             var finaldmg = this.buffs.getFinalDamage(dmgreceived)
-            this.hp -= finaldmg
-            if (!hazard) {
-                enemy.hp = Math.min(enemy.hp + enemy.buffs.getHPRecovered(finaldmg), enemy.maxhp)
-                enemy.updateHpBar()
+            if (this.barrier > 0) {
+                this.barrier -= finaldmg
+                if (this.barrier < 0)
+                    finaldmg = Math.abs(this.barrier)
+                else finaldmg = 0;
+                this.barrier = Math.max(this.barrier, 0)
             }
 
-
+            this.hp -= finaldmg
+            if (!hazard) {
+                //enemy life steal
+                enemy.hp = Math.min(enemy.hp + enemy.buffs.getHPRecovered(finaldmg), enemy.maxhp)
+                enemy.updateHpBar()
+                if (this.barrier > 0) {
+                    this.reflectDamage(enemy);
+                }
+            }
         }
-        if (this.hp>0) {
+        if (this.hp > 0) {
             //changes the color of the sprite to red to show they are getting hit
             this.sprite.color.r = 10
             this.sprite.color.g = 0
@@ -577,7 +612,7 @@ class CharaController {
 
 
         setTimeout(() => {
-            if (this.hp>0) {
+            if (this.hp > 0) {
                 this.sprite.color.r = 1
                 this.sprite.color.g = 1
                 this.sprite.color.b = 1
@@ -621,6 +656,30 @@ class CharaController {
         }
     }
 
+    //reflects damage when applicable
+    reflectDamage(enemy) {
+        let dmg = this.buffs.getFinalBarrierReflect(this.chara.atk)
+        let dmgreceived = Math.max(dmg * 0.10, (dmg) * ((100 - enemy.buffs.getFinalRes(enemy.chara.res)) / 100))
+        enemy.hp -= dmgreceived
+        if (dmgreceived > 0) {
+            if (enemy.hp > 0) {
+                //changes the color of the sprite to red to show they are getting hit
+                enemy.sprite.color.r = 10
+                enemy.sprite.color.g = 0
+                enemy.sprite.color.b = 0
+            }
+
+            setTimeout(() => {
+                if (enemy.hp > 0) {
+                    enemy.sprite.color.r = 1
+                    enemy.sprite.color.g = 1
+                    enemy.sprite.color.b = 1
+                }
+            }, 100)
+        }
+        enemy.updateHpBar();
+    }
+
     //checks if a player died and does the death related actions if they are
     checkDeath() {
         if (this.hp <= 0) {
@@ -645,6 +704,8 @@ class CharaController {
 
                 this.skillBar.dispose()
                 this.skillready.dispose()
+                this.barriericon.dispose()
+
 
                 if (this.aura != undefined)
                     this.aura.dispose()

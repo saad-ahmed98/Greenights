@@ -4,7 +4,8 @@ let gameconfig;
 let titleLoading = "";
 let lvlnumber = "";
 let backgroundimg = "";
-let unlockAll = false;
+let unlockAllLvl = true;
+let unlockAllChara = true;
 
 function startGame() {
     prepareGame()

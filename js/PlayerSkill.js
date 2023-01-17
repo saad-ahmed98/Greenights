@@ -38,6 +38,10 @@ class PlayerSkill {
                 targets[i].hp = Math.min(targets[i].maxhp, targets[i].hp + targets[i].maxhp * this.modifiers.instantheal)
                 targets[i].updateHpBar()
             }
+            if (this.modifiers.barrier != undefined) {
+                targets[i].barrier = Math.min(targets[i].maxhp*3, targets[i].barrier + targets[i].maxhp * this.modifiers.barrier)
+                targets[i].updateHpBar()
+            }
 
             targets[i].buffs.buffs[this.name] = { "name": this.name, "modifiers": this.modifiers }
             if (this.applyeffects != undefined) {

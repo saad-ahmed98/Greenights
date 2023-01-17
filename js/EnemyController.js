@@ -663,6 +663,9 @@ class EnemyController extends CharaController {
                         if (attackingplayer.condtalent.condition == "kill")
                             attackingplayer.checkConditionTalent();
                     }
+                    attackingplayer.barrier = Math.min(attackingplayer.maxhp * 3, attackingplayer.barrier + attackingplayer.maxhp * attackingplayer.buffs.getBarrierOnKill())
+                    attackingplayer.updateHpBar()
+
                     this.lvlcontroller.currentdp = Math.min(this.lvlcontroller.currentdp + attackingplayer.buffs.getDpOnKill(), this.lvlcontroller.dplimit);
                     this.lvlcontroller.gui.updatePlayerWheelUI(this.lvlcontroller.currentdp, this.lvlcontroller.squadlimit)
                 }

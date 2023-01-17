@@ -369,13 +369,13 @@ class LVLGUIController {
         this.mapstats["hp"] = label;
         this.statscontroller.addControl(label);
 
-        if(lvlcontroller.poison!=undefined){
+        if (lvlcontroller.poison != undefined) {
             image = new BABYLON.GUI.Image("",);
             image.domImage = this.scene.assets["poison"]
             image.width = "8%";
             image.height = "14%";
             image.top = "-46%"
-            image.left = "18%"    
+            image.left = "18%"
             this.statscontroller.addControl(image);
 
             image = new BABYLON.GUI.Image("",);
@@ -383,7 +383,7 @@ class LVLGUIController {
             image.width = "8%";
             image.height = "14%";
             image.top = "-46%"
-            image.left = "-18%"    
+            image.left = "-18%"
             this.statscontroller.addControl(image);
         }
 
@@ -606,7 +606,7 @@ class LVLGUIController {
                 redfilter.domImage = this.scene.assets["rdfilter"]
                 //var redfilter = new BABYLON.GUI.Image("", "images/common/rd.png");
                 var timer = new BABYLON.GUI.TextBlock();
-                timer.text =  Math.round(players[keys[i]].rdcounter / 30);
+                timer.text = Math.round(players[keys[i]].rdcounter / 30);
                 timer.color = "white";
                 timer.fontSize = "40%";
                 timer.top = "10%";
@@ -883,9 +883,12 @@ class LVLGUIController {
         //stats description
         let text = new BABYLON.GUI.TextBlock();
         var dmgtype = player.chara.dmgtype
+        let hp = Math.round(player.hp)
+        if (player.barrier != 0)
+            hp += "(+" + Math.round(player.barrier) + ")"
         if (player.buffs.getDmgType() != "")
             dmgtype = player.buffs.getDmgType()
-        text.text = player.chara.name + "\n\nHP\t\t" + Math.round(player.hp) + "/" + player.maxhp + "\nATK\t\t" + player.buffs.getFinalAtk(player.chara.atk) + "\nDEF\t\t" + player.buffs.getFinalDef(player.chara.def) + "\nRES\t\t" + player.buffs.getFinalRes(player.chara.res) + "\nBLOCK\t\t" +
+        text.text = player.chara.name + "\n\nHP\t\t" + hp + "/" + player.maxhp + "\nATK\t\t" + player.buffs.getFinalAtk(player.chara.atk) + "\nDEF\t\t" + player.buffs.getFinalDef(player.chara.def) + "\nRES\t\t" + player.buffs.getFinalRes(player.chara.res) + "\nBLOCK\t\t" +
             player.buffs.getFinalBlock(player.chara.blockcount) + "\nDMG\t\t" + dmgtype.toUpperCase();
         text.color = "white";
         text.fontSize = "10%";
@@ -906,7 +909,7 @@ class LVLGUIController {
 
         var textSP = new BABYLON.GUI.TextBlock();
         let duration = player.chara.skill.duration
-        if(duration==9999)
+        if (duration == 9999)
             duration = "∞"
         textSP.text = player.chara.skill.sp + " 🗲\t\t\t\t" + duration + " ◷"
         textSP.fontSize = "10%";
@@ -955,9 +958,12 @@ class LVLGUIController {
         if (this.playerTooltip.length > 0) {
             if (this.playerTooltip[0] == player.chara.name) {
                 var dmgtype = player.chara.dmgtype
+                let hp = Math.round(player.hp)
+                if (Math.round(player.barrier) != 0)
+                    hp += "(+" + Math.round(player.barrier) + ")"
                 if (player.buffs.getDmgType() != "")
                     dmgtype = player.buffs.getDmgType()
-                this.playerTooltip[1].text = player.chara.name + "\n\nHP\t\t" + Math.round(player.hp) + "/" + player.maxhp + "\nATK\t\t" + player.buffs.getFinalAtk(player.chara.atk) + "\nDEF\t\t" + player.buffs.getFinalDef(player.chara.def) + "\nRES\t\t" + player.buffs.getFinalRes(player.chara.res) + "\nBLOCK\t\t" +
+                this.playerTooltip[1].text = player.chara.name + "\n\nHP\t\t" + hp + "/" + player.maxhp + "\nATK\t\t" + player.buffs.getFinalAtk(player.chara.atk) + "\nDEF\t\t" + player.buffs.getFinalDef(player.chara.def) + "\nRES\t\t" + player.buffs.getFinalRes(player.chara.res) + "\nBLOCK\t\t" +
                     player.buffs.getFinalBlock(player.chara.blockcount) + "\nDMG\t\t" + dmgtype.toUpperCase();
             }
         }

@@ -24,6 +24,7 @@ class MainMenu extends LVLAbstract {
         this.loop;
         this.currentbgm;
         this.bgmfix = 0;
+        this.filters = [];
     }
 
     loadAssets() {
@@ -355,7 +356,7 @@ class MainMenu extends LVLAbstract {
                 j = 1
                 z = 3.2
             }
-            if (localStorage.getItem(chapters[keys[i]].unlock) != null || unlockAll) {
+            if (localStorage.getItem(chapters[keys[i]].unlock) != null || unlockAllLvl) {
                 let title = new BABYLON.GUI.TextBlock();
                 title.text = chapters[keys[i]].title;
                 title.fontSize = "3%";
@@ -400,7 +401,7 @@ class MainMenu extends LVLAbstract {
                 z = 3.2
             }
             let button;
-            if (localStorage.getItem(chapters[keys[i]].unlock) != null || unlockAll) {
+            if (localStorage.getItem(chapters[keys[i]].unlock) != null || unlockAllLvl) {
                 button = BABYLON.GUI.Button.CreateImageOnlyButton("but", "images/menu/chapters/" + chapters[keys[i]].select);
                 button.width = (28 * 0.7) + "%";
                 button.height = (50 * 0.7) + "%";
@@ -530,7 +531,7 @@ class MainMenu extends LVLAbstract {
             }
 
             var iscleared = localStorage.getItem(chapterlvl[i].level)
-            if (iscleared == null && !unlockAll)
+            if (iscleared == null && !unlockAllLvl)
                 stop = true;
 
 
@@ -914,7 +915,7 @@ class MainMenu extends LVLAbstract {
         let selected = [];
         var storage = localStorage.getItem("team");
         if (storage != null)
-            selected = JSON.parse(storage).filter(k => localStorage.getItem(k) != null)
+            selected = JSON.parse(storage).filter(k => localStorage.getItem(k) != null || unlockAllChara)
 
 
         let lastavailable = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
@@ -927,8 +928,6 @@ class MainMenu extends LVLAbstract {
         select.left = "30%";
         this.lvlcontroller.addControl(select)
 
-
-
         let keysall = Object.keys(playerlist)
         var j = 0;
         var z = 0;
@@ -939,14 +938,14 @@ class MainMenu extends LVLAbstract {
 
         myScrollViewer.top = "-2%";
         myScrollViewer.color = "transparent"
-        let keys = keysall.filter(k => localStorage.getItem(k) != null)
+        let keys = keysall.filter(k => (localStorage.getItem(k) != null || unlockAllChara) && (instance.filters.includes(playerlist[k].class) || instance.filters.length == 0))
 
         for (let i = 0; i < keys.length; i++) {
             if (i % 9 == 0 && i > 0) {
                 j++
                 z = 0
             }
-            if (localStorage.getItem(playerlist[keys[i]].name) != null) {
+            if (localStorage.getItem(playerlist[keys[i]].name) != null || unlockAllChara) {
 
                 var image = new BABYLON.GUI.Image("", playerlist[keys[i]].opicon);
                 image.width = "26%"
@@ -1033,12 +1032,82 @@ class MainMenu extends LVLAbstract {
                         }
                     }
                     select.text = "SELECTED " + selected.length + "/12";
-
                 });
             }
             z++
         }
         this.createEmptyTooltip()
+
+        //filter
+
+        var container = new BABYLON.GUI.Rectangle();
+        container.width = "5%";
+        container.height = "59.9%";
+        container.left = "1%";
+        container.top = "20%";
+        container.color = "white";
+        container.thickness = 1;
+        container.background = "rgba(0, 0, 0, 0.3)";
+        container.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
+        container.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
+
+        let icon = BABYLON.GUI.Button.CreateImageOnlyButton("tooltip", "images/menu/filter.png");
+        icon.width = "80%"
+        icon.height = "10%"
+        icon.top = "3%"
+        icon.left = "-1%"
+        icon.color = "transparent"
+        icon.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
+        icon.onPointerUpObservable.add(function () {
+            instance.playSound("back", 0.2)
+            instance.filters = []
+            instance.createPlayerSelection(lvlname, chapter)
+        });
+
+        let classes = ["vanguard", "guard", "defender", "sniper", "caster", "supporter", "medic", "specialist"]
+        for (let i = 0; i < classes.length; i++) {
+            let btnclass = BABYLON.GUI.Button.CreateImageOnlyButton("", "images/classicons/" + classes[i] + ".webp");
+
+            btnclass.width = "80%"
+            btnclass.height = "10%"
+            btnclass.top = (7 + 10 * (i + 1)) + "%"
+            btnclass.left = "-1%"
+            btnclass.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
+            let container2 = new BABYLON.GUI.Rectangle();
+            container2.width = "100%";
+            container2.height = "100%";
+            container2.color = "transparent";
+            container2.background = "rgba(77, 184, 255,0)";
+            if (this.filters.includes(classes[i])) {
+                btnclass.color = "blue"
+                btnclass.thickness = 2;
+                container2.background = "rgba(77, 184, 255,0.6)";
+            }
+            btnclass.addControl(container2)
+            container.addControl(btnclass)
+
+            btnclass.onPointerUpObservable.add(function () {
+                instance.playSound("click", 0.2)
+                if (btnclass.color == "blue") {
+                    instance.filters = instance.filters.filter(k => k != classes[i])
+                    btnclass.color = "white"
+                    btnclass.thickness = 1;
+                    container2.background = "rgba(77, 184, 255,0)";
+                }
+                else {
+                    instance.filters.push(classes[i])
+                    btnclass.color = "blue"
+                    btnclass.thickness = 2;
+                    container2.background = "rgba(77, 184, 255,0.6)";
+                }
+                instance.createPlayerSelection(lvlname, chapter)
+            });
+        }
+
+        container.addControl(icon)
+
+        this.lvlcontroller.addControl(container);
+
 
 
         this.lvlcontroller.addControl(myScrollViewer)

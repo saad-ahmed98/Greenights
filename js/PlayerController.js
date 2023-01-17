@@ -10,6 +10,8 @@ class PlayerController extends CharaController {
         this.blockedenemies = []
 
         this.skillready;
+        this.barriericon;
+
 
         this.aura;
         this.deploybomb = false;
@@ -18,6 +20,8 @@ class PlayerController extends CharaController {
         this.alivebuffs = [];
         this.contact = false
         this.prevatktimer = 0;
+        this.barrierBar;
+        this.timer = 0;
 
     }
 
@@ -132,7 +136,24 @@ class PlayerController extends CharaController {
         var res = this.buffs.getCurrentHpRatio(this.hp, this.maxhp, this.chara.hp)
         this.hp = res.hp
         this.maxhp = res.maxhp
-        this.hp = Math.min(this.maxhp, this.hp + this.buffs.getFinalHpRegen(this.maxhp) * (1 / 30) / this.gamespeed)
+        let finaldmg = this.buffs.getFinalHpRegen(this.maxhp) * (1 / 30) / this.gamespeed
+        this.timer += (1 / 30) / this.gamespeed;
+        if (this.condtalent != undefined) {
+            if (this.condtalent.condition == "time" && this.timer >= this.condtalent.time) {
+                this.timer = 0;
+                this.checkConditionTalent();
+            }
+        }
+        if (finaldmg < 0 && this.barrier > 0) {
+            this.barrier += finaldmg
+            if (this.barrier < 0)
+                finaldmg = Math.abs(this.barrier)
+            else finaldmg = 0;
+        }
+        this.barrier = Math.max(this.barrier, 0)
+
+        this.hp = Math.min(this.maxhp, this.hp + finaldmg)
+        this.barrier = Math.max(0, this.barrier - this.buffs.getFinalBarrierDegen(this.maxhp) * (1 / 30) / this.gamespeed)
         //check hp tied talents i.e Saga
         if (this.hp / this.maxhp <= 0.4) {
             if (this.condtalent != undefined) {
@@ -166,6 +187,12 @@ class PlayerController extends CharaController {
         this.shadow.size = 65;
         this.shadow.width = 90;
 
+        this.barriericon = new BABYLON.Sprite(id + "barriericon", iconsManager);
+        this.barriericon.cellIndex = 18
+
+        this.barriericon.size = 65;
+        this.barriericon.width = 90;
+
         this.skillready = new BABYLON.Sprite(id + "skillready", iconsManager);
         this.skillready.cellIndex = 1
 
@@ -173,12 +200,14 @@ class PlayerController extends CharaController {
         this.skillready.width = 90;
 
 
+
+
         var player0 = new BABYLON.Sprite(id, spriteManager);
 
         player0.position = new BABYLON.Vector3(-10 + this.x * 30, 20, 6 + this.y * 30);
         this.shadow.position = new BABYLON.Vector3(-10 + this.x * 30, 19, 6 + this.y * 30);
         this.skillready.position = new BABYLON.Vector3(-10 + this.x * 30, 22, 6 + this.y * 30);
-
+        this.barriericon.position = new BABYLON.Vector3(-10 + this.x * 30, 21, 6 + this.y * 30);
 
         player0.size = 65;
         player0.width = 90;
@@ -204,11 +233,16 @@ class PlayerController extends CharaController {
 
         this.skillready.isVisible = false
 
+        this.barriericon.position.z -= Math.min(5, this.y);
+        this.barriericon.position.x -= this.x;
 
+
+        this.barriericon.isVisible = false
+
+        this.activateTalents();
         this.addHPBar(gui);
         this.addSkillBar(gui);
 
-        this.activateTalents();
         if (this.lvlcontroller.pause)
             this.pauseSpriteIndex = this.chara.drop.end
 
@@ -271,6 +305,7 @@ class PlayerController extends CharaController {
     activateTalents() {
         var talents = this.chara.talents;
         for (let i = 0; i < talents.length; i++) {
+            this.barrier += talents[i].modifiers.barrier * this.maxhp || 0;
             if (talents[i].condtalent != undefined)
                 this.condtalent = talents[i];
             else {
@@ -327,8 +362,8 @@ class PlayerController extends CharaController {
 
     addHPBar(gui) {
         this.healthBarBackground = gui.addBackgroundBar(this.mesh, "rgb(133, 224, 133)", 30, "5%");
+        this.barrierBar = gui.addHPBar(this.mesh, "white", 30, "5%");
         this.healthBar = gui.addHPBar(this.mesh, "green", 30, "5%");
-
     }
     addSkillBar(gui) {
         this.skillBar = gui.addHPBar(this.mesh, "yellow", 35, "5%");
