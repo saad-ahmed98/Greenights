@@ -705,6 +705,7 @@ class CharaController {
                 this.skillBar.dispose()
                 this.skillready.dispose()
                 this.barriericon.dispose()
+                this.barrierBar.dispose()
 
 
                 if (this.aura != undefined)

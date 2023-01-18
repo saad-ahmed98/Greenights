@@ -4,7 +4,7 @@ let gameconfig;
 let titleLoading = "";
 let lvlnumber = "";
 let backgroundimg = "";
-let unlockAllLvl = false;
+let unlockAllLvl = true;
 let unlockAllChara = false;
 
 function startGame() {
@@ -142,6 +142,32 @@ function clearChapterFourH(){
     localStorage.setItem("4-H4",true)
     localStorage.setItem("Exusiai",true)
     localStorage.setItem("Angelina",true)
+}
+
+function clearDm(){
+    localStorage.setItem("DM-1",true)
+    localStorage.setItem("DM-2",true)
+    localStorage.setItem("DM-3",true)
+    localStorage.setItem("DM-4",true)
+    localStorage.setItem("DM-5",true)
+    localStorage.setItem("DM-6",true)
+    localStorage.setItem("DM-7",true)
+    localStorage.setItem("DM-8",true)
+    localStorage.setItem("DM-9",true)
+    localStorage.setItem("Haze",true)
+    localStorage.setItem("Reed",true)
+    localStorage.setItem("Istina",true)
+}
+
+function clearDmH(){
+    localStorage.setItem("DM-H1",true)
+    localStorage.setItem("DM-H2",true)
+    localStorage.setItem("DM-H3",true)
+    localStorage.setItem("DM-H4",true)
+    localStorage.setItem("DM-H5",true)
+    localStorage.setItem("Lava",true)
+    localStorage.setItem("Astesia",true)
+    localStorage.setItem("Penance",true)
 }
 
 function clearKm(){

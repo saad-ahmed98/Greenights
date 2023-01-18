@@ -54,10 +54,10 @@ class LVLController extends LVLAbstract {
         this.bullets = [];
 
         this.squadlimit = lvl.squadlimit;
-
-        this.dpregen = 1;
+        console.log(lvl.dpregen)
+        this.dpregen = lvl.dpregen || 1;
         this.dptimer = 0;
-        this.dplimit = 99;
+        this.dplimit = lvl.dplimit || 99;
 
         this.gamespeed = 2;
 
@@ -123,7 +123,8 @@ class LVLController extends LVLAbstract {
             this.checkSkills();
             this.movePlayers();
             this.maptimer += 1 / this.gamespeed;
-            this.dptimer += 1 / this.gamespeed;
+            this.dptimer += this.dpregen / this.gamespeed;
+            console.log(this.dpregen)
             if (!this.isSpawning)
                 this.spawnEnemies();
             this.checkBullets();
@@ -637,7 +638,7 @@ class LVLController extends LVLAbstract {
             BABYLON.Color3.LerpToRef(BABYLON.Color3.BlackReadOnly, startingColor, t, this.scene.clearColor);
         }
         else {
-
+            
             if (!this.render) {
                 this.createGUIs()
                 this.render = true;
@@ -1423,6 +1424,8 @@ class LVLController extends LVLAbstract {
         player.shadow.dispose()
         player.skillready.dispose()
         player.barriericon.dispose()
+        player.barrierBar.dispose()
+
 
         if (player.aura != undefined)
             player.aura.dispose();
@@ -1769,7 +1772,7 @@ class LVLController extends LVLAbstract {
     createSkybox() {
         // Skybox
         let skybox = new BABYLON.MeshBuilder.CreateBox("skybox", { height: 1, depth: 1920 / 2, width: 1080 / 2 }, this.scene);
-        skybox.position.x = 5
+        skybox.position.x = 20
         skybox.position.z += 180
         skybox.position.y -= 150
 

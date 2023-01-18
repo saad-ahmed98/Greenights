@@ -705,6 +705,145 @@ playerlist["Shining"] = {
         }
     }
 }
+playerlist["Saileach"] = {
+    name: "Saileach",
+    hp: 1835,
+    atk: 611,
+    def: 407,
+    res: 0,
+    atkinterval: 1.3,
+    blockcount: 1,
+
+    rdtimer: 66,
+    rdcounter: 0,
+
+    type: "g",
+    class: "vanguard",
+    subclass: "Flagbearer",
+    rarity: "rgb(255, 115, 0)",
+
+
+    cost: 10,
+    basecost: 10,
+
+    range: 1,
+    targets: 1,
+
+    dmgtype: "physical",
+
+    opicon: "images/opicons/saileach.webp",
+
+    spritesheet: "images/sprites/saileach-sheet.webp",
+    skillsfx: false,
+
+    atkanim: {
+        start: 0,
+        end: 14,
+        contact: 8,
+        duration: 1.1,
+    },
+
+    death: {
+        start: 15,
+        end: 29,
+    },
+
+    idle: {
+        start: 30,
+        end: 69,
+        duration: 1.1,
+    },
+
+    drop: {
+        start: 70,
+        end: 84
+    },
+    skillidle: {
+        start: 85,
+        end: 124
+    },
+
+    skill: {
+        name: "Inheritance of Faith",
+        description: "Range +1.Instantly gains 20 DP.\nGrants DEF +50% and regenerates HP\nequals to 50% of Saileach's ATK\nto the ally with the lowest HP percentage\nin range.",
+        duration: 15,
+        sp: 29,
+        initialsp: 15,
+        chargetype: "second",
+        triggertype: "manual",
+        modifiers: {
+            instantdp: 20,
+            canattack: false,
+            range: 1,
+            block: -99,
+        },
+        applyeffects:
+        {
+            name: "Faith effect",
+            apply: "aliveallies",
+            range: 2,
+            modifiers: {
+                def: 0.5,
+                flathpregen: {
+                    stat: "atk",
+                    percent: 0.5
+                }
+            },
+            duration: 0.1,
+            targets: 1,
+            effecticon: 13,
+            targetselected: [],
+        },
+        apply: "self",
+        skillimage: "images/opicons/saileachskill.webp"
+
+    },
+    talents: [{
+        name: "Spiritual Influence",
+        description: "After deployment, the next ally unit has -2 DP Cost",
+        modifiers: {
+        },
+        apply: "self",
+    }, {
+        name: "Unwavering Banner",
+        description: "Allied units within the surrounding 8 tiles of Saileach\nhave ASPD +12 and regenerate 1.5% of their own Max HP.",
+        modifiers: {
+        },
+        applyeffects:
+        {
+            name: "Unwavering Banner effect",
+            apply: "aliveallies",
+            range: 1.5,
+            modifiers: {
+                aspd: 12,
+                hpregenpercent: 0.015,
+            },
+            duration: 0.5,
+            targets: 99,
+        },
+        apply: "self",
+    },
+    {
+        name: "Trait",
+        description: "Cannot block enemies or attack during the skill duration.",
+        modifiers: {
+
+        },
+        apply: "self",
+    },
+    ],
+    sfx: {
+        hit: {
+            src: "saileach-hit",
+            volume: 0.1
+        },
+        skillact: {
+            src: "skill-flag",
+            volume: 0.3
+        }
+    }
+
+}
 
 playerlist["Saga"] = {
     name: "Saga",
@@ -1544,14 +1683,14 @@ playerlist["Lava"] = {
 
     skill: {
         name: "Flame Quenched Dagger",
-        description: "Attack Range +1 tile, ATK +20%,\nand attack up to 2 targets simultaneously.\nInfinite duration",
+        description: "Attack Range +1 tile, ATK +15%,\nand attack up to 2 targets simultaneously.\nInfinite duration",
         duration: 9999,
         sp: 80,
         initialsp: 0,
         chargetype: "second",
         triggertype: "auto",
         modifiers: {
-            atk: 0.2,
+            atk: 0.15,
             range: 1,
             targets: 1,
         },
@@ -1562,10 +1701,10 @@ playerlist["Lava"] = {
     talents: [
         {
             name: "See no Evil",
-            description: "When Lava defeats an enemy,\nLava gains ATK +2%, stacking up to 15 times",
-            condtalent: 15,
+            description: "When Lava defeats an enemy,\nLava gains ATK +1%, stacking up to 10 times",
+            condtalent: 10,
             modifiers: {
-                flatmultiatk:1.02
+                flatmultiatk:1.01
             },
             condition: "kill",
         },
@@ -3112,15 +3251,16 @@ playerlist["Perfumer"] = {
 
     skill: {
         name: "Fine Blending",
-        description: "ASPD -25, ATK +250%",
+        description: "ASPD -50, ATK +250%",
         duration: 30,
         sp: 60,
         initialsp: 20,
         chargetype: "second",
         triggertype: "manual",
         modifiers: {
-            aspd: -25,
+            aspd: -50,
             atk: 2.5,
+            ignoreaniminterval: true,
         },
         apply: "self",
         skillimage: "images/opicons/perfumerskill.png"
@@ -3169,10 +3309,9 @@ playerlist["Perfumer"] = {
 }
 
 playerlist["Matoimaru"] = {
-    //hasmodule
     name: "Matoimaru",
-    hp: 4660,
-    atk: 971,
+    hp: 4090,
+    atk: 916,
     def: 156,
     res: 0,
     atkinterval: 1.5,
@@ -3245,11 +3384,11 @@ playerlist["Matoimaru"] = {
     talents: [
         {
             name: "Demonic Physique",
-            description: "DEF -20%; Max HP +35%",
+            description: "DEF -20%; Max HP +23%",
 
             modifiers: {
                 flatmultidef: 0.80,
-                maxhp: 0.35,
+                maxhp: 0.23,
             },
             apply: "self",
         },
@@ -3668,14 +3807,14 @@ playerlist["Haze"] = {
 
     skill: {
         name: "Crimson eyes",
-        description: "Max HP -25%\nATK +60%, ASPD +60",
+        description: "Max HP -50%\nATK +60%, ASPD +60",
         duration: 25,
         sp: 25,
         initialsp: 0,
         chargetype: "second",
         triggertype: "manual",
         modifiers: {
-            maxhp: -0.25,
+            maxhp: -0.5,
             atk: 0.60,
             aspd: 60,
         },

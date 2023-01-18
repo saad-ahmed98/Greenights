@@ -822,40 +822,47 @@ class MainMenu extends LVLAbstract {
         label.fontFamily = "Butler Stencil";
         this.lvlcontroller.addControl(label)
 
-        let keys = levels[lvlname].enemies.sort(function (a, b) {
+        const keys = levels[lvlname].enemies.sort(function (a, b) {
             return enemylist[a].id - enemylist[b].id
         })
-        var j = 0;
-        var z = 0;
+        let z = 0;
         var myScrollViewer = new BABYLON.GUI.ScrollViewer();
         myScrollViewer.width = "63%"
         myScrollViewer.height = "100%";
-        myScrollViewer.left = "-10%";
+        myScrollViewer.left = "-16%";
 
         myScrollViewer.top = "10%";
         myScrollViewer.color = "transparent"
+        let keysused = [];
 
+        let offset = 4
+        let w = 17
+        let h = 18
+        if (keys.length > 16) {
+            offset = 5
+            w = 13
+            h = 14.5
+        }
         for (let i = 0; i < keys.length; i++) {
-            if (i % 3 == 0 && i > 0) {
-                j++
+            if (i % offset == 0 && i > 0)
                 z = 0
-            }
+
             let button;
             let name = keys[i].split("EX")[0]
-            if (keys[i].slice(-1) != '2') {
+            if (keys[i].slice(-1) != '2' && !keysused.includes(name)) {
                 if (localStorage.getItem(name) != null) {
-                    button = BABYLON.GUI.Button.CreateImageOnlyButton(name, "images/enemyicons/" + name + ".png");
-                    button.onPointerUpObservable.add(function () {
-                        instance.playSound("click", 0.3)
-                        instance.createEnemyTooltip(enemylist[keys[i]])
-                    });
+                button = BABYLON.GUI.Button.CreateImageOnlyButton(name, "images/enemyicons/" + name + ".png");
+                button.onPointerUpObservable.add(function () {
+                    instance.playSound("click", 0.3)
+                    instance.createEnemyTooltip(enemylist[keys[i]])
+                });
                 }
                 else button = BABYLON.GUI.Button.CreateImageOnlyButton(name, "images/menu/notfound.jpg");
 
-                button.width = "17%";
-                button.height = "18%";
-                button.top = (10 + j * 19) + "%";
-                button.left = (0 + z * 18) + "%";
+                button.width = w + "%";
+                button.height = h + "%";
+                button.top = (10 + Math.floor(i / offset) * (h + 1)) + "%";
+                button.left = (2 + z * (w + 1)) + "%";
                 button.color = "transparent";
                 button.hoverCursor = "pointer";
 
@@ -869,6 +876,7 @@ class MainMenu extends LVLAbstract {
                 keys.splice(i, 1)
                 i--
             }
+            keysused.push(name)
         }
 
         this.lvlcontroller.addControl(myScrollViewer)
@@ -891,7 +899,6 @@ class MainMenu extends LVLAbstract {
         quit.onPointerUpObservable.add(function () {
             instance.playSound("back", 0.3)
             instance.createLVLSelect(chapter)
-            localStorage.setItem("team", JSON.stringify(selected))
         });
         this.createEmptyEnemyTooltip()
 
@@ -1061,6 +1068,7 @@ class MainMenu extends LVLAbstract {
         icon.onPointerUpObservable.add(function () {
             instance.playSound("back", 0.2)
             instance.filters = []
+            localStorage.setItem("team", JSON.stringify(selected))
             instance.createPlayerSelection(lvlname, chapter)
         });
 
@@ -1100,6 +1108,7 @@ class MainMenu extends LVLAbstract {
                     btnclass.thickness = 2;
                     container2.background = "rgba(77, 184, 255,0.6)";
                 }
+                localStorage.setItem("team", JSON.stringify(selected))
                 instance.createPlayerSelection(lvlname, chapter)
             });
         }

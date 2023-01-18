@@ -982,7 +982,7 @@ enemylist['Sarkaz Greatswordsman'] = {
 
 enemylist['Sarkaz GreatswordsmanEX'] = {
     name: "Sarkaz GreatswordsmanEX",
-    id:18,
+    id:18.1,
     hp: 15000,
     atk: 800,
     def: 300,
@@ -1105,6 +1105,70 @@ enemylist['Sarkaz Crossbowman'] = {
     }
 
 }
+
+enemylist['Sarkaz CrossbowmanEX'] = {
+    name: "Sarkaz CrossbowmanEX",
+    id:19.1,
+    hp: 12000,
+    atk: 600,
+    def: 250,
+    res: 50,
+    atkinterval: 3,
+    speed: (0.6 + 0.2) * 0.49,
+    blockcount: 1,
+    type: "g",
+    range: 2.2,
+    hploss: 1,
+    dmgtype: "physical",
+    targets: 1,
+    tooltip: "A mercenary from Sarkaz who \nboasts fairly high ATK and RES;\n and uses ranged attacks.",
+    description: "A powerful ranged Sarkaz mercenary with high stats.\n\n" +
+        "Capable of attacking both Ranged and\nGround units with dangerous attacks.\nThanks to his ancient heritage, boosts fairly high RES.\n",
+    size: 1.1,
+    bullet: { size: { height: 1, depth: 8, width: 0.5 }, arc: false, speed: 5, color: new BABYLON.Color3(0.4, 0.4, 0.4) },
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/sarkaz-crossbowman-sheet.webp",
+
+    hasskill: false,
+
+    idle: {
+        start: 34,
+        end: 48,
+        duration: 1,
+
+    },
+
+    move: {
+        start: 49,
+        end: 72,
+        duration: 1,
+
+    },
+
+    atkanim: {
+        start: 0,
+        end: 19,
+        contact: 10,
+        duration: 1,
+    },
+
+    death: {
+        start: 20,
+        end: 33,
+        duration: 1,
+
+    },
+    sfx: {
+        atk: {
+            src: "crossbowman-atk",
+            volume: 0.1
+        }
+    }
+
+}
+
 
 enemylist['Sarkaz Bladeweaver'] = {
     name: "Sarkaz Bladeweaver",
@@ -3558,7 +3622,7 @@ enemylist["Vicious Training Gloompincer"] = {
 enemylist["'Left-hand' Tytus Topola"] = {
     name: "'Left-hand' Tytus Topola",
     id:38,
-    hp: 25000,
+    hp: 22500,
     atk: 750,
     def: 700,
     res: 50,
@@ -3648,7 +3712,7 @@ enemylist["'Left-hand' Tytus Topola"] = {
 enemylist["'Left-hand' Tytus Topola2"] = {
     name: "'Left-hand' Tytus Topola2",
     id:39,
-    hp: 25000,
+    hp: 22500,
     atk: 750,
     def: 700,
     res: 50,
@@ -5753,7 +5817,7 @@ enemylist["Sarkaz Centurion Host"] = {
 
 enemylist["Ergate"] = {
     name: "Ergate",
-    id:26,
+    id:27,
     hp: 4500,
     atk: 0,
     def: 280,
@@ -6570,6 +6634,73 @@ enemylist["Caster Leader"] = {
     hp: 6000,
     atk: 450,
     def: 300,
+    res: 50,
+    atkinterval: 4,
+    speed: 0.8 * 0.49,
+    blockcount: 1,
+    type: "g",
+    range: 2.4,
+    hploss: 1,
+    dmgtype: "magic",
+    size: 1,
+    tooltip: "A more dangerous caster,\ncapable of attacking\n2 targets at once with\nlong-ranged Magic.",
+    description:"A high-rank shaman that joined Reunion ranks.\nThanks to his years of experience and better equipment,\nhe can target 2 units at once with long-range magic attacks.\n\n"
+    +"Reunion caster leaders are a step up from Reunion casters in terms of stats,\nnoticeably they can now target 2 units at once with magic attacks\nwhich can allow them to easily knock out unprepared defense lines.",
+
+    targets: 2,
+    bullet: { size: { height: 1, depth: 5, width: 2 }, arc: false, speed: 4, color: new BABYLON.Color3(0.69, 0.21, 0.67) },
+
+    enemytype: "normal",
+
+    spritesheet: "images/sprites/caster-leader-sheet.webp",
+
+    hasskill: false,
+
+    atkanim: {
+        start: 0,
+        end: 17,
+        contact: 11,
+        duration: 1,
+    },
+
+    death: {
+        start: 18,
+        end: 32,
+        duration: 1,
+
+    },
+
+    idle: {
+        start: 33,
+        end: 47,
+        duration: 1,
+
+    },
+
+    move: {
+        start: 48,
+        end: 67,
+        duration: 1.1,
+
+    },
+
+    sfx: {
+        atk: {
+            src: "caster-atk",
+            volume: 0.1
+        },
+        hit: {
+            src: "caster-hit",
+            volume: 0.1
+        }
+    }
+}
+enemylist["Caster LeaderEX"] = {
+    name: "Caster LeaderEX",
+    id:17.1,
+    hp: 13000,
+    atk: 600,
+    def: 400,
     res: 50,
     atkinterval: 4,
     speed: 0.8 * 0.49,
