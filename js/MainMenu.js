@@ -311,13 +311,31 @@ class MainMenu extends LVLAbstract {
         button.top = "15%";
         button.hoverCursor = "pointer";
 
+        var load = BABYLON.GUI.Button.CreateImageOnlyButton("but", "images/menu/load.png");
+        load.width = "8%";
+        load.height = "14%";
+        load.color = "transparent";
+        load.top = "40%";
+        load.left = "-40%";
+
+        load.hoverCursor = "pointer";
+
+
         this.lvlcontroller.addControl(label);
+        this.lvlcontroller.addControl(load);
+
         this.lvlcontroller.addControl(button);
         this.lvlcontroller.addControl(credits);
+
+        load.onPointerUpObservable.add(function () {
+            instance.playSound("click", 0.3)
+        });
 
         button.onPointerUpObservable.add(function () {
             instance.playSound("confirm", 0.3)
             instance.createChapterSelect()
+            document.getElementById('input_file').click();
+
         });
     }
 
@@ -334,7 +352,7 @@ class MainMenu extends LVLAbstract {
         label.fontSize = "8%";
         label.color = "white";
         label.top = "-40%";
-        label.left = "10%";
+        label.left = "15%";
         label.fontFamily = "Butler Stencil";
         this.lvlcontroller.addControl(label)
         var j = 0
@@ -356,7 +374,7 @@ class MainMenu extends LVLAbstract {
                 j = 1
                 z = 3.2
             }
-            if (localStorage.getItem(chapters[keys[i]].unlock) != null || unlockAllLvl) {
+            if (checkSave(chapters[keys[i]].unlock) || unlockAllLvl) {
                 let title = new BABYLON.GUI.TextBlock();
                 title.text = chapters[keys[i]].title;
                 title.fontSize = "3%";
@@ -401,7 +419,7 @@ class MainMenu extends LVLAbstract {
                 z = 3.2
             }
             let button;
-            if (localStorage.getItem(chapters[keys[i]].unlock) != null || unlockAllLvl) {
+            if (checkSave(chapters[keys[i]].unlock) || unlockAllLvl) {
                 button = BABYLON.GUI.Button.CreateImageOnlyButton("but", "images/menu/chapters/" + chapters[keys[i]].select);
                 button.width = (28 * 0.7) + "%";
                 button.height = (50 * 0.7) + "%";
@@ -444,7 +462,7 @@ class MainMenu extends LVLAbstract {
 
                 this.lvlcontroller.addControl(button);
             }
-            if (localStorage.getItem(chapters[keys[i]].normalclear)) {
+            if (checkSave(chapters[keys[i]].normalclear)) {
                 let clear = new BABYLON.GUI.Image("clear", "images/menu/normalclear.png");
                 clear.width = "20%"
                 clear.height = "20%"
@@ -454,7 +472,7 @@ class MainMenu extends LVLAbstract {
                 clear.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
                 button.addControl(clear)
             }
-            if (localStorage.getItem(chapters[keys[i]].hardclear)) {
+            if (checkSave(chapters[keys[i]].hardclear)) {
                 let clear = new BABYLON.GUI.Image("clear", "images/menu/hardclear.png");
                 clear.width = "20%"
                 clear.height = "20%"
@@ -469,7 +487,6 @@ class MainMenu extends LVLAbstract {
 
 
         var quit = BABYLON.GUI.Button.CreateImageOnlyButton("but", "images/menu/back.png");
-
         quit.width = "17%"
         quit.height = "13%";
         quit.top = "5%";
@@ -530,8 +547,8 @@ class MainMenu extends LVLAbstract {
                 offs++
             }
 
-            var iscleared = localStorage.getItem(chapterlvl[i].level)
-            if (iscleared == null && !unlockAllLvl)
+            var iscleared = checkSave(chapterlvl[i].level)
+            if (!iscleared && !unlockAllLvl)
                 stop = true;
 
 
@@ -593,7 +610,7 @@ class MainMenu extends LVLAbstract {
 
             this.lvlcontroller.addControl(button);
 
-            if (iscleared != null) {
+            if (iscleared) {
                 if (chapterlvl[i].level.includes("H"))
                     var image = new BABYLON.GUI.Image("tooltip", "images/menu/hardclear.png");
                 else
@@ -850,7 +867,7 @@ class MainMenu extends LVLAbstract {
             let button;
             let name = keys[i].split("EX")[0]
             if (keys[i].slice(-1) != '2' && !keysused.includes(name)) {
-                if (localStorage.getItem(name) != null) {
+                if (checkSave(name)) {
                 button = BABYLON.GUI.Button.CreateImageOnlyButton(name, "images/enemyicons/" + name + ".png");
                 button.onPointerUpObservable.add(function () {
                     instance.playSound("click", 0.3)
@@ -922,7 +939,7 @@ class MainMenu extends LVLAbstract {
         let selected = [];
         var storage = localStorage.getItem("team");
         if (storage != null)
-            selected = JSON.parse(storage).filter(k => localStorage.getItem(k) != null || unlockAllChara)
+            selected = JSON.parse(storage).filter(k => checkSave(k) || unlockAllChara)
 
 
         let lastavailable = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
@@ -945,14 +962,14 @@ class MainMenu extends LVLAbstract {
 
         myScrollViewer.top = "-2%";
         myScrollViewer.color = "transparent"
-        let keys = keysall.filter(k => (localStorage.getItem(k) != null || unlockAllChara) && (instance.filters.includes(playerlist[k].class) || instance.filters.length == 0))
+        let keys = keysall.filter(k => (checkSave(k)  || unlockAllChara) && (instance.filters.includes(playerlist[k].class) || instance.filters.length == 0))
 
         for (let i = 0; i < keys.length; i++) {
             if (i % 9 == 0 && i > 0) {
                 j++
                 z = 0
             }
-            if (localStorage.getItem(playerlist[keys[i]].name) != null || unlockAllChara) {
+            if (checkSave(playerlist[keys[i]].name) || unlockAllChara) {
 
                 var image = new BABYLON.GUI.Image("", playerlist[keys[i]].opicon);
                 image.width = "26%"

@@ -4,7 +4,7 @@ let gameconfig;
 let titleLoading = "";
 let lvlnumber = "";
 let backgroundimg = "";
-let unlockAllLvl = true;
+let unlockAllLvl = false;
 let unlockAllChara = false;
 
 function startGame() {
@@ -14,22 +14,22 @@ function startGame() {
     gameconfig = new GameConfig(canvas)
     resize()
     let startingscreen = "";
-    if(sessionStorage.getItem("startingscreen")!=null)
+    if (sessionStorage.getItem("startingscreen") != null)
         startingscreen = sessionStorage.getItem("startingscreen")
-    new MainMenu(gameconfig,startingscreen)
+    new MainMenu(gameconfig, startingscreen)
 }
 
 function resize() {
     var width = window.document.body.clientWidth;
     var height = window.document.body.clientHeight;
-    
+
     if (width > height) {
         width = height * 16 / 9
     }
-    else height = width*9 / 16
+    else height = width * 9 / 16
     let canvas = document.querySelector("#container");
-    canvas.style.width = width+"px";
-    canvas.style.height = height+"px";
+    canvas.style.width = width + "px";
+    canvas.style.height = height + "px";
 
     gameconfig.engine.setSize(width, height)
 }
@@ -38,208 +38,228 @@ window.addEventListener("resize", () => {
     resize()
 });
 
-
-function prepareGame(){
-    localStorage.setItem("0",true)
-    localStorage.setItem("Fang",true)
-
+function addToSave(str) {
+    let progress = localStorage.getItem("Krussnights");
+    if (progress == null)
+        progress = []
+    else progress = JSON.parse(progress)
+    progress.push(str)
+    const res = [...new Set(progress)];
+    localStorage.setItem("Krussnights", JSON.stringify(res))
 }
 
-function clearChapterOne(){
-    localStorage.setItem("0",true)
-    localStorage.setItem("1-1",true)
-    localStorage.setItem("1-2",true)
-    localStorage.setItem("1-3",true)
-    localStorage.setItem("1-4",true)
-    localStorage.setItem("1-5",true)
-    localStorage.setItem("1-6",true)
-    localStorage.setItem("1-7",true)
-    localStorage.setItem("1-8",true)
-    localStorage.setItem("1-9",true)
-    localStorage.setItem("1-10",true)
-    localStorage.setItem("Fang",true)
-    localStorage.setItem("Adnachiel",true)
-    localStorage.setItem("Melantha",true)
-    localStorage.setItem("Orchid",true)
-    localStorage.setItem("Plume",true)
-    localStorage.setItem("Hibiscus",true)
-    localStorage.setItem("Ansel",true)
-    localStorage.setItem("Durin",true)
-    localStorage.setItem("Popukar",true)
-    localStorage.setItem("Beagle",true)
-    localStorage.setItem("Midnight",true)
+function open_file(){
+    console.log("mogus")
+}
+function checkSave(str) {
+    let progress = localStorage.getItem("Krussnights");
+    if (progress == null)
+        progress = []
+    else progress = JSON.parse(progress)
+    return progress.includes(str)
 }
 
-function clearChapterTwo(){
-    localStorage.setItem("2-1",true)
-    localStorage.setItem("2-2",true)
-    localStorage.setItem("2-3",true)
-    localStorage.setItem("2-4",true)
-    localStorage.setItem("2-5",true)
-    localStorage.setItem("2-6",true)
-    localStorage.setItem("2-7",true)
-    localStorage.setItem("2-8",true)
-    localStorage.setItem("2-9",true)
-    localStorage.setItem("2-10",true)
-    localStorage.setItem("2-11",true)
-    localStorage.setItem("2-12",true)
-    localStorage.setItem("Meteor",true)
-    localStorage.setItem("Courier",true)
-    localStorage.setItem("Mousse",true)
-    localStorage.setItem("Matoimaru",true)
-    localStorage.setItem("Perfumer",true)  
+function prepareGame() {
+
+    addToSave("0")
+    addToSave("Fang")
 }
 
-function clearChapterThree(){
-    localStorage.setItem("3-1",true)
-    localStorage.setItem("3-2",true)
-    localStorage.setItem("3-3",true)
-    localStorage.setItem("3-4",true)
-    localStorage.setItem("3-5",true)
-    localStorage.setItem("3-6",true)
-    localStorage.setItem("3-7",true)
-    localStorage.setItem("3-8",true)
-    localStorage.setItem("3-9",true)
-    localStorage.setItem("3-10",true)
-    localStorage.setItem("3-11",true)
-    localStorage.setItem("Gitano")
-    localStorage.setItem("Liskarm",true)
-    localStorage.setItem("Beeswax",true)
-    localStorage.setItem("Savage",true)
+function clearChapterOne() {
+    addToSave("0")
+    addToSave("1-1")
+    addToSave("1-2")
+    addToSave("1-3")
+    addToSave("1-4")
+    addToSave("1-5")
+    addToSave("1-6")
+    addToSave("1-7")
+    addToSave("1-8")
+    addToSave("1-9")
+    addToSave("1-10")
+    addToSave("Fang")
+    addToSave("Adnachiel")
+    addToSave("Melantha")
+    addToSave("Orchid")
+    addToSave("Plume")
+    addToSave("Hibiscus")
+    addToSave("Ansel")
+    addToSave("Durin")
+    addToSave("Popukar")
+    addToSave("Beagle")
+    addToSave("Midnight")
 }
 
-function clearChapterThreeH(){
-    localStorage.setItem("3-H1",true)
-    localStorage.setItem("3-H2",true)
-    localStorage.setItem("3-H3",true)
-    localStorage.setItem("3-H4",true)
-    localStorage.setItem("Shining",true)
-    localStorage.setItem("Saga",true)
+function clearChapterTwo() {
+    addToSave("2-1")
+    addToSave("2-2")
+    addToSave("2-3")
+    addToSave("2-4")
+    addToSave("2-5")
+    addToSave("2-6")
+    addToSave("2-7")
+    addToSave("2-8")
+    addToSave("2-9")
+    addToSave("2-10")
+    addToSave("2-11")
+    addToSave("2-12")
+    addToSave("Meteor")
+    addToSave("Courier")
+    addToSave("Mousse")
+    addToSave("Matoimaru")
+    addToSave("Perfumer")
 }
 
-function clearChapterFour(){
-    localStorage.setItem("4-1",true)
-    localStorage.setItem("4-2",true)
-    localStorage.setItem("4-3",true)
-    localStorage.setItem("4-4",true)
-    localStorage.setItem("4-5",true)
-    localStorage.setItem("4-6",true)
-    localStorage.setItem("4-7",true)
-    localStorage.setItem("4-8",true)
-    localStorage.setItem("4-9",true)
-    localStorage.setItem("4-10",true)
-    localStorage.setItem("4-11",true)
-    localStorage.setItem("Scavenger")
-    localStorage.setItem("Ceylon",true)
-    localStorage.setItem("Matterhorn",true)
-    localStorage.setItem("Lappland",true)
+function clearChapterThree() {
+    addToSave("3-1")
+    addToSave("3-2")
+    addToSave("3-3")
+    addToSave("3-4")
+    addToSave("3-5")
+    addToSave("3-6")
+    addToSave("3-7")
+    addToSave("3-8")
+    addToSave("3-9")
+    addToSave("3-10")
+    addToSave("3-11")
+    addToSave("Gitano")
+    addToSave("Liskarm")
+    addToSave("Beeswax")
+    addToSave("Savage")
 }
 
-function clearChapterFourH(){
-    localStorage.setItem("4-H1",true)
-    localStorage.setItem("4-H2",true)
-    localStorage.setItem("4-H3",true)
-    localStorage.setItem("4-H4",true)
-    localStorage.setItem("Exusiai",true)
-    localStorage.setItem("Angelina",true)
+function clearChapterThreeH() {
+    addToSave("3-H1")
+    addToSave("3-H2")
+    addToSave("3-H3")
+    addToSave("3-H4")
+    addToSave("Shining")
+    addToSave("Saga")
 }
 
-function clearDm(){
-    localStorage.setItem("DM-1",true)
-    localStorage.setItem("DM-2",true)
-    localStorage.setItem("DM-3",true)
-    localStorage.setItem("DM-4",true)
-    localStorage.setItem("DM-5",true)
-    localStorage.setItem("DM-6",true)
-    localStorage.setItem("DM-7",true)
-    localStorage.setItem("DM-8",true)
-    localStorage.setItem("DM-9",true)
-    localStorage.setItem("Haze",true)
-    localStorage.setItem("Reed",true)
-    localStorage.setItem("Istina",true)
+function clearChapterFour() {
+    addToSave("4-1")
+    addToSave("4-2")
+    addToSave("4-3")
+    addToSave("4-4")
+    addToSave("4-5")
+    addToSave("4-6")
+    addToSave("4-7")
+    addToSave("4-8")
+    addToSave("4-9")
+    addToSave("4-10")
+    addToSave("4-11")
+    addToSave("Scavenger")
+    addToSave("Ceylon")
+    addToSave("Matterhorn")
+    addToSave("Lappland")
 }
 
-function clearDmH(){
-    localStorage.setItem("DM-H1",true)
-    localStorage.setItem("DM-H2",true)
-    localStorage.setItem("DM-H3",true)
-    localStorage.setItem("DM-H4",true)
-    localStorage.setItem("DM-H5",true)
-    localStorage.setItem("Lava",true)
-    localStorage.setItem("Astesia",true)
-    localStorage.setItem("Penance",true)
+function clearChapterFourH() {
+    addToSave("4-H1")
+    addToSave("4-H2")
+    addToSave("4-H3")
+    addToSave("4-H4")
+    addToSave("Exusiai")
+    addToSave("Angelina")
 }
 
-function clearKm(){
-    localStorage.setItem("KM-1",true)
-    localStorage.setItem("KM-2",true)
-    localStorage.setItem("KM-3",true)
-    localStorage.setItem("KM-4",true)
-    localStorage.setItem("KM-5",true)
-    localStorage.setItem("KM-6",true)
-    localStorage.setItem("KM-7",true)
-    localStorage.setItem("KM-8",true)
-    localStorage.setItem("KM-9",true)
-    localStorage.setItem("KM-10",true)
-    localStorage.setItem("Gravel",true)
-    localStorage.setItem("Nearl",true)
-    localStorage.setItem("Breeze",true)
+function clearDm() {
+    addToSave("DM-1")
+    addToSave("DM-2")
+    addToSave("DM-3")
+    addToSave("DM-4")
+    addToSave("DM-5")
+    addToSave("DM-6")
+    addToSave("DM-7")
+    addToSave("DM-8")
+    addToSave("DM-9")
+    addToSave("Haze")
+    addToSave("Reed")
+    addToSave("Istina")
 }
 
-function clearKmH(){
-    localStorage.setItem("KM-H1",true)
-    localStorage.setItem("KM-H2",true)
-    localStorage.setItem("KM-H3",true)
-    localStorage.setItem("Platinum",true)
-    localStorage.setItem("Blemishine",true)
+function clearDmH() {
+    addToSave("DM-H1")
+    addToSave("DM-H2")
+    addToSave("DM-H3")
+    addToSave("DM-H4")
+    addToSave("DM-H5")
+    addToSave("Lava")
+    addToSave("Astesia")
+    addToSave("Penance")
 }
 
-function clearChapterFive(){
-    localStorage.setItem("5-1",true)
-    localStorage.setItem("5-2",true)
-    localStorage.setItem("5-3",true)
-    localStorage.setItem("5-4",true)
-    localStorage.setItem("5-5",true)
-    localStorage.setItem("5-6",true)
-    localStorage.setItem("5-7",true)
-    localStorage.setItem("5-8",true)
-    localStorage.setItem("5-9",true)
-    localStorage.setItem("5-10",true)
-    localStorage.setItem("5-11",true)
-    localStorage.setItem("5-12",true)
-    localStorage.setItem("5-13",true)
-    localStorage.setItem("5-14",true)
-    localStorage.setItem("Schwarz",true)
-    localStorage.setItem("Ceobe",true)
-    localStorage.setItem("Franka",true)
-    localStorage.setItem("Skadi",true)
+function clearKm() {
+    addToSave("KM-1")
+    addToSave("KM-2")
+    addToSave("KM-3")
+    addToSave("KM-4")
+    addToSave("KM-5")
+    addToSave("KM-6")
+    addToSave("KM-7")
+    addToSave("KM-8")
+    addToSave("KM-9")
+    addToSave("KM-10")
+    addToSave("Gravel")
+    addToSave("Nearl")
+    addToSave("Breeze")
 }
 
-function clearChapterFiveH(){
-    localStorage.setItem("5-H1",true)
-    localStorage.setItem("5-H2",true)
-    localStorage.setItem("5-H3",true)
-    localStorage.setItem("5-H4",true)
-    localStorage.setItem("Saileach",true)
-    localStorage.setItem("Texas",true)
+function clearKmH() {
+    addToSave("KM-H1")
+    addToSave("KM-H2")
+    addToSave("KM-H3")
+    addToSave("Platinum")
+    addToSave("Blemishine")
+}
+
+function clearChapterFive() {
+    addToSave("5-1")
+    addToSave("5-2")
+    addToSave("5-3")
+    addToSave("5-4")
+    addToSave("5-5")
+    addToSave("5-6")
+    addToSave("5-7")
+    addToSave("5-8")
+    addToSave("5-9")
+    addToSave("5-10")
+    addToSave("5-11")
+    addToSave("5-12")
+    addToSave("5-13")
+    addToSave("5-14")
+    addToSave("Schwarz")
+    addToSave("Ceobe")
+    addToSave("Franka")
+    addToSave("Skadi")
+}
+
+function clearChapterFiveH() {
+    addToSave("5-H1")
+    addToSave("5-H2")
+    addToSave("5-H3")
+    addToSave("5-H4")
+    addToSave("Saileach")
+    addToSave("Texas")
 }
 
 
 
 function shuffle(array) {
-    let currentIndex = array.length,  randomIndex;
-  
+    let currentIndex = array.length, randomIndex;
+
     // While there remain elements to shuffle.
     while (currentIndex != 0) {
-  
-      // Pick a remaining element.
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
-  
-      // And swap it with the current element.
-      [array[currentIndex], array[randomIndex]] = [
-        array[randomIndex], array[currentIndex]];
+
+        // Pick a remaining element.
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+
+        // And swap it with the current element.
+        [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex], array[currentIndex]];
     }
-  
+
     return array;
-  }
+}

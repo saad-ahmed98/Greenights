@@ -562,10 +562,9 @@ class EnemyController extends CharaController {
             }
             var dmgmodifier = mod;
             //TODO HARD CODED BAD
-            if (attackingplayer.chara.name == "Platinum") {
+            if (attackingplayer.chara.name == "Platinum")
                 dmgmodifier = Math.max(1, Math.min(attackingplayer.prevatktimer / 25 * 0.8, 2))
-                console.log(dmgmodifier)
-            }
+
 
             if (this.isasleep)
                 dmgmodifier = attackingplayer.buffs.getDmgSleep()

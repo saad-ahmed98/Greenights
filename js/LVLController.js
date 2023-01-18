@@ -54,7 +54,6 @@ class LVLController extends LVLAbstract {
         this.bullets = [];
 
         this.squadlimit = lvl.squadlimit;
-        console.log(lvl.dpregen)
         this.dpregen = lvl.dpregen || 1;
         this.dptimer = 0;
         this.dplimit = lvl.dplimit || 99;
@@ -124,7 +123,6 @@ class LVLController extends LVLAbstract {
             this.movePlayers();
             this.maptimer += 1 / this.gamespeed;
             this.dptimer += this.dpregen / this.gamespeed;
-            console.log(this.dpregen)
             if (!this.isSpawning)
                 this.spawnEnemies();
             this.checkBullets();
@@ -144,8 +142,8 @@ class LVLController extends LVLAbstract {
             var instance = this;
 
             setTimeout(() => {
-                localStorage.setItem(lvlnumber, true)
-                localStorage.setItem(this.unlock, true)
+                addToSave(lvlnumber)
+                addToSave(this.unlock)
                 if (!instance.gui.showinggui)
                     instance.gui.createLevelClearScreen(instance)
             }, 1000)
@@ -1869,7 +1867,7 @@ class LVLController extends LVLAbstract {
     }
 
     createEnemy(e, start, checkpoints, id, invertU) {
-        localStorage.setItem(e, true)
+        addToSave(e)
         var enemyUse = JSON.parse(JSON.stringify(this.enemylist[e]))
         var matrixUse = this.matrix
         if (enemyUse.type == "r")
