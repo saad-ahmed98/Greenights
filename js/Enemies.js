@@ -978,6 +978,68 @@ enemylist['Sarkaz Greatswordsman'] = {
             volume: 0.2
         }
     }
+}
+
+enemylist['Sarkaz GreatswordsmanEX'] = {
+    name: "Sarkaz GreatswordsmanEX",
+    id:18,
+    hp: 15000,
+    atk: 800,
+    def: 300,
+    res: 50,
+    atkinterval: 2,
+    speed: (0.65 + 0.2) * 0.49,
+    blockcount: 1,
+    type: "g",
+    range: 0,
+    hploss: 1,
+    dmgtype: "physical",
+    size: 1.1,
+    targets: 1,
+
+    enemytype: "normal",
+
+    tooltip: "A mercenary from Sarkaz who \nboasts fairly high ATK and RES.",
+    description: "A powerful melee Sarkaz mercenary with high stats.\n\n" +
+        "Thanks to his ancient heritage, boosts fairly high RES.\n",
+
+    spritesheet: "images/sprites/sarkaz-greatswordsman-sheet.webp",
+
+    hasskill: false,
+
+    idle: {
+        start: 37,
+        end: 51,
+        duration: 1,
+
+    },
+
+    move: {
+        start: 52,
+        end: 76,
+        duration: 1.1,
+
+    },
+
+    atkanim: {
+        start: 3,
+        end: 21,
+        contact: 15,
+        duration: 1.1,
+    },
+
+    death: {
+        start: 22,
+        end: 36,
+        duration: 1,
+
+    },
+    sfx: {
+        atk: {
+            src: "greatswordsman-atk",
+            volume: 0.2
+        }
+    }
 
 }
 
