@@ -334,7 +334,7 @@ class MainMenu extends LVLAbstract {
         button.onPointerUpObservable.add(function () {
             instance.playSound("confirm", 0.3)
             instance.createChapterSelect()
-            document.getElementById('input_file').click();
+            //document.getElementById('input_file').click();
 
         });
     }
