@@ -4,7 +4,7 @@ Fanmade Arknights demake in javascript with BabylonJS made for fun.
 
 ## Playable Demo
 
-You can play the game using this [link](https://krussx.github.io/Krussnights/).
+You can play the game using this [link](https://krussx.github.io/Krussnights/). 
 
 ## Sources used
 - Sound effects and voicelines : [aceship](https://aceship.github.io/AN-EN-Tags/index.html)
