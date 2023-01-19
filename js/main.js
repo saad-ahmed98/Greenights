@@ -48,8 +48,31 @@ function addToSave(str) {
     localStorage.setItem("Krussnights", JSON.stringify(res))
 }
 
-function open_file(){
-    console.log("mogus")
+function isJsonString(str) {
+    try {
+        JSON.parse(str);
+    } catch (e) {
+        return false;
+    }
+    return true;
+}
+
+function readFile(file) {
+    // Check if the file is an image.
+    if (file.type && !file.type.startsWith('application/json')) {
+        window.alert('File provided was not a json!')
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.addEventListener('load', (event) => {
+        if (isJsonString(event.target.result)){
+            localStorage.setItem("Krussnights", event.target.result)
+            window.alert('Game progress successfully loaded!')
+        }
+        else window.alert('File is not valid!')
+    });
+    reader.readAsText(file);
 }
 function checkSave(str) {
     let progress = localStorage.getItem("Krussnights");
@@ -59,8 +82,20 @@ function checkSave(str) {
     return progress.includes(str)
 }
 
-function prepareGame() {
+function downloadSave() {
+    var element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(localStorage.getItem("Krussnights")));
+    element.setAttribute('download', "savefile.json");
 
+    element.style.display = 'none';
+    document.body.appendChild(element);
+
+    element.click();
+    window.alert('Game progress exported!')
+    document.body.removeChild(element);
+}
+
+function prepareGame() {
     addToSave("0")
     addToSave("Fang")
 }

@@ -228,7 +228,6 @@ class MainMenu extends LVLAbstract {
                 instance.loop.play()
             }
         }
-
     }
 
     renderScene() {
@@ -262,7 +261,6 @@ class MainMenu extends LVLAbstract {
 
         return this.scene;
 
-
     }
 
 
@@ -274,7 +272,6 @@ class MainMenu extends LVLAbstract {
         skyboxMaterial.diffuseTexture = this.scene.assets[src]
         this.skybox.material = skyboxMaterial;
     }
-
 
     createMainMenu() {
         this.playBGM("bgm", 0.2)
@@ -289,7 +286,7 @@ class MainMenu extends LVLAbstract {
         label.text = "KRUSSNIGHTS";
         label.fontSize = "20%";
         label.color = "white";
-        label.top = "-20%";
+        label.top = "-25%";
         label.fontFamily = "Butler Stencil";
 
 
@@ -298,7 +295,7 @@ class MainMenu extends LVLAbstract {
         credits.text = "An Arknights fangame in BabylonJS\ndeveloped by Kruss.";
         credits.fontSize = "3%";
         credits.color = "white";
-        credits.left = "65%";
+        credits.left = "68%";
         credits.top = "40%";
         credits.fontFamily = "Butler Stencil";
         credits.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT
@@ -308,35 +305,181 @@ class MainMenu extends LVLAbstract {
         button.width = "25%";
         button.height = "20%";
         button.color = "transparent";
-        button.top = "15%";
+        button.top = "8%";
         button.hoverCursor = "pointer";
+
+        var button2 = BABYLON.GUI.Button.CreateImageOnlyButton("but", "images/menu/howtoplay.png");
+        button2.width = "15%";
+        button2.height = "15%";
+        button2.color = "transparent";
+        button2.top = "38%";
+        button2.left = "-1%";
+
+        button2.hoverCursor = "pointer";
 
         var load = BABYLON.GUI.Button.CreateImageOnlyButton("but", "images/menu/load.png");
         load.width = "8%";
         load.height = "14%";
         load.color = "transparent";
-        load.top = "40%";
-        load.left = "-40%";
+        load.top = "35%";
+        load.left = "-35%";
 
         load.hoverCursor = "pointer";
 
+        var save = BABYLON.GUI.Button.CreateImageOnlyButton("but", "images/menu/save.png");
+        save.width = "8%";
+        save.height = "14%";
+        save.color = "transparent";
+        save.top = "35%";
+        save.left = "-45%";
+        save.hoverCursor = "pointer";
+
+        var savetxt = new BABYLON.GUI.TextBlock();
+        savetxt.text = "SAVE";
+        savetxt.fontSize = "5%";
+        savetxt.color = "white";
+        savetxt.top = "45%";
+        savetxt.left = "-45%";
+        savetxt.fontWeight = "bold";
+        savetxt.fontFamily = "Butler Stencil";
+
+        var loadtxt = new BABYLON.GUI.TextBlock();
+        loadtxt.text = "LOAD";
+        loadtxt.fontSize = "5%";
+        loadtxt.color = "white";
+        loadtxt.top = "45%";
+        loadtxt.left = "-35%";
+        loadtxt.fontWeight = "bold";
+        loadtxt.fontFamily = "Butler Stencil";
+
 
         this.lvlcontroller.addControl(label);
+        this.lvlcontroller.addControl(savetxt);
+        this.lvlcontroller.addControl(loadtxt);
         this.lvlcontroller.addControl(load);
+        this.lvlcontroller.addControl(save);
+
 
         this.lvlcontroller.addControl(button);
+        this.lvlcontroller.addControl(button2);
+
         this.lvlcontroller.addControl(credits);
 
         load.onPointerUpObservable.add(function () {
             instance.playSound("click", 0.3)
+            document.getElementById('file-selector').click();
+
+        });
+        save.onPointerUpObservable.add(function () {
+            instance.playSound("click", 0.3)
+            downloadSave();
         });
 
         button.onPointerUpObservable.add(function () {
             instance.playSound("confirm", 0.3)
             instance.createChapterSelect()
-            //document.getElementById('input_file').click();
+        });
+
+        button2.onPointerUpObservable.add(function () {
+
+            instance.playSound("confirm", 0.3)
+            instance.createHowToPlay()
 
         });
+    }
+
+
+    createPage(pagenb) {
+        this.opcontroller.dispose()
+        this.opcontroller = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI", true, this.scene);
+        const pages = 1
+        var instance = this;
+
+        let img = new BABYLON.GUI.Image("but", "images/menu/howtoplay/how2play" + pagenb + ".png");
+        img.width = (28 * 0.7) + "%";
+        img.height = (52 * 0.7) + "%";
+        img.color = "transparent";
+        img.background = "transparent";
+        this.opcontroller.addControl(img);
+
+        var label = new BABYLON.GUI.TextBlock();
+        label.text = (pagenb + 1) + "/" + (pages + 1);
+        label.fontSize = "5%";
+        label.color = "white";
+        label.top = "39%";
+        label.left = "40%";
+        label.fontFamily = "Butler Stencil";
+        this.opcontroller.addControl(label)
+
+        if (pagenb < pages) {
+
+            let next = BABYLON.GUI.Button.CreateImageOnlyButton("but", "images/menu/howtoplay/next.png");
+            next.width = "5%";
+            next.height = "10%";
+            next.left = "45%";
+            next.color = "transparent";
+            next.background = "transparent";
+
+            next.onPointerUpObservable.add(function () {
+                instance.playSound("click", 0.3)
+                instance.createPage(pagenb + 1)
+            });
+            this.opcontroller.addControl(next);
+        }
+
+        if (pagenb > 0) {
+            let prev = BABYLON.GUI.Button.CreateImageOnlyButton("but", "images/menu/howtoplay/prev.png");
+            prev.width = "4%";
+            prev.height = "10%";
+            prev.left = "-45%";
+            prev.color = "transparent";
+            prev.background = "transparent";
+
+            prev.onPointerUpObservable.add(function () {
+                instance.playSound("click", 0.3)
+                instance.createPage(pagenb - 1)
+            });
+            this.opcontroller.addControl(prev);
+        }
+    }
+
+    createHowToPlay() {
+        this.createSkybox("main.png");
+        this.lvlcontroller.dispose()
+        this.lvlcontroller = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI", true, this.scene);
+        this.opcontroller.dispose()
+        var instance = this;
+
+        var label = new BABYLON.GUI.TextBlock();
+        label.text = "HOW TO PLAY";
+        label.fontSize = "9%";
+        label.color = "white";
+        label.top = "-39%";
+        label.left = "15%";
+        label.fontFamily = "Butler Stencil";
+        this.lvlcontroller.addControl(label)
+
+        var quit = BABYLON.GUI.Button.CreateImageOnlyButton("but", "images/menu/back.png");
+        quit.width = "17%"
+        quit.height = "13%";
+        quit.top = "5%";
+        quit.color = "transparent";
+        quit.background = "transparent"
+        quit.cornerRadius = 10;
+        quit.left = "10%"
+        quit.hoverCursor = "pointer";
+
+
+        quit.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
+        quit.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
+        this.lvlcontroller.addControl(quit);
+
+        quit.onPointerUpObservable.add(function () {
+            instance.playSound("back", 0.3)
+            instance.createMainMenu()
+        });
+
+        this.createPage(0);
     }
 
     createChapterSelect() {
@@ -349,7 +492,7 @@ class MainMenu extends LVLAbstract {
         let keys = Object.keys(chapters)
         var label = new BABYLON.GUI.TextBlock();
         label.text = "SELECT A CHAPTER";
-        label.fontSize = "8%";
+        label.fontSize = "9%";
         label.color = "white";
         label.top = "-40%";
         label.left = "15%";
@@ -552,7 +695,7 @@ class MainMenu extends LVLAbstract {
                 stop = true;
 
 
-            const button = BABYLON.GUI.Button.CreateImageOnlyButton("but", "images/menu/" + chapterlvl[i].type + ".png");
+            const button = BABYLON.GUI.Button.CreateImageOnlyButton("but", "images/menu/" + chapterlvl[i].type.split("boss")[0] + ".png");
             button.width = "13%";
             button.height = "7%";
             button.top = (22 + z * 12) + "%";
@@ -657,7 +800,17 @@ class MainMenu extends LVLAbstract {
                 this.lvlcontroller.addControl(image);
             }
 
+            if (chapterlvl[i].dplimit == 999) {
 
+                var image = new BABYLON.GUI.Image("tooltip", "images/menu/towericon.png");
+                image.width = "7.5%"
+                image.height = "12.5%"
+                image.top = (18 + z * 12) + "%";
+                image.left = (1.5 + j * 19) + "%";
+                image.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
+                image.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
+                this.lvlcontroller.addControl(image);
+            }
 
             button.onPointerUpObservable.add(function () {
                 instance.playSound("click", 0.3)
@@ -672,8 +825,6 @@ class MainMenu extends LVLAbstract {
                     instance.texts[chapterlvl[i].level].outlineColor = "blue"
                     instance.texts[chapterlvl[i].level].outlineWidth = 3
                 }
-
-
             });
             z += dir;
             buttons.push(button);
@@ -868,11 +1019,11 @@ class MainMenu extends LVLAbstract {
             let name = keys[i].split("EX")[0]
             if (keys[i].slice(-1) != '2' && !keysused.includes(name)) {
                 if (checkSave(name)) {
-                button = BABYLON.GUI.Button.CreateImageOnlyButton(name, "images/enemyicons/" + name + ".png");
-                button.onPointerUpObservable.add(function () {
-                    instance.playSound("click", 0.3)
-                    instance.createEnemyTooltip(enemylist[keys[i]])
-                });
+                    button = BABYLON.GUI.Button.CreateImageOnlyButton(name, "images/enemyicons/" + name + ".png");
+                    button.onPointerUpObservable.add(function () {
+                        instance.playSound("click", 0.3)
+                        instance.createEnemyTooltip(enemylist[keys[i]])
+                    });
                 }
                 else button = BABYLON.GUI.Button.CreateImageOnlyButton(name, "images/menu/notfound.jpg");
 
@@ -962,7 +1113,7 @@ class MainMenu extends LVLAbstract {
 
         myScrollViewer.top = "-2%";
         myScrollViewer.color = "transparent"
-        let keys = keysall.filter(k => (checkSave(k)  || unlockAllChara) && (instance.filters.includes(playerlist[k].class) || instance.filters.length == 0))
+        let keys = keysall.filter(k => (checkSave(k) || unlockAllChara) && (instance.filters.includes(playerlist[k].class) || instance.filters.length == 0))
 
         for (let i = 0; i < keys.length; i++) {
             if (i % 9 == 0 && i > 0) {

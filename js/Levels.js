@@ -515,7 +515,7 @@ levels["1-10"] = {
     offsetZ: 0,
     difficulty: "★★★☆☆☆☆",
     unlock: "Melantha",
-    type: "boss",
+    type: "hardboss",
     skybox: "forest.png",
 
     waves: [
@@ -1278,7 +1278,7 @@ levels["2-12"] = {
     offsetZ: 0,
     difficulty: "★★★★★☆☆",
     unlock: "Mousse",
-    type: "boss",
+    type: "hardboss",
     skybox: "desert.png",
 
     waves: [
@@ -2058,7 +2058,7 @@ levels["3-11"] = {
     offsetX: 0,
     offsetY: -30,
     offsetZ: 0,
-    type: "boss",
+    type: "hardboss",
     unlock: "Savage",
     skybox: "bluebg.png",
     poison: 50,
@@ -3097,7 +3097,7 @@ levels["4-11"] = {
     offsetX: -10,
     offsetY: -40,
     offsetZ: 20,
-    type: "boss",
+    type: "hardboss",
     unlock: "Lappland",
     skybox: "city.png",
     snowstorm: true,
@@ -4447,7 +4447,7 @@ levels["5-14"] = {
     offsetX: -20,
     offsetY: -60,
     offsetZ: 15,
-    type: "boss",
+    type: "hardboss",
     unlock: "Skadi",
     skybox: "nightsky.png",
 
@@ -5448,7 +5448,7 @@ levels["DM-9"] = {
     offsetZ: 0,
     difficulty: "★★★★★★☆",
     unlock: "Istina",
-    type: "boss",
+    type: "hard",
     skybox: "desert.png",
 
     waves: [
@@ -6122,7 +6122,7 @@ levels["DM-H5"] = {
     offsetZ: 30,
     unlock: "Penance",
     difficulty: "★★★★★★★",
-    type: "hellboss",
+    type: "hell",
     skybox: "desert.png",
     dplimit: 999,
     dpregen: 0.00000000000000000000001,
@@ -6566,7 +6566,7 @@ levels["T-7"] = {
     offsetX: -15,
     offsetY: -60,
     offsetZ: 0,
-    type: "boss",
+    type: "hardboss",
     skybox: "nightsky.png",
 
     waves: [
@@ -7313,7 +7313,7 @@ levels["KM-10"] = {
     offsetY: -40,
     offsetZ: 15,
     difficulty: "★★★★★★☆",
-    type: "boss",
+    type: "hardboss",
     unlock: "Breeze",
     skybox: "bgarena.png",
 
