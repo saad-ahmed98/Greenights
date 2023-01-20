@@ -22,3 +22,4 @@ You can play the game using this [link](https://krussx.github.io/Krussnights/).
 All art and audio from the game Arknights are property of their respective owners Hypergryph/Yostar.  
 I do not claim ownership over any of them.  
 This is a non-profit game.
+ 
