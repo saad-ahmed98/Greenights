@@ -392,12 +392,14 @@ class MainMenu extends LVLAbstract {
     createPage(pagenb) {
         this.opcontroller.dispose()
         this.opcontroller = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI", true, this.scene);
-        const pages = 1
+        const pages = 7
         var instance = this;
 
         let img = new BABYLON.GUI.Image("but", "images/menu/howtoplay/how2play" + pagenb + ".png");
-        img.width = (28 * 0.7) + "%";
-        img.height = (52 * 0.7) + "%";
+        img.width = (100 * 0.7) + "%";
+        img.height = (100 * 0.7) + "%";
+        img.top = "5%";
+
         img.color = "transparent";
         img.background = "transparent";
         this.opcontroller.addControl(img);
@@ -878,6 +880,8 @@ class MainMenu extends LVLAbstract {
         container.width = "40%"
         container.height = "80%";
         container.top = "5%";
+        container.left = "-0.1%";
+
         container.color = "White";
         container.background = "rgba(0, 0, 0, 0.8)";
 
@@ -1347,7 +1351,7 @@ class MainMenu extends LVLAbstract {
         var container = new BABYLON.GUI.Rectangle();
         container.width = "28%";
         container.height = "18%";
-        container.left = "0%";
+        container.left = "-0.1%";
         container.top = "20%";
         container.color = "white";
         container.thickness = 1;
@@ -1379,11 +1383,11 @@ class MainMenu extends LVLAbstract {
         image.left = "9%"
 
         var textclass = new BABYLON.GUI.TextBlock();
-        textclass.text = player.subclass;
+        textclass.text = player.class;
         textclass.color = "white";
         textclass.fontSize = "11%";
         textclass.top = "20%";
-        textclass.left = "10%";
+        textclass.left = "9.5%";
 
         var icon = new BABYLON.GUI.Image("tooltip", "images/menu/stats-icon.png");
         icon.width = "14%"
@@ -1424,7 +1428,7 @@ class MainMenu extends LVLAbstract {
         container = new BABYLON.GUI.Rectangle();
         container.width = "28%";
         container.height = "18%";
-        container.left = "0%";
+        container.left = "-0.1%";
         container.top = "37.8%";
         container.color = "white";
         container.thickness = 1;
@@ -1470,8 +1474,8 @@ class MainMenu extends LVLAbstract {
         var container = new BABYLON.GUI.Rectangle();
         container.width = "28%";
         container.height = "24%";
-        container.left = "0%";
-        container.top = "55.7%";
+        container.left = "-0.1%";
+        container.top = "55.9%";
         container.color = "white";
         container.thickness = 1;
         container.background = "rgba(0, 0, 0, 0.3)";
@@ -1616,7 +1620,7 @@ class MainMenu extends LVLAbstract {
         var container = new BABYLON.GUI.Rectangle();
         container.width = "28%";
         container.height = "59.9%";
-        container.left = "0%";
+        container.left = "-0.1%";
         container.top = "20%";
         container.color = "white";
         container.thickness = 1;

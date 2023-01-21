@@ -445,7 +445,7 @@ levels["1-9"] = {
     squadlimit: 8,
     hp: 5,
     background: "ch1",
-    description: "Heavy Defenders have been spotted.\nThese extremely dangerous enemies have high defense.\nConsider using your Decel benders and casters to slow their advance,\nand reduce their combat power significantly.",
+    description: "Heavy Defenders have been spotted.\nThese extremely dangerous enemies have high defense.\nConsider using your Supporters and casters to slow their advance,\nand reduce their combat power significantly.",
     place: "Forest",
     offsetX: -40,
     offsetY: -70,

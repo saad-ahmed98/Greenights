@@ -10,7 +10,7 @@ class GameConfig {
 
     //creates engine
     createNewEngine() {
-        if(this.scene!=undefined){
+        if (this.scene != undefined) {
             this.scene.dispose()
             delete this.scene
         }
@@ -25,25 +25,16 @@ class GameConfig {
 
     modifySettings() {
         this.inputStates.pause = false;
-
         //add the listener to the main, window object, and update the states
         window.addEventListener('keydown', (event) => {
             if (event.key === 'Escape') {
-                if (this.inputStates.pause)
-                    this.inputStates.pause = false;
-                else
+                if (!this.inputStates.pause) {
                     this.inputStates.pause = true;
-            }
-        }, false);
+                    setTimeout(() => {
+                        this.inputStates.pause = false;
+                    }, 50)
 
-        //if the key will be released, change the states object 
-        window.addEventListener('keyup', (event) => {
-            if (event.key === 'Escape') {
-                if (this.inputStates.pause)
-                    this.inputStates.pause = false;
-                else
-                    this.inputStates.pause = true;
-
+                }
             }
         }, false);
 
