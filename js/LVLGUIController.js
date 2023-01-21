@@ -73,8 +73,12 @@ class LVLGUIController {
                     player.lvlcontroller.playSound(player.chara.name + "-skillact", player.chara.sfx.skillact.volume)
                     player.lvlcontroller.playSound(player.chara.name + "-skill", player.lvlcontroller.vcvolume)
                     player.playerSkill.activateDurationSkill([player], lvlcontroller)
-                    if (player.chara.skillidle != undefined)
+                    if (player.chara.skillidle != undefined){
+                        player.spawning = false;
+                        player.contact = false;
                         player.sprite.playAnimation(player.chara.skillidle.start, player.chara.skillidle.end, true, this.gamespeed * 30);
+
+                    }
                     player.createSkillAura(lvlcontroller.spriteManagers["skillaura"])
                 }
                 lvlcontroller.unzoom()

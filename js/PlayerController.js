@@ -577,8 +577,10 @@ class PlayerController extends CharaController {
                     if (!success)
                         this.atktimer += 10000
                 }
+                /*
                 if (this.atktimer >= this.buffs.getFinalAtkInterval(this.chara.atkinterval) * 10)
                     this.contact = false;
+                    */
             }
 
         }

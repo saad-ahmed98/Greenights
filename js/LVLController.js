@@ -636,7 +636,7 @@ class LVLController extends LVLAbstract {
             BABYLON.Color3.LerpToRef(BABYLON.Color3.BlackReadOnly, startingColor, t, this.scene.clearColor);
         }
         else {
-            
+
             if (!this.render) {
                 this.createGUIs()
                 this.render = true;
@@ -1291,8 +1291,12 @@ class LVLController extends LVLAbstract {
                 this.playSound(p.chara.name + "-skill", this.vcvolume)
                 p.playerSkill.activateDurationSkill([p], this)
                 p.createSkillAura(this.spriteManagers["skillaura"])
-                if (p.chara.skillidle != undefined)
+                if (p.chara.skillidle != undefined) {
+                    p.contact = false;
+                    p.spawning = false;
                     p.sprite.playAnimation(p.chara.skillidle.start, p.chara.skillidle.end, true, this.gamespeed * 30);
+
+                }
             }
         }
         //if skill is active, lower the duration timer
@@ -1303,7 +1307,9 @@ class LVLController extends LVLAbstract {
                 p.playerSkill.deactivateDurationSkill();
                 p.aura.dispose();
                 p.aura = undefined;
-                if (p.chara.skillidle != undefined && !p.contact) {
+                if (p.chara.skillidle != undefined) {
+                    p.contact = false;
+                    p.spawning = false;
                     p.sprite.playAnimation(p.chara.idle.start, p.chara.idle.end, true, this.gamespeed * 30);
                 }
             }
