@@ -2288,7 +2288,7 @@ enemylist["Sarkaz Guerrilla Caster"] = {
     tooltip: "Deals magic to all surrounding units;\ncoming in contact with fire\n waves increases atk range.",
     description: "A Sarkaz mercenary inspired by Reunion\nand officially became member of the Guerrillas.\nThrough ancient Magic rituals, he is capable\nof using Fire Altars to his advantage.\n\n" +
         "Sarkaz Guerrilla Casters periodically release a \nmagic wave around them that hits all ally units in range.\n" +
-        "If they get in contact with a Fire Altar wave,\nthey will not take damage and instead increase \ntheir attack range (indicated by the icon above their head)\nmaking them reach furter units with their wave.\n",
+        "If they get in contact with a Fire Altar wave,\nthey will not take damage and instead increase \ntheir attack range (indicated by the icon above their head)\nmaking them reach further units with their wave.\n",
 
     targets: 99,
 
@@ -2378,7 +2378,7 @@ enemylist["Sarkaz Guerrilla Caster Leader"] = {
     targets: 99,
     description: "A Stronger Sarkaz mercenary inspired by Reunion\nand officially became member of the Guerrillas.\nThrough ancient Magic rituals, he is capable\nof using Fire Altars to his advantage.\n\n" +
         "Sarkaz Guerrilla Casters periodically release a \nmagic wave around them that hits all ally units in range.\n" +
-        "If they get in contact with a Fire Altar wave,\nthey will not take damage and instead increase \ntheir attack range (indicated by the icon above their head)\nmaking them reach furter units with their wave.\n",
+        "If they get in contact with a Fire Altar wave,\nthey will not take damage and instead increase \ntheir attack range (indicated by the icon above their head)\nmaking them reach further units with their wave.\n",
 
     enemytype: "normal",
 
@@ -5683,7 +5683,7 @@ enemylist["Sarkaz Centurion Nidus Guard"] = {
     size: 1.1,
     tooltip: "A stronger Centurion Host.\nAttacks 3 targets at once;\neach attack restores\nsome of this unit's HP.",
     description: "A Sarkaz mercenary unwittingly converted into one of Mephisto's Herd,\nable to damage multiple targets at once and drain vitality from its victims.\n\n"
-        + "A stronger Centurion turned into a Possessed,\nhad his combat capabilities enhanced and can now\ntarget up to 3 targets at once with ranged magic attacks\nwhile also restoring 150% of the damage dealt.",
+        + "A stronger Centurion turned into a Possessed,\nhad his combat capabilities enhanced and can now\ntarget up to 3 targets at once with ranged magic attacks\nwhile also restoring HP equivalent\nto 150% of the damage dealt.",
 
     targets: 3,
     bullet: { size: { height: 1, depth: 5, width: 3 }, arc: false, speed: 5, color: new BABYLON.Color3(0.69, 0.21, 0.67) },
@@ -5758,7 +5758,7 @@ enemylist["Sarkaz Centurion Host"] = {
     size: 1.1,
     tooltip: "Attacks 3 targets at once;\neach attack restores\nsome of this unit's HP.",
     description: "A Sarkaz mercenary unwittingly converted into one of Mephisto's Herd,\nable to damage multiple targets at once and drain vitality from its victims.\n\n"
-        + "This enemy Centurion turned into a Possessed,\nhad his combat capabilities enhanced and can now\ntarget up to 3 targets at once with ranged magic attacks\nwhile also restoring 150% of the damage dealt.",
+        + "This enemy Centurion turned into a Possessed,\nhad his combat capabilities enhanced and can now\ntarget up to 3 targets at once with ranged magic attacks\nwhile also restoring HP equivalent\nto 150% of the damage dealt.",
     targets: 3,
     bullet: { size: { height: 1, depth: 5, width: 3 }, arc: false, speed: 5, color: new BABYLON.Color3(0.69, 0.21, 0.67) },
 
