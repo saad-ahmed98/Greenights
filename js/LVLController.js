@@ -142,8 +142,10 @@ class LVLController extends LVLAbstract {
             var instance = this;
 
             setTimeout(() => {
-                addToSave(lvlnumber)
-                addToSave(this.unlock)
+                if (this.hp > 0) {
+                    addToSave(lvlnumber)
+                    addToSave(this.unlock)
+                }
                 if (!instance.gui.showinggui)
                     instance.gui.createLevelClearScreen(instance)
             }, 1000)
