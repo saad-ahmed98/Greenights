@@ -479,6 +479,14 @@ class LVLController extends LVLAbstract {
         };
 
         binaryTask = assetsManager.addImageTask(
+            "pausefilter",
+            "images/common/greyfilter.png",
+        );
+        binaryTask.onSuccess = function (task) {
+            instance.scene.assets[task.name] = task.image
+        };
+
+        binaryTask = assetsManager.addImageTask(
             "dpicon",
             "images/common/dp.png",
         );
@@ -1655,18 +1663,43 @@ class LVLController extends LVLAbstract {
                                 if (instance.tiles[tilex][tiley].player == undefined && instance.tiles[tilex][tiley].canBeDeployed(instance.gui.wheelchoice.type, instance.deployall)) {
                                     //display in red the tile where the mouse is hovering if it can be deployed on
                                     //this makes sure the player knows where the unit will end up if they let go of the mouse
-                                    if (prevtile != null)
-                                        prevtile.displayDeployable()
-                                    prevtile = instance.tiles[tilex][tiley]
-                                    prevtile.displayRange()
-                                    prevtile.mesh.outlineColor = new BABYLON.Color3(0, 0, 0);
+                                    if (prevtile != null) {
+                                        for (let i = 0; i < prevtile.length; i++) {
+                                            if (prevtile[i].canBeDeployed(this.playerlist[instance.gui.wheelchoice.name].type, this.deployall))
+                                                prevtile[i].displayDeployable()
+                                            else prevtile[i].undisplay()
+                                            prevtile[i].mesh.outlineColor = new BABYLON.Color3(0, 0, 0);
+                                            prevtile[i].mesh.outlineWidth = 0.1;
+                                        }
+
+
+                                    }
+                                    prevtile = this.getTilesInRange(tilex, tiley, this.playerlist[instance.gui.wheelchoice.name].range)
+                                    for (let i = 0; i < prevtile.length; i++)
+                                        prevtile[i].displayRange()
+                                    /*prevtile.mesh.outlineColor = new BABYLON.Color3(0, 0, 0);
                                     prevtile.mesh.outlineWidth = 0.1;
+                                    */
                                 }
-                                else if (prevtile != null)
-                                    prevtile.displayDeployable()
+                                else if (prevtile != null) {
+                                    for (let i = 0; i < prevtile.length; i++) {
+                                        if (prevtile[i].canBeDeployed(this.playerlist[instance.gui.wheelchoice.name].type, this.deployall))
+                                            prevtile[i].displayDeployable()
+                                        else prevtile[i].undisplay()
+                                        prevtile[i].mesh.outlineColor = new BABYLON.Color3(0, 0, 0);
+                                        prevtile[i].mesh.outlineWidth = 0.1;
+                                    }
+                                }
                             }
-                            else if (prevtile != null)
-                                prevtile.displayDeployable()
+                            else if (prevtile != null) {
+                                for (let i = 0; i < prevtile.length; i++) {
+                                    if (prevtile[i].canBeDeployed(this.playerlist[instance.gui.wheelchoice.name].type, this.deployall))
+                                        prevtile[i].displayDeployable()
+                                    else prevtile[i].undisplay()
+                                    prevtile[i].mesh.outlineColor = new BABYLON.Color3(0, 0, 0);
+                                    prevtile[i].mesh.outlineWidth = 0.1;
+                                }
+                            }
                         }
                         break;
                 }
@@ -1715,6 +1748,38 @@ class LVLController extends LVLAbstract {
                 }
             }
         }
+    }
+
+    getTilesInRange(x, y, range) {
+        var rangeexpand = 0
+        var ranget = range
+        var range = ranget
+        var line = false;
+        let restiles = [];
+        if (range / 0.5 % 2 != 0) {
+            if (Math.round(range - 0.3) % Math.round(range) == 0) {
+                range = Math.round(ranget - 0.3)
+                line = true;
+            }
+            else {
+                range = ranget - 0.5
+                rangeexpand += 1
+            }
+        }
+        var squarerange = [[Math.max(x - range, 0), Math.min(x + range, this.tiles.length - 1)], [Math.max(y - range, 0), Math.min(y + range, this.tiles[0].length - 1)]];
+        for (let i = squarerange[0][0]; i <= squarerange[0][1]; i++) {
+            var counter = Math.abs(Math.abs(i - x) - range);
+            for (let j = squarerange[1][0]; j <= squarerange[1][1]; j++) {
+                if (Math.abs(j - y) <= counter + rangeexpand) {
+                    if (line) {
+                        if (i - x == 0 || j - y == 0)
+                            restiles.push(this.tiles[i][j])
+                    }
+                    else restiles.push(this.tiles[i][j])
+                }
+            }
+        }
+        return restiles
     }
 
 

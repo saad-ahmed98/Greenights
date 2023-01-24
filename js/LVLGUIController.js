@@ -77,7 +77,6 @@ class LVLGUIController {
                         player.spawning = false;
                         player.contact = false;
                         player.sprite.playAnimation(player.chara.skillidle.start, player.chara.skillidle.end, true, this.gamespeed * 30);
-
                     }
                     player.createSkillAura(lvlcontroller.spriteManagers["skillaura"])
                 }
@@ -718,14 +717,17 @@ class LVLGUIController {
         this.timerPauseActivate()
 
         var greyfilter = new BABYLON.GUI.Image("",);
-        greyfilter.domImage = this.scene.assets["greyfilter"]
+        greyfilter.domImage = this.scene.assets["pausefilter"]
         greyfilter.width = "100%"
         greyfilter.height = "100%"
 
         var label = new BABYLON.GUI.TextBlock();
         label.text = "PAUSED";
-        label.fontSize = "20%";
+        label.fontSize = "8%";
         label.color = "white";
+        label.top = "-46%"
+        label.left = "-28%"
+
         this.lvlcontroller.addControl(greyfilter);
 
         this.lvlcontroller.addControl(label);
@@ -745,7 +747,7 @@ class LVLGUIController {
         this.timerPauseActivate()
 
         var greyfilter = new BABYLON.GUI.Image("",);
-        greyfilter.domImage = this.scene.assets["greyfilter"]
+        greyfilter.domImage = this.scene.assets["pausefilter"]
         greyfilter.width = "100%"
         greyfilter.height = "100%"
 

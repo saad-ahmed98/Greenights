@@ -2441,7 +2441,7 @@ playerlist["Breeze"] = {
     cost: 15,
     basecost: 15,
 
-    range: 2,
+    range: 2.5,
     targets: 3,
 
 
@@ -2499,7 +2499,6 @@ playerlist["Breeze"] = {
             description: "ATK +5%; Max HP +5%; Range expands",
 
             modifiers: {
-                range: 0.5,
                 flatmultiatk: 1.05,
                 maxhp: 0.05
             },
