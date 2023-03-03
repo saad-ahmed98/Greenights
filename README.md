@@ -10,6 +10,7 @@ You can play the game using this [link](https://krussx.github.io/Krussnights/).
 - Sound effects and voicelines : [aceship](https://aceship.github.io/AN-EN-Tags/index.html)
 - Units and enemy sprites recorded into GIFs from : [arknights SD](https://flashmercurymcfly.github.io/Arknights-SD-Viewer/)
 - Recorded GIFs converted into spritesheets with : [gif2sprite](https://jacklehamster.github.io/utils/gif2sprite/)
+- Library for enemy pathfinding : [PathFinding.js](https://github.com/qiao/PathFinding.js/)
 - UI icons : [game-icons](https://game-icons.net/)
 
 ## Tutorials and code references
