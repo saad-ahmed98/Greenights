@@ -49,13 +49,13 @@ class CharaController {
     updateHpBar() {
         this.healthBar.value = Math.round(this.hp / (this.maxhp + this.barrier) * 100)
         if (this.barrierBar != undefined) {
-            if (this.barrier == 0){
+            if (this.barrier == 0) {
                 this.barrierBar.value = 0;
                 this.barriericon.isVisible = false
             }
             else {
                 this.barriericon.isVisible = true
-                this.barrierBar.value = Math.round((this.hp+this.barrier) / (this.maxhp + this.barrier) * 100)
+                this.barrierBar.value = Math.round((this.hp + this.barrier) / (this.maxhp + this.barrier) * 100)
             }
         }
         this.healthBarBackground.value = Math.max(this.healthBar.value, this.healthBarBackground.value - 1)
@@ -373,7 +373,7 @@ class CharaController {
         var res = [];
         for (let i = 0; i < players.length; i++) {
             var counter = Math.abs(Math.abs(Math.round(players[i].mesh.position.x / 30) - this.x) - range);
-            if (this.between(players[i].x * 30, squarerange[0]) && this.between(players[i].y * 30, squarerange[1]) && players[i].chara.subclass!="Juggernaut" && players[i].hp < players[i].maxhp) {
+            if (this.between(players[i].x * 30, squarerange[0]) && this.between(players[i].y * 30, squarerange[1]) && players[i].chara.subclass != "Juggernaut" && players[i].hp < players[i].maxhp) {
                 if (Math.abs(Math.round(players[i].mesh.position.z / 30) - this.y) <= counter + rangeexpand && this.correctDirection(players[i].x, players[i].y)) {
                     if (res.length < targetcount)
                         res.push(players[i])
@@ -759,6 +759,11 @@ class CharaController {
         }
         if (this.pauseSpriteIndex >= this.chara.atkanim.start && this.pauseSpriteIndex <= this.chara.atkanim.end) {
             this.sprite.playAnimation(this.pauseSpriteIndex, this.chara.atkanim.end, false, 30 * this.gamespeed * this.buffs.getFinalAtkInterval(this.chara.atkanim.duration, true));
+        }
+        if (this.chara.skillatkanim != undefined) {
+            if (this.pauseSpriteIndex >= this.chara.skillatkanim.start && this.pauseSpriteIndex <= this.chara.skillatkanim.end) {
+                this.sprite.playAnimation(this.pauseSpriteIndex, this.chara.skillatkanim.end, false, 30 * this.gamespeed * this.buffs.getFinalAtkInterval(this.chara.atkanim.duration, true));
+            }
         }
         if (this.pauseSpriteIndex >= this.chara.idle.start && this.pauseSpriteIndex <= this.chara.idle.end) {
             this.sprite.playAnimation(this.chara.idle.start, this.chara.idle.end, true, 30 * this.gamespeed * (this.chara.idle.duration || 1));
