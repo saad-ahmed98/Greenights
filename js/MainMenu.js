@@ -1375,19 +1375,10 @@ class MainMenu extends LVLAbstract {
         text.fontSize = "10%";
         text.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT
         text.left = "5%";
+        
+        
 
-        var image = new BABYLON.GUI.Image("tooltip", "images/classicons/" + player.class + ".webp");
-        image.width = "15%"
-        image.height = "40%"
-        image.top = "-5%"
-        image.left = "9%"
-
-        var textclass = new BABYLON.GUI.TextBlock();
-        textclass.text = player.class;
-        textclass.color = "white";
-        textclass.fontSize = "11%";
-        textclass.top = "20%";
-        textclass.left = "9.5%";
+        this.createRange(player.range, container)
 
         var icon = new BABYLON.GUI.Image("tooltip", "images/menu/stats-icon.png");
         icon.width = "14%"
@@ -1399,10 +1390,7 @@ class MainMenu extends LVLAbstract {
 
         container.addControl(icon)
 
-        container.addControl(image)
-
         textbox.addControl(text)
-        container.addControl(textclass)
         container.addControl(textbox)
 
 
@@ -1661,5 +1649,56 @@ class MainMenu extends LVLAbstract {
         this.opcontroller.addControl(container);
 
     }
+
+    createRange(rangej, container) {
+        var rangeexpand = 0
+        var ranget = rangej
+        var range = ranget
+        var line = false;
+
+        if (range / 0.5 % 2 != 0) {
+            if (Math.round(range - 0.3) % Math.round(range) == 0) {
+                range = Math.round(ranget - 0.3)
+                line = true;
+            }
+            else {
+                range = ranget - 0.5
+                rangeexpand += 1
+            }
+        }
+
+
+        for (let i = -range; i <= range; i++) {
+            var counter = Math.abs(Math.abs(i) - range);
+
+            for (let j = -range; j <= range; j++) {
+                let display = false
+                if (Math.abs(j) <= counter + rangeexpand) {
+                    if (line) {
+                        if (i == 0 || j == 0)
+                            display = true
+                    }
+                    else display = true
+                }
+                let rect = new BABYLON.GUI.Rectangle();
+                rect.width = "5%";
+                rect.height = "12.7%";
+                rect.left = (5 + 5.1 * i) + "%";
+                rect.top = (0 + 12.8 * j) + "%";
+                rect.color = "white";
+                rect.thickness = 0;
+
+                if (display){
+                    rect.background = "rgb(58, 132, 255)"
+                    rect.thickness = 3
+                }
+                if (i == 0 && j == 0)
+                    rect.background = "rgb(255, 0, 0)";
+                container.addControl(rect)
+            }
+        }
+
+    }
+
 
 }

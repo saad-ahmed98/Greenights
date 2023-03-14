@@ -567,6 +567,7 @@ class LVLGUIController {
             container.color = "White";
             container.thickness = 1;
             container.background = "transparent";
+            container.background = players[keys[i]].rarity.replace("rgb","rgba").replace(")",",0.5)")
 
             var image = new BABYLON.GUI.Image("",);
             image.domImage = this.scene.assets[keys[i] + "-opicon"]
