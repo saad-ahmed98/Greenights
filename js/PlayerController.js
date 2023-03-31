@@ -38,6 +38,18 @@ class PlayerController extends CharaController {
         }
     }
 
+    pause() {
+        super.pause()
+        if (this.aura != undefined)
+            this.aura.stopAnimation();
+    }
+
+    resume() {
+        super.resume()
+        if (this.aura != undefined)
+            this.aura.playAnimation(0, 3, true, 30 * this.gamespeed);
+    }
+
     //returns if the tile is in the direction of the unit
     correctDirection(i, j) {
         var dirx = this.buffs.getDirectionX()

@@ -1464,6 +1464,8 @@ class LVLController extends LVLAbstract {
             this.enemies[i].pause();
         for (let i = 0; i < this.activePlayers.length; i++)
             this.activePlayers[i].pause();
+        for (let i = 0; i < this.enemiesreviving.length; i++)
+            this.enemiesreviving[i].pause();
         this.pause = true;
     }
 
@@ -1474,6 +1476,8 @@ class LVLController extends LVLAbstract {
             this.enemies[i].resume();
         for (let i = 0; i < this.activePlayers.length; i++)
             this.activePlayers[i].resume();
+        for (let i = 0; i < this.enemiesreviving.length; i++)
+            this.enemiesreviving[i].resume();
     }
 
     //removes focus from a player context menu

@@ -765,6 +765,19 @@ class CharaController {
                 this.sprite.playAnimation(this.pauseSpriteIndex, this.chara.skillatkanim.end, false, 30 * this.gamespeed * this.buffs.getFinalAtkInterval(this.chara.atkanim.duration, true));
             }
         }
+
+        if (this.chara.revival1 != undefined) {
+            if (this.pauseSpriteIndex >= this.chara.revival1.start && this.pauseSpriteIndex <= this.chara.revival1.end) {
+                this.sprite.playAnimation(this.pauseSpriteIndex, this.chara.revival1.end, false, 30 * this.gamespeed * (this.chara.revival1.duration));
+            }
+        }
+
+        if (this.chara.revival2 != undefined) {
+            if (this.pauseSpriteIndex >= this.chara.revival2.start && this.pauseSpriteIndex <= this.chara.revival2.end) {
+                this.sprite.playAnimation( this.chara.revival2.start, this.chara.revival2.end, true, 30 * this.gamespeed * (this.chara.revival2.duration));
+            }
+        }
+
         if (this.pauseSpriteIndex >= this.chara.idle.start && this.pauseSpriteIndex <= this.chara.idle.end) {
             this.sprite.playAnimation(this.chara.idle.start, this.chara.idle.end, true, 30 * this.gamespeed * (this.chara.idle.duration || 1));
         }

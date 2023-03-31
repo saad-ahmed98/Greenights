@@ -74,6 +74,18 @@ class EnemyController extends CharaController {
         this.aura.width = 90;
     }
 
+    pause(){
+        super.pause()
+        if(this.invincibleaura!=undefined)
+            this.invincibleaura.stopAnimation();
+    }
+
+    resume(){
+        super.resume()
+        if(this.invincibleaura!=undefined && !this.invincible)
+            this.invincibleaura.playAnimation(4, 7, true, 30 * this.gamespeed);
+    }
+
     //calculates the speed modifier to apply to self depending on direction tile direction
     directionMovement(dirx, diry) {
         let xfound = false;
