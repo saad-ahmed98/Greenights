@@ -5154,7 +5154,7 @@ levels["DM-4"] = {
 
     ],
 
-    enemies: ["Sarkaz Bladeweaver Leader", "Sarkaz Centurion","Sarkaz Bladeweaver", "Sarkaz Swordsman", "Sarkaz Greatswordsman", "Sarkaz Sentinel"],
+    enemies: ["Sarkaz Bladeweaver Leader", "Sarkaz Centurion", "Sarkaz Bladeweaver", "Sarkaz Swordsman", "Sarkaz Greatswordsman", "Sarkaz Sentinel"],
     tooltips: ["Sarkaz Bladeweaver Leader"],
 
     hazards: [],
@@ -7573,7 +7573,7 @@ levels["KM-H3"] = {
         { "number": 24, "time": 175, "gap": 12, "enemies": "Roar Knight", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [6, 5], "checkpoints": [{ "start": [6, 5], "end": [2, 5], "pause": 0 }, { "start": [2, 5], "end": [5, 10], "pause": 0 }] },
         { "number": 25, "time": 175, "gap": 13, "enemies": "Knight Shielder", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [0, 5], "checkpoints": [{ "start": [0, 5], "end": [1, 5], "pause": 0 }, { "start": [1, 5], "end": [4, 5], "pause": 0 }, { "start": [4, 5], "end": [4, 3], "pause": 0 }, { "start": [4, 3], "end": [1, 1], "pause": 0 }] },
         { "number": 26, "time": 176, "gap": 14, "enemies": "Vicious Training Gloompincer", "line": false, "tooltip": false, "taunt": false, "count": 4, "start": [1, 10], "checkpoints": [{ "start": [1, 10], "end": [4, 8], "pause": 0 }, { "start": [4, 8], "end": [3, 5], "pause": 0 }, { "start": [3, 5], "end": [1, 1], "pause": 0 }] },
-        { "number": 27, "time": 235, "gap": 13, "enemies": "Corrupted KnightEX", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 2], "pause": 10 }, { "start": [5, 2], "end": [2, 3], "pause": 0 }, { "start": [2, 3], "end": [2, 5], "pause": 0 }, { "start": [2, 5], "end": [4, 5], "pause": 0 }, { "start": [4, 5], "end": [5, 10], "pause": 0 }] },
+        { "number": 27, "time": 235, "gap": 13, "enemies": "Corrupted KnightEX", "line": true, "tooltip": false, "taunt": true, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 2], "pause": 10 }, { "start": [5, 2], "end": [2, 3], "pause": 0 }, { "start": [2, 3], "end": [2, 5], "pause": 0 }, { "start": [2, 5], "end": [4, 5], "pause": 0 }, { "start": [4, 5], "end": [5, 10], "pause": 0 }] },
         { "number": 28, "time": 235, "gap": 14, "enemies": "Withered KnightEX", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [1, 10], "checkpoints": [{ "start": [1, 10], "end": [1, 9], "pause": 10 }, { "start": [1, 9], "end": [4, 8], "pause": 0 }, { "start": [4, 8], "end": [3, 5], "pause": 0 }, { "start": [3, 5], "end": [1, 1], "pause": 0 }] },
     ],
 

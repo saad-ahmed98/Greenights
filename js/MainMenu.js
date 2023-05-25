@@ -9,7 +9,6 @@ class MainMenu extends LVLAbstract {
         this.opcontroller = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("opUI", true, this.scene);
 
         this.startingscreen = startscreen;
-        //this.createSkybox()
 
         this.gameconfig.scene = this.scene
 
@@ -32,7 +31,6 @@ class MainMenu extends LVLAbstract {
         var junction_font = new FontFace('Butler Stencil', 'url(font-css/ButlerStencil-Light.woff)');
         junction_font.load().then(function (loaded_face) {
             document.fonts.add(loaded_face);
-            //document.body.style.fontFamily = '"Junction Regular", Arial';
         })
         this.loadBackgrounds()
     }
@@ -283,7 +281,7 @@ class MainMenu extends LVLAbstract {
 
         var label = new BABYLON.GUI.TextBlock();
 
-        label.text = "KRUSSNIGHTS";
+        label.text = "GREENIGHTS";
         label.fontSize = "20%";
         label.color = "white";
         label.top = "-25%";
@@ -391,7 +389,7 @@ class MainMenu extends LVLAbstract {
 
     createPage(pagenb) {
         this.opcontroller.dispose()
-        this.opcontroller = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI", true, this.scene);
+        this.opcontroller = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI2", true, this.scene);
         const pages = 7
         var instance = this;
 
@@ -421,6 +419,8 @@ class MainMenu extends LVLAbstract {
             next.left = "45%";
             next.color = "transparent";
             next.background = "transparent";
+            next.hoverCursor = "pointer";
+
 
             next.onPointerUpObservable.add(function () {
                 instance.playSound("click", 0.3)
@@ -436,6 +436,8 @@ class MainMenu extends LVLAbstract {
             prev.left = "-45%";
             prev.color = "transparent";
             prev.background = "transparent";
+            prev.hoverCursor = "pointer";
+
 
             prev.onPointerUpObservable.add(function () {
                 instance.playSound("click", 0.3)
@@ -631,7 +633,7 @@ class MainMenu extends LVLAbstract {
         }
 
 
-        var quit = BABYLON.GUI.Button.CreateImageOnlyButton("but", "images/menu/back.png");
+        const quit = BABYLON.GUI.Button.CreateImageOnlyButton("but", "images/menu/back.png");
         quit.width = "17%"
         quit.height = "13%";
         quit.top = "5%";

@@ -2359,7 +2359,7 @@ playerlist["Ceylon"] = {
 
     skill: {
         name: "Water Blessing",
-        description: "ATK +60%;\nTargets healed +1;\nAllies within range have the duration\n of negative cold, frozen or stuns halved.\nInfinite duration",
+        description: "ATK +30%;\nTargets healed +1;\nAllies within range have the duration\n of negative cold, frozen or stuns reduced.\nInfinite duration",
         duration: 9999,
         sp: 80,
         initialsp: 0,
@@ -2367,7 +2367,7 @@ playerlist["Ceylon"] = {
         triggertype: "auto",
         modifiers: {
             targets:1,
-            atk: 0.60,
+            atk: 0.30,
         },
         applyeffects:
         {
@@ -2375,7 +2375,7 @@ playerlist["Ceylon"] = {
             apply: "aliveallies",
             range: 3,
             modifiers: {
-                statusres: -0.5,
+                statusres: -0.25,
             },
             duration: 0.5,
             targets: 99,

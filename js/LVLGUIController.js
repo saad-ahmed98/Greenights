@@ -51,6 +51,7 @@ class LVLGUIController {
         image.height = "80px";
         image.linkOffsetX = -50;
         image.linkOffsetY = -150;
+        image.hoverCursor = "pointer";
 
 
         this.contextMenuController.addControl(image)
@@ -62,9 +63,11 @@ class LVLGUIController {
             image2.height = "100px";
             image2.linkOffsetX = 150;
             image2.linkOffsetY = 150;
-            this.contextMenuController.addControl(image2)
+            image2.hoverCursor = "pointer";
 
+            this.contextMenuController.addControl(image2)
             image2.linkWithMesh(player.mesh)
+
 
             //on click, activate the skill if enough sp
             image2.onPointerUpObservable.add(function () {
@@ -420,7 +423,7 @@ class LVLGUIController {
         container.color = "white";
         container.thickness = 3;
         container.background = "rgba(0, 0, 0, 0.3)";
-
+        container.hoverCursor = "pointer";
         container.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_RIGHT;
         container.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
 
@@ -428,6 +431,7 @@ class LVLGUIController {
         speed.text = "1x";
         speed.color = "white";
         speed.fontSize = "60%";
+        
 
         container.addControl(speed)
 
@@ -458,6 +462,7 @@ class LVLGUIController {
         container2.color = "white";
         container2.thickness = 3;
         container2.background = "rgba(0, 0, 0, 0.3)";
+        container2.hoverCursor = "pointer";
 
         container2.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_RIGHT;
         container2.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
@@ -495,6 +500,8 @@ class LVLGUIController {
         container3.color = "white";
         container3.thickness = 3;
         container3.background = "rgba(0, 0, 0, 0.3)";
+        container3.hoverCursor = "pointer";
+
 
         container3.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
         container3.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
@@ -567,6 +574,7 @@ class LVLGUIController {
             container.color = "White";
             container.thickness = 1;
             container.background = "transparent";
+            container.hoverCursor = "pointer";
             container.background = players[keys[i]].rarity.replace("rgb","rgba").replace(")",",0.5)")
 
             var image = new BABYLON.GUI.Image("",);
@@ -576,6 +584,8 @@ class LVLGUIController {
             container2.height = "30%";
             container2.color = "transparent";
             container2.top = "-35%";
+            container2.hoverCursor = "pointer";
+
             container2.background = "rgba(0, 0, 0, 0.8)";
 
             var classicon = new BABYLON.GUI.Image("",);
