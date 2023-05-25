@@ -17,15 +17,16 @@ levels["1-1"] = {
     unlock: "Adnachiel",
     type: "normal",
     skybox: "forest.png",
+    tutorial: 2,
 
     waves: [
-        { "number": 0, "time": 5, "gap": 5, "enemies": "Lava Slug", "line": true, "tooltip": true, "taunt": true, "count": 1, "start": [3, 9], "checkpoints": [{ "start": [3, 9], "end": [2, 1], "pause": 0 }] },
-        { "number": 1, "time": 16, "gap": 2, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 9], "checkpoints": [{ "start": [3, 9], "end": [2, 1], "pause": 0 }] },
-        { "number": 2, "time": 29, "gap": 0.7, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 9], "checkpoints": [{ "start": [3, 9], "end": [2, 1], "pause": 0 }] },
-        { "number": 3, "time": 34, "gap": 0.7, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 9], "checkpoints": [{ "start": [3, 9], "end": [2, 1], "pause": 0 }] },
-        { "number": 4, "time": 45, "gap": 0.7, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 9], "checkpoints": [{ "start": [3, 9], "end": [2, 1], "pause": 0 }] },
-        { "number": 5, "time": 52, "gap": 0.7, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 9], "checkpoints": [{ "start": [3, 9], "end": [2, 1], "pause": 0 }] },
-        { "number": 6, "time": 63.7, "gap": 4, "enemies": "Soldier", "line": true, "tooltip": true, "taunt": false, "count": 2, "start": [3, 9], "checkpoints": [{ "start": [3, 9], "end": [3, 8], "pause": 3 }, { "start": [3, 8], "end": [2, 1], "pause": 0 }] },
+        { "number": 0, "time": 10, "gap": 5, "enemies": "Lava Slug", "line": true, "tooltip": true, "taunt": true, "count": 1, "start": [3, 9], "checkpoints": [{ "start": [3, 9], "end": [2, 1], "pause": 0 }] },
+        { "number": 1, "time": 21, "gap": 2, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 9], "checkpoints": [{ "start": [3, 9], "end": [2, 1], "pause": 0 }] },
+        { "number": 2, "time": 34, "gap": 0.7, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 9], "checkpoints": [{ "start": [3, 9], "end": [2, 1], "pause": 0 }] },
+        { "number": 3, "time": 39, "gap": 0.7, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 1, "start": [3, 9], "checkpoints": [{ "start": [3, 9], "end": [2, 1], "pause": 0 }] },
+        { "number": 4, "time": 50, "gap": 0.7, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 9], "checkpoints": [{ "start": [3, 9], "end": [2, 1], "pause": 0 }] },
+        { "number": 5, "time": 57, "gap": 0.7, "enemies": "Lava Slug", "line": false, "tooltip": false, "taunt": false, "count": 2, "start": [3, 9], "checkpoints": [{ "start": [3, 9], "end": [2, 1], "pause": 0 }] },
+        { "number": 6, "time": 68.7, "gap": 4, "enemies": "Soldier", "line": true, "tooltip": true, "taunt": false, "count": 2, "start": [3, 9], "checkpoints": [{ "start": [3, 9], "end": [3, 8], "pause": 3 }, { "start": [3, 8], "end": [2, 1], "pause": 0 }] },
 
     ],
 
@@ -62,6 +63,8 @@ levels["1-2"] = {
     unlock: "Hibiscus",
     type: "normal",
     skybox: "forest.png",
+    tutorial: 1,
+
 
     waves: [
         { "number": 0, "time": 3, "gap": 1.2, "enemies": "Lava Slug", "line": true, "tooltip": false, "taunt": true, "count": 2, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [5, 9], "pause": 0 }] },
@@ -115,6 +118,7 @@ levels["1-3"] = {
     difficulty: "★☆☆☆☆☆☆",
     type: "normal",
     skybox: "forest.png",
+    tutorial: 1,
 
     waves: [
         { "number": 0, "time": 5, "gap": 1.2, "enemies": "Soldier", "line": true, "tooltip": false, "taunt": true, "count": 1, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [4, 10], "pause": 0 }] },
@@ -171,6 +175,7 @@ levels["1-4"] = {
     unlock: "Durin",
     type: "normal",
     skybox: "forest.png",
+    tutorial: 1,
 
     waves: [
         { "number": 0, "time": 3, "gap": 1.2, "enemies": "Hound", "line": true, "tooltip": true, "taunt": false, "count": 1, "start": [1, 1], "checkpoints": [{ "start": [1, 1], "end": [1, 2], "pause": 1 }, { "start": [1, 2], "end": [2, 10], "pause": 0 }] },
@@ -224,6 +229,7 @@ levels["1-5"] = {
     unlock: "Popukar",
     type: "normal",
     skybox: "forest.png",
+    tutorial: 1,
 
     waves: [
         { "number": 0, "time": 2, "gap": 1.2, "enemies": "Light-Armored Soldier", "line": true, "tooltip": true, "taunt": false, "count": 1, "start": [5, 1], "checkpoints": [{ "start": [5, 1], "end": [5, 3], "pause": 64 }, { "start": [5, 3], "end": [3, 1], "pause": 0 }] },
@@ -275,6 +281,7 @@ levels["1-6"] = {
     unlock: "Beagle",
     type: "hard",
     skybox: "forest.png",
+    tutorial: 1,
 
     waves: [
         { "number": 0, "time": 5, "gap": 1.2, "enemies": "Lava Slug", "line": true, "tooltip": false, "taunt": true, "count": 1, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [3, 8], "pause": 0 }] },
@@ -334,6 +341,7 @@ levels["1-7"] = {
     unlock: "Midnight",
     type: "normal",
     skybox: "forest.png",
+    tutorial: 1,
 
     waves: [
         { "number": 0, "time": 3, "gap": 14, "enemies": "Hound", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 11], "pause": 0 }] },
@@ -387,6 +395,7 @@ levels["1-8"] = {
     unlock: "Orchid",
     type: "normal",
     skybox: "forest.png",
+    tutorial: 1,
 
     waves: [
         { "number": 0, "time": 3, "gap": 1.2, "enemies": "Soldier", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [3, 1], "checkpoints": [{ "start": [3, 1], "end": [3, 8], "pause": 0 }, { "start": [3, 8], "end": [6, 10], "pause": 0 }] },
@@ -454,6 +463,7 @@ levels["1-9"] = {
     unlock: "Ansel",
     type: "normal",
     skybox: "forest.png",
+    tutorial: 1,
 
     waves: [
         { "number": 0, "time": 3, "gap": 1.2, "enemies": "Heavy Defender", "line": true, "tooltip": true, "taunt": false, "count": 1, "start": [3, 4], "checkpoints": [{ "start": [3, 4], "end": [3, 5], "pause": 25 }, { "start": [3, 5], "end": [3, 6], "pause": 0 }, { "start": [3, 6], "end": [3, 8], "pause": 0 }, { "start": [3, 8], "end": [3, 11], "pause": 0 }] },
@@ -517,6 +527,7 @@ levels["1-10"] = {
     unlock: "Melantha",
     type: "hardboss",
     skybox: "forest.png",
+    tutorial: 1,
 
     waves: [
         { "number": 0, "time": 5, "gap": 1.2, "enemies": "Heavy Defender", "line": true, "tooltip": false, "taunt": false, "count": 1, "start": [4, 1], "checkpoints": [{ "start": [4, 1], "end": [4, 2], "pause": 160 }, { "start": [4, 2], "end": [5, 3], "pause": 0 }, { "start": [5, 3], "end": [3, 10], "pause": 0 }, { "start": [3, 10], "end": [3, 11], "pause": 0 }] },
@@ -2480,6 +2491,7 @@ levels["4-2"] = {
     type: "normal",
     skybox: "city.png",
     snowstorm: true,
+    tutorial: 5,
 
     waves: [
         { "number": 1, "time": 0, "gap": 5, "enemies": "Glacial Spider", "line": false, "tooltip": true, "taunt": false, "count": 1, "start": [2, 7], "checkpoints": [{ "start": [2, 7], "end": [2, 7], "pause": 120 }, { "start": [2, 7], "end": [3, 11], "pause": 0 }] },
@@ -3716,6 +3728,7 @@ levels["5-3"] = {
     offsetZ: 0,
     type: "normal",
     skybox: "cityruin.png",
+    tutorial: 1,
 
     waves: [
         { "number": 0, "time": 3, "gap": 5, "enemies": "Guerrilla Hound", "line": true, "tooltip": false, "count": 1, "taunt": false, "start": [5, 11], "checkpoints": [{ "start": [5, 11], "end": [5, 9], "pause": 0 }, { "start": [5, 9], "end": [4, 4], "pause": 0 }] },
@@ -4922,6 +4935,7 @@ levels["DM-1"] = {
     difficulty: "★★★☆☆☆☆",
     type: "normal",
     skybox: "desert.png",
+    tutorial: 1,
 
     waves: [
         { "number": 0, "time": 8, "gap": 10, "enemies": "Sarkaz Swordsman", "line": true, "tooltip": false, "taunt": true, "count": 2, "start": [5, 11], "checkpoints": [{ "start": [5, 11], "end": [5, 10], "pause": 0 }, { "start": [5, 10], "end": [1, 1], "pause": 0 }] },

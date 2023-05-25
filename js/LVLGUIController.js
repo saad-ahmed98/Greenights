@@ -36,6 +36,13 @@ class LVLGUIController {
 
     }
 
+    /*
+    shows the tutorial of the corresponding level
+    */
+    createTutorial(lvlcont){
+        this.createPauseScreen(lvlcont);
+    }
+
 
     /*
     menu showing up when clicking on a deployed player
