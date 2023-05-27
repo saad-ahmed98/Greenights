@@ -7816,7 +7816,7 @@ enemylist["Frostnova"] = {
         skillbullet: true,
         applyeffects: {
             modifiers: {
-                cold: 5
+                cold: 6
             },
             duration: 1,
         },
@@ -7939,7 +7939,7 @@ enemylist["Frostnova2"] = {
         skillbullet: true,
         applyeffects: {
             modifiers: {
-                cold: 5
+                cold: 6
             },
             duration: 1,
         },
@@ -8046,7 +8046,7 @@ enemylist["FrostnovaEX"] = {
         skillbullet: true,
         applyeffects: {
             modifiers: {
-                cold: 5
+                cold: 6
             },
             duration: 1,
         },
@@ -8170,7 +8170,7 @@ enemylist["FrostnovaEX2"] = {
         skillbullet: true,
         applyeffects: {
             modifiers: {
-                cold: 5
+                cold: 6
             },
             duration: 1,
         },

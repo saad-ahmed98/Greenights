@@ -34,13 +34,12 @@ class LVLGUIController {
         this.wheelchoice = undefined;
         this.playerTooltip = []
 
-    }
+        // pause buttons
+        this.pausebtn;
+        this.escbtn;
 
-    /*
-    shows the tutorial of the corresponding level
-    */
-    createTutorial(lvlcont){
-        this.createPauseScreen(lvlcont);
+        this.speed;
+
     }
 
 
@@ -83,7 +82,7 @@ class LVLGUIController {
                     player.lvlcontroller.playSound(player.chara.name + "-skillact", player.chara.sfx.skillact.volume)
                     player.lvlcontroller.playSound(player.chara.name + "-skill", player.lvlcontroller.vcvolume)
                     player.playerSkill.activateDurationSkill([player], lvlcontroller)
-                    if (player.chara.skillidle != undefined){
+                    if (player.chara.skillidle != undefined) {
                         player.spawning = false;
                         player.contact = false;
                         player.sprite.playAnimation(player.chara.skillidle.start, player.chara.skillidle.end, true, this.gamespeed * 30);
@@ -434,27 +433,58 @@ class LVLGUIController {
         container.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_RIGHT;
         container.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
 
-        var speed = new BABYLON.GUI.TextBlock();
-        speed.text = "1x";
-        speed.color = "white";
-        speed.fontSize = "60%";
-        
+        this.speed = new BABYLON.GUI.TextBlock();
+        this.speed.text = "1x";
+        this.speed.color = "white";
+        this.speed.fontSize = "60%";
 
-        container.addControl(speed)
+
+        container.addControl(this.speed)
 
         this.statscontroller.addControl(container);
+
+        /* auto skill
+        var container2 = new BABYLON.GUI.Rectangle();
+        container2.width = "7%";
+        container2.height = "12%";
+        container2.left = "-18%";
+        container2.color = "white";
+        container2.thickness = 3;
+        container2.background = "rgba(0, 0, 0, 0.3)";
+        container2.hoverCursor = "pointer";
+        container2.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_RIGHT;
+        container2.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
+
+        var skill = new BABYLON.GUI.TextBlock();
+        skill.text = "AUTO\nSKILL";
+        skill.color = "white";
+        skill.fontSize = "25%";
+        skill.top = "-17%";
+
+        container2.addControl(skill)
+
+        this.statscontroller.addControl(container2);
+        */
 
         //changes game speed when clicked
         container.onPointerDownObservable.add(() => {
             if (!(this.showinggui && !this.isPaused)) {
                 if (!this.isPaused) {
-                    if (speed.text == "1x") {
+                    let done = false;
+                    if (this.speed.text == "1x" && !done) {
+                        done = true;
                         lvlcontroller.gamespeed = 1
-                        speed.text = "2x"
+                        this.speed.text = "2x"
                     }
-                    else {
+                    if (this.speed.text == "2x"  && !done) {
+                        done = true
+                        lvlcontroller.gamespeed = 0.5
+                        this.speed.text = "3x"
+                    }
+                    if (this.speed.text == "3x"  && !done) {
+                        done = true;
                         lvlcontroller.gamespeed = 2
-                        speed.text = "1x"
+                        this.speed.text = "1x"
                     }
                     lvlcontroller.updateSpeed()
                 }
@@ -474,23 +504,23 @@ class LVLGUIController {
         container2.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_RIGHT;
         container2.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
 
-        var pause = new BABYLON.GUI.TextBlock();
-        pause.text = "❚❚";
-        pause.color = "white";
-        pause.fontSize = "60%";
+        this.pausebtn = new BABYLON.GUI.TextBlock();
+        this.pausebtn.text = "❚❚";
+        this.pausebtn.color = "white";
+        this.pausebtn.fontSize = "60%";
 
-        container2.addControl(pause)
+        container2.addControl(this.pausebtn)
 
         //pauses or unpauses the game on click
         container2.onPointerDownObservable.add(() => {
             if (!(this.showinggui && !this.isPaused)) {
-                if (!this.isPaused && pause.text == "❚❚") {
-                    pause.text = "▶";
+                if (!this.isPaused && this.pausebtn.text == "❚❚") {
+                    this.pausebtn.text = "▶";
                     this.createPauseScreen(lvlcontroller)
                 }
                 else {
-                    if (pause.text == "▶") {
-                        pause.text = "❚❚";
+                    if (this.pausebtn.text == "▶") {
+                        this.pausebtn.text = "❚❚";
                         this.removePauseScreen(lvlcontroller)
                     }
                 }
@@ -513,23 +543,23 @@ class LVLGUIController {
         container3.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
         container3.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
 
-        var esc = new BABYLON.GUI.TextBlock();
-        esc.text = "⚙";
-        esc.color = "white";
-        esc.fontSize = "80%";
+        this.escbtn = new BABYLON.GUI.TextBlock();
+        this.escbtn.text = "⚙";
+        this.escbtn.color = "white";
+        this.escbtn.fontSize = "80%";
 
-        container3.addControl(esc)
+        container3.addControl(this.escbtn)
 
         //pauses or unpauses the game on click
         container3.onPointerDownObservable.add(() => {
 
             if (!(this.showinggui && !this.isPaused)) {
                 if (!this.isPaused) {
-                    esc.text = "▶";
+                    this.escbtn.text = "▶";
                     this.createEscScreen(lvlcontroller)
                 }
                 else {
-                    esc.text = "⚙";
+                    this.escbtn.text = "⚙";
                     this.removePauseScreen(lvlcontroller)
                 }
             }
@@ -582,7 +612,7 @@ class LVLGUIController {
             container.thickness = 1;
             container.background = "transparent";
             container.hoverCursor = "pointer";
-            container.background = players[keys[i]].rarity.replace("rgb","rgba").replace(")",",0.5)")
+            container.background = players[keys[i]].rarity.replace("rgb", "rgba").replace(")", ",0.5)")
 
             var image = new BABYLON.GUI.Image("",);
             image.domImage = this.scene.assets[keys[i] + "-opicon"]
@@ -725,7 +755,13 @@ class LVLGUIController {
     //screen after clicking on pause button or esc
     createPauseScreen(lvlcont) {
         //pause game logic
+        lvlcont.gamespeed = 2
+        lvlcont.updateSpeed()
         lvlcont.pauseGame()
+        this.pausebtn.text = "▶";
+        this.escbtn.text = "▶";
+        this.speed.text = "1x";
+
         this.isPaused = true;
         this.lvlcontroller.dispose();
         this.lvlcontroller = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI", true, this.scene);
@@ -755,11 +791,16 @@ class LVLGUIController {
     //creates escape screen, counts as pause so game paused
     createEscScreen(lvlcont) {
         //pause game logic
+        lvlcont.gamespeed = 2
+        lvlcont.updateSpeed()
         lvlcont.pauseGame()
+        this.pausebtn.text = "▶";
+        this.speed.text = "1x";
         this.isPaused = true;
         this.lvlcontroller.dispose();
         this.lvlcontroller = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI", true, this.scene);
         this.showinggui = true;
+
 
         //avoids pausing and unpausing in quick succession
         this.timerPauseActivate()
@@ -996,6 +1037,8 @@ class LVLGUIController {
 
     //removes pause screen
     removePauseScreen(lvlcont) {
+        this.pausebtn.text = "❚❚";
+        this.escbtn.text = "⚙";
         this.showinggui = false;
         this.timerPause = false;
         this.lvlcontroller.dispose()

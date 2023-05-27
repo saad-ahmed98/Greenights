@@ -49,6 +49,7 @@ class Bullet {
         this.offsetZ = Math.abs(this.mesh.position.z - this.target.mesh.position.z) / this.speed
     }
     move(gamespeed) {
+        gamespeed = Math.max(0.75,gamespeed);
         var xfound = false;
         var zfound = false;
         //if halfarc, it means it's a mortar shot, so make the bullet travel in an arc
@@ -125,7 +126,7 @@ class Bullet {
             else {
                 //TODO CHANGE HARD CODED
                 if (this.source.chara.name.includes("Frostnova") && this.spatk == undefined) {
-                    this.target.applyCold(5)
+                    this.target.applyCold(6)
                     this.target.receiveDamage(this.source)
                 }
                 else {

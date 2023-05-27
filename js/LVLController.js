@@ -14,7 +14,6 @@ class LVLController extends LVLAbstract {
         this.snowstorm = lvl.snowstorm || false;
         this.deployall = lvl.deployall || false;
         this.unlock = lvl.unlock || "Fang";
-        this.tutorial = lvl.tutorial;
 
         this.enemiesreviving = []
         this.presentHazards = lvl.hazards;
@@ -122,7 +121,6 @@ class LVLController extends LVLAbstract {
             this.checkPlayers();
             this.checkSkills();
             this.movePlayers();
-            this.checkTutorial();
             this.maptimer += 1 / this.gamespeed;
             this.dptimer += this.dpregen / this.gamespeed;
             
@@ -209,13 +207,6 @@ class LVLController extends LVLAbstract {
             binaryTask.onSuccess = function (task) {
                 instance.scene.assets[task.name] = task.image
             };
-        }
-    }
-
-    checkTutorial(){
-        if(this.tutorial != undefined && this.tutorial != -1 && this.tutorial * 30 <= this.maptimer){
-            this.tutorial = -1;
-            this.gui.createTutorial(this)
         }
     }
 
@@ -443,15 +434,6 @@ class LVLController extends LVLAbstract {
         var assetsManager = instance.scene.assetsManager;
         var binaryTask;
 
-        if (this.tutorial != undefined) {
-            binaryTask = assetsManager.addImageTask(
-                "tutorial",
-                "images/tutorials/"+this.lvlnumber+".png",
-            );
-            binaryTask.onSuccess = function (task) {
-                instance.scene.assets[task.name] = task.image
-            };
-        }
         binaryTask = assetsManager.addImageTask(
             "retrybutton",
             "images/common/retry.png",
