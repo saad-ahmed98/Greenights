@@ -365,7 +365,7 @@ playerlist["Angelina"] = {
     talents: [
         {
             name: "Accelerator Field",
-            description: "All allies' ASPD +8.",
+            description: "All allies' ATK Speed +8.",
             modifiers: {
             },
             applyeffects:
@@ -549,7 +549,7 @@ playerlist["Texas"] = {
         },
         {
             name: "Texan Swordmanship",
-            description: "ASPD +10 and damage taken is reduced by 30%\nbefore defeating an enemy for the first time.",
+            description: "ATK Speed +10 and damage taken is reduced by 30%\nbefore defeating an enemy for the first time.",
             modifiers: {
                 aspd: 10,
                 dmgreduction: 0.30,
@@ -670,7 +670,7 @@ playerlist["Shining"] = {
     },
     talents: [{
         name: "Code of Law",
-        description: "ASPD +13",
+        description: "ATK Speed +13",
         modifiers: {
             aspd: 13,
         },
@@ -806,7 +806,7 @@ playerlist["Saileach"] = {
         apply: "self",
     }, {
         name: "Unwavering Banner",
-        description: "Allied units within the surrounding 8 tiles of Saileach\nhave ASPD +12 and regenerate 1.5% of their own Max HP.",
+        description: "Allied units within the surrounding 8 tiles of Saileach\nhave ATK Speed +12 and regenerate 1.5% of their own Max HP.",
         modifiers: {
         },
         applyeffects:
@@ -1062,7 +1062,7 @@ playerlist["Exusiai"] = {
     talents: [
         {
             name: "Fast Cartridge",
-            description: "ASPD +15",
+            description: "ATK Speed +15",
             modifiers: {
                 aspd: 15,
             },
@@ -1340,7 +1340,7 @@ playerlist["Ceobe"] = {
     talents: [
         {
             name: "Lone Journey",
-            description: "ATK +8%; ASPD+8%",
+            description: "ATK +8%; ATK Speed+8%",
             modifiers: {
                 flatmultiatk: 1.08,
                 aspd: 8,
@@ -1470,7 +1470,7 @@ playerlist["Skadi"] = {
         },
         {
             name: "Abyssal Resurrection",
-            description: "When defeated for the first time,\ndoes not retreat and recovers HP instead.\nHowever, Max HP -60% and ASPD +30.",
+            description: "When defeated for the first time,\ndoes not retreat and recovers HP instead.\nHowever, Max HP -60% and ATK Speed +30.",
             condtalent: 1,
             modifiers: {
                 instantheal: 1,
@@ -1569,7 +1569,7 @@ playerlist["Platinum"] = {
 
     skill: {
         name: "Pegasian Sight",
-        description: "ASPD -20; but ATK +100%;\nRange expands.\nInfinite duration",
+        description: "ATK Speed -20; but ATK +100%;\nRange expands.\nInfinite duration",
         duration: 9999,
         sp: 50,
         initialsp: 0,
@@ -2015,7 +2015,7 @@ playerlist["Istina"] = {
     },
     talents: [{
         name: "Explorer",
-        description: "DEF -35%; ASPD +21",
+        description: "DEF -35%; ATK Speed +21",
         modifiers: {
             aspd: 21,
             flatmultidef: 0.65
@@ -2601,7 +2601,7 @@ playerlist["Astesia"] = {
     talents: [
         {
             name: "Celestial Globe",
-            description: "For every 20 seconds Astesia stays on the battlefield,\nASPD +5, stacking up to 5 times.",
+            description: "For every 20 seconds Astesia stays on the battlefield,\nATK Speed +5, stacking up to 5 times.",
             condtalent: 5,
             modifiers: {
                 aspd:5,
@@ -2946,7 +2946,7 @@ playerlist["Franka"] = {
         {
             //TODO CHANGE LOL
             name: "Thermite Blade",
-            description: "ASPD +25",
+            description: "ATK Speed +25",
             modifiers: {
                 aspd: 25,
             },
@@ -3250,7 +3250,7 @@ playerlist["Perfumer"] = {
 
     skill: {
         name: "Fine Blending",
-        description: "ASPD -50, ATK +250%",
+        description: "ATK Speed -50, ATK +250%",
         duration: 30,
         sp: 60,
         initialsp: 20,
@@ -3487,7 +3487,7 @@ playerlist["Gitano"] = {
     talents: [
         {
             name: "Divination",
-            description: "ASPD +10; ATK +10%",
+            description: "ATK Speed +10; ATK +10%",
             modifiers: {
                 aspd: 10,
                 flatmultiatk: 1.10,
@@ -3806,7 +3806,7 @@ playerlist["Haze"] = {
 
     skill: {
         name: "Crimson eyes",
-        description: "Max HP -50%\nATK +60%, ASPD +60",
+        description: "Max HP -50%\nATK +60%, ATK Speed +60",
         duration: 25,
         sp: 25,
         initialsp: 0,
@@ -4094,7 +4094,7 @@ playerlist["Plume"] = {
     },
     skill: {
         name: "Swift Strike α",
-        description: "ATK +25%, ASPD +25",
+        description: "ATK +25%, ATK Speed +25",
         duration: 25,
         sp: 45,
         initialsp: 0,
@@ -4501,7 +4501,7 @@ playerlist["Adnachiel"] = {
     },
     talents: [{
         name: "Shortcoming Breakthrough",
-        description: "ASPD +8",
+        description: "ATK Speed +8",
         modifiers: {
             aspd: 8,
         },
@@ -5067,7 +5067,7 @@ playerlist["Orchid"] = {
 
     skill: {
         name: "Swift Strike α",
-        description: "ATK +25%, ASPD +25",
+        description: "ATK +25%, ATK Speed +25",
         duration: 25,
         sp: 45,
         initialsp: 0,
@@ -5082,7 +5082,7 @@ playerlist["Orchid"] = {
     },
     talents: [{
         name: "Casting Speed Up",
-        description: "ASPD +9",
+        description: "ATK Speed +9",
         modifiers: {
             aspd: 9,
         },

@@ -61,8 +61,8 @@ enemylist["Lava Slug"] = {
 }
 
 
-enemylist["Soldier"] = {
-    name: "Soldier",
+enemylist["Bandit"] = {
+    name: "Bandit",
     id:2,
     hp: 3200,
     atk: 350,
@@ -76,9 +76,9 @@ enemylist["Soldier"] = {
     hploss: 1,
     dmgtype: "physical",
     size: 1,
-    tooltip: "A basic melee soldier.",
-    description: "A basic Reunion melee soldier.\n\n"
-        + "A soldier that joined Reunion's cause,\nwhile having nothing in the way of skills.",
+    tooltip: "A bandit destroying\nthe forest.",
+    description: "A basic bandit thug.\n\n"
+        + "A bandit hired by Reunion,\nthey will do anything for a little cash.",
     targets: 1,
 
     enemytype: "normal",
@@ -302,8 +302,8 @@ enemylist['Hound'] = {
 
 }
 
-enemylist['Crossbowman Leader'] = {
-    name: "Crossbowman Leader",
+enemylist['Hunter Leader'] = {
+    name: "Hunter Leader",
     id:12,
     hp: 3500,
     atk: 410,
@@ -315,8 +315,8 @@ enemylist['Crossbowman Leader'] = {
     type: "g",
     range: 1.9,
     hploss: 1,
-    tooltip: "A more dangerous Crossbowman,\ncapable of attacking from long range.",
-    description: "An enemy that uses ranged attacks that can \ntarget both ranged and ground units.\n\nBoosts better stats than a normal Crossbowman.",
+    tooltip: "A more dangerous Hunter,\ncapable of attacking\nfrom long range.",
+    description: "An enemy that uses ranged attacks that can \ntarget both ranged and ground units.\n\nBoosts better stats than a normal Hunter.",
 
 
     dmgtype: "physical",
@@ -366,8 +366,8 @@ enemylist['Crossbowman Leader'] = {
     }
 }
 
-enemylist['Crossbowman'] = {
-    name: "Crossbowman",
+enemylist['Hunter'] = {
+    name: "Hunter",
     id:11,
     hp: 2500,
     atk: 310,
@@ -379,7 +379,7 @@ enemylist['Crossbowman'] = {
     type: "g",
     range: 1.9,
     hploss: 1,
-    tooltip: "One of Reunion's ranged soldiers,\ncapable of attacking from long range.\n\n",
+    tooltip: "A ranged bandit,\ncapable of attacking\nfrom long range.",
     description: "An enemy that uses ranged attacks that \ncan target both ranged and ground units.",
 
     dmgtype: "physical",
@@ -1506,10 +1506,10 @@ enemylist["Guerrilla Mortar"] = {
     hploss: 1,
     dmgtype: "physical",
     size: 1,
-    tooltip: "Gains significantly\nincreased ASPD when inspired\nby a Herald or by Patriot.",
+    tooltip: "Gains significantly\nincreased ATK Speed when inspired\nby a Herald or by Patriot.",
     description: "A guerrilla soldier equipped with a \nmilitary-grade mortar capable of\ndoing extremely long range attacks that hit \nall units in a radius around the primary target.\n\n" +
         "Guerrilla mortars are similar to Mortar Gunners, albeit with overall better stats.\n" +
-        "If he gets Inspired by a Guerrilla Herald or Patriot,\nin addition to the stats increases,\nthe mortar will receive a massive ASPD boost of 50.\n(Indicated by the icon above his head)",
+        "If he gets Inspired by a Guerrilla Herald or Patriot,\nin addition to the stats increases,\nthe mortar will receive a massive ATK Speed boost of 50.\n(Indicated by the icon above his head)",
     targets: 1,
     splashradius: 1,
 
@@ -1587,9 +1587,9 @@ enemylist["Guerrilla Mortar Leader"] = {
     hploss: 1,
     dmgtype: "physical",
     size: 1,
-    tooltip: "Gains significantly\nincreased ASPD when inspired\nby a Herald or by Patriot.",
+    tooltip: "Gains significantly\nincreased ATK Speed when inspired\nby a Herald or by Patriot.",
     description: "A guerrilla soldier equipped with an \neven better military-grade mortar capable of\ndoing extremely long range\nattacks that hit all units in a radius around the primary target.\n\n" +
-        "If he gets Inspired by a Guerrilla Herald or Patriot,\nin addition to the stats increases,\n the mortar will receive a massive ASPD boost of 50.\n(Indicated by the icon above his head)",
+        "If he gets Inspired by a Guerrilla Herald or Patriot,\nin addition to the stats increases,\n the mortar will receive a massive ATK Speed boost of 50.\n(Indicated by the icon above his head)",
 
     targets: 1,
     splashradius: 1,
@@ -3373,12 +3373,12 @@ enemylist["Bloodboil Knight"] = {
     hploss: 1,
     dmgtype: "physical",
     size: 1.2,
-    tooltip: "Each time an enemy is defeated,\ngains ATK and ASPD,\nstacking up to 10 times.",
+    tooltip: "Each time an enemy is defeated,\ngains ATK and ATK Speed,\nstacking up to 10 times.",
     targets: 1,
     description: "A competitive knight that thirsts for battle.\nWhenever an enemy dies on the battlefield, his stats increase.\n\n" +
         "Bloodboil knights boost fairly high stats that make them formidable foes.\n" +
-        "Additionally, whenever an enemy dies while the Bloodboil is present,\nthey will have their ATK and ASPD increased by 10% and 5 respectively.\n(indicated by the icon above their head)\n" +
-        "This buff can stack up to 10 times for a total of 100% ATK and 50 ASPD increases.\nIf the buff is maxed out, the Bloodboil will be surrounded by a red aura.\n",
+        "Additionally, whenever an enemy dies while the Bloodboil is present,\nthey will have their ATK and ATK Speed increased by 10% and 5 respectively.\n(indicated by the icon above their head)\n" +
+        "This buff can stack up to 10 times for a total of 100% ATK and 50 ATK Speed increases.\nIf the buff is maxed out, the Bloodboil will be surrounded by a red aura.\n",
 
     enemytype: "normal",
 
@@ -3818,12 +3818,12 @@ enemylist["Corrupted Knight"] = {
     hploss: 2,
     dmgtype: "physical",
     size: 1.1,
-    tooltip: "Attacks deal Splash damage to units\nsurrounding the primary target.\nGains greatly increased ATK, ASPD,\nand Movement Speed when\nthe Withered Knight dies.",
+    tooltip: "Attacks deal Splash damage to units\nsurrounding the primary target.\nGains greatly increased ATK, ATK Speed,\nand Movement Speed when\nthe Withered Knight dies.",
     description: "A Sarkaz knight with a broken horn who \nradiates terror and shows clear signs of excessive drug use.\nUses a warhammer in battle that crushes everything on its way\n\n" +
         "The Corrupted Knight is a strong enemy that unleashes devastating \nmelee attacks capable of hitting all units around the primary target.\n" +
         "Additionally, every 22 seconds, the Corrupted Knight will charge \na massive blow that deals 3x of his ATK damage to his targets.\n" +
         "If the Withered Knight is knocked out or \nenters a Blue box while the Corrupted Knight is present,\n" +
-        "the Corrupted Knight will become enraged \n(indicated by the red aura surrounding him) \nwhich increases his ATK, ASPD, and speed by 80%, 100, and 150% respectivily.\nIt is thus imperative to kill both Knights at the same time.",
+        "the Corrupted Knight will become enraged \n(indicated by the red aura surrounding him) \nwhich increases his ATK, ATK Speed, and speed by 80%, 100, and 150% respectivily.\nIt is thus imperative to kill both Knights at the same time.",
 
     targets: 1,
     splash: 1,
@@ -3953,12 +3953,12 @@ enemylist["Corrupted KnightEX"] = {
     hploss: 2,
     dmgtype: "physical",
     size: 1.1,
-    tooltip: "Attacks deal Splash damage to units\nsurrounding the primary target.\nGains greatly increased ATK, ASPD,\nand Movement Speed when\nthe Withered Knight dies.",
+    tooltip: "Attacks deal Splash damage to units\nsurrounding the primary target.\nGains greatly increased ATK, ATK Speed,\nand Movement Speed when\nthe Withered Knight dies.",
     description: "A Sarkaz knight with a broken horn who \nradiates terror and shows clear signs of excessive drug use.\nUses a warhammer in battle that crushes everything on its way\n\n" +
         "The Corrupted Knight is a strong enemy that unleashes devastating \nmelee attacks capable of hitting all units around the primary target.\n" +
         "Additionally, every 22 seconds, the Corrupted Knight will charge \na massive blow that deals 3x of his ATK damage to his targets.\n" +
         "If the Withered Knight is knocked out or \nenters a Blue box while the Corrupted Knight is present,\n" +
-        "the Corrupted Knight will become enraged \n(indicated by the red aura surrounding him) \nwhich increases his ATK, ASPD, and speed by 80%, 100, and 150% respectivily.\nIt is thus imperative to kill both Knights at the same time.",
+        "the Corrupted Knight will become enraged \n(indicated by the red aura surrounding him) \nwhich increases his ATK, ATK Speed, and speed by 80%, 100, and 150% respectivily.\nIt is thus imperative to kill both Knights at the same time.",
 
     targets: 1,
     splash: 1,
@@ -4088,12 +4088,12 @@ enemylist["Withered Knight"] = {
     hploss: 2,
     dmgtype: "magic",
     size: 1.1,
-    tooltip: "Targets 3 units at once\nwith magic arrows.\nGains greatly increased ATK, ASPD,\nand Movement Speed when\nthe Corrupted Knight dies.",
+    tooltip: "Targets 3 units at once\nwith magic arrows.\nGains greatly increased ATK, ATK Speed,\nand Movement Speed when\nthe Corrupted Knight dies.",
     description: "A Sarkaz knight with a broken horn who \nradiates terror and shows clear signs of excessive drug use.\nUses a cursed arrow in battle to fire powerful magic attacks.\n\n" +
         "The Withered Knight is a strong enemy capable of firing \nranged magic attacks to up to 3 units in range.\n" +
         "Additionally, every 22 seconds, the Withered Knight will fire \nstronger arrows that deal 1.6x of his ATK damage to his targets.\n" +
         "If the Corrupted Knight is knocked out or \nenters a Blue box while the Withered Knight is present,\n" +
-        "the Withered Knight will become enraged \n(indicated by the red aura surrounding him) \nwhich increases his ATK, ASPD, and speed by 80%, 100, and 150% respectivily.\nIt is thus imperative to kill both Knights at the same time.",
+        "the Withered Knight will become enraged \n(indicated by the red aura surrounding him) \nwhich increases his ATK, ATK Speed, and speed by 80%, 100, and 150% respectivily.\nIt is thus imperative to kill both Knights at the same time.",
 
     targets: 3,
     bullet: { size: { height: 1, depth: 6, width: 0.7 }, arc: false, speed: 6, color: new BABYLON.Color3(0.69, 0.21, 0.67) },
@@ -4222,12 +4222,12 @@ enemylist["Withered KnightEX"] = {
     hploss: 2,
     dmgtype: "magic",
     size: 1.1,
-    tooltip: "Targets 3 units at once\nwith magic arrows.\nGains greatly increased ATK, ASPD,\nand Movement Speed when\nthe Corrupted Knight dies.",
+    tooltip: "Targets 3 units at once\nwith magic arrows.\nGains greatly increased ATK, ATK Speed,\nand Movement Speed when\nthe Corrupted Knight dies.",
     description: "A Sarkaz knight with a broken horn who \nradiates terror and shows clear signs of excessive drug use.\nUses a cursed arrow in battle to fire powerful magic attacks.\n\n" +
         "The Withered Knight is a strong enemy capable of firing \nranged magic attacks to up to 3 units in range.\n" +
         "Additionally, every 22 seconds, the Withered Knight will fire \nstronger arrows that deal 1.6x of his ATK damage to his targets.\n" +
         "If the Corrupted Knight is knocked out or \nenters a Blue box while the Withered Knight is present,\n" +
-        "the Withered Knight will become enraged \n(indicated by the red aura surrounding him) \nwhich increases his ATK, ASPD, and speed by 80%, 100, and 150% respectivily.\nIt is thus imperative to kill both Knights at the same time.",
+        "the Withered Knight will become enraged \n(indicated by the red aura surrounding him) \nwhich increases his ATK, ATK Speed, and speed by 80%, 100, and 150% respectivily.\nIt is thus imperative to kill both Knights at the same time.",
 
     targets: 3,
     bullet: { size: { height: 1, depth: 6, width: 0.7 }, arc: false, speed: 6, color: new BABYLON.Color3(0.69, 0.21, 0.67) },
@@ -5462,12 +5462,12 @@ enemylist["Mephisto"] = {
     hploss: 2,
     dmgtype: "heal",
     size: 1.05,
-    tooltip: "Less likely to be attacked.\nAttacks heal up to 3 enemies.\nWhile on the battlefield,\nincrease all enemies'\nATK and ASPD.",
+    tooltip: "Less likely to be attacked.\nAttacks heal up to 3 enemies.\nWhile on the battlefield,\nincrease all enemies'\nATK and ATK Speed.",
     description: "A Medic who is one of Reunion's squad leaders.\nHe heals the wounded while commanding his troops to attack,\nand can improve their life recovery rate and battle capabilities.\nHe boasts a high resistance to Magic.\nCurrently, it has been confirmed that he is the one controlling the Possessed.\n\n" +
         "Mephisto is an enemy with no offensive capabilities of his own,\nhe is however capable of supporting his Herd while they do his bidding.\n" +
         "Mephisto attacks do not hit ally units,\nthey instead heal up to 3 enemies anywhere on the map.\n" +
         "Mephisto will make himself less likely to be targeted by ally units ranged attacks,\nwhile simultaneously Inspiring all enemy presents as long as he is alive,\n" +
-        "increasing their ATK and ASPD by 10% and 10 respectively,\nhe will also double the HP regen of possessed enemies if applicable.",
+        "increasing their ATK and ATK Speed by 10% and 10 respectively,\nhe will also double the HP regen of possessed enemies if applicable.",
 
     targets: 3,
 
@@ -5541,12 +5541,12 @@ enemylist["MephistoEX"] = {
     hploss: 2,
     dmgtype: "heal",
     size: 1.05,
-    tooltip: "Less likely to be attacked.\nAttacks heal up to 3 enemies.\nWhile on the battlefield,\nincrease all enemies'\nATK and ASPD.",
+    tooltip: "Less likely to be attacked.\nAttacks heal up to 3 enemies.\nWhile on the battlefield,\nincrease all enemies'\nATK and ATK Speed.",
     description: "A Medic who is one of Reunion's squad leaders.\nHe heals the wounded while commanding his troops to attack,\nand can improve their life recovery rate and battle capabilities.\nHe boasts a high resistance to Magic.\nCurrently, it has been confirmed that he is the one controlling the Possessed.\n\n" +
         "Mephisto is a Reunion leader with no offensive capabilities of his own,\nhe is however capable of supporting his Herd while they do his bidding.\n" +
         "Mephisto attacks do not hit ally units,\nthey instead heal up to 3 enemies anywhere on the map.\n" +
         "Mephisto will make himself less likely to be targeted by ally units ranged attacks,\nwhile simultaneously Inspiring all enemy presents as long as he is alive,\n" +
-        "increasing their ATK and ASPD by 20% and 10 respectively,\nhe will also double the HP regen of possessed enemies if applicable.",
+        "increasing their ATK and ATK Speed by 20% and 10 respectively,\nhe will also double the HP regen of possessed enemies if applicable.",
 
     targets: 3,
 
