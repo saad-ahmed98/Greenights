@@ -965,7 +965,6 @@ class EnemyController extends CharaController {
                     instance.skillproc = false;
                     clearInterval(interval);
                 }
-                timer--;
             }, 1);
         }
 

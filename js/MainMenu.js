@@ -281,7 +281,7 @@ class MainMenu extends LVLAbstract {
 
         var label = new BABYLON.GUI.TextBlock();
 
-        label.text = "KRUSSNIGHTS";
+        label.text = "GREENIGHTS";
         label.fontSize = "20%";
         label.color = "white";
         label.top = "-25%";
