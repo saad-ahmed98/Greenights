@@ -3818,12 +3818,12 @@ enemylist["Corrupted Knight"] = {
     hploss: 2,
     dmgtype: "physical",
     size: 1.1,
-    tooltip: "Attacks deal Splash damage to units\nsurrounding the primary target.\nGains greatly increased ATK, ATK Speed,\nand Movement Speed when\nthe Withered Knight dies.",
+    tooltip: "Attacks deal Splash damage to units\nsurrounding the primary target.\nGains greatly increased ATK,\nATK Speed, Movement Speed when\nthe Withered Knight dies.",
     description: "A Sarkaz knight with a broken horn who \nradiates terror and shows clear signs of excessive drug use.\nUses a warhammer in battle that crushes everything on its way\n\n" +
         "The Corrupted Knight is a strong enemy that unleashes devastating \nmelee attacks capable of hitting all units around the primary target.\n" +
         "Additionally, every 22 seconds, the Corrupted Knight will charge \na massive blow that deals 3x of his ATK damage to his targets.\n" +
         "If the Withered Knight is knocked out or \nenters a Blue box while the Corrupted Knight is present,\n" +
-        "the Corrupted Knight will become enraged \n(indicated by the red aura surrounding him) \nwhich increases his ATK, ATK Speed, and speed by 80%, 100, and 150% respectivily.\nIt is thus imperative to kill both Knights at the same time.",
+        "the Corrupted Knight will become enraged \n(indicated by the red aura surrounding him) \nwhich increases his ATK, ATK Speed, and speed\nby 80%, 100, and 150% respectivily.\nIt is thus imperative to kill both Knights at the same time.",
 
     targets: 1,
     splash: 1,
@@ -3953,12 +3953,12 @@ enemylist["Corrupted KnightEX"] = {
     hploss: 2,
     dmgtype: "physical",
     size: 1.1,
-    tooltip: "Attacks deal Splash damage to units\nsurrounding the primary target.\nGains greatly increased ATK, ATK Speed,\nand Movement Speed when\nthe Withered Knight dies.",
+    tooltip: "Attacks deal Splash damage to units\nsurrounding the primary target.\nGains greatly increased ATK,\nATK Speed, Movement Speed when\nthe Withered Knight dies.",
     description: "A Sarkaz knight with a broken horn who \nradiates terror and shows clear signs of excessive drug use.\nUses a warhammer in battle that crushes everything on its way\n\n" +
         "The Corrupted Knight is a strong enemy that unleashes devastating \nmelee attacks capable of hitting all units around the primary target.\n" +
         "Additionally, every 22 seconds, the Corrupted Knight will charge \na massive blow that deals 3x of his ATK damage to his targets.\n" +
         "If the Withered Knight is knocked out or \nenters a Blue box while the Corrupted Knight is present,\n" +
-        "the Corrupted Knight will become enraged \n(indicated by the red aura surrounding him) \nwhich increases his ATK, ATK Speed, and speed by 80%, 100, and 150% respectivily.\nIt is thus imperative to kill both Knights at the same time.",
+        "the Corrupted Knight will become enraged \n(indicated by the red aura surrounding him) \nwhich increases his ATK, ATK Speed, and speed\nby 80%, 100, and 150% respectivily.\nIt is thus imperative to kill both Knights at the same time.",
 
     targets: 1,
     splash: 1,
@@ -4088,12 +4088,12 @@ enemylist["Withered Knight"] = {
     hploss: 2,
     dmgtype: "magic",
     size: 1.1,
-    tooltip: "Targets 3 units at once\nwith magic arrows.\nGains greatly increased ATK, ATK Speed,\nand Movement Speed when\nthe Corrupted Knight dies.",
+    tooltip: "Targets 3 units at once\nwith magic arrows.\nGains greatly increased ATK,\nATK Speed, Movement Speed when\nthe Corrupted Knight dies.",
     description: "A Sarkaz knight with a broken horn who \nradiates terror and shows clear signs of excessive drug use.\nUses a cursed arrow in battle to fire powerful magic attacks.\n\n" +
         "The Withered Knight is a strong enemy capable of firing \nranged magic attacks to up to 3 units in range.\n" +
         "Additionally, every 22 seconds, the Withered Knight will fire \nstronger arrows that deal 1.6x of his ATK damage to his targets.\n" +
         "If the Corrupted Knight is knocked out or \nenters a Blue box while the Withered Knight is present,\n" +
-        "the Withered Knight will become enraged \n(indicated by the red aura surrounding him) \nwhich increases his ATK, ATK Speed, and speed by 80%, 100, and 150% respectivily.\nIt is thus imperative to kill both Knights at the same time.",
+        "the Withered Knight will become enraged \n(indicated by the red aura surrounding him) \nwhich increases his ATK, ATK Speed, and speed\nby 80%, 100, and 150% respectivily.\nIt is thus imperative to kill both Knights at the same time.",
 
     targets: 3,
     bullet: { size: { height: 1, depth: 6, width: 0.7 }, arc: false, speed: 6, color: new BABYLON.Color3(0.69, 0.21, 0.67) },
@@ -4222,12 +4222,12 @@ enemylist["Withered KnightEX"] = {
     hploss: 2,
     dmgtype: "magic",
     size: 1.1,
-    tooltip: "Targets 3 units at once\nwith magic arrows.\nGains greatly increased ATK, ATK Speed,\nand Movement Speed when\nthe Corrupted Knight dies.",
+    tooltip: "Targets 3 units at once\nwith magic arrows.\nGains greatly increased ATK,\nATK Speed, Movement Speed when\nthe Corrupted Knight dies.",
     description: "A Sarkaz knight with a broken horn who \nradiates terror and shows clear signs of excessive drug use.\nUses a cursed arrow in battle to fire powerful magic attacks.\n\n" +
         "The Withered Knight is a strong enemy capable of firing \nranged magic attacks to up to 3 units in range.\n" +
         "Additionally, every 22 seconds, the Withered Knight will fire \nstronger arrows that deal 1.6x of his ATK damage to his targets.\n" +
         "If the Corrupted Knight is knocked out or \nenters a Blue box while the Withered Knight is present,\n" +
-        "the Withered Knight will become enraged \n(indicated by the red aura surrounding him) \nwhich increases his ATK, ATK Speed, and speed by 80%, 100, and 150% respectivily.\nIt is thus imperative to kill both Knights at the same time.",
+        "the Withered Knight will become enraged \n(indicated by the red aura surrounding him) \nwhich increases his ATK, ATK Speed, and speed\nby 80%, 100, and 150% respectivily.\nIt is thus imperative to kill both Knights at the same time.",
 
     targets: 3,
     bullet: { size: { height: 1, depth: 6, width: 0.7 }, arc: false, speed: 6, color: new BABYLON.Color3(0.69, 0.21, 0.67) },
