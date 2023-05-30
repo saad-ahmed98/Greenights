@@ -19,6 +19,14 @@ You tried to reason with them, but to no avail... If you do nothing, the forest 
 
 You can play the game using this [link](https://saad-ahmed98.github.io/Greenights/). 
 
+## Video showcase
+[Greenights - Full playthrough no commentary](https://www.youtube.com/watch?v=xkwkyCic-Fs).
+
+## Performance
+
+Please "zoom" the game page when you notice a substancial FPS drop, it will decrease the game's image quality but increase performance.  
+If you can't read the game text properly (i.e: screen too small) you can choose to "zoom out" the game, this improves the image quality at the risk of decreasing performance.
+
 ## Sources used
 - Sound effects and voicelines : [aceship](https://aceship.github.io/AN-EN-Tags/index.html)
 - Backgrounds : [aceship](https://aceship.github.io/AN-EN-Tags/akgallery.html)
