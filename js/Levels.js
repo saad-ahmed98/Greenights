@@ -5449,7 +5449,7 @@ levels["DM-9"] = {
     offsetZ: 0,
     difficulty: "★★★★★★☆",
     unlock: "Istina",
-    type: "hard",
+    type: "hardboss",
     skybox: "desert.png",
 
     waves: [
