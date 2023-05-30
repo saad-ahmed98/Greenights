@@ -4,7 +4,7 @@ Version of Krussnights adapted to Games on Web 2023 theme **to be green**.
 
 ## Synopsis
 
-You are a resident of a small town located in the middle of the Gaul Forest. You live a peaceful life in harmony with the surrounding nature.  
+You are a resident of a small town located in the middle of a distant forest. You live a peaceful life in harmony with the surrounding nature.  
   
 One day, this tranquility was disrupted by bandits. Without asking anyone's permission, they began cutting down trees, hunting animals, and disturbing the forest's ecosystem.  
   
