@@ -2127,7 +2127,7 @@ playerlist["Nearl"] = {
         chargetype: "second",
         triggertype: "manual",
         modifiers: {
-            range: 1.5,
+            range: 1,
             atk: 1,
             dmgtype: "heal",
             atkinterval: 1.56,
