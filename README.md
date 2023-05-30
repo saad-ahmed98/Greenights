@@ -13,7 +13,7 @@ You tried to reason with them, but to no avail... If you do nothing, the forest 
 * Form a team of fighters ready to protect the environment by your side!
 * Recruit up to 45 different heroes from around the world as you progress through your adventure to face increasingly powerful enemies!
 * Confront 90 different types of enemies across 97 levels that will test your reflexes and strategic sense!
-* Forest, cave, desert, and more! Use the different environments to your advantage, don't overlook the battlefield, and use the terrain to repel enemy forces in this dynamic Tower Defense game!
+* Forest, cave, desert, and more! Fight your way through poisonous pollution, unstable radiations and raging magma in different environments and use the terrain to repel the enemy forces in this dynamic Tower Defense game!
 
 ## Playable Demo
 
